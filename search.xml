@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>LINUX-PENETRATION</title>
-    <url>/project/2022/03/14/LINUX-PENETRATION/</url>
+    <url>/2022/03/14/LINUX-PENETRATION/</url>
     <content><![CDATA[<h1 id="NMAP高级嗅探"><a href="#NMAP高级嗅探" class="headerlink" title="NMAP高级嗅探"></a>NMAP高级嗅探</h1><h2 id="网络-防火墙逃逸嗅探"><a href="#网络-防火墙逃逸嗅探" class="headerlink" title="(网络)防火墙逃逸嗅探"></a>(网络)防火墙逃逸嗅探</h2><ol>
 <li>IDS（Intrusion Detection Systems）入侵检测系统</li>
 <li>NMAP逃逸方案：<ol>
@@ -170,7 +170,7 @@
   </entry>
   <entry>
     <title>新车验车流程笔记</title>
-    <url>/project/2022/03/12/%E6%96%B0%E8%BD%A6%E9%AA%8C%E8%BD%A6%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/</url>
+    <url>/2022/03/12/%E6%96%B0%E8%BD%A6%E9%AA%8C%E8%BD%A6%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<ul>
 <li><a href="#%E4%B8%80-%E9%AA%8C%E8%BD%A6%E5%89%8D">一、验车前</a><ul>
 <li><a href="#1-%E6%90%BA%E5%B8%A6%E7%89%A9%E5%93%81">1. 携带物品</a></li>
