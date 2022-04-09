@@ -1097,6 +1097,20 @@
       </tags>
   </entry>
   <entry>
+    <title>RIME CONFIG GUIDE</title>
+    <url>/2021/12/25/RIME-CONfIG/</url>
+    <content><![CDATA[<ol>
+<li><h2 id="x2F-config-x2F-ibus-x2F-rime-x2F-build-x2F-ibus-rime-yaml-ibus-rime候选横竖列文件"><a href="#x2F-config-x2F-ibus-x2F-rime-x2F-build-x2F-ibus-rime-yaml-ibus-rime候选横竖列文件" class="headerlink" title="~&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml    #ibus-rime候选横竖列文件"></a>~&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml    #ibus-rime候选横竖列文件</h2></li>
+<li><h2 id="x2F-home-x2F-blackcat-x2F-config-x2F-ibus-x2F-rime-x2F-default-custom-yaml"><a href="#x2F-home-x2F-blackcat-x2F-config-x2F-ibus-x2F-rime-x2F-default-custom-yaml" class="headerlink" title="&#x2F;home&#x2F;blackcat&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;default.custom.yaml"></a>&#x2F;home&#x2F;blackcat&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;default.custom.yaml</h2> <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">	&quot;menu/page_size&quot;: 7 #每页候选词个数</span><br><span class="line">	&quot;ascii_composer/switch_key/Shift_L&quot;: commit_code #左shift提交字母</span><br><span class="line">	&quot;style/horizontal&quot;: true      # 候選橫排</span><br></pre></td></tr></table></figure></li>
+<li><h2 id="x2F-home-x2F-blackcat-x2F-config-x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml"><a href="#x2F-home-x2F-blackcat-x2F-config-x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml" class="headerlink" title="&#x2F;home&#x2F;blackcat&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml"></a>&#x2F;home&#x2F;blackcat&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml</h2> <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">  	switches:                   # 注意縮進</span><br><span class="line">	- name: ascii_mode</span><br><span class="line">	reset: 0                # reset 0 的作用是當從其他輸入方案切換到本方案時，</span><br><span class="line">	states: [ 中文, 西文 ]  # 重設爲指定的狀態，而不保留在前一個方案中設定的狀態。</span><br><span class="line">	- name: full_shape        # 選擇輸入方案後通常需要立即輸入中文，故重設 ascii_mode = 0；</span><br><span class="line">	states: [ 半角, 全角 ]  # 而全／半角則可沿用之前方案中的用法。</span><br><span class="line">	- name: simplification</span><br><span class="line">	reset: 1                # 增加這一行：默認啓用「繁→簡」轉換。</span><br><span class="line">	states: [ 漢字, 汉字 ]</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <tags>
+        <tag>tools</tag>
+        <tag>open source</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PYTHON PROGRAM-GUIDE</title>
     <url>/2022/03/17/PYTHON-PROGRAM-GUIDE/</url>
     <content><![CDATA[<ul>
@@ -1425,20 +1439,6 @@
       <tags>
         <tag>程序开发安全</tag>
         <tag>编程语言</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>RIME CONFIG GUIDE</title>
-    <url>/2021/12/25/RIME-CONfIG/</url>
-    <content><![CDATA[<ol>
-<li><h2 id="x2F-config-x2F-ibus-x2F-rime-x2F-build-x2F-ibus-rime-yaml-ibus-rime候选横竖列文件"><a href="#x2F-config-x2F-ibus-x2F-rime-x2F-build-x2F-ibus-rime-yaml-ibus-rime候选横竖列文件" class="headerlink" title="~&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml    #ibus-rime候选横竖列文件"></a>~&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml    #ibus-rime候选横竖列文件</h2></li>
-<li><h2 id="x2F-home-x2F-blackcat-x2F-config-x2F-ibus-x2F-rime-x2F-default-custom-yaml"><a href="#x2F-home-x2F-blackcat-x2F-config-x2F-ibus-x2F-rime-x2F-default-custom-yaml" class="headerlink" title="&#x2F;home&#x2F;blackcat&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;default.custom.yaml"></a>&#x2F;home&#x2F;blackcat&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;default.custom.yaml</h2> <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">	&quot;menu/page_size&quot;: 7 #每页候选词个数</span><br><span class="line">	&quot;ascii_composer/switch_key/Shift_L&quot;: commit_code #左shift提交字母</span><br><span class="line">	&quot;style/horizontal&quot;: true      # 候選橫排</span><br></pre></td></tr></table></figure></li>
-<li><h2 id="x2F-home-x2F-blackcat-x2F-config-x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml"><a href="#x2F-home-x2F-blackcat-x2F-config-x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml" class="headerlink" title="&#x2F;home&#x2F;blackcat&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml"></a>&#x2F;home&#x2F;blackcat&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml</h2> <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">  	switches:                   # 注意縮進</span><br><span class="line">	- name: ascii_mode</span><br><span class="line">	reset: 0                # reset 0 的作用是當從其他輸入方案切換到本方案時，</span><br><span class="line">	states: [ 中文, 西文 ]  # 重設爲指定的狀態，而不保留在前一個方案中設定的狀態。</span><br><span class="line">	- name: full_shape        # 選擇輸入方案後通常需要立即輸入中文，故重設 ascii_mode = 0；</span><br><span class="line">	states: [ 半角, 全角 ]  # 而全／半角則可沿用之前方案中的用法。</span><br><span class="line">	- name: simplification</span><br><span class="line">	reset: 1                # 增加這一行：默認啓用「繁→簡」轉換。</span><br><span class="line">	states: [ 漢字, 汉字 ]</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <tags>
-        <tag>tools</tag>
-        <tag>open source</tag>
       </tags>
   </entry>
   <entry>
