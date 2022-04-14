@@ -735,16 +735,91 @@
       </tags>
   </entry>
   <entry>
-    <title>MY FAVOR TOOLS BANK (我的&quot;武器/装备&quot;库)</title>
-    <url>/2022/03/22/My-Attack-Tools/</url>
-    <content><![CDATA[<h1 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h1><h2 id="JOPLIN"><a href="#JOPLIN" class="headerlink" title="JOPLIN"></a>JOPLIN</h2><h2 id="ANKI"><a href="#ANKI" class="headerlink" title="ANKI"></a>ANKI</h2><h2 id="MARKTEST"><a href="#MARKTEST" class="headerlink" title="MARKTEST"></a>MARKTEST</h2><h2 id="RIME"><a href="#RIME" class="headerlink" title="RIME"></a>RIME</h2><h2 id="ASF"><a href="#ASF" class="headerlink" title="ASF"></a>ASF</h2><h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><h2 id="PotPlayer"><a href="#PotPlayer" class="headerlink" title="PotPlayer"></a>PotPlayer</h2><h2 id="Neat-Download-Manager"><a href="#Neat-Download-Manager" class="headerlink" title="Neat Download Manager"></a>Neat Download Manager</h2><h2 id="OllyDBG"><a href="#OllyDBG" class="headerlink" title="OllyDBG"></a>OllyDBG</h2><h1 id="商业软件（部分含community版）"><a href="#商业软件（部分含community版）" class="headerlink" title="商业软件（部分含community版）"></a>商业软件（部分含community版）</h1><h2 id="Vmware"><a href="#Vmware" class="headerlink" title="Vmware"></a>Vmware</h2><h2 id="Wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h2><h2 id="Arduino"><a href="#Arduino" class="headerlink" title="Arduino"></a>Arduino</h2><h2 id="Pycharm"><a href="#Pycharm" class="headerlink" title="Pycharm"></a>Pycharm</h2><h2 id="Visual-Studio"><a href="#Visual-Studio" class="headerlink" title="Visual Studio"></a>Visual Studio</h2><h2 id="Visual-Studio-IDE"><a href="#Visual-Studio-IDE" class="headerlink" title="Visual Studio IDE"></a>Visual Studio IDE</h2>]]></content>
+    <title>LINUX OS</title>
+    <url>/2022/03/22/LINUX-OS/</url>
+    <content><![CDATA[<h1 id="Linux系统基础"><a href="#Linux系统基础" class="headerlink" title="Linux系统基础"></a>Linux系统基础</h1><ol>
+<li>MBR：主引导记录</li>
+<li>grub2引导<br>(grub「grand unified bootloader 宏大的统一引导启动程序」：幼虫，搜寻)<ol>
+<li>boot.img</li>
+<li>core.img</li>
+<li>*.mod</li>
+<li>grub.cfg<br> a. 未独立&#x2F;boot：&#x2F;boot&#x2F;grub2&#x2F;grub.cfg<br> b. 独立&#x2F;boot:&#x2F;grub2&#x2F;grub.cfg</li>
+<li>grun2-setpassword：设置引导密码</li>
+</ol>
+</li>
+<li>init：PID&#x3D;1（进程号）<ol>
+<li>centos7第一个进程：systemd（配置文件：&#x2F;usr&#x2F;system&#x2F;systemd&#x2F;）</li>
+<li>执行登录 &#x2F;bin&#x2F;login</li>
+</ol>
+</li>
+<li>demesg | less：“|”管道符，左侧命令输出作为右侧的输入</li>
+<li>&#x2F;dev：设备 –&gt; 文件</li>
+<li>&#x2F;usr：unix shared resources（共享资源）「类似win的Program Files」</li>
+<li>&#x2F;src：原文件</li>
+<li>&#x2F;tmp：临时文件</li>
+<li>&#x2F;var（variable）：日志文件、打印机脱机工作文件、缓冲区</li>
+<li>&#x2F;opt（option）：选项文件</li>
+<li>&#x2F;mnt（mount）：挂载</li>
+<li>cd：change directory</li>
+<li>文件类型：<ol>
+<li>d：目录</li>
+<li>l：链接</li>
+<li>b：块设备</li>
+<li>c：字符设备文件</li>
+<li>-：普通文件</li>
+</ol>
+</li>
+<li>文件权限：<ol>
+<li>用户组：U &#x2F; G &#x2F; A</li>
+<li>九位字母表示法：d[文件类型] rwx[文件属主] r-x[同组用户] r–[其他用户]</li>
+</ol>
+</li>
+<li>cat快速编辑：<ol>
+<li>cat&gt;test</li>
+<li>[输入字符]</li>
+</ol>
+</li>
+<li>tail &amp; head：查看后十行，前十行 &#x2F;&#x2F;-n num : 指定行数</li>
+<li>mdir [ -m ] [ -p 目录名 ]</li>
+<li>rmdir（remove dir）：用于删除空目录<ol>
+<li>rm -r</li>
+</ol>
+</li>
+<li>touch：修改时间属性 * （不存在）创建文件</li>
+<li>软链接：ln -s</li>
+<li>硬链接：ln<ol>
+<li>以文件副本形式存在，不占用实际控件</li>
+<li>不允许目录硬链接</li>
+<li>只有在同一个文件系统才允许硬链接</li>
+</ol>
+</li>
+<li>查找类：which、whereis、find、grep</li>
+<li>文件重定向：<ul>
+<li>&#x2F;dev&#x2F;stdin：标准输入文件</li>
+<li>&#x2F;dev&#x2F;stdout：标准输出文件</li>
+</ul>
+<ol>
+<li>输出重定向<ol>
+<li>“&gt;”：文件存在，覆盖</li>
+<li>“&gt;&gt;”：文件存在，添加内容到文件末尾</li>
+</ol>
+</li>
+<li>输入重定向<ol>
+<li>“&lt;”</li>
+</ol>
+</li>
+<li>管道符重定向：“|” 左输出为右输入</li>
+</ol>
+</li>
+</ol>
+]]></content>
       <categories>
         <category>开源项目</category>
-        <category>software</category>
+        <category>LINUX OS</category>
       </categories>
       <tags>
-        <tag>tools</tag>
-        <tag>open source</tag>
+        <tag>操作系统</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -911,7 +986,6 @@
       <categories>
         <category>网络安全</category>
         <category>WEB渗透</category>
-        <category>LINUX</category>
       </categories>
       <tags>
         <tag>渗透</tag>
@@ -1094,6 +1168,19 @@
         <tag>安全漏洞</tag>
         <tag>0day</tag>
         <tag>Stack overflow</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MY FAVOR TOOLS BANK (我的&quot;武器/装备&quot;库)</title>
+    <url>/2022/03/22/My-Attack-Tools/</url>
+    <content><![CDATA[<h1 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h1><h2 id="JOPLIN"><a href="#JOPLIN" class="headerlink" title="JOPLIN"></a>JOPLIN</h2><h2 id="ANKI"><a href="#ANKI" class="headerlink" title="ANKI"></a>ANKI</h2><h2 id="MARKTEST"><a href="#MARKTEST" class="headerlink" title="MARKTEST"></a>MARKTEST</h2><h2 id="RIME"><a href="#RIME" class="headerlink" title="RIME"></a>RIME</h2><h2 id="ASF"><a href="#ASF" class="headerlink" title="ASF"></a>ASF</h2><h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><h2 id="PotPlayer"><a href="#PotPlayer" class="headerlink" title="PotPlayer"></a>PotPlayer</h2><h2 id="Neat-Download-Manager"><a href="#Neat-Download-Manager" class="headerlink" title="Neat Download Manager"></a>Neat Download Manager</h2><h2 id="OllyDBG"><a href="#OllyDBG" class="headerlink" title="OllyDBG"></a>OllyDBG</h2><h1 id="商业软件（部分含community版）"><a href="#商业软件（部分含community版）" class="headerlink" title="商业软件（部分含community版）"></a>商业软件（部分含community版）</h1><h2 id="Vmware"><a href="#Vmware" class="headerlink" title="Vmware"></a>Vmware</h2><h2 id="Wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h2><h2 id="Arduino"><a href="#Arduino" class="headerlink" title="Arduino"></a>Arduino</h2><h2 id="Pycharm"><a href="#Pycharm" class="headerlink" title="Pycharm"></a>Pycharm</h2><h2 id="Visual-Studio"><a href="#Visual-Studio" class="headerlink" title="Visual Studio"></a>Visual Studio</h2><h2 id="Visual-Studio-IDE"><a href="#Visual-Studio-IDE" class="headerlink" title="Visual Studio IDE"></a>Visual Studio IDE</h2>]]></content>
+      <categories>
+        <category>开源项目</category>
+        <category>software</category>
+      </categories>
+      <tags>
+        <tag>tools</tag>
+        <tag>open source</tag>
       </tags>
   </entry>
   <entry>
@@ -1425,6 +1512,202 @@
       <tags>
         <tag>程序开发安全</tag>
         <tag>编程语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RIME CONFIG GUIDE</title>
+    <url>/2021/12/25/RIME-CONfIG/</url>
+    <content><![CDATA[<ol>
+<li><h2 id="x2F-config-x2F-ibus-x2F-rime-x2F-build-x2F-ibus-rime-yaml-ibus-rime候选横竖列文件"><a href="#x2F-config-x2F-ibus-x2F-rime-x2F-build-x2F-ibus-rime-yaml-ibus-rime候选横竖列文件" class="headerlink" title="~&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml    #ibus-rime候选横竖列文件"></a>~&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml    #ibus-rime候选横竖列文件</h2></li>
+<li><h2 id="x2F-home-x2F-blackcat-x2F-config-x2F-ibus-x2F-rime-x2F-default-custom-yaml"><a href="#x2F-home-x2F-blackcat-x2F-config-x2F-ibus-x2F-rime-x2F-default-custom-yaml" class="headerlink" title="&#x2F;home&#x2F;blackcat&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;default.custom.yaml"></a>&#x2F;home&#x2F;blackcat&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;default.custom.yaml</h2> <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">	&quot;menu/page_size&quot;: 7 #每页候选词个数</span><br><span class="line">	&quot;ascii_composer/switch_key/Shift_L&quot;: commit_code #左shift提交字母</span><br><span class="line">	&quot;style/horizontal&quot;: true      # 候選橫排</span><br></pre></td></tr></table></figure></li>
+<li><h2 id="x2F-home-x2F-blackcat-x2F-config-x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml"><a href="#x2F-home-x2F-blackcat-x2F-config-x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml" class="headerlink" title="&#x2F;home&#x2F;blackcat&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml"></a>&#x2F;home&#x2F;blackcat&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml</h2> <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">  	switches:                   # 注意縮進</span><br><span class="line">	- name: ascii_mode</span><br><span class="line">	reset: 0                # reset 0 的作用是當從其他輸入方案切換到本方案時，</span><br><span class="line">	states: [ 中文, 西文 ]  # 重設爲指定的狀態，而不保留在前一個方案中設定的狀態。</span><br><span class="line">	- name: full_shape        # 選擇輸入方案後通常需要立即輸入中文，故重設 ascii_mode = 0；</span><br><span class="line">	states: [ 半角, 全角 ]  # 而全／半角則可沿用之前方案中的用法。</span><br><span class="line">	- name: simplification</span><br><span class="line">	reset: 1                # 增加這一行：默認啓用「繁→簡」轉換。</span><br><span class="line">	states: [ 漢字, 汉字 ]</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <tags>
+        <tag>tools</tag>
+        <tag>open source</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>信息安全技术</title>
+    <url>/2022/03/22/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/</url>
+    <content><![CDATA[<h1 id="一、信息安全概述"><a href="#一、信息安全概述" class="headerlink" title="一、信息安全概述"></a>一、信息安全概述</h1><h1 id="二、加密技术"><a href="#二、加密技术" class="headerlink" title="二、加密技术"></a>二、加密技术</h1><ol>
+<li><h2 id="密码学发展"><a href="#密码学发展" class="headerlink" title="密码学发展"></a>密码学发展</h2><ol>
+<li>手工加密阶段</li>
+<li>机械加密阶段</li>
+<li>计算机加密阶段</li>
+</ol>
+</li>
+<li><h2 id="密码学基本概念-amp-术语"><a href="#密码学基本概念-amp-术语" class="headerlink" title="密码学基本概念 &amp; 术语"></a>密码学基本概念 &amp; 术语</h2><ol>
+<li>密码学分支：密码编码学（加密）、密码分析学（解密）</li>
+<li><font color=purple>密码体制：{Sm、Sc、Sk、E、D}<ol>
+<li>S<del>M</del>：明文</li>
+<li>S<del>c</del>：密文</li>
+<li>S<del>k</del>：密钥key</li>
+<li>E：加密算法</li>
+<li>D：解密算法    </font></li>
+</ol>
+</li>
+<li><font color=green>【密码算法安全评估原则】</font>柯克霍夫原则（Kerckhoffs）：密码系统的安全性取决于&#x3D;&#x3D;密钥&#x3D;&#x3D;，而不是密码算法，即密码算法要公开</li>
+</ol>
+</li>
+<li><h2 id="古典密码"><a href="#古典密码" class="headerlink" title="古典密码"></a>古典密码</h2><ol>
+<li>移位密码（典型：凯撒密码）<ul>
+<li>设26字母按0，1，2，……，25<ol>
+<li>加密：c &#x3D; m + k (mod 26) </li>
+<li>解密：m &#x3D; c -k (mod 26)</li>
+</ol>
+</li>
+<li>数学形式化定义：略</li>
+</ul>
+</li>
+<li>仿射密码：明文、密文、移位空间相同<ol>
+<li>加密：c &#x3D; (a*m + b) (mod 26)</li>
+<li>解密：m &#x3D; a^-1^ (c - b)  (mod 26)</li>
+</ol>
+</li>
+<li>维吉利亚密码（Vigenere）【简单多表代换密码，使用一系列不同的凯撒密码组成密码字母表】<ul>
+<li>把英文字母用数字代替进行运算，a<del>z 为 0</del>25</li>
+<li>引入了密钥的概念，设定一个参数n，按n个字母一组进行变换</li>
+<li>加解密步骤：<ol>
+<li>分：按照密钥长度对密文进行分组</li>
+<li>转：a<del>z 转换为 0</del>25</li>
+<li>算：(m+k) mod26  &#x2F;    (c-k) mod 26</li>
+<li>转：c &#x2F; m 转回英文</li>
+</ol>
+</li>
+</ul>
+<ol>
+<li>加密：c &#x3D;(m + k) (mod 26)【密文 &#x3D; （明文 + 密钥）mod 26】</li>
+<li>解密：m &#x3D;(c - k) (mod 26)【明文 &#x3D; （密文 - 密钥）mod 26】</li>
+</ol>
+</li>
+<li>置换密码：将明文中各字符的&#x3D;&#x3D;位置次序重新排列&#x3D;&#x3D;得到密文</li>
+</ol>
+<ul>
+<li>古典密码不适合柯克霍夫原则，密码安全性基于算法的保密（现代密码学从1949年开始，由于计算机的出现算法的计算变得非常复杂，保密性不再依赖算法，而是密钥）</li>
+</ul>
+</li>
+<li><h2 id="对称密码"><a href="#对称密码" class="headerlink" title="对称密码"></a>对称密码</h2><ul>
+<li>加解密算法互为逆运算，密钥相同，满足：M &#x3D; D<del>k</del>( C) &#x3D; D<del>k</del>(E<del>k</del>(M))</li>
+</ul>
+<ol>
+<li>序列密码：将明文划分成单个位（字节）作为加密单位产生明文序列，然后将其与密钥流序列逐位进行模2加运算，符号⊕（异或）<ul>
+<li>分类：<ol>
+<li>同步序列密码：要求发生方和接受方同步，在同样的位置用同样的密钥才保证成功</li>
+<li>自同步序列密码：密钥的产生与密钥和已产生的固定数量的密文位有关</li>
+</ol>
+</li>
+<li>安全性：安全强度依赖于密钥流产生器所产生的密钥流序列的特性，关键是密钥生成器的设计及收发两端密钥流产生的同步技术</li>
+<li>实现要求：<ol>
+<li>伪随机序列：（良好密钥流序列：良好的伪随机性）<ol>
+<li>自然现象产生随机</li>
+<li>使用软件以简单数学函数实现（如：线性同余法，线性反馈移位寄存器，非线性反馈移位寄存器，有限自动机和混沌密码）</li>
+</ol>
+</li>
+<li>线性反馈偏移寄存器</li>
+<li>RC4：（一种可变密钥长度、面向字节流的序列密码）以一个数据表为基础，对表进行非线性变换，从而产生密码流序列。<ol>
+<li>密钥调度算法（KSA, Key-Scheduling Algorithm）：将一个随机密钥（大小为40~256位）变换成一个初始置换表S</li>
+<li>伪随机生成算法（PRGA, Pseudo Random Generation Algorithm）:从S表中随机选取元素，并产生密钥流</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>分组密码：将明文分成不同块（或小组）结构，分别对每个块进行加密或解密</li>
+<li>DES - 数据加密标准</li>
+</ol>
+</li>
+<li><h2 id="非对称密码"><a href="#非对称密码" class="headerlink" title="非对称密码"></a>非对称密码</h2><ol>
+<li>RSA 密码算法</li>
+<li>Diffie - Hellman 密钥交换算法</li>
+<li>ElGamal 加密算法</li>
+</ol>
+</li>
+<li><h2 id="密码学应用"><a href="#密码学应用" class="headerlink" title="密码学应用"></a>密码学应用</h2><ol>
+<li><p>密码应用模式</p>
+<ol>
+<li>电子密码本模式（ECB Electronic Code Book）<ul>
+<li>D（E（M）） &#x3D; M</li>
+<li>分组长度为64位，每次加密独立，独立产生密文分组，每一组的加密结果不会影响其他分组。</li>
+</ul>
+</li>
+<li>密文链接模式（CBC Cipher Block Chaining）<ul>
+<li>D ( E (M)  ) &#x3D; M</li>
+<li><strong>第一个明文分组</strong>先向<strong>初始向量</strong>作异或运算再加密，其他每个<strong>明文分组加密之前</strong>，必须与前一个<strong>密文分组</strong>做一次异或运算。</li>
+</ul>
+</li>
+<li>密文反馈模式</li>
+<li>输出反馈模式</li>
+</ol>
+</li>
+<li><p>密码加密方式</p>
+<ol>
+<li>节点加密</li>
+<li>链路加密</li>
+<li>端到端加密</li>
+</ol>
+</li>
+<li><p>PGP软件的应用</p>
+<h1 id="三、隐藏技术"><a href="#三、隐藏技术" class="headerlink" title="三、隐藏技术"></a>三、隐藏技术</h1><h1 id="四、消息认证技术"><a href="#四、消息认证技术" class="headerlink" title="四、消息认证技术"></a>四、消息认证技术</h1><h1 id="五、数字签名技术"><a href="#五、数字签名技术" class="headerlink" title="五、数字签名技术"></a>五、数字签名技术</h1><h1 id="六、网络安全协议"><a href="#六、网络安全协议" class="headerlink" title="六、网络安全协议"></a>六、网络安全协议</h1><h1 id="七、攻击技术"><a href="#七、攻击技术" class="headerlink" title="七、攻击技术"></a>七、攻击技术</h1></li>
+</ol>
+</li>
+<li><h2 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h2><ol>
+<li>踩点</li>
+<li>扫描</li>
+<li>监听</li>
+</ol>
+</li>
+<li><h2 id="攻击实施"><a href="#攻击实施" class="headerlink" title="攻击实施"></a>攻击实施</h2><ol>
+<li>社工</li>
+<li>口令</li>
+<li>漏洞</li>
+<li>欺骗</li>
+<li>拒绝服务</li>
+</ol>
+</li>
+<li><h2 id="隐身技术"><a href="#隐身技术" class="headerlink" title="隐身技术"></a>隐身技术</h2><ol>
+<li>隐藏<ol>
+<li>进程隐藏</li>
+<li>文件隐藏<ol>
+<li>伪装</li>
+<li>隐藏木马文件自身：修改相关程序，过滤信息；指定特殊区域存放（标记扇区为坏区，隐藏其中）</li>
+</ol>
+</li>
+<li>网络连接隐藏<ol>
+<li>替换网络连接进程名</li>
+<li>替换网络连接显示命令</li>
+<li>替换网络连接管理员模块</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>代理<ol>
+<li>snake：支持TCP&#x2F;UDP代理，支持多跳板，代理方式为Socks，默认端口1813</li>
+</ol>
+</li>
+<li>清除日志<ol>
+<li>IIS日志</li>
+<li>主机日志</li>
+</ol>
+</li>
+<li>后门<ol>
+<li><p>添加管理员帐号</p>
+</li>
+<li><p>开启服务端口</p>
+<h1 id="八、防御技术"><a href="#八、防御技术" class="headerlink" title="八、防御技术"></a>八、防御技术</h1><h1 id="九、病毒"><a href="#九、病毒" class="headerlink" title="九、病毒"></a>九、病毒</h1></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
+      <tags>
+        <tag>密码学</tag>
       </tags>
   </entry>
   <entry>
@@ -2557,17 +2840,408 @@
       </tags>
   </entry>
   <entry>
-    <title>RIME CONFIG GUIDE</title>
-    <url>/2021/12/25/RIME-CONfIG/</url>
-    <content><![CDATA[<ol>
-<li><h2 id="x2F-config-x2F-ibus-x2F-rime-x2F-build-x2F-ibus-rime-yaml-ibus-rime候选横竖列文件"><a href="#x2F-config-x2F-ibus-x2F-rime-x2F-build-x2F-ibus-rime-yaml-ibus-rime候选横竖列文件" class="headerlink" title="~&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml    #ibus-rime候选横竖列文件"></a>~&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml    #ibus-rime候选横竖列文件</h2></li>
-<li><h2 id="x2F-home-x2F-blackcat-x2F-config-x2F-ibus-x2F-rime-x2F-default-custom-yaml"><a href="#x2F-home-x2F-blackcat-x2F-config-x2F-ibus-x2F-rime-x2F-default-custom-yaml" class="headerlink" title="&#x2F;home&#x2F;blackcat&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;default.custom.yaml"></a>&#x2F;home&#x2F;blackcat&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;default.custom.yaml</h2> <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">	&quot;menu/page_size&quot;: 7 #每页候选词个数</span><br><span class="line">	&quot;ascii_composer/switch_key/Shift_L&quot;: commit_code #左shift提交字母</span><br><span class="line">	&quot;style/horizontal&quot;: true      # 候選橫排</span><br></pre></td></tr></table></figure></li>
-<li><h2 id="x2F-home-x2F-blackcat-x2F-config-x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml"><a href="#x2F-home-x2F-blackcat-x2F-config-x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml" class="headerlink" title="&#x2F;home&#x2F;blackcat&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml"></a>&#x2F;home&#x2F;blackcat&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml</h2> <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">  	switches:                   # 注意縮進</span><br><span class="line">	- name: ascii_mode</span><br><span class="line">	reset: 0                # reset 0 的作用是當從其他輸入方案切換到本方案時，</span><br><span class="line">	states: [ 中文, 西文 ]  # 重設爲指定的狀態，而不保留在前一個方案中設定的狀態。</span><br><span class="line">	- name: full_shape        # 選擇輸入方案後通常需要立即輸入中文，故重設 ascii_mode = 0；</span><br><span class="line">	states: [ 半角, 全角 ]  # 而全／半角則可沿用之前方案中的用法。</span><br><span class="line">	- name: simplification</span><br><span class="line">	reset: 1                # 增加這一行：默認啓用「繁→簡」轉換。</span><br><span class="line">	states: [ 漢字, 汉字 ]</span><br></pre></td></tr></table></figure></li>
+    <title>网络攻防技术</title>
+    <url>/2022/03/22/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E6%8A%80%E6%9C%AF/</url>
+    <content><![CDATA[<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><h1 id="二、信息收集"><a href="#二、信息收集" class="headerlink" title="二、信息收集"></a>二、信息收集</h1><h1 id="三、口令攻击"><a href="#三、口令攻击" class="headerlink" title="三、口令攻击"></a>三、口令攻击</h1><ol>
+<li><h2 id="针对口令强度的攻击（弱口令攻击）"><a href="#针对口令强度的攻击（弱口令攻击）" class="headerlink" title="针对口令强度的攻击（弱口令攻击）"></a>针对口令强度的攻击（弱口令攻击）</h2><ol>
+<li>穷举法（暴破）</li>
+<li>字典攻击</li>
+<li>社工<ol start="4">
+<li>组合攻击</li>
+<li>撞库攻击</li>
+</ol>
+</li>
+<li>彩虹表破解：破解哈希算法（主用于MD5、HASH等）<ul>
+<li>原理：基于内存 - 时间衡量方法，通过以一定存储空间换取时间的方式，提高对散列值的破解效率</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>windows远程口令猜解<ol>
+<li>基于IPC的远程口令猜解（IPC$文件和打印机共享：139、445） <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">net use \\目标主机IP\ipc$ &quot;口令&quot; /user:&quot;用户名&quot;</span><br></pre></td></tr></table></figure></li>
+<li>基于Thrminal Service的远程口令猜解（DRP服务：3389）</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><h2 id="针对口令存储的攻击"><a href="#针对口令存储的攻击" class="headerlink" title="针对口令存储的攻击"></a>针对口令存储的攻击</h2><ol>
+<li>缓存口令<ul>
+<li>实现原理：在进行用户身份验证时，需要将口令配置加载到<strong>内存</strong>中，通过对内存读取</li>
+<li>相关工具：PWDump、Mimikatz</li>
+</ul>
+</li>
+<li>口令文件<ul>
+<li>口令通过文件形式进行存放在系统中，对文件进行破解</li>
+<li>相关实例：<ol>
+<li>windows账号和口令存放在SAM文件（C:\Windows\System32\config）</li>
+<li>Linux账号和口令存放在Shadow文件</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>口令的其他存储位置<ul>
+<li>（除了缓存和文件）存放其他位置：注册表、（及时口令）casch或内存、硬盘扇区、（主板BIOS存放位置）COMS</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>NTLM加密机制：<ol>
+<li>口令转换成Unicode编码</li>
+<li>MD算法对Unicode编码进行散列，得到128比特的散列结果，成为NTLM散列</li>
+</ol>
+<ul>
+<li>CR方式：“挑战&#x2F;响应”方式（服务器对挑战数据没有时效性要求，可以进行重放攻击）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2 id="针对口令传输的攻击"><a href="#针对口令传输的攻击" class="headerlink" title="针对口令传输的攻击"></a>针对口令传输的攻击</h2><ol>
+<li>口令嗅探</li>
+<li>键盘记录</li>
+<li>网络钓鱼</li>
+<li>重放攻击：（通信双方按照特定协议）嗅探当前通信流量，在适当的时候重发给通信的其中一方，达到欺骗目的。<ol>
+<li>简单重放</li>
+<li>反向重放：向消息发送者重放数据</li>
+</ol>
+<ul>
+<li>SMB协议（共享文件、打印机、通信对象之间资源）发展：明文 &#x3D;&#x3D;&gt; LM验证机制（LAN Manager Callenge Response） &#x3D;&#x3D;&gt; NTLM验证机制（Windows NT Challenge Response）<h1 id="四、软件漏洞"><a href="#四、软件漏洞" class="headerlink" title="四、软件漏洞"></a>四、软件漏洞</h1></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h2 id="漏洞标准化研究"><a href="#漏洞标准化研究" class="headerlink" title="漏洞标准化研究"></a>漏洞标准化研究</h2><ol>
+<li>CVE：Common Vulnerabilities &amp; Exposures<ul>
+<li>漏洞字典：漏洞对应CVE编号</li>
+</ul>
+</li>
+<li>CWE：Common Weakness Enumeration<ul>
+<li>CWE是一种包括类缺陷、基础缺陷、变种缺陷等多层次的体系<ol>
+<li>字典视图：以字母表顺序排列</li>
+<li>开发视图：针对软件开发者，以软件开发周期为参照分类</li>
+<li>研究视图：这对学术界人士，从内在性质等方面分类</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h2 id="典型漏洞类型"><a href="#典型漏洞类型" class="headerlink" title="典型漏洞类型"></a>典型漏洞类型</h2><ol>
+<li>栈溢出<ul>
+<li>1986年首次出现真实攻击</li>
+<li>进程使用系统内存从低到高四结构：栈、堆、数据段、文本（代码）段</li>
+<li>栈空间是程序设计时规定好如何使用以及使用多少的内存空间（典型栈变量包括函数内部的普通变量、数组等）</li>
+<li>栈帧（stack Frame）：每个进程有一个栈，这个进程中每个函数被调用时分别再栈中占用一段区域</li>
+<li>原理分析示例  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&quot;windows.h&quot;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span> *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> name[<span class="number">16</span>];</span><br><span class="line">	<span class="built_in">strcpy</span>(name,argv[<span class="number">1</span>]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,name);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>堆溢出<ul>
+<li>堆结构特点<ol>
+<li>堆是程序运行时动态分配的内存（指不预先决定，需要参考用户反馈）</li>
+<li>堆使用时需要程序员使用专用函数申请（如：C：malloc() ; C++：new()）</li>
+<li>一般一个堆指针来使用申请的内存，读写释放都通过这个指针完成</li>
+<li>使用完毕后要通过释放函数回收内存，否则会造成内存泄漏（free() ; delete() ）</li>
+</ol>
+</li>
+<li>现代操作系统的堆结构：<ol>
+<li>堆块：堆区内存按不同大小组织成块，以堆块为单元进行标识，而不是传统字节标识<ul>
+<li>块首：一个堆块头部的几个字节，用来标识这个块首自身信息。</li>
+<li>块身：紧跟在块首后面部分，最终分配给用户使用的数据区。</li>
+</ul>
+</li>
+<li>堆表：一般位于堆区起始位置，用于检索堆区中所有堆块的重要信息，包括堆块的位置、大小、空闲或占用等。</li>
+</ol>
+</li>
+<li>原理分析示例：  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> BUFFSIZE 32</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> *buf1;</span><br><span class="line">	buf1 = (<span class="type">char</span> *)<span class="built_in">malloc</span>(BUFFSIZE);	<span class="comment">//分配内存块</span></span><br><span class="line">	<span class="built_in">strcpy</span>(buf1,argv[<span class="number">1</span>]);	<span class="comment">//向buf1拷贝参数</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,buf1);	<span class="comment">//打印buf1</span></span><br><span class="line">	<span class="built_in">free</span>(buf1);	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>堆溢出攻击思路<ol>
+<li>构造数据溢出下一个堆块的块首</li>
+<li>改写块首的前向指针和后向指针</li>
+<li>分配、释放、合并等操作发生时获得一次向内存任意地址读写任意数据的机会</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>格式化串漏洞<ul>
+<li>格式化串：在print系列函数中按照一定的格式对数据进行输出（既可输出到标准输出，也可输出到文件句柄、字符串等）</li>
+<li>格式化串漏洞原理：软件使用格式化字符串为参数，且该格式化字符串来自外部输入<ul>
+<li>输入格式化字符串参数”%n”：『将%n之前printf已经打印的字符个数赋值给偏移处指针所指向的地址位置』</li>
+<li>“%p”</li>
+</ul>
+</li>
+<li>优势：只要构造出指针就可以修盖内存中任何数值，攻击具有针对性。（栈溢出：地毯式轰炸）</li>
+</ul>
+</li>
+<li>整型溢出<ol>
+<li>存储溢出</li>
+<li>运算溢出</li>
+<li>符号溢出</li>
+</ol>
+</li>
+<li>（UAF）释放再使用</li>
+</ol>
+</li>
+<li><h2 id="溢出漏洞利用原理"><a href="#溢出漏洞利用原理" class="headerlink" title="溢出漏洞利用原理"></a>溢出漏洞利用原理</h2></li>
+<li><h2 id="漏洞利用保护机制"><a href="#漏洞利用保护机制" class="headerlink" title="漏洞利用保护机制"></a>漏洞利用保护机制</h2><h1 id="五、Web应用攻击"><a href="#五、Web应用攻击" class="headerlink" title="五、Web应用攻击"></a>五、Web应用攻击</h1><h1 id="六、恶意代码"><a href="#六、恶意代码" class="headerlink" title="六、恶意代码"></a>六、恶意代码</h1><h1 id="七、假消息攻击"><a href="#七、假消息攻击" class="headerlink" title="七、假消息攻击"></a>七、假消息攻击</h1><h1 id="八、拒绝服务攻击"><a href="#八、拒绝服务攻击" class="headerlink" title="八、拒绝服务攻击"></a>八、拒绝服务攻击</h1><h1 id="九、防御"><a href="#九、防御" class="headerlink" title="九、防御"></a>九、防御</h1><h1 id="十、访问控制机制"><a href="#十、访问控制机制" class="headerlink" title="十、访问控制机制"></a>十、访问控制机制</h1><h1 id="十一、防火墙"><a href="#十一、防火墙" class="headerlink" title="十一、防火墙"></a>十一、防火墙</h1><h1 id="十二、网络安全监控"><a href="#十二、网络安全监控" class="headerlink" title="十二、网络安全监控"></a>十二、网络安全监控</h1><h1 id="十三、追踪溯源"><a href="#十三、追踪溯源" class="headerlink" title="十三、追踪溯源"></a>十三、追踪溯源</h1></li>
 </ol>
 ]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
       <tags>
-        <tag>tools</tag>
-        <tag>open source</tag>
+        <tag>网络空间安全</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>路由与交换技术</title>
+    <url>/2022/03/24/%E8%B7%AF%E7%94%B1%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/</url>
+    <content><![CDATA[<h1 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h1><ol>
+<li>交换机switch的基本功能<ol>
+<li>学习功能</li>
+<li>转发&#x2F;过滤</li>
+<li>支持冗余链路</li>
+<li>对VLAN（虚拟局域网）的支持</li>
+</ol>
+</li>
+<li>二层结构交换机特点：数据链路层，无三层口，需要虚拟接口vlan（vlan 1为默认管理接口，默认所有端口都在vlan1） <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Switch&gt;enable </span><br><span class="line">Switch#configure terminal</span><br><span class="line">SwitchA (config-if)# no shutdown  	//开启</span><br></pre></td></tr></table></figure></li>
+<li>交换机分类：<ol>
+<li>按架构特点<br> a. 机架式、带扩展槽固定配置式、不带扩展槽固定配置式</li>
+<li>按应用规模</li>
+<li>按传输介质和传输速度</li>
+<li>按OSI的分层结构</li>
+</ol>
+</li>
+<li>二层交换机工作原理<ol>
+<li>根据收到数据帧总的源mac建立地址同交换机端口的映射，并将其写入mac地址表中</li>
+<li>交换机根据数据帧中的mac地址同已建立的mac地址表比较，在决定由哪个端口转发<ol>
+<li>目的mac地址不在mac表中，则向所有端口转发（广播）</li>
+<li>广播帧和组播帧向所有的端口转发</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>交换机交换方式：<ol>
+<li>直通</li>
+<li>存储转发</li>
+<li>碎片隔离</li>
+</ol>
+</li>
+<li>交换机的级联和堆叠<ol>
+<li>级联『分开配置』<ol>
+<li>使用Uplink端口级联</li>
+<li>使用普通端口级联</li>
+</ol>
+</li>
+<li>堆叠『总体配置』<ol>
+<li>菊花链式堆叠（类似：RAID冗余磁盘阵列）</li>
+<li>星型堆叠</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>交换机管理模式<ol>
+<li>超级终端管理模式<ul>
+<li>console口链接交换机（配置线DB9-to-DB9）</li>
+<li>波特率9600，数据位8</li>
+</ul>
+</li>
+<li>Telnet管理模式<ol>
+<li>相关配置 <figure class="highlight c"><figcaption><span>isco switch</span></figcaption><table><tr><td class="code"><pre><span class="line">switchA(config)<span class="meta"># <span class="keyword">line</span> vty 0 4  <span class="comment">// 指同时允许5个虚拟终端登陆进行配置</span></span></span><br><span class="line">switchA(config-line)<span class="meta"># password pwd1   <span class="comment">//password</span></span></span><br><span class="line">switchA(config-line)<span class="meta"># login  <span class="comment">//启用密码认证，默认关闭</span></span></span><br></pre></td></tr></table></figure></li>
+<li>配置登录密码： <figure class="highlight c"><figcaption><span>isco</span></figcaption><table><tr><td class="code"><pre><span class="line">SwitchA (config)<span class="meta"># enable secret level 1 0 pwd1  </span></span><br><span class="line"><span class="comment">// secret：MD5加密；</span></span><br><span class="line"><span class="comment">// level：指定密码用于哪个级别；</span></span><br><span class="line"><span class="comment">// 1：用户模式；</span></span><br><span class="line"><span class="comment">// 0：即将输入初始密码（5：cisco的MD5值）</span></span><br></pre></td></tr></table></figure></li>
+<li>配置特权模式口令 <figure class="highlight c"><figcaption><span>isco switch</span></figcaption><table><tr><td class="code"><pre><span class="line">SwitchA (config)<span class="meta"># enable secret level 14 0 pwd2</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>Web管理模式<h1 id="虚拟局域网"><a href="#虚拟局域网" class="headerlink" title="虚拟局域网"></a>虚拟局域网</h1></li>
+</ol>
+</li>
+<li><h2 id="VLAN"><a href="#VLAN" class="headerlink" title="VLAN"></a>VLAN</h2><ol>
+<li>vlan的优点<ol>
+<li>限制网络上的广播，有助于控制流量</li>
+<li>降低成本</li>
+<li>简化网络管理，提高网络连接灵活性</li>
+<li>增强局域网安全性</li>
+</ol>
+</li>
+<li>Vlan划分方式类型<ol>
+<li>静态vlan：基于端口vlan，即指名各端口属于哪个vlan<ul>
+<li><pre><code>基于端口的vlan缺点
+</code></pre>
+<ol>
+<li>安全问题：物理攻击</li>
+<li>灵活性差，配置便捷性差</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>动态vlan：MAC based VLAN、Subnet based VLAN、User Based VLAN</li>
+</ol>
+</li>
+<li>VLAN配置相关参数<ul>
+<li>access：主机连交换机、终端</li>
+<li>trunk：交换机互联</li>
+<li>range： 范围    </li>
+<li>PVID：（port vlan id）端口的vlanID号</li>
+</ul>
+</li>
+<li>IEEE802.1Q：<ol>
+<li>封装：将VLAN信息加入数据帧的包头，据有加标记能力的端口将会执行封装</li>
+<li>去封装：VLAN信息从数据帧头去掉，具有去封装能力的端口将会执行解封装<br> <img src="/:/d3d834ddc68a463782df866e5ee281d7" alt="64aac2f1d32778beaa3638d2943075ed.png"></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h2 id="VTP-VLAN-Trunking-Protocol-思科私有协议"><a href="#VTP-VLAN-Trunking-Protocol-思科私有协议" class="headerlink" title="VTP (VLAN Trunking Protocol 思科私有协议)"></a>VTP (VLAN Trunking Protocol 思科私有协议)</h2><ul>
+<li>VTP：VLAN中继协议 &#x2F; 虚拟局域网干道协议 （配置统一性：对VLAN进行统一管理）</li>
+<li>三种工作模式：<ol>
+<li>&#x3D;&#x3D;VTP Server&#x3D;&#x3D;：<ul>
+<li>可建删修改vlan</li>
+<li>可发送并转发相关通告信息，同步vlan配置</li>
+<li>配置保存在NVRAM</li>
+</ul>
+</li>
+<li>VTP Client ：<ul>
+<li>不可建删修改vlan</li>
+<li>但可转发通告、同步</li>
+<li>不保存配置到NVRAM</li>
+</ul>
+</li>
+<li>VTP Transparent：相当于独立的交换机，不参与vtp工作，不从vtp server学习，只拥有本设备上自维护的vlan信息</li>
+</ol>
+</li>
+</ul>
+<ol>
+<li>VTP相关操作<ol>
+<li>前置配置：trunk <figure class="highlight plaintext"><figcaption><span>switch</span></figcaption><table><tr><td class="code"><pre><span class="line"># switchport mode trunk</span><br></pre></td></tr></table></figure></li>
+<li>协议配置 <figure class="highlight plaintext"><figcaption><span>switch</span></figcaption><table><tr><td class="code"><pre><span class="line"># vtp mode &#123;server|client|transparent&#125;	//配置vtp模式</span><br><span class="line"># vtp domain &#123;test&#125;	//配置域名，默认为空</span><br><span class="line"># vtp password &#123;cisco&#125;	//配置pwd</span><br><span class="line"># vtp version 2	//配置version</span><br></pre></td></tr></table></figure></li>
+<li>vtp裁减  <figure class="highlight plaintext"><figcaption><span>switch</span></figcaption><table><tr><td class="code"><pre><span class="line"># vtp purning	//启用裁减，只需在server上配置</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>显示信息：<code>show vtp status</code><h1 id="网络优化-amp-安全策略"><a href="#网络优化-amp-安全策略" class="headerlink" title="网络优化 &amp; 安全策略"></a>网络优化 &amp; 安全策略</h1></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h2 id="生成树协议（STP）"><a href="#生成树协议（STP）" class="headerlink" title="生成树协议（STP）"></a>生成树协议（STP）</h2><ul>
+<li>STA：生成树算法</li>
+<li>BPDU：桥接协议数据单元（Bridge Protocol Data Unit）「两层」<ol>
+<li>版本号 00（IEEE802.1D）；02（IEEE802.1w）</li>
+<li>Bridge ID：交换机ID &#x3D; 交换机优先级 + 交换机mac地址</li>
+<li>Root ID：桥ID最小的位根ID</li>
+<li>Root Path Cost：到达根的路径开销</li>
+<li>PortID</li>
+<li>Hello Time：定期发送BPDU的时间间隔</li>
+<li>Max-Age Time：保留对方BPDU的时间间隔</li>
+<li>Forward-Delay Time发送延迟：端口状态改变的时间间隔</li>
+</ol>
+</li>
+<li>BID：网桥ID（Bridge ID）</li>
+<li>Root Bridge：根网桥（桥ID最小）</li>
+<li>Root Ports：根端口（到达根桥最佳路径）</li>
+<li>Designated Ports：指定端口</li>
+<li>Alternated Port：可选端口（既不是指定端口也不是根端口）</li>
+</ul>
+<ol>
+<li>生成树协议端口状态<ol>
+<li>禁用(Disabled)：关闭端口</li>
+<li>阻塞(Blocking)：不能接收或传输数据，不能吧mac地址加入地址表，只接收BPDU</li>
+<li>监听(Listening)：由根端口和指定端口担任，不能转发和传输，不能mac加入地址表，只能接收或发送BPDU</li>
+<li>学习(Learning)</li>
+<li>转发(Forwarding)</li>
+</ol>
+</li>
+<li>生成树协议配置<ol>
+<li>交换机优先级</li>
+<li>端口优先级</li>
+<li>配置HelloTime</li>
+<li>配置Forward-Delay Time</li>
+<li>配置Max-AgeTime</li>
+</ol>
+<ul>
+<li>Cisco系列SpanningTree默认配置：（# spanning-tree reset）<ul>
+<li>生成树协议PVST</li>
+<li>STP启用</li>
+<li>STP Proority：32768</li>
+<li>STP port Priority：128</li>
+<li>STP port cost：根据端口速率自动判断</li>
+<li>Hello Time：2s</li>
+<li>Forward-delay Time：15s</li>
+<li>Max-age Time：20s</li>
+</ul>
+<ol>
+<li>启用生成树协议</li>
+<li>关闭生成树协议</li>
+<li>配置生成树协议类型</li>
+<li>配置交换机优先级 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta"># spanning-tree priority 4096</span></span><br></pre></td></tr></table></figure></li>
+<li>优先级恢复默认值</li>
+<li>配置交换机端口优先级</li>
+<li>显示生成树状态</li>
+<li>显示端口生成树协议状态</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>快速生成树协议（RSTP）：生成树改进，解决收敛慢问题<ol>
+<li>改进方案<ol>
+<li>为根端口和指定端口设置了快速切换用的替换端口（Alternate Port）和备份端口（Backup Port）</li>
+<li>在只连接了两个交换端口的点对点链路中，指定端口只需与下游交换机进行一次握手就可以无时延地进入转发状态</li>
+<li>直接与终端相连而不是把其他交换机相连的端口定义为边缘端口（Edge Port）。边缘端口可以直接进入转发状态，不需要任何延时。</li>
+</ol>
+</li>
+<li>端口三种状态<ol>
+<li>Discarding</li>
+<li>Learning</li>
+<li>Forwarding</li>
+</ol>
+<ul>
+<li>对比一般生成树少了监听listening和阻塞blocking</li>
+</ul>
+</li>
+<li>基于vlan的RSTP <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta"># show spanning-tree vlan 20</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>多生成树（MSTP）</li>
+</ol>
+</li>
+<li><h2 id="端口聚合（Ethernet-Channel-以太通道）"><a href="#端口聚合（Ethernet-Channel-以太通道）" class="headerlink" title="端口聚合（Ethernet Channel 以太通道）"></a>端口聚合（Ethernet Channel 以太通道）</h2><ul>
+<li>一组物理端口联合成一个逻辑通道，即通道组，此逻辑通道视作一个端口</li>
+<li>自动提供冗余和负载均衡</li>
+</ul>
+<ol>
+<li>端口聚合类型<ol>
+<li>手工静态配置</li>
+<li>动态协议聚合<ol>
+<li>PAgA（思科私有）<ul>
+<li>On：通道成员不协商，直接开启端口聚合（静态）</li>
+<li>auto：主动</li>
+<li>desirable：被动协商，不发送，只接受协商消息</li>
+<li>Off：关闭</li>
+</ul>
+</li>
+<li>LACP<ul>
+<li>active：主动</li>
+<li>passive：被动协商，不发送，只接受协商消息</li>
+<li>On</li>
+<li>Off</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>链路聚合配置<ul>
+<li>先配置后连线（连线后会生成环路，阻塞） <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># int range f0/1-2	</span><br><span class="line"># channel-group 10 mode on	//f1-2加入逻辑端口组10号</span><br><span class="line"># port-channel load-balance mothod	//设置端口负载均衡算法</span><br></pre></td></tr></table></figure>
+ 查看端口配置状态 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># show etherchannel summary</span><br></pre></td></tr></table></figure>
+<h1 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h1></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>路由与交换</category>
+      </categories>
+      <tags>
+        <tag>交换机</tag>
+        <tag>路由器</tag>
       </tags>
   </entry>
   <entry>
