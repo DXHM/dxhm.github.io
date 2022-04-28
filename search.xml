@@ -1007,183 +1007,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ODAY-软件漏洞分析</title>
-    <url>/2022/01/06/ODAY-%E8%BD%AF%E4%BB%B6%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<ul>
-<li><a href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">一、基础知识</a><ul>
-<li><a href="#%E5%AE%9A%E4%B9%89">定义</a></li>
-<li><a href="#%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7">逆向分析工具</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%8C-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8">二、漏洞利用</a><ul>
-<li><a href="#%E6%A0%88%E6%BA%A2%E5%87%BA%E5%88%A9%E7%94%A8">栈溢出利用</a><ul>
-<li><a href="#1-%E7%B3%BB%E7%BB%9F%E6%A0%88">1. 系统栈</a><ul>
-<li><a href="#%E8%BF%9B%E7%A8%8B%E4%BD%BF%E7%94%A8%E7%9A%84%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E6%8C%89%E5%8A%9F%E8%83%BD%E5%88%92%E5%88%86">进程使用的内存区域按功能划分</a></li>
-<li><a href="#win32%E7%B3%BB%E7%BB%9F%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%A4%E4%B8%AA%E7%89%B9%E6%AE%8A%E5%AF%84%E5%AD%98%E5%99%A8%E7%94%A8%E4%BA%8E%E6%A0%87%E8%AF%86%E4%BD%8D%E4%BA%8E%E7%B3%BB%E7%BB%9F%E6%A0%88%E6%A0%88%E9%A1%B6%E7%9A%84%E6%A0%88%E5%B8%A7">Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧</a></li>
-<li><a href="#%E4%B8%8D%E5%90%8C%E7%BC%96%E8%AF%91%E5%99%A8%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F%E5%B7%AE%E5%BC%82">不同编译器调用方式差异</a></li>
-<li><a href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%A4%A7%E8%87%B4%E6%AD%A5%E9%AA%A4">函数调用大致步骤：</a></li>
-<li><a href="#%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%A4%A7%E8%87%B4%E6%AD%A5%E9%AA%A4">函数返回大致步骤：</a></li>
-<li><a href="#%E6%89%A9%E5%85%85%E6%B1%87%E7%BC%96%E7%9F%A5%E8%AF%86%E4%B9%A6%E7%B1%8Dibm-x86%E6%B1%87%E7%BC%96%E6%88%96win32%E6%B1%87%E7%BC%96">+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》</a></li>
-</ul>
-</li>
-<li><a href="#2-%E4%BF%AE%E6%94%B9%E9%82%BB%E6%8E%A5%E5%8F%98%E9%87%8F">2. 修改邻接变量</a></li>
-<li><a href="#3-%E4%BF%AE%E6%94%B9%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80">3. 修改函数返回地址</a></li>
-<li><a href="#4-%E4%BB%A3%E7%A0%81%E6%A4%8D%E5%85%A5">4. 代码植入</a></li>
-</ul>
-</li>
-<li><a href="#%E5%BC%80%E5%8F%91shellcode">开发shellcode</a></li>
-<li><a href="#metasploit%E5%BC%80%E5%8F%91exploit">MetaSploit开发Exploit</a></li>
-<li><a href="#%E5%A0%86%E6%BA%A2%E5%87%BA%E5%88%A9%E7%94%A8">堆溢出利用</a></li>
-<li><a href="#windows%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6">Windows异常处理机制</a></li>
-<li><a href="#%E9%AB%98%E7%BA%A7%E5%86%85%E5%AD%98%E6%94%BB%E5%87%BB%E6%8A%80%E6%9C%AF">高级内存攻击技术</a></li>
-<li><a href="#%E6%89%8B%E6%9C%BA%E9%87%8C%E7%9A%84%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA">手机里的缓冲区溢出</a></li>
-<li><a href="#%E5%85%B6%E4%BB%96%E8%BD%AF%E4%BB%B6%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%8A%80%E6%9C%AF">其他软件漏洞利用技术</a></li>
-<li><a href="#windows%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6">Windows安全机制</a></li>
-<li><a href="#gs">GS</a></li>
-<li><a href="#safeseh">SafeSEH</a></li>
-<li><a href="#dep">DEP</a></li>
-<li><a href="#aslr">ASLR</a></li>
-<li><a href="#sehop">SEHOP</a></li>
-<li><a href="#%E5%A0%86%E4%BF%9D%E6%8A%A4%E4%B8%8E%E6%94%BB%E5%87%BB">堆保护与攻击</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%89-%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98">三、漏洞挖掘</a></li>
-<li><a href="#%E5%9B%9B-%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90">四、漏洞分析</a></li>
-</ul>
-<h1 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ol>
-<li>BUG：功能性逻辑缺陷</li>
-<li>漏洞：安全性逻辑缺陷（软件中缓冲区溢出漏洞、网站中跨站脚本xss漏洞、SQL注入漏洞等）</li>
-<li>0day响应：<ol>
-<li><a href="http://cve.mitre.org/" title="http://cve.mitre.org">CVE</a></li>
-<li><a href="http://www.cert.org/" title="http://www.cert.org">CERT</a></li>
-<li>微软安全中心”Black Tuesday“：每个月第二周星期二发布补丁</li>
-</ol>
-</li>
-<li><strong>PE文件格式</strong>：Win32平台下可执行文件遵守的数据格式（“*.exe” &#x2F; “*.dll”等）<ol>
-<li>.text：由编译器产生，存放二进制的机器码，是反汇编和调试的对象</li>
-<li>.data：初始化的数据块（如：宏定义、全局变量、静态变量等）</li>
-<li>.idata：可执行文件所使用的动态链接库等外来函数与文件的信息</li>
-<li>.rsrc：存放程序的资源（如图标、菜单等）</li>
-<li>.reloc 、.edata 、.tls 、.rdata</li>
-</ol>
-</li>
-<li><strong>“虚拟内存”</strong>（非操作系统中的虚拟内存）：在用户模式下，用调试器看到的内存地址 [指Windows用户态内存隐射机制下的虚拟内存]</li>
-<li><strong>PE文件与虚拟内存的映射</strong>：VA &#x3D; ImageBase + RVA<ol>
-<li>文件偏移地址（File Offset）</li>
-<li>装载基址（Image Base）</li>
-<li>虚拟内存地址（Virtual Address,VA）</li>
-<li>相对虚拟地址（Relative Virtual Address,RVA）</li>
-</ol>
-</li>
-</ol>
-<h2 id="逆向分析工具"><a href="#逆向分析工具" class="headerlink" title="逆向分析工具"></a>逆向分析工具</h2><ol>
-<li><p>OllyDbg</p>
-</li>
-<li><p>SoftICE</p>
-</li>
-<li><p>WinDbg</p>
-</li>
-<li><p>IDE Pro</p>
-</li>
-<li><p>二进制编辑器（Ultra Edit、Hex Workshop、WinHex）</p>
-</li>
-<li><p>虚拟机</p>
-</li>
-<li><p>Crack二进制文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//密码验证实验程序</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int verify_password(char *password)</span><br><span class="line">&#123;</span><br><span class="line">   int authenticated;</span><br><span class="line">   authenticated=strcmp(password,PASSWORD);</span><br><span class="line">   return authenticated;</span><br><span class="line">&#125;</span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   int valid_flag = 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h1 id="二、漏洞利用"><a href="#二、漏洞利用" class="headerlink" title="二、漏洞利用"></a>二、漏洞利用</h1><h2 id="栈溢出利用"><a href="#栈溢出利用" class="headerlink" title="栈溢出利用"></a>栈溢出利用</h2><h3 id="1-系统栈"><a href="#1-系统栈" class="headerlink" title="1. 系统栈"></a>1. 系统栈</h3><ol>
-<li><h4 id="进程使用的内存区域按功能划分"><a href="#进程使用的内存区域按功能划分" class="headerlink" title="进程使用的内存区域按功能划分"></a>进程使用的内存区域<strong>按功能</strong>划分</h4><ol>
-<li>代码区：cpu在此区域取值执行</li>
-<li>数据区：存储全局变量等</li>
-<li>堆区：动态分配和回收。进程在堆区请求一定大小的内存</li>
-<li>栈区：用于动态地存储函数间的调用关系，保证被调用函数在返回时恢复到母函数继续执行。</li>
-</ol>
-</li>
-<li><h4 id="Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧"><a href="#Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧" class="headerlink" title="Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧"></a>Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧</h4><ol>
-<li>ESP（<a href="extended_stack_pointer" title="extended_stack_pointer">栈指针寄存器</a>）：存放一个永远指向系统栈<strong>最上面一个栈帧的顶部</strong></li>
-<li>EBP（<a href="extended_base_pointer" title="extended_base_pointer">基址指针寄存器</a>）：存放一个永远指向系统栈<strong>最上面一个栈帧的底部</strong></li>
-<li>当前函数栈帧：ESP和EBP之间的内存空间<ol>
-<li>局部变量：为函数局部变量开辟内存空间</li>
-<li>栈帧状态值：保存前栈帧的顶部和底部，用于本栈帧弹出后恢复上一个栈帧（实际只保存底部，顶部可以通过堆栈平衡计算得出）</li>
-<li>函数返回地址：保存当前函数调用前的断点信息，也就是<strong>函数调用前的指令位置</strong></li>
-</ol>
-</li>
-<li>另外的特殊寄存器：EIP（指令寄存器）存放下一条等待执行的指令地址</li>
-</ol>
-</li>
-<li><h4 id="不同编译器调用方式差异"><a href="#不同编译器调用方式差异" class="headerlink" title="不同编译器调用方式差异"></a>不同编译器调用方式差异</h4></li>
-</ol>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>C</th>
-<th>SysCall</th>
-<th>StdCall</th>
-<th>BASIC</th>
-<th>FORTRAN</th>
-<th>PASCAL</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>参数入栈顺序</td>
-<td>右-&gt;左</td>
-<td>右-&gt;左</td>
-<td>右-&gt;左</td>
-<td>左-&gt;右</td>
-<td>左-&gt;右</td>
-<td>左-&gt;右</td>
-</tr>
-<tr>
-<td>恢复栈平衡操作的位置</td>
-<td>母函数</td>
-<td>子函数</td>
-<td>子函数</td>
-<td>子函数</td>
-<td>子函数</td>
-<td>子函数</td>
-</tr>
-</tbody></table>
-<ol start="4">
-<li><h4 id="函数调用大致步骤："><a href="#函数调用大致步骤：" class="headerlink" title="函数调用大致步骤："></a>函数调用大致步骤：</h4><ol>
-<li>参数入栈：按入栈顺序</li>
-<li>返回地址入栈：将当前代码区调用指令的下一条指令地址压入栈，供函数返回时继续执行</li>
-<li>代码区跳转：处理器从当前代码区跳转到被调用函数的入口</li>
-<li>栈帧调整：<ol>
-<li>EBP入栈：保存当前栈帧状态值，以供后面恢复本栈帧时使用</li>
-<li>ESP装入EBP，更新栈帧底部：将当前栈帧切换到新栈帧</li>
-<li>把ESP减去所需空间的大小，太高栈顶：给新栈帧分配空间</li>
-</ol>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">;假设函数有三个参数，依次入栈</span><br><span class="line">push canshu1    </span><br><span class="line">push canshu2    </span><br><span class="line">push canshu3    </span><br><span class="line">call 函数地址    ;call完成两项工作：a.保存返回地址（入栈当前指令在内存中的位置） b. 跳转到函数的入口地址</span><br><span class="line">push ebp    ;保存旧栈的栈底</span><br><span class="line">mov ebp ,esp    ;栈帧切换：新栈帧底替换旧栈底</span><br><span class="line">sub esp ,xxx    ;太高栈顶，为新栈帧开辟内存空间：设置新栈帧的栈顶</span><br></pre></td></tr></table></figure>
-</li>
-<li><h4 id="函数返回大致步骤："><a href="#函数返回大致步骤：" class="headerlink" title="函数返回大致步骤："></a>函数返回大致步骤：</h4><ol>
-<li>保存返回值：通常保存在寄存器EAX</li>
-<li>弹出当前栈帧，恢复上一个栈帧<ol>
-<li>在堆栈平衡的基础上，给ESP加上栈帧的大小，降低栈顶，回收空间</li>
-<li>将（当前栈帧底部保存的）前栈帧EBP值 弹入 EBP寄存器，恢复出上一个栈帧</li>
-<li>将函数返回地址弹给EIP寄存器</li>
-</ol>
-</li>
-<li>跳转：按照返回地址跳回母函数继续执行</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">add esp ,xxx    ;降低栈顶，回收当前栈帧</span><br><span class="line">pop ebp    ;将上一个栈帧底部位置恢复到ebp</span><br><span class="line">retn    ;两个功能：a. 弹出当前栈顶元素（栈帧中的返回地址） b.处理器跳转到弹出的返回地址，恢复调用之前的代码区</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h4 id="扩充汇编知识书籍：《IBM-X86汇编》或《Win32汇编》"><a href="#扩充汇编知识书籍：《IBM-X86汇编》或《Win32汇编》" class="headerlink" title="+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》"></a>+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》</h4><h3 id="2-修改邻接变量"><a href="#2-修改邻接变量" class="headerlink" title="2. 修改邻接变量"></a>2. 修改邻接变量</h3><h3 id="3-修改函数返回地址"><a href="#3-修改函数返回地址" class="headerlink" title="3. 修改函数返回地址"></a>3. 修改函数返回地址</h3><h3 id="4-代码植入"><a href="#4-代码植入" class="headerlink" title="4. 代码植入"></a>4. 代码植入</h3><h2 id="开发shellcode"><a href="#开发shellcode" class="headerlink" title="开发shellcode"></a>开发shellcode</h2><h2 id="MetaSploit开发Exploit"><a href="#MetaSploit开发Exploit" class="headerlink" title="MetaSploit开发Exploit"></a>MetaSploit开发Exploit</h2><h2 id="堆溢出利用"><a href="#堆溢出利用" class="headerlink" title="堆溢出利用"></a>堆溢出利用</h2><h2 id="Windows异常处理机制"><a href="#Windows异常处理机制" class="headerlink" title="Windows异常处理机制"></a>Windows异常处理机制</h2><h2 id="高级内存攻击技术"><a href="#高级内存攻击技术" class="headerlink" title="高级内存攻击技术"></a>高级内存攻击技术</h2><h2 id="手机里的缓冲区溢出"><a href="#手机里的缓冲区溢出" class="headerlink" title="手机里的缓冲区溢出"></a>手机里的缓冲区溢出</h2><h2 id="其他软件漏洞利用技术"><a href="#其他软件漏洞利用技术" class="headerlink" title="其他软件漏洞利用技术"></a>其他软件漏洞利用技术</h2><h2 id="Windows安全机制"><a href="#Windows安全机制" class="headerlink" title="Windows安全机制"></a>Windows安全机制</h2><h2 id="GS"><a href="#GS" class="headerlink" title="GS"></a>GS</h2><h2 id="SafeSEH"><a href="#SafeSEH" class="headerlink" title="SafeSEH"></a>SafeSEH</h2><h2 id="DEP"><a href="#DEP" class="headerlink" title="DEP"></a>DEP</h2><h2 id="ASLR"><a href="#ASLR" class="headerlink" title="ASLR"></a>ASLR</h2><h2 id="SEHOP"><a href="#SEHOP" class="headerlink" title="SEHOP"></a>SEHOP</h2><h2 id="堆保护与攻击"><a href="#堆保护与攻击" class="headerlink" title="堆保护与攻击"></a>堆保护与攻击</h2><h1 id="三、漏洞挖掘"><a href="#三、漏洞挖掘" class="headerlink" title="三、漏洞挖掘"></a>三、漏洞挖掘</h1><h1 id="四、漏洞分析"><a href="#四、漏洞分析" class="headerlink" title="四、漏洞分析"></a>四、漏洞分析</h1>]]></content>
-      <categories>
-        <category>网络安全</category>
-        <category>PWN</category>
-      </categories>
-      <tags>
-        <tag>网络空间安全</tag>
-        <tag>安全漏洞</tag>
-        <tag>0day</tag>
-        <tag>Stack overflow</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PYTHON PROGRAM-GUIDE</title>
     <url>/2022/03/17/PYTHON-PROGRAM-GUIDE/</url>
     <content><![CDATA[<ul>
@@ -1515,6 +1338,183 @@
       </tags>
   </entry>
   <entry>
+    <title>ODAY-软件漏洞分析</title>
+    <url>/2022/01/06/ODAY-%E8%BD%AF%E4%BB%B6%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<ul>
+<li><a href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">一、基础知识</a><ul>
+<li><a href="#%E5%AE%9A%E4%B9%89">定义</a></li>
+<li><a href="#%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7">逆向分析工具</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8">二、漏洞利用</a><ul>
+<li><a href="#%E6%A0%88%E6%BA%A2%E5%87%BA%E5%88%A9%E7%94%A8">栈溢出利用</a><ul>
+<li><a href="#1-%E7%B3%BB%E7%BB%9F%E6%A0%88">1. 系统栈</a><ul>
+<li><a href="#%E8%BF%9B%E7%A8%8B%E4%BD%BF%E7%94%A8%E7%9A%84%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E6%8C%89%E5%8A%9F%E8%83%BD%E5%88%92%E5%88%86">进程使用的内存区域按功能划分</a></li>
+<li><a href="#win32%E7%B3%BB%E7%BB%9F%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%A4%E4%B8%AA%E7%89%B9%E6%AE%8A%E5%AF%84%E5%AD%98%E5%99%A8%E7%94%A8%E4%BA%8E%E6%A0%87%E8%AF%86%E4%BD%8D%E4%BA%8E%E7%B3%BB%E7%BB%9F%E6%A0%88%E6%A0%88%E9%A1%B6%E7%9A%84%E6%A0%88%E5%B8%A7">Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧</a></li>
+<li><a href="#%E4%B8%8D%E5%90%8C%E7%BC%96%E8%AF%91%E5%99%A8%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F%E5%B7%AE%E5%BC%82">不同编译器调用方式差异</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%A4%A7%E8%87%B4%E6%AD%A5%E9%AA%A4">函数调用大致步骤：</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%A4%A7%E8%87%B4%E6%AD%A5%E9%AA%A4">函数返回大致步骤：</a></li>
+<li><a href="#%E6%89%A9%E5%85%85%E6%B1%87%E7%BC%96%E7%9F%A5%E8%AF%86%E4%B9%A6%E7%B1%8Dibm-x86%E6%B1%87%E7%BC%96%E6%88%96win32%E6%B1%87%E7%BC%96">+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》</a></li>
+</ul>
+</li>
+<li><a href="#2-%E4%BF%AE%E6%94%B9%E9%82%BB%E6%8E%A5%E5%8F%98%E9%87%8F">2. 修改邻接变量</a></li>
+<li><a href="#3-%E4%BF%AE%E6%94%B9%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80">3. 修改函数返回地址</a></li>
+<li><a href="#4-%E4%BB%A3%E7%A0%81%E6%A4%8D%E5%85%A5">4. 代码植入</a></li>
+</ul>
+</li>
+<li><a href="#%E5%BC%80%E5%8F%91shellcode">开发shellcode</a></li>
+<li><a href="#metasploit%E5%BC%80%E5%8F%91exploit">MetaSploit开发Exploit</a></li>
+<li><a href="#%E5%A0%86%E6%BA%A2%E5%87%BA%E5%88%A9%E7%94%A8">堆溢出利用</a></li>
+<li><a href="#windows%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6">Windows异常处理机制</a></li>
+<li><a href="#%E9%AB%98%E7%BA%A7%E5%86%85%E5%AD%98%E6%94%BB%E5%87%BB%E6%8A%80%E6%9C%AF">高级内存攻击技术</a></li>
+<li><a href="#%E6%89%8B%E6%9C%BA%E9%87%8C%E7%9A%84%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA">手机里的缓冲区溢出</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E8%BD%AF%E4%BB%B6%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%8A%80%E6%9C%AF">其他软件漏洞利用技术</a></li>
+<li><a href="#windows%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6">Windows安全机制</a></li>
+<li><a href="#gs">GS</a></li>
+<li><a href="#safeseh">SafeSEH</a></li>
+<li><a href="#dep">DEP</a></li>
+<li><a href="#aslr">ASLR</a></li>
+<li><a href="#sehop">SEHOP</a></li>
+<li><a href="#%E5%A0%86%E4%BF%9D%E6%8A%A4%E4%B8%8E%E6%94%BB%E5%87%BB">堆保护与攻击</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98">三、漏洞挖掘</a></li>
+<li><a href="#%E5%9B%9B-%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90">四、漏洞分析</a></li>
+</ul>
+<h1 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ol>
+<li>BUG：功能性逻辑缺陷</li>
+<li>漏洞：安全性逻辑缺陷（软件中缓冲区溢出漏洞、网站中跨站脚本xss漏洞、SQL注入漏洞等）</li>
+<li>0day响应：<ol>
+<li><a href="http://cve.mitre.org/" title="http://cve.mitre.org">CVE</a></li>
+<li><a href="http://www.cert.org/" title="http://www.cert.org">CERT</a></li>
+<li>微软安全中心”Black Tuesday“：每个月第二周星期二发布补丁</li>
+</ol>
+</li>
+<li><strong>PE文件格式</strong>：Win32平台下可执行文件遵守的数据格式（“*.exe” &#x2F; “*.dll”等）<ol>
+<li>.text：由编译器产生，存放二进制的机器码，是反汇编和调试的对象</li>
+<li>.data：初始化的数据块（如：宏定义、全局变量、静态变量等）</li>
+<li>.idata：可执行文件所使用的动态链接库等外来函数与文件的信息</li>
+<li>.rsrc：存放程序的资源（如图标、菜单等）</li>
+<li>.reloc 、.edata 、.tls 、.rdata</li>
+</ol>
+</li>
+<li><strong>“虚拟内存”</strong>（非操作系统中的虚拟内存）：在用户模式下，用调试器看到的内存地址 [指Windows用户态内存隐射机制下的虚拟内存]</li>
+<li><strong>PE文件与虚拟内存的映射</strong>：VA &#x3D; ImageBase + RVA<ol>
+<li>文件偏移地址（File Offset）</li>
+<li>装载基址（Image Base）</li>
+<li>虚拟内存地址（Virtual Address,VA）</li>
+<li>相对虚拟地址（Relative Virtual Address,RVA）</li>
+</ol>
+</li>
+</ol>
+<h2 id="逆向分析工具"><a href="#逆向分析工具" class="headerlink" title="逆向分析工具"></a>逆向分析工具</h2><ol>
+<li><p>OllyDbg</p>
+</li>
+<li><p>SoftICE</p>
+</li>
+<li><p>WinDbg</p>
+</li>
+<li><p>IDE Pro</p>
+</li>
+<li><p>二进制编辑器（Ultra Edit、Hex Workshop、WinHex）</p>
+</li>
+<li><p>虚拟机</p>
+</li>
+<li><p>Crack二进制文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//密码验证实验程序</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int verify_password(char *password)</span><br><span class="line">&#123;</span><br><span class="line">   int authenticated;</span><br><span class="line">   authenticated=strcmp(password,PASSWORD);</span><br><span class="line">   return authenticated;</span><br><span class="line">&#125;</span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   int valid_flag = 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="二、漏洞利用"><a href="#二、漏洞利用" class="headerlink" title="二、漏洞利用"></a>二、漏洞利用</h1><h2 id="栈溢出利用"><a href="#栈溢出利用" class="headerlink" title="栈溢出利用"></a>栈溢出利用</h2><h3 id="1-系统栈"><a href="#1-系统栈" class="headerlink" title="1. 系统栈"></a>1. 系统栈</h3><ol>
+<li><h4 id="进程使用的内存区域按功能划分"><a href="#进程使用的内存区域按功能划分" class="headerlink" title="进程使用的内存区域按功能划分"></a>进程使用的内存区域<strong>按功能</strong>划分</h4><ol>
+<li>代码区：cpu在此区域取值执行</li>
+<li>数据区：存储全局变量等</li>
+<li>堆区：动态分配和回收。进程在堆区请求一定大小的内存</li>
+<li>栈区：用于动态地存储函数间的调用关系，保证被调用函数在返回时恢复到母函数继续执行。</li>
+</ol>
+</li>
+<li><h4 id="Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧"><a href="#Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧" class="headerlink" title="Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧"></a>Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧</h4><ol>
+<li>ESP（<a href="extended_stack_pointer" title="extended_stack_pointer">栈指针寄存器</a>）：存放一个永远指向系统栈<strong>最上面一个栈帧的顶部</strong></li>
+<li>EBP（<a href="extended_base_pointer" title="extended_base_pointer">基址指针寄存器</a>）：存放一个永远指向系统栈<strong>最上面一个栈帧的底部</strong></li>
+<li>当前函数栈帧：ESP和EBP之间的内存空间<ol>
+<li>局部变量：为函数局部变量开辟内存空间</li>
+<li>栈帧状态值：保存前栈帧的顶部和底部，用于本栈帧弹出后恢复上一个栈帧（实际只保存底部，顶部可以通过堆栈平衡计算得出）</li>
+<li>函数返回地址：保存当前函数调用前的断点信息，也就是<strong>函数调用前的指令位置</strong></li>
+</ol>
+</li>
+<li>另外的特殊寄存器：EIP（指令寄存器）存放下一条等待执行的指令地址</li>
+</ol>
+</li>
+<li><h4 id="不同编译器调用方式差异"><a href="#不同编译器调用方式差异" class="headerlink" title="不同编译器调用方式差异"></a>不同编译器调用方式差异</h4></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>C</th>
+<th>SysCall</th>
+<th>StdCall</th>
+<th>BASIC</th>
+<th>FORTRAN</th>
+<th>PASCAL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>参数入栈顺序</td>
+<td>右-&gt;左</td>
+<td>右-&gt;左</td>
+<td>右-&gt;左</td>
+<td>左-&gt;右</td>
+<td>左-&gt;右</td>
+<td>左-&gt;右</td>
+</tr>
+<tr>
+<td>恢复栈平衡操作的位置</td>
+<td>母函数</td>
+<td>子函数</td>
+<td>子函数</td>
+<td>子函数</td>
+<td>子函数</td>
+<td>子函数</td>
+</tr>
+</tbody></table>
+<ol start="4">
+<li><h4 id="函数调用大致步骤："><a href="#函数调用大致步骤：" class="headerlink" title="函数调用大致步骤："></a>函数调用大致步骤：</h4><ol>
+<li>参数入栈：按入栈顺序</li>
+<li>返回地址入栈：将当前代码区调用指令的下一条指令地址压入栈，供函数返回时继续执行</li>
+<li>代码区跳转：处理器从当前代码区跳转到被调用函数的入口</li>
+<li>栈帧调整：<ol>
+<li>EBP入栈：保存当前栈帧状态值，以供后面恢复本栈帧时使用</li>
+<li>ESP装入EBP，更新栈帧底部：将当前栈帧切换到新栈帧</li>
+<li>把ESP减去所需空间的大小，太高栈顶：给新栈帧分配空间</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">;假设函数有三个参数，依次入栈</span><br><span class="line">push canshu1    </span><br><span class="line">push canshu2    </span><br><span class="line">push canshu3    </span><br><span class="line">call 函数地址    ;call完成两项工作：a.保存返回地址（入栈当前指令在内存中的位置） b. 跳转到函数的入口地址</span><br><span class="line">push ebp    ;保存旧栈的栈底</span><br><span class="line">mov ebp ,esp    ;栈帧切换：新栈帧底替换旧栈底</span><br><span class="line">sub esp ,xxx    ;太高栈顶，为新栈帧开辟内存空间：设置新栈帧的栈顶</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="函数返回大致步骤："><a href="#函数返回大致步骤：" class="headerlink" title="函数返回大致步骤："></a>函数返回大致步骤：</h4><ol>
+<li>保存返回值：通常保存在寄存器EAX</li>
+<li>弹出当前栈帧，恢复上一个栈帧<ol>
+<li>在堆栈平衡的基础上，给ESP加上栈帧的大小，降低栈顶，回收空间</li>
+<li>将（当前栈帧底部保存的）前栈帧EBP值 弹入 EBP寄存器，恢复出上一个栈帧</li>
+<li>将函数返回地址弹给EIP寄存器</li>
+</ol>
+</li>
+<li>跳转：按照返回地址跳回母函数继续执行</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">add esp ,xxx    ;降低栈顶，回收当前栈帧</span><br><span class="line">pop ebp    ;将上一个栈帧底部位置恢复到ebp</span><br><span class="line">retn    ;两个功能：a. 弹出当前栈顶元素（栈帧中的返回地址） b.处理器跳转到弹出的返回地址，恢复调用之前的代码区</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="扩充汇编知识书籍：《IBM-X86汇编》或《Win32汇编》"><a href="#扩充汇编知识书籍：《IBM-X86汇编》或《Win32汇编》" class="headerlink" title="+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》"></a>+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》</h4><h3 id="2-修改邻接变量"><a href="#2-修改邻接变量" class="headerlink" title="2. 修改邻接变量"></a>2. 修改邻接变量</h3><h3 id="3-修改函数返回地址"><a href="#3-修改函数返回地址" class="headerlink" title="3. 修改函数返回地址"></a>3. 修改函数返回地址</h3><h3 id="4-代码植入"><a href="#4-代码植入" class="headerlink" title="4. 代码植入"></a>4. 代码植入</h3><h2 id="开发shellcode"><a href="#开发shellcode" class="headerlink" title="开发shellcode"></a>开发shellcode</h2><h2 id="MetaSploit开发Exploit"><a href="#MetaSploit开发Exploit" class="headerlink" title="MetaSploit开发Exploit"></a>MetaSploit开发Exploit</h2><h2 id="堆溢出利用"><a href="#堆溢出利用" class="headerlink" title="堆溢出利用"></a>堆溢出利用</h2><h2 id="Windows异常处理机制"><a href="#Windows异常处理机制" class="headerlink" title="Windows异常处理机制"></a>Windows异常处理机制</h2><h2 id="高级内存攻击技术"><a href="#高级内存攻击技术" class="headerlink" title="高级内存攻击技术"></a>高级内存攻击技术</h2><h2 id="手机里的缓冲区溢出"><a href="#手机里的缓冲区溢出" class="headerlink" title="手机里的缓冲区溢出"></a>手机里的缓冲区溢出</h2><h2 id="其他软件漏洞利用技术"><a href="#其他软件漏洞利用技术" class="headerlink" title="其他软件漏洞利用技术"></a>其他软件漏洞利用技术</h2><h2 id="Windows安全机制"><a href="#Windows安全机制" class="headerlink" title="Windows安全机制"></a>Windows安全机制</h2><h2 id="GS"><a href="#GS" class="headerlink" title="GS"></a>GS</h2><h2 id="SafeSEH"><a href="#SafeSEH" class="headerlink" title="SafeSEH"></a>SafeSEH</h2><h2 id="DEP"><a href="#DEP" class="headerlink" title="DEP"></a>DEP</h2><h2 id="ASLR"><a href="#ASLR" class="headerlink" title="ASLR"></a>ASLR</h2><h2 id="SEHOP"><a href="#SEHOP" class="headerlink" title="SEHOP"></a>SEHOP</h2><h2 id="堆保护与攻击"><a href="#堆保护与攻击" class="headerlink" title="堆保护与攻击"></a>堆保护与攻击</h2><h1 id="三、漏洞挖掘"><a href="#三、漏洞挖掘" class="headerlink" title="三、漏洞挖掘"></a>三、漏洞挖掘</h1><h1 id="四、漏洞分析"><a href="#四、漏洞分析" class="headerlink" title="四、漏洞分析"></a>四、漏洞分析</h1>]]></content>
+      <categories>
+        <category>网络安全</category>
+        <category>PWN</category>
+      </categories>
+      <tags>
+        <tag>网络空间安全</tag>
+        <tag>安全漏洞</tag>
+        <tag>0day</tag>
+        <tag>Stack overflow</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>RIME CONFIG GUIDE</title>
     <url>/2021/12/25/RIME-CONfIG/</url>
     <content><![CDATA[<h1 id="x2F-rime-x2F-build-x2F-ibus-rime-yaml"><a href="#x2F-rime-x2F-build-x2F-ibus-rime-yaml" class="headerlink" title="&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml"></a>&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml</h1><p>ibus-rime候选横竖列文件</p>
@@ -1563,7 +1563,7 @@
       </tags>
   </entry>
   <entry>
-    <title>README For Oh My Zsh</title>
+    <title></title>
     <url>/2022/04/28/ohmyzsh-readme/</url>
     <content><![CDATA[<h1 id="关于Oh-My-Zsh"><a href="#关于Oh-My-Zsh" class="headerlink" title="关于Oh My Zsh"></a>关于Oh My Zsh</h1><p>Oh My Zsh是一个开源的，社区驱动的框架，用于管理<a href="https://www.zsh.org/">您的zsh</a>配置。</p>
 <p>听起来很无聊。让我们再试一次。</p>
@@ -1587,15 +1587,15 @@
 </tr>
 </thead>
 <tbody><tr>
-<td><strong>卷曲</strong></td>
+<td><strong>curl</strong></td>
 <td><code>sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</code></td>
 </tr>
 <tr>
-<td><strong>断续器</strong></td>
+<td><strong>wget</strong></td>
 <td><code>sh -c &quot;$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</code></td>
 </tr>
 <tr>
-<td><strong>获取</strong></td>
+<td><strong>fetch</strong></td>
 <td><code>sh -c &quot;$(fetch -o - https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</code></td>
 </tr>
 </tbody></table>
@@ -1613,7 +1613,7 @@
 <p><em>请注意，插件由空格（空格，制表符，新行…）分隔。<strong>不要在</strong>它们之间使用逗号，否则它会中断。</em></p>
 <h4 id="使用插件"><a href="#使用插件" class="headerlink" title="使用插件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#using-plugins"></a>使用插件</h4><p>每个内置插件都包含一个<strong>自述文件</strong>，用于记录它。此自述文件应显示别名（如果插件添加了任何别名）以及该特定插件中包含的其他好东西。</p>
 <h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#themes"></a>主题</h3><p>我们承认这一点。在Oh My Zsh世界的早期，我们可能有点太快乐了。我们现在捆绑了一百五十多个主题。他们中的大多数在wiki上都有<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes">屏幕截图</a>（我们正在努力更新这个！看看他们！</p>
-<h4 id="选择主题"><a href="#选择主题" class="headerlink" title="选择主题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#selecting-a-theme"></a>选择主题</h4><p><em>罗比的主题是默认主题。这不是最花哨的。这不是最简单的一个。这对他来说是正确的。</em></p>
+<h4 id="选择主题"><a href="#选择主题" class="headerlink" title="选择主题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#selecting-a-theme"></a>选择主题</h4><p><em>Robby的主题是默认主题。这不是最花哨的。这不是最简单的一个。这对他来说是正确的。</em></p>
 <p>找到要使用的主题后，您需要编辑该文件。您将在那里看到一个环境变量（全部大写），如下所示：<code>~/.zshrc</code></p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME=&quot;robbyrussell&quot;</span><br></pre></td></tr></table></figure>
 
@@ -1702,195 +1702,6 @@
 <p>提前安装curl、unzip,如果有~&#x2F;.zshrc文件，最好提前备份，否则本脚本自动更改原本的.zshrc文件为zshrcBak</p>
 </blockquote>
 ]]></content>
-      <categories>
-        <category>SHELL</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>信息安全技术</title>
-    <url>/2022/03/22/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/</url>
-    <content><![CDATA[<h1 id="一、信息安全概述"><a href="#一、信息安全概述" class="headerlink" title="一、信息安全概述"></a>一、信息安全概述</h1><h1 id="二、加密技术"><a href="#二、加密技术" class="headerlink" title="二、加密技术"></a>二、加密技术</h1><ol>
-<li><h2 id="密码学发展"><a href="#密码学发展" class="headerlink" title="密码学发展"></a>密码学发展</h2><ol>
-<li>手工加密阶段</li>
-<li>机械加密阶段</li>
-<li>计算机加密阶段</li>
-</ol>
-</li>
-<li><h2 id="密码学基本概念-amp-术语"><a href="#密码学基本概念-amp-术语" class="headerlink" title="密码学基本概念 &amp; 术语"></a>密码学基本概念 &amp; 术语</h2><ol>
-<li>密码学分支：密码编码学（加密）、密码分析学（解密）</li>
-<li><font color=purple>密码体制：{Sm、Sc、Sk、E、D}<ol>
-<li>S<del>M</del>：明文</li>
-<li>S<del>c</del>：密文</li>
-<li>S<del>k</del>：密钥key</li>
-<li>E：加密算法</li>
-<li>D：解密算法    </font></li>
-</ol>
-</li>
-<li><font color=green>【密码算法安全评估原则】</font>柯克霍夫原则（Kerckhoffs）：密码系统的安全性取决于&#x3D;&#x3D;密钥&#x3D;&#x3D;，而不是密码算法，即密码算法要公开</li>
-</ol>
-</li>
-<li><h2 id="古典密码"><a href="#古典密码" class="headerlink" title="古典密码"></a>古典密码</h2><ol>
-<li>移位密码（典型：凯撒密码）<ul>
-<li>设26字母按0，1，2，……，25<ol>
-<li>加密：c &#x3D; m + k (mod 26) </li>
-<li>解密：m &#x3D; c -k (mod 26)</li>
-</ol>
-</li>
-<li>数学形式化定义：略</li>
-</ul>
-</li>
-<li>仿射密码：明文、密文、移位空间相同<ol>
-<li>加密：c &#x3D; (a*m + b) (mod 26)</li>
-<li>解密：m &#x3D; a^-1^ (c - b)  (mod 26)</li>
-</ol>
-</li>
-<li>维吉利亚密码（Vigenere）【简单多表代换密码，使用一系列不同的凯撒密码组成密码字母表】<ul>
-<li>把英文字母用数字代替进行运算，a<del>z 为 0</del>25</li>
-<li>引入了密钥的概念，设定一个参数n，按n个字母一组进行变换</li>
-<li>加解密步骤：<ol>
-<li>分：按照密钥长度对密文进行分组</li>
-<li>转：a<del>z 转换为 0</del>25</li>
-<li>算：(m+k) mod26  &#x2F;    (c-k) mod 26</li>
-<li>转：c &#x2F; m 转回英文</li>
-</ol>
-</li>
-</ul>
-<ol>
-<li>加密：c &#x3D;(m + k) (mod 26)【密文 &#x3D; （明文 + 密钥）mod 26】</li>
-<li>解密：m &#x3D;(c - k) (mod 26)【明文 &#x3D; （密文 - 密钥）mod 26】</li>
-</ol>
-</li>
-<li>置换密码：将明文中各字符的&#x3D;&#x3D;位置次序重新排列&#x3D;&#x3D;得到密文</li>
-</ol>
-<ul>
-<li>古典密码不适合柯克霍夫原则，密码安全性基于算法的保密（现代密码学从1949年开始，由于计算机的出现算法的计算变得非常复杂，保密性不再依赖算法，而是密钥）</li>
-</ul>
-</li>
-<li><h2 id="对称密码"><a href="#对称密码" class="headerlink" title="对称密码"></a>对称密码</h2><ul>
-<li>加解密算法互为逆运算，密钥相同，满足：M &#x3D; D<del>k</del>( C) &#x3D; D<del>k</del>(E<del>k</del>(M))</li>
-</ul>
-<ol>
-<li>序列密码：将明文划分成单个位（字节）作为加密单位产生明文序列，然后将其与密钥流序列逐位进行模2加运算，符号⊕（异或）<ul>
-<li>分类：<ol>
-<li>同步序列密码：要求发生方和接受方同步，在同样的位置用同样的密钥才保证成功</li>
-<li>自同步序列密码：密钥的产生与密钥和已产生的固定数量的密文位有关</li>
-</ol>
-</li>
-<li>安全性：安全强度依赖于密钥流产生器所产生的密钥流序列的特性，关键是密钥生成器的设计及收发两端密钥流产生的同步技术</li>
-<li>实现要求：<ol>
-<li>伪随机序列：（良好密钥流序列：良好的伪随机性）<ol>
-<li>自然现象产生随机</li>
-<li>使用软件以简单数学函数实现（如：线性同余法，线性反馈移位寄存器，非线性反馈移位寄存器，有限自动机和混沌密码）</li>
-</ol>
-</li>
-<li>线性反馈偏移寄存器</li>
-<li>RC4：（一种可变密钥长度、面向字节流的序列密码）以一个数据表为基础，对表进行非线性变换，从而产生密码流序列。<ol>
-<li>密钥调度算法（KSA, Key-Scheduling Algorithm）：将一个随机密钥（大小为40~256位）变换成一个初始置换表S</li>
-<li>伪随机生成算法（PRGA, Pseudo Random Generation Algorithm）:从S表中随机选取元素，并产生密钥流</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>分组密码：将明文分成不同块（或小组）结构，分别对每个块进行加密或解密</li>
-<li>DES - 数据加密标准</li>
-</ol>
-</li>
-<li><h2 id="非对称密码"><a href="#非对称密码" class="headerlink" title="非对称密码"></a>非对称密码</h2><ol>
-<li>RSA 密码算法</li>
-<li>Diffie - Hellman 密钥交换算法</li>
-<li>ElGamal 加密算法</li>
-</ol>
-</li>
-<li><h2 id="密码学应用"><a href="#密码学应用" class="headerlink" title="密码学应用"></a>密码学应用</h2><ol>
-<li><p>密码应用模式</p>
-<ol>
-<li>电子密码本模式（ECB Electronic Code Book）<ul>
-<li>D（E（M）） &#x3D; M</li>
-<li>分组长度为64位，每次加密独立，独立产生密文分组，每一组的加密结果不会影响其他分组。</li>
-</ul>
-</li>
-<li>密文链接模式（CBC Cipher Block Chaining）<ul>
-<li>D ( E (M)  ) &#x3D; M</li>
-<li><strong>第一个明文分组</strong>先向<strong>初始向量</strong>作异或运算再加密，其他每个<strong>明文分组加密之前</strong>，必须与前一个<strong>密文分组</strong>做一次异或运算。</li>
-</ul>
-</li>
-<li>密文反馈模式</li>
-<li>输出反馈模式</li>
-</ol>
-</li>
-<li><p>密码加密方式</p>
-<ol>
-<li>节点加密</li>
-<li>链路加密</li>
-<li>端到端加密</li>
-</ol>
-</li>
-<li><p>PGP软件的应用</p>
-<h1 id="三、隐藏技术"><a href="#三、隐藏技术" class="headerlink" title="三、隐藏技术"></a>三、隐藏技术</h1><h1 id="四、消息认证技术"><a href="#四、消息认证技术" class="headerlink" title="四、消息认证技术"></a>四、消息认证技术</h1><h1 id="五、数字签名技术"><a href="#五、数字签名技术" class="headerlink" title="五、数字签名技术"></a>五、数字签名技术</h1><h1 id="六、网络安全协议"><a href="#六、网络安全协议" class="headerlink" title="六、网络安全协议"></a>六、网络安全协议</h1><h1 id="七、攻击技术"><a href="#七、攻击技术" class="headerlink" title="七、攻击技术"></a>七、攻击技术</h1></li>
-</ol>
-</li>
-<li><h2 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h2><ol>
-<li>踩点</li>
-<li>扫描</li>
-<li>监听</li>
-</ol>
-</li>
-<li><h2 id="攻击实施"><a href="#攻击实施" class="headerlink" title="攻击实施"></a>攻击实施</h2><ol>
-<li>社工</li>
-<li>口令</li>
-<li>漏洞</li>
-<li>欺骗</li>
-<li>拒绝服务</li>
-</ol>
-</li>
-<li><h2 id="隐身技术"><a href="#隐身技术" class="headerlink" title="隐身技术"></a>隐身技术</h2><ol>
-<li>隐藏<ol>
-<li>进程隐藏</li>
-<li>文件隐藏<ol>
-<li>伪装</li>
-<li>隐藏木马文件自身：修改相关程序，过滤信息；指定特殊区域存放（标记扇区为坏区，隐藏其中）</li>
-</ol>
-</li>
-<li>网络连接隐藏<ol>
-<li>替换网络连接进程名</li>
-<li>替换网络连接显示命令</li>
-<li>替换网络连接管理员模块</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>代理<ol>
-<li>snake：支持TCP&#x2F;UDP代理，支持多跳板，代理方式为Socks，默认端口1813</li>
-</ol>
-</li>
-<li>清除日志<ol>
-<li>IIS日志</li>
-<li>主机日志</li>
-</ol>
-</li>
-<li>后门<ol>
-<li><p>添加管理员帐号</p>
-</li>
-<li><p>开启服务端口</p>
-<h1 id="八、防御技术"><a href="#八、防御技术" class="headerlink" title="八、防御技术"></a>八、防御技术</h1><h1 id="九、病毒"><a href="#九、病毒" class="headerlink" title="九、病毒"></a>九、病毒</h1></li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>网络安全</category>
-      </categories>
-      <tags>
-        <tag>密码学</tag>
-      </tags>
   </entry>
   <entry>
     <title>WIKI - Themes From Oh My Zsh</title>
@@ -2098,6 +1909,188 @@
       <tags>
         <tag>Linux</tag>
         <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>信息安全技术</title>
+    <url>/2022/03/22/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/</url>
+    <content><![CDATA[<h1 id="一、信息安全概述"><a href="#一、信息安全概述" class="headerlink" title="一、信息安全概述"></a>一、信息安全概述</h1><h1 id="二、加密技术"><a href="#二、加密技术" class="headerlink" title="二、加密技术"></a>二、加密技术</h1><ol>
+<li><h2 id="密码学发展"><a href="#密码学发展" class="headerlink" title="密码学发展"></a>密码学发展</h2><ol>
+<li>手工加密阶段</li>
+<li>机械加密阶段</li>
+<li>计算机加密阶段</li>
+</ol>
+</li>
+<li><h2 id="密码学基本概念-amp-术语"><a href="#密码学基本概念-amp-术语" class="headerlink" title="密码学基本概念 &amp; 术语"></a>密码学基本概念 &amp; 术语</h2><ol>
+<li>密码学分支：密码编码学（加密）、密码分析学（解密）</li>
+<li><font color=purple>密码体制：{Sm、Sc、Sk、E、D}<ol>
+<li>S<del>M</del>：明文</li>
+<li>S<del>c</del>：密文</li>
+<li>S<del>k</del>：密钥key</li>
+<li>E：加密算法</li>
+<li>D：解密算法    </font></li>
+</ol>
+</li>
+<li><font color=green>【密码算法安全评估原则】</font>柯克霍夫原则（Kerckhoffs）：密码系统的安全性取决于&#x3D;&#x3D;密钥&#x3D;&#x3D;，而不是密码算法，即密码算法要公开</li>
+</ol>
+</li>
+<li><h2 id="古典密码"><a href="#古典密码" class="headerlink" title="古典密码"></a>古典密码</h2><ol>
+<li>移位密码（典型：凯撒密码）<ul>
+<li>设26字母按0，1，2，……，25<ol>
+<li>加密：c &#x3D; m + k (mod 26) </li>
+<li>解密：m &#x3D; c -k (mod 26)</li>
+</ol>
+</li>
+<li>数学形式化定义：略</li>
+</ul>
+</li>
+<li>仿射密码：明文、密文、移位空间相同<ol>
+<li>加密：c &#x3D; (a*m + b) (mod 26)</li>
+<li>解密：m &#x3D; a^-1^ (c - b)  (mod 26)</li>
+</ol>
+</li>
+<li>维吉利亚密码（Vigenere）【简单多表代换密码，使用一系列不同的凯撒密码组成密码字母表】<ul>
+<li>把英文字母用数字代替进行运算，a<del>z 为 0</del>25</li>
+<li>引入了密钥的概念，设定一个参数n，按n个字母一组进行变换</li>
+<li>加解密步骤：<ol>
+<li>分：按照密钥长度对密文进行分组</li>
+<li>转：a<del>z 转换为 0</del>25</li>
+<li>算：(m+k) mod26  &#x2F;    (c-k) mod 26</li>
+<li>转：c &#x2F; m 转回英文</li>
+</ol>
+</li>
+</ul>
+<ol>
+<li>加密：c &#x3D;(m + k) (mod 26)【密文 &#x3D; （明文 + 密钥）mod 26】</li>
+<li>解密：m &#x3D;(c - k) (mod 26)【明文 &#x3D; （密文 - 密钥）mod 26】</li>
+</ol>
+</li>
+<li>置换密码：将明文中各字符的&#x3D;&#x3D;位置次序重新排列&#x3D;&#x3D;得到密文</li>
+</ol>
+<ul>
+<li>古典密码不适合柯克霍夫原则，密码安全性基于算法的保密（现代密码学从1949年开始，由于计算机的出现算法的计算变得非常复杂，保密性不再依赖算法，而是密钥）</li>
+</ul>
+</li>
+<li><h2 id="对称密码"><a href="#对称密码" class="headerlink" title="对称密码"></a>对称密码</h2><ul>
+<li>加解密算法互为逆运算，密钥相同，满足：M &#x3D; D<del>k</del>( C) &#x3D; D<del>k</del>(E<del>k</del>(M))</li>
+</ul>
+<ol>
+<li>序列密码：将明文划分成单个位（字节）作为加密单位产生明文序列，然后将其与密钥流序列逐位进行模2加运算，符号⊕（异或）<ul>
+<li>分类：<ol>
+<li>同步序列密码：要求发生方和接受方同步，在同样的位置用同样的密钥才保证成功</li>
+<li>自同步序列密码：密钥的产生与密钥和已产生的固定数量的密文位有关</li>
+</ol>
+</li>
+<li>安全性：安全强度依赖于密钥流产生器所产生的密钥流序列的特性，关键是密钥生成器的设计及收发两端密钥流产生的同步技术</li>
+<li>实现要求：<ol>
+<li>伪随机序列：（良好密钥流序列：良好的伪随机性）<ol>
+<li>自然现象产生随机</li>
+<li>使用软件以简单数学函数实现（如：线性同余法，线性反馈移位寄存器，非线性反馈移位寄存器，有限自动机和混沌密码）</li>
+</ol>
+</li>
+<li>线性反馈偏移寄存器</li>
+<li>RC4：（一种可变密钥长度、面向字节流的序列密码）以一个数据表为基础，对表进行非线性变换，从而产生密码流序列。<ol>
+<li>密钥调度算法（KSA, Key-Scheduling Algorithm）：将一个随机密钥（大小为40~256位）变换成一个初始置换表S</li>
+<li>伪随机生成算法（PRGA, Pseudo Random Generation Algorithm）:从S表中随机选取元素，并产生密钥流</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>分组密码：将明文分成不同块（或小组）结构，分别对每个块进行加密或解密</li>
+<li>DES - 数据加密标准</li>
+</ol>
+</li>
+<li><h2 id="非对称密码"><a href="#非对称密码" class="headerlink" title="非对称密码"></a>非对称密码</h2><ol>
+<li>RSA 密码算法</li>
+<li>Diffie - Hellman 密钥交换算法</li>
+<li>ElGamal 加密算法</li>
+</ol>
+</li>
+<li><h2 id="密码学应用"><a href="#密码学应用" class="headerlink" title="密码学应用"></a>密码学应用</h2><ol>
+<li><p>密码应用模式</p>
+<ol>
+<li>电子密码本模式（ECB Electronic Code Book）<ul>
+<li>D（E（M）） &#x3D; M</li>
+<li>分组长度为64位，每次加密独立，独立产生密文分组，每一组的加密结果不会影响其他分组。</li>
+</ul>
+</li>
+<li>密文链接模式（CBC Cipher Block Chaining）<ul>
+<li>D ( E (M)  ) &#x3D; M</li>
+<li><strong>第一个明文分组</strong>先向<strong>初始向量</strong>作异或运算再加密，其他每个<strong>明文分组加密之前</strong>，必须与前一个<strong>密文分组</strong>做一次异或运算。</li>
+</ul>
+</li>
+<li>密文反馈模式</li>
+<li>输出反馈模式</li>
+</ol>
+</li>
+<li><p>密码加密方式</p>
+<ol>
+<li>节点加密</li>
+<li>链路加密</li>
+<li>端到端加密</li>
+</ol>
+</li>
+<li><p>PGP软件的应用</p>
+<h1 id="三、隐藏技术"><a href="#三、隐藏技术" class="headerlink" title="三、隐藏技术"></a>三、隐藏技术</h1><h1 id="四、消息认证技术"><a href="#四、消息认证技术" class="headerlink" title="四、消息认证技术"></a>四、消息认证技术</h1><h1 id="五、数字签名技术"><a href="#五、数字签名技术" class="headerlink" title="五、数字签名技术"></a>五、数字签名技术</h1><h1 id="六、网络安全协议"><a href="#六、网络安全协议" class="headerlink" title="六、网络安全协议"></a>六、网络安全协议</h1><h1 id="七、攻击技术"><a href="#七、攻击技术" class="headerlink" title="七、攻击技术"></a>七、攻击技术</h1></li>
+</ol>
+</li>
+<li><h2 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h2><ol>
+<li>踩点</li>
+<li>扫描</li>
+<li>监听</li>
+</ol>
+</li>
+<li><h2 id="攻击实施"><a href="#攻击实施" class="headerlink" title="攻击实施"></a>攻击实施</h2><ol>
+<li>社工</li>
+<li>口令</li>
+<li>漏洞</li>
+<li>欺骗</li>
+<li>拒绝服务</li>
+</ol>
+</li>
+<li><h2 id="隐身技术"><a href="#隐身技术" class="headerlink" title="隐身技术"></a>隐身技术</h2><ol>
+<li>隐藏<ol>
+<li>进程隐藏</li>
+<li>文件隐藏<ol>
+<li>伪装</li>
+<li>隐藏木马文件自身：修改相关程序，过滤信息；指定特殊区域存放（标记扇区为坏区，隐藏其中）</li>
+</ol>
+</li>
+<li>网络连接隐藏<ol>
+<li>替换网络连接进程名</li>
+<li>替换网络连接显示命令</li>
+<li>替换网络连接管理员模块</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>代理<ol>
+<li>snake：支持TCP&#x2F;UDP代理，支持多跳板，代理方式为Socks，默认端口1813</li>
+</ol>
+</li>
+<li>清除日志<ol>
+<li>IIS日志</li>
+<li>主机日志</li>
+</ol>
+</li>
+<li>后门<ol>
+<li><p>添加管理员帐号</p>
+</li>
+<li><p>开启服务端口</p>
+<h1 id="八、防御技术"><a href="#八、防御技术" class="headerlink" title="八、防御技术"></a>八、防御技术</h1><h1 id="九、病毒"><a href="#九、病毒" class="headerlink" title="九、病毒"></a>九、病毒</h1></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
+      <tags>
+        <tag>密码学</tag>
       </tags>
   </entry>
   <entry>
@@ -3230,157 +3223,6 @@
       </tags>
   </entry>
   <entry>
-    <title>网络攻防技术</title>
-    <url>/2022/03/22/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E6%8A%80%E6%9C%AF/</url>
-    <content><![CDATA[<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><h1 id="二、信息收集"><a href="#二、信息收集" class="headerlink" title="二、信息收集"></a>二、信息收集</h1><h1 id="三、口令攻击"><a href="#三、口令攻击" class="headerlink" title="三、口令攻击"></a>三、口令攻击</h1><ol>
-<li><h2 id="针对口令强度的攻击（弱口令攻击）"><a href="#针对口令强度的攻击（弱口令攻击）" class="headerlink" title="针对口令强度的攻击（弱口令攻击）"></a>针对口令强度的攻击（弱口令攻击）</h2><ol>
-<li>穷举法（暴破）</li>
-<li>字典攻击</li>
-<li>社工<ol start="4">
-<li>组合攻击</li>
-<li>撞库攻击</li>
-</ol>
-</li>
-<li>彩虹表破解：破解哈希算法（主用于MD5、HASH等）<ul>
-<li>原理：基于内存 - 时间衡量方法，通过以一定存储空间换取时间的方式，提高对散列值的破解效率</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>windows远程口令猜解<ol>
-<li>基于IPC的远程口令猜解（IPC$文件和打印机共享：139、445） <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">net use \\目标主机IP\ipc$ &quot;口令&quot; /user:&quot;用户名&quot;</span><br></pre></td></tr></table></figure></li>
-<li>基于Thrminal Service的远程口令猜解（DRP服务：3389）</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><h2 id="针对口令存储的攻击"><a href="#针对口令存储的攻击" class="headerlink" title="针对口令存储的攻击"></a>针对口令存储的攻击</h2><ol>
-<li>缓存口令<ul>
-<li>实现原理：在进行用户身份验证时，需要将口令配置加载到<strong>内存</strong>中，通过对内存读取</li>
-<li>相关工具：PWDump、Mimikatz</li>
-</ul>
-</li>
-<li>口令文件<ul>
-<li>口令通过文件形式进行存放在系统中，对文件进行破解</li>
-<li>相关实例：<ol>
-<li>windows账号和口令存放在SAM文件（C:\Windows\System32\config）</li>
-<li>Linux账号和口令存放在Shadow文件</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>口令的其他存储位置<ul>
-<li>（除了缓存和文件）存放其他位置：注册表、（及时口令）casch或内存、硬盘扇区、（主板BIOS存放位置）COMS</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>NTLM加密机制：<ol>
-<li>口令转换成Unicode编码</li>
-<li>MD算法对Unicode编码进行散列，得到128比特的散列结果，成为NTLM散列</li>
-</ol>
-<ul>
-<li>CR方式：“挑战&#x2F;响应”方式（服务器对挑战数据没有时效性要求，可以进行重放攻击）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><h2 id="针对口令传输的攻击"><a href="#针对口令传输的攻击" class="headerlink" title="针对口令传输的攻击"></a>针对口令传输的攻击</h2><ol>
-<li>口令嗅探</li>
-<li>键盘记录</li>
-<li>网络钓鱼</li>
-<li>重放攻击：（通信双方按照特定协议）嗅探当前通信流量，在适当的时候重发给通信的其中一方，达到欺骗目的。<ol>
-<li>简单重放</li>
-<li>反向重放：向消息发送者重放数据</li>
-</ol>
-<ul>
-<li>SMB协议（共享文件、打印机、通信对象之间资源）发展：明文 &#x3D;&#x3D;&gt; LM验证机制（LAN Manager Callenge Response） &#x3D;&#x3D;&gt; NTLM验证机制（Windows NT Challenge Response）<h1 id="四、软件漏洞"><a href="#四、软件漏洞" class="headerlink" title="四、软件漏洞"></a>四、软件漏洞</h1></li>
-</ul>
-</li>
-</ol>
-</li>
-<li><h2 id="漏洞标准化研究"><a href="#漏洞标准化研究" class="headerlink" title="漏洞标准化研究"></a>漏洞标准化研究</h2><ol>
-<li>CVE：Common Vulnerabilities &amp; Exposures<ul>
-<li>漏洞字典：漏洞对应CVE编号</li>
-</ul>
-</li>
-<li>CWE：Common Weakness Enumeration<ul>
-<li>CWE是一种包括类缺陷、基础缺陷、变种缺陷等多层次的体系<ol>
-<li>字典视图：以字母表顺序排列</li>
-<li>开发视图：针对软件开发者，以软件开发周期为参照分类</li>
-<li>研究视图：这对学术界人士，从内在性质等方面分类</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><h2 id="典型漏洞类型"><a href="#典型漏洞类型" class="headerlink" title="典型漏洞类型"></a>典型漏洞类型</h2><ol>
-<li>栈溢出<ul>
-<li>1986年首次出现真实攻击</li>
-<li>进程使用系统内存从低到高四结构：栈、堆、数据段、文本（代码）段</li>
-<li>栈空间是程序设计时规定好如何使用以及使用多少的内存空间（典型栈变量包括函数内部的普通变量、数组等）</li>
-<li>栈帧（stack Frame）：每个进程有一个栈，这个进程中每个函数被调用时分别再栈中占用一段区域</li>
-<li>原理分析示例  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&quot;windows.h&quot;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span> *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> name[<span class="number">16</span>];</span><br><span class="line">	<span class="built_in">strcpy</span>(name,argv[<span class="number">1</span>]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,name);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>堆溢出<ul>
-<li>堆结构特点<ol>
-<li>堆是程序运行时动态分配的内存（指不预先决定，需要参考用户反馈）</li>
-<li>堆使用时需要程序员使用专用函数申请（如：C：malloc() ; C++：new()）</li>
-<li>一般一个堆指针来使用申请的内存，读写释放都通过这个指针完成</li>
-<li>使用完毕后要通过释放函数回收内存，否则会造成内存泄漏（free() ; delete() ）</li>
-</ol>
-</li>
-<li>现代操作系统的堆结构：<ol>
-<li>堆块：堆区内存按不同大小组织成块，以堆块为单元进行标识，而不是传统字节标识<ul>
-<li>块首：一个堆块头部的几个字节，用来标识这个块首自身信息。</li>
-<li>块身：紧跟在块首后面部分，最终分配给用户使用的数据区。</li>
-</ul>
-</li>
-<li>堆表：一般位于堆区起始位置，用于检索堆区中所有堆块的重要信息，包括堆块的位置、大小、空闲或占用等。</li>
-</ol>
-</li>
-<li>原理分析示例：  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> BUFFSIZE 32</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> *buf1;</span><br><span class="line">	buf1 = (<span class="type">char</span> *)<span class="built_in">malloc</span>(BUFFSIZE);	<span class="comment">//分配内存块</span></span><br><span class="line">	<span class="built_in">strcpy</span>(buf1,argv[<span class="number">1</span>]);	<span class="comment">//向buf1拷贝参数</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,buf1);	<span class="comment">//打印buf1</span></span><br><span class="line">	<span class="built_in">free</span>(buf1);	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>堆溢出攻击思路<ol>
-<li>构造数据溢出下一个堆块的块首</li>
-<li>改写块首的前向指针和后向指针</li>
-<li>分配、释放、合并等操作发生时获得一次向内存任意地址读写任意数据的机会</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>格式化串漏洞<ul>
-<li>格式化串：在print系列函数中按照一定的格式对数据进行输出（既可输出到标准输出，也可输出到文件句柄、字符串等）</li>
-<li>格式化串漏洞原理：软件使用格式化字符串为参数，且该格式化字符串来自外部输入<ul>
-<li>输入格式化字符串参数”%n”：『将%n之前printf已经打印的字符个数赋值给偏移处指针所指向的地址位置』</li>
-<li>“%p”</li>
-</ul>
-</li>
-<li>优势：只要构造出指针就可以修盖内存中任何数值，攻击具有针对性。（栈溢出：地毯式轰炸）</li>
-</ul>
-</li>
-<li>整型溢出<ol>
-<li>存储溢出</li>
-<li>运算溢出</li>
-<li>符号溢出</li>
-</ol>
-</li>
-<li>（UAF）释放再使用</li>
-</ol>
-</li>
-<li><h2 id="溢出漏洞利用原理"><a href="#溢出漏洞利用原理" class="headerlink" title="溢出漏洞利用原理"></a>溢出漏洞利用原理</h2></li>
-<li><h2 id="漏洞利用保护机制"><a href="#漏洞利用保护机制" class="headerlink" title="漏洞利用保护机制"></a>漏洞利用保护机制</h2><h1 id="五、Web应用攻击"><a href="#五、Web应用攻击" class="headerlink" title="五、Web应用攻击"></a>五、Web应用攻击</h1><h1 id="六、恶意代码"><a href="#六、恶意代码" class="headerlink" title="六、恶意代码"></a>六、恶意代码</h1><h1 id="七、假消息攻击"><a href="#七、假消息攻击" class="headerlink" title="七、假消息攻击"></a>七、假消息攻击</h1><h1 id="八、拒绝服务攻击"><a href="#八、拒绝服务攻击" class="headerlink" title="八、拒绝服务攻击"></a>八、拒绝服务攻击</h1><h1 id="九、防御"><a href="#九、防御" class="headerlink" title="九、防御"></a>九、防御</h1><h1 id="十、访问控制机制"><a href="#十、访问控制机制" class="headerlink" title="十、访问控制机制"></a>十、访问控制机制</h1><h1 id="十一、防火墙"><a href="#十一、防火墙" class="headerlink" title="十一、防火墙"></a>十一、防火墙</h1><h1 id="十二、网络安全监控"><a href="#十二、网络安全监控" class="headerlink" title="十二、网络安全监控"></a>十二、网络安全监控</h1><h1 id="十三、追踪溯源"><a href="#十三、追踪溯源" class="headerlink" title="十三、追踪溯源"></a>十三、追踪溯源</h1></li>
-</ol>
-]]></content>
-      <categories>
-        <category>网络安全</category>
-      </categories>
-      <tags>
-        <tag>网络空间安全</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SWITCH &amp; ROUTER</title>
     <url>/2022/03/24/%E8%B7%AF%E7%94%B1%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/</url>
     <content><![CDATA[<h1 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h1><ol>
@@ -3632,6 +3474,157 @@
       <tags>
         <tag>交换机</tag>
         <tag>路由器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网络攻防技术</title>
+    <url>/2022/03/22/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E6%8A%80%E6%9C%AF/</url>
+    <content><![CDATA[<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><h1 id="二、信息收集"><a href="#二、信息收集" class="headerlink" title="二、信息收集"></a>二、信息收集</h1><h1 id="三、口令攻击"><a href="#三、口令攻击" class="headerlink" title="三、口令攻击"></a>三、口令攻击</h1><ol>
+<li><h2 id="针对口令强度的攻击（弱口令攻击）"><a href="#针对口令强度的攻击（弱口令攻击）" class="headerlink" title="针对口令强度的攻击（弱口令攻击）"></a>针对口令强度的攻击（弱口令攻击）</h2><ol>
+<li>穷举法（暴破）</li>
+<li>字典攻击</li>
+<li>社工<ol start="4">
+<li>组合攻击</li>
+<li>撞库攻击</li>
+</ol>
+</li>
+<li>彩虹表破解：破解哈希算法（主用于MD5、HASH等）<ul>
+<li>原理：基于内存 - 时间衡量方法，通过以一定存储空间换取时间的方式，提高对散列值的破解效率</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>windows远程口令猜解<ol>
+<li>基于IPC的远程口令猜解（IPC$文件和打印机共享：139、445） <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">net use \\目标主机IP\ipc$ &quot;口令&quot; /user:&quot;用户名&quot;</span><br></pre></td></tr></table></figure></li>
+<li>基于Thrminal Service的远程口令猜解（DRP服务：3389）</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><h2 id="针对口令存储的攻击"><a href="#针对口令存储的攻击" class="headerlink" title="针对口令存储的攻击"></a>针对口令存储的攻击</h2><ol>
+<li>缓存口令<ul>
+<li>实现原理：在进行用户身份验证时，需要将口令配置加载到<strong>内存</strong>中，通过对内存读取</li>
+<li>相关工具：PWDump、Mimikatz</li>
+</ul>
+</li>
+<li>口令文件<ul>
+<li>口令通过文件形式进行存放在系统中，对文件进行破解</li>
+<li>相关实例：<ol>
+<li>windows账号和口令存放在SAM文件（C:\Windows\System32\config）</li>
+<li>Linux账号和口令存放在Shadow文件</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>口令的其他存储位置<ul>
+<li>（除了缓存和文件）存放其他位置：注册表、（及时口令）casch或内存、硬盘扇区、（主板BIOS存放位置）COMS</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>NTLM加密机制：<ol>
+<li>口令转换成Unicode编码</li>
+<li>MD算法对Unicode编码进行散列，得到128比特的散列结果，成为NTLM散列</li>
+</ol>
+<ul>
+<li>CR方式：“挑战&#x2F;响应”方式（服务器对挑战数据没有时效性要求，可以进行重放攻击）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2 id="针对口令传输的攻击"><a href="#针对口令传输的攻击" class="headerlink" title="针对口令传输的攻击"></a>针对口令传输的攻击</h2><ol>
+<li>口令嗅探</li>
+<li>键盘记录</li>
+<li>网络钓鱼</li>
+<li>重放攻击：（通信双方按照特定协议）嗅探当前通信流量，在适当的时候重发给通信的其中一方，达到欺骗目的。<ol>
+<li>简单重放</li>
+<li>反向重放：向消息发送者重放数据</li>
+</ol>
+<ul>
+<li>SMB协议（共享文件、打印机、通信对象之间资源）发展：明文 &#x3D;&#x3D;&gt; LM验证机制（LAN Manager Callenge Response） &#x3D;&#x3D;&gt; NTLM验证机制（Windows NT Challenge Response）<h1 id="四、软件漏洞"><a href="#四、软件漏洞" class="headerlink" title="四、软件漏洞"></a>四、软件漏洞</h1></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h2 id="漏洞标准化研究"><a href="#漏洞标准化研究" class="headerlink" title="漏洞标准化研究"></a>漏洞标准化研究</h2><ol>
+<li>CVE：Common Vulnerabilities &amp; Exposures<ul>
+<li>漏洞字典：漏洞对应CVE编号</li>
+</ul>
+</li>
+<li>CWE：Common Weakness Enumeration<ul>
+<li>CWE是一种包括类缺陷、基础缺陷、变种缺陷等多层次的体系<ol>
+<li>字典视图：以字母表顺序排列</li>
+<li>开发视图：针对软件开发者，以软件开发周期为参照分类</li>
+<li>研究视图：这对学术界人士，从内在性质等方面分类</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h2 id="典型漏洞类型"><a href="#典型漏洞类型" class="headerlink" title="典型漏洞类型"></a>典型漏洞类型</h2><ol>
+<li>栈溢出<ul>
+<li>1986年首次出现真实攻击</li>
+<li>进程使用系统内存从低到高四结构：栈、堆、数据段、文本（代码）段</li>
+<li>栈空间是程序设计时规定好如何使用以及使用多少的内存空间（典型栈变量包括函数内部的普通变量、数组等）</li>
+<li>栈帧（stack Frame）：每个进程有一个栈，这个进程中每个函数被调用时分别再栈中占用一段区域</li>
+<li>原理分析示例  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&quot;windows.h&quot;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span> *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> name[<span class="number">16</span>];</span><br><span class="line">	<span class="built_in">strcpy</span>(name,argv[<span class="number">1</span>]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,name);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>堆溢出<ul>
+<li>堆结构特点<ol>
+<li>堆是程序运行时动态分配的内存（指不预先决定，需要参考用户反馈）</li>
+<li>堆使用时需要程序员使用专用函数申请（如：C：malloc() ; C++：new()）</li>
+<li>一般一个堆指针来使用申请的内存，读写释放都通过这个指针完成</li>
+<li>使用完毕后要通过释放函数回收内存，否则会造成内存泄漏（free() ; delete() ）</li>
+</ol>
+</li>
+<li>现代操作系统的堆结构：<ol>
+<li>堆块：堆区内存按不同大小组织成块，以堆块为单元进行标识，而不是传统字节标识<ul>
+<li>块首：一个堆块头部的几个字节，用来标识这个块首自身信息。</li>
+<li>块身：紧跟在块首后面部分，最终分配给用户使用的数据区。</li>
+</ul>
+</li>
+<li>堆表：一般位于堆区起始位置，用于检索堆区中所有堆块的重要信息，包括堆块的位置、大小、空闲或占用等。</li>
+</ol>
+</li>
+<li>原理分析示例：  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> BUFFSIZE 32</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> *buf1;</span><br><span class="line">	buf1 = (<span class="type">char</span> *)<span class="built_in">malloc</span>(BUFFSIZE);	<span class="comment">//分配内存块</span></span><br><span class="line">	<span class="built_in">strcpy</span>(buf1,argv[<span class="number">1</span>]);	<span class="comment">//向buf1拷贝参数</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,buf1);	<span class="comment">//打印buf1</span></span><br><span class="line">	<span class="built_in">free</span>(buf1);	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>堆溢出攻击思路<ol>
+<li>构造数据溢出下一个堆块的块首</li>
+<li>改写块首的前向指针和后向指针</li>
+<li>分配、释放、合并等操作发生时获得一次向内存任意地址读写任意数据的机会</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>格式化串漏洞<ul>
+<li>格式化串：在print系列函数中按照一定的格式对数据进行输出（既可输出到标准输出，也可输出到文件句柄、字符串等）</li>
+<li>格式化串漏洞原理：软件使用格式化字符串为参数，且该格式化字符串来自外部输入<ul>
+<li>输入格式化字符串参数”%n”：『将%n之前printf已经打印的字符个数赋值给偏移处指针所指向的地址位置』</li>
+<li>“%p”</li>
+</ul>
+</li>
+<li>优势：只要构造出指针就可以修盖内存中任何数值，攻击具有针对性。（栈溢出：地毯式轰炸）</li>
+</ul>
+</li>
+<li>整型溢出<ol>
+<li>存储溢出</li>
+<li>运算溢出</li>
+<li>符号溢出</li>
+</ol>
+</li>
+<li>（UAF）释放再使用</li>
+</ol>
+</li>
+<li><h2 id="溢出漏洞利用原理"><a href="#溢出漏洞利用原理" class="headerlink" title="溢出漏洞利用原理"></a>溢出漏洞利用原理</h2></li>
+<li><h2 id="漏洞利用保护机制"><a href="#漏洞利用保护机制" class="headerlink" title="漏洞利用保护机制"></a>漏洞利用保护机制</h2><h1 id="五、Web应用攻击"><a href="#五、Web应用攻击" class="headerlink" title="五、Web应用攻击"></a>五、Web应用攻击</h1><h1 id="六、恶意代码"><a href="#六、恶意代码" class="headerlink" title="六、恶意代码"></a>六、恶意代码</h1><h1 id="七、假消息攻击"><a href="#七、假消息攻击" class="headerlink" title="七、假消息攻击"></a>七、假消息攻击</h1><h1 id="八、拒绝服务攻击"><a href="#八、拒绝服务攻击" class="headerlink" title="八、拒绝服务攻击"></a>八、拒绝服务攻击</h1><h1 id="九、防御"><a href="#九、防御" class="headerlink" title="九、防御"></a>九、防御</h1><h1 id="十、访问控制机制"><a href="#十、访问控制机制" class="headerlink" title="十、访问控制机制"></a>十、访问控制机制</h1><h1 id="十一、防火墙"><a href="#十一、防火墙" class="headerlink" title="十一、防火墙"></a>十一、防火墙</h1><h1 id="十二、网络安全监控"><a href="#十二、网络安全监控" class="headerlink" title="十二、网络安全监控"></a>十二、网络安全监控</h1><h1 id="十三、追踪溯源"><a href="#十三、追踪溯源" class="headerlink" title="十三、追踪溯源"></a>十三、追踪溯源</h1></li>
+</ol>
+]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
+      <tags>
+        <tag>网络空间安全</tag>
       </tags>
   </entry>
   <entry>
