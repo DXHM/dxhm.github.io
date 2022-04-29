@@ -340,6 +340,94 @@
 </li>
 </ol>
 </li>
+<li><h2 id="路由器概述"><a href="#路由器概述" class="headerlink" title="路由器概述"></a>路由器概述</h2><ul>
+<li>基本功能<ol>
+<li>网络互连</li>
+<li>数据处理</li>
+<li>网络管理</li>
+</ol>
+</li>
+<li>分类<ol>
+<li>固定配置路由器</li>
+<li>模块化路由器</li>
+</ol>
+</li>
+<li>控制线缆<ol>
+<li>以太网线缆</li>
+<li>控制台线缆</li>
+<li>串行广域网线缆</li>
+</ol>
+</li>
+<li>常用配置方式<ol>
+<li>控制台方式</li>
+<li>Telnet方式</li>
+<li>网管工作站方式</li>
+<li>TFTP服务器方式</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><h2 id="路由器基础配置"><a href="#路由器基础配置" class="headerlink" title="路由器基础配置"></a>路由器基础配置</h2><h1 id="动态路由协议"><a href="#动态路由协议" class="headerlink" title="动态路由协议"></a>动态路由协议</h1></li>
+<li><h2 id="动态路由协议基础概念"><a href="#动态路由协议基础概念" class="headerlink" title="动态路由协议基础概念"></a>动态路由协议基础概念</h2><ul>
+<li>Cisco三种路由方式<ol>
+<li>静态路由：手工定义目的地和路由转发</li>
+<li>动态路由：路由器根据路由表灵活调整</li>
+<li>默认路由：当前路由表中无匹配表项时，做出的默认选择</li>
+</ol>
+</li>
+<li>动态路由优势：<ul>
+<li>灵活调整路由表，选择最优路径</li>
+<li>均衡负载（Load Sharing）</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>自治域系统</li>
+<li>路由协议分类</li>
+<li>邻居关系</li>
+<li>网络路径的度量</li>
+<li>收敛时间</li>
+</ol>
+</li>
+<li><h2 id="RIP协议（典型的距离矢量路由选择算法的内部网关协议）"><a href="#RIP协议（典型的距离矢量路由选择算法的内部网关协议）" class="headerlink" title="RIP协议（典型的距离矢量路由选择算法的内部网关协议）"></a>RIP协议（典型的距离矢量路由选择算法的内部网关协议）</h2><ol>
+<li>特征<ul>
+<li>距离矢量：以跳数为度量值（metric）的距离向量协议</li>
+<li>RIP基于UDP，端口520的应用层协议</li>
+<li>跳数不超过15</li>
+</ul>
+</li>
+<li>分类<ol>
+<li>RIPv1<ul>
+<li>有类路由协议</li>
+<li>没有认证功能</li>
+<li>没有手工汇总功能</li>
+<li>广播更新</li>
+</ul>
+</li>
+<li>RIPv2<ul>
+<li><strong>无类路由协议</strong>（不规则IP地址，如10.xx.xx.xx 255.255.255.0）</li>
+<li>支持明文和MD5认证功能</li>
+<li>可在关闭自动汇总功能前提下，进行手工汇总</li>
+<li>组播更新</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>RIP配置<ul>
+<li>配置步骤：<ol>
+<li>配置路由器接口ip</li>
+<li>配置路由RIP</li>
+<li>DHCP服务配置</li>
+<li>测试 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">启用</span><br><span class="line"><span class="section"># router rip	</span></span><br><span class="line">查看路由表</span><br><span class="line">添加网段</span><br><span class="line"><span class="section"># network [network-num]</span></span><br><span class="line">删除网段</span><br><span class="line"><span class="section"># network [network-num]</span></span><br><span class="line">将版本改为RIPv2</span><br><span class="line"><span class="section"># version 2</span></span><br><span class="line"><span class="section"># no auto-summary</span></span><br><span class="line"><span class="section"># show ip router  </span></span><br><span class="line"><span class="code">	&gt; R	192.168.xx.0/24[120/?] </span></span><br><span class="line"><span class="code">		1. ？: 标识RIP传递跳数) </span></span><br><span class="line"><span class="code">		2. 120：管理距离</span></span><br><span class="line"><span class="code"></span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h2 id="OSPF路由协议"><a href="#OSPF路由协议" class="headerlink" title="OSPF路由协议"></a>OSPF路由协议</h2></li>
+<li><h2 id="EIGRP协议"><a href="#EIGRP协议" class="headerlink" title="EIGRP协议"></a>EIGRP协议</h2></li>
+<li><h2 id="路由重发布"><a href="#路由重发布" class="headerlink" title="路由重发布"></a>路由重发布</h2></li>
 </ol>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
@@ -492,7 +580,7 @@
     </div>
     
         <div class="side">
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="toc-number">1.</span> <span class="toc-text">交换机</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91"><span class="toc-number">2.</span> <span class="toc-text">虚拟局域网</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#VLAN"><span class="toc-number">2.1.</span> <span class="toc-text">VLAN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VTP-VLAN-Trunking-Protocol-%E6%80%9D%E7%A7%91%E7%A7%81%E6%9C%89%E5%8D%8F%E8%AE%AE"><span class="toc-number">2.2.</span> <span class="toc-text">VTP (VLAN Trunking Protocol 思科私有协议)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96-amp-%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5"><span class="toc-number">3.</span> <span class="toc-text">网络优化 &amp; 安全策略</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AE%EF%BC%88STP%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">生成树协议（STP）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E8%81%9A%E5%90%88%EF%BC%88Ethernet-Channel-%E4%BB%A5%E5%A4%AA%E9%80%9A%E9%81%93%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">端口聚合（Ethernet Channel 以太通道）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text">路由器</span></a></li></ol>	
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="toc-number">1.</span> <span class="toc-text">交换机</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91"><span class="toc-number">2.</span> <span class="toc-text">虚拟局域网</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#VLAN"><span class="toc-number">2.1.</span> <span class="toc-text">VLAN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VTP-VLAN-Trunking-Protocol-%E6%80%9D%E7%A7%91%E7%A7%81%E6%9C%89%E5%8D%8F%E8%AE%AE"><span class="toc-number">2.2.</span> <span class="toc-text">VTP (VLAN Trunking Protocol 思科私有协议)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96-amp-%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5"><span class="toc-number">3.</span> <span class="toc-text">网络优化 &amp; 安全策略</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AE%EF%BC%88STP%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">生成树协议（STP）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E8%81%9A%E5%90%88%EF%BC%88Ethernet-Channel-%E4%BB%A5%E5%A4%AA%E9%80%9A%E9%81%93%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">端口聚合（Ethernet Channel 以太通道）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text">路由器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E6%A6%82%E8%BF%B0"><span class="toc-number">4.1.</span> <span class="toc-text">路由器概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="toc-number">4.2.</span> <span class="toc-text">路由器基础配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE"><span class="toc-number">5.</span> <span class="toc-text">动态路由协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="toc-number">5.1.</span> <span class="toc-text">动态路由协议基础概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RIP%E5%8D%8F%E8%AE%AE%EF%BC%88%E5%85%B8%E5%9E%8B%E7%9A%84%E8%B7%9D%E7%A6%BB%E7%9F%A2%E9%87%8F%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E7%AE%97%E6%B3%95%E7%9A%84%E5%86%85%E9%83%A8%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="toc-number">5.2.</span> <span class="toc-text">RIP协议（典型的距离矢量路由选择算法的内部网关协议）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OSPF%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE"><span class="toc-number">5.3.</span> <span class="toc-text">OSPF路由协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EIGRP%E5%8D%8F%E8%AE%AE"><span class="toc-number">5.4.</span> <span class="toc-text">EIGRP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E9%87%8D%E5%8F%91%E5%B8%83"><span class="toc-number">5.5.</span> <span class="toc-text">路由重发布</span></a></li></ol></li></ol>	
         </div>
     
 </div>

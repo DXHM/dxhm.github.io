@@ -12,10 +12,12 @@
     <meta name="keywords" content="渗透,"> 
     <meta name="description" content="A GEEK HACKER,Linux系统基础
 MBR：主引导记录
-grub2引导(grub「grand unified bootloader 宏大的统一引导启动程序」：幼虫，搜寻)
+
+grub2引导 (grub「grand unified bootloader 宏大的统一引导启动程序」：幼虫，搜寻)
+
 boot.img
 core.img
-*.m,"> 
+,"> 
     <meta name="author" content="真のBLACK"> 
     <link rel="alternative" href="atom.xml" title="WHOAMI" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -28,17 +30,21 @@ core.img
     <meta name="twitter:title" content="LINUX OS - WHOAMI"/>
     <meta name="twitter:description" content="A GEEK HACKER,Linux系统基础
 MBR：主引导记录
-grub2引导(grub「grand unified bootloader 宏大的统一引导启动程序」：幼虫，搜寻)
+
+grub2引导 (grub「grand unified bootloader 宏大的统一引导启动程序」：幼虫，搜寻)
+
 boot.img
 core.img
-*.m,"/>
+,"/>
     <meta property="og:image" content="https://bangdream.moe/img/ident.png"/>
     <meta property="og:image:alt" content="A GEEK HACKER,Linux系统基础
 MBR：主引导记录
-grub2引导(grub「grand unified bootloader 宏大的统一引导启动程序」：幼虫，搜寻)
+
+grub2引导 (grub「grand unified bootloader 宏大的统一引导启动程序」：幼虫，搜寻)
+
 boot.img
 core.img
-*.m,"/>
+,"/>
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="600"/>
     <meta property="og:site_name" content="WHOAMI"/>
@@ -46,10 +52,12 @@ core.img
     <meta property="og:title" content="LINUX OS - WHOAMI"/>
     <meta property="og:description" content="A GEEK HACKER,Linux系统基础
 MBR：主引导记录
-grub2引导(grub「grand unified bootloader 宏大的统一引导启动程序」：幼虫，搜寻)
+
+grub2引导 (grub「grand unified bootloader 宏大的统一引导启动程序」：幼虫，搜寻)
+
 boot.img
 core.img
-*.m,"/>
+,"/>
     
 <link rel="stylesheet" href="/css/diaspora.css">
 
@@ -88,30 +96,43 @@ core.img
         </div>
         <div class="content markdown">
             <h1 id="Linux系统基础"><a href="#Linux系统基础" class="headerlink" title="Linux系统基础"></a>Linux系统基础</h1><ol>
-<li>MBR：主引导记录</li>
-<li>grub2引导<br>(grub「grand unified bootloader 宏大的统一引导启动程序」：幼虫，搜寻)<ol>
+<li><p>MBR：主引导记录</p>
+</li>
+<li><p>grub2引导 (grub「grand unified bootloader 宏大的统一引导启动程序」：幼虫，搜寻)</p>
+<ol>
 <li>boot.img</li>
 <li>core.img</li>
 <li>*.mod</li>
-<li>grub.cfg<br> a. 未独立&#x2F;boot：&#x2F;boot&#x2F;grub2&#x2F;grub.cfg<br> b. 独立&#x2F;boot:&#x2F;grub2&#x2F;grub.cfg</li>
+<li>grub.cfg a. 未独立&#x2F;boot：&#x2F;boot&#x2F;grub2&#x2F;grub.cfg b. 独立&#x2F;boot:&#x2F;grub2&#x2F;grub.cfg</li>
 <li>grun2-setpassword：设置引导密码</li>
 </ol>
 </li>
-<li>init：PID&#x3D;1（进程号）<ol>
+<li><p>init：PID&#x3D;1（进程号）</p>
+<ol>
 <li>centos7第一个进程：systemd（配置文件：&#x2F;usr&#x2F;system&#x2F;systemd&#x2F;）</li>
 <li>执行登录 &#x2F;bin&#x2F;login</li>
 </ol>
 </li>
-<li>demesg | less：“|”管道符，左侧命令输出作为右侧的输入</li>
-<li>&#x2F;dev：设备 –&gt; 文件</li>
-<li>&#x2F;usr：unix shared resources（共享资源）「类似win的Program Files」</li>
-<li>&#x2F;src：原文件</li>
-<li>&#x2F;tmp：临时文件</li>
-<li>&#x2F;var（variable）：日志文件、打印机脱机工作文件、缓冲区</li>
-<li>&#x2F;opt（option）：选项文件</li>
-<li>&#x2F;mnt（mount）：挂载</li>
-<li>cd：change directory</li>
-<li>文件类型：<ol>
+<li><p>demesg | less：“|”管道符，左侧命令输出作为右侧的输入</p>
+</li>
+<li><p>&#x2F;dev：设备 –&gt; 文件</p>
+</li>
+<li><p>&#x2F;usr：unix shared resources（共享资源）「类似win的Program Files」</p>
+</li>
+<li><p>&#x2F;src：原文件</p>
+</li>
+<li><p>&#x2F;tmp：临时文件</p>
+</li>
+<li><p>&#x2F;var（variable）：日志文件、打印机脱机工作文件、缓冲区</p>
+</li>
+<li><p>&#x2F;opt（option）：选项文件</p>
+</li>
+<li><p>&#x2F;mnt（mount）：挂载</p>
+</li>
+<li><p>cd：change directory</p>
+</li>
+<li><p>文件类型：</p>
+<ol>
 <li>d：目录</li>
 <li>l：链接</li>
 <li>b：块设备</li>
@@ -119,32 +140,42 @@ core.img
 <li>-：普通文件</li>
 </ol>
 </li>
-<li>文件权限：<ol>
+<li><p>文件权限：</p>
+<ol>
 <li>用户组：U &#x2F; G &#x2F; A</li>
 <li>九位字母表示法：d[文件类型] rwx[文件属主] r-x[同组用户] r–[其他用户]</li>
 </ol>
 </li>
-<li>cat快速编辑：<ol>
+<li><p>cat快速编辑：</p>
+<ol>
 <li>cat&gt;test</li>
 <li>[输入字符]</li>
 </ol>
 </li>
-<li>tail &amp; head：查看后十行，前十行 &#x2F;&#x2F;-n num : 指定行数</li>
-<li>mdir [ -m ] [ -p 目录名 ]</li>
-<li>rmdir（remove dir）：用于删除空目录<ol>
+<li><p>tail &amp; head：查看后十行，前十行 &#x2F;&#x2F;-n num : 指定行数</p>
+</li>
+<li><p>mdir [ -m ] [ -p 目录名 ]</p>
+</li>
+<li><p>rmdir（remove dir）：用于删除空目录</p>
+<ol>
 <li>rm -r</li>
 </ol>
 </li>
-<li>touch：修改时间属性 * （不存在）创建文件</li>
-<li>软链接：ln -s</li>
-<li>硬链接：ln<ol>
+<li><p>touch：修改时间属性 * （不存在）创建文件</p>
+</li>
+<li><p>软链接：ln -s</p>
+</li>
+<li><p>硬链接：ln</p>
+<ol>
 <li>以文件副本形式存在，不占用实际控件</li>
 <li>不允许目录硬链接</li>
 <li>只有在同一个文件系统才允许硬链接</li>
 </ol>
 </li>
-<li>查找类：which、whereis、find、grep</li>
-<li>文件重定向：<ul>
+<li><p>查找类：which、whereis、find、grep</p>
+</li>
+<li><p>文件重定向：</p>
+<ul>
 <li>&#x2F;dev&#x2F;stdin：标准输入文件</li>
 <li>&#x2F;dev&#x2F;stdout：标准输出文件</li>
 </ul>
@@ -159,6 +190,114 @@ core.img
 </ol>
 </li>
 <li>管道符重定向：“|” 左输出为右输入</li>
+</ol>
+</li>
+</ol>
+<h1 id="yum包管理"><a href="#yum包管理" class="headerlink" title="yum包管理"></a>yum包管理</h1><ul>
+<li><p>centos镜像源文件的目录默认路径：<br><code>/etc/yum.repos.d/</code></p>
+</li>
+<li><p>备份：<br><code>cp /etc/yum.repos.d/CentOS-Linux-BaseOS.repo /etc/yum.repos.d/CentOS-Linux-BaseOS.repo.bak</code></p>
+</li>
+</ul>
+<h2 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h2><ul>
+<li><p>下载国内常用的镜像源并重命名为CentOS-Linux-BaseOS.repo,将其作为当前系统的镜像源</p>
+<p>  +【阿里源】</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Linux-BaseOS.repo  http://mirrors.aliyun.com/repo/Centos-8.repo</span><br></pre></td></tr></table></figure>
+<ul>
+<li>【网易源】</li>
+</ul>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Linux-BaseOS.repo  http://mirrors.163.com/.help/CentOS8-Base-163.repo</span><br></pre></td></tr></table></figure>
+<ul>
+<li>『添加epel源』</li>
+</ul>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -P /etc/yum.repos.d/ http://mirrors.aliyun.com/repo/epel-7.repo</span><br></pre></td></tr></table></figure>
+<ul>
+<li>『清华源』：<a target="_blank" rel="noopener" href="https://mirror.tuna.tsinghua.edu.cn/help/centos/">Guide</a></li>
+</ul>
+</li>
+<li><p>清理缓存</p>
+<p>  yum的缓存文件的存放目录是以下路径下：&#x2F;var&#x2F;cache&#x2F;yum 直接清空给目录，或者使用一下命令均可</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum clean all</span><br></pre></td></tr></table></figure></li>
+<li><p>重新生成缓存</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
+<h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum update</span><br><span class="line">yum makecache</span><br><span class="line">yum clean all</span><br><span class="line">yum info [pagename]</span><br><span class="line">yum list</span><br><span class="line">yum search</span><br></pre></td></tr></table></figure>
+<h1 id="SHELL"><a href="#SHELL" class="headerlink" title="SHELL"></a>SHELL</h1></li>
+</ul>
+<ol>
+<li><h2 id="shell概念"><a href="#shell概念" class="headerlink" title="shell概念"></a>shell概念</h2><ul>
+<li>shell程序就是一个包含若干行shell或者linux命令的文件.</li>
+<li>像编写高级语言的程序一样，编写一个shell程序需要一个文本编辑器.如ⅥM等.</li>
+<li>在文本编辑环境下，依据shell的语法规则，输入一些shell&#x2F;linux命令行，形成一个完整的程序文件.</li>
+<li>执行shell程序文件有三种方法<ol>
+<li>#chmod +x file（在&#x2F;etc&#x2F;profile中，加入export PATH&#x3D;${PATH}:~&#x2F;yourpath，就可以在命令行下直接运行，像执行普通命令一样）</li>
+<li>#sh file</li>
+<li>#. file</li>
+<li>#source file</li>
+</ol>
+</li>
+<li>在编写shell时，第一行一定要指明系统需要那种shell解释你的shell程序（如：#! &#x2F;bin&#x2F;bash,#! &#x2F;bin&#x2F;csh,&#x2F;bin&#x2F;tcsh，还是#! &#x2F;bin&#x2F;pdksh .）</li>
+<li>接口概念：在计算机体系结构中，操作系统是最接近硬件的软件部分，其更侧重从软件和功能的角度出发去描述部件，所以称之为<strong>设备控制器</strong>；而在计算机组成原理中，研究的重点在于硬件组成部分，其更青睐于从硬件的角度出发去描述部件，所以称之为<strong>I&#x2F;O接口</strong>。</li>
+</ul>
+</li>
+</ol>
+<h2 id="各类Shell"><a href="#各类Shell" class="headerlink" title="各类Shell"></a>各类Shell</h2><ol>
+<li>bash</li>
+<li>zsh<ul>
+<li>zshell简介：Zsh（Z-shell）是一款用于交互式使用的shell，也可以作为脚本解释器来使用。其包含了 bash，ksh，tcsh 等其他shell中许多优秀功能，也拥有诸多自身特色。</li>
+<li>zshell发展历史：Zsh初版由原作者保罗·弗斯塔德（Paul Falstad）于1990年在普林斯顿大学求学时编写 [3] 。其名称zsh源于普林斯顿大学助教的邵中（Zhong Shao，现任耶鲁大学教授）——保罗将邵中的用户名”zsh”作为此Shell的名称</li>
+<li>zsh美化</li>
+</ul>
+</li>
+</ol>
+<h2 id="SHELL基本操作"><a href="#SHELL基本操作" class="headerlink" title="SHELL基本操作"></a>SHELL基本操作</h2><ol>
+<li><p>expr：数值计算</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">expr 2 + 3</span><br><span class="line"><span class="meta"># </span><span class="language-bash">output：5</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>shell脚本</p>
+<ol>
+<li><p>判断语法</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /home</span><br><span class="line">touch test1</span><br><span class="line">mkdir test1</span><br><span class="line">mv test1 /test1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>-e filename #如果 filename为目录，则为真</p>
+</li>
+<li><p>-f filename #如果 filename为常规文件，则为真</p>
+</li>
+<li><p>-L filename #如果 filename为符号链接，则为真</p>
+</li>
+<li><p>-r filename #如果 filename可读，则为真</p>
+</li>
+<li><p>-w filename #如果 filename可写，则为真</p>
+</li>
+<li><p>-x filename #如果 filename可执行，则为真</p>
+</li>
+<li><p>-s filename #如果文件长度不为0，则为真</p>
+</li>
+<li><p>-h filename #如果文件是软链接，则为真</p>
+</li>
+<li><p>#如果文件夹不存在，则创建文件夹</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tempPath=&quot;/home/parasaga/blank&quot;</span><br><span class="line">if [ ! -d &quot;$tempPath&quot; ]; </span><br><span class="line">then mkdir $blankPath</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>#如果文件不存在，则创建文件</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tempFile=&quot;/home/parasaga/blank/error.log&quot;</span><br><span class="line">if [ ! -f &quot;$tempFile&quot; ]; </span><br><span class="line">then touch $tempFile</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if [ ! -f test1 ]</span><br><span class="line">then echo &quot;flase&quot;</span><br><span class="line">else</span><br><span class="line">echo &quot;true&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>演示示例</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">read s1</span><br><span class="line">if [ $s1 == 1 ]</span><br><span class="line">then echo 123</span><br><span class="line">mkdir shell1</span><br><span class="line">elif [ $s1 == 2 ]</span><br><span class="line">then echo 321</span><br><span class="line">        mkdir shell2</span><br><span class="line">else</span><br><span class="line">        echo finding</span><br><span class="line">if [  -d shell1 ]</span><br><span class="line">then    rm -r shell1</span><br><span class="line">        echo ok1</span><br><span class="line">fi</span><br><span class="line">if [  -d shell2 ]</span><br><span class="line">then rm -r shell2</span><br><span class="line">        echo ok2</span><br><span class="line">else</span><br><span class="line">        echo false</span><br><span class="line">fi</span><br><span class="line">fi       </span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>函数定义</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">functionname</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>循环语句</p>
+<ul>
+<li><p>while</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while 条件（为真时执行）</span><br><span class="line">do</span><br><span class="line">    语句</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>for</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for 变量名 [ in 数值列表 ]</span><br><span class="line">do</span><br><span class="line">    语句</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
 </ol>
 </li>
 </ol>
@@ -313,7 +452,7 @@ core.img
     </div>
     
         <div class="side">
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">Linux系统基础</span></a></li></ol>	
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">Linux系统基础</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yum%E5%8C%85%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">yum包管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%A2%E6%BA%90"><span class="toc-number">2.1.</span> <span class="toc-text">换源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="toc-number">2.2.</span> <span class="toc-text">常用操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SHELL"><span class="toc-number">3.</span> <span class="toc-text">SHELL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#shell%E6%A6%82%E5%BF%B5"><span class="toc-number">3.1.</span> <span class="toc-text">shell概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E7%B1%BBShell"><span class="toc-number">3.2.</span> <span class="toc-text">各类Shell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SHELL%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">3.3.</span> <span class="toc-text">SHELL基本操作</span></a></li></ol></li></ol>	
         </div>
     
 </div>
