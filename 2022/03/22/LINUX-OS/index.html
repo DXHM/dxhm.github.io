@@ -232,8 +232,8 @@ core.img
 <li>在文本编辑环境下，依据shell的语法规则，输入一些shell&#x2F;linux命令行，形成一个完整的程序文件.</li>
 <li>执行shell程序文件有三种方法<ol>
 <li>#chmod +x file（在&#x2F;etc&#x2F;profile中，加入export PATH&#x3D;${PATH}:~&#x2F;yourpath，就可以在命令行下直接运行，像执行普通命令一样）</li>
-<li>#sh file</li>
 <li>#. file</li>
+<li>#sh file</li>
 <li>#source file</li>
 </ol>
 </li>
@@ -242,7 +242,8 @@ core.img
 </ul>
 </li>
 </ol>
-<h2 id="各类Shell"><a href="#各类Shell" class="headerlink" title="各类Shell"></a>各类Shell</h2><ol>
+<h2 id="各类Shell"><a href="#各类Shell" class="headerlink" title="各类Shell"></a>各类Shell</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo $SHELL</span><br><span class="line">echo $0</span><br><span class="line">cat /etc/shells</span><br></pre></td></tr></table></figure>
+<ol>
 <li><p>bash</p>
 </li>
 <li><p>zsh</p>
@@ -266,7 +267,7 @@ core.img
 <li><p>shell脚本</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /home</span><br><span class="line">touch test1</span><br><span class="line">mkdir test1</span><br><span class="line">mv test1 /test1</span><br></pre></td></tr></table></figure>
 <ol>
-<li>判断语法（a[]、）<ol>
+<li>判断语法（a[]、test ?）<ol>
 <li>文件类判断<ul>
 <li>-e filename #如果 filename为目录，则为真</li>
 <li>-f filename #如果 filename为常规文件，则为真</li>
@@ -285,6 +286,14 @@ core.img
 <li>-le：小于等于为真</li>
 <li>-gt：大于为真</li>
 <li>-ge：大于等于为真</li>
+</ul>
+</li>
+<li>字符串判断<ul>
+<li>str：str非空，真</li>
+<li>s1 &#x3D; s2</li>
+<li>s1 !&#x3D; s2</li>
+<li>-n str：str不为0，真</li>
+<li>-z str：str为0，真</li>
 </ul>
 </li>
 <li>组合语法<ul>
