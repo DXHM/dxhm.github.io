@@ -81,6 +81,263 @@
       </tags>
   </entry>
   <entry>
+    <title>LINUX OS</title>
+    <url>/2022/03/22/LINUX-OS/</url>
+    <content><![CDATA[<h1 id="Linux系统基础"><a href="#Linux系统基础" class="headerlink" title="Linux系统基础"></a>Linux系统基础</h1><ol>
+<li><p>MBR：主引导记录</p>
+</li>
+<li><p>grub2引导 (grub「grand unified bootloader 宏大的统一引导启动程序」：幼虫，搜寻)</p>
+<ol>
+<li>boot.img</li>
+<li>core.img</li>
+<li>*.mod</li>
+<li>grub.cfg a. 未独立&#x2F;boot：&#x2F;boot&#x2F;grub2&#x2F;grub.cfg b. 独立&#x2F;boot:&#x2F;grub2&#x2F;grub.cfg</li>
+<li>grun2-setpassword：设置引导密码</li>
+</ol>
+</li>
+<li><p>init：PID&#x3D;1（进程号）</p>
+<ol>
+<li>centos7第一个进程：systemd（配置文件：&#x2F;usr&#x2F;system&#x2F;systemd&#x2F;）</li>
+<li>执行登录 &#x2F;bin&#x2F;login</li>
+</ol>
+</li>
+<li><p>demesg | less：“|”管道符，左侧命令输出作为右侧的输入</p>
+</li>
+<li><p>&#x2F;dev：设备 –&gt; 文件</p>
+</li>
+<li><p>&#x2F;usr：unix shared resources（共享资源）「类似win的Program Files」</p>
+</li>
+<li><p>&#x2F;src：原文件</p>
+</li>
+<li><p>&#x2F;tmp：临时文件</p>
+</li>
+<li><p>&#x2F;var（variable）：日志文件、打印机脱机工作文件、缓冲区</p>
+</li>
+<li><p>&#x2F;opt（option）：选项文件</p>
+</li>
+<li><p>&#x2F;mnt（mount）：挂载</p>
+</li>
+<li><p>cd：change directory</p>
+</li>
+<li><p>文件类型：</p>
+<ol>
+<li>d：目录</li>
+<li>l：链接</li>
+<li>b：块设备</li>
+<li>c：字符设备文件</li>
+<li>-：普通文件</li>
+</ol>
+</li>
+<li><p>文件权限：</p>
+<ol>
+<li>用户组：U &#x2F; G &#x2F; A</li>
+<li>九位字母表示法：d[文件类型] rwx[文件属主] r-x[同组用户] r–[其他用户]</li>
+</ol>
+</li>
+<li><p>cat快速编辑：</p>
+<ol>
+<li>cat&gt;test</li>
+<li>[输入字符]</li>
+</ol>
+</li>
+<li><p>tail &amp; head：查看后十行，前十行 &#x2F;&#x2F;-n num : 指定行数</p>
+</li>
+<li><p>mdir [ -m ] [ -p 目录名 ]</p>
+</li>
+<li><p>rmdir（remove dir）：用于删除空目录</p>
+<ol>
+<li>rm -r</li>
+</ol>
+</li>
+<li><p>touch：修改时间属性 * （不存在）创建文件</p>
+</li>
+<li><p>软链接：ln -s</p>
+</li>
+<li><p>硬链接：ln</p>
+<ol>
+<li>以文件副本形式存在，不占用实际控件</li>
+<li>不允许目录硬链接</li>
+<li>只有在同一个文件系统才允许硬链接</li>
+</ol>
+</li>
+<li><p>查找类：which、whereis、find、grep</p>
+</li>
+<li><p>文件重定向：</p>
+<ul>
+<li>&#x2F;dev&#x2F;stdin：标准输入文件</li>
+<li>&#x2F;dev&#x2F;stdout：标准输出文件</li>
+</ul>
+<ol>
+<li>输出重定向<ol>
+<li>“&gt;”：文件存在，覆盖</li>
+<li>“&gt;&gt;”：文件存在，添加内容到文件末尾</li>
+</ol>
+</li>
+<li>输入重定向<ol>
+<li>“&lt;”</li>
+</ol>
+</li>
+<li>管道符重定向：“|” 左输出为右输入</li>
+</ol>
+</li>
+</ol>
+<h1 id="yum包管理"><a href="#yum包管理" class="headerlink" title="yum包管理"></a>yum包管理</h1><ul>
+<li><p>centos镜像源文件的目录默认路径：<br><code>/etc/yum.repos.d/</code></p>
+</li>
+<li><p>备份：<br><code>cp /etc/yum.repos.d/CentOS-Linux-BaseOS.repo /etc/yum.repos.d/CentOS-Linux-BaseOS.repo.bak</code></p>
+</li>
+</ul>
+<h2 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h2><ul>
+<li><p>下载国内常用的镜像源并重命名为CentOS-Linux-BaseOS.repo,将其作为当前系统的镜像源</p>
+<p>  +【阿里源】</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">##CentOS 8</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Linux-BaseOS.repo  http://mirrors.aliyun.com/repo/Centos-8.repo</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在使用阿里云的 centos8 的 yum 时报错：由于centos8 在2022年停止服务，后继版本为8-steam  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">##CentOS 8-stream</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo</span><br></pre></td></tr></table></figure></li>
+<li>【网易源】</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Linux-BaseOS.repo  http://mirrors.163.com/.help/CentOS8-Base-163.repo</span><br></pre></td></tr></table></figure>
+<ul>
+<li>『添加epel源』</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -P /etc/yum.repos.d/ http://mirrors.aliyun.com/repo/epel-7.repo</span><br></pre></td></tr></table></figure>
+<ul>
+<li>『清华源』：<a href="https://mirror.tuna.tsinghua.edu.cn/help/centos/">Guide</a></li>
+</ul>
+</li>
+<li><p>清理缓存</p>
+<p>  yum的缓存文件的存放目录是以下路径下：&#x2F;var&#x2F;cache&#x2F;yum 直接清空给目录，或者使用一下命令均可</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum clean all</span><br></pre></td></tr></table></figure></li>
+<li><p>重新生成缓存</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
+<h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum update</span><br><span class="line">yum makecache</span><br><span class="line">yum clean all</span><br><span class="line">yum info [pagename]</span><br><span class="line">yum list</span><br><span class="line">yum search</span><br></pre></td></tr></table></figure>
+<h1 id="SHELL"><a href="#SHELL" class="headerlink" title="SHELL"></a>SHELL</h1></li>
+</ul>
+<ol>
+<li><h2 id="shell概念"><a href="#shell概念" class="headerlink" title="shell概念"></a>shell概念</h2><ul>
+<li>shell程序就是一个包含若干行shell或者linux命令的文件.</li>
+<li>像编写高级语言的程序一样，编写一个shell程序需要一个文本编辑器.如ⅥM等.</li>
+<li>在文本编辑环境下，依据shell的语法规则，输入一些shell&#x2F;linux命令行，形成一个完整的程序文件.</li>
+<li>执行shell程序文件有三种方法<ol>
+<li>#chmod +x file（在&#x2F;etc&#x2F;profile中，加入export PATH&#x3D;${PATH}:~&#x2F;yourpath，就可以在命令行下直接运行，像执行普通命令一样）</li>
+<li>#. file</li>
+<li>#sh file</li>
+<li>#source file</li>
+</ol>
+</li>
+<li>在编写shell时，第一行一定要指明系统需要那种shell解释你的shell程序（如：#! &#x2F;bin&#x2F;bash,#! &#x2F;bin&#x2F;csh,&#x2F;bin&#x2F;tcsh，还是#! &#x2F;bin&#x2F;pdksh .）</li>
+<li>接口概念：在计算机体系结构中，操作系统是最接近硬件的软件部分，其更侧重从软件和功能的角度出发去描述部件，所以称之为<strong>设备控制器</strong>；而在计算机组成原理中，研究的重点在于硬件组成部分，其更青睐于从硬件的角度出发去描述部件，所以称之为<strong>I&#x2F;O接口</strong>。</li>
+</ul>
+</li>
+</ol>
+<h2 id="各类Shell"><a href="#各类Shell" class="headerlink" title="各类Shell"></a>各类Shell</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $SHELL</span><br><span class="line">echo $0</span><br><span class="line">cat /etc/shells</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>bash</p>
+</li>
+<li><p>zsh</p>
+<ul>
+<li>zshell简介：Zsh（Z-shell）是一款用于交互式使用的shell，也可以作为脚本解释器来使用。其包含了 bash，ksh，tcsh 等其他shell中许多优秀功能，也拥有诸多自身特色。</li>
+<li>zshell发展历史：Zsh初版由原作者保罗·弗斯塔德（Paul Falstad）于1990年在普林斯顿大学求学时编写 [3] 。其名称zsh源于普林斯顿大学助教的邵中（Zhong Shao，现任耶鲁大学教授）——保罗将邵中的用户名”zsh”作为此Shell的名称</li>
+<li>zsh美化<h2 id="SHELL文件类型"><a href="#SHELL文件类型" class="headerlink" title="SHELL文件类型"></a>SHELL文件类型</h2>&#x2F; vim test1.sh<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod +x test1.sh</span><br><span class="line">./test1.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sh test1.sh</span><br></pre></td></tr></table></figure>
+<h2 id="SHELL基本操作"><a href="#SHELL基本操作" class="headerlink" title="SHELL基本操作"></a>SHELL基本操作</h2></li>
+</ul>
+</li>
+<li><p>变量赋值调用</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $0 $1 $2 </span><br></pre></td></tr></table></figure>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sh echotest1.sh 0 1 2 3</span><br><span class="line"><span class="meta">#</span><span class="language-bash">output:0 1 2</span></span><br></pre></td></tr></table></figure></li>
+<li><p>expr：数值计算</p>
+<ul>
+<li>“+、-、\、&#x2F;、%”</li>
+<li>用法：“ $ () ”、“$ []”<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">expr 2 + 3</span><br><span class="line"># output：5</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>shell脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home</span><br><span class="line">touch test1</span><br><span class="line">mkdir test1</span><br><span class="line">mv test1 /test1</span><br></pre></td></tr></table></figure>
+<ol>
+<li>判断语法（a[]、test ?）<ol>
+<li>文件类判断<ul>
+<li>-e filename #如果 filename为目录，则为真</li>
+<li>-f filename #如果 filename为常规文件，则为真</li>
+<li>-L filename #如果 filename为符号链接，则为真</li>
+<li>-r filename #如果 filename可读，则为真</li>
+<li>-w filename #如果 filename可写，则为真</li>
+<li>-x filename #如果 filename可执行，则为真</li>
+<li>-s filename #如果文件长度不为0，则为真</li>
+<li>-h filename #如果文件是软链接，则为真</li>
+</ul>
+</li>
+<li>数值比较判断<ul>
+<li>-eq：等于为真</li>
+<li>-ne：不等于为真</li>
+<li>-lt：小于为真</li>
+<li>-le：小于等于为真</li>
+<li>-gt：大于为真</li>
+<li>-ge：大于等于为真</li>
+</ul>
+</li>
+<li>字符串判断<ul>
+<li>str：str非空，真</li>
+<li>s1 &#x3D; s2</li>
+<li>s1 !&#x3D; s2</li>
+<li>-n str：str不为0，真</li>
+<li>-z str：str为0，真</li>
+</ul>
+</li>
+<li>组合语法<ul>
+<li>！：逻辑非</li>
+<li>-a：逻辑与</li>
+<li>-o：逻辑或</li>
+<li>(  )：表达式分组，优先级区分</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>#如果&#x3D;&#x3D;文件夹&#x3D;&#x3D;不存在，则创建文件夹</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tempPath=&quot;/home/parasaga/blank&quot;</span><br><span class="line">if [ ! -d &quot;$tempPath&quot; ]; </span><br><span class="line">then mkdir $blankPath</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>#如果&#x3D;&#x3D;文件&#x3D;&#x3D;不存在，则创建文件</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tempFile=&quot;/home/parasaga/blank/error.log&quot;</span><br><span class="line">if [ ! -f &quot;$tempFile&quot; ]; </span><br><span class="line">then touch $tempFile</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ ! -f test1 ]</span><br><span class="line">then echo &quot;flase&quot;</span><br><span class="line">else</span><br><span class="line">echo &quot;true&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>演示示例</p>
+   <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">read s1</span><br><span class="line">if [ $s1 == 1 ]</span><br><span class="line">then echo 123</span><br><span class="line">mkdir shell1</span><br><span class="line">elif [ $s1 == 2 ]</span><br><span class="line">then echo 321</span><br><span class="line">		mkdir shell2</span><br><span class="line">else</span><br><span class="line">		echo finding</span><br><span class="line">if [  -d shell1 ]</span><br><span class="line">then    rm -r shell1</span><br><span class="line">		echo ok1</span><br><span class="line">fi</span><br><span class="line">if [  -d shell2 ]</span><br><span class="line">then rm -r shell2</span><br><span class="line">		echo ok2</span><br><span class="line">else</span><br><span class="line">		echo false</span><br><span class="line">fi</span><br><span class="line">fi       </span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="2">
+<li><p>函数定义</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">functionname</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function getSum()&#123;</span><br><span class="line">SUM=$[$n1+$n2]</span><br><span class="line">echo &quot;sum=$SUM&quot;</span><br><span class="line">&#125;   </span><br><span class="line"></span><br><span class="line">read -p &quot;请输入第一个参数n1：&quot; n1</span><br><span class="line">read -p &quot;请输入第二个参数n2：&quot; n2</span><br><span class="line"></span><br><span class="line"># 调用 getSum 函数</span><br><span class="line">getSum $n1 $n2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>循环语句</p>
+<ul>
+<li><p>while</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">while 条件（为真时执行）</span><br><span class="line">do</span><br><span class="line">	语句</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
+<li><p>until：测试发生在循环末尾，因此循环至少<strong>执行一次</strong></p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">until 条件</span><br><span class="line">do</span><br><span class="line">	语句</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
+<li><p>for</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for 变量名 [ in 数值列表 ]</span><br><span class="line">do</span><br><span class="line">	语句</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
+<li><pre><code>exit 0
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>开源项目</category>
+        <category>LINUX OS</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C/C++ PROGRAM-GUIDE</title>
     <url>/2022/03/17/C-PROGRAM-GUIDE/</url>
     <content><![CDATA[<!-- markdown="1" is required for GitHub Pages to render the TOC properly. -->
@@ -735,276 +992,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LINUX OS</title>
-    <url>/2022/03/22/LINUX-OS/</url>
-    <content><![CDATA[<h1 id="Linux系统基础"><a href="#Linux系统基础" class="headerlink" title="Linux系统基础"></a>Linux系统基础</h1><ol>
-<li><p>MBR：主引导记录</p>
-</li>
-<li><p>grub2引导 (grub「grand unified bootloader 宏大的统一引导启动程序」：幼虫，搜寻)</p>
-<ol>
-<li>boot.img</li>
-<li>core.img</li>
-<li>*.mod</li>
-<li>grub.cfg a. 未独立&#x2F;boot：&#x2F;boot&#x2F;grub2&#x2F;grub.cfg b. 独立&#x2F;boot:&#x2F;grub2&#x2F;grub.cfg</li>
-<li>grun2-setpassword：设置引导密码</li>
-</ol>
-</li>
-<li><p>init：PID&#x3D;1（进程号）</p>
-<ol>
-<li>centos7第一个进程：systemd（配置文件：&#x2F;usr&#x2F;system&#x2F;systemd&#x2F;）</li>
-<li>执行登录 &#x2F;bin&#x2F;login</li>
-</ol>
-</li>
-<li><p>demesg | less：“|”管道符，左侧命令输出作为右侧的输入</p>
-</li>
-<li><p>&#x2F;dev：设备 –&gt; 文件</p>
-</li>
-<li><p>&#x2F;usr：unix shared resources（共享资源）「类似win的Program Files」</p>
-</li>
-<li><p>&#x2F;src：原文件</p>
-</li>
-<li><p>&#x2F;tmp：临时文件</p>
-</li>
-<li><p>&#x2F;var（variable）：日志文件、打印机脱机工作文件、缓冲区</p>
-</li>
-<li><p>&#x2F;opt（option）：选项文件</p>
-</li>
-<li><p>&#x2F;mnt（mount）：挂载</p>
-</li>
-<li><p>cd：change directory</p>
-</li>
-<li><p>文件类型：</p>
-<ol>
-<li>d：目录</li>
-<li>l：链接</li>
-<li>b：块设备</li>
-<li>c：字符设备文件</li>
-<li>-：普通文件</li>
-</ol>
-</li>
-<li><p>文件权限：</p>
-<ol>
-<li>用户组：U &#x2F; G &#x2F; A</li>
-<li>九位字母表示法：d[文件类型] rwx[文件属主] r-x[同组用户] r–[其他用户]</li>
-</ol>
-</li>
-<li><p>cat快速编辑：</p>
-<ol>
-<li>cat&gt;test</li>
-<li>[输入字符]</li>
-</ol>
-</li>
-<li><p>tail &amp; head：查看后十行，前十行 &#x2F;&#x2F;-n num : 指定行数</p>
-</li>
-<li><p>mdir [ -m ] [ -p 目录名 ]</p>
-</li>
-<li><p>rmdir（remove dir）：用于删除空目录</p>
-<ol>
-<li>rm -r</li>
-</ol>
-</li>
-<li><p>touch：修改时间属性 * （不存在）创建文件</p>
-</li>
-<li><p>软链接：ln -s</p>
-</li>
-<li><p>硬链接：ln</p>
-<ol>
-<li>以文件副本形式存在，不占用实际控件</li>
-<li>不允许目录硬链接</li>
-<li>只有在同一个文件系统才允许硬链接</li>
-</ol>
-</li>
-<li><p>查找类：which、whereis、find、grep</p>
-</li>
-<li><p>文件重定向：</p>
-<ul>
-<li>&#x2F;dev&#x2F;stdin：标准输入文件</li>
-<li>&#x2F;dev&#x2F;stdout：标准输出文件</li>
-</ul>
-<ol>
-<li>输出重定向<ol>
-<li>“&gt;”：文件存在，覆盖</li>
-<li>“&gt;&gt;”：文件存在，添加内容到文件末尾</li>
-</ol>
-</li>
-<li>输入重定向<ol>
-<li>“&lt;”</li>
-</ol>
-</li>
-<li>管道符重定向：“|” 左输出为右输入</li>
-</ol>
-</li>
-</ol>
-<h1 id="yum包管理"><a href="#yum包管理" class="headerlink" title="yum包管理"></a>yum包管理</h1><ul>
-<li><p>centos镜像源文件的目录默认路径：<br><code>/etc/yum.repos.d/</code></p>
-</li>
-<li><p>备份：<br><code>cp /etc/yum.repos.d/CentOS-Linux-BaseOS.repo /etc/yum.repos.d/CentOS-Linux-BaseOS.repo.bak</code></p>
-</li>
-</ul>
-<h2 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h2><ul>
-<li><p>下载国内常用的镜像源并重命名为CentOS-Linux-BaseOS.repo,将其作为当前系统的镜像源</p>
-<p>  +【阿里源】</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">##CentOS 8</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Linux-BaseOS.repo  http://mirrors.aliyun.com/repo/Centos-8.repo</span><br></pre></td></tr></table></figure>
-<ul>
-<li>在使用阿里云的 centos8 的 yum 时报错：由于centos8 在2022年停止服务，后继版本为8-steam  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">##CentOS 8-stream</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo</span><br></pre></td></tr></table></figure>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo</span><br></pre></td></tr></table></figure></li>
-<li>【网易源】</li>
-</ul>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Linux-BaseOS.repo  http://mirrors.163.com/.help/CentOS8-Base-163.repo</span><br></pre></td></tr></table></figure>
-<ul>
-<li>『添加epel源』</li>
-</ul>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -P /etc/yum.repos.d/ http://mirrors.aliyun.com/repo/epel-7.repo</span><br></pre></td></tr></table></figure>
-<ul>
-<li>『清华源』：<a href="https://mirror.tuna.tsinghua.edu.cn/help/centos/">Guide</a></li>
-</ul>
-</li>
-<li><p>清理缓存</p>
-<p>  yum的缓存文件的存放目录是以下路径下：&#x2F;var&#x2F;cache&#x2F;yum 直接清空给目录，或者使用一下命令均可</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum clean all</span><br></pre></td></tr></table></figure></li>
-<li><p>重新生成缓存</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
-<h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum update</span><br><span class="line">yum makecache</span><br><span class="line">yum clean all</span><br><span class="line">yum info [pagename]</span><br><span class="line">yum list</span><br><span class="line">yum search</span><br></pre></td></tr></table></figure>
-<h1 id="SHELL"><a href="#SHELL" class="headerlink" title="SHELL"></a>SHELL</h1></li>
-</ul>
-<ol>
-<li><h2 id="shell概念"><a href="#shell概念" class="headerlink" title="shell概念"></a>shell概念</h2><ul>
-<li>shell程序就是一个包含若干行shell或者linux命令的文件.</li>
-<li>像编写高级语言的程序一样，编写一个shell程序需要一个文本编辑器.如ⅥM等.</li>
-<li>在文本编辑环境下，依据shell的语法规则，输入一些shell&#x2F;linux命令行，形成一个完整的程序文件.</li>
-<li>执行shell程序文件有三种方法<ol>
-<li>#chmod +x file（在&#x2F;etc&#x2F;profile中，加入export PATH&#x3D;${PATH}:~&#x2F;yourpath，就可以在命令行下直接运行，像执行普通命令一样）</li>
-<li>#. file</li>
-<li>#sh file</li>
-<li>#source file</li>
-</ol>
-</li>
-<li>在编写shell时，第一行一定要指明系统需要那种shell解释你的shell程序（如：#! &#x2F;bin&#x2F;bash,#! &#x2F;bin&#x2F;csh,&#x2F;bin&#x2F;tcsh，还是#! &#x2F;bin&#x2F;pdksh .）</li>
-<li>接口概念：在计算机体系结构中，操作系统是最接近硬件的软件部分，其更侧重从软件和功能的角度出发去描述部件，所以称之为<strong>设备控制器</strong>；而在计算机组成原理中，研究的重点在于硬件组成部分，其更青睐于从硬件的角度出发去描述部件，所以称之为<strong>I&#x2F;O接口</strong>。</li>
-</ul>
-</li>
-</ol>
-<h2 id="各类Shell"><a href="#各类Shell" class="headerlink" title="各类Shell"></a>各类Shell</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $SHELL</span><br><span class="line">echo $0</span><br><span class="line">cat /etc/shells</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>bash</p>
-</li>
-<li><p>zsh</p>
-<ul>
-<li>zshell简介：Zsh（Z-shell）是一款用于交互式使用的shell，也可以作为脚本解释器来使用。其包含了 bash，ksh，tcsh 等其他shell中许多优秀功能，也拥有诸多自身特色。</li>
-<li>zshell发展历史：Zsh初版由原作者保罗·弗斯塔德（Paul Falstad）于1990年在普林斯顿大学求学时编写 [3] 。其名称zsh源于普林斯顿大学助教的邵中（Zhong Shao，现任耶鲁大学教授）——保罗将邵中的用户名”zsh”作为此Shell的名称</li>
-<li>zsh美化<h2 id="SHELL文件类型"><a href="#SHELL文件类型" class="headerlink" title="SHELL文件类型"></a>SHELL文件类型</h2>&#x2F; vim test1.sh<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod +x test1.sh</span><br><span class="line">./test1.sh</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sh test1.sh</span><br></pre></td></tr></table></figure>
-<h2 id="SHELL基本操作"><a href="#SHELL基本操作" class="headerlink" title="SHELL基本操作"></a>SHELL基本操作</h2></li>
-</ul>
-</li>
-<li><p>变量赋值调用</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $0 $1 $2 </span><br></pre></td></tr></table></figure>
- <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sh echotest1.sh 0 1 2 3</span><br><span class="line"><span class="meta">#</span><span class="language-bash">output:0 1 2</span></span><br></pre></td></tr></table></figure></li>
-<li><p>expr：数值计算</p>
-<ul>
-<li>“+、-、\、&#x2F;、%”</li>
-<li>用法：“ $ () ”、“$ []”<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">expr 2 + 3</span><br><span class="line"># output：5</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>shell脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home</span><br><span class="line">touch test1</span><br><span class="line">mkdir test1</span><br><span class="line">mv test1 /test1</span><br></pre></td></tr></table></figure>
-<ol>
-<li>判断语法（a[]、test ?）<ol>
-<li>文件类判断<ul>
-<li>-e filename #如果 filename为目录，则为真</li>
-<li>-f filename #如果 filename为常规文件，则为真</li>
-<li>-L filename #如果 filename为符号链接，则为真</li>
-<li>-r filename #如果 filename可读，则为真</li>
-<li>-w filename #如果 filename可写，则为真</li>
-<li>-x filename #如果 filename可执行，则为真</li>
-<li>-s filename #如果文件长度不为0，则为真</li>
-<li>-h filename #如果文件是软链接，则为真</li>
-</ul>
-</li>
-<li>数值比较判断<ul>
-<li>-eq：等于为真</li>
-<li>-ne：不等于为真</li>
-<li>-lt：小于为真</li>
-<li>-le：小于等于为真</li>
-<li>-gt：大于为真</li>
-<li>-ge：大于等于为真</li>
-</ul>
-</li>
-<li>字符串判断<ul>
-<li>str：str非空，真</li>
-<li>s1 &#x3D; s2</li>
-<li>s1 !&#x3D; s2</li>
-<li>-n str：str不为0，真</li>
-<li>-z str：str为0，真</li>
-</ul>
-</li>
-<li>组合语法<ul>
-<li>！：逻辑非</li>
-<li>-a：逻辑与</li>
-<li>-o：逻辑或</li>
-<li>(  )：表达式分组，优先级区分</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li><p>#如果&#x3D;&#x3D;文件夹&#x3D;&#x3D;不存在，则创建文件夹</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tempPath=&quot;/home/parasaga/blank&quot;</span><br><span class="line">if [ ! -d &quot;$tempPath&quot; ]; </span><br><span class="line">then mkdir $blankPath</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>#如果&#x3D;&#x3D;文件&#x3D;&#x3D;不存在，则创建文件</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tempFile=&quot;/home/parasaga/blank/error.log&quot;</span><br><span class="line">if [ ! -f &quot;$tempFile&quot; ]; </span><br><span class="line">then touch $tempFile</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ ! -f test1 ]</span><br><span class="line">then echo &quot;flase&quot;</span><br><span class="line">else</span><br><span class="line">echo &quot;true&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ol>
-<ul>
-<li><p>演示示例</p>
-   <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">read s1</span><br><span class="line">if [ $s1 == 1 ]</span><br><span class="line">then echo 123</span><br><span class="line">mkdir shell1</span><br><span class="line">elif [ $s1 == 2 ]</span><br><span class="line">then echo 321</span><br><span class="line">		mkdir shell2</span><br><span class="line">else</span><br><span class="line">		echo finding</span><br><span class="line">if [  -d shell1 ]</span><br><span class="line">then    rm -r shell1</span><br><span class="line">		echo ok1</span><br><span class="line">fi</span><br><span class="line">if [  -d shell2 ]</span><br><span class="line">then rm -r shell2</span><br><span class="line">		echo ok2</span><br><span class="line">else</span><br><span class="line">		echo false</span><br><span class="line">fi</span><br><span class="line">fi       </span><br></pre></td></tr></table></figure></li>
-</ul>
-<ol start="2">
-<li><p>函数定义</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">functionname</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function getSum()&#123;</span><br><span class="line">SUM=$[$n1+$n2]</span><br><span class="line">echo &quot;sum=$SUM&quot;</span><br><span class="line">&#125;   </span><br><span class="line"></span><br><span class="line">read -p &quot;请输入第一个参数n1：&quot; n1</span><br><span class="line">read -p &quot;请输入第二个参数n2：&quot; n2</span><br><span class="line"></span><br><span class="line"># 调用 getSum 函数</span><br><span class="line">getSum $n1 $n2</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>循环语句</p>
-<ul>
-<li><p>while</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">while 条件（为真时执行）</span><br><span class="line">do</span><br><span class="line">	语句</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
-<li><p>until：测试发生在循环末尾，因此循环至少<strong>执行一次</strong></p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">until 条件</span><br><span class="line">do</span><br><span class="line">	语句</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
-<li><p>for</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for 变量名 [ in 数值列表 ]</span><br><span class="line">do</span><br><span class="line">	语句</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
-<li><pre><code>exit 0
-</code></pre>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>开源项目</category>
-        <category>LINUX OS</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MY FAVOR TOOLS BANK (我的&quot;武器/装备&quot;库)</title>
-    <url>/2022/03/22/My-Attack-Tools/</url>
-    <content><![CDATA[<h1 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h1><h2 id="JOPLIN"><a href="#JOPLIN" class="headerlink" title="JOPLIN"></a>JOPLIN</h2><h2 id="ANKI"><a href="#ANKI" class="headerlink" title="ANKI"></a>ANKI</h2><h2 id="MARKTEST"><a href="#MARKTEST" class="headerlink" title="MARKTEST"></a>MARKTEST</h2><h2 id="RIME"><a href="#RIME" class="headerlink" title="RIME"></a>RIME</h2><h2 id="ASF"><a href="#ASF" class="headerlink" title="ASF"></a>ASF</h2><h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><h2 id="PotPlayer"><a href="#PotPlayer" class="headerlink" title="PotPlayer"></a>PotPlayer</h2><h2 id="Neat-Download-Manager"><a href="#Neat-Download-Manager" class="headerlink" title="Neat Download Manager"></a>Neat Download Manager</h2><h2 id="OllyDBG"><a href="#OllyDBG" class="headerlink" title="OllyDBG"></a>OllyDBG</h2><h1 id="商业软件（部分含community版）"><a href="#商业软件（部分含community版）" class="headerlink" title="商业软件（部分含community版）"></a>商业软件（部分含community版）</h1><h2 id="Vmware"><a href="#Vmware" class="headerlink" title="Vmware"></a>Vmware</h2><h2 id="Wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h2><h2 id="Arduino"><a href="#Arduino" class="headerlink" title="Arduino"></a>Arduino</h2><h2 id="Pycharm"><a href="#Pycharm" class="headerlink" title="Pycharm"></a>Pycharm</h2><h2 id="Visual-Studio"><a href="#Visual-Studio" class="headerlink" title="Visual Studio"></a>Visual Studio</h2><h2 id="Visual-Studio-IDE"><a href="#Visual-Studio-IDE" class="headerlink" title="Visual Studio IDE"></a>Visual Studio IDE</h2>]]></content>
-      <categories>
-        <category>开源项目</category>
-        <category>software</category>
-      </categories>
-      <tags>
-        <tag>tools</tag>
-        <tag>open source</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LINUX-PENETRATION</title>
     <url>/2021/12/25/LINUX-PENETRATION/</url>
     <content><![CDATA[<h1 id="NMAP高级嗅探"><a href="#NMAP高级嗅探" class="headerlink" title="NMAP高级嗅探"></a>NMAP高级嗅探</h1><h2 id="网络-防火墙逃逸嗅探"><a href="#网络-防火墙逃逸嗅探" class="headerlink" title="(网络)防火墙逃逸嗅探"></a>(网络)防火墙逃逸嗅探</h2><ol>
@@ -1173,6 +1160,19 @@
         <tag>渗透</tag>
         <tag>网络空间安全</tag>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MY FAVOR TOOLS BANK (我的&quot;武器/装备&quot;库)</title>
+    <url>/2022/03/22/My-Attack-Tools/</url>
+    <content><![CDATA[<h1 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h1><h2 id="JOPLIN"><a href="#JOPLIN" class="headerlink" title="JOPLIN"></a>JOPLIN</h2><h2 id="ANKI"><a href="#ANKI" class="headerlink" title="ANKI"></a>ANKI</h2><h2 id="MARKTEST"><a href="#MARKTEST" class="headerlink" title="MARKTEST"></a>MARKTEST</h2><h2 id="RIME"><a href="#RIME" class="headerlink" title="RIME"></a>RIME</h2><h2 id="ASF"><a href="#ASF" class="headerlink" title="ASF"></a>ASF</h2><h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><h2 id="PotPlayer"><a href="#PotPlayer" class="headerlink" title="PotPlayer"></a>PotPlayer</h2><h2 id="Neat-Download-Manager"><a href="#Neat-Download-Manager" class="headerlink" title="Neat Download Manager"></a>Neat Download Manager</h2><h2 id="OllyDBG"><a href="#OllyDBG" class="headerlink" title="OllyDBG"></a>OllyDBG</h2><h1 id="商业软件（部分含community版）"><a href="#商业软件（部分含community版）" class="headerlink" title="商业软件（部分含community版）"></a>商业软件（部分含community版）</h1><h2 id="Vmware"><a href="#Vmware" class="headerlink" title="Vmware"></a>Vmware</h2><h2 id="Wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h2><h2 id="Arduino"><a href="#Arduino" class="headerlink" title="Arduino"></a>Arduino</h2><h2 id="Pycharm"><a href="#Pycharm" class="headerlink" title="Pycharm"></a>Pycharm</h2><h2 id="Visual-Studio"><a href="#Visual-Studio" class="headerlink" title="Visual Studio"></a>Visual Studio</h2><h2 id="Visual-Studio-IDE"><a href="#Visual-Studio-IDE" class="headerlink" title="Visual Studio IDE"></a>Visual Studio IDE</h2>]]></content>
+      <categories>
+        <category>开源项目</category>
+        <category>software</category>
+      </categories>
+      <tags>
+        <tag>tools</tag>
+        <tag>open source</tag>
       </tags>
   </entry>
   <entry>
@@ -1350,6 +1350,54 @@
         <tag>安全漏洞</tag>
         <tag>0day</tag>
         <tag>Stack overflow</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RIME CONFIG GUIDE</title>
+    <url>/2021/12/25/RIME-CONfIG/</url>
+    <content><![CDATA[<h1 id="x2F-rime-x2F-build-x2F-ibus-rime-yaml"><a href="#x2F-rime-x2F-build-x2F-ibus-rime-yaml" class="headerlink" title="&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml"></a>&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml</h1><p>ibus-rime候选横竖列文件</p>
+<h1 id="x2F-rime-x2F-default-custom-yaml"><a href="#x2F-rime-x2F-default-custom-yaml" class="headerlink" title="&#x2F;rime&#x2F;default.custom.yaml"></a>&#x2F;rime&#x2F;default.custom.yaml</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">	<span class="string">&quot;menu/page_size&quot;</span>: <span class="number">7</span> <span class="comment">#每页候选词个数</span></span><br><span class="line">	<span class="string">&quot;ascii_composer/switch_key/Shift_L&quot;</span>: commit_code <span class="comment">#左shift提交字母</span></span><br><span class="line">	<span class="string">&quot;style/horizontal&quot;</span>: true      <span class="comment"># 候選橫排</span></span><br></pre></td></tr></table></figure>
+<h1 id="x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml"><a href="#x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml" class="headerlink" title="&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml"></a>&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">	switches:                   <span class="comment"># 注意縮進</span></span><br><span class="line">	- name: ascii_mode</span><br><span class="line">	reset: <span class="number">0</span>                <span class="comment"># reset 0 的作用是當從其他輸入方案切換到本方案時，</span></span><br><span class="line">	states: [ 中文, 西文 ]  <span class="comment"># 重設爲指定的狀態，而不保留在前一個方案中設定的狀態。</span></span><br><span class="line">	- name: full_shape        <span class="comment"># 選擇輸入方案後通常需要立即輸入中文，故重設 ascii_mode = 0；</span></span><br><span class="line">	states: [ 半角, 全角 ]  <span class="comment"># 而全／半角則可沿用之前方案中的用法。</span></span><br><span class="line">	- name: simplification</span><br><span class="line">	reset: <span class="number">1</span>                <span class="comment"># 增加這一行：默認啓用「繁→簡」轉換。</span></span><br><span class="line">	states: [ 漢字, 汉字 ]</span><br></pre></td></tr></table></figure>
+<h1 id="weasel-custom-yaml"><a href="#weasel-custom-yaml" class="headerlink" title="weasel.custom.yaml"></a>weasel.custom.yaml</h1><h2 id="P站配色主题风格"><a href="#P站配色主题风格" class="headerlink" title="P站配色主题风格"></a>P站配色主题风格</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line"><span class="comment"># rime输入法自定义P站配色风格主题</span></span><br><span class="line">	<span class="string">&quot;style/layout/round_corner&quot;</span>:<span class="number">5</span></span><br><span class="line">	<span class="string">&quot;style/color_scheme&quot;</span>::p</span><br><span class="line">	  <span class="string">&quot;style/horizontal&quot;</span>: true  <span class="comment">#横向排列</span></span><br><span class="line">	<span class="string">&quot;preset_color_schemes/:p&quot;</span>:</span><br><span class="line">		author:BLACK</span><br><span class="line">		name::p</span><br><span class="line">		back_color:<span class="number">0x000000</span></span><br><span class="line">		label_color:<span class="number">0xffffff</span></span><br><span class="line">		border_color:<span class="number">0x000000</span></span><br><span class="line">		text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_text_color:<span class="number">0x000000</span></span><br><span class="line">		hilited_back_color:<span class="number">0x009bff</span></span><br><span class="line">		candidate_text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_candidate_text_color:<span class="number">0x000000</span></span><br><span class="line">		hilited_candidate_back_color:<span class="number">0x009bff</span></span><br><span class="line">		comment_text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_lable_color:<span class="number">0x000000</span></span><br></pre></td></tr></table></figure>
+<pre><code>• 输入法代号：ibus-rime
+• 用户资料夹： ~/.config/ibus/rime/
+• 共享资料夹： /usr/share/rime-data/
+</code></pre>
+<p>共享资料夹包含预设输入方案的源文件。 这些文件属于 Rime 所发行软件的一部份，在访问权限控制较严格的系统上对用户是只读的，因此谢绝软件版本更新以外的任何修改—— 一旦用户修改这里的文件，很可能影响后续的软件升级或在升级时丢失数据。<br>在「部署 Rime」操作时，将用到这里的输入方案源文件、并结合用户定制的内容来编译预设输入方案。</p>
+<h1 id="「用户资料夹」数据说明"><a href="#「用户资料夹」数据说明" class="headerlink" title="「用户资料夹」数据说明"></a>「用户资料夹」数据说明</h1><h2 id="用户资料夹则包含为用户准备的内容"><a href="#用户资料夹则包含为用户准备的内容" class="headerlink" title="用户资料夹则包含为用户准备的内容"></a>用户资料夹则包含为用户准备的内容</h2><pre><code>• 〔全局設定〕 default.yaml
+• 〔發行版設定〕 ibus-rime.yaml
+• 〔預設輸入方案副本〕 &lt;方案标识&gt;.schema.yaml ibus-rime.schema.yaml
+• ※〔安裝信息〕 installation.yaml
+• ※〔用戶狀態信息〕 user.yaml
+</code></pre>
+<h2 id="编译输入方案所产出的二进制文件："><a href="#编译输入方案所产出的二进制文件：" class="headerlink" title="编译输入方案所产出的二进制文件："></a>编译输入方案所产出的二进制文件：</h2><pre><code>• 〔Rime 棱鏡〕 &lt;方案标识&gt;.prism.bin
+• 〔Rime 固態詞典〕 &lt;词典名&gt;.table.bin
+• 〔Rime 反查詞典〕 &lt;词典名&gt;.reverse.bin
+</code></pre>
+<h2 id="记录用户写作习惯的文件"><a href="#记录用户写作习惯的文件" class="headerlink" title="记录用户写作习惯的文件"></a>记录用户写作习惯的文件</h2><pre><code>• ※〔用戶詞典〕 &lt;词典名&gt;.userdb.kct
+• ※〔用戶詞典快照〕 &lt;词典名&gt;.userdb.txt、&lt;词典名&gt;.userdb.kct.snapshot 見於同步文件夾
+</code></pre>
+<h2 id="用户自己设定的"><a href="#用户自己设定的" class="headerlink" title="用户自己设定的"></a>用户自己设定的</h2><pre><code>• ※〔用戶對全局設定的定製信息〕 default.custom.yaml
+• ※〔用戶對預設輸入方案的定製信息〕 &lt;方案标识&gt;.custom.yaml
+• ※〔用戶自製輸入方案〕及配套的詞典源文件
+</code></pre>
+<p>注：以上标有 ※ 号的文件，包含用户资料，清理文件时要注意备份！</p>
+<h1 id="词库管理"><a href="#词库管理" class="headerlink" title="词库管理"></a>词库管理</h1><ol>
+<li>导入搜狗词库：<ol>
+<li>luna_pinyinn.sogou.dict.yaml <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Rime dictionary</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line">---</span><br><span class="line">name: luna_pinyin.sogou</span><br><span class="line">version: <span class="string">&quot;2015.12.24&quot;</span></span><br><span class="line">sort: by_weight</span><br><span class="line">use_preset_vocabulary: true</span><br><span class="line">import_tables:</span><br><span class="line">  - luna_pinyin</span><br><span class="line">...</span><br><span class="line"><span class="comment">#######后面为词库内容#########</span></span><br></pre></td></tr></table></figure></li>
+<li>luna_pinyin_simp.custom.yaml <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">translator/dictionary: luna_pinyin.sogou  <span class="comment">#导入搜狗词库</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<p>2.特殊字符定义：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;recognizer/patterns/punct&#x27;</span>: <span class="string">&quot;^/[a-z]*$&quot;</span>  <span class="comment">#可以使symbols中的‘/hj’‘/fh’等命令</span></span><br><span class="line"><span class="string">&#x27;punctuator/import_preset&#x27;</span>: symbols       <span class="comment">#将标点设置默认为&#x27;symbols.yaml&#x27;文件</span></span><br><span class="line"><span class="string">&quot;switches/@0/reset&quot;</span>: <span class="number">1</span>  <span class="comment"># 初始的 ascii mode 设置为「西文」</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>糢糊音定义：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;speller/algebra&#x27;</span>:</span><br><span class="line">    - erase/^xx$/                      <span class="comment"># 第一行保留</span></span><br><span class="line">    <span class="comment"># 模糊音定義</span></span><br><span class="line">    <span class="comment"># 需要哪組就刪去行首的 # 號，單雙向任選</span></span><br><span class="line">    <span class="comment">#- derive/^([zcs])h/$1/             # zh, ch, sh =&gt; z, c, s</span></span><br><span class="line">    <span class="comment">#- derive/^([zcs])([^h])/$1h$2/     # z, c, s =&gt; zh, ch, sh</span></span><br><span class="line">    <span class="comment">#- derive/^n/l/                     # n =&gt; l</span></span><br><span class="line">    <span class="comment">#- derive/^l/n/                     # l =&gt; n</span></span><br><span class="line">    <span class="comment"># 這兩組一般是單向的</span></span><br><span class="line">    <span class="comment">#- derive/^r/l/                     # r =&gt; l</span></span><br><span class="line">    <span class="comment">#- derive/^ren/yin/                 # ren =&gt; yin, reng =&gt; ying</span></span><br><span class="line">    <span class="comment">#- derive/^r/y/                     # r =&gt; y</span></span><br><span class="line">    <span class="comment"># 下面 hu &lt;=&gt; f 這組寫法複雜一些，分情況討論</span></span><br><span class="line">    <span class="comment">#- derive/^hu$/fu/                  # hu =&gt; fu</span></span><br><span class="line">    - derive/^hong$/feng/              <span class="comment"># hong =&gt; feng</span></span><br><span class="line">    - derive/^hu([<span class="keyword">in</span>])$/fe$<span class="number">1</span>/          <span class="comment"># hui =&gt; fei, hun =&gt; fen</span></span><br><span class="line">    <span class="comment">#- derive/^hu([ao])/f$1/            # hua =&gt; fa, ...</span></span><br><span class="line">    <span class="comment">#- derive/^fu$/hu/                  # fu =&gt; hu</span></span><br><span class="line">    - derive/^feng$/hong/              <span class="comment"># feng =&gt; hong</span></span><br><span class="line">    <span class="comment">#- derive/^fe([in])$/hu$1/          # fei =&gt; hui, fen =&gt; hun</span></span><br><span class="line">    <span class="comment">#- derive/^f([ao])/hu$1/            # fa =&gt; hua, ...</span></span><br><span class="line">    <span class="comment"># 韻母部份</span></span><br><span class="line">    <span class="comment">#- derive/^([bpmf])eng$/$1ong/      # meng = mong, ...</span></span><br><span class="line">    - derive/([ei])n$/$1ng/            <span class="comment"># en =&gt; eng, in =&gt; ing</span></span><br><span class="line">    - derive/([ei])ng$/$1n/            <span class="comment"># eng =&gt; en, ing =&gt; in</span></span><br><span class="line">    - derive/^un/iong/                 <span class="comment"># un =&gt; iong</span></span><br><span class="line">    - derive/^iong/un/                 <span class="comment"># iong =&gt; un</span></span><br><span class="line">    <span class="comment"># 樣例足夠了，其他請自己總結……</span></span><br><span class="line">    <span class="comment"># 反模糊音？</span></span><br><span class="line">    <span class="comment"># 誰說方言沒有普通話精確、有模糊音，就能有反模糊音。</span></span><br><span class="line">    <span class="comment"># 示例爲分尖團的中原官話：</span></span><br><span class="line">    <span class="comment">#- derive/^ji$/zii/   # 在設計者安排下鳩佔鵲巢，尖音i只好雙寫了</span></span><br><span class="line">    <span class="comment">#- derive/^qi$/cii/</span></span><br><span class="line">    <span class="comment">#- derive/^xi$/sii/</span></span><br><span class="line">    <span class="comment">#- derive/^ji/zi/</span></span><br><span class="line">    <span class="comment">#- derive/^qi/ci/</span></span><br><span class="line">    <span class="comment">#- derive/^xi/si/</span></span><br><span class="line">    <span class="comment">#- derive/^ju/zv/</span></span><br><span class="line">    <span class="comment">#- derive/^qu/cv/</span></span><br><span class="line">    <span class="comment">#- derive/^xu/sv/</span></span><br><span class="line">    <span class="comment"># 韻母部份，只能從大面上覆蓋</span></span><br><span class="line">    <span class="comment">#- derive/^([bpm])o$/$1eh/          # bo =&gt; beh, ...</span></span><br><span class="line">    <span class="comment">#- derive/(^|[dtnlgkhzcs]h?)e$/$1eh/  # ge =&gt; geh, se =&gt; sheh, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([gkh])uo$/$1ue/         # guo =&gt; gue, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([gkh])e$/$1uo/          # he =&gt; huo, ...</span></span><br><span class="line">    <span class="comment">#- derive/([uv])e$/$1o/             # jue =&gt; juo, lve =&gt; lvo, ...</span></span><br><span class="line">    <span class="comment">#- derive/^fei$/fi/                 # fei =&gt; fi</span></span><br><span class="line">    <span class="comment">#- derive/^wei$/vi/                 # wei =&gt; vi</span></span><br><span class="line">    <span class="comment">#- derive/^([nl])ei$/$1ui/          # nei =&gt; nui, lei =&gt; lui</span></span><br><span class="line">    <span class="comment">#- derive/^([nlzcs])un$/$1vn/       # lun =&gt; lvn, zun =&gt; zvn, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([nlzcs])ong$/$1iong/    # long =&gt; liong, song =&gt; siong, ...</span></span><br><span class="line">    <span class="comment"># 這個辦法雖從拼寫上做出了區分，然而受詞典制約，候選字仍是混的。</span></span><br><span class="line">    <span class="comment"># 只有真正的方音輸入方案纔能做到！但「反模糊音」這個玩法快速而有效！</span></span><br><span class="line">    <span class="comment"># 模糊音定義先於簡拼定義，方可令簡拼支持以上模糊音</span></span><br><span class="line">    - abbrev/^([a-z]).+$/$<span class="number">1</span>/           <span class="comment"># 簡拼（首字母）</span></span><br><span class="line">    - abbrev/^([zcs]h).+$/$<span class="number">1</span>/          <span class="comment"># 簡拼（zh, ch, sh）</span></span><br><span class="line">    <span class="comment"># 以下是一組容錯拼寫，《漢語拼音》方案以前者爲正</span></span><br><span class="line">    - derive/^([nl])ve$/$1ue/          <span class="comment"># nve = nue, lve = lue</span></span><br><span class="line">    - derive/^([jqxy])u/$1v/           <span class="comment"># ju = jv,</span></span><br><span class="line">    - derive/un$/uen/                  <span class="comment"># gun = guen,</span></span><br><span class="line">    - derive/ui$/uei/                  <span class="comment"># gui = guei,</span></span><br><span class="line">    - derive/iu$/iou/                  <span class="comment"># jiu = jiou,</span></span><br><span class="line">    <span class="comment"># 自動糾正一些常見的按鍵錯誤</span></span><br><span class="line">    - derive/([aeiou])ng$/$1gn/        <span class="comment"># dagn =&gt; dang</span></span><br><span class="line">    - derive/([dtngkhrzcs])o(u|ng)$/$1o/  <span class="comment"># zho =&gt; zhong|zhou</span></span><br><span class="line">    - derive/ong$/on/                  <span class="comment"># zhonguo =&gt; zhong guo</span></span><br><span class="line">    - derive/ao$/oa/                   <span class="comment"># hoa =&gt; hao</span></span><br><span class="line">    - derive/([iu])a(o|ng?)$/a$<span class="number">1</span>$<span class="number">2</span>/    <span class="comment"># tain =&gt; tian</span></span><br><span class="line">  <span class="comment"># 分尖團後 v =&gt; ü 的改寫條件也要相應地擴充：</span></span><br><span class="line">  <span class="comment">#&#x27;translator/preedit_format&#x27;:</span></span><br><span class="line">  <span class="comment">#  - &quot;xform/([nljqxyzcs])v/$1ü/&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <tags>
+        <tag>tools</tag>
+        <tag>open source</tag>
       </tags>
   </entry>
   <entry>
@@ -1681,54 +1729,6 @@
       <tags>
         <tag>程序开发安全</tag>
         <tag>编程语言</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>RIME CONFIG GUIDE</title>
-    <url>/2021/12/25/RIME-CONfIG/</url>
-    <content><![CDATA[<h1 id="x2F-rime-x2F-build-x2F-ibus-rime-yaml"><a href="#x2F-rime-x2F-build-x2F-ibus-rime-yaml" class="headerlink" title="&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml"></a>&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml</h1><p>ibus-rime候选横竖列文件</p>
-<h1 id="x2F-rime-x2F-default-custom-yaml"><a href="#x2F-rime-x2F-default-custom-yaml" class="headerlink" title="&#x2F;rime&#x2F;default.custom.yaml"></a>&#x2F;rime&#x2F;default.custom.yaml</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">	<span class="string">&quot;menu/page_size&quot;</span>: <span class="number">7</span> <span class="comment">#每页候选词个数</span></span><br><span class="line">	<span class="string">&quot;ascii_composer/switch_key/Shift_L&quot;</span>: commit_code <span class="comment">#左shift提交字母</span></span><br><span class="line">	<span class="string">&quot;style/horizontal&quot;</span>: true      <span class="comment"># 候選橫排</span></span><br></pre></td></tr></table></figure>
-<h1 id="x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml"><a href="#x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml" class="headerlink" title="&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml"></a>&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">	switches:                   <span class="comment"># 注意縮進</span></span><br><span class="line">	- name: ascii_mode</span><br><span class="line">	reset: <span class="number">0</span>                <span class="comment"># reset 0 的作用是當從其他輸入方案切換到本方案時，</span></span><br><span class="line">	states: [ 中文, 西文 ]  <span class="comment"># 重設爲指定的狀態，而不保留在前一個方案中設定的狀態。</span></span><br><span class="line">	- name: full_shape        <span class="comment"># 選擇輸入方案後通常需要立即輸入中文，故重設 ascii_mode = 0；</span></span><br><span class="line">	states: [ 半角, 全角 ]  <span class="comment"># 而全／半角則可沿用之前方案中的用法。</span></span><br><span class="line">	- name: simplification</span><br><span class="line">	reset: <span class="number">1</span>                <span class="comment"># 增加這一行：默認啓用「繁→簡」轉換。</span></span><br><span class="line">	states: [ 漢字, 汉字 ]</span><br></pre></td></tr></table></figure>
-<h1 id="weasel-custom-yaml"><a href="#weasel-custom-yaml" class="headerlink" title="weasel.custom.yaml"></a>weasel.custom.yaml</h1><h2 id="P站配色主题风格"><a href="#P站配色主题风格" class="headerlink" title="P站配色主题风格"></a>P站配色主题风格</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line"><span class="comment"># rime输入法自定义P站配色风格主题</span></span><br><span class="line">	<span class="string">&quot;style/layout/round_corner&quot;</span>:<span class="number">5</span></span><br><span class="line">	<span class="string">&quot;style/color_scheme&quot;</span>::p</span><br><span class="line">	  <span class="string">&quot;style/horizontal&quot;</span>: true  <span class="comment">#横向排列</span></span><br><span class="line">	<span class="string">&quot;preset_color_schemes/:p&quot;</span>:</span><br><span class="line">		author:BLACK</span><br><span class="line">		name::p</span><br><span class="line">		back_color:<span class="number">0x000000</span></span><br><span class="line">		label_color:<span class="number">0xffffff</span></span><br><span class="line">		border_color:<span class="number">0x000000</span></span><br><span class="line">		text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_text_color:<span class="number">0x000000</span></span><br><span class="line">		hilited_back_color:<span class="number">0x009bff</span></span><br><span class="line">		candidate_text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_candidate_text_color:<span class="number">0x000000</span></span><br><span class="line">		hilited_candidate_back_color:<span class="number">0x009bff</span></span><br><span class="line">		comment_text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_lable_color:<span class="number">0x000000</span></span><br></pre></td></tr></table></figure>
-<pre><code>• 输入法代号：ibus-rime
-• 用户资料夹： ~/.config/ibus/rime/
-• 共享资料夹： /usr/share/rime-data/
-</code></pre>
-<p>共享资料夹包含预设输入方案的源文件。 这些文件属于 Rime 所发行软件的一部份，在访问权限控制较严格的系统上对用户是只读的，因此谢绝软件版本更新以外的任何修改—— 一旦用户修改这里的文件，很可能影响后续的软件升级或在升级时丢失数据。<br>在「部署 Rime」操作时，将用到这里的输入方案源文件、并结合用户定制的内容来编译预设输入方案。</p>
-<h1 id="「用户资料夹」数据说明"><a href="#「用户资料夹」数据说明" class="headerlink" title="「用户资料夹」数据说明"></a>「用户资料夹」数据说明</h1><h2 id="用户资料夹则包含为用户准备的内容"><a href="#用户资料夹则包含为用户准备的内容" class="headerlink" title="用户资料夹则包含为用户准备的内容"></a>用户资料夹则包含为用户准备的内容</h2><pre><code>• 〔全局設定〕 default.yaml
-• 〔發行版設定〕 ibus-rime.yaml
-• 〔預設輸入方案副本〕 &lt;方案标识&gt;.schema.yaml ibus-rime.schema.yaml
-• ※〔安裝信息〕 installation.yaml
-• ※〔用戶狀態信息〕 user.yaml
-</code></pre>
-<h2 id="编译输入方案所产出的二进制文件："><a href="#编译输入方案所产出的二进制文件：" class="headerlink" title="编译输入方案所产出的二进制文件："></a>编译输入方案所产出的二进制文件：</h2><pre><code>• 〔Rime 棱鏡〕 &lt;方案标识&gt;.prism.bin
-• 〔Rime 固態詞典〕 &lt;词典名&gt;.table.bin
-• 〔Rime 反查詞典〕 &lt;词典名&gt;.reverse.bin
-</code></pre>
-<h2 id="记录用户写作习惯的文件"><a href="#记录用户写作习惯的文件" class="headerlink" title="记录用户写作习惯的文件"></a>记录用户写作习惯的文件</h2><pre><code>• ※〔用戶詞典〕 &lt;词典名&gt;.userdb.kct
-• ※〔用戶詞典快照〕 &lt;词典名&gt;.userdb.txt、&lt;词典名&gt;.userdb.kct.snapshot 見於同步文件夾
-</code></pre>
-<h2 id="用户自己设定的"><a href="#用户自己设定的" class="headerlink" title="用户自己设定的"></a>用户自己设定的</h2><pre><code>• ※〔用戶對全局設定的定製信息〕 default.custom.yaml
-• ※〔用戶對預設輸入方案的定製信息〕 &lt;方案标识&gt;.custom.yaml
-• ※〔用戶自製輸入方案〕及配套的詞典源文件
-</code></pre>
-<p>注：以上标有 ※ 号的文件，包含用户资料，清理文件时要注意备份！</p>
-<h1 id="词库管理"><a href="#词库管理" class="headerlink" title="词库管理"></a>词库管理</h1><ol>
-<li>导入搜狗词库：<ol>
-<li>luna_pinyinn.sogou.dict.yaml <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Rime dictionary</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line">---</span><br><span class="line">name: luna_pinyin.sogou</span><br><span class="line">version: <span class="string">&quot;2015.12.24&quot;</span></span><br><span class="line">sort: by_weight</span><br><span class="line">use_preset_vocabulary: true</span><br><span class="line">import_tables:</span><br><span class="line">  - luna_pinyin</span><br><span class="line">...</span><br><span class="line"><span class="comment">#######后面为词库内容#########</span></span><br></pre></td></tr></table></figure></li>
-<li>luna_pinyin_simp.custom.yaml <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">translator/dictionary: luna_pinyin.sogou  <span class="comment">#导入搜狗词库</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
-<p>2.特殊字符定义：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;recognizer/patterns/punct&#x27;</span>: <span class="string">&quot;^/[a-z]*$&quot;</span>  <span class="comment">#可以使symbols中的‘/hj’‘/fh’等命令</span></span><br><span class="line"><span class="string">&#x27;punctuator/import_preset&#x27;</span>: symbols       <span class="comment">#将标点设置默认为&#x27;symbols.yaml&#x27;文件</span></span><br><span class="line"><span class="string">&quot;switches/@0/reset&quot;</span>: <span class="number">1</span>  <span class="comment"># 初始的 ascii mode 设置为「西文」</span></span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>糢糊音定义：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;speller/algebra&#x27;</span>:</span><br><span class="line">    - erase/^xx$/                      <span class="comment"># 第一行保留</span></span><br><span class="line">    <span class="comment"># 模糊音定義</span></span><br><span class="line">    <span class="comment"># 需要哪組就刪去行首的 # 號，單雙向任選</span></span><br><span class="line">    <span class="comment">#- derive/^([zcs])h/$1/             # zh, ch, sh =&gt; z, c, s</span></span><br><span class="line">    <span class="comment">#- derive/^([zcs])([^h])/$1h$2/     # z, c, s =&gt; zh, ch, sh</span></span><br><span class="line">    <span class="comment">#- derive/^n/l/                     # n =&gt; l</span></span><br><span class="line">    <span class="comment">#- derive/^l/n/                     # l =&gt; n</span></span><br><span class="line">    <span class="comment"># 這兩組一般是單向的</span></span><br><span class="line">    <span class="comment">#- derive/^r/l/                     # r =&gt; l</span></span><br><span class="line">    <span class="comment">#- derive/^ren/yin/                 # ren =&gt; yin, reng =&gt; ying</span></span><br><span class="line">    <span class="comment">#- derive/^r/y/                     # r =&gt; y</span></span><br><span class="line">    <span class="comment"># 下面 hu &lt;=&gt; f 這組寫法複雜一些，分情況討論</span></span><br><span class="line">    <span class="comment">#- derive/^hu$/fu/                  # hu =&gt; fu</span></span><br><span class="line">    - derive/^hong$/feng/              <span class="comment"># hong =&gt; feng</span></span><br><span class="line">    - derive/^hu([<span class="keyword">in</span>])$/fe$<span class="number">1</span>/          <span class="comment"># hui =&gt; fei, hun =&gt; fen</span></span><br><span class="line">    <span class="comment">#- derive/^hu([ao])/f$1/            # hua =&gt; fa, ...</span></span><br><span class="line">    <span class="comment">#- derive/^fu$/hu/                  # fu =&gt; hu</span></span><br><span class="line">    - derive/^feng$/hong/              <span class="comment"># feng =&gt; hong</span></span><br><span class="line">    <span class="comment">#- derive/^fe([in])$/hu$1/          # fei =&gt; hui, fen =&gt; hun</span></span><br><span class="line">    <span class="comment">#- derive/^f([ao])/hu$1/            # fa =&gt; hua, ...</span></span><br><span class="line">    <span class="comment"># 韻母部份</span></span><br><span class="line">    <span class="comment">#- derive/^([bpmf])eng$/$1ong/      # meng = mong, ...</span></span><br><span class="line">    - derive/([ei])n$/$1ng/            <span class="comment"># en =&gt; eng, in =&gt; ing</span></span><br><span class="line">    - derive/([ei])ng$/$1n/            <span class="comment"># eng =&gt; en, ing =&gt; in</span></span><br><span class="line">    - derive/^un/iong/                 <span class="comment"># un =&gt; iong</span></span><br><span class="line">    - derive/^iong/un/                 <span class="comment"># iong =&gt; un</span></span><br><span class="line">    <span class="comment"># 樣例足夠了，其他請自己總結……</span></span><br><span class="line">    <span class="comment"># 反模糊音？</span></span><br><span class="line">    <span class="comment"># 誰說方言沒有普通話精確、有模糊音，就能有反模糊音。</span></span><br><span class="line">    <span class="comment"># 示例爲分尖團的中原官話：</span></span><br><span class="line">    <span class="comment">#- derive/^ji$/zii/   # 在設計者安排下鳩佔鵲巢，尖音i只好雙寫了</span></span><br><span class="line">    <span class="comment">#- derive/^qi$/cii/</span></span><br><span class="line">    <span class="comment">#- derive/^xi$/sii/</span></span><br><span class="line">    <span class="comment">#- derive/^ji/zi/</span></span><br><span class="line">    <span class="comment">#- derive/^qi/ci/</span></span><br><span class="line">    <span class="comment">#- derive/^xi/si/</span></span><br><span class="line">    <span class="comment">#- derive/^ju/zv/</span></span><br><span class="line">    <span class="comment">#- derive/^qu/cv/</span></span><br><span class="line">    <span class="comment">#- derive/^xu/sv/</span></span><br><span class="line">    <span class="comment"># 韻母部份，只能從大面上覆蓋</span></span><br><span class="line">    <span class="comment">#- derive/^([bpm])o$/$1eh/          # bo =&gt; beh, ...</span></span><br><span class="line">    <span class="comment">#- derive/(^|[dtnlgkhzcs]h?)e$/$1eh/  # ge =&gt; geh, se =&gt; sheh, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([gkh])uo$/$1ue/         # guo =&gt; gue, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([gkh])e$/$1uo/          # he =&gt; huo, ...</span></span><br><span class="line">    <span class="comment">#- derive/([uv])e$/$1o/             # jue =&gt; juo, lve =&gt; lvo, ...</span></span><br><span class="line">    <span class="comment">#- derive/^fei$/fi/                 # fei =&gt; fi</span></span><br><span class="line">    <span class="comment">#- derive/^wei$/vi/                 # wei =&gt; vi</span></span><br><span class="line">    <span class="comment">#- derive/^([nl])ei$/$1ui/          # nei =&gt; nui, lei =&gt; lui</span></span><br><span class="line">    <span class="comment">#- derive/^([nlzcs])un$/$1vn/       # lun =&gt; lvn, zun =&gt; zvn, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([nlzcs])ong$/$1iong/    # long =&gt; liong, song =&gt; siong, ...</span></span><br><span class="line">    <span class="comment"># 這個辦法雖從拼寫上做出了區分，然而受詞典制約，候選字仍是混的。</span></span><br><span class="line">    <span class="comment"># 只有真正的方音輸入方案纔能做到！但「反模糊音」這個玩法快速而有效！</span></span><br><span class="line">    <span class="comment"># 模糊音定義先於簡拼定義，方可令簡拼支持以上模糊音</span></span><br><span class="line">    - abbrev/^([a-z]).+$/$<span class="number">1</span>/           <span class="comment"># 簡拼（首字母）</span></span><br><span class="line">    - abbrev/^([zcs]h).+$/$<span class="number">1</span>/          <span class="comment"># 簡拼（zh, ch, sh）</span></span><br><span class="line">    <span class="comment"># 以下是一組容錯拼寫，《漢語拼音》方案以前者爲正</span></span><br><span class="line">    - derive/^([nl])ve$/$1ue/          <span class="comment"># nve = nue, lve = lue</span></span><br><span class="line">    - derive/^([jqxy])u/$1v/           <span class="comment"># ju = jv,</span></span><br><span class="line">    - derive/un$/uen/                  <span class="comment"># gun = guen,</span></span><br><span class="line">    - derive/ui$/uei/                  <span class="comment"># gui = guei,</span></span><br><span class="line">    - derive/iu$/iou/                  <span class="comment"># jiu = jiou,</span></span><br><span class="line">    <span class="comment"># 自動糾正一些常見的按鍵錯誤</span></span><br><span class="line">    - derive/([aeiou])ng$/$1gn/        <span class="comment"># dagn =&gt; dang</span></span><br><span class="line">    - derive/([dtngkhrzcs])o(u|ng)$/$1o/  <span class="comment"># zho =&gt; zhong|zhou</span></span><br><span class="line">    - derive/ong$/on/                  <span class="comment"># zhonguo =&gt; zhong guo</span></span><br><span class="line">    - derive/ao$/oa/                   <span class="comment"># hoa =&gt; hao</span></span><br><span class="line">    - derive/([iu])a(o|ng?)$/a$<span class="number">1</span>$<span class="number">2</span>/    <span class="comment"># tain =&gt; tian</span></span><br><span class="line">  <span class="comment"># 分尖團後 v =&gt; ü 的改寫條件也要相應地擴充：</span></span><br><span class="line">  <span class="comment">#&#x27;translator/preedit_format&#x27;:</span></span><br><span class="line">  <span class="comment">#  - &quot;xform/([nljqxyzcs])v/$1ü/&quot;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <tags>
-        <tag>tools</tag>
-        <tag>open source</tag>
       </tags>
   </entry>
   <entry>
@@ -2438,6 +2438,300 @@
       <tags>
         <tag>Linux</tag>
         <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>信息安全技术</title>
+    <url>/2022/03/22/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/</url>
+    <content><![CDATA[<h1 id="一、信息安全概述"><a href="#一、信息安全概述" class="headerlink" title="一、信息安全概述"></a>一、信息安全概述</h1><h1 id="二、加密技术"><a href="#二、加密技术" class="headerlink" title="二、加密技术"></a>二、加密技术</h1><ol>
+<li><h2 id="密码学发展"><a href="#密码学发展" class="headerlink" title="密码学发展"></a>密码学发展</h2><ol>
+<li>手工加密阶段</li>
+<li>机械加密阶段</li>
+<li>计算机加密阶段</li>
+</ol>
+</li>
+<li><h2 id="密码学基本概念-amp-术语"><a href="#密码学基本概念-amp-术语" class="headerlink" title="密码学基本概念 &amp; 术语"></a>密码学基本概念 &amp; 术语</h2><ol>
+<li>密码学分支：密码编码学（加密）、密码分析学（解密）</li>
+<li><font color=purple>密码体制：{Sm、Sc、Sk、E、D}<ol>
+<li>S<del>M</del>：明文</li>
+<li>S<del>c</del>：密文</li>
+<li>S<del>k</del>：密钥key</li>
+<li>E：加密算法</li>
+<li>D：解密算法    </font></li>
+</ol>
+</li>
+<li><font color=green>【密码算法安全评估原则】</font>柯克霍夫原则（Kerckhoffs）：密码系统的安全性取决于&#x3D;&#x3D;密钥&#x3D;&#x3D;，而不是密码算法，即密码算法要公开</li>
+</ol>
+</li>
+<li><h2 id="古典密码"><a href="#古典密码" class="headerlink" title="古典密码"></a>古典密码</h2><ol>
+<li>移位密码（典型：凯撒密码）<ul>
+<li>设26字母按0，1，2，……，25<ol>
+<li>加密：c &#x3D; m + k (mod 26) </li>
+<li>解密：m &#x3D; c -k (mod 26)</li>
+</ol>
+</li>
+<li>数学形式化定义：略</li>
+</ul>
+</li>
+<li>仿射密码：明文、密文、移位空间相同<ol>
+<li>加密：c &#x3D; (a*m + b) (mod 26)</li>
+<li>解密：m &#x3D; a^-1^ (c - b)  (mod 26)</li>
+</ol>
+</li>
+<li>维吉利亚密码（Vigenere）【简单多表代换密码，使用一系列不同的凯撒密码组成密码字母表】<ul>
+<li>把英文字母用数字代替进行运算，a<del>z 为 0</del>25</li>
+<li>引入了密钥的概念，设定一个参数n，按n个字母一组进行变换</li>
+<li>加解密步骤：<ol>
+<li>分：按照密钥长度对密文进行分组</li>
+<li>转：a<del>z 转换为 0</del>25</li>
+<li>算：(m+k) mod26  &#x2F;    (c-k) mod 26</li>
+<li>转：c &#x2F; m 转回英文</li>
+</ol>
+</li>
+</ul>
+<ol>
+<li>加密：c &#x3D;(m + k) (mod 26)【密文 &#x3D; （明文 + 密钥）mod 26】</li>
+<li>解密：m &#x3D;(c - k) (mod 26)【明文 &#x3D; （密文 - 密钥）mod 26】</li>
+</ol>
+</li>
+<li>置换密码：将明文中各字符的&#x3D;&#x3D;位置次序重新排列&#x3D;&#x3D;得到密文</li>
+</ol>
+<ul>
+<li>古典密码不适合柯克霍夫原则，密码安全性基于算法的保密（现代密码学从1949年开始，由于计算机的出现算法的计算变得非常复杂，保密性不再依赖算法，而是密钥）</li>
+</ul>
+</li>
+<li><h2 id="对称密码"><a href="#对称密码" class="headerlink" title="对称密码"></a>对称密码</h2><ul>
+<li>加解密算法互为逆运算，密钥相同，满足：M &#x3D; D<del>k</del>( C) &#x3D; D<del>k</del>(E<del>k</del>(M))</li>
+</ul>
+<ol>
+<li>序列密码：将明文划分成单个位（字节）作为加密单位产生明文序列，然后将其与密钥流序列逐位进行模2加运算，符号⊕（异或）<ul>
+<li>分类：<ol>
+<li>同步序列密码：要求发生方和接受方同步，在同样的位置用同样的密钥才保证成功</li>
+<li>自同步序列密码：密钥的产生与密钥和已产生的固定数量的密文位有关</li>
+</ol>
+</li>
+<li>安全性：安全强度依赖于密钥流产生器所产生的密钥流序列的特性，关键是密钥生成器的设计及收发两端密钥流产生的同步技术</li>
+<li>实现要求：<ol>
+<li>伪随机序列：（良好密钥流序列：良好的伪随机性）<ol>
+<li>自然现象产生随机</li>
+<li>使用软件以简单数学函数实现（如：线性同余法，线性反馈移位寄存器，非线性反馈移位寄存器，有限自动机和混沌密码）</li>
+</ol>
+</li>
+<li>线性反馈偏移寄存器</li>
+<li>RC4：（一种可变密钥长度、面向字节流的序列密码）以一个数据表为基础，对表进行非线性变换，从而产生密码流序列。<ol>
+<li>密钥调度算法（KSA, Key-Scheduling Algorithm）：将一个随机密钥（大小为40~256位）变换成一个初始置换表S</li>
+<li>伪随机生成算法（PRGA, Pseudo Random Generation Algorithm）:从S表中随机选取元素，并产生密钥流</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>分组密码：将明文分成不同块（或小组）结构，分别对每个块进行加密或解密</li>
+<li>DES - 数据加密标准</li>
+</ol>
+</li>
+<li><h2 id="非对称密码"><a href="#非对称密码" class="headerlink" title="非对称密码"></a>非对称密码</h2><ol>
+<li>RSA 密码算法</li>
+<li>Diffie - Hellman 密钥交换算法</li>
+<li>ElGamal 加密算法</li>
+</ol>
+</li>
+<li><h2 id="密码学应用"><a href="#密码学应用" class="headerlink" title="密码学应用"></a>密码学应用</h2><ol>
+<li>密码应用模式<ol>
+<li>电子密码本模式（ECB Electronic Code Book）<ul>
+<li>D（E（M）） &#x3D; M</li>
+<li>分组长度为64位，每次加密独立，独立产生密文分组，每一组的加密结果不会影响其他分组。</li>
+</ul>
+</li>
+<li>密文链接模式（CBC Cipher Block Chaining）<ul>
+<li>D ( E (M)  ) &#x3D; M</li>
+<li><strong>第一个明文分组</strong>先向<strong>初始向量</strong>作异或运算再加密，其他每个<strong>明文分组加密之前</strong>，必须与前一个<strong>密文分组</strong>做一次异或运算。</li>
+</ul>
+</li>
+<li>密文反馈模式</li>
+<li>输出反馈模式</li>
+</ol>
+</li>
+<li>密码加密方式<ol>
+<li>节点加密</li>
+<li>链路加密</li>
+<li>端到端加密</li>
+</ol>
+</li>
+<li>PGP软件的应用<h1 id="三、隐藏技术（“隐写术”）"><a href="#三、隐藏技术（“隐写术”）" class="headerlink" title="三、隐藏技术（“隐写术”）"></a>三、隐藏技术（“隐写术”）</h1></li>
+</ol>
+</li>
+<li><h2 id="传统隐藏技术发展"><a href="#传统隐藏技术发展" class="headerlink" title="传统隐藏技术发展"></a>传统隐藏技术发展</h2><ul>
+<li>密码术：将机密信息进行各种变换，使非法授权者无法理解（古代密码学 –&gt; 现代密码学）</li>
+<li>隐写术：将机密信息隐藏起来，使非法授权者无法获取（古代隐写术 –&gt; 信息隐藏、数字水印、隐通道、匿名通信）<ul>
+<li>古代隐写术发展<ol>
+<li>技术性隐写术</li>
+<li>语言学中的隐写术</li>
+<li>用于版权保护的隐写术</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2 id="数字信息隐藏技术发展"><a href="#数字信息隐藏技术发展" class="headerlink" title="数字信息隐藏技术发展"></a>数字信息隐藏技术发展</h2><ol>
+<li>1992：国际上正式提出信息隐藏概念</li>
+<li>1995：美国Digimarc公司开发了数字水印制作技术</li>
+<li>1996：英国剑桥大学牛顿研究所召开第一届信息隐藏学术会议</li>
+<li>1999：中国已召开六届信息隐藏学术研讨会</li>
+</ol>
+</li>
+<li><h2 id="隐藏技术原理"><a href="#隐藏技术原理" class="headerlink" title="隐藏技术原理"></a>隐藏技术原理</h2><ul>
+<li>目的：把机密信息隐藏在可公开的信息载体中</li>
+<li>“囚犯问题” ：1983年，Simmons对隐蔽通信问题的描述<ol>
+<li>被动狱警问题：只检查传递信息有没有可疑</li>
+<li><strong>主动狱警问题</strong>：不破坏公开信息前提下，故意修改一些可能隐藏机密信息的地方（如同义词替换）</li>
+<li>恶意狱警问题：彻底改变通信信息，或伪装成发送方&#x2F;接收方隐藏伪造的机密信息</li>
+</ol>
+</li>
+<li>信息隐藏相关概念<ul>
+<li>秘密信息M(Secret Message)</li>
+<li>载体对象C(Cover Message)：可公开传递的素材</li>
+<li>伪装对象C^1^：M根据C进行伪装</li>
+<li>伪装密钥k：信息隐藏的密钥</li>
+<li>信息隐藏涉及的算法：信息嵌入算法、信息提取算法</li>
+</ul>
+</li>
+<li>信息隐藏分类<ol>
+<li>1999年Fabien信息隐藏四大类<ol>
+<li>隐通道</li>
+<li><strong>隐写术</strong></li>
+<li>匿名通信</li>
+<li><strong>版权识别</strong></li>
+</ol>
+</li>
+<li>按密钥方案类型分类<ol>
+<li>无密钥的信息隐藏：只隐藏不加密，安全性完全依赖于隐藏算法和提取算法，一旦泄露，失去安全性</li>
+<li>私钥信息隐藏：隐藏信息需要密钥交换，双方拥有一个唯一相同的伪装密钥</li>
+<li>公钥信息隐藏：类似公钥密码【公钥用于信息嵌入，私钥用于信息提取】（安全性完全取决于公钥密码体制的安全性）</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>信息隐藏特性<ul>
+<li>安全性：信息隐藏算法有较强的抗攻击能力，能承受一定的人为攻击而使隐藏信息不被破坏<ul>
+<li>攻破信息隐藏系统的三层次：证明信息存在、提取隐藏信息、破坏隐藏信息</li>
+</ul>
+</li>
+<li>鲁棒性：抗恶意修改导致的隐藏信息能力丢失</li>
+<li>不可检测性：伪装对象和载体对象具有一致的特性</li>
+<li>透明性：经过隐藏处理，目标数据必须没有明显降质现象</li>
+<li>自恢复性：只从留下的片段数据，仍能恢复隐藏信号，且恢复过程不需要宿主信号</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2 id="信息隐藏算法"><a href="#信息隐藏算法" class="headerlink" title="信息隐藏算法"></a>信息隐藏算法</h2><ol>
+<li>图像：替换技术【采用秘密信息替代伪装载体中的冗余部分】<ol>
+<li>空间域算法：<ul>
+<li><em>基于图像拉低字节对图像影响较小</em> 原理</li>
+<li>健壮性较差，难以抵抗有损压缩、低通滤波等攻击</li>
+</ul>
+</li>
+<li>变换（频）域算法<ul>
+<li>选择改变中频或低频分量（DCT变换除去直流分量）嵌入信息时，健壮性大大提高</li>
+<li>频域</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h2 id="数字水印"><a href="#数字水印" class="headerlink" title="数字水印"></a>数字水印</h2><ul>
+<li>数字水印基本原理：利用视觉和听觉的冗余特性（水印技术不能阻止盗版）</li>
+<li>通用水印算法组成：水印生成算法、水印嵌入和提取、检测<ul>
+<li>预处理：（扩频、纠错编码、加密等）对水印的安全性考虑进行的处理【通过变频操作：DCT、DFT、小波变换、傅里叶-梅林变换等；变换操作组合；空操作】</li>
+<li>水印提取过程</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2 id="隐通道技术"><a href="#隐通道技术" class="headerlink" title="隐通道技术"></a>隐通道技术</h2></li>
+<li><h2 id="匿名通信技术"><a href="#匿名通信技术" class="headerlink" title="匿名通信技术"></a>匿名通信技术</h2><h1 id="四、消息认证技术"><a href="#四、消息认证技术" class="headerlink" title="四、消息认证技术"></a>四、消息认证技术</h1><h1 id="五、数字签名技术"><a href="#五、数字签名技术" class="headerlink" title="五、数字签名技术"></a>五、数字签名技术</h1></li>
+<li><h2 id="数字签名概念-amp-原理"><a href="#数字签名概念-amp-原理" class="headerlink" title="数字签名概念 &amp; 原理"></a>数字签名概念 &amp; 原理</h2><ol>
+<li>概念：通过一个单向函数对咬传送的报文（消息）进行处理，产生别人无法识别的一段数字串，数字串用来证明报文的来源并核实报文是否产生变化</li>
+<li>基础：公钥密码学（密钥 &#x3D; 公钥 + 私钥）</li>
+<li>主要步骤：签名、验证</li>
+</ol>
+</li>
+<li><h2 id="RSA数字签名-amp-加密"><a href="#RSA数字签名-amp-加密" class="headerlink" title="RSA数字签名 &amp; 加密"></a>RSA数字签名 &amp; 加密</h2></li>
+<li><h2 id="Schnorr数字签名（ElGamal型变形）"><a href="#Schnorr数字签名（ElGamal型变形）" class="headerlink" title="Schnorr数字签名（ElGamal型变形）"></a>Schnorr数字签名（ElGamal型变形）</h2></li>
+<li><h2 id="DSA数字签名【数字签名算法】（ElGamel和Schnorr变种）"><a href="#DSA数字签名【数字签名算法】（ElGamel和Schnorr变种）" class="headerlink" title="DSA数字签名【数字签名算法】（ElGamel和Schnorr变种）"></a>DSA数字签名【数字签名算法】（ElGamel和Schnorr变种）</h2><ul>
+<li>安全性基于离散对数难题，采用Schnorr系统中g为非本原元的做法，降低签名文件长度</li>
+</ul>
+</li>
+<li><h2 id="特殊数字签名分类"><a href="#特殊数字签名分类" class="headerlink" title="特殊数字签名分类"></a>特殊数字签名分类</h2><ol>
+<li>盲签名：签名人不知道文件内容</li>
+<li>代理签名：签名权委托代理人</li>
+<li>签名加密：签名同时加密</li>
+<li>多重签名：多人分别对同一文件进行签名</li>
+<li>群签名：由个体代表群体执行的签名，验证者从签名不能判定签名者身份（能通过群管理员查出）</li>
+<li>环签名：类似群签名，具有完全匿名性</li>
+<li>前向安全签名：签名密钥按时间段不断更新，验证公钥保持不变（考虑密钥安全性）</li>
+<li>双线性对技术：利用超奇异椭圆曲线中Weil对和Tate对所具有的双线性性质，构造各种性能良好的数字签名方案</li>
+<li>门限共享、失败-停止签名、不可否认签名、零知识签名 等分支</li>
+</ol>
+</li>
+<li><h2 id="数字签名应用"><a href="#数字签名应用" class="headerlink" title="数字签名应用"></a>数字签名应用</h2><h1 id="六、网络安全协议"><a href="#六、网络安全协议" class="headerlink" title="六、网络安全协议"></a>六、网络安全协议</h1><h1 id="七、攻击技术"><a href="#七、攻击技术" class="headerlink" title="七、攻击技术"></a>七、攻击技术</h1></li>
+<li><h2 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h2><ol>
+<li>踩点</li>
+<li>扫描</li>
+<li>监听</li>
+</ol>
+</li>
+<li><h2 id="攻击实施"><a href="#攻击实施" class="headerlink" title="攻击实施"></a>攻击实施</h2><ol>
+<li>社工</li>
+<li>口令</li>
+<li>漏洞</li>
+<li>欺骗</li>
+<li>拒绝服务</li>
+</ol>
+</li>
+<li><h2 id="隐身技术"><a href="#隐身技术" class="headerlink" title="隐身技术"></a>隐身技术</h2><ol>
+<li>隐藏<ol>
+<li>进程隐藏</li>
+<li>文件隐藏<ol>
+<li>伪装</li>
+<li>隐藏木马文件自身：修改相关程序，过滤信息；指定特殊区域存放（标记扇区为坏区，隐藏其中）</li>
+</ol>
+</li>
+<li>网络连接隐藏<ol>
+<li>替换网络连接进程名</li>
+<li>替换网络连接显示命令</li>
+<li>替换网络连接管理员模块</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>代理<ol>
+<li>snake：支持TCP&#x2F;UDP代理，支持多跳板，代理方式为Socks，默认端口1813</li>
+</ol>
+</li>
+<li>清除日志<ol>
+<li>IIS日志</li>
+<li>主机日志</li>
+</ol>
+</li>
+<li>后门<ol>
+<li>添加管理员帐号</li>
+<li>开启服务端口<h1 id="八、防御技术"><a href="#八、防御技术" class="headerlink" title="八、防御技术"></a>八、防御技术</h1><h1 id="九、病毒"><a href="#九、病毒" class="headerlink" title="九、病毒"></a>九、病毒</h1></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
+      <tags>
+        <tag>密码学</tag>
       </tags>
   </entry>
   <entry>
@@ -3567,300 +3861,6 @@
       <tags>
         <tag>算法</tag>
         <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>信息安全技术</title>
-    <url>/2022/03/22/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/</url>
-    <content><![CDATA[<h1 id="一、信息安全概述"><a href="#一、信息安全概述" class="headerlink" title="一、信息安全概述"></a>一、信息安全概述</h1><h1 id="二、加密技术"><a href="#二、加密技术" class="headerlink" title="二、加密技术"></a>二、加密技术</h1><ol>
-<li><h2 id="密码学发展"><a href="#密码学发展" class="headerlink" title="密码学发展"></a>密码学发展</h2><ol>
-<li>手工加密阶段</li>
-<li>机械加密阶段</li>
-<li>计算机加密阶段</li>
-</ol>
-</li>
-<li><h2 id="密码学基本概念-amp-术语"><a href="#密码学基本概念-amp-术语" class="headerlink" title="密码学基本概念 &amp; 术语"></a>密码学基本概念 &amp; 术语</h2><ol>
-<li>密码学分支：密码编码学（加密）、密码分析学（解密）</li>
-<li><font color=purple>密码体制：{Sm、Sc、Sk、E、D}<ol>
-<li>S<del>M</del>：明文</li>
-<li>S<del>c</del>：密文</li>
-<li>S<del>k</del>：密钥key</li>
-<li>E：加密算法</li>
-<li>D：解密算法    </font></li>
-</ol>
-</li>
-<li><font color=green>【密码算法安全评估原则】</font>柯克霍夫原则（Kerckhoffs）：密码系统的安全性取决于&#x3D;&#x3D;密钥&#x3D;&#x3D;，而不是密码算法，即密码算法要公开</li>
-</ol>
-</li>
-<li><h2 id="古典密码"><a href="#古典密码" class="headerlink" title="古典密码"></a>古典密码</h2><ol>
-<li>移位密码（典型：凯撒密码）<ul>
-<li>设26字母按0，1，2，……，25<ol>
-<li>加密：c &#x3D; m + k (mod 26) </li>
-<li>解密：m &#x3D; c -k (mod 26)</li>
-</ol>
-</li>
-<li>数学形式化定义：略</li>
-</ul>
-</li>
-<li>仿射密码：明文、密文、移位空间相同<ol>
-<li>加密：c &#x3D; (a*m + b) (mod 26)</li>
-<li>解密：m &#x3D; a^-1^ (c - b)  (mod 26)</li>
-</ol>
-</li>
-<li>维吉利亚密码（Vigenere）【简单多表代换密码，使用一系列不同的凯撒密码组成密码字母表】<ul>
-<li>把英文字母用数字代替进行运算，a<del>z 为 0</del>25</li>
-<li>引入了密钥的概念，设定一个参数n，按n个字母一组进行变换</li>
-<li>加解密步骤：<ol>
-<li>分：按照密钥长度对密文进行分组</li>
-<li>转：a<del>z 转换为 0</del>25</li>
-<li>算：(m+k) mod26  &#x2F;    (c-k) mod 26</li>
-<li>转：c &#x2F; m 转回英文</li>
-</ol>
-</li>
-</ul>
-<ol>
-<li>加密：c &#x3D;(m + k) (mod 26)【密文 &#x3D; （明文 + 密钥）mod 26】</li>
-<li>解密：m &#x3D;(c - k) (mod 26)【明文 &#x3D; （密文 - 密钥）mod 26】</li>
-</ol>
-</li>
-<li>置换密码：将明文中各字符的&#x3D;&#x3D;位置次序重新排列&#x3D;&#x3D;得到密文</li>
-</ol>
-<ul>
-<li>古典密码不适合柯克霍夫原则，密码安全性基于算法的保密（现代密码学从1949年开始，由于计算机的出现算法的计算变得非常复杂，保密性不再依赖算法，而是密钥）</li>
-</ul>
-</li>
-<li><h2 id="对称密码"><a href="#对称密码" class="headerlink" title="对称密码"></a>对称密码</h2><ul>
-<li>加解密算法互为逆运算，密钥相同，满足：M &#x3D; D<del>k</del>( C) &#x3D; D<del>k</del>(E<del>k</del>(M))</li>
-</ul>
-<ol>
-<li>序列密码：将明文划分成单个位（字节）作为加密单位产生明文序列，然后将其与密钥流序列逐位进行模2加运算，符号⊕（异或）<ul>
-<li>分类：<ol>
-<li>同步序列密码：要求发生方和接受方同步，在同样的位置用同样的密钥才保证成功</li>
-<li>自同步序列密码：密钥的产生与密钥和已产生的固定数量的密文位有关</li>
-</ol>
-</li>
-<li>安全性：安全强度依赖于密钥流产生器所产生的密钥流序列的特性，关键是密钥生成器的设计及收发两端密钥流产生的同步技术</li>
-<li>实现要求：<ol>
-<li>伪随机序列：（良好密钥流序列：良好的伪随机性）<ol>
-<li>自然现象产生随机</li>
-<li>使用软件以简单数学函数实现（如：线性同余法，线性反馈移位寄存器，非线性反馈移位寄存器，有限自动机和混沌密码）</li>
-</ol>
-</li>
-<li>线性反馈偏移寄存器</li>
-<li>RC4：（一种可变密钥长度、面向字节流的序列密码）以一个数据表为基础，对表进行非线性变换，从而产生密码流序列。<ol>
-<li>密钥调度算法（KSA, Key-Scheduling Algorithm）：将一个随机密钥（大小为40~256位）变换成一个初始置换表S</li>
-<li>伪随机生成算法（PRGA, Pseudo Random Generation Algorithm）:从S表中随机选取元素，并产生密钥流</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>分组密码：将明文分成不同块（或小组）结构，分别对每个块进行加密或解密</li>
-<li>DES - 数据加密标准</li>
-</ol>
-</li>
-<li><h2 id="非对称密码"><a href="#非对称密码" class="headerlink" title="非对称密码"></a>非对称密码</h2><ol>
-<li>RSA 密码算法</li>
-<li>Diffie - Hellman 密钥交换算法</li>
-<li>ElGamal 加密算法</li>
-</ol>
-</li>
-<li><h2 id="密码学应用"><a href="#密码学应用" class="headerlink" title="密码学应用"></a>密码学应用</h2><ol>
-<li>密码应用模式<ol>
-<li>电子密码本模式（ECB Electronic Code Book）<ul>
-<li>D（E（M）） &#x3D; M</li>
-<li>分组长度为64位，每次加密独立，独立产生密文分组，每一组的加密结果不会影响其他分组。</li>
-</ul>
-</li>
-<li>密文链接模式（CBC Cipher Block Chaining）<ul>
-<li>D ( E (M)  ) &#x3D; M</li>
-<li><strong>第一个明文分组</strong>先向<strong>初始向量</strong>作异或运算再加密，其他每个<strong>明文分组加密之前</strong>，必须与前一个<strong>密文分组</strong>做一次异或运算。</li>
-</ul>
-</li>
-<li>密文反馈模式</li>
-<li>输出反馈模式</li>
-</ol>
-</li>
-<li>密码加密方式<ol>
-<li>节点加密</li>
-<li>链路加密</li>
-<li>端到端加密</li>
-</ol>
-</li>
-<li>PGP软件的应用<h1 id="三、隐藏技术（“隐写术”）"><a href="#三、隐藏技术（“隐写术”）" class="headerlink" title="三、隐藏技术（“隐写术”）"></a>三、隐藏技术（“隐写术”）</h1></li>
-</ol>
-</li>
-<li><h2 id="传统隐藏技术发展"><a href="#传统隐藏技术发展" class="headerlink" title="传统隐藏技术发展"></a>传统隐藏技术发展</h2><ul>
-<li>密码术：将机密信息进行各种变换，使非法授权者无法理解（古代密码学 –&gt; 现代密码学）</li>
-<li>隐写术：将机密信息隐藏起来，使非法授权者无法获取（古代隐写术 –&gt; 信息隐藏、数字水印、隐通道、匿名通信）<ul>
-<li>古代隐写术发展<ol>
-<li>技术性隐写术</li>
-<li>语言学中的隐写术</li>
-<li>用于版权保护的隐写术</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><h2 id="数字信息隐藏技术发展"><a href="#数字信息隐藏技术发展" class="headerlink" title="数字信息隐藏技术发展"></a>数字信息隐藏技术发展</h2><ol>
-<li>1992：国际上正式提出信息隐藏概念</li>
-<li>1995：美国Digimarc公司开发了数字水印制作技术</li>
-<li>1996：英国剑桥大学牛顿研究所召开第一届信息隐藏学术会议</li>
-<li>1999：中国已召开六届信息隐藏学术研讨会</li>
-</ol>
-</li>
-<li><h2 id="隐藏技术原理"><a href="#隐藏技术原理" class="headerlink" title="隐藏技术原理"></a>隐藏技术原理</h2><ul>
-<li>目的：把机密信息隐藏在可公开的信息载体中</li>
-<li>“囚犯问题” ：1983年，Simmons对隐蔽通信问题的描述<ol>
-<li>被动狱警问题：只检查传递信息有没有可疑</li>
-<li><strong>主动狱警问题</strong>：不破坏公开信息前提下，故意修改一些可能隐藏机密信息的地方（如同义词替换）</li>
-<li>恶意狱警问题：彻底改变通信信息，或伪装成发送方&#x2F;接收方隐藏伪造的机密信息</li>
-</ol>
-</li>
-<li>信息隐藏相关概念<ul>
-<li>秘密信息M(Secret Message)</li>
-<li>载体对象C(Cover Message)：可公开传递的素材</li>
-<li>伪装对象C^1^：M根据C进行伪装</li>
-<li>伪装密钥k：信息隐藏的密钥</li>
-<li>信息隐藏涉及的算法：信息嵌入算法、信息提取算法</li>
-</ul>
-</li>
-<li>信息隐藏分类<ol>
-<li>1999年Fabien信息隐藏四大类<ol>
-<li>隐通道</li>
-<li><strong>隐写术</strong></li>
-<li>匿名通信</li>
-<li><strong>版权识别</strong></li>
-</ol>
-</li>
-<li>按密钥方案类型分类<ol>
-<li>无密钥的信息隐藏：只隐藏不加密，安全性完全依赖于隐藏算法和提取算法，一旦泄露，失去安全性</li>
-<li>私钥信息隐藏：隐藏信息需要密钥交换，双方拥有一个唯一相同的伪装密钥</li>
-<li>公钥信息隐藏：类似公钥密码【公钥用于信息嵌入，私钥用于信息提取】（安全性完全取决于公钥密码体制的安全性）</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>信息隐藏特性<ul>
-<li>安全性：信息隐藏算法有较强的抗攻击能力，能承受一定的人为攻击而使隐藏信息不被破坏<ul>
-<li>攻破信息隐藏系统的三层次：证明信息存在、提取隐藏信息、破坏隐藏信息</li>
-</ul>
-</li>
-<li>鲁棒性：抗恶意修改导致的隐藏信息能力丢失</li>
-<li>不可检测性：伪装对象和载体对象具有一致的特性</li>
-<li>透明性：经过隐藏处理，目标数据必须没有明显降质现象</li>
-<li>自恢复性：只从留下的片段数据，仍能恢复隐藏信号，且恢复过程不需要宿主信号</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><h2 id="信息隐藏算法"><a href="#信息隐藏算法" class="headerlink" title="信息隐藏算法"></a>信息隐藏算法</h2><ol>
-<li>图像：替换技术【采用秘密信息替代伪装载体中的冗余部分】<ol>
-<li>空间域算法：<ul>
-<li><em>基于图像拉低字节对图像影响较小</em> 原理</li>
-<li>健壮性较差，难以抵抗有损压缩、低通滤波等攻击</li>
-</ul>
-</li>
-<li>变换（频）域算法<ul>
-<li>选择改变中频或低频分量（DCT变换除去直流分量）嵌入信息时，健壮性大大提高</li>
-<li>频域</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><h2 id="数字水印"><a href="#数字水印" class="headerlink" title="数字水印"></a>数字水印</h2><ul>
-<li>数字水印基本原理：利用视觉和听觉的冗余特性（水印技术不能阻止盗版）</li>
-<li>通用水印算法组成：水印生成算法、水印嵌入和提取、检测<ul>
-<li>预处理：（扩频、纠错编码、加密等）对水印的安全性考虑进行的处理【通过变频操作：DCT、DFT、小波变换、傅里叶-梅林变换等；变换操作组合；空操作】</li>
-<li>水印提取过程</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><h2 id="隐通道技术"><a href="#隐通道技术" class="headerlink" title="隐通道技术"></a>隐通道技术</h2></li>
-<li><h2 id="匿名通信技术"><a href="#匿名通信技术" class="headerlink" title="匿名通信技术"></a>匿名通信技术</h2><h1 id="四、消息认证技术"><a href="#四、消息认证技术" class="headerlink" title="四、消息认证技术"></a>四、消息认证技术</h1><h1 id="五、数字签名技术"><a href="#五、数字签名技术" class="headerlink" title="五、数字签名技术"></a>五、数字签名技术</h1></li>
-<li><h2 id="数字签名概念-amp-原理"><a href="#数字签名概念-amp-原理" class="headerlink" title="数字签名概念 &amp; 原理"></a>数字签名概念 &amp; 原理</h2><ol>
-<li>概念：通过一个单向函数对咬传送的报文（消息）进行处理，产生别人无法识别的一段数字串，数字串用来证明报文的来源并核实报文是否产生变化</li>
-<li>基础：公钥密码学（密钥 &#x3D; 公钥 + 私钥）</li>
-<li>主要步骤：签名、验证</li>
-</ol>
-</li>
-<li><h2 id="RSA数字签名-amp-加密"><a href="#RSA数字签名-amp-加密" class="headerlink" title="RSA数字签名 &amp; 加密"></a>RSA数字签名 &amp; 加密</h2></li>
-<li><h2 id="Schnorr数字签名（ElGamal型变形）"><a href="#Schnorr数字签名（ElGamal型变形）" class="headerlink" title="Schnorr数字签名（ElGamal型变形）"></a>Schnorr数字签名（ElGamal型变形）</h2></li>
-<li><h2 id="DSA数字签名【数字签名算法】（ElGamel和Schnorr变种）"><a href="#DSA数字签名【数字签名算法】（ElGamel和Schnorr变种）" class="headerlink" title="DSA数字签名【数字签名算法】（ElGamel和Schnorr变种）"></a>DSA数字签名【数字签名算法】（ElGamel和Schnorr变种）</h2><ul>
-<li>安全性基于离散对数难题，采用Schnorr系统中g为非本原元的做法，降低签名文件长度</li>
-</ul>
-</li>
-<li><h2 id="特殊数字签名分类"><a href="#特殊数字签名分类" class="headerlink" title="特殊数字签名分类"></a>特殊数字签名分类</h2><ol>
-<li>盲签名：签名人不知道文件内容</li>
-<li>代理签名：签名权委托代理人</li>
-<li>签名加密：签名同时加密</li>
-<li>多重签名：多人分别对同一文件进行签名</li>
-<li>群签名：由个体代表群体执行的签名，验证者从签名不能判定签名者身份（能通过群管理员查出）</li>
-<li>环签名：类似群签名，具有完全匿名性</li>
-<li>前向安全签名：签名密钥按时间段不断更新，验证公钥保持不变（考虑密钥安全性）</li>
-<li>双线性对技术：利用超奇异椭圆曲线中Weil对和Tate对所具有的双线性性质，构造各种性能良好的数字签名方案</li>
-<li>门限共享、失败-停止签名、不可否认签名、零知识签名 等分支</li>
-</ol>
-</li>
-<li><h2 id="数字签名应用"><a href="#数字签名应用" class="headerlink" title="数字签名应用"></a>数字签名应用</h2><h1 id="六、网络安全协议"><a href="#六、网络安全协议" class="headerlink" title="六、网络安全协议"></a>六、网络安全协议</h1><h1 id="七、攻击技术"><a href="#七、攻击技术" class="headerlink" title="七、攻击技术"></a>七、攻击技术</h1></li>
-<li><h2 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h2><ol>
-<li>踩点</li>
-<li>扫描</li>
-<li>监听</li>
-</ol>
-</li>
-<li><h2 id="攻击实施"><a href="#攻击实施" class="headerlink" title="攻击实施"></a>攻击实施</h2><ol>
-<li>社工</li>
-<li>口令</li>
-<li>漏洞</li>
-<li>欺骗</li>
-<li>拒绝服务</li>
-</ol>
-</li>
-<li><h2 id="隐身技术"><a href="#隐身技术" class="headerlink" title="隐身技术"></a>隐身技术</h2><ol>
-<li>隐藏<ol>
-<li>进程隐藏</li>
-<li>文件隐藏<ol>
-<li>伪装</li>
-<li>隐藏木马文件自身：修改相关程序，过滤信息；指定特殊区域存放（标记扇区为坏区，隐藏其中）</li>
-</ol>
-</li>
-<li>网络连接隐藏<ol>
-<li>替换网络连接进程名</li>
-<li>替换网络连接显示命令</li>
-<li>替换网络连接管理员模块</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>代理<ol>
-<li>snake：支持TCP&#x2F;UDP代理，支持多跳板，代理方式为Socks，默认端口1813</li>
-</ol>
-</li>
-<li>清除日志<ol>
-<li>IIS日志</li>
-<li>主机日志</li>
-</ol>
-</li>
-<li>后门<ol>
-<li>添加管理员帐号</li>
-<li>开启服务端口<h1 id="八、防御技术"><a href="#八、防御技术" class="headerlink" title="八、防御技术"></a>八、防御技术</h1><h1 id="九、病毒"><a href="#九、病毒" class="headerlink" title="九、病毒"></a>九、病毒</h1></li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>网络安全</category>
-      </categories>
-      <tags>
-        <tag>密码学</tag>
       </tags>
   </entry>
   <entry>
