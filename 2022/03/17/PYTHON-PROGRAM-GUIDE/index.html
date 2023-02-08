@@ -1,0 +1,678 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN,en,default" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PYTHON PROGRAM-GUIDE - WHOAMI</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="渗透,"> 
+    <meta name="description" content="A GEEK HACKER,
+通用类
+I. 代码实现
+1.1 加密算法
+1.1.1 【必须】避免使用不安全的对称加密算法
+
+
+1.2 程序日志
+1.2.1 【建议】对每个重要行为都记录日志
+1.2.2 【建议】禁止将未经验证的,"> 
+    <meta name="author" content="真のBLACK"> 
+    <link rel="alternative" href="atom.xml" title="WHOAMI" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    <meta name="twitter:image:src" content="https://bangdream.moe/img/ident.png"/>
+    <meta name="twitter:creator" content="@yourtwitteridhere"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="PYTHON PROGRAM-GUIDE - WHOAMI"/>
+    <meta name="twitter:description" content="A GEEK HACKER,
+通用类
+I. 代码实现
+1.1 加密算法
+1.1.1 【必须】避免使用不安全的对称加密算法
+
+
+1.2 程序日志
+1.2.1 【建议】对每个重要行为都记录日志
+1.2.2 【建议】禁止将未经验证的,"/>
+    <meta property="og:image" content="https://bangdream.moe/img/ident.png"/>
+    <meta property="og:image:alt" content="A GEEK HACKER,
+通用类
+I. 代码实现
+1.1 加密算法
+1.1.1 【必须】避免使用不安全的对称加密算法
+
+
+1.2 程序日志
+1.2.1 【建议】对每个重要行为都记录日志
+1.2.2 【建议】禁止将未经验证的,"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="600"/>
+    <meta property="og:site_name" content="WHOAMI"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="PYTHON PROGRAM-GUIDE - WHOAMI"/>
+    <meta property="og:description" content="A GEEK HACKER,
+通用类
+I. 代码实现
+1.1 加密算法
+1.1.1 【必须】避免使用不安全的对称加密算法
+
+
+1.2 程序日志
+1.2.1 【建议】对每个重要行为都记录日志
+1.2.2 【建议】禁止将未经验证的,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">WHOAMI</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://DXHM.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">PYTHON PROGRAM-GUIDE</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">PYTHON PROGRAM-GUIDE</h1>
+        <div class="stuff">
+            <span>三月 17, 2022</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" rel="tag">程序开发安全</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" rel="tag">编程语言</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <ul>
+<li><a href="#%E9%80%9A%E7%94%A8%E7%B1%BB">通用类</a><ul>
+<li><a href="#i-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">I. 代码实现</a><ul>
+<li><a href="#11-%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95">1.1 加密算法</a><ul>
+<li><a href="#111-%E5%BF%85%E9%A1%BB%E9%81%BF%E5%85%8D%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95">1.1.1 【必须】避免使用不安全的对称加密算法</a></li>
+</ul>
+</li>
+<li><a href="#12-%E7%A8%8B%E5%BA%8F%E6%97%A5%E5%BF%97">1.2 程序日志</a><ul>
+<li><a href="#121-%E5%BB%BA%E8%AE%AE%E5%AF%B9%E6%AF%8F%E4%B8%AA%E9%87%8D%E8%A6%81%E8%A1%8C%E4%B8%BA%E9%83%BD%E8%AE%B0%E5%BD%95%E6%97%A5%E5%BF%97">1.2.1 【建议】对每个重要行为都记录日志</a></li>
+<li><a href="#122-%E5%BB%BA%E8%AE%AE%E7%A6%81%E6%AD%A2%E5%B0%86%E6%9C%AA%E7%BB%8F%E9%AA%8C%E8%AF%81%E7%9A%84%E7%94%A8%E6%88%B7%E8%BE%93%E5%85%A5%E7%9B%B4%E6%8E%A5%E8%AE%B0%E5%BD%95%E6%97%A5%E5%BF%97">1.2.2 【建议】禁止将未经验证的用户输入直接记录日志</a></li>
+<li><a href="#123-%E5%BB%BA%E8%AE%AE%E9%81%BF%E5%85%8D%E5%9C%A8%E6%97%A5%E5%BF%97%E4%B8%AD%E4%BF%9D%E5%AD%98%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF">1.2.3 【建议】避免在日志中保存敏感信息</a></li>
+</ul>
+</li>
+<li><a href="#13-%E7%B3%BB%E7%BB%9F%E5%8F%A3%E4%BB%A4">1.3 系统口令</a><ul>
+<li><a href="#131-%E5%BF%85%E9%A1%BB%E7%A6%81%E6%AD%A2%E4%BD%BF%E7%94%A8%E7%A9%BA%E5%8F%A3%E4%BB%A4%E5%BC%B1%E5%8F%A3%E4%BB%A4%E5%B7%B2%E6%B3%84%E9%9C%B2%E5%8F%A3%E4%BB%A4">1.3.1 【必须】禁止使用空口令、弱口令、已泄露口令</a></li>
+<li><a href="#132-%E5%BF%85%E9%A1%BB%E5%8F%A3%E4%BB%A4%E5%BC%BA%E5%BA%A6%E8%A6%81%E6%B1%82">1.3.2 【必须】口令强度要求</a></li>
+<li><a href="#133-%E5%BF%85%E9%A1%BB%E5%8F%A3%E4%BB%A4%E5%AD%98%E5%82%A8%E5%AE%89%E5%85%A8">1.3.3 【必须】口令存储安全</a></li>
+<li><a href="#134-%E5%BF%85%E9%A1%BB%E7%A6%81%E6%AD%A2%E4%BC%A0%E9%80%92%E6%98%8E%E6%96%87%E5%8F%A3%E4%BB%A4">1.3.4 【必须】禁止传递明文口令</a></li>
+<li><a href="#135-%E5%BF%85%E9%A1%BB%E7%A6%81%E6%AD%A2%E5%9C%A8%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E4%BF%A1%E9%81%93%E4%B8%AD%E4%BC%A0%E8%BE%93%E5%8F%A3%E4%BB%A4">1.3.5 【必须】禁止在不安全的信道中传输口令</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#ii-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83">II. 配置&amp;环境</a><ul>
+<li><a href="#21-python%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9">2.1 Python版本选择</a><ul>
+<li><a href="#211-%E5%BB%BA%E8%AE%AE%E4%BD%BF%E7%94%A8python-36%E7%9A%84%E7%89%88%E6%9C%AC">2.1.1 【建议】使用Python 3.6+的版本</a></li>
+</ul>
+</li>
+<li><a href="#22-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%8C%85%E5%AE%89%E5%85%A8">2.2 第三方包安全</a><ul>
+<li><a href="#222-%E5%BF%85%E9%A1%BB%E7%A6%81%E6%AD%A2%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E7%BB%84%E4%BB%B6">2.2.2 【必须】禁止使用不安全的组件</a></li>
+</ul>
+</li>
+<li><a href="#23-%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF">2.3 配置信息</a><ul>
+<li><a href="#231-%E5%BF%85%E9%A1%BB%E5%AF%86%E9%92%A5%E5%AD%98%E5%82%A8%E5%AE%89%E5%85%A8">2.3.1 【必须】密钥存储安全</a></li>
+<li><a href="#232-%E5%BF%85%E9%A1%BB%E7%A6%81%E6%AD%A2%E7%A1%AC%E7%BC%96%E7%A0%81%E6%95%8F%E6%84%9F%E9%85%8D%E7%BD%AE">2.3.2 【必须】禁止硬编码敏感配置</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%90%8E%E5%8F%B0%E7%B1%BB">后台类</a><ul>
+<li><a href="#i-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-1">I. 代码实现</a><ul>
+<li><a href="#11-%E8%BE%93%E5%85%A5%E9%AA%8C%E8%AF%81">1.1 输入验证</a><ul>
+<li><a href="#111-%E5%BF%85%E9%A1%BB%E6%8C%89%E7%B1%BB%E5%9E%8B%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C">1.1.1 【必须】按类型进行数据校验</a></li>
+</ul>
+</li>
+<li><a href="#12-sql%E6%93%8D%E4%BD%9C">1.2 SQL操作</a><ul>
+<li><a href="#121-%E5%BF%85%E9%A1%BB%E4%BD%BF%E7%94%A8%E5%8F%82%E6%95%B0%E5%8C%96%E6%9F%A5%E8%AF%A2">1.2.1 【必须】使用参数化查询</a></li>
+<li><a href="#122-%E5%BF%85%E9%A1%BB%E5%AF%B9%E5%8F%82%E6%95%B0%E8%BF%9B%E8%A1%8C%E8%BF%87%E6%BB%A4">1.2.2 【必须】对参数进行过滤</a></li>
+</ul>
+</li>
+<li><a href="#13-%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4">1.3 执行命令</a><ul>
+<li><a href="#131-%E5%BB%BA%E8%AE%AE%E9%81%BF%E5%85%8D%E7%9B%B4%E6%8E%A5%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4">1.3.1 【建议】避免直接调用函数执行系统命令</a></li>
+<li><a href="#132-%E5%BF%85%E9%A1%BB%E8%BF%87%E6%BB%A4%E4%BC%A0%E5%85%A5%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0%E7%9A%84%E5%AD%97%E7%AC%A6">1.3.2 【必须】过滤传入命令执行函数的字符</a></li>
+<li><a href="#133-%E5%BF%85%E9%A1%BB%E7%A6%81%E6%AD%A2%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C">1.3.3 【必须】禁止不安全的代码执行</a></li>
+</ul>
+</li>
+<li><a href="#14-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C">1.4 文件操作</a><ul>
+<li><a href="#141-%E5%BF%85%E9%A1%BB%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E9%99%90%E5%88%B6">1.4.1 【必须】文件类型限制</a></li>
+<li><a href="#142-%E5%BF%85%E9%A1%BB%E7%A6%81%E6%AD%A2%E5%A4%96%E9%83%A8%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E4%BA%8E%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9B%AE%E5%BD%95">1.4.2 【必须】禁止外部文件存储于可执行目录</a></li>
+<li><a href="#143-%E5%BF%85%E9%A1%BB%E9%81%BF%E5%85%8D%E8%B7%AF%E5%BE%84%E7%A9%BF%E8%B6%8A">1.4.3 【必须】避免路径穿越</a></li>
+<li><a href="#144-%E5%BF%85%E9%A1%BB%E7%A6%81%E7%94%A8xml%E5%A4%96%E9%83%A8%E5%AE%9E%E4%BD%93%E7%9A%84%E6%96%B9%E6%B3%95">1.4.4 【必须】禁用XML外部实体的方法</a></li>
+<li><a href="#145-%E5%BF%85%E9%A1%BB%E7%A6%81%E7%94%A8%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%87%BD%E6%95%B0">1.4.5 【必须】禁用不安全的反序列化函数</a></li>
+<li><a href="#146-%E5%BB%BA%E8%AE%AE%E9%81%BF%E5%85%8D%E8%B7%AF%E5%BE%84%E6%8B%BC%E6%8E%A5">1.4.6 【建议】避免路径拼接</a></li>
+<li><a href="#147-%E5%BB%BA%E8%AE%AE%E6%96%87%E4%BB%B6%E5%90%8Dhash%E5%8C%96%E5%A4%84%E7%90%86">1.4.7 【建议】文件名hash化处理</a></li>
+</ul>
+</li>
+<li><a href="#15-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82">1.5 网络请求</a><ul>
+<li><a href="#151-%E5%BF%85%E9%A1%BB%E9%99%90%E5%AE%9A%E8%AE%BF%E9%97%AE%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90%E5%9C%B0%E5%9D%80%E8%8C%83%E5%9B%B4">1.5.1 【必须】限定访问网络资源地址范围</a></li>
+</ul>
+</li>
+<li><a href="#16-%E5%93%8D%E5%BA%94%E8%BE%93%E5%87%BA">1.6 响应输出</a><ul>
+<li><a href="#161-%E5%BF%85%E9%A1%BB%E8%AE%BE%E7%BD%AE%E6%AD%A3%E7%A1%AE%E7%9A%84http%E5%93%8D%E5%BA%94%E5%8C%85%E7%B1%BB%E5%9E%8B">1.6.1 【必须】设置正确的HTTP响应包类型</a></li>
+<li><a href="#162-%E5%BF%85%E9%A1%BB%E8%AE%BE%E7%BD%AE%E5%AE%89%E5%85%A8%E7%9A%84http%E5%93%8D%E5%BA%94%E5%A4%B4">1.6.2 【必须】设置安全的HTTP响应头</a></li>
+<li><a href="#163-%E5%BF%85%E9%A1%BB%E5%AF%B9%E5%A4%96%E8%BE%93%E5%87%BA%E9%A1%B5%E9%9D%A2%E5%8C%85%E5%90%AB%E7%AC%AC%E4%B8%89%E6%96%B9%E6%95%B0%E6%8D%AE%E6%97%B6%E9%A1%BB%E8%BF%9B%E8%A1%8C%E7%BC%96%E7%A0%81%E5%A4%84%E7%90%86">1.6.3 【必须】对外输出页面包含第三方数据时须进行编码处理</a></li>
+</ul>
+</li>
+<li><a href="#17-%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA">1.7 数据输出</a><ul>
+<li><a href="#171-%E5%BF%85%E9%A1%BB%E6%95%8F%E6%84%9F%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E5%AD%98%E5%82%A8">1.7.1 【必须】敏感数据加密存储</a></li>
+<li><a href="#172-%E5%BF%85%E9%A1%BB%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E5%BF%85%E9%A1%BB%E7%94%B1%E5%90%8E%E5%8F%B0%E8%BF%9B%E8%A1%8C%E8%84%B1%E6%95%8F%E5%A4%84%E7%90%86">1.7.2 【必须】敏感信息必须由后台进行脱敏处理</a></li>
+<li><a href="#173-%E5%BF%85%E9%A1%BB%E9%AB%98%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E7%A6%81%E6%AD%A2%E5%AD%98%E5%82%A8%E5%B1%95%E7%A4%BA">1.7.3 【必须】高敏感信息禁止存储、展示</a></li>
+<li><a href="#174-%E5%BF%85%E9%A1%BB%E4%B8%AA%E4%BA%BA%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E8%84%B1%E6%95%8F%E5%B1%95%E7%A4%BA">1.7.4 【必须】个人敏感信息脱敏展示</a></li>
+<li><a href="#175-%E5%BF%85%E9%A1%BB%E9%9A%90%E8%97%8F%E5%90%8E%E5%8F%B0%E5%9C%B0%E5%9D%80">1.7.5 【必须】隐藏后台地址</a></li>
+</ul>
+</li>
+<li><a href="#18-%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86">1.8 权限管理</a><ul>
+<li><a href="#181-%E5%BF%85%E9%A1%BB%E9%BB%98%E8%AE%A4%E9%89%B4%E6%9D%83">1.8.1 【必须】默认鉴权</a></li>
+<li><a href="#182-%E5%BF%85%E9%A1%BB%E6%8E%88%E6%9D%83%E9%81%B5%E5%BE%AA%E6%9C%80%E5%B0%8F%E6%9D%83%E9%99%90%E5%8E%9F%E5%88%99">1.8.2 【必须】授权遵循最小权限原则</a></li>
+<li><a href="#183-%E5%BF%85%E9%A1%BB%E9%81%BF%E5%85%8D%E8%B6%8A%E6%9D%83%E8%AE%BF%E9%97%AE">1.8.3 【必须】避免越权访问</a></li>
+<li><a href="#184-%E5%BB%BA%E8%AE%AE%E5%8F%8A%E6%97%B6%E6%B8%85%E7%90%86%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%E6%9D%83%E9%99%90">1.8.4 【建议】及时清理不需要的权限</a></li>
+</ul>
+</li>
+<li><a href="#19-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86">1.9 异常处理</a><ul>
+<li><a href="#191-%E5%BF%85%E9%A1%BB%E4%B8%8D%E5%90%91%E5%AF%B9%E5%A4%96%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BA">1.9.1 【必须】不向对外错误提示</a></li>
+<li><a href="#192-%E5%BF%85%E9%A1%BB%E7%A6%81%E6%AD%A2%E5%BC%82%E5%B8%B8%E6%8A%9B%E5%87%BA%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF">1.9.2 【必须】禁止异常抛出敏感信息</a></li>
+</ul>
+</li>
+<li><a href="#110-flask%E5%AE%89%E5%85%A8">1.10 Flask安全</a><ul>
+<li><a href="#1101-%E5%BF%85%E9%A1%BB%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E5%85%B3%E9%97%AD%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F">1.10.1 【必须】生产环境关闭调试模式</a></li>
+<li><a href="#1102-%E5%BB%BA%E8%AE%AE%E9%81%B5%E5%BE%AAflask%E5%AE%89%E5%85%A8%E8%A7%84%E8%8C%83">1.10.2 【建议】遵循Flask安全规范</a></li>
+</ul>
+</li>
+<li><a href="#111-django%E5%AE%89%E5%85%A8">1.11 Django安全</a><ul>
+<li><a href="#1111-%E5%BF%85%E9%A1%BB%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E5%85%B3%E9%97%AD%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F">1.11.1 【必须】生产环境关闭调试模式</a></li>
+<li><a href="#1112-%E5%BB%BA%E8%AE%AE%E4%BF%9D%E6%8C%81django%E8%87%AA%E5%B8%A6%E7%9A%84%E5%AE%89%E5%85%A8%E7%89%B9%E6%80%A7%E5%BC%80%E5%90%AF">1.11.2 【建议】保持Django自带的安全特性开启</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="通用类"><a href="#通用类" class="headerlink" title="通用类"></a>通用类</h1><h2 id="I-代码实现"><a href="#I-代码实现" class="headerlink" title="I. 代码实现"></a>I. 代码实现</h2><h3 id="1-1-加密算法"><a href="#1-1-加密算法" class="headerlink" title="1.1 加密算法"></a>1.1 加密算法</h3><h4 id="1-1-1-【必须】避免使用不安全的对称加密算法"><a href="#1-1-1-【必须】避免使用不安全的对称加密算法" class="headerlink" title="1.1.1 【必须】避免使用不安全的对称加密算法"></a>1.1.1 【必须】避免使用不安全的对称加密算法</h4><ul>
+<li>DES和3DES已经不再适用于现代应用程序，应改为使用AES。</li>
+</ul>
+<h3 id="1-2-程序日志"><a href="#1-2-程序日志" class="headerlink" title="1.2 程序日志"></a>1.2 程序日志</h3><h4 id="1-2-1-【建议】对每个重要行为都记录日志"><a href="#1-2-1-【建议】对每个重要行为都记录日志" class="headerlink" title="1.2.1 【建议】对每个重要行为都记录日志"></a>1.2.1 【建议】对每个重要行为都记录日志</h4><ul>
+<li>确保重要行为都记录日志，且可靠保存6个月以上。</li>
+</ul>
+<h4 id="1-2-2-【建议】禁止将未经验证的用户输入直接记录日志"><a href="#1-2-2-【建议】禁止将未经验证的用户输入直接记录日志" class="headerlink" title="1.2.2 【建议】禁止将未经验证的用户输入直接记录日志"></a>1.2.2 【建议】禁止将未经验证的用户输入直接记录日志</h4><ul>
+<li>当日志条目包含未经净化的用户输入时会引发记录注入漏洞。恶意用户会插入伪造的日志数据，从而让系统管理员以为是系统行为。</li>
+</ul>
+<h4 id="1-2-3-【建议】避免在日志中保存敏感信息"><a href="#1-2-3-【建议】避免在日志中保存敏感信息" class="headerlink" title="1.2.3 【建议】避免在日志中保存敏感信息"></a>1.2.3 【建议】避免在日志中保存敏感信息</h4><ul>
+<li>不能在日志保存密码（包括明文密码和密文密码）、密钥和其它敏感信息</li>
+</ul>
+<h3 id="1-3-系统口令"><a href="#1-3-系统口令" class="headerlink" title="1.3 系统口令"></a>1.3 系统口令</h3><h4 id="1-3-1-【必须】禁止使用空口令、弱口令、已泄露口令"><a href="#1-3-1-【必须】禁止使用空口令、弱口令、已泄露口令" class="headerlink" title="1.3.1 【必须】禁止使用空口令、弱口令、已泄露口令"></a>1.3.1 【必须】禁止使用空口令、弱口令、已泄露口令</h4><h4 id="1-3-2-【必须】口令强度要求"><a href="#1-3-2-【必须】口令强度要求" class="headerlink" title="1.3.2 【必须】口令强度要求"></a>1.3.2 【必须】口令强度要求</h4><blockquote>
+<p> 口令强度须同时满足：</p>
+<ol>
+<li>密码长度大于14位</li>
+<li>必须包含下列元素：大小写英文字母、数字、特殊字符</li>
+<li>不得使用各系统、程序的默认初始密码</li>
+<li>不能与最近6次使用过的密码重复</li>
+<li>不得与其他外部系统使用相同的密码</li>
+</ol>
+</blockquote>
+<h4 id="1-3-3-【必须】口令存储安全"><a href="#1-3-3-【必须】口令存储安全" class="headerlink" title="1.3.3 【必须】口令存储安全"></a>1.3.3 【必须】口令存储安全</h4><ul>
+<li>禁止明文存储口令</li>
+<li>禁止使用弱密码学算法（如DES和3DES）加密存储口令</li>
+<li>使用不可逆算法和随机salt对口令进行加密存储</li>
+</ul>
+<h4 id="1-3-4-【必须】禁止传递明文口令"><a href="#1-3-4-【必须】禁止传递明文口令" class="headerlink" title="1.3.4 【必须】禁止传递明文口令"></a>1.3.4 【必须】禁止传递明文口令</h4><h4 id="1-3-5-【必须】禁止在不安全的信道中传输口令"><a href="#1-3-5-【必须】禁止在不安全的信道中传输口令" class="headerlink" title="1.3.5 【必须】禁止在不安全的信道中传输口令"></a>1.3.5 【必须】禁止在不安全的信道中传输口令</h4><h2 id="II-配置-amp-环境"><a href="#II-配置-amp-环境" class="headerlink" title="II. 配置&amp;环境"></a>II. 配置&amp;环境</h2><h3 id="2-1-Python版本选择"><a href="#2-1-Python版本选择" class="headerlink" title="2.1 Python版本选择"></a>2.1 Python版本选择</h3><h4 id="2-1-1-【建议】使用Python-3-6-的版本"><a href="#2-1-1-【建议】使用Python-3-6-的版本" class="headerlink" title="2.1.1 【建议】使用Python 3.6+的版本"></a>2.1.1 【建议】使用Python 3.6+的版本</h4><ul>
+<li>新增的项目应使用 Python 3.6+</li>
+</ul>
+<blockquote>
+<p><strong>为什么要这么做？</strong><br>由于 Python 2 在 <a target="_blank" rel="noopener" href="https://www.python.org/doc/sunset-python-2/">2020 年停止维护</a>，相关组件的漏洞不能得到及时修复与维护</p>
+</blockquote>
+<h3 id="2-2-第三方包安全"><a href="#2-2-第三方包安全" class="headerlink" title="2.2 第三方包安全"></a>2.2 第三方包安全</h3><h4 id="2-2-2-【必须】禁止使用不安全的组件"><a href="#2-2-2-【必须】禁止使用不安全的组件" class="headerlink" title="2.2.2 【必须】禁止使用不安全的组件"></a>2.2.2 【必须】禁止使用不安全的组件</h4><h3 id="2-3-配置信息"><a href="#2-3-配置信息" class="headerlink" title="2.3 配置信息"></a>2.3 配置信息</h3><h4 id="2-3-1-【必须】密钥存储安全"><a href="#2-3-1-【必须】密钥存储安全" class="headerlink" title="2.3.1 【必须】密钥存储安全"></a>2.3.1 【必须】密钥存储安全</h4><ul>
+<li>在使用对称密码算法时，需要保护好加密密钥。当算法涉及敏感、业务数据时，可通过非对称算法协商加密密钥。其他较为不敏感的数据加密，可以通过变换算法等方式保护密钥。</li>
+</ul>
+<h4 id="2-3-2-【必须】禁止硬编码敏感配置"><a href="#2-3-2-【必须】禁止硬编码敏感配置" class="headerlink" title="2.3.2 【必须】禁止硬编码敏感配置"></a>2.3.2 【必须】禁止硬编码敏感配置</h4><ul>
+<li>禁止在源码中硬编码AK&#x2F;SK、IP、数据库账密等配置信息</li>
+<li>应使用配置系统或KMS密钥管理系统。</li>
+</ul>
+<h1 id="后台类"><a href="#后台类" class="headerlink" title="后台类"></a>后台类</h1><h2 id="I-代码实现-1"><a href="#I-代码实现-1" class="headerlink" title="I. 代码实现"></a>I. 代码实现</h2><h3 id="1-1-输入验证"><a href="#1-1-输入验证" class="headerlink" title="1.1 输入验证"></a>1.1 输入验证</h3><h4 id="1-1-1-【必须】按类型进行数据校验"><a href="#1-1-1-【必须】按类型进行数据校验" class="headerlink" title="1.1.1 【必须】按类型进行数据校验"></a>1.1.1 【必须】按类型进行数据校验</h4><ul>
+<li><p>所有程序外部输入的参数值，应进行数据校验。校验内容包括但不限于：数据长度、数据范围、数据类型与格式。校验不通过，应拒绝。</p>
+</li>
+<li><p>推荐使用组件：<a target="_blank" rel="noopener" href="https://github.com/pyeve/cerberus">Cerberus</a>、<a target="_blank" rel="noopener" href="https://github.com/Julian/jsonschema">jsonschema</a>、<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/dev/ref/validators/">Django-Validators</a></p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Cerberus示例</span></span><br><span class="line">v = Validator(&#123;<span class="string">&#x27;name&#x27;</span>: &#123;<span class="string">&#x27;type&#x27;</span>: <span class="string">&#x27;string&#x27;</span>&#125;&#125;)</span><br><span class="line">v.validate(&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;john doe&#x27;</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># jsonschema示例</span></span><br><span class="line">schema = &#123;</span><br><span class="line">     <span class="string">&quot;type&quot;</span> : <span class="string">&quot;object&quot;</span>,</span><br><span class="line">     <span class="string">&quot;properties&quot;</span> : &#123;</span><br><span class="line">         <span class="string">&quot;price&quot;</span> : &#123;<span class="string">&quot;type&quot;</span> : <span class="string">&quot;number&quot;</span>&#125;,</span><br><span class="line">         <span class="string">&quot;name&quot;</span> : &#123;<span class="string">&quot;type&quot;</span> : <span class="string">&quot;string&quot;</span>&#125;,</span><br><span class="line">     &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">validate(instance=&#123;<span class="string">&quot;name&quot;</span> : <span class="string">&quot;Eggs&quot;</span>, <span class="string">&quot;price&quot;</span> : <span class="number">34.99</span>&#125;, schema=schema)</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-SQL操作"><a href="#1-2-SQL操作" class="headerlink" title="1.2 SQL操作"></a>1.2 SQL操作</h3><h4 id="1-2-1-【必须】使用参数化查询"><a href="#1-2-1-【必须】使用参数化查询" class="headerlink" title="1.2.1 【必须】使用参数化查询"></a>1.2.1 【必须】使用参数化查询</h4><ul>
+<li>使用参数化SQL语句，强制区分数据和命令，避免产生SQL注入漏洞。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 错误示例</span></span><br><span class="line"><span class="keyword">import</span> mysql.connector</span><br><span class="line"></span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line"><span class="meta">... </span>...</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">cur = mydb.cursor()</span><br><span class="line">userid = get_id_from_user()</span><br><span class="line"><span class="comment"># 使用%直接格式化字符串拼接SQL语句</span></span><br><span class="line">cur.execute(<span class="string">&quot;SELECT `id`, `password` FROM `auth_user` WHERE `id`=%s &quot;</span> % (userid,)) </span><br><span class="line">myresult = cur.fetchall()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安全示例</span></span><br><span class="line"><span class="keyword">import</span> mysql.connector</span><br><span class="line"></span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line"><span class="meta">... </span>...</span><br><span class="line">)</span><br><span class="line">cur = mydb.cursor()</span><br><span class="line">userid = get_id_from_user()</span><br><span class="line"><span class="comment"># 将元组以参数的形式传入</span></span><br><span class="line">cur.execute(<span class="string">&quot;SELECT `id`, `password` FROM `auth_user` WHERE `id`=%s &quot;</span> , (userid,))</span><br><span class="line">myresult = cur.fetchall()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>推荐使用ORM框架来操作数据库，如：使用<code>SQLAlchemy</code>。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装sqlalchemy并初始化数据库连接</span></span><br><span class="line"><span class="comment"># pip install sqlalchemy</span></span><br><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> create_engine</span><br><span class="line"><span class="comment"># 初始化数据库连接，修改为你的数据库用户名和密码</span></span><br><span class="line">engine = create_engine(<span class="string">&#x27;mysql+mysqlconnector://user:password@host:port/DATABASE&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 引用数据类型</span></span><br><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> Column, String, Integer, Float</span><br><span class="line"><span class="keyword">from</span> sqlalchemy.ext.declarative <span class="keyword">import</span> declarative_base</span><br><span class="line"></span><br><span class="line">Base = declarative_base()</span><br><span class="line"><span class="comment"># 定义 Player 对象:</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Player</span>(<span class="title class_ inherited__">Base</span>):</span><br><span class="line">    <span class="comment"># 表的名字:</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;player&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 表的结构:</span></span><br><span class="line">    player_id = Column(Integer, primary_key=<span class="literal">True</span>, autoincrement=<span class="literal">True</span>)</span><br><span class="line">    team_id = Column(Integer)</span><br><span class="line">    player_name = Column(String(<span class="number">255</span>))</span><br><span class="line">    height = Column(Float(<span class="number">3</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 增删改查</span></span><br><span class="line"><span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> sessionmaker</span><br><span class="line"><span class="comment"># 创建 DBSession 类型:</span></span><br><span class="line">DBSession = sessionmaker(bind=engine)</span><br><span class="line"><span class="comment"># 创建 session 对象:</span></span><br><span class="line">session = DBSession()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 增:</span></span><br><span class="line">new_player = Player(team_id=<span class="number">101</span>, player_name=<span class="string">&quot;Tom&quot;</span>, height=<span class="number">1.98</span>)</span><br><span class="line">session.add(new_player)</span><br><span class="line"><span class="comment"># 删:</span></span><br><span class="line">row = session.query(Player).<span class="built_in">filter</span>(Player.player_name==<span class="string">&quot;Tom&quot;</span>).first()</span><br><span class="line">session.delete(row)</span><br><span class="line"><span class="comment"># 改:</span></span><br><span class="line">row = session.query(Player).<span class="built_in">filter</span>(Player.player_name==<span class="string">&quot;Tom&quot;</span>).first()</span><br><span class="line">row.height = <span class="number">1.99</span></span><br><span class="line"><span class="comment"># 查:</span></span><br><span class="line">rows = session.query(Player).<span class="built_in">filter</span>(Player.height &gt;= <span class="number">1.88</span>).<span class="built_in">all</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交即保存到数据库:</span></span><br><span class="line">session.commit()</span><br><span class="line"><span class="comment"># 关闭 session:</span></span><br><span class="line">session.close()</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-2-【必须】对参数进行过滤"><a href="#1-2-2-【必须】对参数进行过滤" class="headerlink" title="1.2.2 【必须】对参数进行过滤"></a>1.2.2 【必须】对参数进行过滤</h4><ul>
+<li>将接受到的外部参数动态拼接到SQL语句时，必须对参数进行安全过滤。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sql_filter</span>(<span class="params">sql, max_length=<span class="number">20</span></span>):</span><br><span class="line">    dirty_stuff = [<span class="string">&quot;\&quot;&quot;</span>, <span class="string">&quot;\\&quot;</span>, <span class="string">&quot;/&quot;</span>, <span class="string">&quot;*&quot;</span>, <span class="string">&quot;&#x27;&quot;</span>, <span class="string">&quot;=&quot;</span>, <span class="string">&quot;-&quot;</span>, <span class="string">&quot;#&quot;</span>, <span class="string">&quot;;&quot;</span>, <span class="string">&quot;&lt;&quot;</span>, <span class="string">&quot;&gt;&quot;</span>, <span class="string">&quot;+&quot;</span>, </span><br><span class="line">                   <span class="string">&quot;&amp;&quot;</span>, <span class="string">&quot;$&quot;</span>, <span class="string">&quot;(&quot;</span>, <span class="string">&quot;)&quot;</span>, <span class="string">&quot;%&quot;</span>, <span class="string">&quot;@&quot;</span>, <span class="string">&quot;,&quot;</span>]</span><br><span class="line">    <span class="keyword">for</span> stuff <span class="keyword">in</span> dirty_stuff:</span><br><span class="line">        sql = sql.replace(stuff, <span class="string">&quot;x&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> sql[:max_length]</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-执行命令"><a href="#1-3-执行命令" class="headerlink" title="1.3 执行命令"></a>1.3 执行命令</h3><h4 id="1-3-1-【建议】避免直接调用函数执行系统命令"><a href="#1-3-1-【建议】避免直接调用函数执行系统命令" class="headerlink" title="1.3.1 【建议】避免直接调用函数执行系统命令"></a>1.3.1 【建议】避免直接调用函数执行系统命令</h4><ul>
+<li>相关功能的实现应避免直接调用系统命令（如<code>os.system()</code>、<code>os.popen()</code>、<code>subprocess.call()</code>等），优先使用其他同类操作进行代替，比如：通过文件系统API进行文件操作而非直接调用操作系统命令</li>
+<li>如评估无法避免，执行命令应避免拼接外部数据，同时进行执行命令的白名单限制。</li>
+</ul>
+<h4 id="1-3-2-【必须】过滤传入命令执行函数的字符"><a href="#1-3-2-【必须】过滤传入命令执行函数的字符" class="headerlink" title="1.3.2 【必须】过滤传入命令执行函数的字符"></a>1.3.2 【必须】过滤传入命令执行函数的字符</h4><ul>
+<li>程序调用各类函数执行系统命令时，如果涉及的命令由外部传入，过滤传入命令执行函数的字符。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> shlex</span><br><span class="line"></span><br><span class="line">domain = sys.argv[<span class="number">1</span>]</span><br><span class="line"><span class="comment"># 替换可以用来注入命令的字符为空</span></span><br><span class="line">badchars = <span class="string">&quot;\n&amp;;|&#x27;\&quot;$()`-&quot;</span></span><br><span class="line"><span class="keyword">for</span> char <span class="keyword">in</span> badchars:</span><br><span class="line">    domain = domain.replace(char, <span class="string">&quot; &quot;</span>)</span><br><span class="line"></span><br><span class="line">result = os.system(<span class="string">&quot;nslookup &quot;</span> + shlex.quote(domain))</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-3-【必须】禁止不安全的代码执行"><a href="#1-3-3-【必须】禁止不安全的代码执行" class="headerlink" title="1.3.3 【必须】禁止不安全的代码执行"></a>1.3.3 【必须】禁止不安全的代码执行</h4><ul>
+<li>禁止使用 <code>eval</code> 函数处理存在外部输入的数据。</li>
+</ul>
+<h3 id="1-4-文件操作"><a href="#1-4-文件操作" class="headerlink" title="1.4 文件操作"></a>1.4 文件操作</h3><h4 id="1-4-1-【必须】文件类型限制"><a href="#1-4-1-【必须】文件类型限制" class="headerlink" title="1.4.1 【必须】文件类型限制"></a>1.4.1 【必须】文件类型限制</h4><ul>
+<li>通过白名单对上传或者下载的文件类型、大小进行严格校验。仅允许业务所需文件类型上传，避免上传木马、WebShell等文件。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">  </span><br><span class="line">ALLOWED_EXTENSIONS = [<span class="string">&#x27;txt&#x27;</span>,<span class="string">&#x27;jpg&#x27;</span>,<span class="string">&#x27;png&#x27;</span>]</span><br><span class="line">  </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">allowed_file</span>(<span class="params">filename</span>):</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">&#x27;.&#x27;</span> <span class="keyword">in</span> filename <span class="keyword">and</span> </span><br><span class="line">        <span class="string">&#x27;..&#x27;</span> <span class="keyword">not</span> <span class="keyword">in</span> filename <span class="keyword">and</span> </span><br><span class="line">        os.path.splitext(filename)[<span class="number">1</span>].lower() <span class="keyword">in</span> ALLOWED_EXTENSIONS):</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> filename</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-4-2-【必须】禁止外部文件存储于可执行目录"><a href="#1-4-2-【必须】禁止外部文件存储于可执行目录" class="headerlink" title="1.4.2 【必须】禁止外部文件存储于可执行目录"></a>1.4.2 【必须】禁止外部文件存储于可执行目录</h4><ul>
+<li>禁止外部文件存储于WEB容器的可执行目录（appBase）。建议使用 <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/tempfile.html">tempfile</a> 库处理临时文件和临时目录。</li>
+</ul>
+<h4 id="1-4-3-【必须】避免路径穿越"><a href="#1-4-3-【必须】避免路径穿越" class="headerlink" title="1.4.3 【必须】避免路径穿越"></a>1.4.3 【必须】避免路径穿越</h4><ul>
+<li>保存在本地文件系统时，必须对路径进行合法校验，避免目录穿越漏洞</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">upload_dir = <span class="string">&#x27;/tmp/upload/&#x27;</span> <span class="comment"># 预期的上传目录</span></span><br><span class="line">file_name = <span class="string">&#x27;../../etc/hosts&#x27;</span> <span class="comment"># 用户传入的文件名</span></span><br><span class="line">absolute_path = os.path.join(upload_dir, file_name) <span class="comment"># /tmp/upload/../../etc/hosts</span></span><br><span class="line">normalized_path = os.path.normpath(absolute_path) <span class="comment"># /etc/hosts</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> normalized_path.startswith(upload_dir): <span class="comment"># 检查最终路径是否在预期的上传目录中</span></span><br><span class="line">    <span class="keyword">raise</span> IOError()</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-4-4-【必须】禁用XML外部实体的方法"><a href="#1-4-4-【必须】禁用XML外部实体的方法" class="headerlink" title="1.4.4 【必须】禁用XML外部实体的方法"></a>1.4.4 【必须】禁用XML外部实体的方法</h4><ul>
+<li><p>禁用XML外部实体的方法，来预防XXE攻击。</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line">  </span><br><span class="line">xmlData = etree.parse(xmlSource,etree.XMLParser(resolve_entities=<span class="literal">False</span>))</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="1-4-5-【必须】禁用不安全的反序列化函数"><a href="#1-4-5-【必须】禁用不安全的反序列化函数" class="headerlink" title="1.4.5 【必须】禁用不安全的反序列化函数"></a>1.4.5 【必须】禁用不安全的反序列化函数</h4><ul>
+<li>禁用<code>yaml.unsafe_load()</code>函数反序列化YAML数据，来避免反序列化漏洞执行漏洞。</li>
+</ul>
+<h4 id="1-4-6-【建议】避免路径拼接"><a href="#1-4-6-【建议】避免路径拼接" class="headerlink" title="1.4.6 【建议】避免路径拼接"></a>1.4.6 【建议】避免路径拼接</h4><ul>
+<li>文件目录避免外部参数拼接。保存文件目录建议后台写死并对文件名进行校验（字符类型、长度）。</li>
+</ul>
+<h4 id="1-4-7-【建议】文件名hash化处理"><a href="#1-4-7-【建议】文件名hash化处理" class="headerlink" title="1.4.7 【建议】文件名hash化处理"></a>1.4.7 【建议】文件名hash化处理</h4><ul>
+<li>建议文件保存时，将文件名替换为随机字符串。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">random_filename</span>(<span class="params">filename</span>):</span><br><span class="line">    ext = os.path.splitext(filename)[<span class="number">1</span>]</span><br><span class="line">    new_filename = uuid.uuid4().<span class="built_in">hex</span> + ext</span><br><span class="line">    <span class="keyword">return</span> new_filename</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-5-网络请求"><a href="#1-5-网络请求" class="headerlink" title="1.5 网络请求"></a>1.5 网络请求</h3><h4 id="1-5-1-【必须】限定访问网络资源地址范围"><a href="#1-5-1-【必须】限定访问网络资源地址范围" class="headerlink" title="1.5.1 【必须】限定访问网络资源地址范围"></a>1.5.1 【必须】限定访问网络资源地址范围</h4><p>当程序需要从用户指定的<code>URL地址获取网页文本内容</code>、<code>加载指定地址的图片</code>、<code>进行下载</code>等操作时，需要对URL地址进行安全校验：</p>
+<ol>
+<li><p>只允许HTTP或HTTPS协议</p>
+</li>
+<li><p>解析目标URL，获取其host</p>
+</li>
+<li><p>解析host，获取host指向的IP地址转换成long型</p>
+</li>
+<li><p>检查IP地址是否为内网IP</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以RFC定义的专有网络为例，如有自定义私有网段亦应加入禁止访问列表。</span></span><br><span class="line"><span class="number">10.0</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">8</span></span><br><span class="line"><span class="number">172.16</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">12</span></span><br><span class="line"><span class="number">192.168</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">16</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">8</span></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li><p>请求URL</p>
+</li>
+<li><p>如果有跳转，跳转后执行1，否则对URL发起请求</p>
+</li>
+</ol>
+<h3 id="1-6-响应输出"><a href="#1-6-响应输出" class="headerlink" title="1.6 响应输出"></a>1.6 响应输出</h3><h4 id="1-6-1-【必须】设置正确的HTTP响应包类型"><a href="#1-6-1-【必须】设置正确的HTTP响应包类型" class="headerlink" title="1.6.1 【必须】设置正确的HTTP响应包类型"></a>1.6.1 【必须】设置正确的HTTP响应包类型</h4><p>响应包的HTTP头“Content-Type”必须正确配置响应包的类型，禁止非HTML类型的响应包设置为“text&#x2F;html”。</p>
+<h4 id="1-6-2-【必须】设置安全的HTTP响应头"><a href="#1-6-2-【必须】设置安全的HTTP响应头" class="headerlink" title="1.6.2 【必须】设置安全的HTTP响应头"></a>1.6.2 【必须】设置安全的HTTP响应头</h4><ul>
+<li><p>X-Content-Type-Options</p>
+<p>添加“X-Content-Type-Options”响应头并将其值设置为“nosniff ”</p>
+</li>
+<li><p>HttpOnly<br> 控制用户登鉴权的Cookie字段 应当设置HttpOnly属性以防止被XSS漏洞&#x2F;JavaScript操纵泄漏。</p>
+</li>
+<li><p>X-Frame-Options</p>
+<p>设置X-Frame-Options响应头，并根据需求合理设置其允许范围。该头用于指示浏览器禁止当前页面在frame、 iframe、embed等标签中展现。从而避免点击劫持问题。它有三个可选的值: DENY: 浏览器会拒绝当前页面加 载任何frame页面; SAMEORIGIN:则frame页面的地址只能为同源域名下的页面 ALLOW-FROM origin:可以定 义允许frame加载的页面地址。</p>
+</li>
+</ul>
+<h4 id="1-6-3-【必须】对外输出页面包含第三方数据时须进行编码处理"><a href="#1-6-3-【必须】对外输出页面包含第三方数据时须进行编码处理" class="headerlink" title="1.6.3 【必须】对外输出页面包含第三方数据时须进行编码处理"></a>1.6.3 【必须】对外输出页面包含第三方数据时须进行编码处理</h4><ul>
+<li>当响应“Content-Type”为“text&#x2F;html”类型时，需要对响应体进行编码处理</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 推荐使用mozilla维护的bleach库来进行过滤</span></span><br><span class="line"><span class="keyword">import</span> bleach</span><br><span class="line">bleach.clean(<span class="string">&#x27;an &lt;script&gt;evil()&lt;/script&gt; example&#x27;</span>)</span><br><span class="line"><span class="comment"># u&#x27;an &amp;lt;script&amp;gt;evil()&amp;lt;/script&amp;gt; example&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-7-数据输出"><a href="#1-7-数据输出" class="headerlink" title="1.7 数据输出"></a>1.7 数据输出</h3><h4 id="1-7-1-【必须】敏感数据加密存储"><a href="#1-7-1-【必须】敏感数据加密存储" class="headerlink" title="1.7.1 【必须】敏感数据加密存储"></a>1.7.1 【必须】敏感数据加密存储</h4><ul>
+<li>敏感数据应使用SHA2、RSA等算法进行加密存储</li>
+<li>敏感数据应使用独立的存储层，并在访问层开启访问控制</li>
+<li>包含敏感信息的临时文件或缓存一旦不再需要应立刻删除</li>
+</ul>
+<h4 id="1-7-2-【必须】敏感信息必须由后台进行脱敏处理"><a href="#1-7-2-【必须】敏感信息必须由后台进行脱敏处理" class="headerlink" title="1.7.2 【必须】敏感信息必须由后台进行脱敏处理"></a>1.7.2 【必须】敏感信息必须由后台进行脱敏处理</h4><ul>
+<li>敏感信息须再后台进行脱敏后返回，禁止接口返回敏感信息交由前端&#x2F;客户端进行脱敏处理。</li>
+</ul>
+<h4 id="1-7-3-【必须】高敏感信息禁止存储、展示"><a href="#1-7-3-【必须】高敏感信息禁止存储、展示" class="headerlink" title="1.7.3 【必须】高敏感信息禁止存储、展示"></a>1.7.3 【必须】高敏感信息禁止存储、展示</h4><ul>
+<li>口令、密保答案、生理标识等鉴权信息禁止展示</li>
+<li>非金融类业务，信用卡cvv码及日志禁止存储</li>
+</ul>
+<h4 id="1-7-4-【必须】个人敏感信息脱敏展示"><a href="#1-7-4-【必须】个人敏感信息脱敏展示" class="headerlink" title="1.7.4 【必须】个人敏感信息脱敏展示"></a>1.7.4 【必须】个人敏感信息脱敏展示</h4><p>在满足业务需求的情况下，个人敏感信息需脱敏展示。</p>
+<ul>
+<li>身份证只显示第一位和最后一位字符，如3****************1。</li>
+<li>移动电话号码隐藏中间6位字符，如134******48。</li>
+<li>工作地址&#x2F;家庭地址最多显示到“区”一级。</li>
+<li>银行卡号仅显示最后4位字符，如************8639</li>
+</ul>
+<h4 id="1-7-5-【必须】隐藏后台地址"><a href="#1-7-5-【必须】隐藏后台地址" class="headerlink" title="1.7.5 【必须】隐藏后台地址"></a>1.7.5 【必须】隐藏后台地址</h4><ul>
+<li>若程序对外提供了登录后台地址，应使用随机字符串隐藏地址。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不要采取这种方式</span></span><br><span class="line">admin_login_url = <span class="string">&quot;xxxx/login&quot;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安全示例</span></span><br><span class="line">admin_login_url = <span class="string">&quot;xxxx/ranD0Str&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="1-8-权限管理"><a href="#1-8-权限管理" class="headerlink" title="1.8 权限管理"></a>1.8 权限管理</h3><h4 id="1-8-1-【必须】默认鉴权"><a href="#1-8-1-【必须】默认鉴权" class="headerlink" title="1.8.1 【必须】默认鉴权"></a>1.8.1 【必须】默认鉴权</h4><ul>
+<li>除非资源完全可对外开放，否则系统默认进行身份认证（使用白名单的方式放开不需要认证的接口或页面）。</li>
+</ul>
+<h4 id="1-8-2-【必须】授权遵循最小权限原则"><a href="#1-8-2-【必须】授权遵循最小权限原则" class="headerlink" title="1.8.2 【必须】授权遵循最小权限原则"></a>1.8.2 【必须】授权遵循最小权限原则</h4><ul>
+<li>程序默认用户应不具备任何操作权限。</li>
+</ul>
+<h4 id="1-8-3-【必须】避免越权访问"><a href="#1-8-3-【必须】避免越权访问" class="headerlink" title="1.8.3 【必须】避免越权访问"></a>1.8.3 【必须】避免越权访问</h4><ul>
+<li>对于非公共操作，应当校验当前访问账号进行操作权限（常见于CMS）和数据权限校验。</li>
+</ul>
+<ol>
+<li>验证当前用户的登录态；</li>
+<li>从可信结构中获取经过校验的当前请求账号的身份信息（如：session），禁止从用户请求参数或Cookie中获取外部传入不可信用户身份直接进行查询；</li>
+<li>校验当前用户是否具备该操作权限；</li>
+<li>校验当前用户是否具备所操作数据的权限；</li>
+<li>校验当前操作是否账户是否预期账户。</li>
+</ol>
+<h4 id="1-8-4-【建议】及时清理不需要的权限"><a href="#1-8-4-【建议】及时清理不需要的权限" class="headerlink" title="1.8.4 【建议】及时清理不需要的权限"></a>1.8.4 【建议】及时清理不需要的权限</h4><ul>
+<li>程序应定期清理非必需用户的权限。</li>
+</ul>
+<h3 id="1-9-异常处理"><a href="#1-9-异常处理" class="headerlink" title="1.9 异常处理"></a>1.9 异常处理</h3><h4 id="1-9-1-【必须】不向对外错误提示"><a href="#1-9-1-【必须】不向对外错误提示" class="headerlink" title="1.9.1 【必须】不向对外错误提示"></a>1.9.1 【必须】不向对外错误提示</h4><ul>
+<li>应合理使用<code>try/except/finally</code> 处理系统异常，避免出错信息输出到前端。</li>
+<li>对外环境禁止开启debug模式，或将程序运行日志输出到前端。</li>
+</ul>
+<h4 id="1-9-2-【必须】禁止异常抛出敏感信息"><a href="#1-9-2-【必须】禁止异常抛出敏感信息" class="headerlink" title="1.9.2 【必须】禁止异常抛出敏感信息"></a>1.9.2 【必须】禁止异常抛出敏感信息</h4><h3 id="1-10-Flask安全"><a href="#1-10-Flask安全" class="headerlink" title="1.10 Flask安全"></a>1.10 Flask安全</h3><h4 id="1-10-1-【必须】生产环境关闭调试模式"><a href="#1-10-1-【必须】生产环境关闭调试模式" class="headerlink" title="1.10.1 【必须】生产环境关闭调试模式"></a>1.10.1 【必须】生产环境关闭调试模式</h4><h4 id="1-10-2-【建议】遵循Flask安全规范"><a href="#1-10-2-【建议】遵循Flask安全规范" class="headerlink" title="1.10.2 【建议】遵循Flask安全规范"></a>1.10.2 【建议】遵循Flask安全规范</h4><ul>
+<li>参考Flask文档中的安全注意事项 <a target="_blank" rel="noopener" href="https://flask.palletsprojects.com/en/latest/security/">https://flask.palletsprojects.com/en/latest/security/</a></li>
+</ul>
+<h3 id="1-11-Django安全"><a href="#1-11-Django安全" class="headerlink" title="1.11 Django安全"></a>1.11 Django安全</h3><h4 id="1-11-1-【必须】生产环境关闭调试模式"><a href="#1-11-1-【必须】生产环境关闭调试模式" class="headerlink" title="1.11.1 【必须】生产环境关闭调试模式"></a>1.11.1 【必须】生产环境关闭调试模式</h4><h4 id="1-11-2-【建议】保持Django自带的安全特性开启"><a href="#1-11-2-【建议】保持Django自带的安全特性开启" class="headerlink" title="1.11.2 【建议】保持Django自带的安全特性开启"></a>1.11.2 【建议】保持Django自带的安全特性开启</h4><ul>
+<li><p>保持Django自带的安全特性开启 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/3.0/topics/security/">https://docs.djangoproject.com/en/3.0/topics/security/</a></p>
+</li>
+<li><p>在默认配置下，Django自带的安全特性对XSS、CSRF、SQL注入、点击劫持等类型漏洞可以起到较好防护效果。应尽量避免关闭这些安全特性。</p>
+</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="https://link.hhtjim.com/163/1885536903.mp3"></li>
+                        
+                    
+                        
+                            <li title="1" data-url="https://link.hhtjim.com/163/1844681125.mp3"></li>
+                        
+                    
+                        
+                            <li title="2" data-url="https://link.hhtjim.com/163/1917044199.mp3"></li>
+                        
+                    
+                        
+                            <li title="3" data-url="https://link.hhtjim.com/163/34218762.mp3"></li>
+                        
+                    
+                        
+                            <li title="4" data-url="https://link.hhtjim.com/163/1927728096.mp3"></li>
+                        
+                    
+                        
+                            <li title="5" data-url="https://link.hhtjim.com/163/1454998244.mp3"></li>
+                        
+                    
+                        
+                            <li title="6" data-url="https://link.hhtjim.com/163/1805304382.mp3"></li>
+                        
+                    
+                        
+                            <li title="7" data-url="https://link.hhtjim.com/163/556203085.mp3"></li>
+                        
+                    
+                        
+                            <li title="8" data-url="https://link.hhtjim.com/163/515647696.mp3"></li>
+                        
+                    
+                        
+                            <li title="9" data-url="https://link.hhtjim.com/163/1917044199.mp3"></li>
+                        
+                    
+                        
+                            <li title="10" data-url="https://link.hhtjim.com/163/1912226948.mp3"></li>
+                        
+                    
+                        
+                            <li title="11" data-url="https://link.hhtjim.com/163/1807581976.mp3"></li>
+                        
+                    
+                        
+                            <li title="12" data-url="https://link.hhtjim.com/163/1807581976.mp3"></li>
+                        
+                    
+                        
+                            <li title="13" data-url="https://link.hhtjim.com/163/1895164923.mp3"></li>
+                        
+                    
+                        
+                            <li title="14" data-url="https://link.hhtjim.com/163/1858118347.mp3"></li>
+                        
+                    
+                        
+                            <li title="15" data-url="https://link.hhtjim.com/163/1320990503.mp3"></li>
+                        
+                    
+                        
+                            <li title="16" data-url="https://link.hhtjim.com/163/1816323939.mp3"></li>
+                        
+                    
+                        
+                            <li title="17" data-url="https://link.hhtjim.com/163/1865566215.mp3"></li>
+                        
+                    
+                        
+                            <li title="18" data-url="https://link.hhtjim.com/163/1501450521.mp3"></li>
+                        
+                    
+                        
+                            <li title="19" data-url="https://link.hhtjim.com/163/1805428732.mp3"></li>
+                        
+                    
+                        
+                            <li title="20" data-url="https://link.hhtjim.com/163/486195958.mp3"></li>
+                        
+                    
+                        
+                            <li title="21" data-url="https://link.hhtjim.com/163/1498788913.mp3"></li>
+                        
+                    
+                        
+                            <li title="22" data-url="https://link.hhtjim.com/163/1383023012.mp3"></li>
+                        
+                    
+                        
+                            <li title="23" data-url="https://link.hhtjim.com/163/1367333218.mp3"></li>
+                        
+                    
+                        
+                            <li title="24" data-url="https://link.hhtjim.com/163/1864872333.mp3"></li>
+                        
+                    
+                        
+                            <li title="25" data-url="https://link.hhtjim.com/163/443292353.mp3"></li>
+                        
+                    
+                        
+                            <li title="26" data-url="https://link.hhtjim.com/163/1803880020.mp3"></li>
+                        
+                    
+                        
+                            <li title="27" data-url="https://link.hhtjim.com/163/1841788961.mp3"></li>
+                        
+                    
+                        
+                            <li title="28" data-url="https://link.hhtjim.com/163/1841482769.mp3"></li>
+                        
+                    
+                        
+                            <li title="29" data-url="https://link.hhtjim.com/163/1472273576.mp3"></li>
+                        
+                    
+                        
+                            <li title="30" data-url="https://link.hhtjim.com/163/1860652524.mp3"></li>
+                        
+                    
+                        
+                            <li title="31" data-url="https://link.hhtjim.com/163/1914467361.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link"
+		data-enable="true"
+        data-ae="true"
+        data-ci="1ba887259d3c06430ee3"
+        data-cs="0a6cd21e1f2ab2e742f162eb12d4ae640dcfc57f"
+        data-r="dxhm.github.io"
+        data-o="DXHM"
+        data-a="DXHM"
+        data-d="true"
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class="side">
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">通用类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#I-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.1.</span> <span class="toc-text">I. 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 加密算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E9%81%BF%E5%85%8D%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">1.1.1 【必须】避免使用不安全的对称加密算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E7%A8%8B%E5%BA%8F%E6%97%A5%E5%BF%97"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 程序日志</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-%E3%80%90%E5%BB%BA%E8%AE%AE%E3%80%91%E5%AF%B9%E6%AF%8F%E4%B8%AA%E9%87%8D%E8%A6%81%E8%A1%8C%E4%B8%BA%E9%83%BD%E8%AE%B0%E5%BD%95%E6%97%A5%E5%BF%97"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">1.2.1 【建议】对每个重要行为都记录日志</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-%E3%80%90%E5%BB%BA%E8%AE%AE%E3%80%91%E7%A6%81%E6%AD%A2%E5%B0%86%E6%9C%AA%E7%BB%8F%E9%AA%8C%E8%AF%81%E7%9A%84%E7%94%A8%E6%88%B7%E8%BE%93%E5%85%A5%E7%9B%B4%E6%8E%A5%E8%AE%B0%E5%BD%95%E6%97%A5%E5%BF%97"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">1.2.2 【建议】禁止将未经验证的用户输入直接记录日志</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-3-%E3%80%90%E5%BB%BA%E8%AE%AE%E3%80%91%E9%81%BF%E5%85%8D%E5%9C%A8%E6%97%A5%E5%BF%97%E4%B8%AD%E4%BF%9D%E5%AD%98%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">1.2.3 【建议】避免在日志中保存敏感信息</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E7%B3%BB%E7%BB%9F%E5%8F%A3%E4%BB%A4"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 系统口令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-1-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E7%A6%81%E6%AD%A2%E4%BD%BF%E7%94%A8%E7%A9%BA%E5%8F%A3%E4%BB%A4%E3%80%81%E5%BC%B1%E5%8F%A3%E4%BB%A4%E3%80%81%E5%B7%B2%E6%B3%84%E9%9C%B2%E5%8F%A3%E4%BB%A4"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">1.3.1 【必须】禁止使用空口令、弱口令、已泄露口令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-2-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E5%8F%A3%E4%BB%A4%E5%BC%BA%E5%BA%A6%E8%A6%81%E6%B1%82"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">1.3.2 【必须】口令强度要求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E5%8F%A3%E4%BB%A4%E5%AD%98%E5%82%A8%E5%AE%89%E5%85%A8"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">1.3.3 【必须】口令存储安全</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-4-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E7%A6%81%E6%AD%A2%E4%BC%A0%E9%80%92%E6%98%8E%E6%96%87%E5%8F%A3%E4%BB%A4"><span class="toc-number">1.1.3.4.</span> <span class="toc-text">1.3.4 【必须】禁止传递明文口令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-5-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E7%A6%81%E6%AD%A2%E5%9C%A8%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E4%BF%A1%E9%81%93%E4%B8%AD%E4%BC%A0%E8%BE%93%E5%8F%A3%E4%BB%A4"><span class="toc-number">1.1.3.5.</span> <span class="toc-text">1.3.5 【必须】禁止在不安全的信道中传输口令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#II-%E9%85%8D%E7%BD%AE-amp-%E7%8E%AF%E5%A2%83"><span class="toc-number">1.2.</span> <span class="toc-text">II. 配置&amp;环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Python%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 Python版本选择</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-%E3%80%90%E5%BB%BA%E8%AE%AE%E3%80%91%E4%BD%BF%E7%94%A8Python-3-6-%E7%9A%84%E7%89%88%E6%9C%AC"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">2.1.1 【建议】使用Python 3.6+的版本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%8C%85%E5%AE%89%E5%85%A8"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 第三方包安全</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E7%A6%81%E6%AD%A2%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E7%BB%84%E4%BB%B6"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">2.2.2 【必须】禁止使用不安全的组件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 配置信息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E5%AF%86%E9%92%A5%E5%AD%98%E5%82%A8%E5%AE%89%E5%85%A8"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">2.3.1 【必须】密钥存储安全</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E7%A6%81%E6%AD%A2%E7%A1%AC%E7%BC%96%E7%A0%81%E6%95%8F%E6%84%9F%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">2.3.2 【必须】禁止硬编码敏感配置</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%8E%E5%8F%B0%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">后台类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#I-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-1"><span class="toc-number">2.1.</span> <span class="toc-text">I. 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E8%BE%93%E5%85%A5%E9%AA%8C%E8%AF%81"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.1 输入验证</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E6%8C%89%E7%B1%BB%E5%9E%8B%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">1.1.1 【必须】按类型进行数据校验</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-SQL%E6%93%8D%E4%BD%9C"><span class="toc-number">2.1.2.</span> <span class="toc-text">1.2 SQL操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E4%BD%BF%E7%94%A8%E5%8F%82%E6%95%B0%E5%8C%96%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.1.2.1.</span> <span class="toc-text">1.2.1 【必须】使用参数化查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E5%AF%B9%E5%8F%82%E6%95%B0%E8%BF%9B%E8%A1%8C%E8%BF%87%E6%BB%A4"><span class="toc-number">2.1.2.2.</span> <span class="toc-text">1.2.2 【必须】对参数进行过滤</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-number">2.1.3.</span> <span class="toc-text">1.3 执行命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-1-%E3%80%90%E5%BB%BA%E8%AE%AE%E3%80%91%E9%81%BF%E5%85%8D%E7%9B%B4%E6%8E%A5%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4"><span class="toc-number">2.1.3.1.</span> <span class="toc-text">1.3.1 【建议】避免直接调用函数执行系统命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-2-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E8%BF%87%E6%BB%A4%E4%BC%A0%E5%85%A5%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0%E7%9A%84%E5%AD%97%E7%AC%A6"><span class="toc-number">2.1.3.2.</span> <span class="toc-text">1.3.2 【必须】过滤传入命令执行函数的字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E7%A6%81%E6%AD%A2%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C"><span class="toc-number">2.1.3.3.</span> <span class="toc-text">1.3.3 【必须】禁止不安全的代码执行</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">2.1.4.</span> <span class="toc-text">1.4 文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-1-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E9%99%90%E5%88%B6"><span class="toc-number">2.1.4.1.</span> <span class="toc-text">1.4.1 【必须】文件类型限制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-2-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E7%A6%81%E6%AD%A2%E5%A4%96%E9%83%A8%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E4%BA%8E%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9B%AE%E5%BD%95"><span class="toc-number">2.1.4.2.</span> <span class="toc-text">1.4.2 【必须】禁止外部文件存储于可执行目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-3-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E9%81%BF%E5%85%8D%E8%B7%AF%E5%BE%84%E7%A9%BF%E8%B6%8A"><span class="toc-number">2.1.4.3.</span> <span class="toc-text">1.4.3 【必须】避免路径穿越</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-4-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E7%A6%81%E7%94%A8XML%E5%A4%96%E9%83%A8%E5%AE%9E%E4%BD%93%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.4.4.</span> <span class="toc-text">1.4.4 【必须】禁用XML外部实体的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-5-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E7%A6%81%E7%94%A8%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%87%BD%E6%95%B0"><span class="toc-number">2.1.4.5.</span> <span class="toc-text">1.4.5 【必须】禁用不安全的反序列化函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-6-%E3%80%90%E5%BB%BA%E8%AE%AE%E3%80%91%E9%81%BF%E5%85%8D%E8%B7%AF%E5%BE%84%E6%8B%BC%E6%8E%A5"><span class="toc-number">2.1.4.6.</span> <span class="toc-text">1.4.6 【建议】避免路径拼接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-7-%E3%80%90%E5%BB%BA%E8%AE%AE%E3%80%91%E6%96%87%E4%BB%B6%E5%90%8Dhash%E5%8C%96%E5%A4%84%E7%90%86"><span class="toc-number">2.1.4.7.</span> <span class="toc-text">1.4.7 【建议】文件名hash化处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82"><span class="toc-number">2.1.5.</span> <span class="toc-text">1.5 网络请求</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-1-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E9%99%90%E5%AE%9A%E8%AE%BF%E9%97%AE%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90%E5%9C%B0%E5%9D%80%E8%8C%83%E5%9B%B4"><span class="toc-number">2.1.5.1.</span> <span class="toc-text">1.5.1 【必须】限定访问网络资源地址范围</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-%E5%93%8D%E5%BA%94%E8%BE%93%E5%87%BA"><span class="toc-number">2.1.6.</span> <span class="toc-text">1.6 响应输出</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6-1-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E8%AE%BE%E7%BD%AE%E6%AD%A3%E7%A1%AE%E7%9A%84HTTP%E5%93%8D%E5%BA%94%E5%8C%85%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.1.6.1.</span> <span class="toc-text">1.6.1 【必须】设置正确的HTTP响应包类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6-2-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E8%AE%BE%E7%BD%AE%E5%AE%89%E5%85%A8%E7%9A%84HTTP%E5%93%8D%E5%BA%94%E5%A4%B4"><span class="toc-number">2.1.6.2.</span> <span class="toc-text">1.6.2 【必须】设置安全的HTTP响应头</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6-3-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E5%AF%B9%E5%A4%96%E8%BE%93%E5%87%BA%E9%A1%B5%E9%9D%A2%E5%8C%85%E5%90%AB%E7%AC%AC%E4%B8%89%E6%96%B9%E6%95%B0%E6%8D%AE%E6%97%B6%E9%A1%BB%E8%BF%9B%E8%A1%8C%E7%BC%96%E7%A0%81%E5%A4%84%E7%90%86"><span class="toc-number">2.1.6.3.</span> <span class="toc-text">1.6.3 【必须】对外输出页面包含第三方数据时须进行编码处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA"><span class="toc-number">2.1.7.</span> <span class="toc-text">1.7 数据输出</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-7-1-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E6%95%8F%E6%84%9F%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E5%AD%98%E5%82%A8"><span class="toc-number">2.1.7.1.</span> <span class="toc-text">1.7.1 【必须】敏感数据加密存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-7-2-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E5%BF%85%E9%A1%BB%E7%94%B1%E5%90%8E%E5%8F%B0%E8%BF%9B%E8%A1%8C%E8%84%B1%E6%95%8F%E5%A4%84%E7%90%86"><span class="toc-number">2.1.7.2.</span> <span class="toc-text">1.7.2 【必须】敏感信息必须由后台进行脱敏处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-7-3-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E9%AB%98%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E7%A6%81%E6%AD%A2%E5%AD%98%E5%82%A8%E3%80%81%E5%B1%95%E7%A4%BA"><span class="toc-number">2.1.7.3.</span> <span class="toc-text">1.7.3 【必须】高敏感信息禁止存储、展示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-7-4-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E4%B8%AA%E4%BA%BA%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E8%84%B1%E6%95%8F%E5%B1%95%E7%A4%BA"><span class="toc-number">2.1.7.4.</span> <span class="toc-text">1.7.4 【必须】个人敏感信息脱敏展示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-7-5-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E9%9A%90%E8%97%8F%E5%90%8E%E5%8F%B0%E5%9C%B0%E5%9D%80"><span class="toc-number">2.1.7.5.</span> <span class="toc-text">1.7.5 【必须】隐藏后台地址</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-8-%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-number">2.1.8.</span> <span class="toc-text">1.8 权限管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-8-1-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E9%BB%98%E8%AE%A4%E9%89%B4%E6%9D%83"><span class="toc-number">2.1.8.1.</span> <span class="toc-text">1.8.1 【必须】默认鉴权</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-8-2-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E6%8E%88%E6%9D%83%E9%81%B5%E5%BE%AA%E6%9C%80%E5%B0%8F%E6%9D%83%E9%99%90%E5%8E%9F%E5%88%99"><span class="toc-number">2.1.8.2.</span> <span class="toc-text">1.8.2 【必须】授权遵循最小权限原则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-8-3-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E9%81%BF%E5%85%8D%E8%B6%8A%E6%9D%83%E8%AE%BF%E9%97%AE"><span class="toc-number">2.1.8.3.</span> <span class="toc-text">1.8.3 【必须】避免越权访问</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-8-4-%E3%80%90%E5%BB%BA%E8%AE%AE%E3%80%91%E5%8F%8A%E6%97%B6%E6%B8%85%E7%90%86%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%E6%9D%83%E9%99%90"><span class="toc-number">2.1.8.4.</span> <span class="toc-text">1.8.4 【建议】及时清理不需要的权限</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-9-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-number">2.1.9.</span> <span class="toc-text">1.9 异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-9-1-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E4%B8%8D%E5%90%91%E5%AF%B9%E5%A4%96%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BA"><span class="toc-number">2.1.9.1.</span> <span class="toc-text">1.9.1 【必须】不向对外错误提示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-9-2-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E7%A6%81%E6%AD%A2%E5%BC%82%E5%B8%B8%E6%8A%9B%E5%87%BA%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF"><span class="toc-number">2.1.9.2.</span> <span class="toc-text">1.9.2 【必须】禁止异常抛出敏感信息</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-10-Flask%E5%AE%89%E5%85%A8"><span class="toc-number">2.1.10.</span> <span class="toc-text">1.10 Flask安全</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-10-1-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E5%85%B3%E9%97%AD%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.1.10.1.</span> <span class="toc-text">1.10.1 【必须】生产环境关闭调试模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-10-2-%E3%80%90%E5%BB%BA%E8%AE%AE%E3%80%91%E9%81%B5%E5%BE%AAFlask%E5%AE%89%E5%85%A8%E8%A7%84%E8%8C%83"><span class="toc-number">2.1.10.2.</span> <span class="toc-text">1.10.2 【建议】遵循Flask安全规范</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-11-Django%E5%AE%89%E5%85%A8"><span class="toc-number">2.1.11.</span> <span class="toc-text">1.11 Django安全</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-11-1-%E3%80%90%E5%BF%85%E9%A1%BB%E3%80%91%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E5%85%B3%E9%97%AD%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.1.11.1.</span> <span class="toc-text">1.11.1 【必须】生产环境关闭调试模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-11-2-%E3%80%90%E5%BB%BA%E8%AE%AE%E3%80%91%E4%BF%9D%E6%8C%81Django%E8%87%AA%E5%B8%A6%E7%9A%84%E5%AE%89%E5%85%A8%E7%89%B9%E6%80%A7%E5%BC%80%E5%90%AF"><span class="toc-number">2.1.11.2.</span> <span class="toc-text">1.11.2 【建议】保持Django自带的安全特性开启</span></a></li></ol></li></ol></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+</html>

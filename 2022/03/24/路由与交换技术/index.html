@@ -1,0 +1,780 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN,en,default" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SWITCH &amp; ROUTER - WHOAMI</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="渗透,"> 
+    <meta name="description" content="A GEEK HACKER,交换机
+交换机switch的基本功能
+学习功能
+转发&amp;#x2F;过滤
+支持冗余链路
+对VLAN（虚拟局域网）的支持
+
+
+二层结构交换机特点：数据链路层，无三层口，需要虚拟接口vlan（vlan 1为,"> 
+    <meta name="author" content="真のBLACK"> 
+    <link rel="alternative" href="atom.xml" title="WHOAMI" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    <meta name="twitter:image:src" content="https://bangdream.moe/img/ident.png"/>
+    <meta name="twitter:creator" content="@yourtwitteridhere"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="SWITCH &amp; ROUTER - WHOAMI"/>
+    <meta name="twitter:description" content="A GEEK HACKER,交换机
+交换机switch的基本功能
+学习功能
+转发&amp;#x2F;过滤
+支持冗余链路
+对VLAN（虚拟局域网）的支持
+
+
+二层结构交换机特点：数据链路层，无三层口，需要虚拟接口vlan（vlan 1为,"/>
+    <meta property="og:image" content="https://bangdream.moe/img/ident.png"/>
+    <meta property="og:image:alt" content="A GEEK HACKER,交换机
+交换机switch的基本功能
+学习功能
+转发&amp;#x2F;过滤
+支持冗余链路
+对VLAN（虚拟局域网）的支持
+
+
+二层结构交换机特点：数据链路层，无三层口，需要虚拟接口vlan（vlan 1为,"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="600"/>
+    <meta property="og:site_name" content="WHOAMI"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="SWITCH &amp; ROUTER - WHOAMI"/>
+    <meta property="og:description" content="A GEEK HACKER,交换机
+交换机switch的基本功能
+学习功能
+转发&amp;#x2F;过滤
+支持冗余链路
+对VLAN（虚拟局域网）的支持
+
+
+二层结构交换机特点：数据链路层，无三层口，需要虚拟接口vlan（vlan 1为,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">WHOAMI</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://DXHM.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">SWITCH & ROUTER</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">SWITCH & ROUTER</h1>
+        <div class="stuff">
+            <span>三月 24, 2022</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/" rel="tag">交换机</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/" rel="tag">路由器</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h1><ol>
+<li>交换机switch的基本功能<ol>
+<li>学习功能</li>
+<li>转发&#x2F;过滤</li>
+<li>支持冗余链路</li>
+<li>对VLAN（虚拟局域网）的支持</li>
+</ol>
+</li>
+<li>二层结构交换机特点：数据链路层，无三层口，需要虚拟接口vlan（vlan 1为默认管理接口，默认所有端口都在vlan1） <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Switch&gt;enable </span><br><span class="line">Switch#configure terminal</span><br><span class="line">SwitchA (config-if)# no shutdown  	//开启</span><br></pre></td></tr></table></figure></li>
+<li>交换机分类：<ol>
+<li>按架构特点<br> a. 机架式、带扩展槽固定配置式、不带扩展槽固定配置式</li>
+<li>按应用规模</li>
+<li>按传输介质和传输速度</li>
+<li>按OSI的分层结构</li>
+</ol>
+</li>
+<li>二层交换机工作原理<ol>
+<li>根据收到数据帧总的源mac建立地址同交换机端口的映射，并将其写入mac地址表中</li>
+<li>交换机根据数据帧中的mac地址同已建立的mac地址表比较，在决定由哪个端口转发<ol>
+<li>目的mac地址不在mac表中，则向所有端口转发（广播）</li>
+<li>广播帧和组播帧向所有的端口转发</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>交换机交换方式：<ol>
+<li>直通</li>
+<li>存储转发</li>
+<li>碎片隔离</li>
+</ol>
+</li>
+<li>交换机的级联和堆叠<ol>
+<li>级联『分开配置』<ol>
+<li>使用Uplink端口级联</li>
+<li>使用普通端口级联</li>
+</ol>
+</li>
+<li>堆叠『总体配置』<ol>
+<li>菊花链式堆叠（类似：RAID冗余磁盘阵列）</li>
+<li>星型堆叠</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>交换机管理模式<ol>
+<li>超级终端管理模式<ul>
+<li>console口链接交换机（配置线DB9-to-DB9）</li>
+<li>波特率9600，数据位8</li>
+</ul>
+</li>
+<li>Telnet管理模式<ol>
+<li>相关配置 <figure class="highlight c"><figcaption><span>isco switch</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">switchA(config)<span class="meta"># <span class="keyword">line</span> vty 0 4  <span class="comment">// 指同时允许5个虚拟终端登陆进行配置</span></span></span><br><span class="line">switchA(config-line)<span class="meta"># password pwd1   <span class="comment">//password</span></span></span><br><span class="line">switchA(config-line)<span class="meta"># login  <span class="comment">//启用密码认证，默认关闭</span></span></span><br></pre></td></tr></table></figure></li>
+<li>配置登录密码： <figure class="highlight c"><figcaption><span>isco</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SwitchA (config)<span class="meta"># enable secret level 1 0 pwd1  </span></span><br><span class="line"><span class="comment">// secret：MD5加密；</span></span><br><span class="line"><span class="comment">// level：指定密码用于哪个级别；</span></span><br><span class="line"><span class="comment">// 1：用户模式；</span></span><br><span class="line"><span class="comment">// 0：即将输入初始密码（5：cisco的MD5值）</span></span><br></pre></td></tr></table></figure></li>
+<li>配置特权模式口令 <figure class="highlight c"><figcaption><span>isco switch</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SwitchA (config)<span class="meta"># enable secret level 14 0 pwd2</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>Web管理模式<h1 id="虚拟局域网"><a href="#虚拟局域网" class="headerlink" title="虚拟局域网"></a>虚拟局域网</h1></li>
+</ol>
+</li>
+<li><h2 id="VLAN"><a href="#VLAN" class="headerlink" title="VLAN"></a>VLAN</h2><ol>
+<li>vlan的优点<ol>
+<li>限制网络上的广播，有助于控制流量</li>
+<li>降低成本</li>
+<li>简化网络管理，提高网络连接灵活性</li>
+<li>增强局域网安全性</li>
+</ol>
+</li>
+<li>Vlan划分方式类型<ol>
+<li>静态vlan：基于端口vlan，即指名各端口属于哪个vlan<ul>
+<li><pre><code>基于端口的vlan缺点
+</code></pre>
+<ol>
+<li>安全问题：物理攻击</li>
+<li>灵活性差，配置便捷性差</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>动态vlan：MAC based VLAN、Subnet based VLAN、User Based VLAN</li>
+</ol>
+</li>
+<li>VLAN配置相关参数<ul>
+<li>access：主机连交换机、终端</li>
+<li>trunk：交换机互联</li>
+<li>range： 范围    </li>
+<li>PVID：（port vlan id）端口的vlanID号</li>
+</ul>
+</li>
+<li>IEEE802.1Q：<ol>
+<li>封装：将VLAN信息加入数据帧的包头，据有加标记能力的端口将会执行封装</li>
+<li>去封装：VLAN信息从数据帧头去掉，具有去封装能力的端口将会执行解封装<br> <img src="/:/d3d834ddc68a463782df866e5ee281d7" alt="64aac2f1d32778beaa3638d2943075ed.png"></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h2 id="VTP-VLAN-Trunking-Protocol-思科私有协议"><a href="#VTP-VLAN-Trunking-Protocol-思科私有协议" class="headerlink" title="VTP (VLAN Trunking Protocol 思科私有协议)"></a>VTP (VLAN Trunking Protocol 思科私有协议)</h2><ul>
+<li>VTP：VLAN中继协议 &#x2F; 虚拟局域网干道协议 （配置统一性：对VLAN进行统一管理）</li>
+<li>三种工作模式：<ol>
+<li>&#x3D;&#x3D;VTP Server&#x3D;&#x3D;：<ul>
+<li>可建删修改vlan</li>
+<li>可发送并转发相关通告信息，同步vlan配置</li>
+<li>配置保存在NVRAM</li>
+</ul>
+</li>
+<li>VTP Client ：<ul>
+<li>不可建删修改vlan</li>
+<li>但可转发通告、同步</li>
+<li>不保存配置到NVRAM</li>
+</ul>
+</li>
+<li>VTP Transparent：相当于独立的交换机，不参与vtp工作，不从vtp server学习，只拥有本设备上自维护的vlan信息</li>
+</ol>
+</li>
+</ul>
+<ol>
+<li>VTP相关操作<ol>
+<li>前置配置：trunk <figure class="highlight plaintext"><figcaption><span>switch</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># switchport mode trunk</span><br></pre></td></tr></table></figure></li>
+<li>协议配置 <figure class="highlight plaintext"><figcaption><span>switch</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># vtp mode &#123;server|client|transparent&#125;	//配置vtp模式</span><br><span class="line"># vtp domain &#123;test&#125;	//配置域名，默认为空</span><br><span class="line"># vtp password &#123;cisco&#125;	//配置pwd</span><br><span class="line"># vtp version 2	//配置version</span><br></pre></td></tr></table></figure></li>
+<li>vtp裁减  <figure class="highlight plaintext"><figcaption><span>switch</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># vtp purning	//启用裁减，只需在server上配置</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>显示信息：<code>show vtp status</code><h1 id="网络优化-amp-安全策略"><a href="#网络优化-amp-安全策略" class="headerlink" title="网络优化 &amp; 安全策略"></a>网络优化 &amp; 安全策略</h1></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h2 id="生成树协议（STP）"><a href="#生成树协议（STP）" class="headerlink" title="生成树协议（STP）"></a>生成树协议（STP）</h2><ul>
+<li>STA：生成树算法</li>
+<li>BPDU：桥接协议数据单元（Bridge Protocol Data Unit）「两层」<ol>
+<li>版本号 00（IEEE802.1D）；02（IEEE802.1w）</li>
+<li>Bridge ID：交换机ID &#x3D; 交换机优先级 + 交换机mac地址</li>
+<li>Root ID：桥ID最小的位根ID</li>
+<li>Root Path Cost：到达根的路径开销</li>
+<li>PortID</li>
+<li>Hello Time：定期发送BPDU的时间间隔</li>
+<li>Max-Age Time：保留对方BPDU的时间间隔</li>
+<li>Forward-Delay Time发送延迟：端口状态改变的时间间隔</li>
+</ol>
+</li>
+<li>BID：网桥ID（Bridge ID）</li>
+<li>Root Bridge：根网桥（桥ID最小）</li>
+<li>Root Ports：根端口（到达根桥最佳路径）</li>
+<li>Designated Ports：指定端口</li>
+<li>Alternated Port：可选端口（既不是指定端口也不是根端口）</li>
+</ul>
+<ol>
+<li>生成树协议端口状态<ol>
+<li>禁用(Disabled)：关闭端口</li>
+<li>阻塞(Blocking)：不能接收或传输数据，不能吧mac地址加入地址表，只接收BPDU</li>
+<li>监听(Listening)：由根端口和指定端口担任，不能转发和传输，不能mac加入地址表，只能接收或发送BPDU</li>
+<li>学习(Learning)</li>
+<li>转发(Forwarding)</li>
+</ol>
+</li>
+<li>生成树协议配置<ol>
+<li>交换机优先级</li>
+<li>端口优先级</li>
+<li>配置HelloTime</li>
+<li>配置Forward-Delay Time</li>
+<li>配置Max-AgeTime</li>
+</ol>
+<ul>
+<li>Cisco系列SpanningTree默认配置：（# spanning-tree reset）<ul>
+<li>生成树协议PVST</li>
+<li>STP启用</li>
+<li>STP Proority：32768</li>
+<li>STP port Priority：128</li>
+<li>STP port cost：根据端口速率自动判断</li>
+<li>Hello Time：2s</li>
+<li>Forward-delay Time：15s</li>
+<li>Max-age Time：20s</li>
+</ul>
+<ol>
+<li><p>启用生成树协议 &#x2F; 关闭生成树协议</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Spanning-tree</span><br><span class="line">no Spanning-tree</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置生成树协议类型</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Spanning-tree mode stop/rstp/mstp</span><br></pre></td></tr></table></figure></li>
+<li><p>配置交换机优先级</p>
+ <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># spanning-tree priority 4096</span></span><br></pre></td></tr></table></figure></li>
+<li><p>优先级恢复默认值</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">no spanning-tree priority</span><br></pre></td></tr></table></figure></li>
+<li><p>配置交换机端口优先级</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int f0/0</span><br><span class="line">spanning-tree vlan 10 </span><br></pre></td></tr></table></figure></li>
+<li><p>显示生成树状态</p>
+</li>
+<li><p>显示端口生成树协议状态</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>快速生成树协议（RSTP）：生成树改进，解决收敛慢问题<ol>
+<li>改进方案<ol>
+<li>为根端口和指定端口设置了快速切换用的替换端口（Alternate Port）和备份端口（Backup Port）</li>
+<li>在只连接了两个交换端口的点对点链路中，指定端口只需与下游交换机进行一次握手就可以无时延地进入转发状态</li>
+<li>直接与终端相连而不是把其他交换机相连的端口定义为边缘端口（Edge Port）。边缘端口可以直接进入转发状态，不需要任何延时。</li>
+</ol>
+</li>
+<li>端口三种状态<ol>
+<li>Discarding</li>
+<li>Learning</li>
+<li>Forwarding</li>
+</ol>
+<ul>
+<li>对比一般生成树少了监听listening和阻塞blocking</li>
+</ul>
+</li>
+<li>基于vlan的RSTP <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># show spanning-tree vlan 20</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>多生成树（MSTP）</li>
+</ol>
+</li>
+<li><h2 id="端口聚合（Ethernet-Channel-以太通道）"><a href="#端口聚合（Ethernet-Channel-以太通道）" class="headerlink" title="端口聚合（Ethernet Channel 以太通道）"></a>端口聚合（Ethernet Channel 以太通道）</h2><ul>
+<li>一组物理端口联合成一个逻辑通道，即通道组，此逻辑通道视作一个端口</li>
+<li>自动提供冗余和负载均衡</li>
+</ul>
+<ol>
+<li>端口聚合类型<ol>
+<li>手工静态配置</li>
+<li>动态协议聚合<ol>
+<li>PAgA（思科私有）<ul>
+<li>On：通道成员不协商，直接开启端口聚合（静态）</li>
+<li>auto：主动</li>
+<li>desirable：被动协商，不发送，只接受协商消息</li>
+<li>Off：关闭</li>
+</ul>
+</li>
+<li>LACP<ul>
+<li>active：主动</li>
+<li>passive：被动协商，不发送，只接受协商消息</li>
+<li>On</li>
+<li>Off</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>链路聚合配置<ul>
+<li>先配置后连线（连线后会生成环路，阻塞） <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># int range f0/1-2	</span><br><span class="line"># channel-group 10 mode on	//f1-2加入逻辑端口组10号</span><br><span class="line"># port-channel load-balance mothod	//设置端口负载均衡算法</span><br></pre></td></tr></table></figure>
+ 查看端口配置状态 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># show etherchannel summary</span><br></pre></td></tr></table></figure>
+<h1 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h1></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h2 id="路由器概述"><a href="#路由器概述" class="headerlink" title="路由器概述"></a>路由器概述</h2><ul>
+<li>基本功能<ol>
+<li>网络互连</li>
+<li>数据处理</li>
+<li>网络管理</li>
+</ol>
+</li>
+<li>分类<ol>
+<li>固定配置路由器</li>
+<li>模块化路由器</li>
+</ol>
+</li>
+<li>控制线缆<ol>
+<li>以太网线缆</li>
+<li>控制台线缆</li>
+<li>串行广域网线缆</li>
+</ol>
+</li>
+<li>常用配置方式<ol>
+<li>控制台方式</li>
+<li>Telnet方式</li>
+<li>网管工作站方式</li>
+<li>TFTP服务器方式</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><h2 id="路由器基础配置"><a href="#路由器基础配置" class="headerlink" title="路由器基础配置"></a>路由器基础配置</h2></li>
+<li><h2 id="单臂路由"><a href="#单臂路由" class="headerlink" title="单臂路由"></a>单臂路由</h2><ul>
+<li>将路由器的一个物理接口当成多个逻辑接口使用（通过一个逻辑子接口实现物理端口以一当多的功能） <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int g0/0.1</span><br><span class="line">R(config-subif)# encapsulation dot1Q 10</span><br><span class="line">ip address 192.168.1.254 255.255.255.0</span><br><span class="line">int g0/0.2</span><br><span class="line">R(config-subif)# encapsulation dot1Q 20</span><br><span class="line">ip address 192.168.2.254 255.255.255.0</span><br><span class="line">no shutdown</span><br><span class="line">int g0/0</span><br><span class="line">no shutdown</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><h2 id="DHCP配置"><a href="#DHCP配置" class="headerlink" title="DHCP配置"></a>DHCP配置</h2> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">servcice dhcp //启动dhcp服务</span><br><span class="line">ip dhcp pool abc //创建地址池abc</span><br><span class="line">network 192.168.1.0 255.255.255.0 //配置地址池范围</span><br><span class="line">default-router 192.168.1.254 //默认路由</span><br><span class="line">dns-server 1.1.1.1 //配置dns</span><br><span class="line"></span><br><span class="line">//排除特定ip地址</span><br><span class="line">ip dhcp excluded-address 192.168.1.254 </span><br><span class="line">ip dhcp excluded-address 192.168.2.254 </span><br><span class="line">ip dhcp excluded-address 192.168.1.1 192.168.1.100 //排除多个</span><br><span class="line">//结合switch vlan配置</span><br><span class="line">int vlan 10</span><br><span class="line">ip add 192.168.1.254 255.255.255.0</span><br></pre></td></tr></table></figure></li>
+<li><h2 id="DHCP中继"><a href="#DHCP中继" class="headerlink" title="DHCP中继"></a>DHCP中继</h2></li>
+</ol>
+<ul>
+<li><code>ip helper-address</code>：路由器是不转达发广播的，帮助地址通过将这些广播数据包直接转发到目标服务器而帮助客户机和服务器建立联系。<br>  <img src="/:/e46a9e6d7e694960969c777472eebc9a" alt="01b5f91bbd027d7ab3ded4b79f824a78.png"> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int g0/0</span><br><span class="line">ip helper-address 192.168.12.1</span><br></pre></td></tr></table></figure>
+<h1 id="动态路由协议"><a href="#动态路由协议" class="headerlink" title="动态路由协议"></a>动态路由协议</h1></li>
+</ul>
+<ol>
+<li><h2 id="动态路由协议基础概念"><a href="#动态路由协议基础概念" class="headerlink" title="动态路由协议基础概念"></a>动态路由协议基础概念</h2><ul>
+<li>Cisco三种路由方式<ol>
+<li>静态路由：手工定义目的地和路由转发</li>
+<li>动态路由：路由器根据路由表灵活调整</li>
+<li>默认路由：当前路由表中无匹配表项时，做出的默认选择</li>
+</ol>
+</li>
+<li>动态路由优势：<ul>
+<li>灵活调整路由表，选择最优路径</li>
+<li>均衡负载（Load Sharing）</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>自治域系统</li>
+<li>路由协议分类</li>
+<li>邻居关系</li>
+<li>网络路径的度量</li>
+<li>收敛时间</li>
+</ol>
+</li>
+<li><h2 id="RIP协议（典型的距离矢量路由选择算法的内部网关协议）"><a href="#RIP协议（典型的距离矢量路由选择算法的内部网关协议）" class="headerlink" title="RIP协议（典型的距离矢量路由选择算法的内部网关协议）"></a>RIP协议（典型的距离矢量路由选择算法的内部网关协议）</h2><ol>
+<li>特征<ul>
+<li>距离矢量：以跳数为度量值（metric）的距离向量协议</li>
+<li>RIP基于UDP，端口520的应用层协议</li>
+<li>跳数不超过15</li>
+</ul>
+</li>
+<li>分类<ol>
+<li>RIPv1<ul>
+<li>有类路由协议</li>
+<li>没有认证功能</li>
+<li>没有手工汇总功能</li>
+<li>广播更新</li>
+</ul>
+</li>
+<li>RIPv2<ul>
+<li><strong>无类路由协议</strong>（不规则IP地址，如10.xx.xx.xx 255.255.255.0）</li>
+<li>支持明文和MD5认证功能</li>
+<li>可在关闭自动汇总功能前提下，进行手工汇总</li>
+<li>组播更新</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>RIP配置<ul>
+<li>配置步骤：<ol>
+<li>配置路由器接口ip</li>
+<li>配置路由RIP</li>
+<li>DHCP服务配置</li>
+<li>测试 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">启用</span><br><span class="line"><span class="section"># router rip	</span></span><br><span class="line">查看路由表</span><br><span class="line">添加网段</span><br><span class="line"><span class="section"># network [network-num]</span></span><br><span class="line">删除网段</span><br><span class="line"><span class="section"># network [network-num]</span></span><br><span class="line">将版本改为RIPv2</span><br><span class="line"><span class="section"># version 2</span></span><br><span class="line"><span class="section"># no auto-summary</span></span><br><span class="line"><span class="section"># show ip router  </span></span><br><span class="line"><span class="code">	&gt; R	192.168.xx.0/24[120/?] </span></span><br><span class="line"><span class="code">		1. ？: 标识RIP传递跳数) </span></span><br><span class="line"><span class="code">		2. 120：管理距离</span></span><br><span class="line"><span class="code"></span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h2 id="OSPF路由协议"><a href="#OSPF路由协议" class="headerlink" title="OSPF路由协议"></a>OSPF路由协议</h2> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int s1/2</span><br><span class="line">ip add 10.1.1.1 255.255.255.0</span><br><span class="line">no shut</span><br><span class="line">clock	rate 64000</span><br><span class="line">route ospf</span><br><span class="line">network 10.1.1.0 0.0.0.255 area 0</span><br><span class="line">network 192.168.1.0 0.0.0.255 area 0</span><br><span class="line">//查看</span><br><span class="line">show running-config</span><br></pre></td></tr></table></figure></li>
+<li><h2 id="EIGRP协议"><a href="#EIGRP协议" class="headerlink" title="EIGRP协议"></a>EIGRP协议</h2><ul>
+<li>EIGRP（Enhanced Interior Gateway Routing Protocol）：<strong>增强内部网关路由协议 &#x2F; 加强型内部网关路由协议</strong></li>
+<li>特点：<ol>
+<li>快速收敛</li>
+<li>部分更新</li>
+<li>支持多种网络层协议</li>
+<li>单播和多播</li>
+<li>支持变长子网掩码</li>
+<li>无缝连接数链层协议和拓扑结构</li>
+<li>配置简单</li>
+</ol>
+</li>
+<li>工作原理：（3张表）邻居表、拓扑表、路由表【使用可靠传输协议RTP】</li>
+<li>配置方式  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">router eigrp autonomous-system</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><h2 id="路由重发布"><a href="#路由重发布" class="headerlink" title="路由重发布"></a>路由重发布</h2><ul>
+<li>将其学习到的一种路由协议的路由通过路由协议广播出去</li>
+<li>ASBR：AS边界路由器</li>
+<li>要点关注<ol>
+<li>管理距离</li>
+<li>metric问题（路由度量值）</li>
+</ol>
+</li>
+<li>配置  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redistribute</span><br></pre></td></tr></table></figure></li>
+<li>内网映射：在路由器R2上配置静态NAT将内部服务<code>192.168.10.10</code>的地址转换为<code>202.101.1.10</code> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ip nat inside source static 192.168.10.10 202.101.1.10</span><br><span class="line">int f0/0 //服务器端方向</span><br><span class="line">ip nat inside</span><br><span class="line">int f0/1 //客户端方向</span><br><span class="line">ip nat outside</span><br></pre></td></tr></table></figure>
+<h1 id="访问控制列表-ACL"><a href="#访问控制列表-ACL" class="headerlink" title="访问控制列表 ACL"></a>访问控制列表 ACL</h1></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>基于包过滤的访问控制技术（保证网络资源安全的核心策略之一）</li>
+<li>根据设定的条件对接口上的数据包进行过滤，允许通过或丢弃<h2 id="ACL常适用场景"><a href="#ACL常适用场景" class="headerlink" title="ACL常适用场景"></a>ACL常适用场景</h2></li>
+</ul>
+<ol>
+<li>网络地址转换 NAT</li>
+<li>按需拨号路由 DDR</li>
+<li>路由重发布</li>
+<li>策略路由 PBR</li>
+</ol>
+<ul>
+<li>ACL工作原理：在路由器上读取OSI七层模型中的第三层和第四层包头中的信息<img src="/:/836c2a195c384ae096f79b4fa89fed6f" alt="8de9b5e85617b42cb7ba80e44b4cd336.png"><h2 id="ACL分类"><a href="#ACL分类" class="headerlink" title="ACL分类"></a>ACL分类</h2></li>
+</ul>
+<ol>
+<li>标准IP访问控制列表：只允许过滤源地址</li>
+<li>扩展IP访问控制列表：允许过滤源地址、目的地址、上层应用数据</li>
+<li>命名访问控制列表：可以删除某一条特点控制条目，使用一个字母或数字组合的字符串代替前面所使用的数字</li>
+<li>基于时间的访问控制列表：定义一个时间范围，在原来的各种访问列表的基础上应用它<h2 id="ACL配置注意事项"><a href="#ACL配置注意事项" class="headerlink" title="ACL配置注意事项"></a>ACL配置注意事项</h2></li>
+<li>最小特权原则</li>
+<li>自上而下的处理过程</li>
+<li>添加表项（新增表项被追加到访问列表表尾，意味着不能改变已有访问列表功能，因此改变必须创建新列表）</li>
+<li>访问列表位置（扩展访问列表尽量放靠近过滤源的位置上）</li>
+<li>访问列表应用：<code>access-group</code>只能应用于接口上才执行过滤操作</li>
+<li>过滤方向：通过接口的数据流是双向的<ul>
+<li>Outbound 向外的：数据量从三层设备流出</li>
+<li>Inbound 向内的：数据流流向三层设备<h1 id="NAT技术"><a href="#NAT技术" class="headerlink" title="NAT技术"></a>NAT技术</h1></li>
+</ul>
+</li>
+<li>概念：NAT是一种将一个IP地址域转换成另一个IP地址域的技术。</li>
+<li>目的：解决IP地址短缺问题</li>
+<li>应用：多个内网地址映射到一个外网地址，外部网络主机有选择的访问内部网络。</li>
+<li>相关术语<ol>
+<li>私有地址（“不可路由的”地址）：只能在一个组织或机构内部使用，不能在整个Internet范围使用【范围：<code>10.0.0.0 ~ 10.255.255.255</code>、<code>172.16.0.0 ~ 172.31.255.255</code>、<code>192.168.0.0 ~ 192.168.255.255</code>】</li>
+<li>公有地址（“可路由的地址”、“合法地址”）：需要向Internet注册阻止申请并按照分配范围使用</li>
+<li>内部网络</li>
+<li>外部网络</li>
+<li>内部本地地址</li>
+<li>内部全局地址：向ICANN申请取得的公有IP地址</li>
+<li>外部本地地址：不一定是公有IP地址</li>
+<li>外部全局地址：全局可路由的公有IP地址<h2 id="静态NAT"><a href="#静态NAT" class="headerlink" title="静态NAT"></a>静态NAT</h2><h2 id="动态NAT"><a href="#动态NAT" class="headerlink" title="动态NAT"></a>动态NAT</h2><h2 id="端口复用NAT"><a href="#端口复用NAT" class="headerlink" title="端口复用NAT"></a>端口复用NAT</h2><h1 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h1></li>
+</ol>
+</li>
+</ol>
+<ul>
+<li>冒分十六进制表示法：格式<code>X:X:X:X:X:X:X:X</code>，X表示地址种的16b，以十六进制表示</li>
+<li>0位压缩表示法</li>
+<li>内嵌IPv4地址表示法</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="https://link.hhtjim.com/163/1885536903.mp3"></li>
+                        
+                    
+                        
+                            <li title="1" data-url="https://link.hhtjim.com/163/1844681125.mp3"></li>
+                        
+                    
+                        
+                            <li title="2" data-url="https://link.hhtjim.com/163/1917044199.mp3"></li>
+                        
+                    
+                        
+                            <li title="3" data-url="https://link.hhtjim.com/163/34218762.mp3"></li>
+                        
+                    
+                        
+                            <li title="4" data-url="https://link.hhtjim.com/163/1927728096.mp3"></li>
+                        
+                    
+                        
+                            <li title="5" data-url="https://link.hhtjim.com/163/1454998244.mp3"></li>
+                        
+                    
+                        
+                            <li title="6" data-url="https://link.hhtjim.com/163/1805304382.mp3"></li>
+                        
+                    
+                        
+                            <li title="7" data-url="https://link.hhtjim.com/163/556203085.mp3"></li>
+                        
+                    
+                        
+                            <li title="8" data-url="https://link.hhtjim.com/163/515647696.mp3"></li>
+                        
+                    
+                        
+                            <li title="9" data-url="https://link.hhtjim.com/163/1917044199.mp3"></li>
+                        
+                    
+                        
+                            <li title="10" data-url="https://link.hhtjim.com/163/1912226948.mp3"></li>
+                        
+                    
+                        
+                            <li title="11" data-url="https://link.hhtjim.com/163/1807581976.mp3"></li>
+                        
+                    
+                        
+                            <li title="12" data-url="https://link.hhtjim.com/163/1807581976.mp3"></li>
+                        
+                    
+                        
+                            <li title="13" data-url="https://link.hhtjim.com/163/1895164923.mp3"></li>
+                        
+                    
+                        
+                            <li title="14" data-url="https://link.hhtjim.com/163/1858118347.mp3"></li>
+                        
+                    
+                        
+                            <li title="15" data-url="https://link.hhtjim.com/163/1320990503.mp3"></li>
+                        
+                    
+                        
+                            <li title="16" data-url="https://link.hhtjim.com/163/1816323939.mp3"></li>
+                        
+                    
+                        
+                            <li title="17" data-url="https://link.hhtjim.com/163/1865566215.mp3"></li>
+                        
+                    
+                        
+                            <li title="18" data-url="https://link.hhtjim.com/163/1501450521.mp3"></li>
+                        
+                    
+                        
+                            <li title="19" data-url="https://link.hhtjim.com/163/1805428732.mp3"></li>
+                        
+                    
+                        
+                            <li title="20" data-url="https://link.hhtjim.com/163/486195958.mp3"></li>
+                        
+                    
+                        
+                            <li title="21" data-url="https://link.hhtjim.com/163/1498788913.mp3"></li>
+                        
+                    
+                        
+                            <li title="22" data-url="https://link.hhtjim.com/163/1383023012.mp3"></li>
+                        
+                    
+                        
+                            <li title="23" data-url="https://link.hhtjim.com/163/1367333218.mp3"></li>
+                        
+                    
+                        
+                            <li title="24" data-url="https://link.hhtjim.com/163/1864872333.mp3"></li>
+                        
+                    
+                        
+                            <li title="25" data-url="https://link.hhtjim.com/163/443292353.mp3"></li>
+                        
+                    
+                        
+                            <li title="26" data-url="https://link.hhtjim.com/163/1803880020.mp3"></li>
+                        
+                    
+                        
+                            <li title="27" data-url="https://link.hhtjim.com/163/1841788961.mp3"></li>
+                        
+                    
+                        
+                            <li title="28" data-url="https://link.hhtjim.com/163/1841482769.mp3"></li>
+                        
+                    
+                        
+                            <li title="29" data-url="https://link.hhtjim.com/163/1472273576.mp3"></li>
+                        
+                    
+                        
+                            <li title="30" data-url="https://link.hhtjim.com/163/1860652524.mp3"></li>
+                        
+                    
+                        
+                            <li title="31" data-url="https://link.hhtjim.com/163/1914467361.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link"
+		data-enable="true"
+        data-ae="true"
+        data-ci="1ba887259d3c06430ee3"
+        data-cs="0a6cd21e1f2ab2e742f162eb12d4ae640dcfc57f"
+        data-r="dxhm.github.io"
+        data-o="DXHM"
+        data-a="DXHM"
+        data-d="true"
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class="side">
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="toc-number">1.</span> <span class="toc-text">交换机</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91"><span class="toc-number">2.</span> <span class="toc-text">虚拟局域网</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#VLAN"><span class="toc-number">2.1.</span> <span class="toc-text">VLAN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VTP-VLAN-Trunking-Protocol-%E6%80%9D%E7%A7%91%E7%A7%81%E6%9C%89%E5%8D%8F%E8%AE%AE"><span class="toc-number">2.2.</span> <span class="toc-text">VTP (VLAN Trunking Protocol 思科私有协议)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96-amp-%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5"><span class="toc-number">3.</span> <span class="toc-text">网络优化 &amp; 安全策略</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AE%EF%BC%88STP%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">生成树协议（STP）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E8%81%9A%E5%90%88%EF%BC%88Ethernet-Channel-%E4%BB%A5%E5%A4%AA%E9%80%9A%E9%81%93%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">端口聚合（Ethernet Channel 以太通道）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text">路由器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E6%A6%82%E8%BF%B0"><span class="toc-number">4.1.</span> <span class="toc-text">路由器概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="toc-number">4.2.</span> <span class="toc-text">路由器基础配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1"><span class="toc-number">4.3.</span> <span class="toc-text">单臂路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DHCP%E9%85%8D%E7%BD%AE"><span class="toc-number">4.4.</span> <span class="toc-text">DHCP配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DHCP%E4%B8%AD%E7%BB%A7"><span class="toc-number">4.5.</span> <span class="toc-text">DHCP中继</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE"><span class="toc-number">5.</span> <span class="toc-text">动态路由协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="toc-number">5.1.</span> <span class="toc-text">动态路由协议基础概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RIP%E5%8D%8F%E8%AE%AE%EF%BC%88%E5%85%B8%E5%9E%8B%E7%9A%84%E8%B7%9D%E7%A6%BB%E7%9F%A2%E9%87%8F%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E7%AE%97%E6%B3%95%E7%9A%84%E5%86%85%E9%83%A8%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="toc-number">5.2.</span> <span class="toc-text">RIP协议（典型的距离矢量路由选择算法的内部网关协议）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OSPF%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE"><span class="toc-number">5.3.</span> <span class="toc-text">OSPF路由协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EIGRP%E5%8D%8F%E8%AE%AE"><span class="toc-number">5.4.</span> <span class="toc-text">EIGRP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E9%87%8D%E5%8F%91%E5%B8%83"><span class="toc-number">5.5.</span> <span class="toc-text">路由重发布</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8-ACL"><span class="toc-number">6.</span> <span class="toc-text">访问控制列表 ACL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ACL%E5%B8%B8%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">6.1.</span> <span class="toc-text">ACL常适用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACL%E5%88%86%E7%B1%BB"><span class="toc-number">6.2.</span> <span class="toc-text">ACL分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACL%E9%85%8D%E7%BD%AE%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">6.3.</span> <span class="toc-text">ACL配置注意事项</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NAT%E6%8A%80%E6%9C%AF"><span class="toc-number">7.</span> <span class="toc-text">NAT技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81NAT"><span class="toc-number">7.1.</span> <span class="toc-text">静态NAT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81NAT"><span class="toc-number">7.2.</span> <span class="toc-text">动态NAT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8NAT"><span class="toc-number">7.3.</span> <span class="toc-text">端口复用NAT</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IPv6"><span class="toc-number">8.</span> <span class="toc-text">IPv6</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+</html>
