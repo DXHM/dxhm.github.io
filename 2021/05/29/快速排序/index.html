@@ -1,0 +1,388 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN,en,default" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>交换类排序算法：快速排序 - 真のBLACK</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="渗透,"> 
+    <meta name="description" content="A HACKER,快速排序
+快速排序处理函数（需要递归调用，因此以函数形式封装定义）
+12345678910void QSort(SqList *L,int low,int high)&amp;#123;    int pi,"> 
+    <meta name="author" content="真のBLACK"> 
+    <link rel="alternative" href="atom.xml" title="真のBLACK" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    <meta name="twitter:image:src" content="https://bangdream.moe/img/ident.png"/>
+    <meta name="twitter:creator" content="@yourtwitteridhere"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="交换类排序算法：快速排序 - 真のBLACK"/>
+    <meta name="twitter:description" content="A HACKER,快速排序
+快速排序处理函数（需要递归调用，因此以函数形式封装定义）
+12345678910void QSort(SqList *L,int low,int high)&amp;#123;    int pi,"/>
+    <meta property="og:image" content="https://bangdream.moe/img/ident.png"/>
+    <meta property="og:image:alt" content="A HACKER,快速排序
+快速排序处理函数（需要递归调用，因此以函数形式封装定义）
+12345678910void QSort(SqList *L,int low,int high)&amp;#123;    int pi,"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="600"/>
+    <meta property="og:site_name" content="真のBLACK"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="交换类排序算法：快速排序 - 真のBLACK"/>
+    <meta property="og:description" content="A HACKER,快速排序
+快速排序处理函数（需要递归调用，因此以函数形式封装定义）
+12345678910void QSort(SqList *L,int low,int high)&amp;#123;    int pi,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">真のBLACK</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://DXHM.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">交换类排序算法：快速排序</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">交换类排序算法：快速排序</h1>
+        <div class="stuff">
+            <span>五月 29, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><ol>
+<li><p>快速排序处理函数<span style="color: blue;">（需要递归调用，因此以函数形式封装定义）</span></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">QSort</span><span class="params">(SqList *L,<span class="type">int</span> low,<span class="type">int</span> high)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> pivot;</span><br><span class="line">    <span class="keyword">if</span>(low &lt; high)</span><br><span class="line">    &#123;</span><br><span class="line">        pivot= Partition(L,low,high);	<span class="comment">//关键点：枢纽pivot值选取函数</span></span><br><span class="line">        QSort(L , low , pivot<span class="number">-1</span>);	<span class="comment">//对低子表递归排序</span></span><br><span class="line">        QSort(L , pivot+<span class="number">1</span> , high);	<span class="comment">//对高子表递归排序</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><span style="color: red;">选取关键字作为&#x3D;&#x3D;枢纽&#x3D;&#x3D;（pivot）函数</span></p>
+<ol>
+<li><p>关键思路：</p>
+<ol>
+<li>用low位值作为枢轴比较记录</li>
+<li>分别从左右端交替比较</li>
+<li>low &lt; key , low ++ ; low &gt; key , low &lt;-&gt; high</li>
+<li>high &gt; key , high – ; high &lt; key , high &lt;-&gt; low</li>
+<li>high &#x3D; low , 返回low值为函数得出的pivot</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">Partition</span><span class="params">(SqList *L,<span class="type">int</span> low,<span class="type">int</span> high)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> pivotkey;</span><br><span class="line">    pivotekey = L-&gt;[low];	</span><br><span class="line">    <span class="comment">/***************/</span></span><br><span class="line">    <span class="keyword">while</span>(low&lt;high)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(L-&gt;r[high] &gt; pivotekey)</span><br><span class="line">        &#123;</span><br><span class="line">            high--;</span><br><span class="line">        &#125;</span><br><span class="line">        swap(L , high , low);</span><br><span class="line">        <span class="keyword">while</span>(low&lt;high &amp;&amp; L-&gt;r[low] &lt; pivotekey)</span><br><span class="line">        &#123;</span><br><span class="line">            low++;</span><br><span class="line">        &#125;</span><br><span class="line">        swap(L , low , high);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> low;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><h4 id="快速排序优化方案"><a href="#快速排序优化方案" class="headerlink" title="快速排序优化方案"></a>快速排序优化方案</h4><ol>
+<li><p>优化选取枢轴值（提高大概率选取到为中间值）</p>
+<ol>
+<li>随机数选取法</li>
+<li>三数取中法</li>
+<li>九数取中法</li>
+</ol>
+</li>
+<li><p>优化不必要的交换</p>
+<ol>
+<li>思路：<span style="color: blue;">（进行直接替换）</span>采用直接赋值替代函数swap()的调用</li>
+</ol>
+</li>
+<li><p>优化小数组时排序方案</p>
+<ol>
+<li>思路：<span style="color: blue;">（避免大材小用）</span>设定<strong>阈值</strong>，对于小数组用<ins>直接插入法排序</ins></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">2. 选定合适阈值</span></span><br><span class="line"><span class="comment">2.判断数组大或小</span></span><br><span class="line"><span class="comment">    a. 大于阈值：调用快排（递归）</span></span><br><span class="line"><span class="comment">        -、选取枢轴</span></span><br><span class="line"><span class="comment">        -、低子表递归快排</span></span><br><span class="line"><span class="comment">        -、高子表递归快排</span></span><br><span class="line"><span class="comment">    b.	小于阈值：调用插排</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">define MAX_LENGTH_INSERT_SORT <span class="number">7</span>	<span class="comment">//设定合适的阈值</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">OSort</span><span class="params">(SqList *L,<span class="type">int</span> low,<span class="type">int</span> high)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> pivot;</span><br><span class="line">    <span class="keyword">if</span>(high-low)&gt;MAX_LENGTH_INSERT_SORT)	<span class="comment">//大于阈值：快排</span></span><br><span class="line">    &#123;</span><br><span class="line">        pivot=Partiton1(L , low , high);	</span><br><span class="line">        QSort1(L , low , pivot<span class="number">-1</span> );</span><br><span class="line">        QSort1(L , pivot+<span class="number">1</span> , high);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>	<span class="comment">//小于阈值：插排</span></span><br><span class="line">    &#123;</span><br><span class="line">        InsertSort(L);	</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>优化递归操作</p>
+<ol>
+<li>思路：<span style="color: blue;">（减少递归，减少对栈空间的消耗）</span><strong>以迭代进行尾递归</strong>代替<strong>第二个递归排序</strong></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">QSort2</span><span class="params">(SqList *L,<span class="type">int</span> low,<span class="type">int</span> high)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> pivot;</span><br><span class="line">    <span class="keyword">if</span>()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/**********/</span></span><br><span class="line">            <span class="comment">/**********/</span></span><br><span class="line">            low = pivot+<span class="number">1</span>;	<span class="comment">//尾递归</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        InsertSort(L);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="https://link.hhtjim.com/163/1885536903.mp3"></li>
+                        
+                    
+                        
+                            <li title="1" data-url="https://link.hhtjim.com/163/1844681125.mp3"></li>
+                        
+                    
+                        
+                            <li title="2" data-url="https://link.hhtjim.com/163/1917044199.mp3"></li>
+                        
+                    
+                        
+                            <li title="3" data-url="https://link.hhtjim.com/163/34218762.mp3"></li>
+                        
+                    
+                        
+                            <li title="4" data-url="https://link.hhtjim.com/163/1927728096.mp3"></li>
+                        
+                    
+                        
+                            <li title="5" data-url="https://link.hhtjim.com/163/1454998244.mp3"></li>
+                        
+                    
+                        
+                            <li title="6" data-url="https://link.hhtjim.com/163/1805304382.mp3"></li>
+                        
+                    
+                        
+                            <li title="7" data-url="https://link.hhtjim.com/163/556203085.mp3"></li>
+                        
+                    
+                        
+                            <li title="8" data-url="https://link.hhtjim.com/163/515647696.mp3"></li>
+                        
+                    
+                        
+                            <li title="9" data-url="https://link.hhtjim.com/163/1917044199.mp3"></li>
+                        
+                    
+                        
+                            <li title="10" data-url="https://link.hhtjim.com/163/1912226948.mp3"></li>
+                        
+                    
+                        
+                            <li title="11" data-url="https://link.hhtjim.com/163/1807581976.mp3"></li>
+                        
+                    
+                        
+                            <li title="12" data-url="https://link.hhtjim.com/163/1807581976.mp3"></li>
+                        
+                    
+                        
+                            <li title="13" data-url="https://link.hhtjim.com/163/1895164923.mp3"></li>
+                        
+                    
+                        
+                            <li title="14" data-url="https://link.hhtjim.com/163/1858118347.mp3"></li>
+                        
+                    
+                        
+                            <li title="15" data-url="https://link.hhtjim.com/163/1320990503.mp3"></li>
+                        
+                    
+                        
+                            <li title="16" data-url="https://link.hhtjim.com/163/1816323939.mp3"></li>
+                        
+                    
+                        
+                            <li title="17" data-url="https://link.hhtjim.com/163/1865566215.mp3"></li>
+                        
+                    
+                        
+                            <li title="18" data-url="https://link.hhtjim.com/163/1501450521.mp3"></li>
+                        
+                    
+                        
+                            <li title="19" data-url="https://link.hhtjim.com/163/1805428732.mp3"></li>
+                        
+                    
+                        
+                            <li title="20" data-url="https://link.hhtjim.com/163/486195958.mp3"></li>
+                        
+                    
+                        
+                            <li title="21" data-url="https://link.hhtjim.com/163/1498788913.mp3"></li>
+                        
+                    
+                        
+                            <li title="22" data-url="https://link.hhtjim.com/163/1383023012.mp3"></li>
+                        
+                    
+                        
+                            <li title="23" data-url="https://link.hhtjim.com/163/1367333218.mp3"></li>
+                        
+                    
+                        
+                            <li title="24" data-url="https://link.hhtjim.com/163/1864872333.mp3"></li>
+                        
+                    
+                        
+                            <li title="25" data-url="https://link.hhtjim.com/163/443292353.mp3"></li>
+                        
+                    
+                        
+                            <li title="26" data-url="https://link.hhtjim.com/163/1803880020.mp3"></li>
+                        
+                    
+                        
+                            <li title="27" data-url="https://link.hhtjim.com/163/1841788961.mp3"></li>
+                        
+                    
+                        
+                            <li title="28" data-url="https://link.hhtjim.com/163/1841482769.mp3"></li>
+                        
+                    
+                        
+                            <li title="29" data-url="https://link.hhtjim.com/163/1472273576.mp3"></li>
+                        
+                    
+                        
+                            <li title="30" data-url="https://link.hhtjim.com/163/1860652524.mp3"></li>
+                        
+                    
+                        
+                            <li title="31" data-url="https://link.hhtjim.com/163/1914467361.mp3"></li>
+                        
+                    
+                        
+                            <li title="32" data-url="https://link.hhtjim.com/163/2034742057.mp3"></li>
+                        
+                    
+                        
+                            <li title="33" data-url="https://link.hhtjim.com/163/2036803051.mp3"></li>
+                        
+                    
+                        
+                            <li title="34" data-url="https://link.hhtjim.com/163/2029837208.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link"
+		data-enable="true"
+        data-ae="true"
+        data-ci="1ba887259d3c06430ee3"
+        data-cs="0a6cd21e1f2ab2e742f162eb12d4ae640dcfc57f"
+        data-r="dxhm.github.io"
+        data-o="DXHM"
+        data-a="DXHM"
+        data-d="true"
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class="side">
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-number">1.</span> <span class="toc-text">快速排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88"><span class="toc-number">1.1.</span> <span class="toc-text">快速排序优化方案</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+</html>

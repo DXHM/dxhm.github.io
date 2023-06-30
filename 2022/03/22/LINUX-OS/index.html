@@ -90,7 +90,7 @@ core.img
         <div class="stuff">
             <span>三月 22, 2022</span>
             
-  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li></ul>
 
 
         </div>
@@ -180,20 +180,23 @@ core.img
 <li>&#x2F;dev&#x2F;stdout：标准输出文件</li>
 </ul>
 <ol>
-<li>输出重定向<ol>
+<li><p>输出重定向</p>
+<ol>
 <li>“&gt;”：文件存在，覆盖</li>
 <li>“&gt;&gt;”：文件存在，添加内容到文件末尾</li>
 </ol>
 </li>
-<li>输入重定向<ol>
+<li><p>输入重定向</p>
+<ol>
 <li>“&lt;”</li>
 </ol>
 </li>
-<li>管道符重定向：“|” 左输出为右输入</li>
+<li><p>管道符重定向：“|” 左输出为右输入</p>
+<h1 id="yum包管理"><a href="#yum包管理" class="headerlink" title="yum包管理"></a>yum包管理</h1></li>
 </ol>
 </li>
 </ol>
-<h1 id="yum包管理"><a href="#yum包管理" class="headerlink" title="yum包管理"></a>yum包管理</h1><ul>
+<ul>
 <li><p>centos镜像源文件的目录默认路径：<br><code>/etc/yum.repos.d/</code></p>
 </li>
 <li><p>备份：<br><code>cp /etc/yum.repos.d/CentOS-Linux-BaseOS.repo /etc/yum.repos.d/CentOS-Linux-BaseOS.repo.bak</code></p>
@@ -202,27 +205,33 @@ core.img
 <h2 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h2><ul>
 <li><p>下载国内常用的镜像源并重命名为CentOS-Linux-BaseOS.repo,将其作为当前系统的镜像源</p>
 <p>  +【阿里源】</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##CentOS 8</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Linux-BaseOS.repo  http://mirrors.aliyun.com/repo/Centos-8.repo</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##CentOS 8</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Linux-BaseOS.repo  http://mirrors.aliyun.com/repo/Centos-8.repo</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>在使用阿里云的 centos8 的 yum 时报错：由于centos8 在2022年停止服务，后继版本为8-steam  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##CentOS 8-stream</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo</span><br></pre></td></tr></table></figure>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo</span><br></pre></td></tr></table></figure></li>
-<li>【网易源】</li>
-</ul>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Linux-BaseOS.repo  http://mirrors.163.com/.help/CentOS8-Base-163.repo</span><br></pre></td></tr></table></figure>
-<ul>
-<li>『添加epel源』</li>
-</ul>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -P /etc/yum.repos.d/ http://mirrors.aliyun.com/repo/epel-7.repo</span><br></pre></td></tr></table></figure>
-<ul>
-<li>『清华源』：<a target="_blank" rel="noopener" href="https://mirror.tuna.tsinghua.edu.cn/help/centos/">Guide</a></li>
+<li><p>在使用阿里云的 centos8 的 yum 时报错：由于centos8 在2022年停止服务，后继版本为8-steam</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##CentOS 8-stream</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>【网易源】</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Linux-BaseOS.repo  http://mirrors.163.com/.help/CentOS8-Base-163.repo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>『添加epel源』</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -P /etc/yum.repos.d/ http://mirrors.aliyun.com/repo/epel-7.repo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>『清华源』：<a target="_blank" rel="noopener" href="https://mirror.tuna.tsinghua.edu.cn/help/centos/">Guide</a></p>
+</li>
 </ul>
 </li>
 <li><p>清理缓存</p>
 <p>  yum的缓存文件的存放目录是以下路径下：&#x2F;var&#x2F;cache&#x2F;yum 直接清空给目录，或者使用一下命令均可</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum clean all</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum clean all</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>重新生成缓存</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
+
 <h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum update</span><br><span class="line">yum makecache</span><br><span class="line">yum clean all</span><br><span class="line">yum info [pagename]</span><br><span class="line">yum list</span><br><span class="line">yum search</span><br></pre></td></tr></table></figure>
+
 <h1 id="SHELL"><a href="#SHELL" class="headerlink" title="SHELL"></a>SHELL</h1></li>
 </ul>
 <ol>
@@ -243,32 +252,46 @@ core.img
 </li>
 </ol>
 <h2 id="各类Shell"><a href="#各类Shell" class="headerlink" title="各类Shell"></a>各类Shell</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo $SHELL</span><br><span class="line">echo $0</span><br><span class="line">cat /etc/shells</span><br></pre></td></tr></table></figure>
+
 <ol>
 <li><p>bash</p>
 </li>
 <li><p>zsh</p>
 <ul>
-<li>zshell简介：Zsh（Z-shell）是一款用于交互式使用的shell，也可以作为脚本解释器来使用。其包含了 bash，ksh，tcsh 等其他shell中许多优秀功能，也拥有诸多自身特色。</li>
-<li>zshell发展历史：Zsh初版由原作者保罗·弗斯塔德（Paul Falstad）于1990年在普林斯顿大学求学时编写 [3] 。其名称zsh源于普林斯顿大学助教的邵中（Zhong Shao，现任耶鲁大学教授）——保罗将邵中的用户名”zsh”作为此Shell的名称</li>
-<li>zsh美化<h2 id="SHELL文件类型"><a href="#SHELL文件类型" class="headerlink" title="SHELL文件类型"></a>SHELL文件类型</h2>&#x2F; vim test1.sh<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x test1.sh</span><br><span class="line">./test1.sh</span><br></pre></td></tr></table></figure>
+<li><p>zshell简介：Zsh（Z-shell）是一款用于交互式使用的shell，也可以作为脚本解释器来使用。其包含了 bash，ksh，tcsh 等其他shell中许多优秀功能，也拥有诸多自身特色。</p>
+</li>
+<li><p>zshell发展历史：Zsh初版由原作者保罗·弗斯塔德（Paul Falstad）于1990年在普林斯顿大学求学时编写 [3] 。其名称zsh源于普林斯顿大学助教的邵中（Zhong Shao，现任耶鲁大学教授）——保罗将邵中的用户名”zsh”作为此Shell的名称</p>
+</li>
+<li><p>zsh美化</p>
+<h2 id="SHELL文件类型"><a href="#SHELL文件类型" class="headerlink" title="SHELL文件类型"></a>SHELL文件类型</h2><p>&#x2F; vim test1.sh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x test1.sh</span><br><span class="line">./test1.sh</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh test1.sh</span><br></pre></td></tr></table></figure>
+
 <h2 id="SHELL基本操作"><a href="#SHELL基本操作" class="headerlink" title="SHELL基本操作"></a>SHELL基本操作</h2></li>
 </ul>
 </li>
 <li><p>变量赋值调用</p>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $0 $1 $2 </span><br></pre></td></tr></table></figure>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sh echotest1.sh 0 1 2 3</span><br><span class="line"><span class="meta">#</span><span class="language-bash">output:0 1 2</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $0 $1 $2 </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sh echotest1.sh 0 1 2 3</span><br><span class="line"><span class="meta">#</span><span class="language-bash">output:0 1 2</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>expr：数值计算</p>
 <ul>
-<li>“+、-、\、&#x2F;、%”</li>
-<li>用法：“ $ () ”、“$ []”<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">expr 2 + 3</span><br><span class="line"># output：5</span><br></pre></td></tr></table></figure></li>
+<li><p>“+、-、\、&#x2F;、%”</p>
+</li>
+<li><p>用法：“ $ () ”、“$ []”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">expr 2 + 3</span><br><span class="line"># output：5</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>shell脚本</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /home</span><br><span class="line">touch test1</span><br><span class="line">mkdir test1</span><br><span class="line">mv test1 /test1</span><br></pre></td></tr></table></figure>
+
 <ol>
-<li>判断语法（a[]、test ?）<ol>
-<li>文件类判断<ul>
+<li><p>判断语法（a[]、test ?）</p>
+<ol>
+<li><p>文件类判断</p>
+<ul>
 <li>-e filename #如果 filename为目录，则为真</li>
 <li>-f filename #如果 filename为常规文件，则为真</li>
 <li>-L filename #如果 filename为符号链接，则为真</li>
@@ -279,7 +302,8 @@ core.img
 <li>-h filename #如果文件是软链接，则为真</li>
 </ul>
 </li>
-<li>数值比较判断<ul>
+<li><p>数值比较判断</p>
+<ul>
 <li>-eq：等于为真</li>
 <li>-ne：不等于为真</li>
 <li>-lt：小于为真</li>
@@ -288,7 +312,8 @@ core.img
 <li>-ge：大于等于为真</li>
 </ul>
 </li>
-<li>字符串判断<ul>
+<li><p>字符串判断</p>
+<ul>
 <li>str：str非空，真</li>
 <li>s1 &#x3D; s2</li>
 <li>s1 !&#x3D; s2</li>
@@ -296,7 +321,8 @@ core.img
 <li>-z str：str为0，真</li>
 </ul>
 </li>
-<li>组合语法<ul>
+<li><p>组合语法</p>
+<ul>
 <li>！：逻辑非</li>
 <li>-a：逻辑与</li>
 <li>-o：逻辑或</li>
@@ -306,33 +332,34 @@ core.img
 </ol>
 <ul>
 <li><p>#如果&#x3D;&#x3D;文件夹&#x3D;&#x3D;不存在，则创建文件夹</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tempPath=&quot;/home/parasaga/blank&quot;</span><br><span class="line">if [ ! -d &quot;$tempPath&quot; ]; </span><br><span class="line">then mkdir $blankPath</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tempPath=&quot;/home/parasaga/blank&quot;</span><br><span class="line">if [ ! -d &quot;$tempPath&quot; ]; </span><br><span class="line">then mkdir $blankPath</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>#如果&#x3D;&#x3D;文件&#x3D;&#x3D;不存在，则创建文件</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tempFile=&quot;/home/parasaga/blank/error.log&quot;</span><br><span class="line">if [ ! -f &quot;$tempFile&quot; ]; </span><br><span class="line">then touch $tempFile</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if [ ! -f test1 ]</span><br><span class="line">then echo &quot;flase&quot;</span><br><span class="line">else</span><br><span class="line">echo &quot;true&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tempFile=&quot;/home/parasaga/blank/error.log&quot;</span><br><span class="line">if [ ! -f &quot;$tempFile&quot; ]; </span><br><span class="line">then touch $tempFile</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if [ ! -f test1 ]</span><br><span class="line">then echo &quot;flase&quot;</span><br><span class="line">else</span><br><span class="line">echo &quot;true&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>演示示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">read s1</span><br><span class="line">if [ $s1 == 1 ]</span><br><span class="line">then echo 123</span><br><span class="line">mkdir shell1</span><br><span class="line">elif [ $s1 == 2 ]</span><br><span class="line">then echo 321</span><br><span class="line">        mkdir shell2</span><br><span class="line">else</span><br><span class="line">        echo finding</span><br><span class="line">if [  -d shell1 ]</span><br><span class="line">then    rm -r shell1</span><br><span class="line">        echo ok1</span><br><span class="line">fi</span><br><span class="line">if [  -d shell2 ]</span><br><span class="line">then rm -r shell2</span><br><span class="line">        echo ok2</span><br><span class="line">else</span><br><span class="line">        echo false</span><br><span class="line">fi</span><br><span class="line">fi       </span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-</ol>
-<ul>
-<li><p>演示示例</p>
-   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">read s1</span><br><span class="line">if [ $s1 == 1 ]</span><br><span class="line">then echo 123</span><br><span class="line">mkdir shell1</span><br><span class="line">elif [ $s1 == 2 ]</span><br><span class="line">then echo 321</span><br><span class="line">		mkdir shell2</span><br><span class="line">else</span><br><span class="line">		echo finding</span><br><span class="line">if [  -d shell1 ]</span><br><span class="line">then    rm -r shell1</span><br><span class="line">		echo ok1</span><br><span class="line">fi</span><br><span class="line">if [  -d shell2 ]</span><br><span class="line">then rm -r shell2</span><br><span class="line">		echo ok2</span><br><span class="line">else</span><br><span class="line">		echo false</span><br><span class="line">fi</span><br><span class="line">fi       </span><br></pre></td></tr></table></figure></li>
-</ul>
-<ol start="2">
 <li><p>函数定义</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">functionname</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function getSum()&#123;</span><br><span class="line">SUM=$[$n1+$n2]</span><br><span class="line">echo &quot;sum=$SUM&quot;</span><br><span class="line">&#125;   </span><br><span class="line"></span><br><span class="line">read -p &quot;请输入第一个参数n1：&quot; n1</span><br><span class="line">read -p &quot;请输入第二个参数n2：&quot; n2</span><br><span class="line"></span><br><span class="line"># 调用 getSum 函数</span><br><span class="line">getSum $n1 $n2</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>循环语句</p>
 <ul>
 <li><p>while</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while 条件（为真时执行）</span><br><span class="line">do</span><br><span class="line">	语句</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while 条件（为真时执行）</span><br><span class="line">do</span><br><span class="line">    语句</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>until：测试发生在循环末尾，因此循环至少<strong>执行一次</strong></p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">until 条件</span><br><span class="line">do</span><br><span class="line">	语句</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">until 条件</span><br><span class="line">do</span><br><span class="line">    语句</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>for</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for 变量名 [ in 数值列表 ]</span><br><span class="line">do</span><br><span class="line">	语句</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
-<li><pre><code>exit 0
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for 变量名 [ in 数值列表 ]</span><br><span class="line">do</span><br><span class="line">    语句</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>exit 0</p>
 </li>
 </ul>
 </li>
@@ -481,6 +508,10 @@ core.img
                     
                         
                             <li title="33" data-url="https://link.hhtjim.com/163/2036803051.mp3"></li>
+                        
+                    
+                        
+                            <li title="34" data-url="https://link.hhtjim.com/163/2029837208.mp3"></li>
                         
                     
                 </ul>
