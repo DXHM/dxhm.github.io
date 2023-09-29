@@ -79,7 +79,7 @@ M1卡是NXP（恩智浦半导体）公司研发的IC,"/>
 <p>UFUID：超高级复制卡，0扇区只能写入一次，封卡后变为M1卡，不封卡变为UID卡。</p>
 <p>复制卡均可在网上购买，有普通卡片、钥匙扣、滴胶卡等类型，CUID通常1.5元&#x2F;张，越高级的卡越贵。</p>
 <h1 id="加密M1模拟思路"><a href="#加密M1模拟思路" class="headerlink" title="加密M1模拟思路"></a>加密M1模拟思路</h1><p>首先你要确定你的不是CPU卡（比如手机卡），只有是M1卡才可以；<br>其次你需要M1卡的读写设备（122U 532 PM3等），和至少一张UID卡；<br>1，使用设备读取你的卡并且解密，将解密的数据文件存储到本地；<br>2，复制一份解密的存储文件备份，然后把数据文件里面除了零扇区以外的所有的数据都改成0，所有的AB密码都改成F，保存；<br>3，把上述修改过的文件使用设备写入到UID卡中，就得到了一张非加密的卡（此时没有数据，不能用）；<br>4，用手机去模拟这张卡，因为它现在是不加密的，所以你就可以模拟了；<br>5，模拟成功之后调节到刷卡界面，把手机NFC区域放到读写设备上，把你备份的解密文件写入；</p>
-<h1 id="M1卡数据结构"><a href="#M1卡数据结构" class="headerlink" title="M1卡数据结构"></a>M1卡数据结构</h1><p><img src="https://img-blog.csdnimg.cn/20200306211246600.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0MxNjY0NTEwNDE2,size_16,color_FFFFFF,t_70" alt="理论M1扇区划分"> <img src="https://img-blog.csdnimg.cn/20200306211307902.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0MxNjY0NTEwNDE2,size_16,color_FFFFFF,t_70" alt="实际数据块"> <img src="https://img-blog.csdnimg.cn/20200306211336565.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0MxNjY0NTEwNDE2,size_16,color_FFFFFF,t_70" alt="手机扫描图"></p>
+<h1 id="M1卡数据结构"><a href="#M1卡数据结构" class="headerlink" title="M1卡数据结构"></a>M1卡数据结构</h1><p><img src="/img/M1/20200306211246600.png" alt="理论M1扇区划分"> <img src="/img/M1/20200306211307902.png" alt="实际数据块"> <img src="/img/M1/20200306211336565.jpg" alt="手机扫描图"></p>
 <ol>
 <li><p>M1卡由16个扇区组成，每个扇区在有4个数据块组成，按照顺序将数据块进行编码，其地址编码为0~63。</p>
 </li>
@@ -88,6 +88,24 @@ M1卡是NXP（恩智浦半导体）公司研发的IC,"/>
 <li><p>控制位是以正反形式存储于控制字节中，确定了数字块的访问权限。例如，进行加值操作须验证Key B，进行减值操作须验证Key A。 控制位的含义直接看数字啥也看不出，所以靠逆向理论去破解控制位的含义。</p>
 </li>
 </ol>
+<h3 id="M1卡的内部结构："><a href="#M1卡的内部结构：" class="headerlink" title="M1卡的内部结构："></a>M1卡的内部结构：</h3><p><img src="/img/M1/20200817112656477.png"></p>
+<p><img src="/img/M1/20200817112623599.png"></p>
+<p><img src="/img/M1/20190708165224810.png"></p>
+<p>      （1）Mifare1卡由16个扇区组成，每个扇区在有4个数据块组成，按照顺序将数据块进行编码，其地址编码为0~63</p>
+<p><img src="/img/M1/20200816214536795.png"></p>
+<p>     （2）在扇区1的第0数据块，存放张卡片制造厂家信息，这个扇区的信息已经固化，不能修改。</p>
+<p>     （3）每个扇区的4个数据块，功能不同。数据块0~2是用于存储数据。这3个数据块主要应用于数据存储和数据读操作。</p>
+<p>              这里存储的数据，可以进行数值初始化、加、减、读操作。</p>
+<p>     （4）块区3作为控制块存在，用于存放：密钥A、存储控制<strong>（这里要注意，控制位的写入要慎重，特别是写入锁死功能，对于M1卡来说，控制位的写入锁死一旦写入，这个扇区就不可能再被修改！！！！</strong>）和密钥B。</p>
+<p>     （5）每个扇区内数据块3中的密码和存储控制全部独立存在（也就是说M1卡可以验证多台设备实现多种功能），用户可以根据的需求进行设置。存储控制限定在4 B，32 bit 。对每个扇区中的每个数据中的每个数据的存取条件均是由密码和存储控制共同确定的，每个存储控制由三个控制位组成。</p>
+<p>     （6）控制位是以正反形式存储于控制字节中，确定了数字块的访问权限。例如，进行加值操作须验证KEY B，进行减值操作须验证KEY A。</p>
+<p><strong>控制位的数值理解起来比较困难，有一个软件叫：****M1+卡控制字节生成工具（</strong><a target="_blank" rel="noopener" href="https://download.csdn.net/download/c1664510416/11369060">https://download.csdn.net/download/c1664510416/11369060</a>）。<strong>可以帮我们很好的理解控制位的含义。</strong></p>
+<p><strong>知识拓展：</strong></p>
+<p><img src="/img/M1/20200817113023614.jpg"></p>
+<p><strong>小细节：</strong></p>
+<p>IC卡数据0扇区0块的第6字节代表着芯片类型，普通的IC卡SAK类型为：08，CPU模拟卡为：28，纯CPU卡</p>
+<p>为：20</p>
+<p><img src="/img/M1/20200817113215608.png"></p>
 <h1 id="M1工具-Mifare"><a href="#M1工具-Mifare" class="headerlink" title="M1工具:Mifare"></a>M1工具:Mifare</h1><h3 id="MCT写卡"><a href="#MCT写卡" class="headerlink" title="MCT写卡"></a>MCT写卡</h3><blockquote>
 <p>未加密或弱加密数据基本模拟方法</p>
 </blockquote>
@@ -338,6 +356,18 @@ M1卡是NXP（恩智浦半导体）公司研发的IC,"/>
                             <li title="40" data-url="https://link.hhtjim.com/163/550136114.mp3"></li>
                         
                     
+                        
+                            <li title="41" data-url="https://link.hhtjim.com/163/1299948320.mp3"></li>
+                        
+                    
+                        
+                            <li title="42" data-url="https://link.hhtjim.com/163/2005258767.mp3"></li>
+                        
+                    
+                        
+                            <li title="43" data-url="https://link.hhtjim.com/163/1482494784.mp3"></li>
+                        
+                    
                 </ul>
             
         </div>
@@ -357,7 +387,7 @@ M1卡是NXP（恩智浦半导体）公司研发的IC,"/>
     </div>
     
         <div class="side">
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%A4%8D%E5%88%B6%E5%8D%A1%E5%88%86%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">常用复制卡分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86M1%E6%A8%A1%E6%8B%9F%E6%80%9D%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text">加密M1模拟思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#M1%E5%8D%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">M1卡数据结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#M1%E5%B7%A5%E5%85%B7-Mifare"><span class="toc-number">4.</span> <span class="toc-text">M1工具:Mifare</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MCT%E5%86%99%E5%8D%A1"><span class="toc-number">4.0.1.</span> <span class="toc-text">MCT写卡</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IC%E5%8D%A1%E6%A8%A1%E6%8B%9F%EF%BC%88%E6%89%8B%E6%9C%BA%E3%80%81%E6%89%8B%E7%8E%AF%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">IC卡模拟（手机、手环）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MIUI%E9%97%A8%E5%8D%A1"><span class="toc-number">5.1.</span> <span class="toc-text">MIUI门卡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E7%8E%AF%E6%A8%A1%E6%8B%9F"><span class="toc-number">5.2.</span> <span class="toc-text">手环模拟</span></a></li></ol></li></ol>	
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%A4%8D%E5%88%B6%E5%8D%A1%E5%88%86%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">常用复制卡分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86M1%E6%A8%A1%E6%8B%9F%E6%80%9D%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text">加密M1模拟思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#M1%E5%8D%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">M1卡数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#M1%E5%8D%A1%E7%9A%84%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84%EF%BC%9A"><span class="toc-number">3.0.1.</span> <span class="toc-text">M1卡的内部结构：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#M1%E5%B7%A5%E5%85%B7-Mifare"><span class="toc-number">4.</span> <span class="toc-text">M1工具:Mifare</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MCT%E5%86%99%E5%8D%A1"><span class="toc-number">4.0.1.</span> <span class="toc-text">MCT写卡</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IC%E5%8D%A1%E6%A8%A1%E6%8B%9F%EF%BC%88%E6%89%8B%E6%9C%BA%E3%80%81%E6%89%8B%E7%8E%AF%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">IC卡模拟（手机、手环）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MIUI%E9%97%A8%E5%8D%A1"><span class="toc-number">5.1.</span> <span class="toc-text">MIUI门卡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E7%8E%AF%E6%A8%A1%E6%8B%9F"><span class="toc-number">5.2.</span> <span class="toc-text">手环模拟</span></a></li></ol></li></ol>	
         </div>
     
 </div>
